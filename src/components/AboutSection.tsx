@@ -1,121 +1,106 @@
-import { BookOpen, Award, Users, Target } from "lucide-react";
+import { Globe, Target } from "lucide-react";
 import { motion } from "framer-motion";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-import StitchScrollSection from "./StitchScrollSection";
-import { ChatBubbleAnimation } from "./LottieAnimations";
-
-const values = [
-  { icon: BookOpen, title: "E – 良い (Good)", desc: "From Japanese, representing excellence in every translation" },
-  { icon: Target, title: "WAN – 万 (Bridge)", desc: "From Chinese, connecting cultures and bridging communication" },
-  { icon: Award, title: "Founded 2020", desc: "Born in Pune, serving globally with passion and precision" },
-  { icon: Users, title: "Expert Team", desc: "Native linguists ensuring cultural accuracy and nuance" },
-];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40, rotateX: -15 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    rotateX: 0,
-    transition: { delay: i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
-  }),
-};
+import teamMale from "@/assets/team-male.jpg";
+import teamFemale from "@/assets/team-female.jpg";
 
 const AboutSection = () => {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal();
-  const { ref: cardsRef } = useScrollReveal();
-
   return (
-    <section
-      id="about"
-      className="py-24 lg:py-32 relative overflow-hidden"
-      style={{
-        background: `linear-gradient(180deg, hsl(40 30% 97%) 0%, hsl(40 25% 95%) 100%)`,
-      }}
-    >
-      {/* Background image & pattern */}
-      <div
-        className="absolute inset-0 opacity-30 pointer-events-none"
-        style={{
-          backgroundImage: `url('/about-bg.png')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-      <div className="absolute inset-0 dots-pattern pointer-events-none opacity-40" />
+    <section id="about" className="py-24 lg:py-32 relative overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(40 30% 97%) 0%, hsl(40 25% 95%) 100%)" }}>
+      {/* Grid bg */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{
+        backgroundImage: "linear-gradient(hsl(var(--navy)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--navy)) 1px, transparent 1px)",
+        backgroundSize: "60px 60px"
+      }} />
 
-      {/* Glow orbs */}
-      <div className="glow-orb w-96 h-96 bg-gold/10 -top-20 right-0 translate-x-1/3" />
-      <div className="glow-orb w-64 h-64 bg-purple-400/5 bottom-10 left-10" />
+      {/* Corner bracket decorations */}
+      <div className="absolute top-10 left-10 w-16 h-16 border-t-2 border-l-2 border-gold/20 pointer-events-none" />
+      <div className="absolute bottom-20 right-20 w-16 h-16 border-b-2 border-r-2 border-gold/20 pointer-events-none" />
 
-      {/* Lottie accent */}
-      <div className="absolute right-10 top-20 hidden lg:block pointer-events-none opacity-10">
-        <ChatBubbleAnimation className="w-48 h-48" />
-      </div>
+      {/* Wave decoration */}
+      <svg className="absolute bottom-0 left-0 right-0 w-full h-20 pointer-events-none opacity-10" viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,40 Q360,80 720,40 T1440,40" fill="none" stroke="hsl(40 85% 58%)" strokeWidth="1.5" />
+      </svg>
 
       <div className="container mx-auto px-6 relative z-10">
-        <StitchScrollSection direction="up">
-          <div
-            ref={titleRef}
-            className={`text-center mb-16 transition-all duration-700 ${titleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left - Team photos */}
+          <motion.div
+            className="relative flex justify-center"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
-            <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="inline-block px-4 py-1.5 rounded-full bg-gold/10 text-gold-dark text-sm font-medium mb-4 border border-gold/15"
-            >
-              About Ewan
-            </motion.span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
-              Where Language Is a <span className="gradient-text">Bridge</span>, Not a Barrier
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              The word "Ewan" is the amalgamation of the Japanese letter "E" meaning good and the Traditional Chinese word "WAN" meaning bridge — connecting two good things.
-            </p>
-          </div>
-        </StitchScrollSection>
+            {/* Color blocks behind photos */}
+            <div className="absolute top-4 left-1/4 w-48 h-64 bg-purple-400/15 rounded-lg -rotate-6" />
+            <div className="absolute top-0 right-1/4 w-48 h-64 bg-gold/20 rounded-lg rotate-3" />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-3xl mx-auto text-center mb-16"
-        >
-          <p className="text-muted-foreground leading-relaxed text-lg">
-            Ewan Business Solutions is a team of language professionals and enthusiasts who are passionate about their language. Headquartered in Pune, Maharashtra, India with presence in the Philippines, we provide translation, interpretation, multilingual voiceovers, and website localization services across Oriental, Indian, African, and European languages.
-          </p>
-        </motion.div>
-
-        <div ref={cardsRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" style={{ perspective: "1000px" }}>
-          {values.map((item, i) => (
+            {/* Male photo */}
             <motion.div
-              key={item.title}
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              whileHover={{
-                y: -12,
-                rotateY: 5,
-                boxShadow: "0 30px 60px -12px rgba(208,170,55,0.12)",
-              }}
-              className="group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-gold/8 hover:border-gold/25 transition-all duration-500 card-shine-light shadow-premium"
+              className="relative z-10 w-44 h-56 lg:w-52 lg:h-64 rounded-xl overflow-hidden shadow-premium-lg border-2 border-white/80 -rotate-3"
+              whileHover={{ rotate: 0, scale: 1.02 }}
+              transition={{ duration: 0.4 }}
             >
-              <motion.div
-                className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center mb-4 shadow-gold-sm"
-                whileHover={{ scale: 1.15, rotate: 10 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <item.icon className="w-6 h-6 text-navy" />
-              </motion.div>
-              <h3 className="font-serif font-bold text-lg text-foreground mb-2">{item.title}</h3>
-              <p className="text-muted-foreground text-sm">{item.desc}</p>
+              <img src={teamMale} alt="Co-founder" className="w-full h-full object-cover" loading="lazy" width={512} height={640} />
             </motion.div>
-          ))}
+
+            {/* Female photo */}
+            <motion.div
+              className="relative z-20 w-44 h-56 lg:w-52 lg:h-64 rounded-xl overflow-hidden shadow-premium-lg border-2 border-white/80 rotate-3 -ml-8 mt-8"
+              whileHover={{ rotate: 0, scale: 1.02 }}
+              transition={{ duration: 0.4 }}
+            >
+              <img src={teamFemale} alt="Co-founder" className="w-full h-full object-cover" loading="lazy" width={512} height={640} />
+            </motion.div>
+          </motion.div>
+
+          {/* Right - Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-6">
+              Leadership & Vision
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              Founded by industry forerunners and deep experts in cross-border trade and linguistics, EWAN was built on the principle that global success is local at its core.
+            </p>
+
+            {/* Feature items */}
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <motion.div
+                  className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 border border-gold/20"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <Target className="w-5 h-5 text-gold" />
+                </motion.div>
+                <div>
+                  <h4 className="font-serif font-bold text-foreground mb-1">Strategic Oriented</h4>
+                  <p className="text-muted-foreground text-sm">
+                    Direct access to seasoned partners for high-level market entry strategies.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <motion.div
+                  className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 border border-gold/20"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <Globe className="w-5 h-5 text-gold" />
+                </motion.div>
+                <div>
+                  <h4 className="font-serif font-bold text-foreground mb-1">Global Network</h4>
+                  <p className="text-muted-foreground text-sm">
+                    A curated network of 836+ specialist linguists across every continent.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
