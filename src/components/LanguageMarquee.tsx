@@ -8,24 +8,43 @@ const languages = [
 
 const LanguageMarquee = () => {
   return (
-    <section className="py-8 section-dark overflow-hidden border-y border-primary-foreground/5">
+    <section className="py-10 section-dark overflow-hidden relative stitch-line stitch-line-bottom">
       <div className="relative">
         {/* Gradient masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-navy to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-navy to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-[hsl(230,38%,16%)] to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-[hsl(230,38%,16%)] to-transparent z-10" />
 
+        {/* First row — scrolling left */}
         <motion.div
-          className="flex whitespace-nowrap"
+          className="flex whitespace-nowrap mb-4"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
         >
           {[...languages, ...languages].map((lang, i) => (
-            <span
-              key={i}
-              className="mx-8 text-2xl sm:text-3xl font-serif font-bold text-primary-foreground/10 hover:text-gold/40 transition-colors duration-300 cursor-default"
+            <motion.span
+              key={`row1-${i}`}
+              className="mx-8 text-2xl sm:text-3xl font-serif font-bold text-primary-foreground/8 hover:text-gold/40 transition-colors duration-500 cursor-default"
+              whileHover={{ scale: 1.1, y: -3 }}
             >
               {lang}
-            </span>
+            </motion.span>
+          ))}
+        </motion.div>
+
+        {/* Second row — scrolling right (reverse) */}
+        <motion.div
+          className="flex whitespace-nowrap"
+          animate={{ x: ["-50%", "0%"] }}
+          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+        >
+          {[...languages.slice().reverse(), ...languages.slice().reverse()].map((lang, i) => (
+            <motion.span
+              key={`row2-${i}`}
+              className="mx-8 text-lg sm:text-2xl font-serif font-bold text-primary-foreground/5 hover:text-gold/30 transition-colors duration-500 cursor-default"
+              whileHover={{ scale: 1.1, y: -3 }}
+            >
+              {lang}
+            </motion.span>
           ))}
         </motion.div>
       </div>

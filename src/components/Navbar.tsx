@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import ewanLogo from "@/assets/ewan-logo.png";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -33,10 +32,13 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-2 group">
           <motion.img
-            src={ewanLogo}
+            src="/logo.png"
             alt="Ewan Business Solutions"
-            className="h-10 sm:h-12 w-auto object-contain"
-            whileHover={{ scale: 1.05 }}
+            className="h-10 sm:h-12 w-auto object-contain drop-shadow-lg"
+            whileHover={{
+              scale: 1.05,
+              filter: "drop-shadow(0 0 12px rgba(208,170,55,0.4))",
+            }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
           />
         </a>
@@ -50,9 +52,20 @@ const Navbar = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * i + 0.3, duration: 0.5 }}
-              className="text-sm font-medium text-primary-foreground/80 hover:text-gold transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
+              className="relative text-sm font-medium text-primary-foreground/80 hover:text-gold transition-colors duration-300 group"
             >
               {link.label}
+              {/* Animated stitch underline */}
+              <span className="absolute bottom-[-6px] left-0 w-0 h-[2px] group-hover:w-full transition-all duration-500 bg-gradient-to-r from-gold-dark via-gold to-gold-light" />
+              <span className="absolute bottom-[-6px] left-0 w-0 group-hover:w-full transition-all duration-500 delay-100">
+                <span
+                  className="block h-[2px]"
+                  style={{
+                    background:
+                      "repeating-linear-gradient(90deg, hsl(40 85% 58% / 0.6) 0px, hsl(40 85% 58% / 0.6) 4px, transparent 4px, transparent 8px)",
+                  }}
+                />
+              </span>
             </motion.a>
           ))}
           <motion.a
@@ -60,9 +73,9 @@ const Navbar = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(208,170,55,0.4)" }}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 35px rgba(208,170,55,0.4)" }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full gold-gradient text-navy font-semibold text-sm transition-all duration-300"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full gold-gradient text-navy font-semibold text-sm transition-all duration-300 card-shine"
           >
             <Phone className="w-4 h-4" />
             Get Quote
@@ -107,7 +120,7 @@ const Navbar = () => {
                   initial={{ x: -30, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: i * 0.08 }}
-                  className="text-primary-foreground/80 hover:text-gold transition-colors py-2"
+                  className="text-primary-foreground/80 hover:text-gold transition-colors py-2 border-b border-gold/5"
                 >
                   {link.label}
                 </motion.a>

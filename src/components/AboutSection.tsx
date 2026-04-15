@@ -23,18 +23,37 @@ const cardVariants = {
 
 const AboutSection = () => {
   const { ref: titleRef, isVisible: titleVisible } = useScrollReveal();
-  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal();
+  const { ref: cardsRef } = useScrollReveal();
 
   return (
-    <section id="about" className="py-24 lg:py-32 bg-background relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-gold/5 blur-3xl -translate-y-1/2 translate-x-1/2" />
+    <section
+      id="about"
+      className="py-24 lg:py-32 relative overflow-hidden"
+      style={{
+        background: `linear-gradient(180deg, hsl(40 30% 97%) 0%, hsl(40 25% 95%) 100%)`,
+      }}
+    >
+      {/* Background image & pattern */}
+      <div
+        className="absolute inset-0 opacity-30 pointer-events-none"
+        style={{
+          backgroundImage: `url('/about-bg.png')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="absolute inset-0 dots-pattern pointer-events-none opacity-40" />
+
+      {/* Glow orbs */}
+      <div className="glow-orb w-96 h-96 bg-gold/10 -top-20 right-0 translate-x-1/3" />
+      <div className="glow-orb w-64 h-64 bg-purple-400/5 bottom-10 left-10" />
 
       {/* Lottie accent */}
-      <div className="absolute right-10 top-20 hidden lg:block pointer-events-none opacity-15">
+      <div className="absolute right-10 top-20 hidden lg:block pointer-events-none opacity-10">
         <ChatBubbleAnimation className="w-48 h-48" />
       </div>
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative z-10">
         <StitchScrollSection direction="up">
           <div
             ref={titleRef}
@@ -45,7 +64,7 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-block px-4 py-1.5 rounded-full bg-gold/10 text-gold-dark text-sm font-medium mb-4"
+              className="inline-block px-4 py-1.5 rounded-full bg-gold/10 text-gold-dark text-sm font-medium mb-4 border border-gold/15"
             >
               About Ewan
             </motion.span>
@@ -80,14 +99,14 @@ const AboutSection = () => {
               whileInView="visible"
               viewport={{ once: true }}
               whileHover={{
-                y: -10,
+                y: -12,
                 rotateY: 5,
-                boxShadow: "0 25px 50px -12px rgba(208,170,55,0.15)",
+                boxShadow: "0 30px 60px -12px rgba(208,170,55,0.12)",
               }}
-              className="group p-6 rounded-2xl bg-card border border-border hover:border-gold/30 transition-all duration-500"
+              className="group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-gold/8 hover:border-gold/25 transition-all duration-500 card-shine-light shadow-premium"
             >
               <motion.div
-                className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center mb-4"
+                className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center mb-4 shadow-gold-sm"
                 whileHover={{ scale: 1.15, rotate: 10 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
