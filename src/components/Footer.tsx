@@ -1,4 +1,7 @@
 import { ArrowUp } from "lucide-react";
+import { motion } from "framer-motion";
+import ewanLogo from "@/assets/ewan-logo.png";
+import MagneticButton from "./MagneticButton";
 
 const Footer = () => {
   return (
@@ -6,10 +9,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-16">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <span className="text-2xl font-serif font-bold mb-4 block">
-              <span className="gradient-text">E</span>
-              <span className="text-primary-foreground">WAN</span>
-            </span>
+            <img src={ewanLogo} alt="Ewan Business Solutions" className="h-12 w-auto object-contain mb-4" />
             <p className="text-primary-foreground/50 text-sm leading-relaxed">
               Empowering businesses to communicate in global languages. Your bridge to the world.
             </p>
@@ -49,12 +49,13 @@ const Footer = () => {
 
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-primary-foreground/5">
           <p className="text-primary-foreground/30 text-sm">© {new Date().getFullYear()} Ewan Business Solutions. All rights reserved.</p>
-          <button
+          <MagneticButton
+            as="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="mt-4 sm:mt-0 w-10 h-10 rounded-full border border-primary-foreground/10 flex items-center justify-center text-primary-foreground/30 hover:text-gold hover:border-gold/30 transition-all duration-300 hover:scale-110"
+            className="mt-4 sm:mt-0 w-10 h-10 rounded-full border border-primary-foreground/10 flex items-center justify-center text-primary-foreground/30 hover:text-gold hover:border-gold/30 transition-all duration-300"
           >
             <ArrowUp className="w-4 h-4" />
-          </button>
+          </MagneticButton>
         </div>
       </div>
     </footer>
