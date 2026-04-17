@@ -1,11 +1,15 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import StatsSection from "@/components/StatsSection";
 import ServicesSection from "@/components/ServicesSection";
-import ClientNetworkSection from "@/components/ClientNetworkSection";
+import ClientLogosSection from "@/components/ClientLogosSection";
 import CaseStudySection from "@/components/CaseStudySection";
+import WhyEwanSection from "@/components/WhyEwanSection";
+import InstitutionalTrustSection from "@/components/InstitutionalTrustSection";
+import PartnersSection from "@/components/PartnersSection";
 import SectorsSection from "@/components/SectorsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import AboutSection from "@/components/AboutSection";
+import FoundersSection from "@/components/FoundersSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -18,12 +22,16 @@ const Index = () => {
       <CursorGlow />
       <Navbar />
       <HeroSection />
+      <StatsSection />
       <ServicesSection />
-      <ClientNetworkSection />
+      <ClientLogosSection />
       <CaseStudySection />
+      <WhyEwanSection />
+      <InstitutionalTrustSection />
+      <PartnersSection />
       <SectorsSection />
       <TestimonialsSection />
-      <AboutSection />
+      <FoundersSection />
       <ContactSection />
       <Footer />
     </div>
