@@ -274,6 +274,18 @@
   .animate-fade-in { animation: fadeIn 0.8s ease both; }
   .animate-marquee { animation: marquee 40s linear infinite; }
 
+  /* Scroll progress bar */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, hsl(var(--gold)), hsl(var(--gold-bright)));
+    z-index: 9999;
+    transform-origin: left;
+  }
+
   /* Sticky CTA float */
   .sticky-cta {
     position: fixed;
