@@ -27,7 +27,6 @@ const Index = () => {
       <ClientLogosSection />
       <CaseStudySection />
       <WhyEwanSection />
-      <PartnersSection />
       <SectorsSection />
       <TestimonialsSection />
       <InstitutionalTrustSection />

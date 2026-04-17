@@ -1,39 +1,81 @@
 import { motion } from "framer-motion";
 
-const clients = [
-  "Tata Autocomp",
-  "Bajaj",
-  "Markets & Markets",
-  "Groupo Antolin",
-  "Seasonz International",
-  "Tattava CX",
-  "Bhashini",
-  "Consulate of China",
+type ClientLogo = {
+  name: string;
+  src?: string;
+  alt: string;
+  isTextOnly?: boolean;
+};
+
+const clients: ClientLogo[] = [
+  { name: "Tata Autocomp", src: "/allLogos/Tata-Autocomp.jpeg", alt: "Tata Autocomp logo" },
+  { name: "Markets & Markets", src: "/allLogos/Marketsandmarkets.jpeg", alt: "Markets and Markets logo" },
+  { name: "Groupo Antolin", isTextOnly: true, alt: "Groupo Antolin logo" },
+  { name: "Mittal Group", src: "/allLogos/Mittal-Group.jpeg", alt: "Mittal Group logo" },
+  { name: "Seasonz International", src: "/allLogos/Seasonz-Group.jpeg", alt: "Seasonz International logo" },
+  { name: "Balbharati", src: "/allLogos/Balbharti.jpeg", alt: "Balbharati logo" },
+  { name: "Gandharva Mahavidyalay", src: "/allLogos/Gandharva-Mahavidyalay.jpeg", alt: "Gandharva Mahavidyalay logo" },
+  { name: "Indian Magic Eye", src: "/allLogos/Ime-Indian-magic-eye.jpeg", alt: "Indian Magic Eye logo" },
+  { name: "Indus International School", src: "/allLogos/Indus-International-School.jpeg", alt: "Indus International School logo" },
+  { name: "Joy Reaps Metal", src: "/allLogos/Joy-reaps-metal.jpeg", alt: "Joy Reaps Metal logo" },
+  { name: "Kheliya", src: "/allLogos/Kheliya.jpeg", alt: "Kheliya logo" },
+  { name: "Riskberg", src: "/allLogos/Riskberg.jpeg", alt: "Riskberg logo" },
+  { name: "SG Analytics", src: "/allLogos/SG-Analytics-logo.jpg", alt: "SG Analytics logo" },
+  { name: "Shayadri Farms", src: "/allLogos/Shayadri-Farms.jpeg", alt: "Shayadri Farms logo" },
+  { name: "Tomsa Destil", src: "/allLogos/Tomsa-Destil-India-Pvt-Ltd-logo.jpg", alt: "Tomsa Destil logo" },
+  { name: "Integral Technical Group", src: "/allLogos/integral-technical-group-logo.jpg", alt: "Integral Technical Group logo" },
+  { name: "JSIMR", src: "/allLogos/jsimr-logo.png", alt: "JSIMR logo" },
 ];
 
 const ClientLogosSection = () => {
   return (
-    <section className="py-16 lg:py-20 relative overflow-hidden section-navy-deep">
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.p
-          className="text-center text-xs uppercase tracking-[0.3em] text-primary/70 mb-10 font-medium"
+    <section
+      className="relative overflow-hidden border-y border-zinc-200/90 bg-white   p-6 text-zinc-900 "
+      aria-label="Client logos"
+    >
+      <div className="container relative z-10 mx-auto px-6">
+        <motion.div
+          className="mb-10 flex flex-col items-center gap-3"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Trusted by Industry Leaders
-        </motion.p>
+          <div className="flex items-center gap-2.5">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.32em] text-zinc-500">
+              Trusted by Industry Leaders
+            </p>
+            <span className="h-px w-10 max-w-[40vw] bg-gradient-to-r from-primary/60 to-transparent" aria-hidden />
+          </div>
+        </motion.div>
 
-        <div className="relative overflow-hidden">
-          <div className="flex gap-12 animate-marquee">
+        <div className="client-logos-fade relative overflow-hidden">
+          <div className="client-logos-marquee flex items-center  ">
             {[...clients, ...clients].map((client, i) => (
               <motion.div
-                key={`${client}-${i}`}
-                className="shrink-0 px-8 py-5 rounded-xl glass-card flex items-center justify-center min-w-[200px]"
-                whileHover={{ scale: 1.05, borderColor: "hsl(70 100% 50% / 0.45)" }}
+                key={`${client.name}-${i}`}
+                className="flex min-h-[11rem] min-w-[280px] shrink-0 items-center justify-center px-6 py-5 md:min-h-[12rem] md:min-w-[320px] md:px-8"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 420, damping: 24 }}
               >
-                <span className="text-base lg:text-lg font-serif font-semibold text-foreground/70 hover:text-primary transition-colors whitespace-nowrap">
-                  {client}
+                {client.src && !client.isTextOnly ? (
+                  <img
+                    src={client.src}
+                    alt={client.alt}
+                    loading="lazy"
+                    className="client-logo-img "
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                      const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;
+                      if (fallback) fallback.style.display = "inline";
+                    }}
+                  />
+                ) : null}
+                <span
+                  style={{ display: client.src && !client.isTextOnly ? "none" : "inline" }}
+                  className="max-w-[28rem] text-center text-base font-semibold leading-snug text-zinc-800 md:text-lg"
+                >
+                  {client.name}
                 </span>
               </motion.div>
             ))}
@@ -42,13 +84,31 @@ const ClientLogosSection = () => {
       </div>
 
       <style>{`
-        @keyframes marquee {
+        @keyframes clientLogosMarquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
-        .animate-marquee {
-          animation: marquee 30s linear infinite;
+        .client-logos-marquee {
+          animation: clientLogosMarquee 55s linear infinite;
           width: max-content;
+        }
+        @media (min-width: 1024px) {
+          .client-logos-marquee {
+            animation-duration: 76s;
+          }
+        }
+        .client-logos-fade {
+          -webkit-mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+          mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+        }
+        .client-logo-img {
+          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.07)) drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.04));
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .client-logos-marquee {
+            animation: none;
+            transform: none;
+          }
         }
       `}</style>
     </section>

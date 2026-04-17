@@ -24,7 +24,7 @@ const blocks = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-24 lg:py-32 relative overflow-hidden section-navy">
+    <section id="services" className="py-10 lg:py-32 relative overflow-hidden section-navy">
       <div className="glow-orb glow-orb-gold w-[400px] h-[400px] top-10 -left-40" />
       <div className="glow-orb glow-orb-purple w-[400px] h-[400px] bottom-10 -right-40" />
       <div className="absolute inset-0 dots-pattern opacity-20 pointer-events-none" />

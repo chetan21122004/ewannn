@@ -2,13 +2,29 @@ import { motion } from "framer-motion";
 import { Handshake } from "lucide-react";
 
 const partners = [
-  { name: "Bhashini", desc: "Govt of India language platform — empanelled translation & interpretation partner." },
-  { name: "Tattava CX", desc: "Strategic CX & engagement partner for cross-border customer programs." },
+  {
+    name: "Bhashini",
+    src: "/allLogos/Bhashini-Logo.png",
+    alt: "Bhashini logo",
+    desc: "MeitY language technology initiative.",
+  },
+  {
+    name: "Tattava CX",
+    src: "/allLogos/tattava-cx.png",
+    alt: "Tattava CX logo",
+    desc: "Strategic communications partner.",
+  },
+  {
+    name: "Bhashik Skill Development",
+    src: "/allLogos/bhashik-skill-development.png",
+    alt: "Bhashik Skill Development logo",
+    desc: "Sister institution for language talent.",
+  },
 ];
 
 const PartnersSection = () => {
   return (
-    <section className="py-20 lg:py-24 relative overflow-hidden section-navy">
+    <section className="py-20 lg:py-10 relative overflow-hidden section-navy">
       <div className="absolute inset-0 dots-pattern opacity-15 pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
@@ -26,7 +42,7 @@ const PartnersSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid gap-6 max-w-5xl mx-auto md:grid-cols-2 lg:grid-cols-3">
           {partners.map((p, i) => (
             <motion.div
               key={p.name}
@@ -35,9 +51,25 @@ const PartnersSection = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
               whileHover={{ y: -6, scale: 1.02 }}
-              className="p-8 rounded-2xl glass-card-gold border border-primary/15 card-shine"
+              className="p-6 rounded-2xl glass-card-gold border border-primary/15 card-shine text-center"
             >
-              <h3 className="text-2xl font-serif font-bold gradient-text mb-3">{p.name}</h3>
+              <div className="h-16 mb-4 flex items-center justify-center">
+                <img
+                  src={p.src}
+                  alt={p.alt}
+                  loading="lazy"
+                  className="max-h-14 w-auto object-contain"
+                  onError={(e) => {
+                    if (!e.currentTarget.dataset.fallbackApplied) {
+                      e.currentTarget.dataset.fallbackApplied = "true";
+                      e.currentTarget.src = "/logo.png";
+                      return;
+                    }
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+              </div>
+              <h3 className="mb-2 text-lg font-serif font-bold gradient-text">{p.name}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
             </motion.div>
           ))}

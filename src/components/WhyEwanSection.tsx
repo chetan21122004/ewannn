@@ -21,7 +21,7 @@ const differentiators = [
 
 const WhyEwanSection = () => {
   return (
-    <section id="why-ewan" className="py-24 lg:py-32 relative overflow-hidden section-navy">
+    <section id="why-ewan" className="py-10 lg:py-32 relative overflow-hidden section-navy">
       <div className="glow-orb glow-orb-gold w-[400px] h-[400px] top-20 right-10" />
       <div className="absolute inset-0 dots-pattern opacity-20 pointer-events-none" />
 

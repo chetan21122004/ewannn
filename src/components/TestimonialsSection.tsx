@@ -38,7 +38,7 @@ const TestimonialsSection = () => {
   const prev = () => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden section-navy">
+    <section className="py-10 lg:py-32 relative overflow-hidden section-navy">
       <div className="glow-orb glow-orb-gold w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-15" />
       <div className="absolute inset-0 dots-pattern opacity-20 pointer-events-none" />
 

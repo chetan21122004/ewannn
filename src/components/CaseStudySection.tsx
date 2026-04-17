@@ -10,7 +10,7 @@ const steps = [
 
 const CaseStudySection = () => {
   return (
-    <section id="media" className="py-24 lg:py-32 relative overflow-hidden section-navy-purple">
+    <section id="media" className="py-10 lg:py-32 relative overflow-hidden section-navy-purple">
       <span id="case-study" className="sr-only">Case Study</span>
       <div className="glow-orb glow-orb-purple w-[500px] h-[500px] top-10 -right-40" />
       <div className="absolute inset-0 dots-pattern-purple opacity-20 pointer-events-none" />

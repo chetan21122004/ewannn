@@ -18,7 +18,7 @@ const sectors = [
 
 const ClientNetworkSection = () => {
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden section-navy">
+    <section className="py-10 lg:py-32 relative overflow-hidden section-navy">
       {/* Animated wave lines */}
       <svg className="absolute top-0 left-0 right-0 w-full h-32 pointer-events-none" viewBox="0 0 1440 120" preserveAspectRatio="none">
         <motion.path

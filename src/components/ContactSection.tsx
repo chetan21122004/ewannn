@@ -12,7 +12,7 @@ const FloatingParticle = ({ delay, x, y, size }: { delay: number; x: string; y: 
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-24 lg:py-32 relative overflow-hidden hero-gradient">
+    <section id="contact" className="py-10 lg:py-32 relative overflow-hidden hero-gradient">
       <div className="glow-orb glow-orb-gold w-[500px] h-[500px] -top-40 left-1/4" />
       <div className="glow-orb glow-orb-purple w-[500px] h-[500px] -bottom-40 right-1/4" />
 

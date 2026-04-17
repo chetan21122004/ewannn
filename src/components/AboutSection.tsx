@@ -12,7 +12,7 @@ const features = [
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-24 lg:py-32 relative overflow-hidden section-navy">
+    <section id="about" className="py-10 lg:py-32 relative overflow-hidden section-navy">
       {/* Grid bg */}
       <div className="absolute inset-0 dots-pattern pointer-events-none" />
 
