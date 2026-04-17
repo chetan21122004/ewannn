@@ -1,85 +1,100 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Sectors", href: "#sectors" },
+  { label: "Market Entry", href: "#services" },
+  { label: "Language & Localization", href: "#services" },
+  { label: "Industries", href: "#sectors" },
+  { label: "About Us", href: "#about" },
+  { label: "Media", href: "#case-study" },
   { label: "Contact", href: "#contact" },
 ];
+
+const languages = ["EN", "中文", "日本語"];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [lang, setLang] = useState("EN");
+  const [langOpen, setLangOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setIsScrolled(window.scrollY > 50);
+    const handler = () => setIsScrolled(window.scrollY > 30);
+    handler();
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
+      initial={{ y: -80 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "nav-glass py-2 shadow-2xl" : "bg-transparent py-4"
+        isScrolled ? "nav-glass-light py-3" : "bg-transparent py-5"
       }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2 group">
-          <motion.img
+      <div className="container mx-auto flex items-center justify-between gap-6">
+        <a href="#home" className="flex items-center gap-2 shrink-0">
+          <img
             src="/logo.png"
-            alt="Ewan Business Solutions"
-            className="h-10 sm:h-12 w-auto object-contain"
-            whileHover={{ scale: 1.05, filter: "drop-shadow(0 0 12px rgba(208,170,55,0.5))" }}
-            transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            alt="EWAN Business Solutions"
+            className="h-9 sm:h-10 w-auto object-contain"
           />
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link, i) => (
-            <motion.a
+        <div className="hidden lg:flex items-center gap-7">
+          {navLinks.map((link) => (
+            <a
               key={link.label}
               href={link.href}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * i + 0.3, duration: 0.5 }}
-              className="relative text-sm font-medium text-foreground/70 hover:text-primary transition-colors duration-300 group"
+              className="link-gold text-[13px] font-medium text-foreground/80 hover:text-foreground transition-colors"
             >
               {link.label}
-              <span className="absolute bottom-[-6px] left-0 w-0 h-[2px] group-hover:w-full transition-all duration-500 bg-gradient-to-r from-primary via-accent to-primary" />
-            </motion.a>
+            </a>
           ))}
-          <motion.a
-            href="#contact"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 35px rgba(208,170,55,0.4)" }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full gold-gradient text-background font-semibold text-sm transition-all duration-300 card-shine"
-          >
-            <Phone className="w-4 h-4" />
-            Get Quote
-          </motion.a>
         </div>
 
-        <button className="md:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
-          <AnimatePresence mode="wait">
-            {mobileOpen ? (
-              <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                <X className="w-6 h-6" />
-              </motion.div>
-            ) : (
-              <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                <Menu className="w-6 h-6" />
-              </motion.div>
-            )}
-          </AnimatePresence>
+        <div className="hidden lg:flex items-center gap-4 shrink-0">
+          {/* Language switcher */}
+          <div className="relative">
+            <button
+              onClick={() => setLangOpen(!langOpen)}
+              className="flex items-center gap-1 text-[12px] font-semibold text-foreground/70 hover:text-foreground transition-colors tracking-wider"
+            >
+              {lang}
+              <ChevronDown className="w-3 h-3" />
+            </button>
+            <AnimatePresence>
+              {langOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  className="absolute right-0 mt-3 bg-background border border-border rounded-md shadow-soft-lg overflow-hidden min-w-[90px]"
+                >
+                  {languages.map((l) => (
+                    <button
+                      key={l}
+                      onClick={() => { setLang(l); setLangOpen(false); }}
+                      className={`block w-full text-left px-4 py-2 text-xs font-semibold hover:bg-muted transition-colors ${lang === l ? "text-gold" : "text-foreground/70"}`}
+                    >
+                      {l}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          <a href="#contact" className="btn-gold text-[12px] !px-5 !py-2.5">
+            Ask Soham — 15 Min Free
+          </a>
+        </div>
+
+        <button className="lg:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
+          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
@@ -89,33 +104,38 @@ const Navbar = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden overflow-hidden nav-glass"
+            transition={{ duration: 0.3 }}
+            className="lg:hidden overflow-hidden bg-background border-t border-border"
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
-              {navLinks.map((link, i) => (
-                <motion.a
+            <div className="container mx-auto py-5 flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <a
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  initial={{ x: -30, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: i * 0.08 }}
-                  className="text-foreground/70 hover:text-primary transition-colors py-2 border-b border-primary/10"
+                  className="text-foreground/80 hover:text-gold transition-colors py-2.5 text-sm font-medium border-b border-border/60"
                 >
                   {link.label}
-                </motion.a>
+                </a>
               ))}
-              <motion.a
+              <div className="flex items-center gap-3 pt-3">
+                {languages.map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => setLang(l)}
+                    className={`text-xs font-semibold tracking-wider px-2 py-1 ${lang === l ? "text-gold" : "text-foreground/50"}`}
+                  >
+                    {l}
+                  </button>
+                ))}
+              </div>
+              <a
                 href="#contact"
                 onClick={() => setMobileOpen(false)}
-                initial={{ x: -30, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="px-5 py-2.5 rounded-full gold-gradient text-background font-semibold text-sm text-center"
+                className="btn-gold mt-3 justify-center"
               >
-                Get Quote
-              </motion.a>
+                Ask Soham — 15 Min Free
+              </a>
             </div>
           </motion.div>
         )}

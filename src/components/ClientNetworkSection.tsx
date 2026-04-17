@@ -1,112 +1,37 @@
-import { Car, Pill, Factory, DollarSign, ShoppingCart, Settings } from "lucide-react";
 import { motion } from "framer-motion";
 
-const clients = [
-  { name: "AUDI", sector: "AUTOMOTIVE SECTOR" },
-  { name: "Pfizer", sector: "PHARMA & LIFE SCI" },
-  { name: "NOMURA", sector: "FINANCIAL SERVICES" },
-];
-
-const sectors = [
-  { icon: Car, name: "Automotive", label: "AUTOMOTIVE" },
-  { icon: Pill, name: "Pharma & Life Sci", label: "PHARMA" },
-  { icon: Factory, name: "Manufacturing", label: "MANUFACTURING" },
-  { icon: DollarSign, name: "Financial Services", label: "FINANCIAL" },
-  { icon: ShoppingCart, name: "E-Commerce", label: "E-COMMERCE" },
-  { icon: Settings, name: "Technology", label: "TECHNOLOGY" },
-];
+const logos = ["AUDI", "PFIZER", "NOMURA", "TOYOTA", "MITSUBISHI", "RAKUTEN", "HITACHI", "PANASONIC"];
 
 const ClientNetworkSection = () => {
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden section-navy">
-      {/* Animated wave lines */}
-      <svg className="absolute top-0 left-0 right-0 w-full h-32 pointer-events-none" viewBox="0 0 1440 120" preserveAspectRatio="none">
-        <motion.path
-          d="M0,60 Q360,120 720,60 T1440,60"
-          fill="none"
-          stroke="hsl(40 85% 58% / 0.1)"
-          strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 2 }}
-        />
-        <motion.path
-          d="M0,80 Q360,20 720,80 T1440,80"
-          fill="none"
-          stroke="hsl(260 50% 55% / 0.08)"
-          strokeWidth="1.5"
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 2, delay: 0.3 }}
-        />
-      </svg>
-
-      <div className="glow-orb glow-orb-purple w-[350px] h-[350px] top-1/2 -right-40" />
-
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Client logos with animated reveal */}
+    <section className="py-20 relative section-off border-y border-border overflow-hidden">
+      <div className="container mx-auto">
         <motion.div
-          className="flex flex-wrap items-center justify-center gap-12 lg:gap-20 mb-20"
-          initial={{ opacity: 0, y: 30 }}
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
         >
-          {clients.map((client, i) => (
-            <motion.div
-              key={client.name}
-              className="text-center group cursor-default"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.6, type: "spring" }}
-              whileHover={{ scale: 1.1, y: -5 }}
-            >
-              <span className="text-[10px] tracking-[0.15em] text-muted-foreground/40 uppercase block mb-2">{client.sector}</span>
-              <span className="text-2xl lg:text-3xl font-serif font-bold text-foreground group-hover:text-primary transition-colors duration-500">{client.name}</span>
-            </motion.div>
-          ))}
+          <div className="text-[11px] tracking-[0.25em] uppercase text-foreground/50 font-semibold">
+            Trusted by global enterprises across four continents
+          </div>
         </motion.div>
 
-        {/* Divider with animated line */}
-        <motion.div
-          className="w-full h-px mb-16 mx-auto max-w-2xl"
-          style={{ background: "linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), hsl(var(--purple) / 0.2), transparent)" }}
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        />
-
-        {/* Sector icons grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-          {sectors.map((sector, i) => (
-            <motion.div
-              key={sector.name}
-              className="flex flex-col items-center text-center group"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-            >
-              <motion.div
-                className="w-16 h-16 rounded-full glass-card border border-primary/10 flex items-center justify-center mb-3 relative"
-                whileHover={{ scale: 1.15, boxShadow: "0 0 30px hsl(40 85% 58% / 0.2)" }}
+        {/* Logo marquee */}
+        <div className="relative overflow-hidden" style={{
+          maskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
+          WebkitMaskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
+        }}>
+          <div className="flex gap-16 lg:gap-24 animate-marquee whitespace-nowrap">
+            {[...logos, ...logos].map((name, i) => (
+              <span
+                key={i}
+                className="text-xl lg:text-2xl font-serif font-bold text-foreground/30 hover:text-foreground transition-colors duration-500 tracking-[0.18em] cursor-default"
               >
-                <sector.icon className="w-7 h-7 text-foreground/50 group-hover:text-primary transition-colors duration-500" />
-                {/* Animated ring on hover */}
-                <motion.div
-                  className="absolute inset-0 rounded-full border-2 border-primary/0 group-hover:border-primary/30"
-                  animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </motion.div>
-              <span className="text-[10px] tracking-[0.12em] text-muted-foreground/40 uppercase mb-1">{sector.label}</span>
-              <span className="text-sm font-serif font-bold text-foreground">{sector.name}</span>
-            </motion.div>
-          ))}
+                {name}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

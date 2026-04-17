@@ -9,23 +9,23 @@ import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
-import CursorGlow from "@/components/CursorGlow";
+import StickyCTA from "@/components/StickyCTA";
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative bg-background">
       <ScrollProgress />
-      <CursorGlow />
       <Navbar />
       <HeroSection />
-      <ServicesSection />
       <ClientNetworkSection />
+      <ServicesSection />
       <CaseStudySection />
       <SectorsSection />
       <TestimonialsSection />
       <AboutSection />
       <ContactSection />
       <Footer />
+      <StickyCTA />
     </div>
   );
 };
