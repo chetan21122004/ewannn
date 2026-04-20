@@ -49,7 +49,7 @@ const CursorGlow = () => {
       <div
         className="w-[400px] h-[400px] rounded-full"
         style={{
-          background: "radial-gradient(circle, hsl(70 100% 50% / 0.07) 0%, transparent 70%)",
+          background: "radial-gradient(circle, hsl(var(--brand-purple-500) / 0.08) 0%, transparent 70%)",
         }}
       />
     </motion.div>

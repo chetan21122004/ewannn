@@ -19,11 +19,33 @@ const differentiators = [
   },
 ];
 
+const accentStyles = [
+  {
+    number: "text-[hsl(var(--brand-purple-700)/0.28)]",
+    iconWrap: "bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-purple-500))_100%)]",
+    iconColor: "text-white",
+    halo: "border-[hsl(var(--brand-purple-500)/0.16)] group-hover:border-[hsl(var(--brand-purple-500)/0.3)]",
+  },
+  {
+    number: "text-[hsl(var(--brand-cyan-500)/0.28)]",
+    iconWrap: "bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)]",
+    iconColor: "text-white",
+    halo: "border-[hsl(var(--brand-cyan-500)/0.16)] group-hover:border-[hsl(var(--brand-cyan-500)/0.3)]",
+  },
+  {
+    number: "text-[hsl(var(--brand-gold-600)/0.3)]",
+    iconWrap: "bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-gold-600))_100%)]",
+    iconColor: "text-white",
+    halo: "border-[hsl(var(--brand-gold-600)/0.16)] group-hover:border-[hsl(var(--brand-gold-600)/0.3)]",
+  },
+] as const;
+
 const WhyEwanSection = () => {
   return (
-    <section id="why-ewan" className="py-10 lg:py-32 relative overflow-hidden section-navy">
-      <div className="glow-orb glow-orb-gold w-[400px] h-[400px] top-20 right-10" />
-      <div className="absolute inset-0 dots-pattern opacity-20 pointer-events-none" />
+    <section id="why-ewan" className="py-10 lg:py-32 relative overflow-hidden theme-section-soft">
+      <div className="glow-orb glow-orb-purple w-[360px] h-[360px] top-20 right-10 opacity-8" />
+      <div className="glow-orb glow-orb-gold w-[300px] h-[300px] -bottom-16 left-10 opacity-8" />
+      <div className="absolute inset-0 theme-grid-overlay-light opacity-18 pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -33,13 +55,16 @@ const WhyEwanSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full glass-card-gold text-primary text-xs font-medium tracking-wider uppercase mb-5">
+          <span className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-5">
             Why Ewan
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-5">
-            The Partner Who's <span className="gradient-text italic">Already Been in the Room.</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light mb-5">
+            The Partner Who's{" "}
+            <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
+              Already Been in the Room.
+            </span>
           </h2>
-          <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+          <p className="text-on-light-muted text-base sm:text-lg leading-relaxed">
             Most market entry consultants have never interpreted a boardroom negotiation. Most translation agencies have never set up a subsidiary. Ewan has done both — for 10 years, across every major sector, in the corridors that matter.
           </p>
         </motion.div>
@@ -47,6 +72,7 @@ const WhyEwanSection = () => {
         <div className="grid md:grid-cols-3 gap-6">
           {differentiators.map((d, i) => {
             const Icon = d.icon;
+            const accent = accentStyles[i % accentStyles.length];
             return (
               <motion.div
                 key={d.title}
@@ -55,22 +81,22 @@ const WhyEwanSection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -10 }}
-                className="group relative p-8 rounded-3xl glass-card border border-primary/10 card-shine overflow-hidden"
+                className="group relative p-8 rounded-3xl theme-card-light card-shine overflow-hidden border border-[hsl(var(--border-light))]"
               >
-                <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full border-[15px] border-primary/5 group-hover:border-primary/15 transition-colors duration-500" />
+                <div className={`absolute -top-16 -right-16 w-48 h-48 rounded-full border-[15px] transition-colors duration-500 ${accent.halo}`} />
 
                 <div className="relative">
                   <div className="flex items-center gap-3 mb-5">
-                    <span className="text-5xl font-serif font-bold gradient-text opacity-30">0{i + 1}</span>
+                    <span className={`text-5xl font-serif font-bold ${accent.number}`}>0{i + 1}</span>
                     <motion.div
-                      className="w-12 h-12 rounded-xl gold-gradient flex items-center justify-center shadow-gold-sm ml-auto"
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-gold-sm ml-auto ${accent.iconWrap}`}
                       whileHover={{ rotate: 12, scale: 1.1 }}
                     >
-                      <Icon className="w-5 h-5 text-background" />
+                      <Icon className={`w-5 h-5 ${accent.iconColor}`} />
                     </motion.div>
                   </div>
-                  <h3 className="text-xl font-serif font-bold text-foreground mb-3">{d.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{d.desc}</p>
+                  <h3 className="text-xl font-serif font-bold text-on-light mb-3">{d.title}</h3>
+                  <p className="text-on-light-muted text-sm leading-relaxed">{d.desc}</p>
                 </div>
               </motion.div>
             );

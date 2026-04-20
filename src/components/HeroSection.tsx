@@ -3,6 +3,14 @@ import { motion } from "framer-motion";
 
 const regions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
 
+const heroParticleColors = [
+  "hsl(var(--brand-purple-500) / 0.28)",
+  "hsl(var(--brand-purple-700) / 0.22)",
+  "hsl(var(--brand-cyan-500) / 0.2)",
+  "hsl(var(--surface-glass) / 0.22)",
+  "hsl(var(--brand-purple-500) / 0.24)",
+];
+
 const FloatingParticle = ({ delay, x, y, size, color }: { delay: number; x: string; y: string; size: number; color: string }) => (
   <motion.div
     className="particle"
@@ -40,19 +48,16 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden hero-gradient">
-      <div className="glow-orb glow-orb-gold w-[400px] h-[400px] -top-40 -right-40" />
-      <div className="glow-orb glow-orb-purple w-[300px] h-[300px] bottom-20 -left-20" />
+      <div className="glow-orb glow-orb-gold w-[380px] h-[380px] -top-40 -right-40 opacity-12" />
+      <div className="glow-orb glow-orb-purple w-[320px] h-[320px] bottom-20 -left-20 opacity-12" />
 
-      <FloatingParticle delay={0} x="10%" y="20%" size={4} color="hsl(70 100% 50% / 0.4)" />
-      <FloatingParticle delay={1} x="80%" y="30%" size={3} color="hsl(145 100% 39% / 0.32)" />
-      <FloatingParticle delay={2} x="60%" y="70%" size={5} color="hsl(199 100% 50% / 0.26)" />
-      <FloatingParticle delay={0.5} x="30%" y="80%" size={3} color="hsl(145 100% 39% / 0.28)" />
-      <FloatingParticle delay={1.5} x="90%" y="60%" size={4} color="hsl(70 100% 50% / 0.3)" />
+      <FloatingParticle delay={0} x="10%" y="20%" size={4} color={heroParticleColors[0]} />
+      <FloatingParticle delay={1} x="80%" y="30%" size={3} color={heroParticleColors[1]} />
+      <FloatingParticle delay={2} x="60%" y="70%" size={5} color={heroParticleColors[2]} />
+      <FloatingParticle delay={0.5} x="30%" y="80%" size={3} color={heroParticleColors[3]} />
+      <FloatingParticle delay={1.5} x="90%" y="60%" size={4} color={heroParticleColors[4]} />
 
-      <div className="absolute inset-0 pointer-events-none opacity-[0.04]" style={{
-        backgroundImage: "linear-gradient(rgba(212,255,0,0.24) 1px, transparent 1px), linear-gradient(90deg, rgba(212,255,0,0.24) 1px, transparent 1px)",
-        backgroundSize: "60px 60px"
-      }} />
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03] theme-grid-overlay" />
 
       <motion.div
         className="absolute top-0 right-[25%] w-[500px] h-[500px] pointer-events-none"
@@ -70,11 +75,11 @@ const HeroSection = () => {
           <motion.div variants={staggerContainer} initial="hidden" animate="visible">
             {/* Pre-headline */}
             <motion.div variants={fadeUpItem} className="mb-6 flex flex-wrap items-center gap-2">
-              <Globe className="w-4 h-4 text-primary" />
+              <Globe className="w-4 h-4 text-[hsl(var(--brand-purple-500))]" />
               {regions.map((r, i) => (
-                <span key={r} className="text-xs sm:text-sm text-primary/80 font-medium tracking-wider uppercase">
+                <span key={r} className="text-xs sm:text-sm text-[hsl(var(--brand-purple-500)/0.85)] font-medium tracking-wider uppercase">
                   {r}
-                  {i < regions.length - 1 && <span className="mx-1 text-primary/40">.</span>}
+                  {i < regions.length - 1 && <span className="mx-1 text-[hsl(var(--brand-purple-500)/0.45)]">.</span>}
                 </span>
               ))}
             </motion.div>
@@ -82,7 +87,9 @@ const HeroSection = () => {
             {/* Main headline */}
             <motion.h1 variants={fadeUpItem} className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold leading-[1.05] mb-6">
               <span className="text-foreground block">Your Cross-Border</span>
-              <span className="gradient-text block italic">Market Partner</span>
+              <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-500))] via-[hsl(var(--surface-glass))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent block italic">
+                Market Partner
+              </span>
             </motion.h1>
 
             {/* Subheadline */}
@@ -100,25 +107,25 @@ const HeroSection = () => {
             <motion.div variants={fadeUpItem} className="flex flex-wrap items-center gap-4">
               <motion.a
                 href="#services"
-                whileHover={{ scale: 1.05, boxShadow: "0 0 24px rgba(212,255,0,0.3)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 20px hsl(var(--brand-purple-500) / 0.26)" }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full gold-gradient text-background font-semibold text-sm tracking-wider uppercase transition-all duration-300 card-shine shadow-gold-md"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] text-white font-semibold text-sm tracking-wider uppercase transition-all duration-300 card-shine border border-[hsl(var(--brand-purple-500)/0.35)]"
               >
                 <Sparkles className="w-4 h-4" />
                 Explore Market Entry
               </motion.a>
               <motion.a
                 href="#language"
-                whileHover={{ scale: 1.05, borderColor: "rgba(212,255,0,0.65)" }}
+                whileHover={{ scale: 1.05, borderColor: "hsl(var(--brand-purple-500) / 0.6)" }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full border-2 border-primary/30 text-foreground font-semibold text-sm tracking-wider uppercase transition-all duration-300 hover:bg-primary/5"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-full border-2 border-[hsl(var(--surface-glass)/0.24)] text-foreground font-semibold text-sm tracking-wider uppercase transition-all duration-300 hover:bg-[hsl(var(--surface-glass)/0.06)]"
               >
                 Get a Language Quote
               </motion.a>
               <motion.a
                 href="#contact"
                 whileHover={{ x: 5 }}
-                className="inline-flex items-center gap-2 text-primary font-medium text-sm tracking-wider uppercase group"
+                className="inline-flex items-center gap-2 text-[hsl(var(--brand-purple-500))] font-medium text-sm tracking-wider uppercase group"
               >
                 <MessageCircle className="w-4 h-4" />
                 Ask Soham
@@ -130,7 +137,7 @@ const HeroSection = () => {
           {/* Right column */}
           <motion.div variants={fadeRightItem} initial="hidden" animate="visible" className="relative">
             <div className="relative">
-              <div className="absolute -inset-4 rounded-3xl bg-accent/10 blur-2xl" />
+              <div className="absolute -inset-4 rounded-3xl bg-[hsl(var(--brand-purple-500)/0.12)] blur-2xl" />
 
               <motion.div
                 className="absolute -top-8 -right-8 w-[80%] h-[80%] rounded-full border-[30px] border-primary/10"
@@ -139,7 +146,7 @@ const HeroSection = () => {
                 transition={{ duration: 10, repeat: Infinity }}
               />
 
-              <div className="relative rounded-3xl overflow-hidden shadow-gold-lg border border-primary/10">
+              <div className="relative rounded-3xl overflow-hidden shadow-gold-lg border border-[hsl(var(--surface-glass)/0.14)]">
                 <img
                   src="/hero-bg-new.png"
                   alt="EWAN cross-border market expansion"
@@ -151,7 +158,7 @@ const HeroSection = () => {
               </div>
 
               <motion.div
-                className="absolute -bottom-6 -left-6 sm:left-4 glass-card-gold rounded-2xl p-5 shadow-gold-md max-w-[280px]"
+                className="absolute -bottom-6 -left-6 sm:left-4 glass-card-purple rounded-2xl p-5 shadow-gold-md max-w-[280px]"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2, duration: 0.8 }}
@@ -182,7 +189,7 @@ const HeroSection = () => {
                 whileHover={{ y: -3 }}
               >
                 <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Languages</p>
-                <p className="text-2xl font-serif font-bold gradient-text">125+</p>
+                <p className="text-2xl font-serif font-bold text-[hsl(var(--brand-purple-500))]">125+</p>
               </motion.div>
             </div>
           </motion.div>

@@ -21,8 +21,27 @@ const footerStats = [
   { value: "60K+",   label: "Hours Delivered" },
 ];
 
+const accentColorMap = {
+  gold: {
+    solid: "hsl(var(--brand-purple-700))",
+    softFill: "hsl(var(--brand-purple-700) / 0.06)",
+    softBorder: "hsl(var(--brand-purple-700) / 0.3)",
+    badge: "hsl(var(--brand-purple-700) / 0.42)",
+    iconBg: "hsl(var(--brand-purple-700) / 0.08)",
+    iconBorder: "hsl(var(--brand-purple-700) / 0.18)",
+  },
+  cyan: {
+    solid: "hsl(var(--brand-cyan-500))",
+    softFill: "hsl(var(--brand-cyan-500) / 0.06)",
+    softBorder: "hsl(var(--brand-cyan-500) / 0.28)",
+    badge: "hsl(var(--brand-cyan-500) / 0.4)",
+    iconBg: "hsl(var(--brand-cyan-500) / 0.08)",
+    iconBorder: "hsl(var(--brand-cyan-500) / 0.18)",
+  },
+} as const;
+
 const SectorsSection = () => (
-  <section id="sectors" className="py-10 relative overflow-hidden section-navy-purple">
+  <section id="sectors" className="py-10 relative overflow-hidden theme-section-soft">
 
     {/* ── Radar ring backdrop ─────────────────────────────── */}
     <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
@@ -36,30 +55,39 @@ const SectorsSection = () => (
           <circle
             key={r}
             cx="450" cy="450" r={r}
-            stroke="hsl(70 100% 50%)"
+            stroke="hsl(var(--brand-purple-700))"
             strokeWidth="0.8"
             strokeDasharray={r < 300 ? "4 9" : "2 7"}
           />
         ))}
         {/* Cross hairs */}
-        <line x1="450" y1="0" x2="450" y2="900" stroke="hsl(70 100% 50%)" strokeWidth="0.5" />
-        <line x1="0" y1="450" x2="900" y2="450" stroke="hsl(70 100% 50%)" strokeWidth="0.5" />
+        <line x1="450" y1="0" x2="450" y2="900" stroke="hsl(var(--brand-purple-700))" strokeWidth="0.5" />
+        <line x1="0" y1="450" x2="900" y2="450" stroke="hsl(var(--brand-purple-700))" strokeWidth="0.5" />
       </svg>
     </div>
 
     {/* ── Horizontal scan line ────────────────────────────── */}
     <motion.div
       className="pointer-events-none absolute left-0 right-0 h-px"
-      style={{ background: "linear-gradient(to right, transparent, hsl(70 100% 50% / 0.35), transparent)" }}
+      style={{ background: "linear-gradient(to right, transparent, hsl(var(--brand-purple-500) / 0.32), transparent)" }}
       animate={{ top: ["0%", "100%"] }}
       transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
       aria-hidden
     />
 
     {/* ── Ambient glow orbs ───────────────────────────────── */}
-    <div className="glow-orb glow-orb-purple w-[700px] h-[700px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-25 pointer-events-none" />
-    <div className="glow-orb glow-orb-gold w-[320px] h-[320px] -top-20 -right-20 opacity-15 pointer-events-none" />
-    <div className="absolute inset-0 dots-pattern-purple opacity-20 pointer-events-none" />
+    <div className="glow-orb glow-orb-purple w-[700px] h-[700px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-8 pointer-events-none" />
+    <div className="glow-orb glow-orb-gold w-[320px] h-[320px] -top-20 -right-20 opacity-8 pointer-events-none" />
+    <div
+      className="absolute inset-0 pointer-events-none"
+      style={{
+        background: `
+          radial-gradient(circle at 20% 22%, hsl(var(--brand-purple-500) / 0.10) 0%, transparent 32%),
+          radial-gradient(circle at 78% 70%, hsl(var(--brand-cyan-500) / 0.08) 0%, transparent 36%),
+          radial-gradient(circle at 50% 48%, hsl(var(--surface-glass) / 0.35) 0%, transparent 55%)
+        `,
+      }}
+    />
 
     <div className="container mx-auto px-6 relative z-10">
 
@@ -72,18 +100,20 @@ const SectorsSection = () => (
         transition={{ duration: 0.7 }}
       >
         <div className="inline-flex items-center gap-3 mb-7">
-          <span className="h-px w-8 bg-primary/60" aria-hidden />
-          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.45em] text-primary/70">
+          <span className="h-px w-8 bg-[hsl(var(--brand-purple-700)/0.5)]" aria-hidden />
+          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.45em] text-[hsl(var(--brand-purple-700)/0.78)]">
             Industries · 10 Active Sectors
           </span>
-          <span className="h-px w-8 bg-primary/60" aria-hidden />
+          <span className="h-px w-8 bg-[hsl(var(--brand-purple-700)/0.5)]" aria-hidden />
         </div>
 
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-5 leading-[1.08]">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-on-light mb-5 leading-[1.08]">
           Sector Expertise{" "}
-          <span className="gradient-text italic">Across Every<br className="hidden sm:block" /> Major Industry</span>
+          <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
+            Across Every<br className="hidden sm:block" /> Major Industry
+          </span>
         </h2>
-        <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto">
+        <p className="text-on-light-muted text-base sm:text-lg max-w-xl mx-auto">
           From boardrooms to factory floors — deep domain experience built over a decade.
         </p>
       </motion.div>
@@ -92,7 +122,7 @@ const SectorsSection = () => (
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 lg:gap-4">
         {sectors.map((sector, i) => {
           const Icon = sector.icon;
-          const isGold = sector.accent === "gold";
+          const accent = accentColorMap[sector.accent];
 
           return (
             <motion.div
@@ -107,11 +137,7 @@ const SectorsSection = () => (
               {/* Hover fill */}
               <span
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
-                style={{
-                  background: isGold
-                    ? "hsl(70 100% 50% / 0.06)"
-                    : "hsl(199 100% 50% / 0.06)",
-                }}
+                style={{ background: accent.softFill }}
                 aria-hidden
               />
 
@@ -119,8 +145,8 @@ const SectorsSection = () => (
               <span
                 className="absolute top-2.5 left-2.5 w-3.5 h-3.5 transition-colors duration-300"
                 style={{
-                  borderTop: `1.5px solid ${isGold ? "hsl(70 100% 50% / 0.35)" : "hsl(199 100% 50% / 0.35)"}`,
-                  borderLeft: `1.5px solid ${isGold ? "hsl(70 100% 50% / 0.35)" : "hsl(199 100% 50% / 0.35)"}`,
+                  borderTop: `1.5px solid ${accent.softBorder}`,
+                  borderLeft: `1.5px solid ${accent.softBorder}`,
                 }}
                 aria-hidden
               />
@@ -128,8 +154,8 @@ const SectorsSection = () => (
               <span
                 className="absolute top-2.5 right-2.5 w-3.5 h-3.5 transition-colors duration-300"
                 style={{
-                  borderTop: `1.5px solid ${isGold ? "hsl(70 100% 50% / 0.35)" : "hsl(199 100% 50% / 0.35)"}`,
-                  borderRight: `1.5px solid ${isGold ? "hsl(70 100% 50% / 0.35)" : "hsl(199 100% 50% / 0.35)"}`,
+                  borderTop: `1.5px solid ${accent.softBorder}`,
+                  borderRight: `1.5px solid ${accent.softBorder}`,
                 }}
                 aria-hidden
               />
@@ -137,8 +163,8 @@ const SectorsSection = () => (
               <span
                 className="absolute bottom-2.5 left-2.5 w-3.5 h-3.5 transition-colors duration-300"
                 style={{
-                  borderBottom: `1.5px solid ${isGold ? "hsl(70 100% 50% / 0.35)" : "hsl(199 100% 50% / 0.35)"}`,
-                  borderLeft: `1.5px solid ${isGold ? "hsl(70 100% 50% / 0.35)" : "hsl(199 100% 50% / 0.35)"}`,
+                  borderBottom: `1.5px solid ${accent.softBorder}`,
+                  borderLeft: `1.5px solid ${accent.softBorder}`,
                 }}
                 aria-hidden
               />
@@ -146,8 +172,8 @@ const SectorsSection = () => (
               <span
                 className="absolute bottom-2.5 right-2.5 w-3.5 h-3.5 transition-colors duration-300"
                 style={{
-                  borderBottom: `1.5px solid ${isGold ? "hsl(70 100% 50% / 0.35)" : "hsl(199 100% 50% / 0.35)"}`,
-                  borderRight: `1.5px solid ${isGold ? "hsl(70 100% 50% / 0.35)" : "hsl(199 100% 50% / 0.35)"}`,
+                  borderBottom: `1.5px solid ${accent.softBorder}`,
+                  borderRight: `1.5px solid ${accent.softBorder}`,
                 }}
                 aria-hidden
               />
@@ -155,7 +181,7 @@ const SectorsSection = () => (
               {/* Sector code badge */}
               <span
                 className="absolute top-3.5 left-4 font-mono text-[9px] font-bold tracking-widest transition-colors duration-300"
-                style={{ color: isGold ? "hsl(70 100% 50% / 0.45)" : "hsl(199 100% 50% / 0.45)" }}
+                style={{ color: accent.badge }}
               >
                 {sector.code}
               </span>
@@ -164,32 +190,26 @@ const SectorsSection = () => (
               <div
                 className="relative mx-auto mb-4 mt-3 flex h-14 w-14 items-center justify-center rounded-xl transition-all duration-400"
                 style={{
-                  background: isGold
-                    ? "hsl(70 100% 50% / 0.08)"
-                    : "hsl(199 100% 50% / 0.08)",
-                  border: isGold
-                    ? "1px solid hsl(70 100% 50% / 0.18)"
-                    : "1px solid hsl(199 100% 50% / 0.18)",
-                  boxShadow: isGold
-                    ? "0 0 0 0 hsl(70 100% 50% / 0)"
-                    : "0 0 0 0 hsl(199 100% 50% / 0)",
+                  background: accent.iconBg,
+                  border: `1px solid ${accent.iconBorder}`,
+                  boxShadow: `0 0 0 0 ${accent.solid}`,
                 }}
               >
                 <Icon
                   className="h-6 w-6 transition-colors duration-300"
-                  style={{ color: isGold ? "hsl(70 100% 50%)" : "hsl(199 100% 50%)" }}
+                  style={{ color: accent.solid }}
                 />
               </div>
 
               {/* Sector name */}
-              <p className="relative z-10 text-xs sm:text-sm font-semibold leading-snug text-foreground/80 group-hover:text-foreground transition-colors duration-300">
+              <p className="relative z-10 text-xs sm:text-sm font-semibold leading-snug text-on-light-secondary group-hover:text-[hsl(var(--text-on-light))] transition-colors duration-300">
                 {sector.name}
               </p>
 
               {/* Bottom active indicator line */}
               <span
                 className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 group-hover:w-10 rounded-full transition-all duration-500"
-                style={{ background: isGold ? "hsl(70 100% 50%)" : "hsl(199 100% 50%)" }}
+                style={{ background: accent.solid }}
                 aria-hidden
               />
             </motion.div>
@@ -203,17 +223,17 @@ const SectorsSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.65, duration: 0.6 }}
-        className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-px overflow-hidden rounded-2xl border border-white/[0.06]"
-        style={{ background: "rgba(255,255,255,0.04)" }}
+        className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-px overflow-hidden rounded-2xl border border-[hsl(var(--border-light))]"
+        style={{ background: "hsl(var(--surface-light-card) / 0.72)" }}
       >
         {footerStats.map((s) => (
           <div
             key={s.value}
             className="flex flex-col items-center justify-center gap-1 px-6 py-6 text-center"
-            style={{ background: "rgba(255,255,255,0.015)" }}
+            style={{ background: "hsl(var(--surface-light-card) / 0.88)" }}
           >
-            <span className="gradient-text font-serif text-3xl font-bold">{s.value}</span>
-            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-muted-foreground/70">
+            <span className="font-serif text-3xl font-bold text-[hsl(var(--brand-purple-700))]">{s.value}</span>
+            <span className="font-mono text-[10px] font-medium uppercase tracking-[0.28em] text-[hsl(var(--text-on-light-muted))]">
               {s.label}
             </span>
           </div>
@@ -223,16 +243,16 @@ const SectorsSection = () => (
 
     <style>{`
       .sector-card {
-        background: rgba(22, 16, 29, 0.85);
+        background: hsl(var(--surface-light-card) / 0.92);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+        border: 1px solid hsl(var(--border-light));
+        box-shadow: 0 4px 24px hsl(var(--brand-navy-950) / 0.08);
         transition: box-shadow 0.35s ease, border-color 0.35s ease;
       }
       .sector-card:hover {
-        box-shadow: 0 8px 36px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 255, 0, 0.12);
-        border-color: rgba(255, 255, 255, 0.13);
+        box-shadow: 0 8px 36px hsl(var(--brand-navy-950) / 0.12), 0 0 0 1px hsl(var(--brand-purple-700) / 0.12);
+        border-color: hsl(var(--border-light-strong));
       }
     `}</style>
   </section>

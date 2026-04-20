@@ -30,9 +30,13 @@ const clients: ClientLogo[] = [
 const ClientLogosSection = () => {
   return (
     <section
-      className="relative overflow-hidden border-y border-zinc-200/90 bg-white   p-6 text-zinc-900 "
+      className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] theme-section-light p-6"
       aria-label="Client logos"
     >
+      <div className="absolute inset-0 theme-grid-overlay-light opacity-15 pointer-events-none" />
+      <div className="glow-orb glow-orb-purple w-[320px] h-[320px] -top-28 left-10 opacity-8" />
+      <div className="glow-orb glow-orb-gold w-[280px] h-[280px] -bottom-20 right-10 opacity-8" />
+
       <div className="container relative z-10 mx-auto px-6">
         <motion.div
           className="mb-10 flex flex-col items-center gap-3"
@@ -41,11 +45,11 @@ const ClientLogosSection = () => {
           viewport={{ once: true }}
         >
           <div className="flex items-center gap-2.5">
-            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
-            <p className="text-center text-xs font-semibold uppercase tracking-[0.32em] text-zinc-500">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-purple-700))]" aria-hidden />
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.32em] text-[hsl(var(--text-on-light-muted))]">
               Trusted by Industry Leaders
             </p>
-            <span className="h-px w-10 max-w-[40vw] bg-gradient-to-r from-primary/60 to-transparent" aria-hidden />
+            <span className="h-px w-10 max-w-[40vw] bg-gradient-to-r from-[hsl(var(--brand-purple-700)/0.6)] to-transparent" aria-hidden />
           </div>
         </motion.div>
 
@@ -54,8 +58,8 @@ const ClientLogosSection = () => {
             {[...clients, ...clients].map((client, i) => (
               <motion.div
                 key={`${client.name}-${i}`}
-                className="flex min-h-[11rem] min-w-[280px] shrink-0 items-center justify-center px-6 py-5 md:min-h-[12rem] md:min-w-[320px] md:px-8"
-                whileHover={{ scale: 1.02 }}
+                className="mx-2 flex min-h-[11rem] min-w-[280px] shrink-0 items-center justify-center px-6 py-5 md:min-h-[12rem] md:min-w-[320px] md:px-8"
+                whileHover={{ scale: 1.02, y: -2 }}
                 transition={{ type: "spring", stiffness: 420, damping: 24 }}
               >
                 {client.src && !client.isTextOnly ? (
@@ -73,7 +77,7 @@ const ClientLogosSection = () => {
                 ) : null}
                 <span
                   style={{ display: client.src && !client.isTextOnly ? "none" : "inline" }}
-                  className="max-w-[28rem] text-center text-base font-semibold leading-snug text-zinc-800 md:text-lg"
+                  className="max-w-[28rem] text-center text-base font-semibold leading-snug text-[hsl(var(--text-on-light))] md:text-lg"
                 >
                   {client.name}
                 </span>
@@ -100,9 +104,6 @@ const ClientLogosSection = () => {
         .client-logos-fade {
           -webkit-mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
           mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
-        }
-        .client-logo-img {
-          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.07)) drop-shadow(0 0 0.5px rgba(0, 0, 0, 0.04));
         }
         @media (prefers-reduced-motion: reduce) {
           .client-logos-marquee {

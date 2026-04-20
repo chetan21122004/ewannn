@@ -18,13 +18,13 @@ const sectors = [
 
 const ClientNetworkSection = () => {
   return (
-    <section className="py-10 lg:py-32 relative overflow-hidden section-navy">
+    <section className="py-10 lg:py-32 relative overflow-hidden theme-section-light">
       {/* Animated wave lines */}
       <svg className="absolute top-0 left-0 right-0 w-full h-32 pointer-events-none" viewBox="0 0 1440 120" preserveAspectRatio="none">
         <motion.path
           d="M0,60 Q360,120 720,60 T1440,60"
           fill="none"
-          stroke="hsl(70 100% 50% / 0.14)"
+          stroke="hsl(var(--brand-purple-700) / 0.14)"
           strokeWidth="2"
           initial={{ pathLength: 0 }}
           whileInView={{ pathLength: 1 }}
@@ -34,7 +34,7 @@ const ClientNetworkSection = () => {
         <motion.path
           d="M0,80 Q360,20 720,80 T1440,80"
           fill="none"
-          stroke="hsl(199 100% 50% / 0.12)"
+          stroke="hsl(var(--brand-cyan-500) / 0.1)"
           strokeWidth="1.5"
           initial={{ pathLength: 0 }}
           whileInView={{ pathLength: 1 }}
@@ -43,7 +43,7 @@ const ClientNetworkSection = () => {
         />
       </svg>
 
-      <div className="glow-orb glow-orb-purple w-[350px] h-[350px] top-1/2 -right-40" />
+      <div className="glow-orb glow-orb-purple w-[350px] h-[350px] top-1/2 -right-40 opacity-10" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Client logos with animated reveal */}
@@ -64,8 +64,8 @@ const ClientNetworkSection = () => {
               transition={{ delay: i * 0.15, duration: 0.6, type: "spring" }}
               whileHover={{ scale: 1.1, y: -5 }}
             >
-              <span className="text-[10px] tracking-[0.15em] text-muted-foreground/40 uppercase block mb-2">{client.sector}</span>
-              <span className="text-2xl lg:text-3xl font-serif font-bold text-foreground group-hover:text-primary transition-colors duration-500">{client.name}</span>
+              <span className="text-[10px] tracking-[0.15em] text-on-light-muted uppercase block mb-2">{client.sector}</span>
+              <span className="text-2xl lg:text-3xl font-serif font-bold text-on-light group-hover:text-primary transition-colors duration-500">{client.name}</span>
             </motion.div>
           ))}
         </motion.div>
@@ -93,9 +93,9 @@ const ClientNetworkSection = () => {
             >
               <motion.div
                 className="w-16 h-16 rounded-full glass-card border border-primary/10 flex items-center justify-center mb-3 relative"
-                whileHover={{ scale: 1.15, boxShadow: "0 0 20px rgba(212,255,0,0.3)" }}
+                whileHover={{ scale: 1.15, boxShadow: "0 0 20px hsl(var(--brand-purple-700) / 0.22)" }}
               >
-                <sector.icon className="w-7 h-7 text-foreground/50 group-hover:text-primary transition-colors duration-500" />
+                <sector.icon className="w-7 h-7 text-on-light-secondary group-hover:text-primary transition-colors duration-500" />
                 {/* Animated ring on hover */}
                 <motion.div
                   className="absolute inset-0 rounded-full border-2 border-primary/0 group-hover:border-primary/30"
@@ -103,8 +103,8 @@ const ClientNetworkSection = () => {
                   transition={{ duration: 2, repeat: Infinity }}
                 />
               </motion.div>
-              <span className="text-[10px] tracking-[0.12em] text-muted-foreground/40 uppercase mb-1">{sector.label}</span>
-              <span className="text-sm font-serif font-bold text-foreground">{sector.name}</span>
+              <span className="text-[10px] tracking-[0.12em] text-on-light-muted uppercase mb-1">{sector.label}</span>
+              <span className="text-sm font-serif font-bold text-on-light">{sector.name}</span>
             </motion.div>
           ))}
         </div>

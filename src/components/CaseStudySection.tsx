@@ -3,17 +3,39 @@ import { ArrowRight, AlertCircle, Lightbulb, Trophy } from "lucide-react";
 import factoryImg from "@/assets/case-study-factory.jpg";
 
 const steps = [
-  { icon: AlertCircle, label: "Problem", text: "Japanese manufacturer faced regulatory complexity and a critical language gap entering India.", color: "text-primary" },
-  { icon: Lightbulb, label: "Solution", text: "Ewan handled full market entry — entity setup, compliance, liaison, and on-the-ground language support.", color: "text-accent" },
-  { icon: Trophy, label: "Outcome", text: "End-to-end execution. Operational launch within months, not years.", color: "text-primary" },
+  {
+    icon: AlertCircle,
+    label: "Problem",
+    text: "Japanese manufacturer faced regulatory complexity and a critical language gap entering India.",
+    iconColor: "text-[hsl(var(--brand-gold-500))]",
+    ringColor: "border-[hsl(var(--brand-gold-500)/0.26)]",
+    labelColor: "text-[hsl(var(--brand-gold-500)/0.9)]",
+  },
+  {
+    icon: Lightbulb,
+    label: "Solution",
+    text: "Ewan handled full market entry — entity setup, compliance, liaison, and on-the-ground language support.",
+    iconColor: "text-[hsl(var(--brand-purple-500))]",
+    ringColor: "border-[hsl(var(--brand-purple-500)/0.28)]",
+    labelColor: "text-[hsl(var(--brand-purple-500)/0.92)]",
+  },
+  {
+    icon: Trophy,
+    label: "Outcome",
+    text: "End-to-end execution. Operational launch within months, not years.",
+    iconColor: "text-[hsl(var(--brand-cyan-500))]",
+    ringColor: "border-[hsl(var(--brand-cyan-500)/0.24)]",
+    labelColor: "text-[hsl(var(--brand-cyan-500)/0.9)]",
+  },
 ];
 
 const CaseStudySection = () => {
   return (
-    <section id="media" className="py-10 lg:py-32 relative overflow-hidden section-navy-purple">
+    <section id="media" className="py-10 lg:py-32 relative overflow-hidden theme-section-dark">
       <span id="case-study" className="sr-only">Case Study</span>
-      <div className="glow-orb glow-orb-purple w-[500px] h-[500px] top-10 -right-40" />
-      <div className="absolute inset-0 dots-pattern-purple opacity-20 pointer-events-none" />
+      <div className="glow-orb glow-orb-purple w-[500px] h-[500px] top-10 -right-40 opacity-12" />
+      <div className="glow-orb glow-orb-gold w-[340px] h-[340px] -bottom-24 left-8 opacity-10" />
+      <div className="absolute inset-0 theme-grid-overlay opacity-15 pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -23,11 +45,14 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full glass-card-purple text-accent text-xs font-medium tracking-wider uppercase mb-5">
+          <span className="inline-block px-4 py-1.5 rounded-full glass-card-purple text-[hsl(var(--brand-purple-500))] text-xs font-semibold tracking-wider uppercase mb-5">
             Success Story
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
-            Japanese Manufacturer <span className="gradient-text italic">Entered India</span>
+            Japanese Manufacturer{" "}
+            <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-500))] via-white to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
+              Entered India
+            </span>
           </h2>
         </motion.div>
 
@@ -39,8 +64,8 @@ const CaseStudySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="absolute -inset-4 rounded-3xl bg-accent/10 blur-2xl" />
-            <div className="relative rounded-3xl overflow-hidden border border-primary/10 shadow-gold-lg">
+            <div className="absolute -inset-4 rounded-3xl bg-[hsl(var(--brand-purple-500)/0.12)] blur-2xl" />
+            <div className="relative rounded-3xl overflow-hidden border border-[hsl(var(--surface-glass)/0.16)] shadow-gold-lg">
               <img src={factoryImg} alt="Manufacturing facility in India" className="w-full h-[400px] object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
@@ -57,16 +82,16 @@ const CaseStudySection = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, duration: 0.7 }}
                   whileHover={{ x: 4 }}
-                  className="flex gap-5 p-6 rounded-2xl glass-card border border-primary/10"
+                  className="flex gap-5 p-6 rounded-2xl glass-card border border-[hsl(var(--surface-glass)/0.1)]"
                 >
                   <motion.div
-                    className="w-12 h-12 rounded-xl glass-card-gold flex items-center justify-center shrink-0"
+                    className={`w-12 h-12 rounded-xl glass-card-purple flex items-center justify-center shrink-0 border ${step.ringColor}`}
                     whileHover={{ rotate: 8, scale: 1.1 }}
                   >
-                    <Icon className={`w-5 h-5 ${step.color}`} />
+                    <Icon className={`w-5 h-5 ${step.iconColor}`} />
                   </motion.div>
                   <div>
-                    <p className="text-xs uppercase tracking-wider text-primary/80 font-semibold mb-1">{step.label}</p>
+                    <p className={`text-xs uppercase tracking-wider font-semibold mb-1 ${step.labelColor}`}>{step.label}</p>
                     <p className="text-foreground/80 leading-relaxed">{step.text}</p>
                   </div>
                 </motion.div>
@@ -76,7 +101,7 @@ const CaseStudySection = () => {
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.04, x: 4 }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full gold-gradient text-background font-semibold text-sm tracking-wider uppercase card-shine shadow-gold-md"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] text-white font-semibold text-sm tracking-wider uppercase card-shine shadow-gold-md border border-[hsl(var(--brand-purple-500)/0.35)]"
             >
               Read Full Case Study
               <ArrowRight className="w-4 h-4" />

@@ -15,10 +15,10 @@ const SectionDivider = ({
   className = "",
   showStitch = true,
 }: SectionDividerProps) => {
-  const fillColor = fromDark ? "#16101D" : "#0F0A14";
+  const fillColor = fromDark ? "hsl(var(--surface-light-100))" : "hsl(var(--brand-navy-900))";
   const stitchColor = fromDark
-    ? "hsl(145 100% 39% / 0.2)"
-    : "hsl(70 100% 50% / 0.22)";
+    ? "hsl(var(--brand-purple-500) / 0.22)"
+    : "hsl(var(--brand-purple-500) / 0.2)";
 
   const wavePath =
     "M0,64 C320,120 640,0 960,64 C1280,128 1600,20 1920,80 L1920,160 L0,160 Z";

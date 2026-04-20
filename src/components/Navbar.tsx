@@ -43,7 +43,7 @@ const Navbar = () => {
             src="/logo.png"
             alt="Ewan Business Solutions"
             className="h-10 sm:h-12 w-auto object-contain"
-            whileHover={{ scale: 1.05, filter: "drop-shadow(0 0 12px rgba(212,255,0,0.3))" }}
+            whileHover={{ scale: 1.05, filter: "drop-shadow(0 0 12px hsl(var(--brand-purple-500) / 0.3))" }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
           />
         </a>
@@ -56,23 +56,25 @@ const Navbar = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 * i + 0.3, duration: 0.5 }}
-              className="relative text-sm font-medium text-foreground/70 hover:text-primary transition-colors duration-300 group whitespace-nowrap"
+              className="relative text-sm font-medium text-foreground/78 hover:text-[hsl(var(--brand-purple-500))] transition-colors duration-300 group whitespace-nowrap"
             >
               {link.label}
-              <span className="absolute bottom-[-6px] left-0 w-0 h-[2px] group-hover:w-full transition-all duration-500 bg-gradient-to-r from-primary via-accent to-primary" />
+              <span className="absolute bottom-[-6px] left-0 w-0 h-[2px] group-hover:w-full transition-all duration-500 bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))]" />
             </motion.a>
           ))}
         </div>
 
         <div className="hidden lg:flex items-center gap-3 shrink-0">
           {/* Language switcher */}
-          <div className="flex items-center rounded-full border border-primary/20 p-1">
+          <div className="flex items-center rounded-full border border-[hsl(var(--surface-glass)/0.18)] bg-[hsl(var(--surface-glass)/0.04)] p-1">
             {languages.map((l) => (
               <button
                 key={l.code}
                 onClick={() => setLang(l.code)}
                 className={`px-2.5 py-1 rounded-full text-xs transition-colors ${
-                  lang === l.code ? "text-primary bg-primary/10" : "text-foreground/60 hover:text-primary"
+                  lang === l.code
+                    ? "text-[hsl(var(--brand-purple-500))] bg-[hsl(var(--brand-purple-500)/0.14)]"
+                    : "text-foreground/65 hover:text-[hsl(var(--brand-purple-500))]"
                 }`}
               >
                 {l.code}
@@ -86,9 +88,9 @@ const Navbar = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(212,255,0,0.3)" }}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 18px hsl(var(--brand-purple-500) / 0.26)" }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full gold-gradient text-background font-semibold text-sm transition-all duration-300 card-shine animate-pulse-glow"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] text-white font-semibold text-sm transition-all duration-300 card-shine animate-pulse-glow border border-[hsl(var(--brand-purple-500)/0.35)]"
           >
             <MessageCircle className="w-4 h-4" />
             Ask Soham — 15 Min Free
@@ -128,7 +130,7 @@ const Navbar = () => {
                   initial={{ x: -30, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: i * 0.06 }}
-                  className="text-foreground/70 hover:text-primary transition-colors py-2 border-b border-primary/10"
+                  className="text-foreground/75 hover:text-[hsl(var(--brand-purple-500))] transition-colors py-2 border-b border-[hsl(var(--surface-glass)/0.08)]"
                 >
                   {link.label}
                 </motion.a>
@@ -139,7 +141,9 @@ const Navbar = () => {
                     key={l.code}
                     onClick={() => setLang(l.code)}
                     className={`px-3 py-1 rounded-full text-xs border ${
-                      lang === l.code ? "border-primary text-primary bg-primary/10" : "border-primary/20 text-foreground/60"
+                      lang === l.code
+                        ? "border-[hsl(var(--brand-purple-500)/0.5)] text-[hsl(var(--brand-purple-500))] bg-[hsl(var(--brand-purple-500)/0.14)]"
+                        : "border-[hsl(var(--surface-glass)/0.2)] text-foreground/65"
                     }`}
                   >
                     {l.code}
@@ -152,7 +156,7 @@ const Navbar = () => {
                 initial={{ x: -30, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="px-5 py-3 rounded-full gold-gradient text-background font-semibold text-sm text-center mt-2 flex items-center justify-center gap-2"
+                className="px-5 py-3 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] text-white font-semibold text-sm text-center mt-2 flex items-center justify-center gap-2 border border-[hsl(var(--brand-purple-500)/0.35)]"
               >
                 <MessageCircle className="w-4 h-4" />
                 Ask Soham — 15 Min Free
@@ -169,7 +173,7 @@ const Navbar = () => {
         transition={{ delay: 1 }}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
-        className="lg:hidden fixed bottom-4 right-4 z-[60] flex items-center gap-2 px-4 py-2.5 rounded-full gold-gradient text-background font-semibold text-xs shadow-gold-lg"
+        className="lg:hidden fixed bottom-4 right-4 z-[60] flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] text-white font-semibold text-xs shadow-gold-lg border border-[hsl(var(--brand-purple-500)/0.35)]"
       >
         <MessageCircle className="w-3.5 h-3.5" />
         Ask Soham - 15 Min Free
