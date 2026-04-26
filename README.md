@@ -22,6 +22,15 @@ merged into one handoff document. Use the sections below to navigate.
 01 — Navigation Structure
 🔍 SEO: Navigation labels are themselves SEO signals. 'Market Entry' targets enterprise search intent.
 'Language & Localization' captures B2B service queries. Keep these exact labels.
+
+
+
+
+
+
+
+
+
 Left to right order:
 • Logo (left-aligned)
 • Market Entry
