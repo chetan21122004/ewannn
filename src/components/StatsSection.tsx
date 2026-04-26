@@ -1,13 +1,15 @@
 import { useScrollReveal, useCountUp } from "@/hooks/useScrollReveal";
 import { motion } from "framer-motion";
 import { Clock, Languages, Users, Briefcase, MapPin } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const stats = [
-  { value: 60000, suffix: "+", label: "Interpretation Hours", icon: Clock },
-  { value: 125, suffix: "+", label: "Languages", icon: Languages },
-  { value: 250, suffix: "+", label: "Clients", icon: Users },
-  { value: 10, suffix: "+", label: "Sectors", icon: Briefcase },
-  { display: "5 years / 2 countries", label: "Track Record", icon: MapPin },
+const statIcons = [Clock, Languages, Users, Briefcase, MapPin] as const;
+const defaultStats = [
+  { value: 60000, suffix: "+", label: "Interpretation Hours" },
+  { value: 125, suffix: "+", label: "Languages" },
+  { value: 250, suffix: "+", label: "Clients" },
+  { value: 10, suffix: "+", label: "Sectors" },
+  { display: "5 years / 2 countries", label: "Track Record" },
 ];
 
 const statAccent = [
@@ -20,6 +22,25 @@ const statAccent = [
 
 const StatsSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useTranslation();
+  const statsRaw = t("home.stats.items", { returnObjects: true, defaultValue: defaultStats }) as Array<{
+    value?: number;
+    suffix?: string | number;
+    display?: string | number;
+    label?: string;
+  }>;
+  const stats = (Array.isArray(statsRaw) ? statsRaw : defaultStats).map((stat, index) => {
+    const fallback = defaultStats[index] ?? defaultStats[0];
+    return {
+      value: typeof stat?.value === "number" ? stat.value : fallback.value,
+      suffix: typeof stat?.suffix === "string" || typeof stat?.suffix === "number" ? String(stat.suffix) : fallback.suffix ?? "",
+      display:
+        typeof stat?.display === "string" || typeof stat?.display === "number"
+          ? String(stat.display)
+          : fallback.display,
+      label: typeof stat?.label === "string" ? stat.label : fallback.label,
+    };
+  });
 
   return (
     <section className="py-16 lg:py-20 relative overflow-hidden theme-section-soft stitch-line stitch-line-bottom">
@@ -34,7 +55,7 @@ const StatsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Trusted Track Record
+          {t("home.stats.badge")}
         </motion.p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-4">
@@ -47,9 +68,19 @@ const StatsSection = () => {
   );
 };
 
-function StatItem({ stat, isVisible, index }: { stat: typeof stats[0]; isVisible: boolean; index: number }) {
+function StatItem({
+  stat,
+  isVisible,
+  index,
+}: {
+  stat: { value?: number; suffix?: string; display?: string; label: string };
+  isVisible: boolean;
+  index: number;
+}) {
   const count = useCountUp(stat.value ?? 0, 2000, isVisible);
-  const Icon = stat.icon;
+  const Icon = statIcons[index] ?? Clock;
+  const displayValue = typeof stat.display === "string" || typeof stat.display === "number" ? String(stat.display) : undefined;
+  const suffix = typeof stat.suffix === "string" || typeof stat.suffix === "number" ? String(stat.suffix) : "";
 
   return (
     <motion.div
@@ -71,7 +102,7 @@ function StatItem({ stat, isVisible, index }: { stat: typeof stats[0]; isVisible
         animate={isVisible ? { scale: [1, 1.08, 1] } : {}}
         transition={{ delay: index * 0.1 + 0.5, duration: 0.5 }}
       >
-        {stat.display ?? `${count.toLocaleString()}${stat.suffix ?? ""}`}
+        {displayValue ?? `${count.toLocaleString()}${suffix}`}
       </motion.div>
       <p className="text-[hsl(var(--text-on-light-muted))] text-xs sm:text-sm font-medium tracking-wide uppercase">{stat.label}</p>
       <motion.div

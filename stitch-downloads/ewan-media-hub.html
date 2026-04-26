@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#735c00",
+                    "surface-container-low": "#f5f2ff",
+                    "outline-variant": "#cec3ce",
+                    "on-secondary-container": "#745c00",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#f2efff",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#dfb9f0",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#1a1a2e",
+                    "error": "#ba1a1a",
+                    "outline": "#7d747e",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "on-secondary-fixed": "#241a00",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-surface-variant": "#4b444d",
+                    "primary-fixed": "#f5d9ff",
+                    "inverse-surface": "#2f2e43",
+                    "secondary-container": "#fed65b",
+                    "surface-dim": "#dad7f3",
+                    "primary-fixed-dim": "#dfb9f0",
+                    "on-primary-fixed-variant": "#593b69",
+                    "on-secondary-fixed-variant": "#574500",
+                    "tertiary": "#001538",
+                    "surface-variant": "#e2e0fc",
+                    "on-tertiary-fixed-variant": "#004494",
+                    "surface-container": "#efecff",
+                    "on-tertiary-fixed": "#001a41",
+                    "surface-tint": "#725282",
+                    "primary": "#250935",
+                    "on-primary-fixed": "#2a0e3a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#fcf8ff",
+                    "on-primary": "#ffffff",
+                    "background": "#fcf8ff",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#3b1f4b",
+                    "on-tertiary-container": "#5090ff",
+                    "surface-container-highest": "#e2e0fc",
+                    "secondary-fixed": "#ffe088",
+                    "tertiary-container": "#00295f",
+                    "on-primary-container": "#a886b9",
+                    "tertiary-fixed": "#d8e2ff",
+                    "on-background": "#1a1a2e",
+                    "surface-bright": "#fcf8ff",
+                    "surface-container-high": "#e8e5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrolling-ticker {
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: marquee 40s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+<!-- Top Navigation Shell -->
+<nav class="sticky top-0 w-full z-50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl shadow-[0_20px_40px_rgba(26,26,46,0.06)]">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-10 py-6">
+<a class="text-xl font-bold tracking-tighter text-[#250935] dark:text-white" href="#">
+                EWAN Business Solutions
+            </a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#250935] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">Market Entry</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#250935] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">Language &amp; Localization</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#250935] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">Industries</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#250935] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">About Us</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#D4AF37] border-b-2 border-[#D4AF37] pb-1" href="#">Media</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#250935] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">Contact Us</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-[#250935] cursor-pointer hover:scale-110 transition-transform">language</span>
+<button class="bg-secondary text-on-secondary px-6 py-2.5 rounded-full font-medium text-sm hover:scale-105 active:scale-95 transition-all duration-300">
+                    Ask Soham — 15 Min Free
+                </button>
+</div>
+</div>
+</nav>
+<!-- Crazy & Futuristic Hero -->
+<header class="relative overflow-hidden bg-primary py-32 lg:py-48 flex flex-col justify-center">
+<!-- Abstract Background Elements -->
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none">
+<div class="absolute inset-0 bg-gradient-to-l from-secondary/40 to-transparent"></div>
+</div>
+<div class="max-w-7xl mx-auto px-10 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+<div class="space-y-8">
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold tracking-widest uppercase">The Insight Engine</span>
+<h1 class="text-6xl lg:text-8xl font-headline font-extrabold text-white tracking-tighter leading-[0.9]">
+                    Future <br/> <span class="text-secondary-fixed">Defined.</span>
+</h1>
+<p class="text-on-primary-container text-xl max-w-lg leading-relaxed font-light">
+                    Where global strategy meets technical precision. Explore the intersection of market expansion and high-fidelity localization.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-bold hover:scale-105 transition-transform flex items-center gap-3">
+                        Subscribe to Insights <span class="material-symbols-outlined">notifications_active</span>
+</button>
+</div>
+</div>
+<!-- Layered Press Cards / Metadata Visual -->
+<div class="relative h-[500px]">
+<!-- Technical Metadata Doodle Overlay -->
+<div class="absolute -top-10 -left-10 text-[10px] font-mono text-secondary opacity-40 leading-tight">
+                    REF_ID: 882.A // STACK: EWAN_CORE<br/>
+                    LOCALIZATION_INDEX: 0.992<br/>
+                    MARKET_SKEW: OPTIMAL
+                </div>
+<!-- Floating Editorial Cards -->
+<div class="absolute top-0 right-0 w-80 h-96 rounded-3xl bg-surface-container-lowest shadow-2xl p-6 rotate-6 hover:rotate-0 transition-transform duration-500 overflow-hidden group">
+<img class="w-full h-48 object-cover rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-700" data-alt="abstract digital connection network with flowing glowing blue lines and data points in dark space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoGPbaHw7hux481HxEz0lqg-3vHhCWRFSKX5i5_CwmRByBSoZeYdy23__zSSqJZCe4d7z-D6EXY_jQIRiACQF9Egjtr4Z8Yr3JlSuB76cURlgqQM5kUmZCQ5AEYrVDRNezI14TgmDGSPHnTXZC65Cx2zMIjbsj9DDJg8ZvkDLYKFMoGJ_x03TkMjlUW5J6nAN7j6Oes3r_snHIsTflI4_NR8QulsJ27JkLvWboBUoQ0xczHdtfOcVNap87raLEooXrsTwaIyiWLwU"/>
+<span class="text-[10px] font-bold text-secondary uppercase tracking-widest">Featured Story</span>
+<h3 class="text-primary font-headline font-bold text-lg leading-snug mt-2">The Neural Path to Market Dominance</h3>
+</div>
+<div class="absolute bottom-0 left-0 w-80 h-80 rounded-3xl bg-primary-container shadow-2xl p-6 -rotate-6 hover:rotate-0 transition-transform duration-500 z-20">
+<div class="flex items-center gap-2 mb-4">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="text-[10px] font-bold text-white uppercase tracking-widest">Flash Update</span>
+</div>
+<p class="text-on-primary-container font-headline text-2xl font-bold italic">"Consistency is the new currency."</p>
+<div class="mt-12 text-on-primary-container/60 text-xs">02 / 24 / 2024 — Press Office</div>
+</div>
+</div>
+</div>
+<!-- Futuristic News Ticker -->
+<div class="absolute bottom-0 w-full bg-white/5 backdrop-blur-md py-4 border-y border-white/10 overflow-hidden">
+<div class="scrolling-ticker flex gap-20 items-center">
+<div class="flex items-center gap-4 text-white/60 font-mono text-sm tracking-widest">
+<span class="text-secondary">●</span> EWAN ACQUIRES LOCAL_HUB DATA
+                </div>
+<div class="flex items-center gap-4 text-white/60 font-mono text-sm tracking-widest">
+<span class="text-secondary">●</span> MENA REGION EXPANSION RATE +14%
+                </div>
+<div class="flex items-center gap-4 text-white/60 font-mono text-sm tracking-widest">
+<span class="text-secondary">●</span> SUSTAINABILITY INDEX REVEALED
+                </div>
+<div class="flex items-center gap-4 text-white/60 font-mono text-sm tracking-widest">
+<span class="text-secondary">●</span> AI TRANSLATION ACCURACY AT 99.8%
+                </div>
+<!-- Repeat for loop -->
+<div class="flex items-center gap-4 text-white/60 font-mono text-sm tracking-widest">
+<span class="text-secondary">●</span> EWAN ACQUIRES LOCAL_HUB DATA
+                </div>
+<div class="flex items-center gap-4 text-white/60 font-mono text-sm tracking-widest">
+<span class="text-secondary">●</span> MENA REGION EXPANSION RATE +14%
+                </div>
+</div>
+</div>
+</header>
+<!-- Global Gazette (Featured Articles) -->
+<section class="py-32 px-10 max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div class="max-w-2xl">
+<h2 class="text-4xl lg:text-5xl font-headline font-extrabold text-primary tracking-tight mb-4">The Global Gazette</h2>
+<p class="text-on-surface-variant text-lg">Curated intelligence for the modern decision maker.</p>
+</div>
+<a class="text-primary font-bold flex items-center gap-2 group" href="#">
+                View All Intelligence <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="grid md:grid-cols-12 gap-8">
+<!-- Major Feature Card -->
+<div class="md:col-span-8 bg-surface-container-low rounded-[2.5rem] p-12 flex flex-col justify-between h-[600px] overflow-hidden relative group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-1000" data-alt="minimalist modern office space with wide windows and wooden accents bathed in clean morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2xykLyDw3f0PYky6Ui-2jUHAvhG1_kT7J7Z2zfpRklApfuJVi7OTVL-j-vrWfVi_xsjSH0EPhIeR1e2AqR3zJ4bzrcdELxB9ADrBqlZujsv37siXl_cLFp0TrSgvzWAv60Of5Cq76G-M-wppXe3ljfC2nhE6U4yvyROcBVIvUdr141inCUAMvDMHQcTMrshi4P8A4eN-_VuaOz0MGnw9C9axrYocAztDn8eShHIsYm4hNGMba-10DN6nwHlKpFZpMgxTAZkEN9k4"/>
+<div class="relative z-10">
+<span class="bg-primary text-white px-4 py-1 rounded-full text-xs font-bold">THOUGHT LEADERSHIP</span>
+<h3 class="text-4xl font-headline font-bold text-primary mt-6 leading-tight max-w-lg">The Architecture of Global Scale: A 2025 Vision</h3>
+</div>
+<div class="relative z-10 mt-auto">
+<p class="text-on-surface-variant max-w-md mb-8 group-hover:text-primary">Understanding how systemic localization influences consumer trust across fragmented digital landscapes.</p>
+<button class="text-primary font-bold border-b-2 border-primary pb-1 group-hover:border-secondary transition-colors">Read Full Dossier</button>
+</div>
+</div>
+<!-- Side Bento Column -->
+<div class="md:col-span-4 flex flex-col gap-8">
+<div class="bg-surface-container-lowest rounded-[2rem] p-8 shadow-[0_20px_40px_rgba(26,26,46,0.04)] hover:scale-[1.02] transition-transform">
+<span class="text-secondary text-[10px] font-bold tracking-widest uppercase">Market Brief</span>
+<h4 class="text-xl font-headline font-bold text-primary mt-2">Emerging Corridor: SEA Digital Trends</h4>
+<p class="text-on-surface-variant text-sm mt-4">Analyzing the rise of hyper-local payment gateways in Southeast Asian markets.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-[2rem] p-8 shadow-[0_20px_40px_rgba(26,26,46,0.04)] hover:scale-[1.02] transition-transform">
+<span class="text-secondary text-[10px] font-bold tracking-widest uppercase">Culture Tech</span>
+<h4 class="text-xl font-headline font-bold text-primary mt-2">Beyond Translation: Semantic Integrity</h4>
+<p class="text-on-surface-variant text-sm mt-4">Why AI still struggles with local nuance and how to fix it.</p>
+</div>
+<div class="bg-secondary-container rounded-[2rem] p-8 flex-1 flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-4xl text-on-secondary-container mb-4">mail</span>
+<p class="text-on-secondary-container font-headline font-bold text-xl mb-4">Weekly Intelligence Direct to Inbox</p>
+<button class="bg-primary text-white px-6 py-2 rounded-full text-sm font-bold">Sign Up</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Video Insights (Thought Leadership) -->
+<section class="bg-surface-container-low py-32">
+<div class="max-w-7xl mx-auto px-10">
+<div class="mb-16 flex flex-col items-center text-center space-y-4">
+<h2 class="text-4xl font-headline font-extrabold text-primary">Video Insights</h2>
+<div class="w-24 h-1 bg-secondary"></div>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="relative group cursor-pointer overflow-hidden rounded-[2.5rem] aspect-video">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="wide shot of professional business presenter speaking to an audience in a high-tech corporate theater" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVox4fCW1EvRmo0Zmo3ieEy4ui_dOYBM0BuwTtEbRqdu2xaV-97a3BHPDqq7jfiw3tCq-WHhKIntHli6glNNXy-GJcasOEiHnejCMevPanB-ziOMEUuVYz1Uvx7Ykvf8I5ZojZRcBiKnheR0W7GLETSrX8W2IFLtzq1ONSQGGonrGdKpP2bSfv2E-pdju1WRyw1aU-J6HoaWY-MWyXFQtqhQsRT4cGlQ27KCbqOXc6yCGiN8c3xEaaBbMbHm4YjS4E9yYlqGFahQQ"/>
+<div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-8 left-8 right-8">
+<h3 class="text-white font-headline font-bold text-2xl">Executive Brief: Q3 Global Outlook</h3>
+<p class="text-white/80 text-sm mt-2">14 Minutes • Featuring CEO Soham Gupta</p>
+</div>
+</div>
+<div class="space-y-6">
+<div class="flex gap-6 group cursor-pointer items-start p-4 rounded-3xl hover:bg-white transition-colors">
+<div class="w-40 h-28 shrink-0 rounded-2xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up of hands interacting with a sophisticated digital tablet interface showing world maps and data" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdirgUoMeB72RV8B53TSYuM2jF02Abw3HlM3wzZUXhgdS8n2mUOV_JMmnXYNjSFTfGzYQJ8okd3SDgzzlxxo-IBxSP4HyBLAH8lgI_J8aqYcVUMvv8Idg4uFN9Noii2pZfqTvPGCCFcrQdOtLcL7Aiy_1wBcrdfuI4hq5k8X9HMkeoyg6rvigF1IcBUGVHPtDt7NkiQRIftvTva_A6U_ipBVbyb33fIjYtE3iAbJQpEEdVxaMxP7mu8RgfRsueDA3XKsr-aPYNSjc"/>
+</div>
+<div>
+<span class="text-secondary text-[10px] font-bold tracking-widest uppercase">Series</span>
+<h4 class="text-primary font-headline font-bold text-lg mt-1 group-hover:text-secondary transition-colors">Localization Pitfalls in the EU</h4>
+<p class="text-on-surface-variant text-sm mt-2 line-clamp-2">How regulatory shifts are impacting the way brands talk to European consumers.</p>
+</div>
+</div>
+<div class="flex gap-6 group cursor-pointer items-start p-4 rounded-3xl hover:bg-white transition-colors">
+<div class="w-40 h-28 shrink-0 rounded-2xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="modern skyscraper architecture reflecting blue sky and clouds in geometric glass windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEnM_Ar7Ii_-eoEz7NmDQzY8NK2DZe1okX0gmaqC24vD7gEsaTafK6Lc-QUW10bTYWH_OPn5VyfJc51vR7s3J25IKDkOGBFANvZZhjLCyLq0yuSXtkP74XEH81IWHU-JuvZci-XUG1r6Ytc-17BAROH9NngfpNEsEI3vzw3Z5AazMp9oy4A_V-1zQHgXieMQfPTXjlakpmnaF5qV7nWQZ-k2_QHLh0afeePlZFzLjlOVe0F08OOLbNYLYYRP2qWgoowiALP1qOms8"/>
+</div>
+<div>
+<span class="text-secondary text-[10px] font-bold tracking-widest uppercase">Expert View</span>
+<h4 class="text-primary font-headline font-bold text-lg mt-1 group-hover:text-secondary transition-colors">Sustainability in Supply Chains</h4>
+<p class="text-on-surface-variant text-sm mt-2 line-clamp-2">A technical deep dive into ESG reporting for global manufacturing partners.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Press Room (Official Releases) -->
+<section class="py-32 px-10 max-w-7xl mx-auto">
+<div class="grid lg:grid-cols-3 gap-20">
+<div class="lg:col-span-1 space-y-8">
+<h2 class="text-4xl font-headline font-extrabold text-primary">Press Room</h2>
+<p class="text-on-surface-variant leading-relaxed">Official communications, media assets, and corporate milestones for the press and partners.</p>
+<div class="pt-6 space-y-4">
+<button class="w-full flex items-center justify-between p-6 bg-surface-container rounded-2xl group hover:bg-primary transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary group-hover:text-white">download</span>
+<span class="font-bold text-primary group-hover:text-white">Media Kit 2024</span>
+</div>
+<span class="text-xs text-on-surface-variant group-hover:text-white/60">PDF • 12MB</span>
+</button>
+<button class="w-full flex items-center justify-between p-6 bg-surface-container rounded-2xl group hover:bg-primary transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary group-hover:text-white">photo_library</span>
+<span class="font-bold text-primary group-hover:text-white">Brand Assets</span>
+</div>
+<span class="text-xs text-on-surface-variant group-hover:text-white/60">ZIP • 45MB</span>
+</button>
+</div>
+</div>
+<div class="lg:col-span-2 space-y-8">
+<!-- Press Release List -->
+<article class="flex flex-col md:flex-row md:items-center gap-8 pb-8 border-b border-outline-variant/30 group">
+<div class="shrink-0 w-24">
+<span class="text-secondary font-headline font-black text-2xl">FEB 12</span>
+<span class="block text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">2024</span>
+</div>
+<div class="flex-1">
+<h4 class="text-xl font-headline font-bold text-primary group-hover:text-secondary transition-colors cursor-pointer">EWAN Unveils 'Prism' - The Future of Context-Aware Language AI</h4>
+<p class="text-on-surface-variant text-sm mt-2 line-clamp-2">A revolutionary leap in linguistic computation designed for enterprise-scale global operations.</p>
+</div>
+<span class="material-symbols-outlined text-primary-container opacity-20 group-hover:opacity-100 transition-opacity">arrow_outward</span>
+</article>
+<article class="flex flex-col md:flex-row md:items-center gap-8 pb-8 border-b border-outline-variant/30 group">
+<div class="shrink-0 w-24">
+<span class="text-secondary font-headline font-black text-2xl">JAN 28</span>
+<span class="block text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">2024</span>
+</div>
+<div class="flex-1">
+<h4 class="text-xl font-headline font-bold text-primary group-hover:text-secondary transition-colors cursor-pointer">Annual Market Report: Localization Trends for Sustainable Growth</h4>
+<p class="text-on-surface-variant text-sm mt-2 line-clamp-2">Comprehensive data analysis revealing the shift toward value-based market entry strategies.</p>
+</div>
+<span class="material-symbols-outlined text-primary-container opacity-20 group-hover:opacity-100 transition-opacity">arrow_outward</span>
+</article>
+<article class="flex flex-col md:flex-row md:items-center gap-8 pb-8 border-b border-outline-variant/30 group">
+<div class="shrink-0 w-24">
+<span class="text-secondary font-headline font-black text-2xl">DEC 15</span>
+<span class="block text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">2023</span>
+</div>
+<div class="flex-1">
+<h4 class="text-xl font-headline font-bold text-primary group-hover:text-secondary transition-colors cursor-pointer">New Executive Appointment: Dr. Elena Vance as Chief Strategy Officer</h4>
+<p class="text-on-surface-variant text-sm mt-2 line-clamp-2">Bringing two decades of global trade experience to the EWAN leadership cabinet.</p>
+</div>
+<span class="material-symbols-outlined text-primary-container opacity-20 group-hover:opacity-100 transition-opacity">arrow_outward</span>
+</article>
+</div>
+</div>
+</section>
+<!-- Final CTA Footer Section -->
+<footer class="w-full bg-[#3B1F4B] dark:bg-[#1A1A2E] rounded-t-[2.5rem] mt-20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-12 py-24">
+<div class="md:col-span-1">
+<span class="text-2xl font-bold text-white mb-6 block">EWAN Business Solutions</span>
+<p class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 leading-relaxed mb-8">
+                    Empowering global enterprise through precision strategy and linguistic excellence.
+                </p>
+<div class="flex gap-4">
+<span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center cursor-pointer hover:bg-secondary transition-colors">
+<img alt="LinkedIn" class="w-4 h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYWU_DMGCcGDF971w0OD0RI6YmXoas3tO9POLcWFXQm38RauVzrPcjw9Q4icR3lKSwPZg1KGgYcUhh560x4uc7UvYlsIu96j4H7olnms612xXz1hioI79eFrqdjYjfqDsZlqpxOvohVLDODmK-bYnwY0BloXlXoMVR7VvfzKLJxrkOEdfYLZ3cBp1X62UBfeEVDScYGddZ0zDDChhtRST99N1JkZgMHbr6XdP9ha5OEleSt8yovnYoXwZR7U6cg-XKjpWBqSuhUk4"/>
+</span>
+<span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center cursor-pointer hover:bg-secondary transition-colors">
+<img alt="Twitter" class="w-4 h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7yFIxQqS7Ph6XqTPrGRl_EBW3bPUuFsgx_Fqgej9pLTy-OG6NxFpXvefa5hTPRii6pfyYkhPIRW8PFidxS8SKKWrH_ml7hIF5RfAAKTva2eluutupFv4hZIslnZEBxKM676xG2RpxH77bfQkFUFzwcHXuUEFjF5djP5ijXaYpBwOsiemCciprhNmChCt6DXt-JI9WMCH2QMvh9YkB15tRGgQk3djn0x8q7swC4UIEMSHHGIqlQF4rLh9cApjC3Qak9gG5v7ets2g"/>
+</span>
+</div>
+</div>
+<div class="md:col-span-1">
+<h5 class="text-white font-bold mb-6">Solutions</h5>
+<ul class="space-y-4">
+<li><a class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block" href="#">Market Entry Solutions</a></li>
+<li><a class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block" href="#">Localization Services</a></li>
+<li><a class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block" href="#">Industry Insights</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h5 class="text-white font-bold mb-6">Company</h5>
+<ul class="space-y-4">
+<li><a class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block" href="#">About Our Vision</a></li>
+<li><a class="font-['Inter'] font-light text-sm tracking-wide text-white font-bold underline transition-colors hover:translate-x-1 inline-block" href="#">Media Center</a></li>
+<li><a class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block" href="#">Contact Strategy</a></li>
+</ul>
+</div>
+<div class="md:col-span-1">
+<h5 class="text-white font-bold mb-6">Newsletter</h5>
+<p class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 mb-4">Stay ahead with executive briefings.</p>
+<div class="relative">
+<input class="w-full bg-white/10 border-none rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/30 focus:ring-1 focus:ring-secondary" placeholder="Email Address" type="email"/>
+<button class="absolute right-2 top-2 bottom-2 bg-secondary text-white px-4 rounded-lg hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-12 py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/50">© 2024 EWAN Business Solutions. All rights reserved.</span>
+<div class="flex gap-8 text-[10px] uppercase tracking-[0.2em] text-purple-200/50">
+<a class="hover:text-white" href="#">Privacy Policy</a>
+<a class="hover:text-white" href="#">Terms of Service</a>
+<a class="hover:text-white" href="#">Cookie Settings</a>
+</div>
+</div>
+</footer>
+</body></html>

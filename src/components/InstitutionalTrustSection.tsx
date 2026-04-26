@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { Landmark, Users, Map } from "lucide-react";
 import { useScrollReveal, useCountUp } from "@/hooks/useScrollReveal";
+import { useTranslation } from "react-i18next";
 
-const impacts = [
-  { value: 1200, suffix: "+", label: "Farmers Impacted", icon: Users },
-  { value: 800, suffix: "", label: "Hectares Covered", icon: Map },
+const impactIcons = [Users, Map] as const;
+const defaultImpacts = [
+  { value: 1200, suffix: "+", label: "Farmers Impacted" },
+  { value: 800, suffix: "", label: "Hectares Covered" },
 ];
 
 const impactAccent = [
@@ -20,7 +22,7 @@ const impactAccent = [
   },
 ] as const;
 
-const consulateLetters = [
+const defaultConsulateLetters = [
   {
     src: "/Ewan-Consulate-experience-letter-page-001-min.jpg",
     alt: "Chinese Consulate appreciation letter page 1",
@@ -35,6 +37,23 @@ const consulateLetters = [
 
 const InstitutionalTrustSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useTranslation();
+  const impactsRaw = t("home.institutionalTrust.impacts", {
+    returnObjects: true,
+    defaultValue: defaultImpacts,
+  }) as Array<{ value?: number; suffix?: string | number; label?: string }>;
+  const impacts = (Array.isArray(impactsRaw) ? impactsRaw : defaultImpacts).map((impact, index) => {
+    const fallback = defaultImpacts[index] ?? defaultImpacts[0];
+    return {
+      value: typeof impact?.value === "number" ? impact.value : fallback.value,
+      suffix: typeof impact?.suffix === "string" || typeof impact?.suffix === "number" ? String(impact.suffix) : fallback.suffix,
+      label: typeof impact?.label === "string" ? impact.label : fallback.label,
+    };
+  });
+  const consulateLetters = t("home.institutionalTrust.letters", {
+    returnObjects: true,
+    defaultValue: defaultConsulateLetters,
+  }) as Array<{ src: string; alt: string; label: string }>;
 
   return (
     <section className="py-10 lg:py-28 relative overflow-hidden theme-section-soft">
@@ -70,7 +89,7 @@ const InstitutionalTrustSection = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
             >
-              CONSULATE RECOGNITION
+              {t("home.institutionalTrust.badge")}
             </motion.span>
 
             <motion.h2
@@ -79,9 +98,9 @@ const InstitutionalTrustSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              Recognised by the{" "}
+              {t("home.institutionalTrust.titlePrefix")}{" "}
               <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
-                Consulate General of the People's Republic of China
+                {t("home.institutionalTrust.titleHighlight")}
               </span>
             </motion.h2>
 
@@ -92,7 +111,7 @@ const InstitutionalTrustSection = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              Recognised through a formal letter of appreciation for Ewan's contribution to strengthening India-China agricultural and trade relations, with impact across 1,200 farmers and 800 hectares of farmland.
+              {t("home.institutionalTrust.subtitle")}
             </motion.p>
           </div>
 
@@ -123,7 +142,7 @@ const InstitutionalTrustSection = () => {
 
           <div className="grid grid-cols-2 gap-6 max-w-xl mx-auto mt-8">
             {impacts.map((s, i) => {
-              const Icon = s.icon;
+              const Icon = impactIcons[i] ?? Users;
               return <ImpactStat key={s.label} stat={s} index={i} isVisible={isVisible} Icon={Icon} />;
             })}
           </div>
@@ -136,6 +155,7 @@ const InstitutionalTrustSection = () => {
 function ImpactStat({ stat, index, isVisible, Icon }: any) {
   const count = useCountUp(stat.value, 2000, isVisible);
   const accent = impactAccent[index % impactAccent.length];
+  const suffix = typeof stat.suffix === "string" || typeof stat.suffix === "number" ? String(stat.suffix) : "";
   return (
     <motion.div
       className="p-6 rounded-2xl theme-card-light border border-[hsl(var(--border-light))] text-center"
@@ -149,7 +169,7 @@ function ImpactStat({ stat, index, isVisible, Icon }: any) {
         <Icon className={`w-6 h-6 ${accent.icon}`} />
       </div>
       <div className={`text-3xl sm:text-4xl font-serif font-bold mb-1 ${accent.number}`}>
-        {count.toLocaleString()}{stat.suffix}
+        {count.toLocaleString()}{suffix}
       </div>
       <p className="text-xs uppercase tracking-wider text-on-light-muted font-medium">{stat.label}</p>
     </motion.div>

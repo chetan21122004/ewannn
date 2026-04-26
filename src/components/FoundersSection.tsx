@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const linkedinUrl = "https://www.linkedin.com/in/soham-kakade-77b2819b/";
 
-const founders = [
+const defaultFounders = [
   {
     name: "Soham Kakade",
     role: "Founder & CEO",
@@ -46,6 +47,11 @@ const founderAccents = [
 ] as const;
 
 const FoundersSection = () => {
+  const { t } = useTranslation();
+  const founders = t("home.founders.items", {
+    returnObjects: true,
+    defaultValue: defaultFounders,
+  }) as typeof defaultFounders;
   return (
     <section id="about" className="relative overflow-hidden py-20 lg:py-28 theme-section-soft">
       <div className="glow-orb glow-orb-purple w-[400px] h-[400px] top-10 -left-40 opacity-8" />
@@ -69,15 +75,15 @@ const FoundersSection = () => {
           viewport={{ once: true }}
         >
           <span className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-5">
-            The Founders
+            {t("home.founders.badge")}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light mb-4">
             <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
-              Leadership That Built the Corridors
+              {t("home.founders.title")}
             </span>
           </h2>
           <p className="text-on-light-muted text-base sm:text-lg">
-            The people behind the firm have already lived the cross-border work.
+            {t("home.founders.subtitle")}
           </p>
         </motion.div>
 
@@ -137,7 +143,7 @@ const FoundersSection = () => {
                       className={`inline-flex items-center gap-2 pt-1 text-sm font-semibold transition-colors ${accent.link}`}
                     >
                       <Linkedin className="w-3.5 h-3.5" />
-                      Connect on LinkedIn →
+                      {t("home.founders.linkedinCta")}
                     </motion.a>
                   </div>
                 </div>

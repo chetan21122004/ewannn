@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowRight, AlertCircle, Lightbulb, Trophy } from "lucide-react";
 import factoryImg from "@/assets/case-study-factory.jpg";
+import { useTranslation } from "react-i18next";
 
-const steps = [
+const defaultSteps = [
   {
-    icon: AlertCircle,
     label: "Problem",
     text: "Japanese manufacturer faced regulatory complexity and a critical language gap entering India.",
     iconColor: "text-[hsl(var(--brand-gold-500))]",
@@ -12,7 +12,6 @@ const steps = [
     labelColor: "text-[hsl(var(--brand-gold-500)/0.9)]",
   },
   {
-    icon: Lightbulb,
     label: "Solution",
     text: "Ewan handled full market entry — entity setup, compliance, liaison, and on-the-ground language support.",
     iconColor: "text-[hsl(var(--brand-purple-500))]",
@@ -20,7 +19,6 @@ const steps = [
     labelColor: "text-[hsl(var(--brand-purple-500)/0.92)]",
   },
   {
-    icon: Trophy,
     label: "Outcome",
     text: "End-to-end execution. Operational launch within months, not years.",
     iconColor: "text-[hsl(var(--brand-cyan-500))]",
@@ -30,9 +28,18 @@ const steps = [
 ];
 
 const CaseStudySection = () => {
+  const { t } = useTranslation();
+  const steps = t("home.caseStudy.steps", { returnObjects: true, defaultValue: defaultSteps }) as Array<{
+    label: string;
+    text: string;
+    iconColor: string;
+    ringColor: string;
+    labelColor: string;
+  }>;
+  const stepIcons = [AlertCircle, Lightbulb, Trophy] as const;
   return (
     <section id="media" className="py-10 lg:py-32 relative overflow-hidden theme-section-dark">
-      <span id="case-study" className="sr-only">Case Study</span>
+      <span id="case-study" className="sr-only">{t("home.caseStudy.srLabel")}</span>
       <div className="glow-orb glow-orb-purple w-[500px] h-[500px] top-10 -right-40 opacity-12" />
       <div className="glow-orb glow-orb-gold w-[340px] h-[340px] -bottom-24 left-8 opacity-10" />
       <div className="absolute inset-0 theme-grid-overlay opacity-15 pointer-events-none" />
@@ -46,12 +53,12 @@ const CaseStudySection = () => {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-block px-4 py-1.5 rounded-full glass-card-purple text-[hsl(var(--brand-purple-500))] text-xs font-semibold tracking-wider uppercase mb-5">
-            Success Story
+            {t("home.caseStudy.badge")}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
-            Japanese Manufacturer{" "}
+            {t("home.caseStudy.titlePrefix")}{" "}
             <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-500))] via-white to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
-              Entered India
+              {t("home.caseStudy.titleHighlight")}
             </span>
           </h2>
         </motion.div>
@@ -66,14 +73,14 @@ const CaseStudySection = () => {
           >
             <div className="absolute -inset-4 rounded-3xl bg-[hsl(var(--brand-purple-500)/0.12)] blur-2xl" />
             <div className="relative rounded-3xl overflow-hidden border border-[hsl(var(--surface-glass)/0.16)] shadow-gold-lg">
-              <img src={factoryImg} alt="Manufacturing facility in India" className="w-full h-[400px] object-cover" />
+              <img src={factoryImg} alt={t("home.caseStudy.imageAlt")} className="w-full h-[400px] object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
           </motion.div>
 
           <div className="space-y-6">
             {steps.map((step, i) => {
-              const Icon = step.icon;
+              const Icon = stepIcons[i] ?? AlertCircle;
               return (
                 <motion.div
                   key={step.label}
@@ -103,7 +110,7 @@ const CaseStudySection = () => {
               whileHover={{ scale: 1.04, x: 4 }}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] text-white font-semibold text-sm tracking-wider uppercase card-shine shadow-gold-md border border-[hsl(var(--brand-purple-500)/0.35)]"
             >
-              Read Full Case Study
+              {t("home.caseStudy.cta")}
               <ArrowRight className="w-4 h-4" />
             </motion.a>
           </div>

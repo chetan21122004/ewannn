@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 type ClientLogo = {
   name: string;
@@ -28,6 +29,7 @@ const clients: ClientLogo[] = [
 ];
 
 const ClientLogosSection = () => {
+  const { t } = useTranslation();
   return (
     <section
       className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] theme-section-light p-6"
@@ -47,7 +49,7 @@ const ClientLogosSection = () => {
           <div className="flex items-center gap-2.5">
             <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-purple-700))]" aria-hidden />
             <p className="text-center text-xs font-semibold uppercase tracking-[0.32em] text-[hsl(var(--text-on-light-muted))]">
-              Trusted by Industry Leaders
+              {t("home.clientLogos.badge")}
             </p>
             <span className="h-px w-10 max-w-[40vw] bg-gradient-to-r from-[hsl(var(--brand-purple-700)/0.6)] to-transparent" aria-hidden />
           </div>

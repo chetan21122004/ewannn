@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const testimonials = [
+const defaultTestimonials = [
   {
     quote: "Ewan bridged language and operations seamlessly. They were our hands, ears, and voice in India.",
     author: "Operations Director",
@@ -31,8 +32,13 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const { t } = useTranslation();
+  const testimonials = t("home.testimonials.items", {
+    returnObjects: true,
+    defaultValue: defaultTestimonials,
+  }) as Array<{ quote: string; author: string; company: string }>;
   const [index, setIndex] = useState(0);
-  const t = testimonials[index];
+  const currentTestimonial = testimonials[index];
 
   const next = () => setIndex((i) => (i + 1) % testimonials.length);
   const prev = () => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
@@ -51,12 +57,12 @@ const TestimonialsSection = () => {
           viewport={{ once: true }}
         >
           <span className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-4">
-            Testimonials
+            {t("home.testimonials.badge")}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light">
-            Voices from{" "}
+            {t("home.testimonials.titlePrefix")}{" "}
             <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
-              Across Borders
+              {t("home.testimonials.titleHighlight")}
             </span>
           </h2>
         </motion.div>
@@ -74,11 +80,11 @@ const TestimonialsSection = () => {
               className="text-center"
             >
               <p className="text-2xl sm:text-3xl lg:text-4xl font-serif font-medium text-[hsl(var(--text-on-light))] leading-relaxed italic mb-8">
-                "{t.quote}"
+                "{currentTestimonial.quote}"
               </p>
               <footer>
-                <p className="text-base font-semibold text-[hsl(var(--brand-purple-700))]">{t.author}</p>
-                <p className="text-sm text-[hsl(var(--text-on-light-muted))] tracking-wide">{t.company}</p>
+                <p className="text-base font-semibold text-[hsl(var(--brand-purple-700))]">{currentTestimonial.author}</p>
+                <p className="text-sm text-[hsl(var(--text-on-light-muted))] tracking-wide">{currentTestimonial.company}</p>
               </footer>
             </motion.blockquote>
           </AnimatePresence>
@@ -89,7 +95,7 @@ const TestimonialsSection = () => {
               whileHover={{ scale: 1.1, x: -3 }}
               whileTap={{ scale: 0.95 }}
               className="w-12 h-12 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.92)] flex items-center justify-center text-[hsl(var(--brand-purple-700))] hover:text-white hover:bg-[hsl(var(--brand-purple-700))] transition-all"
-              aria-label="Previous testimonial"
+              aria-label={t("home.testimonials.prev")}
             >
               <ChevronLeft className="w-5 h-5" />
             </motion.button>
@@ -104,7 +110,7 @@ const TestimonialsSection = () => {
                       ? "w-8 bg-[hsl(var(--brand-purple-700))]"
                       : "w-2 bg-[hsl(var(--brand-purple-700)/0.3)]"
                   }`}
-                  aria-label={`Go to testimonial ${i + 1}`}
+                  aria-label={`${t("home.testimonials.goTo")} ${i + 1}`}
                 />
               ))}
             </div>
@@ -114,7 +120,7 @@ const TestimonialsSection = () => {
               whileHover={{ scale: 1.1, x: 3 }}
               whileTap={{ scale: 0.95 }}
               className="w-12 h-12 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.92)] flex items-center justify-center text-[hsl(var(--brand-purple-700))] hover:text-white hover:bg-[hsl(var(--brand-purple-700))] transition-all"
-              aria-label="Next testimonial"
+              aria-label={t("home.testimonials.next")}
             >
               <ChevronRight className="w-5 h-5" />
             </motion.button>

@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, MessageCircle, Languages } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const regions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
+const defaultRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
 
-const contactPillars = [
+const defaultContactPillars = [
   "Market Entry & Operations",
   "Language & Localization",
   "Boardroom Interpretation",
@@ -11,6 +12,12 @@ const contactPillars = [
 ];
 
 const ContactSection = () => {
+  const { t } = useTranslation();
+  const regions = t("home.contact.regions", { returnObjects: true, defaultValue: defaultRegions }) as string[];
+  const contactPillars = t("home.contact.pillars", {
+    returnObjects: true,
+    defaultValue: defaultContactPillars,
+  }) as string[];
   return (
     <section id="contact" className="py-14 lg:py-28 relative overflow-hidden theme-section-dark">
       <div className="glow-orb glow-orb-purple w-[520px] h-[520px] -top-48 left-[8%] opacity-10" />
@@ -42,7 +49,7 @@ const ContactSection = () => {
                 viewport={{ once: true }}
               >
                 <Sparkles className="h-3.5 w-3.5" />
-                Let&apos;s Begin
+                {t("home.contact.badge")}
               </motion.span>
 
               <motion.h2
@@ -52,9 +59,9 @@ const ContactSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
               >
-                Build Across Borders{" "}
+                {t("home.contact.titlePrefix")}{" "}
                 <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-500))] via-[hsl(var(--surface-glass))] to-[hsl(var(--brand-purple-500)/0.85)] bg-clip-text text-transparent italic">
-                  With Clarity.
+                  {t("home.contact.titleHighlight")}
                 </span>
               </motion.h2>
 
@@ -65,7 +72,7 @@ const ContactSection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                Whether you are entering India, scaling globally, or solving multilingual execution challenges, Ewan gives you one integrated partner for language and operations.
+                {t("home.contact.subtitle")}
               </motion.p>
             </div>
 
@@ -111,9 +118,9 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <h3 className="text-2xl font-serif font-bold text-foreground mb-2">Start the Conversation</h3>
+            <h3 className="text-2xl font-serif font-bold text-foreground mb-2">{t("home.contact.cardTitle")}</h3>
             <p className="text-sm sm:text-base text-foreground/72 mb-6">
-              Choose your preferred starting point. We will respond quickly with a tailored next step.
+              {t("home.contact.cardSubtitle")}
             </p>
 
             <div className="space-y-3">
@@ -125,7 +132,7 @@ const ContactSection = () => {
               >
                 <span className="inline-flex items-center gap-2">
                   <Sparkles className="h-4 w-4" />
-                  Start Market Entry
+                  {t("home.contact.marketEntryCta")}
                 </span>
                 <ArrowRight className="h-4 w-4" />
               </motion.a>
@@ -138,7 +145,7 @@ const ContactSection = () => {
               >
                 <span className="inline-flex items-center gap-2">
                   <Languages className="h-4 w-4" />
-                  Get Language Quote
+                  {t("home.contact.languageQuoteCta")}
                 </span>
                 <ArrowRight className="h-4 w-4" />
               </motion.a>
@@ -151,7 +158,7 @@ const ContactSection = () => {
               >
                 <span className="inline-flex items-center gap-2">
                   <MessageCircle className="h-4 w-4" />
-                  Ask Soham (15 min)
+                  {t("home.contact.askSohamCta")}
                 </span>
                 <ArrowRight className="h-4 w-4" />
               </motion.a>
@@ -165,7 +172,7 @@ const ContactSection = () => {
               transition={{ delay: 0.35 }}
             >
               <p className="text-[11px] uppercase tracking-[0.24em] text-foreground/55">
-                India · Southeast Asia · East Asia · Latin America · Africa
+                {t("home.contact.regionsFooter")}
               </p>
             </motion.div>
           </motion.div>

@@ -1,7 +1,8 @@
 import { ArrowRight, Sparkles, MessageCircle, Globe } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
-const regions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
+const defaultRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
 
 const heroParticleColors = [
   "hsl(var(--brand-purple-500) / 0.28)",
@@ -25,6 +26,8 @@ const FloatingParticle = ({ delay, x, y, size, color }: { delay: number; x: stri
 );
 
 const HeroSection = () => {
+  const { t } = useTranslation();
+  const regions = t("home.hero.regions", { returnObjects: true, defaultValue: defaultRegions }) as string[];
   const staggerContainer = {
     hidden: {},
     visible: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
@@ -86,9 +89,9 @@ const HeroSection = () => {
 
             {/* Main headline */}
             <motion.h1 variants={fadeUpItem} className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold leading-[1.05] mb-6">
-              <span className="text-foreground block">Your Cross-Border</span>
+              <span className="text-foreground block">{t("home.hero.headingLine1")}</span>
               <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-500))] via-[hsl(var(--surface-glass))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent block italic">
-                Market Partner
+                {t("home.hero.headingLine2")}
               </span>
             </motion.h1>
 
@@ -96,9 +99,13 @@ const HeroSection = () => {
             <motion.div variants={fadeUpItem} className="mb-8">
               <div className="border-l-[3px] border-primary/40 pl-5 space-y-2">
                 <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                  We help <span className="text-foreground font-medium">foreign companies enter India</span> and{" "}
-                  <span className="text-foreground font-medium">Indian companies expand globally</span> — backed by{" "}
-                  <span className="text-primary font-semibold">125+ languages</span> and on-ground operations expertise.
+                  {t("home.hero.subheadlinePrefix")}{" "}
+                  <span className="text-foreground font-medium">{t("home.hero.subheadlineForeign")}</span>{" "}
+                  {t("home.hero.subheadlineAnd")}{" "}
+                  <span className="text-foreground font-medium">{t("home.hero.subheadlineIndian")}</span> —{" "}
+                  {t("home.hero.subheadlineSuffix")}{" "}
+                  <span className="text-primary font-semibold">{t("home.hero.subheadlineLanguages")}</span>{" "}
+                  {t("home.hero.subheadlineEnd")}
                 </p>
               </div>
             </motion.div>
@@ -112,7 +119,7 @@ const HeroSection = () => {
                 className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] text-white font-semibold text-sm tracking-wider uppercase transition-all duration-300 card-shine border border-[hsl(var(--brand-purple-500)/0.35)]"
               >
                 <Sparkles className="w-4 h-4" />
-                Explore Market Entry
+                {t("home.hero.ctaMarketEntry")}
               </motion.a>
               <motion.a
                 href="#language"
@@ -120,7 +127,7 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center gap-2 px-7 py-4 rounded-full border-2 border-[hsl(var(--surface-glass)/0.24)] text-foreground font-semibold text-sm tracking-wider uppercase transition-all duration-300 hover:bg-[hsl(var(--surface-glass)/0.06)]"
               >
-                Get a Language Quote
+                {t("home.hero.ctaLanguageQuote")}
               </motion.a>
               <motion.a
                 href="#contact"
@@ -128,7 +135,7 @@ const HeroSection = () => {
                 className="inline-flex items-center gap-2 text-[hsl(var(--brand-purple-500))] font-medium text-sm tracking-wider uppercase group"
               >
                 <MessageCircle className="w-4 h-4" />
-                Ask Soham
+                {t("home.hero.ctaAskSoham")}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </motion.a>
             </motion.div>

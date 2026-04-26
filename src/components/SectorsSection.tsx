@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Car, Pill, Plane, Factory, Cpu, Calendar, Wheat, Scale, GraduationCap, Film } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const sectors = [
+const defaultSectors = [
   { name: "Automotive",           code: "01", icon: Car,           accent: "gold" },
   { name: "Pharmaceuticals",      code: "02", icon: Pill,          accent: "cyan" },
   { name: "Aerospace",            code: "03", icon: Plane,         accent: "gold" },
@@ -14,7 +15,7 @@ const sectors = [
   { name: "Media & OTT",          code: "10", icon: Film,          accent: "cyan" },
 ] as const;
 
-const footerStats = [
+const defaultFooterStats = [
   { value: "10+",    label: "Sectors Covered" },
   { value: "15+",    label: "Countries" },
   { value: "125+",   label: "Languages" },
@@ -40,7 +41,29 @@ const accentColorMap = {
   },
 } as const;
 
-const SectorsSection = () => (
+const SectorsSection = () => {
+  const { t } = useTranslation();
+  const sectorIcons = [Car, Pill, Plane, Factory, Cpu, Calendar, Wheat, Scale, GraduationCap, Film] as const;
+  const sectorsRaw = t("home.sectors.items", { returnObjects: true, defaultValue: defaultSectors }) as Array<{
+    name?: string;
+    code?: string;
+    accent?: "gold" | "cyan";
+  }>;
+  const sectors = (Array.isArray(sectorsRaw) ? sectorsRaw : defaultSectors).map((sector, index) => {
+    const fallback = defaultSectors[index] ?? defaultSectors[0];
+    return {
+      name: typeof sector?.name === "string" ? sector.name : fallback.name,
+      code: typeof sector?.code === "string" ? sector.code : fallback.code,
+      accent: sector?.accent === "cyan" || sector?.accent === "gold" ? sector.accent : fallback.accent,
+      icon: sectorIcons[index] ?? fallback.icon,
+    };
+  });
+  const footerStats = t("home.sectors.footerStats", {
+    returnObjects: true,
+    defaultValue: defaultFooterStats,
+  }) as Array<{ value: string; label: string }>;
+
+  return (
   <section id="sectors" className="py-10 relative overflow-hidden theme-section-soft">
 
     {/* ── Radar ring backdrop ─────────────────────────────── */}
@@ -102,19 +125,19 @@ const SectorsSection = () => (
         <div className="inline-flex items-center gap-3 mb-7">
           <span className="h-px w-8 bg-[hsl(var(--brand-purple-700)/0.5)]" aria-hidden />
           <span className="font-mono text-[10px] font-bold uppercase tracking-[0.45em] text-[hsl(var(--brand-purple-700)/0.78)]">
-            Industries · 10 Active Sectors
+            {t("home.sectors.badge")}
           </span>
           <span className="h-px w-8 bg-[hsl(var(--brand-purple-700)/0.5)]" aria-hidden />
         </div>
 
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-on-light mb-5 leading-[1.08]">
-          Sector Expertise{" "}
+          {t("home.sectors.titlePrefix")}{" "}
           <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
-            Across Every<br className="hidden sm:block" /> Major Industry
+            {t("home.sectors.titleHighlight")}<br className="hidden sm:block" /> {t("home.sectors.titleHighlightLine2")}
           </span>
         </h2>
         <p className="text-on-light-muted text-base sm:text-lg max-w-xl mx-auto">
-          From boardrooms to factory floors — deep domain experience built over a decade.
+          {t("home.sectors.subtitle")}
         </p>
       </motion.div>
 
@@ -256,6 +279,7 @@ const SectorsSection = () => (
       }
     `}</style>
   </section>
-);
+  );
+};
 
 export default SectorsSection;

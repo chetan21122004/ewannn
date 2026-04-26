@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | Ewan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#efdbff",
+                        "on-tertiary": "#4d2700",
+                        "background": "#141219",
+                        "surface-dim": "#141219",
+                        "on-secondary-container": "#c8aee0",
+                        "on-primary-fixed-variant": "#4c339a",
+                        "surface-variant": "#36343b",
+                        "surface-container-highest": "#36343b",
+                        "surface-container-low": "#1c1b21",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0f0d14",
+                        "secondary-fixed-dim": "#d6bcef",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#ccbdff",
+                        "primary-container": "#4b3299",
+                        "inverse-primary": "#644db4",
+                        "on-tertiary-container": "#eea465",
+                        "on-surface-variant": "#cac4d4",
+                        "inverse-surface": "#e6e0ea",
+                        "on-tertiary-fixed-variant": "#6d3a01",
+                        "on-surface": "#e6e0ea",
+                        "inverse-on-surface": "#312f36",
+                        "surface-bright": "#3a383f",
+                        "on-secondary-fixed": "#25123a",
+                        "secondary-container": "#54406a",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#201f25",
+                        "secondary": "#d6bcef",
+                        "on-primary": "#351783",
+                        "tertiary-container": "#6c3900",
+                        "on-primary-fixed": "#1f005f",
+                        "primary-fixed": "#e7deff",
+                        "on-background": "#e6e0ea",
+                        "outline": "#938e9d",
+                        "tertiary": "#ffb77b",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#2b2930",
+                        "surface": "#141219",
+                        "primary": "#ccbdff",
+                        "on-tertiary-fixed": "#2e1500",
+                        "on-secondary-fixed-variant": "#523e68",
+                        "outline-variant": "#484552",
+                        "surface-tint": "#ccbdff",
+                        "on-primary-container": "#baa7ff",
+                        "tertiary-fixed": "#ffdcc2",
+                        "tertiary-fixed-dim": "#ffb77b",
+                        "on-secondary": "#3b2850"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "base": "8px",
+                        "grid-columns": "12",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "grid-gutter": "24px",
+                        "sm": "12px",
+                        "grid-margin": "clamp(1rem, 5vw, 4rem)",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Space Grotesk"],
+                        "body-md": ["Inter"],
+                        "h2": ["Space Grotesk"],
+                        "h1": ["Space Grotesk"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "0em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h2": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h1": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(20, 18, 25, 0.7);
+            border: 1px solid rgba(204, 189, 255, 0.2);
+            box-shadow: inset 0 1px 0 0 rgba(204, 189, 255, 0.1);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(204, 189, 255, 0.5);
+        }
+        .bg-glow-radial {
+            background: radial-gradient(circle at 50% 50%, rgba(75, 50, 153, 0.15) 0%, rgba(20, 18, 25, 0) 70%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-violet-500/20 shadow-[inset_0_1px_0_0_rgba(139,92,246,0.3)] transition-all duration-300 ease-out">
+<div class="flex items-center justify-between px-8 h-20 w-full max-w-[1440px] mx-auto">
+<div class="text-2xl font-black tracking-tighter text-white">Ewan</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold text-slate-400 hover:text-violet-300 transition-colors hover:bg-violet-900/20 px-3 py-2 rounded" href="#">Solutions</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold text-white border-b-2 border-amber-500 pb-1 px-3 py-2" href="#">About Us</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold text-slate-400 hover:text-violet-300 transition-colors hover:bg-violet-900/20 px-3 py-2 rounded" href="#">Founders</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold text-slate-400 hover:text-violet-300 transition-colors hover:bg-violet-900/20 px-3 py-2 rounded" href="#">Ecosystem</a>
+</nav>
+<button class="font-['Space_Grotesk'] uppercase tracking-widest text-xs font-bold text-violet-500 border border-violet-500/50 px-6 py-2.5 rounded hover:bg-violet-900/20 transition-colors">
+                Consult with Us
+            </button>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center justify-center overflow-hidden bg-background">
+<div class="absolute inset-0 bg-glow-radial z-0"></div>
+<div class="absolute inset-0 z-0 opacity-30 bg-[url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center" data-alt="Abstract dark structural lines resembling corporate architecture or data flows, futuristic, dark navy and purple tones"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background z-0"></div>
+<div class="relative z-10 max-w-[1440px] mx-auto px-grid-margin w-full text-center flex flex-col items-center">
+<span class="font-label-caps text-label-caps text-tertiary mb-6 tracking-widest uppercase">Global Language &amp; Operations</span>
+<h1 class="font-h1 text-h1 text-on-surface mb-8 max-w-4xl leading-tight text-glow">Built for the Corridors Others Don’t Know.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12">At the precise intersection of 125+ languages and on-ground operational reality. We decode global complexity into measurable business advantage.</p>
+<div class="flex gap-4 mb-16">
+<button class="bg-tertiary text-on-tertiary font-label-caps text-label-caps px-8 py-4 rounded-lg hover:shadow-[0_0_20px_rgba(255,183,123,0.3)] transition-shadow uppercase tracking-wider">Partner With Us</button>
+</div>
+<!-- Stats Bento -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mx-auto mt-8">
+<div class="glass-panel rounded-xl p-8 text-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="font-h2 text-h2 text-primary mb-2">5+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase">Years of Excellence</div>
+</div>
+<div class="glass-panel rounded-xl p-8 text-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="font-h2 text-h2 text-primary mb-2">250+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase">Global Clients</div>
+</div>
+<div class="glass-panel rounded-xl p-8 text-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="font-h2 text-h2 text-primary mb-2">10+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase">Key Sectors</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Positioning -->
+<section class="py-24 px-grid-margin max-w-[1440px] mx-auto relative">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-surface-container-high/20 to-transparent z-0"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-grid-gutter relative z-10 items-center">
+<div class="lg:col-span-5">
+<h2 class="font-h2 text-h2 text-on-surface mb-6">Language and operations are not separate problems.</h2>
+<div class="h-1 w-20 bg-tertiary mb-8"></div>
+</div>
+<div class="lg:col-span-6 lg:col-start-7 glass-panel rounded-xl p-10">
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">They are the exact same problem. A mistranslated technical manual isn't a language error; it's a critical operational failure. A cultural misstep in negotiation isn't bad etiquette; it's lost revenue.</p>
+<p class="font-body-md text-body-md text-outline">At Ewan, we bridge this gap. We don't just provide language services; we architect operational fluency. We ensure that your intent survives the transition across borders, cultures, and regulatory environments intact.</p>
+</div>
+</div>
+</section>
+<!-- About the Firm -->
+<section class="py-24 bg-surface-container-low relative overflow-hidden">
+<div class="absolute -left-[20%] top-[20%] w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none"></div>
+<div class="max-w-[1440px] mx-auto px-grid-margin">
+<div class="flex flex-col md:flex-row gap-16 items-start">
+<div class="md:w-1/3">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-4 block">Our Origin</span>
+<h2 class="font-h2 text-h2 text-on-surface">Founded in 2020. Built for the long term.</h2>
+</div>
+<div class="md:w-2/3 glass-panel p-10 rounded-xl border-l-4 border-l-primary border-t-0 border-r-0 border-b-0">
+<p class="font-body-lg text-body-lg text-on-surface mb-6">Ewan was established with a singular conviction: true global operations require an entity that understands both sides of the business equation natively.</p>
+<p class="font-body-md text-body-md text-on-surface-variant">We saw a market fragmented between pure translation agencies lacking business acumen, and consultancies lacking ground-level linguistic integration. Ewan was built to be the structural bridge. From our headquarters, we deploy a network that turns foreign markets into familiar territory, ensuring operational continuity regardless of the geographical divide.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Founders Section -->
+<section class="py-24 px-grid-margin max-w-[1440px] mx-auto relative">
+<div class="text-center mb-16">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-4 block">Leadership</span>
+<h2 class="font-h2 text-h2 text-on-surface">The Architects of Fluency</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Founder 1 -->
+<div class="glass-panel rounded-xl overflow-hidden group">
+<div class="h-64 bg-surface-container-high relative overflow-hidden">
+<img alt="Portrait" class="w-full h-full object-cover opacity-80 mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700" data-alt="Professional portrait of a male executive in a sharp navy suit, cinematic lighting, corporate setting with subtle glass background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxFdYYPKm0uMjJaGzppyZlS1Kzi4OXKmB8PpWaS7Jtx3e0RElPrQS3cU-XO2bmf5nJV5VumrGrfLdiAh7nCjWcSen09RqQn8Fw4ZuKizQL15uyxcdpxiMLQcZzstLRh3gMvFVzaKwj8Id6ELwoRWL29QB4Ay0hPj9Xfr6d0CkU9VK8R-Lfm82F2fvaT47OHMer3L0_pBMavQ6n9Q9_b1MqZ_8O2ZE9T3m6BSIx0lQ-9aAQvK1jc33ztsrInqw96NR4Hv3Adhy4RZK8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent"></div>
+<div class="absolute bottom-4 left-6">
+<h3 class="font-h3 text-h3 text-on-surface">Soham Kakade</h3>
+<p class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider">CEO &amp; Founder</p>
+</div>
+</div>
+<div class="p-8">
+<div class="flex gap-4 mb-6 flex-wrap">
+<span class="px-3 py-1 text-xs font-semibold rounded bg-surface-container-highest text-primary">10+ Yrs Exp</span>
+<span class="px-3 py-1 text-xs font-semibold rounded bg-surface-container-highest text-primary">60k+ Hrs Interpretation</span>
+<span class="px-3 py-1 text-xs font-semibold rounded bg-surface-container-highest text-primary">Mandarin / Japanese Expert</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">A recognized authority in cross-border communication. Soham bridges complex Asian corridors with precision. His credentials span deep technical interpretation to high-level strategic alignment.</p>
+<ul class="space-y-2 font-body-md text-sm text-outline-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary text-sm">verified</span> ISO Certified Professional</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary text-sm">verified</span> Bhashini Contributor</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary text-sm">verified</span> MSAMB Partner</li>
+</ul>
+</div>
+</div>
+<!-- Founder 2 -->
+<div class="glass-panel rounded-xl overflow-hidden group">
+<div class="h-64 bg-surface-container-high relative overflow-hidden">
+<img alt="Portrait" class="w-full h-full object-cover opacity-80 mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700" data-alt="Professional portrait of a female executive in modern corporate attire, authoritative yet approachable, dark sophisticated office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6n7TXa4GbgNa8EpAIDw8oHr0_TGdCjY_6y9dNWFplHuQnoPonyJ_gwuEEQE0-uy4MExqxe-b_zKaXalo7QIBHMOsx8b5Oqi6ivA5erUIVbJMJ_mLX2uj1wN8tH0DnPgq3SoNkvKg5115GtvIXkwxkDldyMbbGwIF91A_cNIo4-bARuPdjqyiYexkR-k0w_wZzXdwbUNY3MEfgO-ste0AURQ7dx0Ytk9Xxrt4a1uGVLZ0FbTfAwHtg25JF4NMpbcT2I_UMq6st6ap6"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent"></div>
+<div class="absolute bottom-4 left-6">
+<h3 class="font-h3 text-h3 text-on-surface">Sukhada Kakade Bhalerao</h3>
+<p class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider">Director</p>
+</div>
+</div>
+<div class="p-8">
+<div class="flex gap-4 mb-6 flex-wrap">
+<span class="px-3 py-1 text-xs font-semibold rounded bg-surface-container-highest text-primary">CMA Credentialed</span>
+<span class="px-3 py-1 text-xs font-semibold rounded bg-surface-container-highest text-primary">15+ Yrs Finance</span>
+<span class="px-3 py-1 text-xs font-semibold rounded bg-surface-container-highest text-primary">Compliance Expert</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">The structural backbone of Ewan's operational promise. Sukhada ensures that every linguistic solution is undergirded by rigorous financial, audit, and compliance standards.</p>
+<ul class="space-y-2 font-body-md text-sm text-outline-variant">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary text-sm">verified</span> Strategic Financial Planning</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary text-sm">verified</span> Cross-border Compliance</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-tertiary text-sm">verified</span> Enterprise Audit structuring</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Institutional Recognition -->
+<section class="py-24 bg-surface-container-lowest border-y border-outline-variant/30">
+<div class="max-w-[1440px] mx-auto px-grid-margin">
+<div class="text-center mb-12">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-4 block">Institutional Trust</span>
+<h2 class="font-h3 text-h3 text-on-surface">Recognized by Global Authorities</h2>
+</div>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<!-- Placeholders for logos -->
+<div class="font-h3 text-h3 text-outline font-bold tracking-tighter">Consulate General of China</div>
+<div class="font-h3 text-h3 text-outline font-bold tracking-tighter">MSAMB</div>
+<div class="font-h3 text-h3 text-outline font-bold tracking-tighter">Bhashini (MeitY)</div>
+<div class="font-h3 text-h3 text-outline font-bold tracking-tighter">ISO 9001</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-32 px-grid-margin relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-primary-container/20 z-0"></div>
+<div class="absolute right-0 bottom-0 w-[600px] h-[600px] bg-tertiary/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
+<div class="max-w-4xl mx-auto text-center relative z-10 glass-panel p-16 rounded-2xl border border-primary/20 shadow-[0_0_50px_rgba(75,50,153,0.1)]">
+<h2 class="font-h1 text-h1 text-on-surface mb-6">Ready to scale securely?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">Let's discuss how our integrated language and operational intelligence can de-risk your global expansion.</p>
+<button class="bg-tertiary text-on-tertiary font-label-caps text-label-caps px-10 py-5 rounded-lg hover:bg-tertiary-fixed-dim transition-colors uppercase tracking-widest font-bold shadow-[0_0_30px_rgba(255,183,123,0.2)]">
+                    Get in Touch About a Partnership
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 bg-slate-950 border-t border-violet-900/40">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0">
+<div>
+<div class="text-xl font-bold text-white mb-4">Ewan</div>
+<p class="font-['Space_Grotesk'] text-sm tracking-normal text-slate-500">© 2024 Ewan Global. All rights reserved.</p>
+</div>
+<div class="flex flex-col md:flex-row gap-8">
+<nav class="flex flex-col space-y-3">
+<a class="font-['Space_Grotesk'] text-sm tracking-normal text-slate-500 hover:text-slate-300 hover:translate-x-1 transition-transform opacity-100 hover:opacity-80" href="#">Privacy Policy</a>
+<a class="font-['Space_Grotesk'] text-sm tracking-normal text-slate-500 hover:text-slate-300 hover:translate-x-1 transition-transform opacity-100 hover:opacity-80" href="#">Terms of Service</a>
+</nav>
+<nav class="flex flex-col space-y-3">
+<a class="font-['Space_Grotesk'] text-sm tracking-normal text-slate-500 hover:text-slate-300 hover:translate-x-1 transition-transform opacity-100 hover:opacity-80" href="#">Global Compliance</a>
+<a class="font-['Space_Grotesk'] text-sm tracking-normal text-slate-500 hover:text-slate-300 hover:translate-x-1 transition-transform opacity-100 hover:opacity-80" href="#">Security</a>
+</nav>
+<nav class="flex flex-col space-y-3">
+<a class="font-['Space_Grotesk'] text-sm tracking-normal text-amber-400 font-semibold hover:translate-x-1 transition-transform opacity-100 hover:opacity-80" href="#">Institutional Recognition</a>
+</nav>
+</div>
+</div>
+</footer>
+</body></html>

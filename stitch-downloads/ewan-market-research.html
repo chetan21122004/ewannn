@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#735c00",
+                      "surface-container-low": "#f5f2ff",
+                      "outline-variant": "#cec3ce",
+                      "on-secondary-container": "#745c00",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#f2efff",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#dfb9f0",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "on-surface": "#1a1a2e",
+                      "error": "#ba1a1a",
+                      "outline": "#7d747e",
+                      "tertiary-fixed-dim": "#adc6ff",
+                      "on-secondary-fixed": "#241a00",
+                      "secondary-fixed-dim": "#e9c349",
+                      "on-surface-variant": "#4b444d",
+                      "primary-fixed": "#f5d9ff",
+                      "inverse-surface": "#2f2e43",
+                      "secondary-container": "#fed65b",
+                      "surface-dim": "#dad7f3",
+                      "primary-fixed-dim": "#dfb9f0",
+                      "on-primary-fixed-variant": "#593b69",
+                      "on-secondary-fixed-variant": "#574500",
+                      "tertiary": "#001538",
+                      "surface-variant": "#e2e0fc",
+                      "on-tertiary-fixed-variant": "#004494",
+                      "surface-container": "#efecff",
+                      "on-tertiary-fixed": "#001a41",
+                      "surface-tint": "#725282",
+                      "primary": "#250935",
+                      "on-primary-fixed": "#2a0e3a",
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#fcf8ff",
+                      "on-primary": "#ffffff",
+                      "background": "#fcf8ff",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#3b1f4b",
+                      "on-tertiary-container": "#5090ff",
+                      "surface-container-highest": "#e2e0fc",
+                      "secondary-fixed": "#ffe088",
+                      "tertiary-container": "#00295f",
+                      "on-primary-container": "#a886b9",
+                      "tertiary-fixed": "#d8e2ff",
+                      "on-background": "#1a1a2e",
+                      "surface-bright": "#fcf8ff",
+                      "surface-container-high": "#e8e5ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": ["Plus Jakarta Sans"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 2px 2px, #e2e0fc 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Top Navigation -->
+<nav class="sticky top-0 w-full z-50 glass-nav shadow-[0_20px_40px_rgba(26,26,46,0.06)]">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-10 py-6">
+<span class="text-xl font-bold tracking-tighter text-[#250935]">EWAN Business Solutions</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#D4AF37] border-b-2 border-[#D4AF37] pb-1 font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm" href="#">Market Entry</a>
+<a class="text-[#250935] hover:text-[#D4AF37] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm" href="#">Language &amp; Localization</a>
+<a class="text-[#250935] hover:text-[#D4AF37] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm" href="#">Industries</a>
+<a class="text-[#250935] hover:text-[#D4AF37] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm" href="#">About Us</a>
+<a class="text-[#250935] hover:text-[#D4AF37] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm" href="#">Media</a>
+<a class="text-[#250935] hover:text-[#D4AF37] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm" href="#">Contact Us</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-transform">language</span>
+<button class="bg-secondary text-on-secondary px-6 py-2.5 rounded-full font-medium text-sm hover:scale-105 transition-transform active:scale-95 duration-200">
+                    Ask Soham — 15 Min Free
+                </button>
+</div>
+</div>
+</nav>
+<!-- Hero Section: Futuristic Data Visuals -->
+<header class="relative overflow-hidden pt-20 pb-32 lg:pt-32 lg:pb-48 bg-primary">
+<div class="absolute inset-0 hero-pattern opacity-10"></div>
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="futuristic digital abstract with glowing data nodes and interconnected geometric lines on a deep purple background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqDyHIp8g6iVsRlp-974P14Xq2HkwJt34bDLrXTwEWFDTE4tfrUt_EGNJ_ao8U2bacT7IBG5J05tXO1-e0IiDb3XM_S9QwiLak4sNzeXbJFCTKPGOUbMtdFxmUVImi82Ck-dzxjYe8z5npG-ZnZcxvMfMftNMOTbUFNfQPgSldNPQiQwJod0EHEPpqtRBcxZC68tXPGny7-X4fg9hKXmeY1dMBnu8T6pXgfRp-k1OA5XdJu-E280-58XQwKol1VvzDOqaJhxQCPTA"/>
+</div>
+<div class="max-w-7xl mx-auto px-10 relative z-10">
+<div class="max-w-3xl">
+<div class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container border border-white/10">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-xs font-label font-bold tracking-widest uppercase">Next-Gen Market Intelligence</span>
+</div>
+<h1 class="font-headline text-5xl lg:text-7xl font-extrabold text-white leading-tight tracking-tighter mb-8">
+                    Predicting Markets <br/>
+<span class="text-secondary">Before They Form.</span>
+</h1>
+<p class="text-xl text-on-primary-container font-light leading-relaxed mb-12 max-w-2xl">
+                    We combine high-altitude strategic scanning with deep-subsurface technical data to decode the future of global industries.
+                </p>
+<div class="flex flex-wrap gap-6">
+<button class="bg-secondary text-on-secondary px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-transform active:scale-95">
+                        Request a Research Proposal
+                    </button>
+<div class="flex items-center gap-4 text-white/70">
+<span class="material-symbols-outlined text-3xl">analytics</span>
+<div class="text-sm">
+<span class="block font-bold text-white">Live Data Processing</span>
+<span class="font-light">99.8% Prediction Accuracy</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Annotation Overlays -->
+<div class="absolute bottom-10 right-10 hidden xl:block">
+<div class="border-l-2 border-secondary pl-4 py-2 bg-white/5 backdrop-blur-md rounded-r-lg">
+<code class="text-secondary text-xs block mb-1 uppercase tracking-widest font-bold">Ref: EWAN_CORE_v2.4</code>
+<p class="text-white/60 text-[10px] font-mono leading-none">Scanning Cluster 4: Asia-Pacific Real-time sentiment index</p>
+</div>
+</div>
+</header>
+<!-- Intelligence Over Data Section -->
+<section class="py-32 bg-surface">
+<div class="max-w-7xl mx-auto px-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div class="relative">
+<div class="absolute -top-10 -left-10 w-32 h-32 bg-surface-container-low rounded-full -z-10"></div>
+<img class="rounded-[2.5rem] shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" data-alt="Close up of high resolution digital screen showing complex data visualizations and financial charts in a dark room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMEedPlcegMftXj3iCuw1U_oj30THs0B1i9OoVta9huclyXQE0-8UbP5aCit17P4tiRrVBcg7lEg7pZ6ROWWWS-SI9apyD_-n_E0wdlJ1D9Pm0EhUvbb9mLtbxMWm5y7c_vDCgLk0-Hb8Rq6JmTO3PE68PO-bhULfZXcWQhuXbRBTbiPp0nL8bDqEbnOxo5CIDq6LOnnTFYgw6sElUcRmEp6OW4yrTPGZ9REhB7nPLR_VOUp9UpR1gt7ajJEDy3bjMRydjoVJhBsI"/>
+</div>
+<div>
+<h2 class="font-headline text-4xl font-bold mb-8 tracking-tight">Intelligence Over Data</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed mb-8">
+                        The world isn't suffering from a lack of information; it's suffering from a lack of clarity. At EWAN, we move beyond the raw metric to find the hidden narrative.
+                    </p>
+<div class="space-y-6">
+<div class="flex gap-6 p-6 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary text-3xl">psychology</span>
+<div>
+<h4 class="font-bold mb-2">Cognitive Layering</h4>
+<p class="text-sm text-on-surface-variant">We overlay psychological consumer profiles atop traditional economic datasets to reveal the 'Why' behind the 'What'.</p>
+</div>
+</div>
+<div class="flex gap-6 p-6 rounded-xl border border-outline-variant/20 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
+<div>
+<h4 class="font-bold mb-2">Contextual Synthesis</h4>
+<p class="text-sm text-on-surface-variant">Data in isolation is noise. We integrate regulatory, linguistic, and cultural filters into every report.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Bento Grid -->
+<section class="py-32 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+<div class="max-w-2xl">
+<span class="text-secondary font-label font-bold text-xs tracking-widest uppercase mb-4 block">Our Expertise</span>
+<h2 class="font-headline text-4xl font-bold tracking-tight">Specialized Research Verticals</h2>
+</div>
+<p class="text-on-surface-variant max-w-sm">Tailored intelligence solutions designed for market leaders and visionaries.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Large Card -->
+<div class="md:col-span-8 bg-surface-container-lowest p-10 rounded-[2.5rem] shadow-[0_20px_40px_rgba(26,26,46,0.06)] group hover:translate-y-[-4px] transition-transform duration-300">
+<div class="flex justify-between items-start mb-12">
+<span class="material-symbols-outlined text-4xl text-primary bg-surface-container p-4 rounded-2xl">monitoring</span>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors">arrow_outward</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">Consumer Behavior Analysis</h3>
+<p class="text-on-surface-variant leading-relaxed max-w-md">Deep-dive into ethnographic studies and digital sentiment to understand the evolving needs of the global citizen.</p>
+</div>
+<!-- Small Card -->
+<div class="md:col-span-4 bg-primary p-10 rounded-[2.5rem] text-white overflow-hidden relative group hover:translate-y-[-4px] transition-transform duration-300">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl text-secondary mb-12">analytics</span>
+<h3 class="text-2xl font-bold mb-4">Market Sizing &amp; Forecasts</h3>
+<p class="text-on-primary-container text-sm leading-relaxed">Quantifying opportunity through 10-year probabilistic modeling.</p>
+</div>
+<div class="absolute bottom-0 right-0 w-32 h-32 opacity-10 scale-150 rotate-12 group-hover:rotate-0 transition-transform duration-700">
+<span class="material-symbols-outlined text-9xl">trending_up</span>
+</div>
+</div>
+<!-- Small Card -->
+<div class="md:col-span-4 bg-surface-container-lowest p-10 rounded-[2.5rem] shadow-[0_20px_40px_rgba(26,26,46,0.06)] hover:translate-y-[-4px] transition-transform duration-300">
+<span class="material-symbols-outlined text-4xl text-primary mb-12">gavel</span>
+<h3 class="text-2xl font-bold mb-4">Policy &amp; Regulatory Scanning</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Navigating the complex landscape of international compliance and emerging legislation.</p>
+</div>
+<!-- Large Card -->
+<div class="md:col-span-8 bg-surface-container-highest p-10 rounded-[2.5rem] flex flex-col md:flex-row gap-8 items-center hover:translate-y-[-4px] transition-transform duration-300">
+<div class="flex-1">
+<span class="material-symbols-outlined text-4xl text-primary mb-12">compare_arrows</span>
+<h3 class="text-2xl font-bold mb-4">Competitive Benchmarking</h3>
+<p class="text-on-surface-variant leading-relaxed">Granular analysis of competitor performance, technical debt, and strategic positioning.</p>
+</div>
+<div class="w-full md:w-1/3 aspect-square rounded-2xl overflow-hidden bg-white/50">
+<img class="w-full h-full object-cover mix-blend-multiply opacity-80" data-alt="Abstract colorful business charts and bar graphs on a clean white background with elegant shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMRqYPBfrjk2p1n_dw_LYXGtTVr0jAsnht0mWoisRUNvGRUvFJQkpvRfDoPwwakQda7zSe3T9YnP2J0qNFRc5h2wAx8FfynHUeuW_sHWDB97OCYe2l3NvdtzbBvcgRtWbhE_cycrBJzJWKOd6dyBfZiNsBsI_ReVtRkh4fdOv-_AGXF9tZcmsMqEpJeScHezirl1k28tviLABssvEdCQoHMOoeLTPCLYJxNdp8K3Cd2F5Rskj1R_RXA6Mvb2Jrvq25Lzyu6j6IxU8"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Methodology -->
+<section class="py-32 bg-surface">
+<div class="max-w-7xl mx-auto px-10">
+<h2 class="font-headline text-4xl font-bold text-center mb-24 tracking-tight">Our Methodology</h2>
+<div class="relative">
+<!-- Connecting Line -->
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant/30 -z-10 hidden lg:block"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<!-- Step 1 -->
+<div class="bg-surface group">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-8 border border-outline-variant/20 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+<span class="font-headline font-bold text-xl">01</span>
+</div>
+<h4 class="font-bold text-xl mb-4">Scoping</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Defining the intelligence gap and identifying critical unknown variables.</p>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface group">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-8 border border-outline-variant/20 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+<span class="font-headline font-bold text-xl">02</span>
+</div>
+<h4 class="font-bold text-xl mb-4">Acquisition</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Multi-source data harvesting across primary, secondary, and tertiary silos.</p>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface group">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-8 border border-outline-variant/20 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+<span class="font-headline font-bold text-xl">03</span>
+</div>
+<h4 class="font-bold text-xl mb-4">Triangulation</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Cross-verifying findings through divergent analytical frameworks.</p>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface group">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center mb-8 border border-outline-variant/20 group-hover:bg-secondary group-hover:text-white transition-all duration-500">
+<span class="font-headline font-bold text-xl">04</span>
+</div>
+<h4 class="font-bold text-xl mb-4">Synthesis</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Distilling complex findings into actionable executive strategy reports.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-10 py-20">
+<div class="max-w-7xl mx-auto bg-primary rounded-[3rem] p-12 lg:p-24 text-center relative overflow-hidden">
+<div class="absolute inset-0 hero-pattern opacity-5"></div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="font-headline text-4xl lg:text-5xl font-bold text-white mb-8 tracking-tight">Ready for Unfair Clarity?</h2>
+<p class="text-on-primary-container text-lg mb-12">Join elite organizations who leverage EWAN's research to out-maneuver the competition in global markets.</p>
+<button class="bg-secondary text-on-secondary px-10 py-5 rounded-full font-bold text-xl hover:scale-105 transition-transform active:scale-95 flex items-center gap-3 mx-auto shadow-xl shadow-black/20">
+                    Request a Research Proposal
+                    <span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full rounded-t-[2.5rem] mt-20 bg-[#3B1F4B]">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-12 py-24">
+<div class="md:col-span-1">
+<span class="text-2xl font-bold text-white mb-6 block tracking-tighter">EWAN</span>
+<p class="text-purple-200/70 font-['Inter'] font-light text-sm tracking-wide leading-relaxed">
+                    The strategic vanguard for global expansion and technical localization.
+                </p>
+</div>
+<div>
+<h4 class="text-white font-bold mb-8 text-sm uppercase tracking-widest">Solutions</h4>
+<ul class="space-y-4">
+<li><a class="text-purple-200/70 hover:text-white transition-colors font-['Inter'] font-light text-sm tracking-wide block hover:translate-x-1 transition-transform" href="#">Market Entry Solutions</a></li>
+<li><a class="text-purple-200/70 hover:text-white transition-colors font-['Inter'] font-light text-sm tracking-wide block hover:translate-x-1 transition-transform" href="#">Localization Services</a></li>
+<li><a class="text-purple-200/70 hover:text-white transition-colors font-['Inter'] font-light text-sm tracking-wide block hover:translate-x-1 transition-transform" href="#">Industry Insights</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-8 text-sm uppercase tracking-widest">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-purple-200/70 hover:text-white transition-colors font-['Inter'] font-light text-sm tracking-wide block hover:translate-x-1 transition-transform" href="#">About Our Vision</a></li>
+<li><a class="text-purple-200/70 hover:text-white transition-colors font-['Inter'] font-light text-sm tracking-wide block hover:translate-x-1 transition-transform" href="#">Media Center</a></li>
+<li><a class="text-purple-200/70 hover:text-white transition-colors font-['Inter'] font-light text-sm tracking-wide block hover:translate-x-1 transition-transform" href="#">Contact Strategy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-8 text-sm uppercase tracking-widest">Global Reach</h4>
+<div class="w-full aspect-video bg-white/5 rounded-2xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover opacity-30" data-alt="minimal world map graphic on deep dark purple background with subtle connections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARSK68-myd7Ec9VebzPp2Ait5Tiy7KF_QXx0qkywxKvJcCVav4gAuOfzcrtUTS-Q4YInol09jJ9ICFo7pj1K_yx6IrRClYVR2gLPTHKzhcZCrKzMHJQq-EWF6URwoqyJWUZhfZ2VKQ7fqCFUyfLJQIvMWADui5ObOzCB5id4Oysc9aWieBMAsAJMVs2oMuFNfscJf6Bn19uLElbczX9GjZoA2-MZe-p1GRN09RghLxPbWdpKxGJh4DZlm_FH31TTax5JgM7KYGXF8"/>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-12 pb-12 flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-12">
+<p class="text-purple-200/50 font-['Inter'] font-light text-xs tracking-wide">© 2024 EWAN Business Solutions. All rights reserved.</p>
+<div class="flex gap-8 mt-6 md:mt-0">
+<a class="text-purple-200/50 hover:text-white transition-colors text-xs" href="#">Privacy Policy</a>
+<a class="text-purple-200/50 hover:text-white transition-colors text-xs" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</body></html>

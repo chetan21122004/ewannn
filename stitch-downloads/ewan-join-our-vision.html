@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#735c00",
+                    "surface-container-low": "#f5f2ff",
+                    "outline-variant": "#cec3ce",
+                    "on-secondary-container": "#745c00",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#f2efff",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#dfb9f0",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#1a1a2e",
+                    "error": "#ba1a1a",
+                    "outline": "#7d747e",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "on-secondary-fixed": "#241a00",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-surface-variant": "#4b444d",
+                    "primary-fixed": "#f5d9ff",
+                    "inverse-surface": "#2f2e43",
+                    "secondary-container": "#fed65b",
+                    "surface-dim": "#dad7f3",
+                    "primary-fixed-dim": "#dfb9f0",
+                    "on-primary-fixed-variant": "#593b69",
+                    "on-secondary-fixed-variant": "#574500",
+                    "tertiary": "#001538",
+                    "surface-variant": "#e2e0fc",
+                    "on-tertiary-fixed-variant": "#004494",
+                    "surface-container": "#efecff",
+                    "on-tertiary-fixed": "#001a41",
+                    "surface-tint": "#725282",
+                    "primary": "#250935",
+                    "on-primary-fixed": "#2a0e3a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#fcf8ff",
+                    "on-primary": "#ffffff",
+                    "background": "#fcf8ff",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#3b1f4b",
+                    "on-tertiary-container": "#5090ff",
+                    "surface-container-highest": "#e2e0fc",
+                    "secondary-fixed": "#ffe088",
+                    "tertiary-container": "#00295f",
+                    "on-primary-container": "#a886b9",
+                    "tertiary-fixed": "#d8e2ff",
+                    "on-background": "#1a1a2e",
+                    "surface-bright": "#fcf8ff",
+                    "surface-container-high": "#e8e5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+        }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 2px 2px, #3b1f4b 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-[0_20px_40px_rgba(26,26,46,0.06)]">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-10 py-6">
+<span class="text-xl font-bold tracking-tighter text-[#250935] font-headline">EWAN Business Solutions</span>
+<div class="hidden md:flex gap-10 items-center">
+<a class="text-[#250935] hover:text-[#D4AF37] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm" href="#">Market Entry</a>
+<a class="text-[#250935] hover:text-[#D4AF37] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm" href="#">Language &amp; Localization</a>
+<a class="text-[#250935] hover:text-[#D4AF37] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm" href="#">Industries</a>
+<a class="text-[#250935] hover:text-[#D4AF37] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm" href="#">About Us</a>
+<a class="text-[#250935] hover:text-[#D4AF37] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm" href="#">Media</a>
+<a class="text-[#D4AF37] border-b-2 border-[#D4AF37] pb-1 font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm" href="#">Contact Us</a>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-105 transition-transform" data-icon="language">language</span>
+<button class="bg-secondary text-on-secondary px-6 py-2.5 rounded-xl font-headline text-sm font-semibold hover:scale-105 transition-transform duration-300 active:scale-95">
+                    Ask Soham — 15 Min Free
+                </button>
+</div>
+</div>
+</nav>
+<!-- Hero Section: Crazy and Futuristic -->
+<header class="relative min-h-[921px] flex items-center overflow-hidden bg-primary px-10">
+<div class="absolute inset-0 opacity-20 hero-pattern"></div>
+<!-- Futuristic Doodles/Elements Overlay -->
+<div class="absolute top-20 right-[-10%] w-[600px] h-[600px] bg-secondary/10 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-primary-container/40 blur-[100px] rounded-full"></div>
+<div class="max-w-7xl mx-auto editorial-grid w-full relative z-10">
+<div class="col-span-12 lg:col-span-8">
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary font-headline text-xs font-bold tracking-widest uppercase mb-8">Ecosystem Architects</span>
+<h1 class="text-white font-headline text-6xl md:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-10">
+                    The Human <br/> <span class="text-secondary">Network</span> of the <br/> Future.
+                </h1>
+<p class="text-on-primary-container text-xl md:text-2xl max-w-2xl leading-relaxed font-light mb-12">
+                    We are building a decentralized intelligence engine for global expansion. Collaboration isn't a buzzword; it's our architectural foundation.
+                </p>
+<div class="flex flex-wrap gap-6">
+<button class="bg-secondary text-on-secondary px-10 py-5 rounded-full font-headline text-lg font-bold hover:scale-105 transition-transform shadow-lg">
+                        Explore Your Path
+                    </button>
+<button class="border border-outline-variant/30 text-white px-10 py-5 rounded-full font-headline text-lg font-bold hover:bg-white/5 transition-colors">
+                        View Network Map
+                    </button>
+</div>
+</div>
+</div>
+<!-- Asymmetric Decorative Element -->
+<div class="absolute right-10 bottom-20 hidden lg:block w-1/3 aspect-square">
+<img alt="futuristic digital network" class="w-full h-full object-cover rounded-[3rem] grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl rotate-3" data-alt="Abstract digital visualization of glowing interconnected nodes and lines representing a neural network or global data connection in deep violet and gold" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoE1_FlnRVLRJJha8TZBmt92FM2uSRrV7bVIQHPGxMG8nqViPMBAf0UMIh63HiCs3ANdhSejcVHodjTRXjzHS7JOLqf9Wd-besbC8u8q8tg7skMn_0xlGfWfigp0mAAvOcBiwsxXDY5QHQrnfMaXyge32Ze-mO1eRbH0wU_MgCRirJ2WRtWl0oHpUbDi8KYQw0qMJuA4dbn-9VmINomVOQHldGSCYE7bJkgXydE-e2LCx7B5k48hiOii5pLKyIDYoafTmRuwrVF3Q"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-7xl mx-auto px-10 py-32 space-y-40">
+<!-- Careers Section -->
+<section class="editorial-grid gap-16 items-center" id="careers">
+<div class="col-span-12 lg:col-span-5 order-2 lg:order-1">
+<div class="space-y-8">
+<h2 class="text-primary font-headline text-5xl font-extrabold tracking-tight">Careers</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                        Join a culture that prioritizes strategic autonomy over bureaucratic hierarchy. We seek executive architects, creative problem solvers, and localization pioneers.
+                    </p>
+<div class="space-y-4">
+<div class="group flex justify-between items-center p-6 bg-surface-container-low rounded-2xl hover:bg-surface-container transition-colors cursor-pointer">
+<div>
+<h4 class="font-headline font-bold text-primary">Senior Market Strategy Lead</h4>
+<p class="text-sm text-on-surface-variant">Global / Remote</p>
+</div>
+<span class="material-symbols-outlined text-secondary group-hover:translate-x-2 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="group flex justify-between items-center p-6 bg-surface-container-low rounded-2xl hover:bg-surface-container transition-colors cursor-pointer">
+<div>
+<h4 class="font-headline font-bold text-primary">Head of Linguistic Intelligence</h4>
+<p class="text-sm text-on-surface-variant">Singapore / Hybrid</p>
+</div>
+<span class="material-symbols-outlined text-secondary group-hover:translate-x-2 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<button class="text-primary font-headline font-bold flex items-center gap-2 group">
+                        See All Open Roles 
+                        <span class="material-symbols-outlined text-secondary transition-transform group-hover:translate-x-1" data-icon="north_east">north_east</span>
+</button>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-7 order-1 lg:order-2">
+<img alt="modern office culture" class="w-full h-[500px] object-cover rounded-[2.5rem] shadow-xl" data-alt="Ultra-modern minimalist office space with floor-to-ceiling windows, white furniture, and soft sunlight creating clean lines and premium professional atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApgNtmb8ia70zcktO-_8VUwmRvdJeAEAD8901MVA8qCk5eRUMdGhR4StNmOF9DzIpTNx15dhDYHkXcqJlvfaKxVAhrus0G5_w15LG7aGNZ-48dOVCgZITu4rWhicK4XCwKlVGx2x5JHrku3kzYN5ZeHkl4RgCQmeOR1vbJK1_IJ-4pNQrqxuXXq_8qdYjOFvsPKe-eFKDIRzXnnhiK8WwB-DRovfzIDIw-iU5DWjWQxCv-2_-JdkLlCLmDV6_azw1Qo13WDAmWbeE"/>
+</div>
+</section>
+<!-- Vendors & Collaborations - Bento Style -->
+<section class="space-y-16">
+<div class="text-center max-w-3xl mx-auto">
+<h2 class="text-primary font-headline text-5xl font-extrabold tracking-tight mb-6">Partnership Ecosystems</h2>
+<p class="text-on-surface-variant text-lg">Whether you are a boutique agency or an independent strategist, we provide the platform to scale your expertise.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Vendors Card -->
+<div class="bg-surface-container-low p-12 rounded-[3rem] flex flex-col justify-between group hover:bg-white transition-all duration-500 hover:shadow-xl relative overflow-hidden">
+<div class="absolute top-[-20%] right-[-10%] opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[300px]" data-icon="handshake">handshake</span>
+</div>
+<div class="relative z-10">
+<div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-10 shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="hub">hub</span>
+</div>
+<h3 class="text-primary font-headline text-4xl font-bold mb-6">Vendors</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-10">
+                            We partner with specialized firms in localization, legal compliance, and market logistics. Integrate your services into our global delivery framework.
+                        </p>
+</div>
+<div class="relative z-10">
+<button class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-headline font-bold flex items-center gap-3 hover:scale-105 transition-transform">
+                            Partnership Inquiry
+                            <span class="material-symbols-outlined" data-icon="arrow_outward">arrow_outward</span>
+</button>
+</div>
+</div>
+<!-- Collaborations Card -->
+<div class="bg-primary p-12 rounded-[3rem] flex flex-col justify-between group hover:shadow-2xl transition-all duration-500 relative overflow-hidden">
+<div class="absolute top-[-20%] right-[-10%] opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[300px] text-white" data-icon="person_search">person_search</span>
+</div>
+<div class="relative z-10">
+<div class="w-16 h-16 bg-primary-container rounded-2xl flex items-center justify-center mb-10 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="groups">groups</span>
+</div>
+<h3 class="text-white font-headline text-4xl font-bold mb-6">Collaborations</h3>
+<p class="text-on-primary-container text-lg leading-relaxed mb-10">
+                            For independent consultants and industry experts. Access high-value projects and leverage EWAN's infrastructure to deliver at an enterprise scale.
+                        </p>
+</div>
+<div class="relative z-10">
+<button class="bg-white text-primary px-8 py-4 rounded-xl font-headline font-bold flex items-center gap-3 hover:bg-secondary hover:text-white transition-all">
+                            Join Expert Network
+                            <span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA: Strategy Reveal Style -->
+<section class="bg-surface-container-highest p-16 md:p-24 rounded-[4rem] text-center space-y-10">
+<h2 class="text-primary font-headline text-5xl md:text-7xl font-extrabold tracking-tighter">Your Next Evolution <br/> Starts Here.</h2>
+<p class="text-on-surface-variant text-xl max-w-2xl mx-auto font-light">
+                Whether you’re looking to join our core team or partner as a specialist, we have a seat at the table for world-class talent.
+            </p>
+<div class="pt-8">
+<button class="bg-secondary text-on-secondary px-16 py-6 rounded-full font-headline text-2xl font-bold shadow-2xl hover:scale-105 transition-transform active:scale-95">
+                    Explore Your Path
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-[2.5rem] mt-20 bg-[#3B1F4B]">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-12 py-24">
+<div class="col-span-1 md:col-span-1">
+<span class="text-2xl font-bold text-white mb-6 block font-headline tracking-tighter">EWAN</span>
+<p class="text-purple-200/70 font-['Inter'] font-light text-sm tracking-wide leading-relaxed">
+                    Architecting global business entry through strategic intelligence and human-centric localization.
+                </p>
+</div>
+<div class="space-y-4">
+<h4 class="text-white font-bold mb-6 font-headline">Solutions</h4>
+<a class="block text-purple-200/70 hover:text-white transition-colors font-['Inter'] font-light text-sm tracking-wide hover:translate-x-1 transition-transform" href="#">Market Entry Solutions</a>
+<a class="block text-purple-200/70 hover:text-white transition-colors font-['Inter'] font-light text-sm tracking-wide hover:translate-x-1 transition-transform" href="#">Localization Services</a>
+<a class="block text-purple-200/70 hover:text-white transition-colors font-['Inter'] font-light text-sm tracking-wide hover:translate-x-1 transition-transform" href="#">Industry Insights</a>
+</div>
+<div class="space-y-4">
+<h4 class="text-white font-bold mb-6 font-headline">Company</h4>
+<a class="block text-purple-200/70 hover:text-white transition-colors font-['Inter'] font-light text-sm tracking-wide hover:translate-x-1 transition-transform" href="#">About Our Vision</a>
+<a class="block text-purple-200/70 hover:text-white transition-colors font-['Inter'] font-light text-sm tracking-wide hover:translate-x-1 transition-transform" href="#">Media Center</a>
+<a class="block text-purple-200/70 hover:text-white transition-colors font-['Inter'] font-light text-sm tracking-wide hover:translate-x-1 transition-transform" href="#">Contact Strategy</a>
+</div>
+<div class="space-y-4">
+<h4 class="text-white font-bold mb-6 font-headline">Newsletter</h4>
+<div class="flex gap-2">
+<input class="bg-white/10 border-none rounded-lg text-white text-sm focus:ring-1 focus:ring-secondary w-full" placeholder="Email" type="email"/>
+<button class="bg-secondary p-2 rounded-lg text-white">
+<span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-12 py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="text-purple-200/50 text-xs font-light">© 2024 EWAN Business Solutions. All rights reserved.</span>
+<div class="flex gap-8">
+<a class="text-purple-200/50 text-xs hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-purple-200/50 text-xs hover:text-white transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</body></html>

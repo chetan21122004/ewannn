@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { Building2, Languages, ArrowRight, CheckCircle2, Globe2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const blocks = [
+const defaultBlocks = [
   {
     id: "market-entry",
-    icon: Building2,
     label: "Market Entry & Operations",
     title: "Land. Setup. Scale.",
     desc: "Full-stack market entry into India and outbound expansion for Indian companies — handled end to end.",
@@ -13,7 +13,6 @@ const blocks = [
   },
   {
     id: "language",
-    icon: Languages,
     label: "Language & Localization",
     title: "Speak Every Market.",
     desc: "Certified linguists and native experts across 125+ languages — translation, interpretation, and full localization.",
@@ -40,6 +39,18 @@ const accentStyles = {
 } as const;
 
 const ServicesSection = () => {
+  const { t } = useTranslation();
+  const blocks = t("home.services.blocks", {
+    returnObjects: true,
+    defaultValue: defaultBlocks,
+  }) as Array<{
+    id: string;
+    label: string;
+    title: string;
+    desc: string;
+    features: string[];
+    accent: "gold" | "purple";
+  }>;
   return (
     <section id="services" className="py-10 lg:py-32 relative overflow-hidden theme-section-soft">
       <div className="glow-orb glow-orb-purple w-[400px] h-[400px] top-10 -left-40 opacity-8" />
@@ -55,19 +66,19 @@ const ServicesSection = () => {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-5">
-            <Globe2 className="w-3.5 h-3.5" /> What We Do
+            <Globe2 className="w-3.5 h-3.5" /> {t("home.services.badge")}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light mb-5">
-            Two Capabilities. <span className="gradient-text italic">One Partner.</span>
+            {t("home.services.titlePrefix")} <span className="gradient-text italic">{t("home.services.titleHighlight")}</span>
           </h2>
           <p className="text-on-light-muted text-base sm:text-lg leading-relaxed">
-            Most competitors do one. Ewan does both — combining language excellence with on-the-ground market entry execution.
+            {t("home.services.subtitle")}
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           {blocks.map((block, i) => {
-            const Icon = block.icon;
+            const Icon = block.id === "language" ? Languages : Building2;
             const accent = accentStyles[block.accent];
             return (
               <motion.div
@@ -116,7 +127,7 @@ const ServicesSection = () => {
                   whileHover={{ x: 5 }}
                   className={`inline-flex items-center gap-2 text-sm font-semibold tracking-wider uppercase ${accent.link} group/link`}
                 >
-                  Learn More
+                  {t("home.services.learnMore")}
                   <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                 </motion.a>
               </motion.div>
@@ -132,7 +143,7 @@ const ServicesSection = () => {
           transition={{ delay: 0.5 }}
         >
           <p className="inline-block text-sm sm:text-base text-on-light-secondary italic font-serif">
-            <span className="text-primary not-italic font-semibold">→</span> Competitors do one. <span className="gradient-text font-semibold not-italic">Ewan does both.</span>
+            <span className="text-primary not-italic font-semibold">→</span> {t("home.services.footerPrefix")} <span className="gradient-text font-semibold not-italic">{t("home.services.footerHighlight")}</span>
           </p>
         </motion.div>
       </div>

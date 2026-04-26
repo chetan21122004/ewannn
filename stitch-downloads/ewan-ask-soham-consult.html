@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ask Soham — EWAN Business Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#735c00",
+                        "surface-container-low": "#f5f2ff",
+                        "outline-variant": "#cec3ce",
+                        "on-secondary-container": "#745c00",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f2efff",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#dfb9f0",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1a1a2e",
+                        "error": "#ba1a1a",
+                        "outline": "#7d747e",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-surface-variant": "#4b444d",
+                        "primary-fixed": "#f5d9ff",
+                        "inverse-surface": "#2f2e43",
+                        "secondary-container": "#fed65b",
+                        "surface-dim": "#dad7f3",
+                        "primary-fixed-dim": "#dfb9f0",
+                        "on-primary-fixed-variant": "#593b69",
+                        "on-secondary-fixed-variant": "#574500",
+                        "tertiary": "#001538",
+                        "surface-variant": "#e2e0fc",
+                        "on-tertiary-fixed-variant": "#004494",
+                        "surface-container": "#efecff",
+                        "on-tertiary-fixed": "#001a41",
+                        "surface-tint": "#725282",
+                        "primary": "#250935",
+                        "on-primary-fixed": "#2a0e3a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#fcf8ff",
+                        "on-primary": "#ffffff",
+                        "background": "#fcf8ff",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#3b1f4b",
+                        "on-tertiary-container": "#5090ff",
+                        "surface-container-highest": "#e2e0fc",
+                        "secondary-fixed": "#ffe088",
+                        "tertiary-container": "#00295f",
+                        "on-primary-container": "#a886b9",
+                        "tertiary-fixed": "#d8e2ff",
+                        "on-background": "#1a1a2e",
+                        "surface-bright": "#fcf8ff",
+                        "surface-container-high": "#e8e5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .executive-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .scribble-annotation {
+            font-family: 'cursive', sans-serif; /* Fallback for handwritten effect */
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+<!-- TopAppBar -->
+<nav class="sticky top-0 w-full z-50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl shadow-[0_20px_40px_rgba(26,26,46,0.06)]">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-10 py-6">
+<div class="text-xl font-bold tracking-tighter text-[#250935] dark:text-white">
+                EWAN Business Solutions
+            </div>
+<div class="hidden md:flex items-center space-x-10">
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#250935] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">Market Entry</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#250935] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">Language &amp; Localization</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#250935] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">Industries</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#250935] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">About Us</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#250935] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">Media</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-medium text-sm text-[#250935] dark:text-slate-300 hover:text-[#D4AF37] transition-colors" href="#">Contact Us</a>
+</div>
+<div class="flex items-center space-x-6">
+<span class="material-symbols-outlined text-[#250935] cursor-pointer">language</span>
+<button class="bg-[#D4AF37] text-white px-6 py-2.5 rounded-full font-medium text-sm hover:scale-105 transition-transform duration-300 active:scale-95">
+                    Ask Soham — 15 Min Free
+                </button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section: The Executive Architect -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden pt-12">
+<!-- Background Elements -->
+<div class="absolute inset-0 z-0">
+<div class="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-primary-container/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="container mx-auto px-10 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+<div class="lg:col-span-7">
+<div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-secondary-container/20 text-secondary mb-8">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-xs font-bold uppercase tracking-widest font-label">The Executive Architect Series</span>
+</div>
+<h1 class="font-headline text-6xl md:text-8xl font-extrabold tracking-tighter leading-[0.9] text-primary mb-8">
+                            Strategic <br/> <span class="text-secondary italic">Intelligence</span> <br/> Unlocked.
+                        </h1>
+<p class="text-xl text-on-surface-variant max-w-xl leading-relaxed mb-10">
+                            Beyond standard consulting. A 15-minute high-fidelity strategic dive into your global expansion roadmap with Soham.
+                        </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-secondary text-on-secondary px-10 py-5 rounded-full font-bold text-lg shadow-xl hover:scale-[1.02] transition-transform active:scale-95">
+                                Book Your 15 Min Free Session
+                            </button>
+<div class="flex -space-x-3 items-center ml-4">
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional portrait of an executive male in a suit with a confident smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQPrhKFhwwYjUnEfXc236zyUHXgF2h6WyomDicFaCvWSa553ohWCTd2CE-EPyFVEqa1DjAcGCq62_mXKpAGJ6X7c6xNbmGI3rG8rEJN2Ba-7tmVFyYGGLeBb7sHiv7KVmsIu9WTAdKwTD8u1D-soYzohXoF_aOzhzSogpGCux6-8Sh017QIpKIYEBsEGCPt7xwYfNhzHFXTcTVl-Dd_SCebaMKybbzNBewxCGdez8Dmnx4lrW_5C_5nBHkTHinWepi2FOWDSPgx1U"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a high-level female consultant with a neutral, authoritative expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlSEEhbgbmitcHy0oaDUVVMcomkHuOvO0P6HalvkrLai9HZOxDURdO543D-BpryXHkiTeiehMKsx2RIvBNhMEQ5nqK03WLcFpgsdYe8i5KRUTs8V2p2z5742JN55rAPiZa4Rpnhqioj4ELUui-5NVluaJFjs8NcLWw_rWjnMRLJ2bKq9qeIzYkhaBhK_JakWrfhpg9UYsc6A4G-0kxa69sN6W31cz_IvlKPGp_1rptMqWZ_2DiRuZEGi5QC3ZsAmdoqU2HWE_wMNo"/>
+</div>
+<span class="pl-6 text-sm font-medium text-on-surface-variant">Joined by 450+ Leaders</span>
+</div>
+</div>
+</div>
+<!-- Futuristic Visual Column -->
+<div class="lg:col-span-5 relative">
+<div class="relative w-full aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="ultra-modern glass architecture building with sharp geometric lines and blue sky reflection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5f0Li3dw-gYHfnh1gEw6HnfKnPKcxehbmQNIq6fnXKvmQk0paeV5qjXizpcA0wAigT5AWpu_QFgpzx5ENRHls2SSWRvdo-Zo9KcLdHYEm_OGyQzBvoXDrrGlrHw6vlmvNBuYUwAlGUQ5QGzYa3sKvPN86Jt4HJdfl99qS95Xsy0EGB50J5kIe0KK2yMTx0fa0B6bVojtot-YlJZeRMcbvZVbTUPVaYhdKSgl6C0lBwhM7SssrGB_cnr0U4UQrOjx0ICElzUEKfCQ"/>
+<!-- Overlay Annotations -->
+<div class="absolute inset-0 bg-primary/20 mix-blend-overlay"></div>
+<!-- Tactical Annotations -->
+<div class="absolute top-10 left-10 p-4 executive-blur bg-white/10 border border-white/20 rounded-2xl text-white">
+<div class="text-[10px] uppercase tracking-widest opacity-70">Architecture Node</div>
+<div class="text-lg font-bold">L-04 // Strategy</div>
+</div>
+<div class="absolute bottom-12 right-12 p-6 executive-blur bg-white/20 border border-white/30 rounded-full w-40 h-40 flex flex-col items-center justify-center text-center text-white">
+<span class="material-symbols-outlined text-4xl mb-1">query_stats</span>
+<div class="text-[10px] uppercase font-bold tracking-tighter leading-none">Market<br/>Entropy</div>
+</div>
+<!-- Scribble/Doodles -->
+<div class="absolute top-1/2 left-[-10%] scribble-annotation text-secondary font-bold text-4xl rotate-[-15deg] pointer-events-none">
+                                GROWTH →
+                            </div>
+</div>
+<!-- Floating Data Card -->
+<div class="absolute -bottom-6 -left-12 p-8 bg-surface-container-lowest rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.1)] max-w-[280px]">
+<div class="flex items-center space-x-4 mb-4">
+<div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined">hub</span>
+</div>
+<div>
+<h4 class="font-bold text-primary">Global Link</h4>
+<p class="text-xs text-on-surface-variant italic">Active Deployment</p>
+</div>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full w-[85%] bg-secondary"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Three Tracks of Transformation -->
+<section class="py-32 bg-surface">
+<div class="container mx-auto px-10">
+<div class="max-w-3xl mb-20">
+<h2 class="font-headline text-5xl font-bold tracking-tight text-primary mb-6">Three Tracks of Transformation</h2>
+<p class="text-lg text-on-surface-variant">We don't provide generic advice. We architect specific interventions designed for high-stakes market expansion.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Block 1 -->
+<div class="p-10 rounded-[2.5rem] bg-surface-container-low hover:bg-surface-container transition-colors group">
+<div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-4">Market Entry Audit</h3>
+<p class="text-on-surface-variant leading-relaxed mb-8">A ruthless evaluation of your current positioning against regional fiscal and cultural benchmarks.</p>
+<ul class="space-y-3">
+<li class="flex items-center text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-[18px] mr-2 text-secondary">check_circle</span>
+                                Regulatory GAP Analysis
+                            </li>
+<li class="flex items-center text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-[18px] mr-2 text-secondary">check_circle</span>
+                                Competitor Shadowing
+                            </li>
+</ul>
+</div>
+<!-- Block 2 -->
+<div class="p-10 rounded-[2.5rem] bg-surface-container-low hover:bg-surface-container transition-colors group">
+<div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">translate</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-4">Linguistic Strategy Review</h3>
+<p class="text-on-surface-variant leading-relaxed mb-8">Moving beyond translation to cultural resonance. We audit the soul of your brand communication.</p>
+<ul class="space-y-3">
+<li class="flex items-center text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-[18px] mr-2 text-secondary">check_circle</span>
+                                Semantic Brand Protection
+                            </li>
+<li class="flex items-center text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-[18px] mr-2 text-secondary">check_circle</span>
+                                Localized Tone-of-Voice
+                            </li>
+</ul>
+</div>
+<!-- Block 3 -->
+<div class="p-10 rounded-[2.5rem] bg-surface-container-low hover:bg-surface-container transition-colors group">
+<div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">map</span>
+</div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-4">Global Liaisoning Roadmap</h3>
+<p class="text-on-surface-variant leading-relaxed mb-8">Connecting the dots between local authorities, key partners, and your executive team.</p>
+<ul class="space-y-3">
+<li class="flex items-center text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-[18px] mr-2 text-secondary">check_circle</span>
+                                Partner Ecosystem Mapping
+                            </li>
+<li class="flex items-center text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-[18px] mr-2 text-secondary">check_circle</span>
+                                Tiered Expansion Milestones
+                            </li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Your Strategic Partner -->
+<section class="py-24 bg-surface-container-low">
+<div class="container mx-auto px-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl relative">
+<img class="w-full h-full object-cover" data-alt="close-up of a sharp-dressed male executive standing in a high-rise office with glass windows overlooking a city skyline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb3ckNnbhawBtITPoSVEny8IpeoHl8OqY15BXTDzTBW3TqA3axA5HCIxtv4n-y0RPrXmz4PmHA2Vo6ydW4p7ta7EwoPtatmkwKVIB3YN53yCps-6VP9csy23uo6ijqSspGVE-nw-2mFB8vCXMSQuiCeg10XTrEbXYqA2nTKI4hrIFXOryOBsOaaFrgtWjU8DpH3E3xsnJxdzJmek3WkYl-VXOcBixE4zLprGR4sFvLLaOjPi7TirkI-6LTux90Ps7Vzy2V4DLccb4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-10 left-10 text-white">
+<h3 class="text-4xl font-bold font-headline mb-1">Soham Mukherjee</h3>
+<p class="text-secondary font-medium tracking-[0.2em] uppercase text-xs">Chief Strategist &amp; Founder</p>
+</div>
+</div>
+<!-- Asymmetric Floating Text -->
+<div class="absolute -right-10 top-1/4 executive-blur bg-white/80 p-8 rounded-3xl shadow-xl max-w-sm hidden lg:block border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4">format_quote</span>
+<p class="text-primary italic font-medium leading-relaxed">
+                                "The difference between market entry and market dominance is the quality of the first three conversations."
+                            </p>
+</div>
+</div>
+<div>
+<h2 class="font-headline text-5xl font-bold text-primary mb-8 leading-tight">Your Strategic Partner</h2>
+<p class="text-lg text-on-surface-variant mb-6">
+                            Soham brings a decade of boots-on-the-ground experience in emerging markets across Southeast Asia and the Middle East. His approach is clinical, data-driven, yet deeply human.
+                        </p>
+<p class="text-lg text-on-surface-variant mb-10 leading-relaxed">
+                            At EWAN, we believe that 'Global' is a mindset, not just a geography. Our founders have spent years refining the methodology of 'Localization-First Strategy', ensuring that when you move, the market moves with you.
+                        </p>
+<div class="grid grid-cols-2 gap-8 border-t border-outline-variant/30 pt-10">
+<div>
+<div class="text-4xl font-extrabold text-primary mb-1">12+</div>
+<div class="text-sm font-label uppercase tracking-widest text-on-surface-variant">Global Hubs</div>
+</div>
+<div>
+<div class="text-4xl font-extrabold text-primary mb-1">450M</div>
+<div class="text-sm font-label uppercase tracking-widest text-on-surface-variant">Impact Reach</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Booking Widget Placeholder -->
+<section class="py-32 bg-white overflow-hidden relative">
+<div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-surface-container-low to-transparent"></div>
+<div class="container mx-auto px-10">
+<div class="max-w-5xl mx-auto text-center mb-16">
+<h2 class="font-headline text-5xl font-bold text-primary mb-4">Select Your Window</h2>
+<p class="text-on-surface-variant">Real-time availability for high-level consultation.</p>
+</div>
+<div class="max-w-4xl mx-auto bg-surface-container-lowest rounded-[3rem] shadow-[0_40px_100px_rgba(37,9,53,0.08)] border border-outline-variant/10 overflow-hidden">
+<!-- Integrated Calendly Placeholder Mockup -->
+<div class="flex flex-col md:flex-row min-h-[600px]">
+<!-- Sidebar -->
+<div class="w-full md:w-1/3 bg-primary p-10 text-white flex flex-col justify-between">
+<div>
+<div class="w-16 h-16 rounded-full overflow-hidden mb-6 border-2 border-secondary">
+<img class="w-full h-full object-cover" data-alt="avatar of Soham Mukherjee executive consultant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKFxa19sWM4Ke1ys6KCGRnyPvjlTP9H5CahMKFWB9WetOqCQ-De2xT5c1i7QjJArLWMFpvEB0DggCZ4qnhZo5fcxi1CYm0VAKizr3DUktJSeL8dYzXcWb7MDf1q4u2kHQbhMPqRq11YHR6Y7JC6Ws1J9VJXuTUAHnR10O3Mld-UQTiiWuhy3pHjL--2b4bYg_lUG6VHdn9bwWL5jYq9OhsybNAcyliB3nDuVMdu7Tccs3rkQb26mhkroVWPOeKEAWsLZZ7CVcno6E"/>
+</div>
+<h4 class="text-lg font-bold mb-1">Ask Soham</h4>
+<h2 class="text-2xl font-headline font-bold mb-6">15 Min Strategy Sprint</h2>
+<div class="flex items-center space-x-3 text-white/70 mb-4">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-sm">15 min</span>
+</div>
+<div class="flex items-center space-x-3 text-white/70">
+<span class="material-symbols-outlined text-sm">videocam</span>
+<span class="text-sm">Video Call</span>
+</div>
+</div>
+<div class="text-xs text-white/50 leading-relaxed italic">
+                                 Select a time that works for you. All sessions are confidential and focused on immediate action.
+                             </div>
+</div>
+<!-- Calendar Area -->
+<div class="flex-1 p-10">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-xl font-bold text-primary">October 2024</h3>
+<div class="flex space-x-2">
+<button class="p-2 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary">chevron_left</span>
+</button>
+<button class="p-2 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-4 text-center mb-6">
+<div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Mon</div>
+<div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Tue</div>
+<div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Wed</div>
+<div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Thu</div>
+<div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Fri</div>
+<div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Sat</div>
+<div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Sun</div>
+</div>
+<div class="grid grid-cols-7 gap-2">
+<!-- Decorative Mock Dates -->
+<div class="aspect-square flex items-center justify-center text-sm text-outline-variant">28</div>
+<div class="aspect-square flex items-center justify-center text-sm text-outline-variant">29</div>
+<div class="aspect-square flex items-center justify-center text-sm text-outline-variant">30</div>
+<div class="aspect-square flex items-center justify-center text-sm font-bold text-primary hover:bg-secondary-container/20 rounded-xl cursor-pointer">1</div>
+<div class="aspect-square flex items-center justify-center text-sm font-bold text-primary hover:bg-secondary-container/20 rounded-xl cursor-pointer">2</div>
+<div class="aspect-square flex items-center justify-center text-sm font-bold text-primary hover:bg-secondary-container/20 rounded-xl cursor-pointer">3</div>
+<div class="aspect-square flex items-center justify-center text-sm font-bold text-primary hover:bg-secondary-container/20 rounded-xl cursor-pointer">4</div>
+<!-- Active Range -->
+<div class="aspect-square flex items-center justify-center text-sm font-bold text-primary hover:bg-secondary-container/20 rounded-xl cursor-pointer">5</div>
+<div class="aspect-square flex items-center justify-center text-sm font-bold text-primary hover:bg-secondary-container/20 rounded-xl cursor-pointer">6</div>
+<div class="aspect-square flex items-center justify-center text-sm font-bold text-white bg-secondary rounded-xl shadow-lg cursor-pointer">7</div>
+<div class="aspect-square flex items-center justify-center text-sm font-bold text-primary hover:bg-secondary-container/20 rounded-xl cursor-pointer">8</div>
+<div class="aspect-square flex items-center justify-center text-sm font-bold text-primary hover:bg-secondary-container/20 rounded-xl cursor-pointer">9</div>
+<div class="aspect-square flex items-center justify-center text-sm font-bold text-primary hover:bg-secondary-container/20 rounded-xl cursor-pointer">10</div>
+<div class="aspect-square flex items-center justify-center text-sm font-bold text-primary hover:bg-secondary-container/20 rounded-xl cursor-pointer">11</div>
+</div>
+<div class="mt-10 border-t border-outline-variant/20 pt-8 text-center">
+<button class="bg-secondary text-white px-12 py-4 rounded-full font-bold shadow-md hover:scale-105 transition-transform">
+                                     View Available Times
+                                 </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-[2.5rem] mt-20 bg-[#3B1F4B] dark:bg-[#1A1A2E] text-white">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-12 py-24">
+<div class="col-span-1 md:col-span-1">
+<span class="text-2xl font-bold text-white mb-6 block">EWAN Business Solutions</span>
+<p class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 leading-relaxed">
+                    Engineering global success through strategic localized intelligence. The Executive Architect for modern expansion.
+                </p>
+</div>
+<div>
+<h4 class="font-headline font-bold text-white mb-8 uppercase text-xs tracking-widest">Solutions</h4>
+<ul class="space-y-4">
+<li><a class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block" href="#">Market Entry Solutions</a></li>
+<li><a class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block" href="#">Localization Services</a></li>
+<li><a class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block" href="#">Industry Insights</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-white mb-8 uppercase text-xs tracking-widest">Company</h4>
+<ul class="space-y-4">
+<li><a class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block" href="#">About Our Vision</a></li>
+<li><a class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block" href="#">Media Center</a></li>
+<li><a class="font-['Inter'] font-light text-sm tracking-wide text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block" href="#">Contact Strategy</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline font-bold text-white mb-8 uppercase text-xs tracking-widest">Newsletter</h4>
+<div class="relative">
+<input class="w-full bg-white/5 border border-white/10 rounded-full py-3 px-6 text-sm text-white focus:outline-none focus:ring-1 focus:ring-secondary" placeholder="executive@domain.com" type="email"/>
+<button class="absolute right-2 top-2 bg-secondary p-1.5 rounded-full">
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-12 py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<span class="font-['Inter'] font-light text-xs tracking-wide text-purple-200/50">© 2024 EWAN Business Solutions. All rights reserved.</span>
+<div class="flex space-x-6">
+<a class="text-purple-200/50 hover:text-white transition-colors" href="#">LinkedIn</a>
+<a class="text-purple-200/50 hover:text-white transition-colors" href="#">X</a>
+<a class="text-purple-200/50 hover:text-white transition-colors" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+</body></html>
