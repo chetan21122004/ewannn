@@ -5,36 +5,42 @@ import { useTranslation } from "react-i18next";
 
 const services = [
   {
+    id: "translation",
     title: "Translation",
     description:
       "Legal, technical, medical, and commercial documents handled by native experts for accurate, validated outcomes.",
     icon: Languages,
   },
   {
+    id: "interpretation",
     title: "Interpretation",
     description:
       "Simultaneous and consecutive interpretation for boardrooms, conferences, exhibitions, and government meetings, backed by 60,000+ hours.",
     icon: Globe2,
   },
   {
+    id: "localization",
     title: "Localization",
     description:
       "Website, software, and marketing localization that feels native, with cultural adaptation built into delivery.",
     icon: ShieldCheck,
   },
   {
+    id: "transcription",
     title: "Transcription",
     description:
       "Accurate multilingual transcription for meetings, interviews, and recordings, including timestamped formatting.",
     icon: Subtitles,
   },
   {
+    id: "voiceover",
     title: "Voiceover",
     description:
       "100+ language voiceover and dubbing for corporate videos, training modules, and media production.",
     icon: Mic2,
   },
   {
+    id: "proofreading",
     title: "Proofreading & QA",
     description:
       "Final linguistic quality checks with native-language review before content goes live.",
@@ -146,7 +152,8 @@ const LanguageLocalization = () => {
               return (
                 <article
                   key={service.title}
-                  className="group rounded-3xl border border-[#e7e3f1] bg-white p-7 shadow-[0_10px_26px_rgba(20,16,45,0.06)] transition hover:-translate-y-1"
+                  id={service.id}
+                  className="group scroll-mt-28 rounded-3xl border border-[#e7e3f1] bg-white p-7 shadow-[0_10px_26px_rgba(20,16,45,0.06)] transition hover:-translate-y-1"
                 >
                   <div className="mb-5 inline-flex rounded-2xl bg-[#f1eefe] p-3 transition group-hover:scale-105">
                     <Icon className="h-5 w-5 text-[hsl(var(--brand-purple-500))]" />

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 const whoWeServe = [
   {
+    id: "india-entry-foreign-companies",
     title: "Foreign Companies Entering India",
     description:
       "You are based in Japan, Southeast Asia, East Asia, Latin America, or Africa. You see India as your next growth market and need a partner who understands both sides.",
@@ -16,6 +17,7 @@ const whoWeServe = [
     ],
   },
   {
+    id: "indian-companies-going-abroad",
     title: "Indian Companies Going Abroad",
     description:
       "You are an Indian company ready to expand into Southeast Asia, East Asia, or beyond, and need on-ground support with local language capability.",
@@ -138,7 +140,11 @@ const MarketEntry = () => {
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
             {whoWeServe.map((segment) => (
-              <article key={segment.title} className="rounded-3xl border border-[#e7e3f1] bg-white p-8 shadow-[0_10px_30px_rgba(20,16,45,0.06)]">
+              <article
+                key={segment.title}
+                id={segment.id}
+                className="scroll-mt-28 rounded-3xl border border-[#e7e3f1] bg-white p-8 shadow-[0_10px_30px_rgba(20,16,45,0.06)]"
+              >
                 <h3 className="font-serif text-2xl font-bold text-[#1a1633]">{segment.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#3d3859]">{segment.description}</p>
                 <div className="mt-5 space-y-2.5">
@@ -171,7 +177,7 @@ const MarketEntry = () => {
         </div>
       </section>
 
-      <section id="proof" className="bg-[#ffffff] px-6 py-16">
+      <section id="proof" className="scroll-mt-28 bg-[#ffffff] px-6 py-16">
         <div className="container mx-auto rounded-3xl border border-[#e7e3f1] bg-[#f8f7fc] p-8 shadow-[0_10px_28px_rgba(20,16,45,0.06)]">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-500)/0.88)]">Full Market Entry Mandate — Japan to India</p>
           <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633]">How a Leading Japanese Manufacturer Successfully Established India Operations</h2>
@@ -239,7 +245,7 @@ const MarketEntry = () => {
               <article
                 key={block.id}
                 id={block.id}
-                className="rounded-2xl border border-[#e7e3f1] bg-[#f8f7fc] p-6"
+                className="scroll-mt-28 rounded-2xl border border-[#e7e3f1] bg-[#f8f7fc] p-6"
               >
                 <h3 className="font-serif text-xl font-bold text-[#1a1633]">{block.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#3d3859]">{block.copy}</p>

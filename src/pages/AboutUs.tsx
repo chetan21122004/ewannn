@@ -76,8 +76,7 @@ const founders = [
       "IB Board Curriculum Designer",
     ],
     linkedin: "https://www.linkedin.com/in/soham-kakade-77b2819b/",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAxFdYYPKm0uMjJaGzppyZlS1Kzi4OXKmB8PpWaS7Jtx3e0RElPrQS3cU-XO2bmf5nJV5VumrGrfLdiAh7nCjWcSen09RqQn8Fw4ZuKizQL15uyxcdpxiMLQcZzstLRh3gMvFVzaKwj8Id6ELwoRWL29QB4Ay0hPj9Xfr6d0CkU9VK8R-Lfm82F2fvaT47OHMer3L0_pBMavQ6n9Q9_b1MqZ_8O2ZE9T3m6BSIx0lQ-9aAQvK1jc33ztsrInqw96NR4Hv3Adhy4RZK8",
+    image: "/Soham-Sir.jpg",
   },
   {
     id: "founder-sukhada",
@@ -96,8 +95,7 @@ const founders = [
       "Co-Founder - Bhashik Skill Development",
     ],
     linkedin: "https://www.linkedin.com/company/ewan-business-solutions/",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB6n7TXa4GbgNa8EpAIDw8oHr0_TGdCjY_6y9dNWFplHuQnoPonyJ_gwuEEQE0-uy4MExqxe-b_zKaXalo7QIBHMOsx8b5Oqi6ivA5erUIVbJMJ_mLX2uj1wN8tH0DnPgq3SoNkvKg5115GtvIXkwxkDldyMbbGwIF91A_cNIo4-bARuPdjqyiYexkR-k0w_wZzXdwbUNY3MEfgO-ste0AURQ7dx0Ytk9Xxrt4a1uGVLZ0FbTfAwHtg25JF4NMpbcT2I_UMq6st6ap6",
+    image: "/Sukhada-maam.jpg",
   },
 ];
 
@@ -185,67 +183,86 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <section id="founders" className="bg-[hsl(var(--brand-navy-950))] px-6 py-20 text-white">
-        <div className="container mx-auto">
-          <div className="mb-10 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Leadership</p>
-            <h2 className="mt-3 font-serif text-4xl font-bold">The Architects of Fluency</h2>
+      <section id="founders" className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 py-24 text-white">
+        <div className="pointer-events-none absolute -left-28 top-10 h-80 w-80 rounded-full bg-[hsl(var(--brand-purple-700)/0.26)] blur-3xl" />
+        <div className="pointer-events-none absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-[hsl(var(--brand-gold-500)/0.16)] blur-3xl" />
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-14 text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-500))]">Leadership</p>
+            <h2 className="mt-3 font-serif text-4xl font-bold md:text-5xl">The Architects of Fluency</h2>
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-white/65 md:text-base">
+              Strategic language leadership anchored by boardroom experience, compliance rigor, and execution discipline.
+            </p>
           </div>
-          <div className="grid gap-8 lg:grid-cols-2">
+
+          <div className="space-y-8">
             {founders.map((founder) => (
               <article
                 key={founder.id}
-                className="overflow-hidden rounded-2xl border border-[hsl(var(--surface-glass)/0.14)] bg-[hsl(var(--surface-glass)/0.05)] backdrop-blur-sm"
+                className="overflow-hidden rounded-3xl border border-[hsl(var(--surface-glass)/0.16)] bg-[hsl(var(--surface-glass)/0.06)] shadow-[0_24px_55px_hsl(var(--brand-navy-950)/0.45)] backdrop-blur-sm"
               >
-                <div className="relative h-64 overflow-hidden">
-                  <img src={founder.image} alt={`${founder.name} portrait`} className="h-full w-full object-cover opacity-85 grayscale transition duration-700 hover:grayscale-0" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950))] to-transparent" />
-                  <div className="absolute bottom-4 left-5">
-                    <h3 className="font-serif text-2xl font-bold text-white">{founder.name}</h3>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))]">{founder.role}</p>
+                <div className="grid gap-0 lg:grid-cols-[320px_1fr]">
+                  <div className="relative h-80 overflow-hidden lg:h-full">
+                    <img
+                      src={founder.image}
+                      alt={`${founder.name} portrait`}
+                      className="h-full w-full object-cover transition duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.76)] via-[hsl(var(--brand-navy-950)/0.22)] to-transparent" />
+                    <div className="absolute bottom-5 left-5 right-5">
+                      <h3 className="font-serif text-2xl font-bold text-white">{founder.name}</h3>
+                      <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))]">{founder.role}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <h4 className="font-serif text-xl font-bold text-white">{founder.headline}</h4>
-                  <div className="mb-5 flex flex-wrap gap-2">
-                    {founder.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-md border border-[hsl(var(--surface-glass)/0.12)] bg-[hsl(var(--surface-glass)/0.06)] px-3 py-1 text-xs font-semibold text-[hsl(var(--brand-purple-500))]"
+
+                  <div className="p-6 md:p-8">
+                    <h4 className="font-serif text-2xl font-bold leading-tight text-white">{founder.headline}</h4>
+
+                    <div className="mt-5 flex flex-wrap gap-2.5">
+                      {founder.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-[hsl(var(--surface-glass)/0.14)] bg-[hsl(var(--surface-glass)/0.08)] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.06em] text-[hsl(var(--brand-purple-500))]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-5 space-y-3">
+                      <p className="text-sm leading-relaxed text-white/80 md:text-[15px]">{founder.description}</p>
+                      <p className="text-sm leading-relaxed text-white/72 md:text-[15px]">{founder.detail}</p>
+                    </div>
+
+                    <div className="mt-6 grid gap-2.5 sm:grid-cols-2">
+                      {founder.points.map((point) => (
+                        <p key={point} className="flex items-start gap-2.5 text-sm text-white/74">
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-gold-500))]" />
+                          <span>{point}</span>
+                        </p>
+                      ))}
+                    </div>
+
+                    <div className="mt-7 flex flex-wrap gap-3">
+                      <a
+                        href={founder.linkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--surface-glass)/0.22)] px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-white/10"
                       >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="text-sm leading-relaxed text-white/75">{founder.description}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-white/70">{founder.detail}</p>
-                  <div className="mt-5 space-y-2">
-                    {founder.points.map((point) => (
-                      <p key={point} className="flex items-center gap-2 text-sm text-white/70">
-                        <CheckCircle2 className="h-4 w-4 text-[hsl(var(--brand-gold-500))]" />
-                        <span>{point}</span>
-                      </p>
-                    ))}
-                  </div>
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <a
-                      href={founder.linkedin}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--surface-glass)/0.2)] px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-white/10"
-                    >
-                      Connect on LinkedIn
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </a>
-                    {founder.id === "founder-soham" ? (
-                      <Link
-                        to="/ask-soham"
-                        className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-                      >
-                        Ask Soham - 15 Min Call
+                        Connect on LinkedIn
                         <ArrowRight className="h-3.5 w-3.5" />
-                      </Link>
-                    ) : null}
+                      </a>
+                      {founder.id === "founder-soham" ? (
+                        <Link
+                          to="/ask-soham"
+                          className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+                        >
+                          Ask Soham - 15 Min Call
+                          <ArrowRight className="h-3.5 w-3.5" />
+                        </Link>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
               </article>
@@ -254,7 +271,7 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <section id="partners" className="border-y border-[#d9d3e7] bg-[#faf9fd] px-6 py-16">
+      <section id="government-recognition" className="border-y border-[#d9d3e7] bg-[#faf9fd] px-6 py-16">
         <div className="container mx-auto">
           <div className="mb-7 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Recognised by Governments and Institutions</p>
@@ -277,7 +294,27 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <section className="bg-[#f4f2fb] px-6 py-16">
+      <section id="oriental-flock" className="scroll-mt-28 bg-[#fcfbff] px-6 py-16">
+        <div className="container mx-auto rounded-3xl border border-[#e2ddf0] bg-[#f5f2fc] p-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Community</p>
+          <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633]">Oriental Flock - Where the Language Industry Gathers</h2>
+          <p className="mt-3 max-w-4xl text-sm leading-relaxed text-[#3e3858]">
+            Oriental Flock is Pune&apos;s language industry meetup bringing together translators, freelancers, trainers, and
+            companies to solve practical challenges around hiring, collaboration, and cross-cultural communication.
+          </p>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            <p className="rounded-xl border border-[#dfd8ef] bg-white p-4 text-sm text-[#3e3858]">
+              <span className="font-semibold">Format:</span> 91Springboard Baner, Pune · 4:00 PM to 6:00 PM sessions
+            </p>
+            <p className="rounded-xl border border-[#dfd8ef] bg-white p-4 text-sm text-[#3e3858]">
+              <span className="font-semibold">Topics:</span> Bilingual hiring, freelancer collaboration, high-stakes
+              cross-cultural communication
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="partners" className="scroll-mt-28 bg-[#f4f2fb] px-6 py-16">
         <div className="container mx-auto">
           <div className="mb-8">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Partners</p>
@@ -294,7 +331,7 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <section id="join-us" className="bg-[#fbf9ff] px-6 py-16">
+      <section id="bhashik-pipeline" className="bg-[#fbf9ff] px-6 py-16">
         <div className="container mx-auto rounded-3xl border border-[#e2ddf0] bg-white p-8">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Ecosystem</p>
           <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633]">Bhashik Skill Development Pipeline</h2>
@@ -320,22 +357,115 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <section id="community" className="bg-[#fcfbff] px-6 py-16">
-        <div className="container mx-auto rounded-3xl border border-[#e2ddf0] bg-[#f5f2fc] p-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Community</p>
-          <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633]">Oriental Flock - Where the Language Industry Gathers</h2>
-          <p className="mt-3 max-w-4xl text-sm leading-relaxed text-[#3e3858]">
-            Oriental Flock is Pune&apos;s language industry meetup bringing together translators, freelancers, trainers, and
-            companies to solve practical challenges around hiring, collaboration, and cross-cultural communication.
-          </p>
-          <div className="mt-5 grid gap-3 md:grid-cols-2">
-            <p className="rounded-xl border border-[#dfd8ef] bg-white p-4 text-sm text-[#3e3858]">
-              <span className="font-semibold">Format:</span> 91Springboard Baner, Pune · 4:00 PM to 6:00 PM sessions
+      <section id="case-studies" className="scroll-mt-28 border-y border-[#e8e2f4] bg-[#faf8ff] px-6 py-16">
+        <div className="container mx-auto">
+          <div className="mb-8 text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Evidence</p>
+            <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633] md:text-4xl">Case Studies</h2>
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-[#3e3858]">
+              Representative mandates where integrated language and operations work reduced coordination risk and accelerated
+              time-to-validated traction in-market.
             </p>
-            <p className="rounded-xl border border-[#dfd8ef] bg-white p-4 text-sm text-[#3e3858]">
-              <span className="font-semibold">Topics:</span> Bilingual hiring, freelancer collaboration, high-stakes
-              cross-cultural communication
+          </div>
+          <div className="grid gap-6 lg:grid-cols-3">
+            <article className="rounded-3xl border border-[#e2ddf0] bg-white p-7 shadow-[0_12px_28px_rgba(20,16,45,0.06)]">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-gold-600))]">
+                Market Entry · Manufacturing
+              </p>
+              <h3 className="mt-3 font-serif text-xl font-bold text-[#1a1633]">Japan → India full mandate</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#3e3858]">
+                Regulatory mapping, entity formation, executive liaison, local procurement, and on-ground operational setup —
+                coordinated as one mandate so leadership could execute without fragmenting oversight.
+              </p>
+              <div className="mt-5">
+                <Link
+                  to="/market-entry#proof"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-600))] transition hover:gap-3"
+                >
+                  Read narrative on Market Entry
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </article>
+            <article className="rounded-3xl border border-[#e2ddf0] bg-white p-7 shadow-[0_12px_28px_rgba(20,16,45,0.06)]">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-gold-600))]">
+                Language Intelligence · Corridor
+              </p>
+              <h3 className="mt-3 font-serif text-xl font-bold text-[#1a1633]">High-stakes interpreting at scale</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#3e3858]">
+                60,000+ hours of simultaneous and consecutive interpretation across boardrooms, government engagements, and
+                sector programs — where tone, confidentiality, and technical precision directly affect deal outcomes.
+              </p>
+              <div className="mt-5">
+                <Link
+                  to="/language-localization#interpretation"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-600))] transition hover:gap-3"
+                >
+                  Explore interpretation capability
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </article>
+            <article className="rounded-3xl border border-[#e2ddf0] bg-white p-7 shadow-[0_12px_28px_rgba(20,16,45,0.06)]">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-gold-600))]">
+                Readiness · Planning
+              </p>
+              <h3 className="mt-3 font-serif text-xl font-bold text-[#1a1633]">Expansion gap assessment</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#3e3858]">
+                Teams use the Global Market Entry Audit framework to surface operational and coordination gaps before capital
+                is committed — aligning language, compliance, and execution plans early.
+              </p>
+              <div className="mt-5">
+                <Link
+                  to="/market-entry-audit"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-600))] transition hover:gap-3"
+                >
+                  Open the Market Entry Audit
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" className="scroll-mt-28 bg-[#f4f2fb] px-6 py-16">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-10 text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Clients</p>
+            <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633] md:text-4xl">Testimonials</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#3e3858]">
+              How partners describe working with Ewan when language, culture, and operations must move together.
             </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <figure className="rounded-3xl border border-[#e2ddf0] bg-white p-8 shadow-[0_12px_28px_rgba(20,16,45,0.05)]">
+              <blockquote className="text-sm leading-relaxed text-[#2f2a48]">
+                &ldquo;We stopped managing three different vendors for language, liaison, and local checks. One accountable
+                partner changed how fast we could validate India without losing board-level confidence.&rdquo;
+              </blockquote>
+              <figcaption className="mt-5 text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-purple-500))]">
+                VP Operations · Industrial manufacturer (Northeast Asia)
+              </figcaption>
+            </figure>
+            <figure className="rounded-3xl border border-[#e2ddf0] bg-white p-8 shadow-[0_12px_28px_rgba(20,16,45,0.05)]">
+              <blockquote className="text-sm leading-relaxed text-[#2f2a48]">
+                &ldquo;Interpretation quality in technical sessions was non-negotiable for us. Ewan&apos;s interpreters
+                understood the engineering intent—not just the words—which kept negotiations on track.&rdquo;
+              </blockquote>
+              <figcaption className="mt-5 text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-purple-500))]">
+                Program Director · Cross-border procurement program
+              </figcaption>
+            </figure>
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              to="/ask-soham"
+              className="inline-flex items-center gap-2 rounded-full border border-[#d9d2ea] bg-white px-6 py-3 text-sm font-semibold text-[#2d2946] transition hover:border-[hsl(var(--brand-purple-500)/0.55)]"
+            >
+              Discuss your mandate with Soham
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

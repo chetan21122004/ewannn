@@ -52,13 +52,13 @@ const Media = () => {
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-white/80">
               {t("media.hero.subtitle")}
             </p>
-            <a
-              href="#language-gazette"
+            <Link
+              to="/language-gazette"
               className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-7 py-3.5 text-sm font-bold text-[hsl(var(--brand-navy-950))]"
             >
               {t("media.hero.cta")}
               <Radio className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
           <div className="relative h-[420px] lg:h-[500px]">
             <div className="absolute right-0 top-0 w-80 rounded-[2rem] bg-white p-6 text-[hsl(var(--brand-navy-950))] shadow-2xl transition duration-500 hover:rotate-0 lg:rotate-6">
@@ -90,7 +90,7 @@ const Media = () => {
               <h2 className="font-serif text-4xl font-extrabold tracking-tight text-[hsl(var(--brand-navy-950))] lg:text-5xl">{t("media.gazette.title")}</h2>
               <p className="text-on-light-secondary mt-4 text-lg">{t("media.gazette.subtitle")}</p>
             </div>
-            <Link to="/insights" className="inline-flex items-center gap-2 font-semibold text-[hsl(var(--brand-navy-950))]">
+            <Link to="/language-gazette" className="inline-flex items-center gap-2 font-semibold text-[hsl(var(--brand-navy-950))]">
               {t("media.gazette.viewAll")}
               <ArrowRight className="h-4 w-4 text-[hsl(var(--brand-gold-500))]" />
             </Link>
@@ -128,7 +128,7 @@ const Media = () => {
         </div>
       </section>
 
-      <section id="blog-insights" className="theme-section-soft px-6 py-24">
+      <section id="video-insights" className="theme-section-soft scroll-mt-28 px-6 py-24">
         <div className="container mx-auto">
           <div className="mb-12 text-center">
             <h2 className="font-serif text-4xl font-extrabold text-[hsl(var(--brand-navy-950))]">{t("media.videos.title")}</h2>

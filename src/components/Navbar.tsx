@@ -16,17 +16,34 @@ type NavGroup = {
   links?: NavItem[];
 };
 
-const navGroups: NavGroup[] = [
+type DesktopNavItem = {
+  labelKey: string;
+  href: string;
+  external?: boolean;
+};
+
+type DesktopNavGroup = {
+  labelKey: string;
+  href: string;
+  links?: DesktopNavItem[];
+};
+
+const mobileNavGroups: NavGroup[] = [
   {
     labelKey: "nav.marketEntry",
     href: "/market-entry",
     links: [
-      { labelKey: "navMenu.marketEntry.indiaEntryForForeign", href: "/market-entry" },
-      { labelKey: "navMenu.marketEntry.indianGoingAbroad", href: "/market-entry" },
-      { labelKey: "navMenu.marketEntry.liaisoning", href: "/liaisoning-facilitation" },
+      {
+        labelKey: "navMenu.marketEntry.indiaEntryForForeign",
+        href: "/market-entry#india-entry-foreign-companies",
+      },
+      {
+        labelKey: "navMenu.marketEntry.indianGoingAbroad",
+        href: "/market-entry#indian-companies-going-abroad",
+      },
+      { labelKey: "navMenu.marketEntry.liaisoning", href: "/market-entry#liaisoning-facilitation" },
       { labelKey: "navMenu.marketEntry.marketResearch", href: "/market-research" },
       { labelKey: "navMenu.marketEntry.importExport", href: "/import-export" },
-      { labelKey: "navMenu.marketEntry.marketAudit", href: "/market-entry-audit" },
       { labelKey: "navMenu.marketEntry.arogyaYatri", href: "https://www.arogyayatri.com/", external: true },
       { labelKey: "navMenu.marketEntry.culturalKnowHow", href: "https://bhashikskill.co.in", external: true },
     ],
@@ -35,12 +52,12 @@ const navGroups: NavGroup[] = [
     labelKey: "nav.languageLocalization",
     href: "/language-localization",
     links: [
-      { labelKey: "navMenu.language.translation", href: "/language-localization" },
-      { labelKey: "navMenu.language.interpretation", href: "/language-localization" },
-      { labelKey: "navMenu.language.localization", href: "/language-localization" },
-      { labelKey: "navMenu.language.transcription", href: "/language-localization" },
-      { labelKey: "navMenu.language.voiceover", href: "/language-localization" },
-      { labelKey: "navMenu.language.proofreading", href: "/language-localization" },
+      { labelKey: "navMenu.language.translation", href: "/language-localization#translation" },
+      { labelKey: "navMenu.language.interpretation", href: "/language-localization#interpretation" },
+      { labelKey: "navMenu.language.localization", href: "/language-localization#localization" },
+      { labelKey: "navMenu.language.transcription", href: "/language-localization#transcription" },
+      { labelKey: "navMenu.language.voiceover", href: "/language-localization#voiceover" },
+      { labelKey: "navMenu.language.proofreading", href: "/language-localization#proofreading" },
       { labelKey: "navMenu.language.globalTalkies", href: "/global-talkies" },
       { labelKey: "navMenu.language.learnLanguage", href: "https://bhashikskill.co.in", external: true },
     ],
@@ -69,8 +86,67 @@ const navGroups: NavGroup[] = [
     ],
   },
   {
-    labelKey: "nav.industries",
-    href: "/industries",
+    labelKey: "nav.contactUs",
+    href: "/contact",
+  },
+];
+
+const desktopNavGroups: DesktopNavGroup[] = [
+  {
+    labelKey: "nav.marketEntry",
+    href: "/market-entry",
+    links: [
+      {
+        labelKey: "navMenu.marketEntry.indiaEntryForForeign",
+        href: "/market-entry#india-entry-foreign-companies",
+      },
+      {
+        labelKey: "navMenu.marketEntry.indianGoingAbroad",
+        href: "/market-entry#indian-companies-going-abroad",
+      },
+      { labelKey: "navMenu.marketEntry.liaisoning", href: "/market-entry#liaisoning-facilitation" },
+      { labelKey: "navMenu.marketEntry.marketResearch", href: "/market-research" },
+      { labelKey: "navMenu.marketEntry.importExport", href: "/import-export" },
+      { labelKey: "navMenu.marketEntry.arogyaYatri", href: "https://www.arogyayatri.com/", external: true },
+      { labelKey: "navMenu.marketEntry.culturalKnowHow", href: "https://bhashikskill.co.in", external: true },
+    ],
+  },
+  {
+    labelKey: "nav.languageLocalization",
+    href: "/language-localization",
+    links: [
+      { labelKey: "navMenu.language.translation", href: "/language-localization#translation" },
+      { labelKey: "navMenu.language.interpretation", href: "/language-localization#interpretation" },
+      { labelKey: "navMenu.language.localization", href: "/language-localization#localization" },
+      { labelKey: "navMenu.language.transcription", href: "/language-localization#transcription" },
+      { labelKey: "navMenu.language.voiceover", href: "/language-localization#voiceover" },
+      { labelKey: "navMenu.language.proofreading", href: "/language-localization#proofreading" },
+      { labelKey: "navMenu.language.globalTalkies", href: "/global-talkies" },
+      { labelKey: "navMenu.language.learnLanguage", href: "https://bhashikskill.co.in", external: true },
+    ],
+  },
+  {
+    labelKey: "nav.aboutUs",
+    href: "/about-us",
+    links: [
+      { labelKey: "navMenu.about.aboutEwan", href: "/about-us#about-ewan" },
+      { labelKey: "navMenu.about.founders", href: "/about-us#founders" },
+      { labelKey: "navMenu.about.orientalFlock", href: "/about-us#oriental-flock" },
+      { labelKey: "navMenu.about.partners", href: "/about-us#partners" },
+      { labelKey: "navMenu.about.joinUs", href: "/join-us" },
+      { labelKey: "navMenu.about.caseStudies", href: "/about-us#case-studies" },
+      { labelKey: "navMenu.about.testimonials", href: "/about-us#testimonials" },
+    ],
+  },
+  {
+    labelKey: "nav.media",
+    href: "/media",
+    links: [
+      { labelKey: "navMenu.media.languageGazette", href: "/language-gazette" },
+      { labelKey: "navMenu.media.blogInsights", href: "/insights" },
+      { labelKey: "navMenu.media.videos", href: "/media#video-insights" },
+      { labelKey: "navMenu.media.press", href: "/media#press" },
+    ],
   },
   {
     labelKey: "nav.contactUs",
@@ -119,24 +195,42 @@ const Navbar = () => {
           <img src="/logo.png" alt="Ewan Business Solutions" className="h-12 w-auto object-contain" />
         </Link>
 
-        <div className="hidden lg:flex items-center gap-1 rounded-xl border border-white/15 bg-white/5 px-2 py-1.5 backdrop-blur-md">
-          {navGroups.map((group) => (
+        <div className="hidden lg:flex items-center gap-1 rounded-xl border border-black/10 bg-white px-3 py-2 shadow-[0_12px_28px_rgba(15,23,42,0.12)]">
+          {desktopNavGroups.map((group) => (
             <div key={group.labelKey} className="group relative">
               <Link
                 to={group.href}
-                className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-medium text-foreground/85 transition hover:bg-white/10 hover:text-white group-hover:bg-white/10 group-focus-within:bg-white/10"
+                className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:bg-black/5"
               >
                 <span>{t(group.labelKey)}</span>
                 {group.links ? <ChevronDown className="h-3.5 w-3.5 transition group-hover:rotate-180 group-focus-within:rotate-180" /> : null}
               </Link>
 
               {group.links ? (
-                <div className="pointer-events-none invisible absolute left-0 top-full z-20 w-[34rem] translate-y-1 pt-2 opacity-0 transition-all duration-150 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-                  <div className="rounded-xl border border-white/15 bg-[hsl(var(--surface-2)/0.96)] p-2 shadow-[0_18px_40px_hsl(var(--surface-1)/0.5)] backdrop-blur-sm">
-                    <div className="grid grid-flow-col grid-rows-4 gap-1">
-                      {group.links.map((item) => (
-                        <DropdownLinkItem key={`${group.labelKey}-${item.labelKey}`} item={item} t={t} />
-                      ))}
+                <div className="pointer-events-none invisible absolute left-0 top-full z-20 w-[720px] translate-y-1 pt-2 opacity-0 transition-all duration-150 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  <div className="rounded-2xl border border-black/10 bg-white p-3 shadow-[0_16px_34px_rgba(15,23,42,0.22)]">
+                    <div className={cn("gap-x-7 gap-y-1", group.links.length <= 4 ? "grid grid-cols-2" : "grid grid-flow-col grid-rows-4")}>
+                      {group.links.map((item) =>
+                        item.external ? (
+                          <a
+                            key={`${group.labelKey}-${item.labelKey}`}
+                            href={item.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="block rounded-lg px-2 py-1.5 text-[1.08rem] font-medium text-[hsl(var(--brand-navy-950)/0.9)] transition hover:bg-black/5"
+                          >
+                            {t(item.labelKey)}
+                          </a>
+                        ) : (
+                          <Link
+                            key={`${group.labelKey}-${item.labelKey}`}
+                            to={item.href}
+                            className="block rounded-lg px-2 py-1.5 text-[1.08rem] font-medium text-[hsl(var(--brand-navy-950)/0.9)] transition hover:bg-black/5"
+                          >
+                            {t(item.labelKey)}
+                          </Link>
+                        ),
+                      )}
                     </div>
                   </div>
                 </div>
@@ -184,7 +278,7 @@ const Navbar = () => {
 
       {mobileOpen && (
         <div className="lg:hidden border-t border-white/10 px-6 py-5 space-y-4">
-          {navGroups.map((group) => (
+          {mobileNavGroups.map((group) => (
             <div key={group.labelKey}>
               <Link
                 to={group.href}

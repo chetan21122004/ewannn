@@ -13,9 +13,9 @@ const navColumns: FooterColumn[] = [
     links: [
       { label: "Market Entry", href: "/market-entry" },
       { label: "Language & Localization", href: "/language-localization" },
-      { label: "Liaisoning & Facilitation", href: "/liaisoning-facilitation" },
+      { label: "Liaisoning & Facilitation", href: "/market-entry#liaisoning-facilitation" },
       { label: "Market Research", href: "/market-research" },
-      { label: "Import, Procurement & Export", href: "/import-procurement-export" },
+      { label: "Import, Procurement & Export", href: "/import-export" },
       { label: "Global Talkies", href: "/global-talkies" },
       { label: "Industries", href: "/industries" },
     ],

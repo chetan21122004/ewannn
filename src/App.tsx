@@ -18,6 +18,7 @@ import JoinUs from "./pages/JoinUs.tsx";
 import Industries from "./pages/Industries.tsx";
 import MarketEntryAudit from "./pages/MarketEntryAudit.tsx";
 import Insights from "./pages/Insights.tsx";
+import LanguageGazette from "./pages/LanguageGazette.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -45,7 +46,7 @@ const App = () => (
           <Route path="/import-procurement-export" element={<Navigate to="/import-export" replace />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/join-us" element={<JoinUs />} />
-          <Route path="/language-gazette" element={<Navigate to="/media#language-gazette" replace />} />
+          <Route path="/language-gazette" element={<LanguageGazette />} />
           <Route path="/insights" element={<Insights />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
