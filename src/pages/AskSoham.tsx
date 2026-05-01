@@ -19,24 +19,24 @@ const BOOKING_URL = "https://calendly.com";
 const tracks = [
   {
     icon: SearchCheck,
-    title: "Market Entry Audit",
+    title: "Market Entry & Cross-Border Expansion",
     description:
-      "A focused evaluation of your expansion strategy against regulatory, market, and operational realities.",
-    points: ["Regulatory gap analysis", "Competitor and partner shadowing"],
+      "For companies exploring India entry, Indian firms going abroad, executives evaluating corridors. You'll get a clear picture of the actual complexity involved, what Ewan has done in your sector, and whether we're the right partner for your expansion.",
+    points: ["Regulatory gap and complexity assessment", "Corridor-specific experience and proof"],
   },
   {
     icon: Globe2,
-    title: "Linguistic Strategy Review",
+    title: "Language Strategy & Localization",
     description:
-      "Move beyond translation and assess whether your message will land with precision in each target market.",
-    points: ["Semantic brand protection", "Localized tone-of-voice alignment"],
+      "For marketing managers, procurement leads, or businesses evaluating language service needs. You'll get guidance on what kind of service fits your use case, how to evaluate quality, and a straight answer on whether Ewan can help.",
+    points: ["Service fit assessment for your use case", "Quality evaluation framework"],
   },
   {
     icon: Map,
-    title: "Global Liaisoning Roadmap",
+    title: "Language Career & Industry Guidance",
     description:
-      "Build the first 90-day roadmap for local authorities, partners, and internal decision-makers.",
-    points: ["Partner ecosystem mapping", "Tiered expansion milestones"],
+      "For students, freelancers, and emerging professionals exploring careers in languages, interpretation, or cross-cultural work. You'll get Soham's honest perspective on the industry, which corridors have the most opportunity, and where to focus.",
+    points: ["Industry reality and career pathways", "High-opportunity corridor identification"],
   },
 ];
 
@@ -62,14 +62,15 @@ const AskSoham = () => {
             <div className="lg:col-span-7">
               <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--surface-glass)/0.24)] bg-[hsl(var(--surface-glass)/0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500)/0.92)]">
                 <Sparkles className="h-3.5 w-3.5" />
-                The Executive Architect Series
+                Free. 15 Minutes. No Pitch.
               </p>
               <h1 className="max-w-4xl font-serif text-5xl font-bold leading-[0.95] text-[hsl(var(--brand-navy-950))] sm:text-6xl lg:text-7xl">
-                Strategic <span className="text-[hsl(var(--brand-gold-500))] italic">Intelligence</span> Unlocked.
+                Ask <span className="text-[hsl(var(--brand-gold-500))]">Soham.</span>
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-foreground/75 sm:text-lg">
-                A high-fidelity 15-minute strategy consult for leaders navigating market entry, language complexity,
-                and cross-border execution.
+                Whether you're a company entering India, a business expanding abroad, a professional navigating
+                language services, or a student wondering whether a career in languages is right for you - book 15
+                minutes with Soham Kakade for focused, honest, experience-based guidance.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a
@@ -123,10 +124,10 @@ const AskSoham = () => {
         <div className="container mx-auto">
           <div className="mb-10 max-w-3xl">
             <h2 className="font-serif text-4xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-5xl">
-              Three Tracks of Transformation
+              Three Tracks - Who This Is For
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-foreground/72 sm:text-base">
-              Each consult is outcome-oriented. Pick the track closest to your immediate leadership challenge.
+              Each 15-minute call is structured around your specific situation. Pick the track that fits.
             </p>
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -154,33 +155,48 @@ const AskSoham = () => {
         </div>
       </section>
 
-      <section className="bg-[hsl(var(--surface-2))] px-6 py-16">
+      {/* What This Call Is Not */}
+      <section className="bg-[#ffffff] px-6 py-12">
+        <div className="container mx-auto">
+          <div className="rounded-3xl border border-[hsl(var(--surface-glass)/0.2)] bg-[#f7f5ff] p-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500)/0.88)]">Important</p>
+            <h2 className="mt-2 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))]">What This Call Is Not</h2>
+            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/75">
+              This is not a sales call. Soham will not pitch Ewan services unless asked. This call is designed to give
+              you 15 minutes of focused, honest guidance from someone who has actually spent 10 years inside the
+              corridors you're trying to navigate. If Ewan is not the right fit, Soham will tell you.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[hsl(var(--surface-glass)/0.08)] bg-[hsl(var(--surface-2))] px-6 py-16">
         <div className="container mx-auto grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="relative overflow-hidden rounded-[2.25rem] border border-[hsl(var(--surface-glass)/0.22)] shadow-[0_20px_50px_hsl(var(--surface-1)/0.2)]">
+          <div className="relative aspect-[4/5] max-h-[min(560px,70vh)] overflow-hidden rounded-[2.25rem] border border-[hsl(var(--surface-glass)/0.22)] shadow-[0_20px_50px_hsl(var(--surface-1)/0.2)] sm:aspect-[3/4] lg:max-h-none lg:min-h-[460px] lg:aspect-auto">
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb3ckNnbhawBtITPoSVEny8IpeoHl8OqY15BXTDzTBW3TqA3axA5HCIxtv4n-y0RPrXmz4PmHA2Vo6ydW4p7ta7EwoPtatmkwKVIB3YN53yCps-6VP9csy23uo6ijqSspGVE-nw-2mFB8vCXMSQuiCeg10XTrEbXYqA2nTKI4hrIFXOryOBsOaaFrgtWjU8DpH3E3xsnJxdzJmek3WkYl-VXOcBixE4zLprGR4sFvLLaOjPi7TirkI-6LTux90Ps7Vzy2V4DLccb4"
-              alt="Soham portrait"
-              className="h-full min-h-[460px] w-full object-cover"
+              src="/Soham-Sir.jpg"
+              alt="Soham Kakade, Founder of Ewan Business Solutions"
+              className="h-full min-h-[280px] w-full object-cover object-[center_20%] sm:min-h-[360px] lg:min-h-[460px]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.75)] to-transparent" />
             <div className="absolute bottom-8 left-8 text-white">
               <h3 className="font-serif text-3xl font-bold">Soham Kakade</h3>
               <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))]">
-                Chief Strategist & Founder
+                Founder & CEO
               </p>
             </div>
           </div>
           <div>
-            <h2 className="font-serif text-4xl font-bold text-[hsl(var(--brand-navy-950))]">Your Strategic Partner</h2>
-            <p className="mt-4 text-sm leading-relaxed text-foreground/74 sm:text-base">
-              Soham brings a decade of hands-on cross-border experience covering market entry, localization, and
-              executive liaison. Every call is practical and no-pitch.
+            <h2 className="font-serif text-4xl font-bold text-[hsl(var(--text-primary))]">About Soham</h2>
+            <p className="mt-4 text-sm leading-relaxed text-[hsl(var(--text-secondary))] sm:text-base">
+              Soham Kakade is the founder of Ewan Business Solutions. 60,000+ hours of simultaneous interpretation.
+              Full Chinese Government scholarship (BLCU). VP CITLoB. Bhashini Initiative. MSAMB Export Program
+              Designer. Symbiosis Faculty. IB Board Curriculum Designer.
             </p>
-            <p className="mt-3 text-sm leading-relaxed text-foreground/74 sm:text-base">
-              You leave with clear priorities and a realistic next-step framework tailored to your corridor, team, and
-              immediate constraints.
+            <p className="mt-3 text-sm leading-relaxed text-[hsl(var(--text-secondary))] sm:text-base">
+              When you book this call, you're talking to someone who has actually been in the room.
             </p>
-            <div className="mt-7 grid gap-4 border-t border-[hsl(var(--surface-glass)/0.24)] pt-6 sm:grid-cols-2">
+            <div className="mt-7 grid gap-4 border-t border-[hsl(var(--surface-glass)/0.16)] pt-6 sm:grid-cols-2">
               {[
                 ["60,000+", "Interpretation Hours"],
                 ["250+", "Clients Supported"],
@@ -188,8 +204,8 @@ const AskSoham = () => {
                 ["10+", "Years in Cross-Border Rooms"],
               ].map(([value, label]) => (
                 <div key={label}>
-                  <p className="text-3xl font-bold text-[hsl(var(--brand-navy-950))]">{value}</p>
-                  <p className="text-xs uppercase tracking-[0.14em] text-foreground/65">{label}</p>
+                  <p className="text-3xl font-bold text-[hsl(var(--text-primary))]">{value}</p>
+                  <p className="text-xs uppercase tracking-[0.14em] text-[hsl(var(--text-muted))]">{label}</p>
                 </div>
               ))}
             </div>
@@ -287,12 +303,14 @@ const AskSoham = () => {
               </div>
             </div>
           </div>
-          <div className="mt-8 grid gap-3 rounded-2xl border border-[hsl(var(--surface-glass)/0.18)] bg-[hsl(var(--surface-2)/0.5)] p-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-3 rounded-2xl border border-[hsl(var(--surface-glass)/0.18)] bg-[hsl(var(--surface-2)/0.5)] p-5 sm:grid-cols-2 lg:grid-cols-3">
             {[
+              "60,000+ Hours Interpretation",
+              "250+ Clients",
+              "125+ Languages",
               "ISO 9001:2015 Certified",
-              "Recognised by PRC Consulate",
-              "Govt. & enterprise experience",
-              "Trusted for critical conversations",
+              "Market Entry Mandates Delivered",
+              "Recognised by Consulate General of the PRC",
             ].map((item) => (
               <p key={item} className="text-center text-xs font-semibold uppercase tracking-[0.1em] text-foreground/72">
                 {item}

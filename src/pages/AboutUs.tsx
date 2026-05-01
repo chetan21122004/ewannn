@@ -1,354 +1,415 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Globe2, Handshake } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
-import { useTranslation } from "react-i18next";
+import SectionDivider from "@/components/SectionDivider";
 
 const metrics = [
-  { value: "5", label: "Years" },
+  { value: "5+", label: "Years in Operation" },
+  { value: "125+", label: "Languages" },
   { value: "250+", label: "Global Clients" },
-  { value: "10+", label: "Sectors" },
+  { value: "10+", label: "Sectors Served" },
 ];
 
-const trustSignals = [
-  "MSAMB, Government of Maharashtra - Export Program Empanelment",
-  "Bhashini Initiative - Ministry of Electronics & IT (MeitY)",
-  "CITLoB - Confederation of Indian Translators and Language Professionals",
-  "Symbiosis International University - Faculty Recognition",
+const languageGroups = [
+  { name: "Chinese (Mandarin)", speakers: "929 million", desc: "Based on the Beijing dialect, widely spoken in northern China." },
+  { name: "Japanese", speakers: "128 million", desc: "The de-facto official language of Japan." },
+  { name: "Taiwanese", speakers: "23.6 million", desc: "Traditionally the most widely spoken language in Taiwan." },
+  { name: "Cantonese", speakers: "80 million", desc: "Official language of Hong Kong and Macau." },
+  { name: "Korean", speakers: "80 million", desc: "Native language of South Korea with its own unique alphabet." },
+  { name: "Bahasa (Indonesian/Malay)", speakers: "590 million", desc: "Official languages of Indonesia and Malaysia." },
+  { name: "Filipino & Tagalog", speakers: "139 million", desc: "National and official languages of the Philippines." },
+  { name: "Vietnamese", speakers: "70 million", desc: "National and official language of Vietnam." },
+];
+
+const institutionalRecognitions = [
+  "Recognised by the Consulate General of the People's Republic of China - formal letter acknowledging contribution to India-China agricultural and trade relations, benefiting 1,200+ farmers and 800+ hectares of farmland.",
+  "MSAMB Government of Maharashtra - Export Program Empanelment",
+  "Bhashini Initiative - Ministry of Electronics & IT (MeitY), Government of India",
+  "CITLoB - Confederation of Indian Translators and Language Professionals (Vice President)",
+  "Symbiosis International University - Faculty",
   "IB Board - International Baccalaureate Curriculum Designer",
 ];
 
-const partnerCards = [
+const partners = [
   {
-    name: "Bhashini (Government of India)",
-    blurb:
-      "India's national language technology initiative. Our work with Bhashini strengthens multilingual technology integration and institutional standing.",
+    name: "Bhashini - MeitY, Government of India",
+    description:
+      "India's national language technology initiative. Our partnership with Bhashini aligns Ewan with the country's most significant investment in multilingual AI - strengthening our language technology capabilities and our institutional standing.",
   },
   {
     name: "Tattava CX",
-    blurb:
-      "Strategic communication and customer experience partner that complements Ewan's cross-border language and market entry execution.",
-  },
-  {
-    name: "Bhashik Skill Development",
-    blurb:
-      "Ewan's sister institution focused on language training and vocational readiness, creating a trained talent pipeline for client mandates.",
-  },
-];
-
-const ecosystemLanguages = ["Japanese", "Mandarin", "Korean", "German", "French", "Spanish", "Arabic", "Indian Languages"];
-
-const joinTracks = [
-  "Join our team - language, operations, and account roles",
-  "Join our vendor network - interpreters, translators, subtitlers, voice talent",
-  "Collaborate with us - institutions, agencies, platforms, and trade bodies",
-];
-
-const sectors = [
-  "Automotive",
-  "Pharmaceuticals",
-  "Aerospace",
-  "Manufacturing",
-  "Exhibitions & Trade Fairs",
-  "Technology",
-  "Agriculture & Food",
-  "Legal & Compliance",
-  "Education",
-  "Media & OTT",
-];
-
-const founders = [
-  {
-    id: "founder-soham",
-    name: "Soham Kakade",
-    role: "CEO & Founder",
-    headline: "10 Years in the Room Before Building the Firm",
     description:
-      "Soham spent a decade interpreting confidential boardroom negotiations between global leaders and their Asian counterparts. He has delivered 60,000+ hours of simultaneous interpretation across Mandarin, Cantonese, Japanese, and ASEAN languages.",
-    detail:
-      "From a full Chinese Government scholarship at Beijing Language and Cultural University (BLCU) to assignments across heads of state, Fortune 500 boardrooms, government export programs, and publications in the India-Asia corridor, his experience shaped Ewan's operating model.",
-    tags: ["60,000+ Hrs Interpretation", "Mandarin / Cantonese / Japanese / ASEAN", "BLCU Scholarship"],
-    points: [
-      "ISO 9001:2015 Certified",
-      "Vice President - CITLoB",
-      "Bhashini Initiative - MeitY",
-      "MSAMB Export Program Designer",
-      "Faculty - Symbiosis",
-      "IB Board Curriculum Designer",
-    ],
-    linkedin: "https://www.linkedin.com/in/soham-kakade-77b2819b/",
-    image: "/Soham-Sir.jpg",
+      "Strategic communications and customer experience partner. Tattava CX brings expertise in brand communication, client experience design, and strategic messaging - complementing Ewan's cross-border language and market entry work.",
   },
   {
-    id: "founder-sukhada",
-    name: "Sukhada Kakade Bhalerao",
-    role: "Director & Co-Founder",
-    headline: "The Financial and Operational Intelligence Behind Ewan",
+    name: "Bhashik Skill Development - Sister Institution",
     description:
-      "Sukhada is a Certified Management Accountant (CMA) with 15+ years of experience in financial planning, auditing, RBI/FEMA compliance advisory, entity setup, internal controls, and client reporting.",
-    detail:
-      "With her own cost accounting practice since 2010, teaching and faculty roles, and leadership at Bhashik Skill Development, she ensures Ewan's delivery is backed by financial rigor and operational reliability.",
-    tags: ["CMA Credentialed", "15+ Years Experience", "RBI / FEMA Compliance"],
-    points: [
-      "Cost Accounting Practice (est. 2010)",
-      "Finance Educator & Faculty",
-      "Committee Contributor",
-      "Co-Founder - Bhashik Skill Development",
-    ],
-    linkedin: "https://www.linkedin.com/company/ewan-business-solutions/",
-    image: "/Sukhada-maam.jpg",
+      "Bhashik Skill Development (bhashikskill.co.in) is Ewan's sister institution - a skill development organisation focused on language training, commerce education, and vocational upskilling across 125+ languages.",
+    link: "https://bhashikskill.co.in",
   },
 ];
+
+const doodleCorner = "/stitch/about-us/doodle-arc-corner.svg";
+const doodleSquiggle = "/stitch/about-us/doodle-squiggle-right.svg";
+const doodleBridge = "/stitch/about-us/doodle-bridge-wave.svg";
+const doodleDots = "/stitch/about-us/doodle-dot-field.svg";
 
 const AboutUs = () => {
-  const { t } = useTranslation();
-
   return (
     <PageLayout
-      title={t("seo.about.title")}
-      description={t("seo.about.description")}
+      title="About Ewan Business Solutions | Cross-Border Market Partner India"
+      description="Ewan Business Solutions - 5 years, 250+ clients, 125+ languages. Founded by Soham Kakade. Cross-border market entry and language services for the India-Asia corridor."
       canonicalPath="/about-us/"
     >
-      <section id="about-ewan" className="relative flex min-h-[780px] items-center justify-center overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6">
+      {/* Hero */}
+      <section
+        id="about-ewan"
+        className="relative overflow-hidden stitch-line stitch-line-bottom bg-[hsl(var(--brand-navy-950))] px-6 pb-28 pt-6 md:pb-36 md:pt-10"
+      >
         <div
-          className="absolute inset-0 z-0 opacity-30"
+          className="absolute inset-0 z-0 opacity-[0.32] md:opacity-40"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop')",
+            backgroundImage: "url('/page-assets/about-ewan-aboutus.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--brand-purple-700)/0.18)_0%,transparent_70%)]" />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.4)] via-[hsl(var(--brand-navy-950)/0.84)] to-[hsl(var(--brand-navy-950))]" />
-        <div className="container relative z-10 mx-auto text-center text-white">
-          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.22em] text-[hsl(var(--brand-gold-500))]">
-            Global Language & Operations
-          </p>
-          <h1 className="mx-auto max-w-5xl font-serif text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
-            Built for the Corridors Others Don&apos;t Know.
-          </h1>
-          <p className="mx-auto mt-8 max-w-3xl text-base text-white/75 sm:text-lg">
-            Ewan operates at the intersection of 125+ languages and on-ground operations, supporting foreign companies
-            entering India and Indian companies expanding globally.
-          </p>
-          <a
-            href="mailto:info@ewan.co.in?subject=Partnership%20Inquiry"
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-7 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-          >
-            Partner With Us
-            <ArrowRight className="h-4 w-4" />
-          </a>
-          <div className="mx-auto mt-14 grid max-w-5xl gap-4 md:grid-cols-3">
-            {metrics.map((item) => (
-              <article key={item.label} className="rounded-2xl border border-[hsl(var(--surface-glass)/0.16)] bg-[hsl(var(--surface-glass)/0.06)] p-7 backdrop-blur-md">
-                <p className="text-3xl font-bold text-[hsl(var(--brand-purple-500))]">{item.value}</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-white/70">{item.label}</p>
-              </article>
-            ))}
+        <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_90%_60%_at_18%_18%,hsl(var(--brand-purple-700)/0.18),transparent_55%)]" />
+        <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_88%_72%,hsl(var(--brand-gold-500)/0.1),transparent_42%)]" />
+        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.38)] via-[hsl(var(--brand-navy-950)/0.82)] to-[hsl(var(--brand-navy-950))]" />
+
+        <img
+          src={doodleCorner}
+          alt=""
+          className="pointer-events-none absolute -left-4 top-16 z-[1] h-40 w-40 select-none opacity-70 sm:h-48 sm:w-48 md:left-2 md:top-24"
+        />
+        <img
+          src={doodleSquiggle}
+          alt=""
+          className="pointer-events-none absolute -right-8 bottom-24 z-[1] hidden h-64 w-52 select-none opacity-75 md:block lg:bottom-32 lg:h-80 lg:w-64"
+        />
+        <img
+          src={doodleDots}
+          alt=""
+          className="pointer-events-none absolute left-1/2 top-1/2 z-[1] h-56 w-72 -translate-x-1/2 -translate-y-[30%] select-none opacity-[0.14] sm:opacity-20"
+        />
+
+        <div className="pointer-events-none absolute left-6 top-28 hidden select-none text-4xl font-extrabold tracking-tight text-[hsl(var(--brand-purple-500)/0.14)] lg:block xl:left-12 xl:text-5xl">
+          {`{"ewan":"bridge"}`}
+        </div>
+        <div className="pointer-events-none absolute bottom-40 right-8 hidden select-none text-[10px] font-semibold uppercase tracking-[0.28em] text-[hsl(var(--brand-gold-500)/0.2)] xl:block">
+          good · bridge · two corridors
+        </div>
+
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <div className="grid gap-14 lg:grid-cols-12 lg:gap-12 lg:items-start">
+            <div className="lg:col-span-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[hsl(var(--brand-gold-500))]">
+                What does &quot;Ewan&quot; mean?
+              </p>
+              <h1 className="mt-6 font-serif text-4xl font-bold leading-[1.05] text-white sm:text-5xl lg:text-[3.35rem] xl:text-6xl xl:leading-[1.02]">
+                A Bridge Connecting <br className="hidden sm:block" />
+                Two Good Things.
+              </h1>
+              <div className="relative mt-10 max-w-xl">
+                <img
+                  src={doodleBridge}
+                  alt=""
+                  className="pointer-events-none absolute -left-4 top-full mt-4 hidden h-16 w-[min(100%,420px)] max-w-none select-none opacity-50 sm:block"
+                />
+                <p className="relative text-base leading-relaxed text-white/78 sm:text-lg">
+                  The word &quot;Ewan&quot; is the amalgamation of the Japanese letter <strong>&quot;E&quot;</strong> meaning good and the
+                  Traditional Chinese word <strong>&quot;WAN&quot;</strong> meaning bridge.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative lg:col-span-5 lg:mt-4">
+              <div className="relative mx-auto max-w-[400px] rounded-[2rem] border border-[hsl(var(--surface-glass)/0.2)] bg-[hsl(var(--surface-glass)/0.05)] p-6 backdrop-blur-md lg:mr-0 lg:ml-auto lg:max-w-none">
+                <div className="pointer-events-none absolute -right-3 -top-3 h-20 w-20 rounded-full border-2 border-dashed border-[hsl(var(--brand-gold-500)/0.25)]" />
+                <div className="pointer-events-none absolute -bottom-2 left-8 h-3 w-16 rounded-full bg-[hsl(var(--brand-purple-500)/0.2)] blur-sm" />
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Live footprint</p>
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {metrics.map((item) => (
+                    <article
+                      key={item.label}
+                      className="rounded-2xl border border-[hsl(var(--surface-glass)/0.18)] bg-[hsl(var(--surface-glass)/0.08)] p-5 backdrop-blur-md"
+                    >
+                      <p className="font-serif text-2xl font-bold text-[hsl(var(--brand-gold-500))] sm:text-3xl">{item.value}</p>
+                      <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/70">{item.label}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[hsl(var(--surface-light-50))] px-6 py-20">
-        <div className="container mx-auto grid items-center gap-8 lg:grid-cols-[0.42fr_0.58fr]">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Core Positioning</p>
-            <h2 className="mt-4 font-serif text-4xl font-bold leading-tight text-[#1a1633]">
-              Language and operations are not separate problems.
-            </h2>
-            <div className="mt-7 h-1 w-20 bg-[hsl(var(--brand-gold-500))]" />
-          </div>
-          <article className="rounded-2xl border border-[hsl(var(--surface-glass)/0.18)] bg-white p-8 shadow-[0_18px_40px_hsl(var(--brand-navy-950)/0.08)]">
-            <p className="text-base leading-relaxed text-[#332e4b]">
-              Most firms approach expansion with either language support or consulting support. Ewan combines both, because
-              operational execution, cultural precision, and multilingual communication are the same business problem.
-            </p>
-          </article>
-        </div>
-      </section>
+      <SectionDivider variant="wave" fromDark />
 
-      <section className="relative overflow-hidden bg-[#f2f0fa] px-6 py-20">
-        <div className="container mx-auto grid gap-12 md:grid-cols-[0.36fr_0.64fr]">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Our Origin</p>
-            <h2 className="mt-4 font-serif text-4xl font-bold text-[#1a1633]">Founded in 2020. Built for the long term.</h2>
-          </div>
-          <article className="rounded-2xl border-l-4 border-l-[hsl(var(--brand-purple-500))] border-r border-r-[#ddd7ee] border-t border-t-[#ddd7ee] border-b border-b-[#ddd7ee] bg-white p-8 shadow-[0_12px_32px_hsl(var(--brand-navy-950)/0.07)]">
-            <p className="text-base leading-relaxed text-[#302a48]">
-              Ewan was founded on one conviction: companies succeed in cross-border expansion when their partner understands
-              both sides of the table. We deliver everything from single-document translation to full market entry mandates
-              with confidence, context, and execution discipline.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section id="founders" className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 py-24 text-white">
-        <div className="pointer-events-none absolute -left-28 top-10 h-80 w-80 rounded-full bg-[hsl(var(--brand-purple-700)/0.26)] blur-3xl" />
-        <div className="pointer-events-none absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-[hsl(var(--brand-gold-500)/0.16)] blur-3xl" />
-        <div className="container mx-auto max-w-6xl">
-          <div className="mb-14 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-500))]">Leadership</p>
-            <h2 className="mt-3 font-serif text-4xl font-bold md:text-5xl">The Architects of Fluency</h2>
-            <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-white/65 md:text-base">
-              Strategic language leadership anchored by boardroom experience, compliance rigor, and execution discipline.
-            </p>
-          </div>
-
-          <div className="space-y-8">
-            {founders.map((founder) => (
-              <article
-                key={founder.id}
-                className="overflow-hidden rounded-3xl border border-[hsl(var(--surface-glass)/0.16)] bg-[hsl(var(--surface-glass)/0.06)] shadow-[0_24px_55px_hsl(var(--brand-navy-950)/0.45)] backdrop-blur-sm"
-              >
-                <div className="grid gap-0 lg:grid-cols-[320px_1fr]">
-                  <div className="relative h-80 overflow-hidden lg:h-full">
-                    <img
-                      src={founder.image}
-                      alt={`${founder.name} portrait`}
-                      className="h-full w-full object-cover transition duration-700 hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.76)] via-[hsl(var(--brand-navy-950)/0.22)] to-transparent" />
-                    <div className="absolute bottom-5 left-5 right-5">
-                      <h3 className="font-serif text-2xl font-bold text-white">{founder.name}</h3>
-                      <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))]">{founder.role}</p>
-                    </div>
+      {/* About the Firm */}
+      <section className="theme-section-soft relative overflow-hidden px-6 py-20 md:py-24 stitch-line stitch-line-bottom">
+        <div className="pointer-events-none absolute right-0 top-0 h-72 w-72 translate-x-1/4 -translate-y-1/4 bg-[radial-gradient(circle,hsl(var(--brand-purple-500)/0.12),transparent_68%)]" />
+        <img
+          src={doodleDots}
+          alt=""
+          className="pointer-events-none absolute bottom-8 left-4 z-0 h-40 w-48 select-none opacity-[0.2] lg:left-[6%]"
+        />
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <div className="grid items-start gap-14 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">The Firm</p>
+              <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] md:text-[2.25rem]">
+                Built for the Corridors Others Don&apos;t Know.
+              </h2>
+              <div className="relative mt-6">
+                <div className="h-1 w-20 rounded-full bg-[hsl(var(--brand-gold-500))]" />
+              </div>
+              <div className="relative mt-8 space-y-4 text-[0.9375rem] leading-relaxed text-on-light-secondary md:text-base [&_strong]:text-[hsl(var(--brand-navy-950))]">
+                <p>
+                  Ewan Business Solutions was founded in 2020 on a single conviction: that the companies who win in
+                  cross-border expansion are the ones with a partner who has already been on both sides of the table.
+                </p>
+                <p>
+                  We sit at a rare intersection - 125+ language capability and on-ground operational expertise - that
+                  makes us genuinely different from both traditional language agencies and conventional market entry
+                  consultants. We don&apos;t separate language from operations. In our experience, they are the same problem.
+                </p>
+                <p>
+                  We work with foreign companies entering India and Indian companies expanding across Southeast Asia, East
+                  Asia, Latin America and Africa. In five years, we have served 250+ clients across 10+ sectors, delivering
+                  everything from single document translations to full market entry mandates.
+                </p>
+              </div>
+            </div>
+            <div className="grid gap-5 md:gap-6">
+              <article className="relative overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] bg-white p-8 shadow-[0_14px_40px_rgba(26,22,51,0.06)] md:p-10">
+                <img
+                  src={doodleCorner}
+                  alt=""
+                  className="pointer-events-none absolute -right-6 -top-6 h-28 w-28 rotate-90 scale-x-[-1] select-none opacity-30"
+                />
+                <div className="relative">
+                  <div className="mb-4 inline-flex items-center justify-center rounded-full bg-[hsl(var(--brand-purple-500)/0.1)] p-3 text-[hsl(var(--brand-purple-500))]">
+                    <Globe2 className="h-6 w-6" />
                   </div>
-
-                  <div className="p-6 md:p-8">
-                    <h4 className="font-serif text-2xl font-bold leading-tight text-white">{founder.headline}</h4>
-
-                    <div className="mt-5 flex flex-wrap gap-2.5">
-                      {founder.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full border border-[hsl(var(--surface-glass)/0.14)] bg-[hsl(var(--surface-glass)/0.08)] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.06em] text-[hsl(var(--brand-purple-500))]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="mt-5 space-y-3">
-                      <p className="text-sm leading-relaxed text-white/80 md:text-[15px]">{founder.description}</p>
-                      <p className="text-sm leading-relaxed text-white/72 md:text-[15px]">{founder.detail}</p>
-                    </div>
-
-                    <div className="mt-6 grid gap-2.5 sm:grid-cols-2">
-                      {founder.points.map((point) => (
-                        <p key={point} className="flex items-start gap-2.5 text-sm text-white/74">
-                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-gold-500))]" />
-                          <span>{point}</span>
-                        </p>
-                      ))}
-                    </div>
-
-                    <div className="mt-7 flex flex-wrap gap-3">
-                      <a
-                        href={founder.linkedin}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--surface-glass)/0.22)] px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-white/10"
-                      >
-                        Connect on LinkedIn
-                        <ArrowRight className="h-3.5 w-3.5" />
-                      </a>
-                      {founder.id === "founder-soham" ? (
-                        <Link
-                          to="/ask-soham"
-                          className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-                        >
-                          Ask Soham - 15 Min Call
-                          <ArrowRight className="h-3.5 w-3.5" />
-                        </Link>
-                      ) : null}
-                    </div>
-                  </div>
+                  <h3 className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">Our Mission</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-on-light-secondary md:text-[0.9375rem]">
+                    To help our customers grow their business by enabling them to communicate with their global markets. We
+                    strive to preserve languages and heritage around the globe, improving worldwide communication through
+                    accurate, localized translation and interpretation services.
+                  </p>
                 </div>
               </article>
-            ))}
+              <article className="relative overflow-hidden rounded-3xl border border-[hsl(var(--surface-glass)/0.12)] bg-[hsl(var(--brand-navy-950))] p-8 text-white shadow-[0_14px_40px_rgba(26,22,51,0.28)] md:p-10">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_100%_0%,hsl(var(--brand-purple-700)/0.35),transparent_55%)]" />
+                <div className="relative">
+                  <div className="mb-4 inline-flex items-center justify-center rounded-full bg-[hsl(var(--brand-gold-500)/0.2)] p-3 text-[hsl(var(--brand-gold-500))]">
+                    <Handshake className="h-6 w-6" />
+                  </div>
+                  <h3 className="font-serif text-2xl font-bold">Our Vision</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/80 md:text-[0.9375rem]">
+                    To become the leading cross-border partner for companies operating between India and the emerging world -
+                    combining language excellence, on-ground operational capability, and institutional credibility that
+                    cannot be replicated overnight.
+                  </p>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="government-recognition" className="border-y border-[#d9d3e7] bg-[#faf9fd] px-6 py-16">
-        <div className="container mx-auto">
-          <div className="mb-7 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Recognised by Governments and Institutions</p>
-            <h3 className="mt-2 font-serif text-3xl font-bold text-[#1a1633]">Recognised by the Consulate General of China</h3>
-            <p className="mx-auto mt-4 max-w-4xl text-sm leading-relaxed text-[#3f3958]">
-              In a formal letter, the Consulate General acknowledged Ewan&apos;s contribution to India-China trade and
-              agriculture outcomes impacting 1,200+ farmers and 800 hectares of farmland.
-            </p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {trustSignals.map((item) => (
-              <article key={item} className="rounded-xl border border-[#e6e1f2] bg-white px-5 py-4">
-                <p className="flex items-start gap-2 text-sm text-[#393351]">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-500))]" />
-                  <span>{item}</span>
+      <SectionDivider variant="slant" />
+
+      {/* Founders */}
+      <section id="the-founders" className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 py-24 text-white md:py-28 stitch-line stitch-line-bottom">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_72%_-10%,hsl(var(--brand-purple-700)/0.22),transparent_50%)]" />
+        <img
+          src={doodleSquiggle}
+          alt=""
+          className="pointer-events-none absolute -left-12 top-40 z-0 hidden h-72 w-56 -scale-x-100 select-none opacity-25 xl:block"
+        />
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <header className="mb-14 text-center md:mb-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-500))]">The Founders</p>
+            <h2 className="mx-auto mt-4 max-w-3xl font-serif text-3xl font-bold md:text-4xl lg:text-5xl">
+              Leadership That Built the Corridors
+            </h2>
+            <img src={doodleBridge} alt="" className="pointer-events-none mx-auto mt-6 h-14 w-[min(100%,480px)] max-w-none select-none opacity-40" />
+          </header>
+
+          {/* Soham */}
+          <article className="mb-14 rounded-2xl border border-[hsl(var(--surface-glass)/0.12)] bg-[hsl(var(--surface-glass)/0.04)] shadow-[0_20px_50px_rgba(0,0,0,0.2)] backdrop-blur-sm md:mb-16">
+            <div className="flex flex-col gap-8 p-6 sm:p-8 md:gap-10 lg:flex-row lg:items-start lg:p-10">
+              <div className="mx-auto w-full max-w-[320px] shrink-0 lg:mx-0 lg:max-w-[300px]">
+                <figure className="overflow-hidden rounded-2xl bg-[hsl(var(--brand-navy-950))] shadow-[inset_0_0_0_1px_hsl(var(--surface-glass)/0.12)]">
+                  <img
+                    src="/Soham-Sir.jpg"
+                    alt="Soham Kakade, Founder & CEO of Ewan Business Solutions"
+                    className="aspect-[4/5] w-full object-cover object-center"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="border-b border-[hsl(var(--surface-glass)/0.1)] pb-6">
+                  <h3 className="font-serif text-2xl font-bold text-white sm:text-[1.75rem]">Soham Kakade</h3>
+                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))]">
+                    Founder & CEO
+                  </p>
+                </div>
+                <h4 className="mt-6 font-serif text-2xl font-bold leading-tight text-white md:text-[1.65rem]">
+                  10 Years in the Room Before Building the Firm.
+                </h4>
+                <p className="mt-5 text-sm leading-relaxed text-white/82 md:text-[0.9375rem]">
+                  Soham Kakade spent a decade interpreting confidential boardroom negotiations between global leaders and
+                  their Asian counterparts - accumulating over 60,000 hours of simultaneous interpretation across
+                  Mandarin, Cantonese, Japanese and ASEAN languages before founding Ewan.
                 </p>
-              </article>
-            ))}
-          </div>
+                <p className="mt-3 text-sm leading-relaxed text-white/74 md:text-[0.9375rem]">
+                  His foundation: a full Chinese Government scholarship at Beijing Language and Cultural University (BLCU),
+                  one of the world&apos;s most rigorous language institutions. Since then: heads of state, Fortune 500
+                  boardrooms, national textbooks, government export programs and geopolitical publications on the
+                  India-Asia corridor. Ewan exists because Soham saw, repeatedly, what happens when companies enter new
+                  markets without someone who truly understands both sides of the conversation. He built the firm he wished had existed.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {[
+                    "BLCU Scholarship Recipient",
+                    "60,000+ Hours Interpretation",
+                    "ISO 9001:2015 Certified",
+                    "Vice President, CITLoB",
+                    "Bhashini Initiative, MeitY",
+                    "MSAMB Export Program Designer",
+                    "Faculty, Symbiosis",
+                    "IB Board Curriculum Designer",
+                  ].map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-[hsl(var(--surface-glass)/0.14)] bg-[hsl(var(--surface-glass)/0.08)] px-3 py-1 text-[11px] font-semibold tracking-[0.06em] text-[hsl(var(--brand-purple-500))]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <a
+                    href="https://www.linkedin.com/in/soham-kakade-77b2819b/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--surface-glass)/0.22)] px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-white/10"
+                  >
+                    Connect on LinkedIn
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
+                  <Link
+                    to="/ask-soham"
+                    className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+                  >
+                    Ask Soham - Book a Free 15-Minute Call
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          {/* Sukhada */}
+          <article className="rounded-2xl border border-[hsl(var(--surface-glass)/0.12)] bg-[hsl(var(--surface-glass)/0.04)] shadow-[0_20px_50px_rgba(0,0,0,0.18)] backdrop-blur-sm">
+            <div className="flex flex-col gap-8 p-6 sm:p-8 md:gap-10 lg:flex-row-reverse lg:items-start lg:p-10">
+              <div className="mx-auto w-full max-w-[320px] shrink-0 lg:mx-0 lg:max-w-[300px]">
+                <figure className="overflow-hidden rounded-2xl bg-[hsl(var(--brand-navy-950))] shadow-[inset_0_0_0_1px_hsl(var(--surface-glass)/0.12)]">
+                  <img
+                    src="/Sukhada-maam.jpg"
+                    alt="CMA Sukhada Kakade Bhalerao, Co-Founder & Director of Ewan Business Solutions"
+                    className="aspect-[4/5] w-full object-cover object-center"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="border-b border-[hsl(var(--surface-glass)/0.1)] pb-6">
+                  <h3 className="font-serif text-2xl font-bold text-white sm:text-[1.75rem]">CMA Sukhada Kakade Bhalerao</h3>
+                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))]">
+                    Co-Founder & Director
+                  </p>
+                </div>
+                <h4 className="mt-6 font-serif text-2xl font-bold leading-tight text-white md:text-[1.65rem]">
+                  The Financial and Operational Intelligence Behind Ewan.
+                </h4>
+                <p className="mt-5 text-sm leading-relaxed text-white/82 md:text-[0.9375rem]">
+                  Sukhada Kakade Bhalerao is a Pune-based Certified Management Accountant (CMA), finance educator, and
+                  entrepreneur. As Co-Founder and Director of Ewan Business Solutions, she provides the financial rigour
+                  and operational structure that allows Ewan to deliver complex, multi-workstream mandates with
+                  confidence. Her expertise spans financial planning, auditing, RBI/FEMA compliance advisory, entity
+                  formation financial setup, internal controls, and client financial reporting.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-white/74 md:text-[0.9375rem]">
+                  With over 15 years of experience - including her own cost accounting practice (est. 2010), faculty
+                  roles, and committee contributions - she brings a discipline that is rarely found in language or market
+                  entry firms: the ability to see the financial architecture of an expansion before it is built, and to ensure
+                  clients move quickly without financial exposure.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-white/74 md:text-[0.9375rem]">
+                  She is also Co-Founder and Director of Bhashik Skill Development, Ewan&apos;s sister institution focused on language training, vocational skills, and career development - ensuring a steady pipeline of skilled, job-ready language professionals for the industry.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {[
+                    "Certified Management Accountant (CMA)",
+                    "Cost Accounting Practice (est. 2010)",
+                    "Finance Educator & Faculty",
+                    "RBI & FEMA Advisory",
+                    "Committee Contributor",
+                    "Co-Founder, Bhashik Skill Development",
+                  ].map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-[hsl(var(--surface-glass)/0.14)] bg-[hsl(var(--surface-glass)/0.08)] px-3 py-1 text-[11px] font-semibold tracking-[0.06em] text-[hsl(var(--brand-gold-500))]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section id="oriental-flock" className="scroll-mt-28 bg-[#fcfbff] px-6 py-16">
-        <div className="container mx-auto rounded-3xl border border-[#e2ddf0] bg-[#f5f2fc] p-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Community</p>
-          <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633]">Oriental Flock - Where the Language Industry Gathers</h2>
-          <p className="mt-3 max-w-4xl text-sm leading-relaxed text-[#3e3858]">
-            Oriental Flock is Pune&apos;s language industry meetup bringing together translators, freelancers, trainers, and
-            companies to solve practical challenges around hiring, collaboration, and cross-cultural communication.
-          </p>
-          <div className="mt-5 grid gap-3 md:grid-cols-2">
-            <p className="rounded-xl border border-[#dfd8ef] bg-white p-4 text-sm text-[#3e3858]">
-              <span className="font-semibold">Format:</span> 91Springboard Baner, Pune · 4:00 PM to 6:00 PM sessions
+      <SectionDivider variant="slant" flip fromDark />
+
+      {/* Institutional Recognition */}
+      <section className="theme-section-light relative overflow-hidden px-6 py-20 md:py-24 stitch-line stitch-line-bottom">
+        <img
+          src={doodleCorner}
+          alt=""
+          className="pointer-events-none absolute right-[-3rem] bottom-[-2rem] z-0 hidden h-40 w-40 rotate-180 select-none opacity-25 lg:block"
+        />
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 md:mb-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">
+              Recognised by Governments and Institutions
             </p>
-            <p className="rounded-xl border border-[#dfd8ef] bg-white p-4 text-sm text-[#3e3858]">
-              <span className="font-semibold">Topics:</span> Bilingual hiring, freelancer collaboration, high-stakes
-              cross-cultural communication
+            <h2 className="mt-3 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] md:text-[2.25rem]">
+              Recognised by the Consulate General of the People&apos;s Republic of China
+            </h2>
+            <p className="mt-5 max-w-4xl text-sm leading-relaxed text-on-light-secondary md:text-base">
+              In a formal letter of recognition, the Consulate General acknowledged Ewan&apos;s contribution to
+              strengthening India-China agricultural and trade relations - noting that over 1,200 farmers and 800
+              hectares of farmland would benefit from the work. This is the kind of institutional trust that takes years
+              to build and cannot be replicated overnight.
             </p>
           </div>
-        </div>
-      </section>
-
-      <section id="partners" className="scroll-mt-28 bg-[#f4f2fb] px-6 py-16">
-        <div className="container mx-auto">
-          <div className="mb-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Partners</p>
-            <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633]">Partners & Collaborators Who Extend Our Reach</h2>
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {partnerCards.map((partner) => (
-              <article key={partner.name} className="rounded-2xl border border-[#ddd8eb] bg-white p-6 shadow-[0_12px_24px_hsl(var(--brand-navy-950)/0.06)]">
-                <h3 className="font-serif text-xl font-bold text-[#1a1633]">{partner.name}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#3e3858]">{partner.blurb}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="bhashik-pipeline" className="bg-[#fbf9ff] px-6 py-16">
-        <div className="container mx-auto rounded-3xl border border-[#e2ddf0] bg-white p-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Ecosystem</p>
-          <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633]">Bhashik Skill Development Pipeline</h2>
-          <p className="mt-3 max-w-4xl text-sm leading-relaxed text-[#3e3858]">
-            Bhashik, Ewan&apos;s sister institution, builds the trained workforce behind our quality standards by developing
-            language professionals across key Asian, European, and Indian language tracks.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {ecosystemLanguages.map((lang) => (
-              <span key={lang} className="rounded-full border border-[#d8d1ea] bg-[#f4f0fb] px-3 py-1 text-xs font-semibold text-[#4a4364]">
-                {lang}
-              </span>
-            ))}
-          </div>
-          <div className="mt-7 grid gap-3 md:grid-cols-2">
-            {joinTracks.map((item) => (
-              <p key={item} className="flex items-start gap-2 text-sm text-[#3e3858]">
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {institutionalRecognitions.map((item) => (
+              <p
+                key={item}
+                className="flex items-start gap-3 rounded-2xl border border-[hsl(var(--border-light))] bg-white p-5 text-sm text-on-light-secondary shadow-[0_8px_24px_rgba(26,22,51,0.04)] md:p-6"
+              >
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-500))]" />
                 <span>{item}</span>
               </p>
@@ -357,150 +418,140 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <section id="case-studies" className="scroll-mt-28 border-y border-[#e8e2f4] bg-[#faf8ff] px-6 py-16">
-        <div className="container mx-auto">
-          <div className="mb-8 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Evidence</p>
-            <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633] md:text-4xl">Case Studies</h2>
-            <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-[#3e3858]">
-              Representative mandates where integrated language and operations work reduced coordination risk and accelerated
-              time-to-validated traction in-market.
-            </p>
-          </div>
-          <div className="grid gap-6 lg:grid-cols-3">
-            <article className="rounded-3xl border border-[#e2ddf0] bg-white p-7 shadow-[0_12px_28px_rgba(20,16,45,0.06)]">
-              <p className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-gold-600))]">
-                Market Entry · Manufacturing
-              </p>
-              <h3 className="mt-3 font-serif text-xl font-bold text-[#1a1633]">Japan → India full mandate</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#3e3858]">
-                Regulatory mapping, entity formation, executive liaison, local procurement, and on-ground operational setup —
-                coordinated as one mandate so leadership could execute without fragmenting oversight.
-              </p>
-              <div className="mt-5">
-                <Link
-                  to="/market-entry#proof"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-600))] transition hover:gap-3"
-                >
-                  Read narrative on Market Entry
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </article>
-            <article className="rounded-3xl border border-[#e2ddf0] bg-white p-7 shadow-[0_12px_28px_rgba(20,16,45,0.06)]">
-              <p className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-gold-600))]">
-                Language Intelligence · Corridor
-              </p>
-              <h3 className="mt-3 font-serif text-xl font-bold text-[#1a1633]">High-stakes interpreting at scale</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#3e3858]">
-                60,000+ hours of simultaneous and consecutive interpretation across boardrooms, government engagements, and
-                sector programs — where tone, confidentiality, and technical precision directly affect deal outcomes.
-              </p>
-              <div className="mt-5">
-                <Link
-                  to="/language-localization#interpretation"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-600))] transition hover:gap-3"
-                >
-                  Explore interpretation capability
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </article>
-            <article className="rounded-3xl border border-[#e2ddf0] bg-white p-7 shadow-[0_12px_28px_rgba(20,16,45,0.06)]">
-              <p className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-gold-600))]">
-                Readiness · Planning
-              </p>
-              <h3 className="mt-3 font-serif text-xl font-bold text-[#1a1633]">Expansion gap assessment</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#3e3858]">
-                Teams use the Global Market Entry Audit framework to surface operational and coordination gaps before capital
-                is committed — aligning language, compliance, and execution plans early.
-              </p>
-              <div className="mt-5">
-                <Link
-                  to="/market-entry-audit"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-600))] transition hover:gap-3"
-                >
-                  Open the Market Entry Audit
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      <section id="testimonials" className="scroll-mt-28 bg-[#f4f2fb] px-6 py-16">
-        <div className="container mx-auto max-w-5xl">
-          <div className="mb-10 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Clients</p>
-            <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633] md:text-4xl">Testimonials</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#3e3858]">
-              How partners describe working with Ewan when language, culture, and operations must move together.
+      {/* Partners */}
+      <section id="our-partners" className="theme-section-soft relative overflow-hidden px-6 py-12">
+        <div className="pointer-events-none absolute left-[-20%] top-1/2 h-[min(80vw,420px)] w-[min(80vw,420px)] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,hsl(var(--brand-gold-500)/0.06),transparent_70%)]" />
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 md:mb-14">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">Partners & Collaborators</p>
+            <h2 className="mt-3 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] md:text-[2.25rem]">
+              Partners & Collaborators Who Extend Our Reach.
+            </h2>
+            <p className="mt-5 max-w-3xl text-sm leading-relaxed text-on-light-secondary md:text-base">
+              Ewan works with trusted institutional and commercial partners whose capabilities complement our own -
+              allowing us to deliver more comprehensive solutions for clients navigating complex cross-border
+              environments.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            <figure className="rounded-3xl border border-[#e2ddf0] bg-white p-8 shadow-[0_12px_28px_rgba(20,16,45,0.05)]">
-              <blockquote className="text-sm leading-relaxed text-[#2f2a48]">
-                &ldquo;We stopped managing three different vendors for language, liaison, and local checks. One accountable
-                partner changed how fast we could validate India without losing board-level confidence.&rdquo;
-              </blockquote>
-              <figcaption className="mt-5 text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-purple-500))]">
-                VP Operations · Industrial manufacturer (Northeast Asia)
-              </figcaption>
-            </figure>
-            <figure className="rounded-3xl border border-[#e2ddf0] bg-white p-8 shadow-[0_12px_28px_rgba(20,16,45,0.05)]">
-              <blockquote className="text-sm leading-relaxed text-[#2f2a48]">
-                &ldquo;Interpretation quality in technical sessions was non-negotiable for us. Ewan&apos;s interpreters
-                understood the engineering intent—not just the words—which kept negotiations on track.&rdquo;
-              </blockquote>
-              <figcaption className="mt-5 text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-purple-500))]">
-                Program Director · Cross-border procurement program
-              </figcaption>
-            </figure>
+          <div className="grid gap-6 md:grid-cols-3">
+            {partners.map((partner) => (
+              <article
+                key={partner.name}
+                className="group rounded-3xl border border-[hsl(var(--border-light))] bg-white p-7 shadow-[0_14px_40px_rgba(26,22,51,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(26,22,51,0.09)] md:p-8"
+              >
+                <h3 className="font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))]">{partner.name}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">{partner.description}</p>
+                {partner.link && (
+                  <a
+                    href={partner.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[hsl(var(--brand-purple-500))] transition group-hover:underline"
+                  >
+                    Visit bhashikskill.co.in
+                    <ArrowRight className="h-3 w-3" />
+                  </a>
+                )}
+              </article>
+            ))}
           </div>
-          <div className="mt-8 text-center">
-            <Link
-              to="/ask-soham"
-              className="inline-flex items-center gap-2 rounded-full border border-[#d9d2ea] bg-white px-6 py-3 text-sm font-semibold text-[#2d2946] transition hover:border-[hsl(var(--brand-purple-500)/0.55)]"
+          <p className="mt-10 text-center text-sm text-on-light-secondary md:mt-12">
+            Interested in partnering with Ewan?{" "}
+            <a
+              href="mailto:info@ewan.co.in?subject=Partnership"
+              className="font-semibold text-[hsl(var(--brand-purple-500))] hover:underline"
             >
-              Discuss your mandate with Soham
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+              Get in touch about a partnership →
+            </a>
+          </p>
+        </div>
+      </section>
+
+      {/* Oriental Flock */}
+      <section id="oriental-flock" className="theme-section-light relative overflow-hidden px-6 py-12">
+        <img
+          src={doodleSquiggle}
+          alt=""
+          className="pointer-events-none absolute -right-6 top-24 z-0 h-52 w-40 select-none opacity-[0.12] lg:opacity-[0.18]"
+        />
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <div className="relative overflow-hidden rounded-[2rem] border border-[hsl(var(--border-light))] bg-white p-8 shadow-[0_18px_50px_rgba(26,22,51,0.06)] md:p-12">
+            <div className="pointer-events-none absolute -left-px top-0 h-full w-1 bg-gradient-to-b from-[hsl(var(--brand-gold-500)/0.5)] via-[hsl(var(--brand-purple-500)/0.35)] to-transparent" />
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">Community</p>
+            <h2 className="mt-3 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] md:text-[2.25rem]">
+              Oriental Flock - Where the Language Industry Gathers.
+            </h2>
+            <p className="mt-5 max-w-4xl text-sm leading-relaxed text-on-light-secondary md:text-base">
+              Oriental Flock is Pune&apos;s language industry meetup - a regular gathering of freelancers, interpreters,
+              language trainers, bilingual professionals and companies solving the real challenges of working across
+              languages and cultures. Founded by Soham Kakade in partnership with CITLoB.
+            </p>
+            <p className="mt-4 max-w-4xl text-sm leading-relaxed text-on-light-secondary md:text-base">
+              Past sessions have brought together practitioners from GlobalLogic, Vinsys, Cybage, The Oriental Dialogue
+              and independent language professionals from across India. Topics have ranged from bilingual hiring
+              challenges to freelancer-to-LSP connections to cross-cultural communication in high-stakes settings.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {[
+                "Regular gatherings",
+                "91Springboard, Baner, Pune",
+                "4:00 PM – 6:00 PM",
+                "Open to language professionals, learners and companies",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-100))] px-4 py-2 text-[11px] font-semibold tracking-wide text-on-light md:text-xs"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+            <p className="mt-6 text-sm text-on-light-muted">
+              Follow{" "}
+              <a
+                href="https://www.instagram.com/ewanbizsolution/"
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold text-[hsl(var(--brand-purple-500))] hover:underline"
+              >
+                @orientalflock
+              </a>{" "}
+              on Instagram for upcoming editions and session highlights.
+            </p>
           </div>
         </div>
       </section>
 
-      <section id="industries" className="bg-[#fbf9ff] px-6 py-16">
-        <div className="container mx-auto rounded-3xl border border-[#e2ddf0] bg-white p-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Industry Portfolio</p>
-          <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633]">Industries We Serve</h2>
-          <div className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-            {sectors.map((item) => (
-              <p key={item} className="flex items-start gap-2 text-sm text-[#3b3554]">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-500))]" />
-                <span>{item}</span>
-              </p>
+      {/* Language Cards */}
+      <section className="theme-section-soft relative overflow-hidden px-6 py-12">
+        <div className="pointer-events-none absolute right-12 top-20 hidden lg:block">
+          <img src={doodleDots} alt="" className="h-48 w-64 select-none opacity-[0.16]" />
+        </div>
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 text-center md:mb-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">Language Capability</p>
+            <h2 className="mt-4 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] md:text-[2.25rem]">Languages We Master</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-on-light-secondary">
+              We handle 125+ languages, with deep specialization in Oriental, European, and Indian corridors.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {languageGroups.map((lang) => (
+              <article
+                key={lang.name}
+                className="rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 shadow-[0_10px_32px_rgba(26,22,51,0.04)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(26,22,51,0.08)] md:p-7"
+              >
+                <h3 className="font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))]">{lang.name}</h3>
+                <p className="mt-1 text-xs font-bold text-[hsl(var(--brand-gold-600))]">{lang.speakers} Speakers</p>
+                <p className="mt-3 text-sm text-on-light-secondary">{lang.desc}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 py-20 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_80%,hsl(var(--brand-gold-500)/0.12)_0%,transparent_45%)]" />
-        <div className="container relative mx-auto max-w-4xl rounded-3xl border border-[hsl(var(--surface-glass)/0.16)] bg-[hsl(var(--surface-glass)/0.05)] p-10 text-center backdrop-blur-sm">
-          <h2 className="font-serif text-4xl font-bold">Ready to Scale Securely?</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/75">
-            Let&apos;s discuss how integrated language and operational intelligence can de-risk your global expansion.
-          </p>
-          <a
-            href="mailto:info@ewan.co.in?subject=About%20Us%20Partnership"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-8 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-          >
-            Get in Touch About a Partnership
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-      </section>
+   
     </PageLayout>
   );
 };

@@ -7,7 +7,7 @@ const jaCommon = {
     media: "メディア",
     industries: "業界別",
     contactUs: "お問い合わせ",
-    askSoham: "Ask Soham — 15分無料",
+    askSoham: "Ask Soham - 15分無料",
   },
   navMenu: {
     marketEntry: {
@@ -88,7 +88,7 @@ const jaCommon = {
       description: "EWAN のメディアハブ：Global Gazette、動画インサイト、公式プレス情報。",
     },
     askSoham: {
-      title: "Ask Soham — 15分無料相談 | Ewan Business Solutions",
+      title: "Ask Soham - 15分無料相談 | Ewan Business Solutions",
       description: "Soham Kakade との15分相談を予約し、市場参入と言語戦略の実務的な示唆を得ましょう。",
     },
     marketEntryAudit: {
@@ -357,7 +357,7 @@ const jaCommon = {
     finalCta: {
       title: "結果の解釈を支援しましょうか？",
       copy: "監査結果をあなたの拡張ロードマップへ直接接続するため、個別相談をご利用ください。",
-      button: "Ask Soham — 15分無料",
+      button: "Ask Soham - 15分無料",
     },
   },
   industries: {

@@ -5,15 +5,15 @@ import { useTranslation } from "react-i18next";
 const defaultDifferentiators = [
   {
     title: "Language Meets Operations",
-    desc: "We are the only partner in India who combines 125+ language capability with full-cycle market entry management. Language isn't a support function here — it is the core of how we operate.",
+    desc: "We are the only partner in India who combines 125+ language capability with full-cycle market entry management. Language isn't a support function here - it is the core of how we operate.",
   },
   {
     title: "Corridors Not Classrooms",
-    desc: "Our expertise comes from 60,000+ hours of real boardroom interpretation — in Mandarin, Japanese, Cantonese, and ASEAN languages. We didn't study these corridors. We built careers inside them.",
+    desc: "Our expertise comes from 60,000+ hours of real boardroom interpretation - in Mandarin, Japanese, Cantonese, and ASEAN languages. We didn't study these corridors. We built careers inside them.",
   },
   {
     title: "Recognised by Governments and Institutions",
-    desc: "Formally recognised by the Consulate General of the People's Republic of China. Export program designers for the Government of Maharashtra (MSAMB). Faculty at Symbiosis. IB Board curriculum designers. Our institutional credentials are not decorative — they are evidence of the depth of trust we have built across borders.",
+    desc: "Formally recognised by the Consulate General of the People's Republic of China. Export program designers for the Government of Maharashtra (MSAMB). Faculty at Symbiosis. IB Board curriculum designers. Our institutional credentials are not decorative - they are evidence of the depth of trust we have built across borders.",
   },
 ];
 

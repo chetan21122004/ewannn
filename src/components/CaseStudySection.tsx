@@ -13,7 +13,7 @@ const defaultSteps = [
   },
   {
     label: "Solution",
-    text: "Ewan handled full market entry — entity setup, compliance, liaison, and on-the-ground language support.",
+    text: "Ewan handled full market entry - entity setup, compliance, liaison, and on-the-ground language support.",
     iconColor: "text-[hsl(var(--brand-purple-500))]",
     ringColor: "border-[hsl(var(--brand-purple-500)/0.28)]",
     labelColor: "text-[hsl(var(--brand-purple-500)/0.92)]",

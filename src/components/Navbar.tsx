@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, MessageCircle, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
@@ -41,7 +41,7 @@ const mobileNavGroups: NavGroup[] = [
         labelKey: "navMenu.marketEntry.indianGoingAbroad",
         href: "/market-entry#indian-companies-going-abroad",
       },
-      { labelKey: "navMenu.marketEntry.liaisoning", href: "/market-entry#liaisoning-facilitation" },
+      { labelKey: "navMenu.marketEntry.liaisoning", href: "/liaisoning-facilitation" },
       { labelKey: "navMenu.marketEntry.marketResearch", href: "/market-research" },
       { labelKey: "navMenu.marketEntry.importExport", href: "/import-export" },
       { labelKey: "navMenu.marketEntry.arogyaYatri", href: "https://www.arogyayatri.com/", external: true },
@@ -104,7 +104,7 @@ const desktopNavGroups: DesktopNavGroup[] = [
         labelKey: "navMenu.marketEntry.indianGoingAbroad",
         href: "/market-entry#indian-companies-going-abroad",
       },
-      { labelKey: "navMenu.marketEntry.liaisoning", href: "/market-entry#liaisoning-facilitation" },
+      { labelKey: "navMenu.marketEntry.liaisoning", href: "/liaisoning-facilitation" },
       { labelKey: "navMenu.marketEntry.marketResearch", href: "/market-research" },
       { labelKey: "navMenu.marketEntry.importExport", href: "/import-export" },
       { labelKey: "navMenu.marketEntry.arogyaYatri", href: "https://www.arogyayatri.com/", external: true },
@@ -184,59 +184,91 @@ const DropdownLinkItem = ({ item, onClick, t }: { item: NavItem; onClick?: () =>
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { t, i18n } = useTranslation();
+  const { pathname } = useLocation();
   const closeMobile = () => setMobileOpen(false);
 
+  const isDesktopGroupActive = (href: string) => {
+    const base = href.split("#")[0] ?? href;
+    if (base === "/") return pathname === "/";
+    return pathname === base || pathname.startsWith(`${base}/`);
+  };
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 nav-glass">
-      <div className="container mx-auto flex items-center justify-between gap-4 px-6 py-3">
+    <nav className="fixed top-0 left-0 right-0 z-50 overflow-visible nav-glass">
+      <div className="container mx-auto flex items-center justify-between gap-4 overflow-visible px-6 py-3">
 
         {/* Logo */}
         <Link to="/" className="shrink-0">
           <img src="/logo.png" alt="Ewan Business Solutions" className="h-12 w-auto object-contain" />
         </Link>
 
-        <div className="hidden lg:flex items-center gap-1 rounded-xl border border-black/10 bg-white px-3 py-2 shadow-[0_12px_28px_rgba(15,23,42,0.12)]">
-          {desktopNavGroups.map((group) => (
-            <div key={group.labelKey} className="group relative">
-              <Link
-                to={group.href}
-                className="inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:bg-black/5"
+        <div
+          className="relative hidden overflow-visible lg:flex items-stretch rounded-2xl border border-[hsl(var(--border-light-strong))] bg-white px-2 py-1.5 shadow-[0_14px_34px_-10px_rgba(15,23,42,0.2)] ring-1 ring-[hsl(var(--brand-navy-950)/0.08)]"
+          role="navigation"
+          aria-label="Primary"
+        >
+          {desktopNavGroups.map((group, index) => {
+            const active = isDesktopGroupActive(group.href);
+            return (
+              <div
+                key={group.labelKey}
+                className={cn(
+                  "group relative flex items-stretch first:pl-0.5 last:pr-0.5",
+                  index > 0 && "border-l border-[hsl(var(--brand-navy-950)/0.07)]",
+                )}
               >
-                <span>{t(group.labelKey)}</span>
-                {group.links ? <ChevronDown className="h-3.5 w-3.5 transition group-hover:rotate-180 group-focus-within:rotate-180" /> : null}
-              </Link>
+                <Link
+                  to={group.href}
+                  className={cn(
+                    "inline-flex min-h-[2.75rem] items-center gap-1 rounded-xl px-4 py-2 text-[14px] font-semibold whitespace-nowrap tracking-[0.01em] text-[hsl(var(--brand-navy-950)/0.92)] outline-none transition",
+                    "hover:bg-[hsl(var(--surface-light-100))] hover:text-[hsl(var(--brand-navy-950))]",
+                    "focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.45)] focus-visible:ring-offset-2 focus-visible:ring-offset-white",
+                    active && "bg-[hsl(var(--brand-navy-950))] text-white shadow-[0_8px_20px_-12px_rgba(15,23,42,0.85)]",
+                  )}
+                >
+                  <span>{t(group.labelKey)}</span>
+                  {group.links ? (
+                    <ChevronDown className="h-[0.95rem] w-[0.95rem] shrink-0 text-[hsl(var(--brand-navy-950)/0.55)] opacity-85 transition-transform duration-200 group-hover:rotate-180 group-hover:opacity-100 group-hover:text-[hsl(var(--brand-navy-950))] group-focus-within:rotate-180 group-focus-within:opacity-100" />
+                  ) : null}
+                </Link>
 
-              {group.links ? (
-                <div className="pointer-events-none invisible absolute left-0 top-full z-20 w-[720px] translate-y-1 pt-2 opacity-0 transition-all duration-150 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-                  <div className="rounded-2xl border border-black/10 bg-white p-3 shadow-[0_16px_34px_rgba(15,23,42,0.22)]">
-                    <div className={cn("gap-x-7 gap-y-1", group.links.length <= 4 ? "grid grid-cols-2" : "grid grid-flow-col grid-rows-4")}>
-                      {group.links.map((item) =>
-                        item.external ? (
-                          <a
-                            key={`${group.labelKey}-${item.labelKey}`}
-                            href={item.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="block rounded-lg px-2 py-1.5 text-[1.08rem] font-medium text-[hsl(var(--brand-navy-950)/0.9)] transition hover:bg-black/5"
-                          >
-                            {t(item.labelKey)}
-                          </a>
-                        ) : (
-                          <Link
-                            key={`${group.labelKey}-${item.labelKey}`}
-                            to={item.href}
-                            className="block rounded-lg px-2 py-1.5 text-[1.08rem] font-medium text-[hsl(var(--brand-navy-950)/0.9)] transition hover:bg-black/5"
-                          >
-                            {t(item.labelKey)}
-                          </Link>
-                        ),
-                      )}
+                {group.links ? (
+                  <div className="absolute left-0 top-full z-[80] hidden w-max min-w-[320px] max-w-[min(720px,calc(100vw-3rem))] pt-2 group-hover:block group-focus-within:block">
+                    <div className="rounded-xl border border-[hsl(var(--border-light))] bg-white p-3 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.22)] ring-1 ring-[hsl(233_55%_12%/0.04)]">
+                      <div
+                        className={cn(
+                          "grid gap-x-6 gap-y-0.5",
+                          group.links.length <= 4 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-2",
+                        )}
+                      >
+                        {group.links.map((item) =>
+                          item.external ? (
+                            <a
+                              key={`${group.labelKey}-${item.labelKey}`}
+                              href={item.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="block rounded-lg px-3 py-2 text-[14px] font-medium leading-snug text-[hsl(var(--brand-navy-950)/0.92)] outline-none transition hover:bg-[hsl(var(--surface-light-50))] hover:text-[hsl(var(--brand-navy-950))] focus-visible:bg-[hsl(var(--surface-light-50))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.35)] focus-visible:ring-inset"
+                            >
+                              {t(item.labelKey)}
+                            </a>
+                          ) : (
+                            <Link
+                              key={`${group.labelKey}-${item.labelKey}`}
+                              to={item.href}
+                              className="block rounded-lg px-3 py-2 text-[14px] font-medium leading-snug text-[hsl(var(--brand-navy-950)/0.92)] outline-none transition hover:bg-[hsl(var(--surface-light-50))] hover:text-[hsl(var(--brand-navy-950))] focus-visible:bg-[hsl(var(--surface-light-50))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.35)] focus-visible:ring-inset"
+                            >
+                              {t(item.labelKey)}
+                            </Link>
+                          ),
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ) : null}
-            </div>
-          ))}
+                ) : null}
+              </div>
+            );
+          })}
         </div>
 
         <div className="hidden lg:flex items-center gap-3">

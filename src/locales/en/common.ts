@@ -7,7 +7,7 @@ const enCommon = {
     media: "Media",
     industries: "Industries",
     contactUs: "Contact Us",
-    askSoham: "Ask Soham — 15 Min Free",
+    askSoham: "Ask Soham - 15 Min Free",
   },
   navMenu: {
     marketEntry: {
@@ -65,7 +65,7 @@ const enCommon = {
     marketEntry: {
       title: "India Market Entry Partner | Cross-Border Expansion | Ewan",
       description:
-        "Ewan manages full-cycle India market entry for foreign companies — entity formation, regulatory navigation, executive liaison, and on-ground operations.",
+        "Ewan manages full-cycle India market entry for foreign companies - entity formation, regulatory navigation, executive liaison, and on-ground operations.",
     },
     languageLocalization: {
       title: "Translation, Interpretation & Localization Services India | Ewan",
@@ -91,7 +91,7 @@ const enCommon = {
       description: "Explore EWAN's Media Hub: The Global Gazette, video insights, and official press room updates.",
     },
     askSoham: {
-      title: "Ask Soham — Free 15-Min Call | Ewan Business Solutions",
+      title: "Ask Soham - Free 15-Min Call | Ewan Business Solutions",
       description:
         "Book a focused 15-minute conversation with Soham Kakade on market entry, language strategy, or language careers. Honest guidance, no pitch.",
     },
@@ -105,14 +105,14 @@ const enCommon = {
     hero: {
       regions: ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"],
       headingLine1: "Your Cross-Border",
-      headingLine2: "Market Partner",
-      subheadlinePrefix: "We help",
-      subheadlineForeign: "foreign companies enter India",
-      subheadlineAnd: "and",
-      subheadlineIndian: "Indian companies expand globally",
-      subheadlineSuffix: "backed by",
-      subheadlineLanguages: "125+ languages",
-      subheadlineEnd: "and on-ground operations expertise.",
+      headingLine2: "Market Partner.",
+      subheadlinePrefix: "We help foreign companies enter and operate in India - and Indian companies expand across",
+      subheadlineForeign: "emerging markets.",
+      subheadlineAnd: "Combining",
+      subheadlineIndian: "125+ language capability",
+      subheadlineSuffix: "with",
+      subheadlineLanguages: "on-ground operational expertise,",
+      subheadlineEnd: "so nothing gets lost in translation or execution.",
       ctaMarketEntry: "Explore Market Entry",
       ctaLanguageQuote: "Get a Language Quote",
       ctaAskSoham: "Ask Soham",
@@ -132,7 +132,7 @@ const enCommon = {
       titlePrefix: "Two Capabilities.",
       titleHighlight: "One Partner.",
       subtitle:
-        "Most competitors do one. Ewan does both — combining language excellence with on-the-ground market entry execution.",
+        "Most competitors do one. Ewan does both - combining language excellence with on-the-ground market entry execution.",
       learnMore: "Learn More",
       footerPrefix: "Competitors do one.",
       footerHighlight: "Ewan does both.",
@@ -141,7 +141,7 @@ const enCommon = {
           id: "market-entry",
           label: "Market Entry & Operations",
           title: "Land. Setup. Scale.",
-          desc: "Full-stack market entry into India and outbound expansion for Indian companies — handled end to end.",
+          desc: "Full-stack market entry into India and outbound expansion for Indian companies - handled end to end.",
           features: ["Entity setup & incorporation", "Regulatory & compliance", "Liaison & government affairs", "On-ground execution"],
           accent: "gold",
         },
@@ -149,7 +149,7 @@ const enCommon = {
           id: "language",
           label: "Language & Localization",
           title: "Speak Every Market.",
-          desc: "Certified linguists and native experts across 125+ languages — translation, interpretation, and full localization.",
+          desc: "Certified linguists and native experts across 125+ languages - translation, interpretation, and full localization.",
           features: [
             "Translation & document services",
             "Live & remote interpretation",
@@ -180,7 +180,7 @@ const enCommon = {
         },
         {
           label: "Solution",
-          text: "Ewan handled full market entry — entity setup, compliance, liaison, and on-the-ground language support.",
+          text: "Ewan handled full market entry - entity setup, compliance, liaison, and on-the-ground language support.",
           iconColor: "text-[hsl(var(--brand-purple-500))]",
           ringColor: "border-[hsl(var(--brand-purple-500)/0.28)]",
           labelColor: "text-[hsl(var(--brand-purple-500)/0.92)]",
@@ -199,19 +199,19 @@ const enCommon = {
       titlePrefix: "The Partner Who's",
       titleHighlight: "Already Been in the Room.",
       subtitle:
-        "Most market entry consultants have never interpreted a boardroom negotiation. Most translation agencies have never set up a subsidiary. Ewan has done both — for 10 years, across every major sector, in the corridors that matter.",
+        "Most market entry consultants have never interpreted a boardroom negotiation. Most translation agencies have never set up a subsidiary. Ewan has done both - for 10 years, across every major sector, in the corridors that matter.",
       differentiators: [
         {
           title: "Language Meets Operations",
-          desc: "We are the only partner in India who combines 125+ language capability with full-cycle market entry management. Language isn't a support function here — it is the core of how we operate.",
+          desc: "We are the only partner in India who combines 125+ language capability with full-cycle market entry management. Language isn't a support function here - it is the core of how we operate.",
         },
         {
           title: "Corridors Not Classrooms",
-          desc: "Our expertise comes from 60,000+ hours of real boardroom interpretation — in Mandarin, Japanese, Cantonese, and ASEAN languages. We didn't study these corridors. We built careers inside them.",
+          desc: "Our expertise comes from 60,000+ hours of real boardroom interpretation - in Mandarin, Japanese, Cantonese, and ASEAN languages. We didn't study these corridors. We built careers inside them.",
         },
         {
           title: "Recognised by Governments and Institutions",
-          desc: "Formally recognised by the Consulate General of the People's Republic of China. Export program designers for the Government of Maharashtra (MSAMB). Faculty at Symbiosis. IB Board curriculum designers.",
+          desc: "Formally recognised by the Consulate General of the People's Republic of China. Export program designers for the Government of Maharashtra (MSAMB). Faculty at Symbiosis. IB Board curriculum designers. Our institutional credentials are not decorative - they are evidence of the depth of trust we have built across borders.",
         },
       ],
     },
@@ -220,7 +220,7 @@ const enCommon = {
       titlePrefix: "Sector Expertise",
       titleHighlight: "Across Every",
       titleHighlightLine2: "Major Industry",
-      subtitle: "From boardrooms to factory floors — deep domain experience built over a decade.",
+      subtitle: "From boardrooms to factory floors - deep domain experience built over a decade.",
       items: [
         { name: "Automotive", code: "01", accent: "gold" },
         { name: "Pharmaceuticals", code: "02", accent: "cyan" },
@@ -313,16 +313,16 @@ const enCommon = {
             "His foundation: a full Chinese Government scholarship at Beijing Language and Cultural University (BLCU). Since then: heads of state, Fortune 500 boardrooms, national textbooks, and government export programs.",
             "Ewan exists because cross-border expansion deserves a partner who has actually been on both sides of the table.",
           ],
-          badges: ["BLCU Scholar", "60,000+ Hours Interpretation", "ISO 9001:2015 Certified", "Vice President, CITLoB", "Bhashini Initiative, MeitY", "MSAMB Export Program Designer"],
+          badges: ["BLCU Scholarship Recipient", "60,000+ Hours Interpretation", "ISO 9001:2015 Certified", "Vice President, CITLoB", "Bhashini Initiative, MeitY", "MSAMB Export Program Designer"],
         },
         {
-          name: "Sukhada Kakade",
+          name: "CMA Sukhada Kakade Bhalerao",
           role: "Co-Founder & Director",
           img: "/Sukhada-maam.jpg",
           intro: [
-            "Sukhada Kakade Bhalerao is a Pune-based Certified Management Accountant (CMA), finance educator, and entrepreneur with over 15 years of experience.",
-            "As Co-Founder and Director, she brings the financial rigour and operational backbone that underpins everything Ewan delivers.",
-            "She also runs her own cost accounting practice and is passionate about bridging industry and academia.",
+            "Sukhada Kakade Bhalerao is a Pune-based Certified Management Accountant (CMA), finance educator, and entrepreneur with over 15 years of experience in finance, auditing, and professional training.",
+            "As Co-Founder and Director of Ewan Business Solutions and Bhashik Skill Development, she brings the financial rigour and operational backbone that underpins everything Ewan delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
+            "She also runs her own cost accounting practice (est. 2010) and is passionate about bridging industry and academia.",
           ],
           badges: ["CMA Certified", "15+ Years Experience", "Finance & Compliance Expert", "RBI & FEMA Advisory", "Internal Controls Specialist", "Entity Setup & Structuring", "Entrepreneur Since 2010"],
         },
@@ -430,7 +430,7 @@ const enCommon = {
       title: "Want Help Interpreting Your Results?",
       copy:
         "Bypass the guesswork. Schedule a direct consultation to align the audit findings with your expansion roadmap.",
-      button: "Ask Soham — 15 Min Free",
+      button: "Ask Soham - 15 Min Free",
     },
   },
   industries: {
@@ -457,14 +457,16 @@ const enCommon = {
       title: "Strategic Specializations",
       subtitle: "Tailored frameworks designed for the unique pressures of specific global industries.",
       items: [
-        { title: "Automotive", copy: "Scaling EV infrastructure and navigating global supply chain shifts with precision." },
-        { title: "Pharma & Life Sciences", copy: "Regulatory navigation and localization for critical health innovations worldwide." },
-        { title: "Manufacturing", copy: "Implementing Industry 4.0 standards across diverse international production hubs." },
-        { title: "Financial Services", copy: "Strategic growth and compliance for fintech and traditional banking in emerging markets." },
-        { title: "Luxury Goods", copy: "Brand elevation and cultural resonance for premium labels in high-net-worth regions." },
-        { title: "Technology", copy: "Rapid scale-up support for SaaS, AI, and hardware ventures entering new territories." },
-        { title: "Green Energy", copy: "Facilitating the transition to sustainable power through global partnership networks." },
-        { title: "Legal & Compliance", copy: "Ensuring operational integrity through intricate cross-border legal frameworks." },
+        { title: "Automotive", copy: "From simultaneous interpretation for boardroom negotiations between Indian OEMs and Japanese or Korean suppliers, to technical manual translation and subsidiary setup support - Ewan is the trusted language and operations partner for the automotive corridor." },
+        { title: "Pharmaceuticals", copy: "Regulatory document translation, clinical trial materials, product literature localization and multilingual communication for India's pharma sector and international partners." },
+        { title: "Aerospace", copy: "Specialist technical documentation translation, standards interpretation and high-stakes negotiation support for aerospace sector clients." },
+        { title: "Manufacturing", copy: "End-to-end support for manufacturers entering India or expanding abroad - from initial market assessment and language support through to full operational setup." },
+        { title: "Exhibitions & Trade Fairs", copy: "On-site interpretation, booth materials localization, buyer-seller communication and real-time language support at international exhibitions and trade events across India." },
+        { title: "Technology", copy: "Software localization, UI/UX translation, technical documentation, multilingual customer support and market entry advisory for technology firms entering or expanding across Asia." },
+        { title: "Agriculture & Food", copy: "Export documentation, cross-border buyer communication and product localization for Indian agricultural exporters targeting China, Japan, Southeast Asia and beyond." },
+        { title: "Legal & Compliance", copy: "Certified translation of contracts, agreements, court documents and regulatory filings - accurate, validated and legally precise." },
+        { title: "Education", copy: "Curriculum translation, IB and international board materials, institutional communication and multilingual e-learning content for educational institutions and publishers." },
+        { title: "Media & OTT", copy: "Subtitling, dubbing, voiceover and content localization for film, television and streaming platforms expanding across language markets." },
       ],
     },
     cta: {

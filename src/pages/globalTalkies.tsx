@@ -1,41 +1,108 @@
-import { ArrowRight, Captions, CheckCircle2, Languages, Mic2, Waves } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 
-const coreSolutions = [
+const services = [
   {
-    title: "Subtitling & SDH",
+    id: "subtitling",
+    title: "Subtitling",
     description:
-      "Frame-accurate subtitle synchronization, including adaptation for the deaf and hard of hearing (SDH).",
-    icon: Captions,
+      "Professional subtitling for film, television, OTT content, corporate video, and documentary. Available in 100+ languages. Timed, formatted, and reviewed by native-language experts with content experience. Compliant with platform-specific subtitle specifications.",
+    points: [
+      "Narrative and dialogue subtitling",
+      "SDH (Subtitles for the Deaf and Hard of Hearing)",
+      "Platform-specific formatting (SRT, VTT, TTML)",
+      "Netflix, Amazon, YouTube compliance",
+      "Quality review by native-language editors",
+    ],
   },
   {
-    title: "Dubbing & VO",
+    id: "dubbing",
+    title: "Dubbing",
     description:
-      "Lip-sync dubbing, UN-style voice-over, and creative audio post-production with native-language voice talent.",
-    icon: Mic2,
+      "Multilingual dubbing for film, animation, corporate training, and OTT content. Voice casting, script adaptation, recording coordination, and post-production review - managed end to end. Our dubbing retains the emotional register of the original while ensuring natural delivery in the target language.",
+    points: [
+      "Script adaptation - lip-sync aware",
+      "Voice talent coordination across 50+ languages",
+      "Recording supervision and direction",
+      "Post-production review and quality assurance",
+    ],
   },
   {
-    title: "Metadata & CMS",
+    id: "voiceover",
+    title: "Voiceover",
     description:
-      "Localization for descriptions, tags, and metadata pipelines across streaming platforms and VOD ecosystems.",
-    icon: Languages,
+      "Professional multilingual voiceover for corporate videos, explainers, e-learning modules, advertisements, and product demos. 100+ languages. Human voices - not synthetic. Delivered to broadcast quality.",
+    points: [
+      "Corporate and institutional video voiceover",
+      "E-learning and training content",
+      "Product and promotional video narration",
+      "Documentary and news voiceover",
+    ],
+  },
+  {
+    id: "script-translation",
+    title: "Script Translation & Cultural Adaptation",
+    description:
+      "Screen translation is not the same as document translation. A script needs to breathe in its target language - not just be accurate. Our screen translators are experienced with dialogue rhythm, cultural reference adaptation, humour translation, and the specific demands of on-screen text.",
+    points: [
+      "Feature film and short film script translation",
+      "TV series and episodic content",
+      "Cultural reference review and adaptation",
+      "Back-translation and quality verification",
+    ],
+  },
+  {
+    id: "film-distribution",
+    title: "Film Distribution Support",
+    description:
+      "For Indian films seeking distribution in Asian markets - and for international films entering the Indian market - Global Talkies provides the language and cultural bridge that makes distribution viable. We support the full localisation stack required for distribution.",
+    points: [
+      "Full localisation package (subtitles + dub + materials)",
+      "Distributor communication in target language",
+      "Poster, trailer, and marketing materials translation",
+      "Cultural compliance review for target market",
+    ],
+  },
+  {
+    id: "ott-localisation",
+    title: "OTT Platform Localisation",
+    description:
+      "OTT platforms expanding into new language markets - or sourcing content from India and Asia - require localisation at scale. Global Talkies offers volume capability across subtitling, dubbing, and metadata translation with the quality control and turnaround times that platform workflows demand.",
+    points: [
+      "High-volume subtitling and dubbing pipelines",
+      "Metadata translation (titles, descriptions, genres)",
+      "Platform specification compliance",
+      "Quality management for episodic and series content",
+    ],
   },
 ];
 
-const corridors = [
-  { title: "Hollywood ↔ MENA", text: "The industry benchmark for Arabic localization.", border: "border-[hsl(var(--brand-gold-500))]" },
-  { title: "Europe ↔ South Asia", text: "Scaled pipelines for Hindi, Tamil, and Bengali catalogs.", border: "border-[hsl(var(--brand-purple-500))]" },
-  { title: "East Asia ↔ Global", text: "Bridging K-content and anime storytelling to international audiences.", border: "border-[#9f96ba]" },
+const mediaCorridors = [
+  { corridor: "Hindi ↔ Japanese", note: "Indian content for Japanese OTT / Japanese content for Indian audiences" },
+  { corridor: "Hindi ↔ Mandarin / Cantonese", note: "Indian film distribution in China and Taiwan" },
+  { corridor: "Hindi ↔ Korean", note: "K-drama localisation for Indian audiences; Indian content for Korean platforms" },
+  { corridor: "Hindi ↔ Southeast Asian languages", note: "ASEAN OTT and broadcast distribution" },
+  { corridor: "Hindi ↔ Arabic", note: "Middle East and North Africa distribution" },
+  { corridor: "Hindi ↔ Spanish / Portuguese", note: "Latin American distribution" },
+];
+
+const whoThisIsFor = [
+  "Indian film producers and distributors seeking Asian market release",
+  "International content owners seeking Indian distribution",
+  "OTT platforms building multilingual content libraries",
+  "Corporate production teams needing training and communications video in multiple languages",
+  "Animation and gaming studios requiring multilingual voice and text localisation",
 ];
 
 const GlobalTalkies = () => {
   return (
     <PageLayout
-      title="Global Talkies | Media Localization & Dubbing | Ewan"
-      description="Global Talkies by Ewan delivers subtitle, dubbing, voice, metadata, and script adaptation services for global media and OTT distribution."
+      title="Global Talkies - Multilingual Film Distribution & Media Localisation | Ewan Business Solutions"
+      description="Global Talkies by Ewan - multilingual film distribution, OTT content localisation, subtitling, dubbing, and cultural adaptation for Indian and international content crossing language borders."
       canonicalPath="/global-talkies/"
     >
+      {/* Hero */}
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-24 pt-12 text-white">
         <div
           className="pointer-events-none absolute inset-0"
@@ -49,234 +116,208 @@ const GlobalTalkies = () => {
         <div className="container relative mx-auto">
           <div className="grid items-center gap-14 lg:grid-cols-[3fr_2fr]">
             <div>
-              <p className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em]">
-                <span className="h-2 w-2 animate-ping rounded-full bg-[hsl(var(--brand-gold-500))]" />
-                Global Talkies Division
+              <p className="mb-5 inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+                Stories Without Borders.
               </p>
               <h1 className="font-serif text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
-                Media Beyond <br />
-                <span className="text-[hsl(var(--brand-gold-500))]">Boundaries.</span>
+                Great Content Deserves an Audience in{" "}
+                <span className="text-[hsl(var(--brand-gold-500))]">Every Language.</span>
               </h1>
               <p className="mt-8 max-w-3xl text-lg leading-relaxed text-white/78">
-                A futuristic ecosystem where content transcends language. High-fidelity localization for the next era
-                of cinematic storytelling.
+                Global Talkies is Ewan's media and film services vertical - built for content creators, distributors,
+                OTT platforms, and production companies that want to move stories across language barriers without losing
+                what makes them powerful.
               </p>
               <div className="mt-9 flex flex-wrap gap-4">
                 <a
-                  href="mailto:info@ewan.co.in?subject=Global%20Talkies%20Media%20Project"
+                  href="mailto:info@ewan.co.in?subject=Global%20Talkies%20Content%20Brief"
                   className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-7 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
                 >
-                  Start Your Media Project
+                  Discuss Your Content
                   <ArrowRight className="h-4 w-4" />
                 </a>
-                <Link
-                  to="/media"
+                <a
+                  href="mailto:info@ewan.co.in?subject=Global%20Talkies%20Content%20Brief"
                   className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3 text-sm font-semibold text-white/92 transition hover:bg-white/10"
                 >
-                  Explore Reel
-                </Link>
+                  info@ewan.co.in
+                </a>
               </div>
             </div>
 
             <div className="relative">
               <div className="overflow-hidden rounded-3xl shadow-[0_22px_60px_rgba(6,3,20,0.55)]">
                 <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKurD57EdDta90oRUlAOCphtLrPNGddbCY_fsXZ2LlGggT5lX-fpilKQ7ybCHwCJG1qBeao3R61_qL0FIZKEr35_6oIIxyuHMZOlYIk9kmGMwU1PfsfHDpljZHfh73926foWJjd4-oVVJaYdaNE5WmxYHxcenV6F03bsgIJUUFA08FvkLUu__nZ89m_jpOE5WDGiu5D8PN7uHO1EUkNI_UraDkr5YY_0fkc01zbok1se4siE-yg6cg_danzcTiCynfa2SMqYkMFIY"
-                  alt="Cinematic production studio with glowing audio monitors and editing controls"
-                  className="h-full w-full object-cover grayscale transition duration-700 hover:grayscale-0"
+                  src="/page-assets/global-talkies-img2.png"
+                  alt="Global Talkies - film distribution and localization for international audiences"
+                  className="h-full w-full object-cover transition duration-700"
                 />
-                <div className="absolute inset-0 bg-[hsl(var(--brand-navy-950)/0.35)] mix-blend-multiply" />
+                <div className="absolute inset-0 bg-[hsl(var(--brand-navy-950)/0.25)] mix-blend-multiply" />
                 <div className="absolute bottom-8 left-1/2 w-[82%] -translate-x-1/2 rounded-xl border border-white/10 bg-black/60 p-4 text-center backdrop-blur-md">
-                  <p className="text-sm italic text-white/90">[ Cinematic Music Swells ]</p>
-                  <p className="font-serif text-lg font-bold text-[hsl(var(--brand-gold-500))]">The world is listening.</p>
+                  <p className="text-sm italic text-white/90">[ For Producers, Distributors & OTT Platforms ]</p>
+                  <p className="font-serif text-lg font-bold text-[hsl(var(--brand-gold-500))]">The world is watching.</p>
                 </div>
-              </div>
-              <div className="absolute -right-6 -top-6 hidden rounded-2xl bg-white p-5 text-[#1f1b3f] shadow-xl xl:block">
-                <div className="mb-2 flex items-center gap-2">
-                  <Waves className="h-4 w-4 text-[hsl(var(--brand-gold-500))]" />
-                  <span className="text-xs font-bold uppercase tracking-wide">Voice Match AI</span>
-                </div>
-                <div className="h-1.5 w-32 overflow-hidden rounded-full bg-[#ece7f6]">
-                  <div className="h-full w-3/4 bg-[hsl(var(--brand-gold-500))]" />
-                </div>
-                <p className="mt-2 text-[10px] font-semibold tracking-wider">SYNC: 99.98% COMPLETE</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#fcf8ff] px-6 py-24">
-        <div className="container mx-auto grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">01 / The Vision</p>
-            <h2 className="mt-4 font-serif text-5xl font-bold leading-tight text-[#1f1b3f]">
-              Voice of <br /> the World.
-            </h2>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#4b4566]">
-              Global Talkies is not just a localization service, it is a bridge between cultures. We capture the soul
-              of your story and adapt it for 120+ languages without losing emotional depth.
-            </p>
-            <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#4b4566]">
-              Our methodology combines linguistic craft and production-grade workflow controls, preserving nuance from
-              dialect to pacing to performance intent.
-            </p>
-            <div className="mt-10 flex gap-10">
-              <div>
-                <p className="font-serif text-4xl font-bold text-[#1f1b3f]">120+</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#6f688b]">Languages</p>
-              </div>
-              <div>
-                <p className="font-serif text-4xl font-bold text-[#1f1b3f]">50k+</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#6f688b]">Hours Dubbed</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative grid grid-cols-2 gap-5">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp3et_UVPRpJcBPQH4xm9epkLmW1AUTNWc9GgZYmA4MxSmVv9moWTDwQBil6Hyn2S349YS-tpV3lWiFo9jTwSu_TJyndWGPHqYzd9WFFU5hI2u4KLz2nhv2Eq3Jau-wa1bH6xLjQbVbbO2rkYAAxIn_i_3WKxQd_wfU4kVWQj3yzz1AKMZHWZwDQXHWXuJxhgwDb-GFwdhoJNq3qvnNtvDRzx5jXYsSBuuB3lvkuBY5Y_i0Ni3TYhvTERAEhmJL7RF4BhXVhxnQxg"
-              alt="Microphone in a soundproof vocal booth"
-              className="mt-12 h-[360px] w-full rounded-2xl object-cover shadow-lg"
-            />
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzIZDLjf5XexPbKhkTJJQquQGAsCTcnaHPiRcDZWbMXC4FUogc5b5uv7HuT8k3JoT5-XQi-p1WIp4WBi36R78MNeGRTeRo29NN7bWfBCx_fhY35o8z9GEL3f6ETdlj_Zi4fmCsH2VoW64CS563X9Ec9QCU1d2T1BvJG-ISzR82wl2ygWdqvSGJt9scFboLFheqWgwgm6t-J2MIuZv5bSjKWmQuX-CmBJBec6AenkcQMX2kXgIouZRlk8yi1eLdM31yllR4-YO6q3U"
-              alt="Cinema display with vibrant projected colors"
-              className="mb-12 h-[360px] w-full rounded-2xl object-cover shadow-lg"
-            />
-            <div className="absolute -bottom-6 -left-4 max-w-[250px] rounded-2xl bg-[#3b1f4b] p-6 text-white shadow-xl">
-              <p className="text-sm leading-relaxed">
-                Seamless cultural adaptation for Asian, European, and MENA markets.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#f5f2ff] px-6 py-24">
+      {/* What Global Talkies Does */}
+      <section className="bg-[#f2f0fa] px-6 py-14">
         <div className="container mx-auto">
-          <div className="mb-14 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">02 / Technical Mastery</p>
-            <h2 className="mt-4 font-serif text-5xl font-bold text-[#1f1b3f]">Core Media Solutions</h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {coreSolutions.map((item) => {
-              const Icon = item.icon;
-              return (
-                <article
-                  key={item.title}
-                  className="group relative flex min-h-[320px] flex-col justify-between overflow-hidden rounded-3xl border border-[#e7e1f3] bg-white p-8 transition hover:-translate-y-1 hover:bg-[#2a103c] hover:text-white"
-                >
-                  <div>
-                    <div className="mb-6 inline-flex rounded-2xl bg-[#f0ebfb] p-3 transition group-hover:bg-white/10">
-                      <Icon className="h-6 w-6 text-[#2a103c] group-hover:text-[hsl(var(--brand-gold-500))]" />
-                    </div>
-                    <h3 className="font-serif text-2xl font-bold">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-[#4b4566] group-hover:text-white/75">{item.description}</p>
-                  </div>
-                  <p className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#2a103c] group-hover:text-[hsl(var(--brand-gold-500))]">
-                    Learn More
-                    <ArrowRight className="h-4 w-4" />
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-
-          <div className="mt-8 grid overflow-hidden rounded-3xl border border-[#e7e1f3] bg-white md:grid-cols-2">
-            <div className="p-9">
-              <h3 className="font-serif text-3xl font-bold text-[#1f1b3f]">Script Adaptation</h3>
-              <p className="mt-4 text-base leading-relaxed text-[#4b4566]">
-                Localization is more than translation. It is transcreation. Our script experts adapt humor, idioms,
-                and cultural references so your story lands authentically in every territory.
+          <article className="rounded-3xl border border-[#e7e3f1] bg-white p-8 shadow-[0_10px_26px_rgba(20,16,45,0.06)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500)/0.88)]">
+              What Global Talkies Does
+            </p>
+            <h2 className="mt-3 font-serif text-4xl font-bold text-[#1a1633]">
+              Language Is the First Wall Between a Story and Its Audience.
+            </h2>
+            <div className="mt-4 grid gap-4 text-sm leading-relaxed text-[#3d3859] md:grid-cols-2">
+              <p>
+                Global Talkies exists to remove it. We combine Ewan's deep multilingual capability - 125+ languages,
+                native-expert translators, cultural intelligence built across 10 years in the India-Asia corridor - with
+                a focused understanding of what media localisation actually requires: not just linguistic accuracy, but
+                emotional and cultural fidelity.
               </p>
-              <div className="mt-6 space-y-3">
-                {["Nuanced Cultural Sensitivity", "Dialect-Specific Adaptation"].map((point) => (
-                  <p key={point} className="flex items-center gap-2 text-sm font-medium text-[#2a103c]">
-                    <CheckCircle2 className="h-4 w-4 text-[hsl(var(--brand-gold-500))]" />
-                    {point}
-                  </p>
-                ))}
-              </div>
+              <p>
+                A subtitle that is technically correct but culturally tone-deaf loses the audience. A dub that doesn't
+                match the emotional register of a scene loses the scene. Global Talkies understands the difference - and
+                delivers localisation that serves the story, not just the script.
+              </p>
             </div>
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0GvZuaIWPkUPnlcDQNC9cP7zi8QX5aw1zwm34eoHy8ZE5idWIpT9_rnNYcJRSjUPtHtXHVRnyRGyoYs89eMIV3u7pu71ykJZFsMqgeux6smFIoRGraCguYzHvVHz6UnI0fTcdjTjwZO_yzUDN7pJghu04C0VZsQgMlzrnSC46agtq2LJRFIfhjbR4Hbaf9dS9cG1X7ZENWHHilx8DNtw3t2uTq4FaUS_cpVLzzPgrjWSlfM_zK92C8T_CINkXbsjlaxrRpuTBU84"
-              alt="Annotated script on an editor's desk"
-              className="h-full min-h-[280px] w-full object-cover"
-            />
+          </article>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="bg-[#f8f7fc] px-6 py-16">
+        <div className="container mx-auto">
+          <div className="mb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500)/0.88)]">
+              Our Services
+            </p>
+            <h2 className="mt-2 font-serif text-4xl font-bold text-[#1a1633]">Six Media Localisation Capabilities</h2>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <article
+                key={service.id}
+                id={service.id}
+                className="scroll-mt-28 rounded-3xl border border-[#e7e3f1] bg-white p-7 shadow-[0_10px_26px_rgba(20,16,45,0.06)] transition hover:-translate-y-1"
+              >
+                <h3 className="font-serif text-2xl font-bold text-[#1a1633]">{service.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#3d3859]">{service.description}</p>
+                <div className="mt-5 space-y-2">
+                  {service.points.map((point) => (
+                    <p key={point} className="flex items-start gap-2 text-sm text-[#332f4f]">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-500))]" />
+                      <span>{point}</span>
+                    </p>
+                  ))}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="overflow-hidden bg-white px-6 py-24">
-        <div className="container mx-auto grid gap-12 lg:grid-cols-[1fr_2fr]">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">03 / Strategic Routes</p>
-            <h2 className="mt-4 font-serif text-5xl font-bold leading-tight text-[#1f1b3f]">Language Corridors</h2>
-            <p className="mt-6 text-lg leading-relaxed text-[#4b4566]">
-              Optimized media workflows across key global corridors, reducing turnaround times while retaining narrative fidelity.
+      {/* Language Corridors - Media */}
+      <section className="overflow-hidden bg-[hsl(var(--brand-navy-950))] px-8 py-24 text-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
+            <div className="space-y-4">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[hsl(var(--brand-purple-500))]">
+                Network
+              </span>
+              <h2 className="font-serif text-5xl font-bold tracking-tight">Language Corridors - Media</h2>
+            </div>
+            <p className="max-w-md font-light leading-relaxed text-white/70">
+              Our deepest media localisation experience sits in the corridors that mirror Ewan's broader expertise.
             </p>
-            <div className="mt-8 space-y-4">
-              {corridors.map((item) => (
-                <article key={item.title} className={`rounded-2xl border-l-4 bg-[#f5f2ff] p-5 ${item.border}`}>
-                  <h3 className="font-semibold text-[#1f1b3f]">{item.title}</h3>
-                  <p className="mt-1 text-sm text-[#4b4566]">{item.text}</p>
-                </article>
+          </div>
+          <div className="flex flex-col space-y-1">
+            {mediaCorridors.map((item, index) => (
+              <div
+                key={item.corridor}
+                className="group flex cursor-pointer items-center justify-between border-b border-white/10 py-10 transition-all duration-500 hover:bg-white/5 hover:px-6"
+              >
+                <div className="flex items-center space-x-10">
+                  <span className="font-serif text-4xl font-light text-white/30 transition-colors group-hover:text-[hsl(var(--brand-gold-500))]">
+                    {(index + 1).toString().padStart(2, "0")}
+                  </span>
+                  <h3 className="font-serif text-2xl font-bold text-white md:text-3xl">{item.corridor}</h3>
+                </div>
+                <div className="hidden text-right md:block">
+                  <p className="text-sm font-light text-white/60">{item.note}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Who This Is For */}
+      <section className="bg-[#f8f7fc] px-6 py-14">
+        <div className="container mx-auto">
+          <div className="rounded-3xl border border-[#e7e3f1] bg-white p-8 shadow-[0_10px_26px_rgba(20,16,45,0.06)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500)/0.88)]">
+              Who This Is For
+            </p>
+            <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633]">Built for Content That Crosses Borders</h2>
+            <div className="mt-5 grid gap-3 md:grid-cols-2">
+              {whoThisIsFor.map((item) => (
+                <p key={item} className="flex items-start gap-2 text-sm text-[#332f4f]">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-500))]" />
+                  <span>{item}</span>
+                </p>
               ))}
             </div>
           </div>
-
-          <div className="relative overflow-hidden rounded-3xl bg-[#2a103c]">
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBog5K-bymbCXMJHFfW2iP6lkklg_LJyKvQsxzkqOvIOeZzcGDnLz9o-JBrTa-yhLANweO3-cPf5KD8qxV2nrIf5Yv_84NKSI0cGKIvF9s4akoLihuH0IrTYl03RCFWVq-tfXHloTzVtkeN49PPUxzCq_V7Ac5EduJDzfT0CnKJUqCxRJhhrEi5_HArjpzxZuEiFXD454ZZlIEbMicHAsGevwI4_eEZaGtC8jXDh73ob2N8C8g6kGaSxzfJXiZac023foS0kDthtys"
-              alt="Abstract digital world map with glowing connections"
-              className="h-full w-full object-cover opacity-45 mix-blend-screen"
-            />
-            <div className="absolute left-[20%] top-[30%] h-4 w-4 rounded-full bg-[hsl(var(--brand-gold-500))]">
-              <div className="absolute inset-0 animate-ping rounded-full bg-[hsl(var(--brand-gold-500))]" />
-            </div>
-            <div className="absolute left-[50%] top-[42%] h-4 w-4 rounded-full bg-white">
-              <div className="absolute inset-0 animate-ping rounded-full bg-white" />
-            </div>
-            <div className="absolute left-[80%] top-[62%] h-4 w-4 rounded-full bg-[hsl(var(--brand-gold-500))]">
-              <div className="absolute inset-0 animate-ping rounded-full bg-[hsl(var(--brand-gold-500))]" />
-            </div>
-            <div className="absolute inset-0 flex items-center justify-center p-8">
-              <div className="max-w-sm rounded-3xl border border-white/20 bg-white/10 p-8 text-center backdrop-blur-xl">
-                <p className="font-mono text-4xl font-bold text-[hsl(var(--brand-gold-500))]">LIVE</p>
-                <p className="mt-2 text-sm leading-relaxed text-white/86">
-                  Active pipeline monitoring for 450+ concurrent media localization streams.
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
-      <section className="bg-[#fcf8ff] px-6 pb-20 pt-8">
+      {/* Why Global Talkies */}
+      <section className="bg-[#ffffff] px-6 py-14">
         <div className="container mx-auto">
-          <div className="relative overflow-hidden rounded-3xl bg-[#3b1f4b] p-12 text-center text-white md:p-16">
-            <h2 className="font-serif text-4xl font-bold md:text-5xl">Ready to Take Your Story Global?</h2>
-            <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-white/82">
-              Join leading studios, OTT platforms, and production teams delivering consistent viewing experiences
-              across languages and regions.
+          <article className="rounded-3xl border border-[#e7e3f1] bg-[#f8f7fc] p-8 shadow-[0_10px_26px_rgba(20,16,45,0.06)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500)/0.88)]">
+              Why Global Talkies
             </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-              <a
-                href="mailto:info@ewan.co.in?subject=Global%20Talkies%20Media%20Project"
-                className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-8 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-              >
-                Start Your Media Project
-                <ArrowRight className="h-4 w-4" />
-              </a>
-              <Link
-                to="/ask-soham"
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                Talk to an Expert
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+            <h2 className="mt-2 font-serif text-4xl font-bold text-[#1a1633]">
+              We Treat Content as a Cultural Translation Challenge.
+            </h2>
+            <p className="mt-4 max-w-4xl text-sm leading-relaxed text-[#3d3859]">
+              Most media localisation providers treat content as a throughput problem. Global Talkies treats it as a
+              cultural translation challenge - because that is what it is. When Ewan's interpreters sit in boardrooms
+              between Japanese and Indian executives, they are doing the same thing a good subtitle editor does: finding
+              the version of an idea that lands correctly on the other side of a cultural boundary. Global Talkies brings
+              that sensibility to every piece of content we touch.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-[hsl(var(--brand-navy-950))] px-6 py-16 text-white">
+        <div className="container mx-auto rounded-3xl border border-white/15 bg-white/5 p-8 text-center backdrop-blur-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Next Step</p>
+          <h3 className="mt-2 font-serif text-4xl font-bold">Send Your Content Brief</h3>
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="mailto:info@ewan.co.in?subject=Global%20Talkies%20Content%20Brief"
+              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+            >
+              Send Your Content Brief
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <Link
+              to="/ask-soham"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              Ask Soham - 15 Min Free
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

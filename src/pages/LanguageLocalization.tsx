@@ -49,15 +49,16 @@ const services = [
 ];
 
 const industryFocus = [
-  "Automotive",
-  "Pharmaceuticals",
-  "Aerospace",
-  "Exhibitions",
-  "Legal",
-  "Technology",
-  "Agriculture",
-  "Education",
-  "Media",
+  { title: "Automotive", description: "Simultaneous interpretation and technical documentation for global OEMs and suppliers." },
+  { title: "Pharmaceuticals", description: "Regulatory document translation and product literature localization for life sciences." },
+  { title: "Aerospace", description: "Specialist technical translation and high-stakes negotiation support for aerospace leaders." },
+  { title: "Manufacturing", description: "Operational setup and multilingual language support for cross-border production hubs." },
+  { title: "Exhibitions", description: "On-site interpretation and booth localization for international trade fairs across India." },
+  { title: "Technology", description: "Software localization and technical UI/UX translation for global tech firms." },
+  { title: "Agriculture", description: "Export documentation and buyer communication support for international agri-trade." },
+  { title: "Legal & Compliance", description: "Certified translation of contracts, agreements, and regulatory filings." },
+  { title: "Education", description: "Curriculum localization and international board materials for educational institutions." },
+  { title: "Media & OTT", description: "Subtitling, dubbing, and content localization for global streaming platforms." },
 ];
 
 const corridors = [
@@ -92,8 +93,8 @@ const LanguageLocalization = () => {
 
   return (
     <PageLayout
-      title={t("seo.languageLocalization.title")}
-      description={t("seo.languageLocalization.description")}
+      title="Professional Translation, Interpretation & Localization Services India | Ewan Business Solutions"
+      description="ISO 9001:2015 certified language service provider offering translation, interpretation, and localization in 125+ languages. Specialist in technical, legal, and pharmaceutical sectors."
       canonicalPath="/language-localization/"
     >
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-24 pt-12 text-white">
@@ -101,19 +102,20 @@ const LanguageLocalization = () => {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at 76% 20%, hsl(var(--brand-purple-500)/0.26) 0%, transparent 34%), radial-gradient(circle at 15% 82%, hsl(var(--brand-cyan-500)/0.16) 0%, transparent 40%), radial-gradient(circle at 44% 45%, hsl(var(--surface-glass)/0.05) 0%, transparent 55%)",
+              "radial-gradient(circle at 75% 20%, hsl(var(--brand-purple-500)/0.22) 0%, transparent 34%), radial-gradient(circle at 15% 80%, hsl(var(--brand-cyan-500)/0.14) 0%, transparent 40%)",
           }}
         />
-        <div className="container relative mx-auto">
+        <div className="container relative mx-auto max-w-4xl">
           <p className="mb-5 inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
             125+ Languages. Every Sector. ISO 9001:2015 Certified.
           </p>
-          <h1 className="font-serif text-5xl font-bold leading-[1.02] sm:text-6xl lg:text-7xl">
-            Language That <span className="text-[hsl(var(--brand-gold-500))]">Goes Beyond</span> Words
+          <h1 className="font-serif text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
+            Language That <span className="text-[hsl(var(--brand-gold-500))]">Goes Beyond Words.</span>
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/75">
-            Ewan provides translation, interpretation, localization, transcription, and voiceover through native experts
-            with cultural intelligence, so your message lands clearly and credibly in every market.
+            Ewan provides high-precision language services for companies navigating complex global corridors. Whether
+            it&apos;s simultaneous interpretation in a high-stakes boardroom or technical translation for a
+            manufacturing manual, we deliver with the accuracy and cultural intelligence your business demands.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
@@ -142,11 +144,11 @@ const LanguageLocalization = () => {
 
       <section id="services" className="bg-[#f8f7fc] px-6 py-16">
         <div className="container mx-auto">
-          <div className="mb-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500)/0.88)]">Capabilities</p>
-            <h2 className="mt-2 font-serif text-4xl font-bold text-[#1a1633]">Full Spectrum Localization</h2>
+          <div className="mb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500)/0.88)]">Our Capabilities</p>
+            <h2 className="mt-2 font-serif text-4xl font-bold text-[#1a1633]">Six Language Disciplines</h2>
           </div>
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => {
               const Icon = service.icon;
               return (
@@ -183,55 +185,50 @@ const LanguageLocalization = () => {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-primary py-32 text-white">
-        <div className="mx-auto grid max-w-7xl items-center gap-20 px-8 md:grid-cols-2">
-          <div className="relative space-y-12">
-            <div className="pointer-events-none absolute -left-8 top-0 h-48 w-48 rounded-full bg-[radial-gradient(circle,_rgba(245,208,66,0.28)_0%,_rgba(245,208,66,0)_70%)]" />
-            <div className="relative space-y-5">
-              <span className="font-label text-secondary-fixed-dim inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.28em]">
-                Industry Focus
-              </span>
-              <h2 className="font-display text-5xl font-bold leading-tight tracking-tight">
-                Precision at the <br /> Core of Every Sector
-              </h2>
-              <p className="max-w-xl text-sm font-light leading-relaxed text-white/75">
-                Domain-first language operations designed for technical sectors where precision, context, and trust
-                directly affect outcomes.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {industryFocus.map((item, index) => (
-                <div
-                  key={item}
-                  className="group flex cursor-default items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[hsl(var(--brand-gold-500)/0.45)] hover:bg-white/10"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="h-1.5 w-1.5 rounded-full bg-secondary transition-all duration-300 group-hover:w-4" />
-                    <span className="text-base font-light tracking-wide text-white/85 transition group-hover:text-white">
-                      {item}
-                    </span>
-                  </div>
-                  <span className="text-xs font-semibold text-white/35 transition group-hover:text-[hsl(var(--brand-gold-500))]">
-                    {(index + 1).toString().padStart(2, "0")}
-                  </span>
-                </div>
-              ))}
-            </div>
+      <section className="overflow-hidden bg-[hsl(var(--brand-navy-950))] py-24 text-white">
+        <div className="mx-auto max-w-7xl px-8">
+          <div className="mb-16 space-y-5">
+            <span className="font-label inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.28em] text-[hsl(var(--brand-gold-500))]">
+              Sector Expertise
+            </span>
+            <h2 className="font-serif text-5xl font-bold leading-tight tracking-tight">
+              Precision at the Core of Every Sector
+            </h2>
+            <p className="max-w-2xl text-base font-light leading-relaxed text-white/75">
+              Domain-first language operations designed for technical sectors where precision, context, and trust
+              directly affect outcomes.
+            </p>
           </div>
-          <div className="relative">
-            <div className="from-primary-container to-primary relative flex aspect-square items-center justify-center overflow-hidden rounded-[4rem] border border-white/5 bg-gradient-to-br p-12">
-              <img
-                className="absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-overlay"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDpGXapUieYa_emILyRddOvVvPAsw2SgH8zWsLmxGOFIKvnbUpPp587BfS4sQmXCoeddxnVFXYyYvU25fPdvRo03bl-N9JVSoXsgw5FSHmlEzaYJbZQJSmPW1zW74VHpXG8bred1gkdXQ0OwUp1qLs3pk1106P2O8ibf4QSlQv_weaLAUuG5ufShnl20y5W3wreBpGd2H6zy8M8F1mjPc8U-momYwHoIwyVgBaD_gkTQ10j7dEff9N955ncxeaIc0ICnnO4XVJ8hc"
-                alt="Abstract macro photography of intricate mechanical clock gears and circuits with a deep violet and gold lighting accent"
-              />
-              <div className="relative z-10 space-y-6 text-center">
-                <p className="text-secondary text-8xl">✦</p>
-                <p className="text-2xl font-light italic">
-                  &quot;Context is everything. We don&apos;t just translate words; we translate the technical intent of
-                  an entire industry.&quot;
-                </p>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {industryFocus.map((item, index) => (
+              <div
+                key={item.title}
+                className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[hsl(var(--brand-gold-500)/0.3)] hover:bg-white/10"
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-serif text-4xl font-bold text-white/10 group-hover:text-[hsl(var(--brand-gold-500)/0.2)] transition-colors">
+                      {(index + 1).toString().padStart(2, "0")}
+                    </span>
+                    <div className="h-2 w-2 rounded-full bg-[hsl(var(--brand-gold-500))] opacity-50 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <h3 className="mt-4 font-serif text-2xl font-bold text-white group-hover:text-[hsl(var(--brand-gold-500))] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm font-light leading-relaxed text-white/70 group-hover:text-white/90 transition-colors">
+                    {item.description}
+                  </p>
+                </div>
               </div>
+            ))}
+          </div>
+          <div className="mt-20 rounded-3xl bg-white/5 p-12 border border-white/10">
+            <div className="relative z-10 space-y-6 text-center">
+              <p className="text-secondary text-8xl">✦</p>
+              <p className="text-2xl font-light italic">
+                &quot;Context is everything. We don&apos;t just translate words; we translate the technical intent of
+                an entire industry.&quot;
+              </p>
             </div>
           </div>
         </div>
@@ -314,7 +311,7 @@ const LanguageLocalization = () => {
               to="/ask-soham"
               className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
             >
-              Ask Soham — 15 Min Free
+              Ask Soham - 15 Min Free
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

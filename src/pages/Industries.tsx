@@ -1,44 +1,22 @@
-import { ArrowDown, ArrowRight, Car, Factory, Gem, Gavel, Landmark, Leaf, Microscope, Network, Terminal } from "lucide-react";
+import { ArrowDown, ArrowRight, Car, Factory, Gavel, GraduationCap, Microscope, Network, Plane, PlayCircle, Tent, Terminal, Wheat } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import { useTranslation } from "react-i18next";
 
 const defaultSpecializations = [
-  {
-    title: "Automotive",
-    copy: "Scaling EV infrastructure and navigating global supply chain shifts with precision.",
-  },
-  {
-    title: "Pharma & Life Sciences",
-    copy: "Regulatory navigation and localization for critical health innovations worldwide.",
-  },
-  {
-    title: "Manufacturing",
-    copy: "Implementing Industry 4.0 standards across diverse international production hubs.",
-  },
-  {
-    title: "Financial Services",
-    copy: "Strategic growth and compliance for fintech and traditional banking in emerging markets.",
-  },
-  {
-    title: "Luxury Goods",
-    copy: "Brand elevation and cultural resonance for premium labels in high-net-worth regions.",
-  },
-  {
-    title: "Technology",
-    copy: "Rapid scale-up support for SaaS, AI, and hardware ventures entering new territories.",
-  },
-  {
-    title: "Green Energy",
-    copy: "Facilitating the transition to sustainable power through global partnership networks.",
-  },
-  {
-    title: "Legal & Compliance",
-    copy: "Ensuring operational integrity through intricate cross-border legal frameworks.",
-  },
+  { title: "Automotive", copy: "From simultaneous interpretation for boardroom negotiations between Indian OEMs and Japanese or Korean suppliers, to technical manual translation and subsidiary setup support - Ewan is the trusted language and operations partner for the automotive corridor." },
+  { title: "Pharmaceuticals", copy: "Regulatory document translation, clinical trial materials, product literature localization and multilingual communication for India's pharma sector and international partners." },
+  { title: "Aerospace", copy: "Specialist technical documentation translation, standards interpretation and high-stakes negotiation support for aerospace sector clients." },
+  { title: "Manufacturing", copy: "End-to-end support for manufacturers entering India or expanding abroad - from initial market assessment and language support through to full operational setup." },
+  { title: "Exhibitions & Trade Fairs", copy: "On-site interpretation, booth materials localization, buyer-seller communication and real-time language support at international exhibitions and trade events across India." },
+  { title: "Technology", copy: "Software localization, UI/UX translation, technical documentation, multilingual customer support and market entry advisory for technology firms entering or expanding across Asia." },
+  { title: "Agriculture & Food", copy: "Export documentation, cross-border buyer communication and product localization for Indian agricultural exporters targeting China, Japan, Southeast Asia and beyond." },
+  { title: "Legal & Compliance", copy: "Certified translation of contracts, agreements, court documents and regulatory filings - accurate, validated and legally precise." },
+  { title: "Education", copy: "Curriculum translation, IB and international board materials, institutional communication and multilingual e-learning content for educational institutions and publishers." },
+  { title: "Media & OTT", copy: "Subtitling, dubbing, voiceover and content localization for film, television and streaming platforms expanding across language markets." },
 ];
 
-const specializationIcons = [Car, Microscope, Factory, Landmark, Gem, Terminal, Leaf, Gavel];
+const specializationIcons = [Car, Microscope, Plane, Factory, Tent, Terminal, Wheat, Gavel, GraduationCap, PlayCircle];
 
 const Industries = () => {
   const { t } = useTranslation();

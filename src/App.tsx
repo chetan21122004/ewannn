@@ -14,6 +14,7 @@ import Contact from "./pages/Contact.tsx";
 import GlobalTalkies from "./pages/globalTalkies.tsx";
 import ImportExport from "./pages/importExport.tsx";
 import MarketResearchPage from "./pages/MarketResearchPage.tsx";
+import LiaisoningFacilitation from "./pages/LiaisoningFacilitation.tsx";
 import JoinUs from "./pages/JoinUs.tsx";
 import Industries from "./pages/Industries.tsx";
 import MarketEntryAudit from "./pages/MarketEntryAudit.tsx";
@@ -42,7 +43,7 @@ const App = () => (
           <Route path="/import-export" element={<ImportExport />} />
           <Route path="/market-research" element={<MarketResearchPage />} />
           <Route path="/market-entry-audit" element={<MarketEntryAudit />} />
-          <Route path="/liaisoning-facilitation" element={<Navigate to="/market-entry#liaisoning-facilitation" replace />} />
+          <Route path="/liaisoning-facilitation" element={<LiaisoningFacilitation />} />
           <Route path="/import-procurement-export" element={<Navigate to="/import-export" replace />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/join-us" element={<JoinUs />} />

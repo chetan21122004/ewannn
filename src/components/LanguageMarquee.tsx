@@ -14,7 +14,7 @@ const LanguageMarquee = () => {
         <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-[hsl(230,38%,16%)] to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-[hsl(230,38%,16%)] to-transparent z-10" />
 
-        {/* First row — scrolling left */}
+        {/* First row - scrolling left */}
         <motion.div
           className="flex whitespace-nowrap mb-4"
           animate={{ x: ["0%", "-50%"] }}
@@ -31,7 +31,7 @@ const LanguageMarquee = () => {
           ))}
         </motion.div>
 
-        {/* Second row — scrolling right (reverse) */}
+        {/* Second row - scrolling right (reverse) */}
         <motion.div
           className="flex whitespace-nowrap"
           animate={{ x: ["-50%", "0%"] }}

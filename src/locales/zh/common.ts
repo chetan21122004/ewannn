@@ -7,7 +7,7 @@ const zhCommon = {
     media: "媒体",
     industries: "行业",
     contactUs: "联系我们",
-    askSoham: "Ask Soham — 15 分钟免费",
+    askSoham: "Ask Soham - 15 分钟免费",
   },
   navMenu: {
     marketEntry: {
@@ -87,7 +87,7 @@ const zhCommon = {
       description: "探索 EWAN 媒体中心：全球公报、视频洞察与官方新闻动态。",
     },
     askSoham: {
-      title: "Ask Soham — 免费 15 分钟通话 | Ewan Business Solutions",
+      title: "Ask Soham - 免费 15 分钟通话 | Ewan Business Solutions",
       description: "预约与 Soham Kakade 的 15 分钟聚焦沟通，获取市场进入与语言策略建议。",
     },
     marketEntryAudit: {
@@ -355,7 +355,7 @@ const zhCommon = {
     finalCta: {
       title: "需要帮助解读结果？",
       copy: "预约一对一沟通，把审计结论直接映射到你的扩张路线图。",
-      button: "Ask Soham — 15 分钟免费",
+      button: "Ask Soham - 15 分钟免费",
     },
   },
   industries: {

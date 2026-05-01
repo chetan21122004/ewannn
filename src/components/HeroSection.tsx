@@ -102,7 +102,7 @@ const HeroSection = () => {
                   {t("home.hero.subheadlinePrefix")}{" "}
                   <span className="text-foreground font-medium">{t("home.hero.subheadlineForeign")}</span>{" "}
                   {t("home.hero.subheadlineAnd")}{" "}
-                  <span className="text-foreground font-medium">{t("home.hero.subheadlineIndian")}</span> —{" "}
+                  <span className="text-foreground font-medium">{t("home.hero.subheadlineIndian")}</span> -{" "}
                   {t("home.hero.subheadlineSuffix")}{" "}
                   <span className="text-primary font-semibold">{t("home.hero.subheadlineLanguages")}</span>{" "}
                   {t("home.hero.subheadlineEnd")}

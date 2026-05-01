@@ -240,7 +240,7 @@ class CoverPage(Flowable):
         c.setFillColor(colors.HexColor("#475569"))
         c.setFont("Helvetica", 8)
         c.drawString(MARGIN, 20, "Prepared for: Client")
-        c.drawCentredString(w / 2, 20, "Confidential — Not for Distribution")
+        c.drawCentredString(w / 2, 20, "Confidential - Not for Distribution")
         c.drawRightString(w - MARGIN, 20, "2025")
 
 
@@ -614,14 +614,14 @@ def header_footer(canvas, doc):
     canvas.line(MARGIN, h - 14 * mm, w - MARGIN, h - 14 * mm)
     canvas.setFillColor(GRAY_500)
     canvas.setFont("Helvetica", 7)
-    canvas.drawString(MARGIN, h - 12 * mm, "MediCare Connect — Project Proposal")
+    canvas.drawString(MARGIN, h - 12 * mm, "MediCare Connect - Project Proposal")
     canvas.drawRightString(w - MARGIN, h - 12 * mm, f"Page {doc.page}")
     # Footer
     canvas.setStrokeColor(GRAY_200)
     canvas.line(MARGIN, 14 * mm, w - MARGIN, 14 * mm)
     canvas.setFillColor(GRAY_500)
     canvas.setFont("Helvetica", 7)
-    canvas.drawCentredString(w / 2, 10 * mm, "Confidential — Prepared for client review only")
+    canvas.drawCentredString(w / 2, 10 * mm, "Confidential - Prepared for client review only")
     canvas.restoreState()
 
 
@@ -633,7 +633,7 @@ def build_proposal():
         pagesize=A4,
         leftMargin=MARGIN, rightMargin=MARGIN,
         topMargin=18 * mm, bottomMargin=18 * mm,
-        title="MediCare Connect — Project Proposal",
+        title="MediCare Connect - Project Proposal",
         author="Development Team",
     )
 
@@ -670,7 +670,7 @@ def build_proposal():
     story.append(gap(10))
     story.append(Paragraph("Project Overview", S["h1"]))
     story.append(Paragraph(
-        "This proposal outlines the complete development plan for <b>MediCare Connect</b> — "
+        "This proposal outlines the complete development plan for <b>MediCare Connect</b> - "
         "a full-featured healthcare and medicine delivery platform for iOS and Android. "
         "The platform is designed to serve patients, partner pharmacies, hospitals, and doctors "
         "through a phased delivery model, launching life-saving features first and expanding "
@@ -814,7 +814,7 @@ def build_proposal():
     story.append(PageBreak())
 
     # ── PAGE 4: PHASE 1 ────────────────────────────────────────────────────────
-    story.append(SectionDivider("03   PHASE 1 — CORE MVP  (Weeks 1–6)", RED))
+    story.append(SectionDivider("03   PHASE 1 - CORE MVP  (Weeks 1–6)", RED))
     story.append(gap(10))
     story.append(Paragraph("Medicine Delivery + Emergency Features", S["h1"]))
     story.append(Paragraph(
@@ -856,7 +856,7 @@ def build_proposal():
     story.append(wk_t)
     story.append(gap(12))
 
-    story.append(Paragraph("Phase 1 — User Interface Screens", S["h2"]))
+    story.append(Paragraph("Phase 1 - User Interface Screens", S["h2"]))
     p1_screens = [
         ["Splash & onboarding", "OTP login / signup", "Home dashboard", "Medicine search"],
         ["Medicine detail", "Upload prescription", "Nearby pharmacies map", "Cart + checkout"],
@@ -904,16 +904,16 @@ def build_proposal():
             ("EC2 t3.small", "Supabase + Express on single instance", "~$17"),
             ("ElastiCache Redis t3.micro", "OTP, sessions, order tracking cache", "~$12"),
             ("AWS S3 + CloudFront", "~10GB prescription storage", "~$3"),
-            ("Firebase FCM", "Push notifications — up to 1M free/month", "$0"),
-            ("SMS OTP — MSG91", "~5,000 OTPs/month at ₹0.18/SMS", "~$5"),
-            ("Razorpay", "2% per transaction — no monthly fee", "Usage"),
+            ("Firebase FCM", "Push notifications - up to 1M free/month", "$0"),
+            ("SMS OTP - MSG91", "~5,000 OTPs/month at ₹0.18/SMS", "~$5"),
+            ("Razorpay", "2% per transaction - no monthly fee", "Usage"),
         ],
         "Run Supabase and Express on the same EC2 to minimise cost at this stage.",
         CONTENT_W))
     story.append(PageBreak())
 
     # ── PAGE 5: PHASE 2 ────────────────────────────────────────────────────────
-    story.append(SectionDivider("04   PHASE 2 — HEALTHCARE ACCESS  (Weeks 7–11)", AMBER))
+    story.append(SectionDivider("04   PHASE 2 - HEALTHCARE ACCESS  (Weeks 7–11)", AMBER))
     story.append(gap(10))
     story.append(Paragraph("Hospital Beds + Doctor Directory + Appointments", S["h1"]))
     story.append(Paragraph(
@@ -973,7 +973,7 @@ def build_proposal():
     story.append(InfraCard(
         "Phase 2 (10k–30k users)", "$120", "≈ ₹10,000/month",
         [
-            ("EC2 t3.large", "Dedicated Supabase instance — 2 vCPU, 8GB", "~$60"),
+            ("EC2 t3.large", "Dedicated Supabase instance - 2 vCPU, 8GB", "~$60"),
             ("EC2 t3.medium", "Dedicated Express API instance", "~$30"),
             ("ElastiCache Redis t3.small", "Growing session and tracking load", "~$25"),
             ("S3 + CloudFront", "~50GB storage, moderate CDN traffic", "~$8"),
@@ -984,7 +984,7 @@ def build_proposal():
     story.append(PageBreak())
 
     # ── PAGE 6: PHASE 3, 4, 5 ──────────────────────────────────────────────────
-    story.append(SectionDivider("05   PHASE 3 — CHRONIC CARE & SUBSCRIPTIONS  (Weeks 12–15)", GREEN))
+    story.append(SectionDivider("05   PHASE 3 - CHRONIC CARE & SUBSCRIPTIONS  (Weeks 12–15)", GREEN))
     story.append(gap(8))
     story.append(Paragraph("Monthly Medicine Subscriptions + Patient Profiles", S["h1"]))
     story.append(Paragraph(
@@ -1019,12 +1019,12 @@ def build_proposal():
     story.append(gap(6))
     story.append(info_box(
         "Phase 3 adds 6 user app screens, 3 pharmacy panel screens, and 3 admin panel screens. "
-        "Infra cost at 30k–60k users: ~$250/month (≈ ₹20,800) — two Express instances behind "
+        "Infra cost at 30k–60k users: ~$250/month (≈ ₹20,800) - two Express instances behind "
         "AWS ALB + t3.xlarge Supabase instance.",
         GREEN, "#F0FDF4"))
     story.append(gap(14))
 
-    story.append(SectionDivider("06   PHASE 4 — SMART & AI FEATURES  (Weeks 16–18)", ACCENT))
+    story.append(SectionDivider("06   PHASE 4 - SMART & AI FEATURES  (Weeks 16–18)", ACCENT))
     story.append(gap(8))
     story.append(Paragraph("Prescription Intelligence + Smart Health Alerts", S["h1"]))
     story.append(Paragraph(
@@ -1056,7 +1056,7 @@ def build_proposal():
     story.append(p4_t)
     story.append(gap(14))
 
-    story.append(SectionDivider("07   PHASE 5 — ADVANCED & SCALING  (Weeks 19–20)", PURPLE))
+    story.append(SectionDivider("07   PHASE 5 - ADVANCED & SCALING  (Weeks 19–20)", PURPLE))
     story.append(gap(8))
     story.append(Paragraph("Telemedicine + AI Chat + Lab Integration", S["h1"]))
     story.append(Paragraph(
@@ -1109,16 +1109,16 @@ def build_proposal():
          Paragraph("+6", S["table_cell"]), Paragraph("+4", S["table_cell"]),
          Paragraph("+5", S["table_cell"]), Paragraph("35", S["table_cell_bold"])],
         [Paragraph("Pharmacy Panel", S["table_cell_bold"]),
-         Paragraph("6", S["table_cell"]), Paragraph("—", S["table_cell"]),
-         Paragraph("+3", S["table_cell"]), Paragraph("—", S["table_cell"]),
-         Paragraph("—", S["table_cell"]), Paragraph("9", S["table_cell_bold"])],
+         Paragraph("6", S["table_cell"]), Paragraph("-", S["table_cell"]),
+         Paragraph("+3", S["table_cell"]), Paragraph("-", S["table_cell"]),
+         Paragraph("-", S["table_cell"]), Paragraph("9", S["table_cell_bold"])],
         [Paragraph("Admin Panel", S["table_cell_bold"]),
          Paragraph("5", S["table_cell"]), Paragraph("+5", S["table_cell"]),
          Paragraph("+3", S["table_cell"]), Paragraph("+2", S["table_cell"]),
-         Paragraph("—", S["table_cell"]), Paragraph("15", S["table_cell_bold"])],
+         Paragraph("-", S["table_cell"]), Paragraph("15", S["table_cell_bold"])],
         [Paragraph("Doctor Portal", S["table_cell_bold"]),
-         Paragraph("—", S["table_cell"]), Paragraph("5", S["table_cell"]),
-         Paragraph("—", S["table_cell"]), Paragraph("—", S["table_cell"]),
+         Paragraph("-", S["table_cell"]), Paragraph("5", S["table_cell"]),
+         Paragraph("-", S["table_cell"]), Paragraph("-", S["table_cell"]),
          Paragraph("+4", S["table_cell"]), Paragraph("9", S["table_cell_bold"])],
         [Paragraph("Phase total", S["table_cell_bold"]),
          Paragraph("23", S["table_cell_bold"]), Paragraph("18", S["table_cell_bold"]),
@@ -1143,13 +1143,13 @@ def build_proposal():
     story.append(PageBreak())
 
     # ── PAGE 8: LEGAL & COMPLIANCE ─────────────────────────────────────────────
-    story.append(SectionDivider("09   LEGAL & COMPLIANCE — INDIA", RED))
+    story.append(SectionDivider("09   LEGAL & COMPLIANCE - INDIA", RED))
     story.append(gap(10))
     story.append(Paragraph("Regulatory Requirements", S["h1"]))
     story.append(Paragraph(
         "As a healthcare platform operating in India and handling sensitive patient data, "
         "the application must comply with the following regulations from day one. "
-        "Non-compliance is not a future risk — it is an immediate liability.",
+        "Non-compliance is not a future risk - it is an immediate liability.",
         S["body"]))
     story.append(gap(10))
 
@@ -1157,16 +1157,16 @@ def build_proposal():
         ("IT Act 2000 + SPDI Rules 2011",
          "Medical data is Sensitive Personal Data. Mandatory: explicit user consent before data collection, clear data usage policy, right to withdraw consent, encrypted storage. This applies from the first user onboarded.",
          "critical"),
-        ("DPDP Act 2023 — Digital Personal Data Protection",
-         "India's primary privacy law. Requires: purpose limitation, data minimisation, India data localisation (all health data hosted in India — hence AWS Mumbai), user deletion rights, and breach notification within 72 hours of discovery.",
+        ("DPDP Act 2023 - Digital Personal Data Protection",
+         "India's primary privacy law. Requires: purpose limitation, data minimisation, India data localisation (all health data hosted in India - hence AWS Mumbai), user deletion rights, and breach notification within 72 hours of discovery.",
          "critical"),
-        ("Drugs & Cosmetics Act — E-pharmacy Rules",
+        ("Drugs & Cosmetics Act - E-pharmacy Rules",
          "The app does not require a drug licence. However every partner pharmacy must hold a valid licence. The platform must verify and display pharmacy licence numbers on all order confirmations. Schedule H/H1 drugs cannot be dispensed without a valid prescription.",
          "important"),
         ("Telemedicine Practice Guidelines 2020",
          "Applicable in Phase 5. All doctors on the platform must be registered with MCI/NMC. Patient consent must be recorded before video consultations. Prescriptions issued via tele-consult are valid with restrictions on Schedule H drugs.",
          "important"),
-        ("ABDM / ABHA Integration — Ayushman Bharat",
+        ("ABDM / ABHA Integration - Ayushman Bharat",
          "Optional but strongly recommended. ABHA health ID integration significantly increases credibility with hospitals and government systems. Required to access hospital bed APIs from government-empanelled hospitals.",
          "strategic"),
     ]
@@ -1175,16 +1175,16 @@ def build_proposal():
         story.append(gap(6))
 
     story.append(gap(8))
-    story.append(Paragraph("Built-in Compliance — Day 1 Checklist", S["h2"]))
+    story.append(Paragraph("Built-in Compliance - Day 1 Checklist", S["h2"]))
     compliance_rows = [
         [Paragraph("Requirement", S["table_head"]), Paragraph("Implementation", S["table_head"]), Paragraph("Phase", S["table_head"])],
         [Paragraph("Explicit consent screen", S["table_cell_bold"]), Paragraph("Tick boxes for data use and prescription storage at signup", S["table_cell"]), Paragraph("1", S["table_cell"])],
         [Paragraph("Encrypted prescription storage", S["table_cell_bold"]), Paragraph("AWS S3 server-side encryption + access logs + auto-delete after 3 years or on user request", S["table_cell"]), Paragraph("1", S["table_cell"])],
-        [Paragraph("OTP-only authentication", S["table_cell_bold"]), Paragraph("No plain password auth for any medical data access — SMS OTP via MSG91", S["table_cell"]), Paragraph("1", S["table_cell"])],
+        [Paragraph("OTP-only authentication", S["table_cell_bold"]), Paragraph("No plain password auth for any medical data access - SMS OTP via MSG91", S["table_cell"]), Paragraph("1", S["table_cell"])],
         [Paragraph("Pharmacy licence display", S["table_cell_bold"]), Paragraph("Licence number shown on every order confirmation and pharmacy listing", S["table_cell"]), Paragraph("1", S["table_cell"])],
-        [Paragraph("Emergency disclaimer", S["table_cell_bold"]), Paragraph("'Call 112 for life-threatening emergencies' on emergency contacts screen — reduces platform liability", S["table_cell"]), Paragraph("1", S["table_cell"])],
+        [Paragraph("Emergency disclaimer", S["table_cell_bold"]), Paragraph("'Call 112 for life-threatening emergencies' on emergency contacts screen - reduces platform liability", S["table_cell"]), Paragraph("1", S["table_cell"])],
         [Paragraph("Privacy policy + ToS", S["table_cell_bold"]), Paragraph("Legally drafted documents required before App Store submission. Estimated cost: ₹5,000–10,000 one-time", S["table_cell"]), Paragraph("1", S["table_cell"])],
-        [Paragraph("India data residency", S["table_cell_bold"]), Paragraph("All data hosted on AWS ap-south-1 (Mumbai) — DPDP compliant from day one", S["table_cell"]), Paragraph("1", S["table_cell"])],
+        [Paragraph("India data residency", S["table_cell_bold"]), Paragraph("All data hosted on AWS ap-south-1 (Mumbai) - DPDP compliant from day one", S["table_cell"]), Paragraph("1", S["table_cell"])],
     ]
     comp_cw = [CONTENT_W * x for x in [0.28, 0.60, 0.12]]
     comp_t = Table(compliance_rows, colWidths=comp_cw)
@@ -1208,7 +1208,7 @@ def build_proposal():
     story.append(Paragraph("Monthly Infrastructure Cost at Every Scale", S["h1"]))
     story.append(Paragraph(
         "All costs are for AWS Mumbai (ap-south-1) region. Razorpay charges 2% per transaction "
-        "with no monthly fee — infra costs scale with users, payment fees scale with revenue.",
+        "with no monthly fee - infra costs scale with users, payment fees scale with revenue.",
         S["body"]))
     story.append(gap(10))
 
@@ -1257,7 +1257,7 @@ def build_proposal():
     story.append(gap(10))
     story.append(Paragraph("Suggested Payment Structure", S["h1"]))
     story.append(Paragraph(
-        "Payments are tied to verified deliverables — not calendar dates. Each milestone "
+        "Payments are tied to verified deliverables - not calendar dates. Each milestone "
         "is triggered by the client's acceptance of the delivered work.",
         S["body"]))
     story.append(gap(10))
@@ -1267,17 +1267,17 @@ def build_proposal():
     milestone_rows = [
         [Paragraph("Milestone", S["table_head"]), Paragraph("Trigger", S["table_head"]),
          Paragraph("Deliverable", S["table_head"]), Paragraph("Payment", S["table_head"])],
-        [Paragraph("Kickoff", S["table_cell_bold"]), Paragraph("Week 0 — project start", S["table_cell"]),
+        [Paragraph("Kickoff", S["table_cell_bold"]), Paragraph("Week 0 - project start", S["table_cell"]),
          Paragraph("Signed agreement, AWS setup, project structure", S["table_cell"]), Paragraph("25%", S["table_cell_bold"])],
-        [Paragraph("Phase 1 Demo", S["table_cell_bold"]), Paragraph("Week 4 — working demo", S["table_cell"]),
+        [Paragraph("Phase 1 Demo", S["table_cell_bold"]), Paragraph("Week 4 - working demo", S["table_cell"]),
          Paragraph("Live demo: medicine search, order flow, Razorpay working", S["table_cell"]), Paragraph("15%", S["table_cell_bold"])],
-        [Paragraph("Phase 1 Live", S["table_cell_bold"]), Paragraph("Week 6 — store submission", S["table_cell"]),
+        [Paragraph("Phase 1 Live", S["table_cell_bold"]), Paragraph("Week 6 - store submission", S["table_cell"]),
          Paragraph("App submitted to App Store + Play Store, all Phase 1 features complete", S["table_cell"]), Paragraph("20%", S["table_cell_bold"])],
-        [Paragraph("Phase 2 Done", S["table_cell_bold"]), Paragraph("Week 11 — client sign-off", S["table_cell"]),
+        [Paragraph("Phase 2 Done", S["table_cell_bold"]), Paragraph("Week 11 - client sign-off", S["table_cell"]),
          Paragraph("Hospital beds, doctor directory, appointment booking live", S["table_cell"]), Paragraph("15%", S["table_cell_bold"])],
-        [Paragraph("Phase 3 Done", S["table_cell_bold"]), Paragraph("Week 15 — client sign-off", S["table_cell"]),
+        [Paragraph("Phase 3 Done", S["table_cell_bold"]), Paragraph("Week 15 - client sign-off", S["table_cell"]),
          Paragraph("Subscriptions, patient profiles, refill reminders live", S["table_cell"]), Paragraph("10%", S["table_cell_bold"])],
-        [Paragraph("Final Handover", S["table_cell_bold"]), Paragraph("Week 20 — project complete", S["table_cell"]),
+        [Paragraph("Final Handover", S["table_cell_bold"]), Paragraph("Week 20 - project complete", S["table_cell"]),
          Paragraph("All 5 phases live, code handover, documentation, 30-day support period begins", S["table_cell"]), Paragraph("15%", S["table_cell_bold"])],
     ]
     ms_cw = [CONTENT_W * x for x in [0.18, 0.22, 0.47, 0.13]]
@@ -1310,7 +1310,7 @@ def build_proposal():
         ("Client responsibilities", "Client provides: pharmacy partner details for onboarding, hospital data for bed availability, content for emergency contacts, and timely feedback within 3 business days of each demo."),
         ("Infrastructure costs", "Monthly infrastructure costs are the client's responsibility and are payable directly to AWS, Firebase, MSG91, and Razorpay. Estimates are provided in Section 10."),
         ("Legal documents", "Privacy policy and Terms of Service must be drafted by a qualified legal professional before App Store submission. Estimated one-time cost: ₹5,000–10,000."),
-        ("Post-delivery support", "A 30-day bug-fix support period is included after final handover. This covers bugs in delivered features only — not new features or scope additions."),
+        ("Post-delivery support", "A 30-day bug-fix support period is included after final handover. This covers bugs in delivered features only - not new features or scope additions."),
         ("Source code ownership", "Full source code ownership transfers to the client upon receipt of final payment."),
         ("AI tool usage", "Development uses AI coding assistants (Claude Code, Cursor) to maintain quality and delivery pace. All code is reviewed, tested, and owned by the development team."),
     ]
@@ -1364,7 +1364,7 @@ def build_proposal():
     closing_data = [[Paragraph(
         "<b>Ready to build something that genuinely helps people?</b><br/>"
         "This proposal reflects a realistic, well-scoped plan built on proven technology. "
-        "Every decision — from the tech stack to the compliance approach — has been made "
+        "Every decision - from the tech stack to the compliance approach - has been made "
         "with the long-term success of this platform in mind.<br/><br/>"
         "Looking forward to partnering with you on MediCare Connect.",
         S["body"])]]
@@ -1382,7 +1382,7 @@ def build_proposal():
     closing_data2 = [[Paragraph(
         "<font color='white'><b>Ready to build something that genuinely helps people?</b></font><br/>"
         "<font color='#93C5FD'>This proposal reflects a realistic, well-scoped plan built on proven technology. "
-        "Every decision — from the tech stack to the compliance approach — has been made "
+        "Every decision - from the tech stack to the compliance approach - has been made "
         "with the long-term success of this platform in mind.</font><br/><br/>"
         "<font color='white'>Looking forward to partnering with you on MediCare Connect.</font>",
         S["body"])]]
