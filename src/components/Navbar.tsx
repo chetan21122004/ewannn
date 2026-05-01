@@ -67,12 +67,12 @@ const mobileNavGroups: NavGroup[] = [
     href: "/about-us",
     links: [
       { labelKey: "navMenu.about.aboutEwan", href: "/about-us#about-ewan" },
-      { labelKey: "navMenu.about.founders", href: "/about-us#founders" },
+      { labelKey: "navMenu.about.founders", href: "/about-us#the-founders" },
       { labelKey: "navMenu.about.orientalFlock", href: "/about-us#oriental-flock" },
-      { labelKey: "navMenu.about.partners", href: "/about-us#partners" },
+      { labelKey: "navMenu.about.partners", href: "/about-us#our-partners" },
       { labelKey: "navMenu.about.joinUs", href: "/join-us" },
-      { labelKey: "navMenu.about.caseStudies", href: "/about-us#case-studies" },
-      { labelKey: "navMenu.about.testimonials", href: "/about-us#testimonials" },
+      { labelKey: "navMenu.about.caseStudies", href: "/media#case-study" },
+      { labelKey: "navMenu.about.testimonials", href: "/#testimonials" },
     ],
   },
   {
@@ -130,12 +130,12 @@ const desktopNavGroups: DesktopNavGroup[] = [
     href: "/about-us",
     links: [
       { labelKey: "navMenu.about.aboutEwan", href: "/about-us#about-ewan" },
-      { labelKey: "navMenu.about.founders", href: "/about-us#founders" },
+      { labelKey: "navMenu.about.founders", href: "/about-us#the-founders" },
       { labelKey: "navMenu.about.orientalFlock", href: "/about-us#oriental-flock" },
-      { labelKey: "navMenu.about.partners", href: "/about-us#partners" },
+      { labelKey: "navMenu.about.partners", href: "/about-us#our-partners" },
       { labelKey: "navMenu.about.joinUs", href: "/join-us" },
-      { labelKey: "navMenu.about.caseStudies", href: "/about-us#case-studies" },
-      { labelKey: "navMenu.about.testimonials", href: "/about-us#testimonials" },
+      { labelKey: "navMenu.about.caseStudies", href: "/media#case-study" },
+      { labelKey: "navMenu.about.testimonials", href: "/#testimonials" },
     ],
   },
   {
