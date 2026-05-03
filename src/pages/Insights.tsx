@@ -1,23 +1,27 @@
 import { ArrowRight, PlayCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import { absoluteUrl, breadcrumbSchema } from "@/lib/schemaHelpers";
 
 const gazetteCards = [
   {
     tag: "Issue No. 04",
     title: "Decoding the Asian Market: Q4 2024 Outlook",
     image: "/stitch/insights/gazette-cover.jpg",
+    to: "/language-gazette" as const,
   },
   {
     tag: "Market Entry",
     title: "Why Japanese companies struggle entering India",
     image: "/stitch/insights/gazette-market-insight.jpg",
     offset: "md:mt-24",
+    to: "/insights/how-to-enter-indian-market" as const,
   },
   {
     tag: "Intelligence",
     title: "The 5 operational gaps in cross-border expansion",
     image: "/stitch/insights/gazette-communication.jpg",
+    to: "/market-entry-audit" as const,
   },
 ];
 
@@ -29,6 +33,7 @@ const repoCards = [
     copy: "Exploring the emerging logistics and trade infrastructure connecting the sub-continent to Southeast Asia.",
     image: "/stitch/insights/article-asian-market.jpg",
     authorImage: "/stitch/insights/author-1.jpg",
+    to: "/insights/how-to-enter-indian-market" as const,
   },
   {
     tag: "Language",
@@ -37,6 +42,7 @@ const repoCards = [
     copy: "The hidden nuances of high-stakes negotiation where silence is as important as the translated word.",
     image: "/stitch/insights/article-interpretation.jpg",
     authorImage: "/stitch/insights/author-2.jpg",
+    to: "/insights/what-is-simultaneous-interpretation" as const,
   },
   {
     tag: "Career",
@@ -45,6 +51,7 @@ const repoCards = [
     copy: "Moving beyond translation: How to build a strategic consultancy career using linguistic prowess.",
     image: "/stitch/insights/article-career-guide.jpg",
     authorImage: "/stitch/insights/author-3.jpg",
+    to: "/insights" as const,
   },
   {
     tag: "Market Entry",
@@ -53,6 +60,7 @@ const repoCards = [
     copy: "Avoid the 'Google Translate' trap. 5 critical questions to ask your language service provider.",
     image: "/stitch/insights/article-strategy.jpg",
     authorImage: "/stitch/insights/author-4.jpg",
+    to: "/insights/how-to-choose-translation-partner-india" as const,
   },
   {
     tag: "Language",
@@ -61,6 +69,7 @@ const repoCards = [
     copy: "When to use which? A technical breakdown of interpretation modes for corporate events.",
     image: "/stitch/insights/article-interpretation-type.jpg",
     authorImage: "/stitch/insights/author-5.jpg",
+    to: "/insights/what-is-simultaneous-interpretation" as const,
   },
 ];
 
@@ -82,12 +91,20 @@ const videoCards = [
   },
 ];
 
+const insightsLd = [
+  breadcrumbSchema(absoluteUrl("/insights/"), [
+    { name: "Home", path: "/" },
+    { name: "Insights", path: "/insights/" },
+  ]),
+];
+
 const Insights = () => {
   return (
     <PageLayout
       title="Blog & Insights | Ewan Business Solutions"
       description="Strategic articles, market narratives, and execution intelligence from EWAN's cross-border language and operations teams."
       canonicalPath="/insights/"
+      jsonLd={insightsLd}
     >
       <section className="relative overflow-hidden bg-[hsl(var(--surface-light-50))] px-6 py-16 md:py-24">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,hsl(var(--brand-purple-700)/0.08),transparent_42%)]" />
@@ -163,19 +180,21 @@ const Insights = () => {
           </div>
           <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
             {gazetteCards.map((card) => (
-              <article key={card.title} className={`group cursor-pointer ${card.offset ?? ""}`}>
-                <div className="relative mb-4 aspect-[3/4] overflow-hidden rounded-2xl shadow-lg">
-                  <img src={card.image} alt={card.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-[hsl(var(--brand-navy-950)/0.16)] opacity-0 transition group-hover:opacity-100" />
-                </div>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-4">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-600))]">{card.tag}</span>
-                    <span className="h-px flex-1 bg-[hsl(var(--border-light))]" />
+              <Link key={card.title} to={card.to} className={`group block ${card.offset ?? ""}`}>
+                <article className="cursor-pointer">
+                  <div className="relative mb-4 aspect-[3/4] overflow-hidden rounded-2xl shadow-lg">
+                    <img src={card.image} alt={card.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-[hsl(var(--brand-navy-950)/0.16)] opacity-0 transition group-hover:opacity-100" />
                   </div>
-                  <h3 className="text-lg font-bold text-[hsl(var(--brand-navy-950))] md:text-xl">{card.title}</h3>
-                </div>
-              </article>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-4">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-600))]">{card.tag}</span>
+                      <span className="h-px flex-1 bg-[hsl(var(--border-light))]" />
+                    </div>
+                    <h3 className="text-lg font-bold text-[hsl(var(--brand-navy-950))] md:text-xl">{card.title}</h3>
+                  </div>
+                </article>
+              </Link>
             ))}
           </div>
         </div>
@@ -195,21 +214,23 @@ const Insights = () => {
 
           <div className="mx-auto grid max-w-6xl gap-x-7 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
             {repoCards.map((card) => (
-              <article key={card.title} className="flex flex-col">
-                <div className="mb-5 overflow-hidden rounded-xl">
-                  <img src={card.image} alt={card.title} className="aspect-[16/10] w-full object-cover transition duration-500 hover:scale-105" />
-                </div>
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[hsl(var(--brand-gold-600))]">{card.tag}</span>
-                  <span className="text-[10px] uppercase tracking-[0.15em] text-on-light-muted">{card.date}</span>
-                </div>
-                <h3 className="text-lg font-bold leading-snug text-[hsl(var(--brand-navy-950))]">{card.title}</h3>
-                <p className="mt-3 flex-grow text-xs text-on-light-secondary md:text-sm">{card.copy}</p>
-                <div className="mt-6 flex items-center gap-3 border-t border-[hsl(var(--border-light))] pt-5">
-                  <img src={card.authorImage} alt="Author Soham" className="h-8 w-8 rounded-full object-cover" />
-                  <span className="text-sm font-semibold text-[hsl(var(--brand-navy-950))]">Soham</span>
-                </div>
-              </article>
+              <Link key={card.title} to={card.to} className="flex flex-col">
+                <article className="flex h-full flex-col">
+                  <div className="mb-5 overflow-hidden rounded-xl">
+                    <img src={card.image} alt={card.title} className="aspect-[16/10] w-full object-cover transition duration-500 hover:scale-105" />
+                  </div>
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[hsl(var(--brand-gold-600))]">{card.tag}</span>
+                    <span className="text-[10px] uppercase tracking-[0.15em] text-on-light-muted">{card.date}</span>
+                  </div>
+                  <h3 className="text-lg font-bold leading-snug text-[hsl(var(--brand-navy-950))]">{card.title}</h3>
+                  <p className="mt-3 flex-grow text-xs text-on-light-secondary md:text-sm">{card.copy}</p>
+                  <div className="mt-6 flex items-center gap-3 border-t border-[hsl(var(--border-light))] pt-5">
+                    <img src={card.authorImage} alt="Author Soham" className="h-8 w-8 rounded-full object-cover" />
+                    <span className="text-sm font-semibold text-[hsl(var(--brand-navy-950))]">Soham</span>
+                  </div>
+                </article>
+              </Link>
             ))}
 
             <article className="rounded-xl bg-[hsl(var(--brand-navy-950))] p-6 text-white">

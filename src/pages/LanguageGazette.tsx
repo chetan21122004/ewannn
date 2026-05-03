@@ -9,6 +9,7 @@ const featureArticles = [
     title: "Why Japanese companies struggle entering India - and what to do differently",
     excerpt: "Navigating the cultural friction between structured methodology and dynamic market agility.",
     image: "/stitch/language-gazette/article-market-entry.jpg",
+    to: "/insights/how-to-enter-indian-market" as const,
   },
   {
     category: "Operations",
@@ -16,6 +17,7 @@ const featureArticles = [
     title: "The 5 operational gaps that quietly kill cross-border expansion",
     excerpt: "Identifying the invisible bottlenecks in global logistics and local talent acquisition.",
     image: "/stitch/language-gazette/article-operations.jpg",
+    to: "/market-entry-audit" as const,
   },
   {
     category: "Cultural IQ",
@@ -23,6 +25,7 @@ const featureArticles = [
     title: "What 60,000 hours of interpretation taught me about cross-cultural business",
     excerpt: "The silent signals that determine the success of high-stakes international negotiations.",
     image: "/stitch/language-gazette/article-cultural-iq.jpg",
+    to: "/insights/what-is-simultaneous-interpretation" as const,
   },
 ];
 
@@ -31,16 +34,19 @@ const briefs = [
     tag: "Trade Corridor",
     title: "India-Vietnam trade corridor: what businesses need to know in 2026",
     cta: "Read Brief",
+    to: "/insights/how-to-enter-indian-market" as const,
   },
   {
     tag: "Career Guide",
     title: "Is a career in Asian languages worth it in India? An honest guide",
     cta: "Explore Guide",
+    to: "/insights" as const,
   },
   {
     tag: "Best Practices",
     title: "How to choose a translation partner - what most buyers get wrong",
     cta: "Get Checklist",
+    to: "/insights/how-to-choose-translation-partner-india" as const,
   },
 ];
 
@@ -106,29 +112,38 @@ const LanguageGazette = () => {
 
           <div className="grid gap-10 lg:grid-cols-3">
             {featureArticles.map((article) => (
-              <article key={article.title} className="theme-card-light overflow-hidden rounded-[1.5rem]">
-                <img src={article.image} alt={article.title} className="aspect-video w-full object-cover" />
-                <div className="p-6">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-600))]">
-                    {article.category} <span className="text-on-light-muted">- {article.readTime}</span>
-                  </p>
-                  <h3 className="mt-3 text-2xl font-bold leading-tight text-[hsl(var(--brand-navy-950))]">{article.title}</h3>
-                  <p className="mt-3 text-sm text-on-light-secondary">{article.excerpt}</p>
-                </div>
-              </article>
+              <Link key={article.title} to={article.to} className="theme-card-light block overflow-hidden rounded-[1.5rem] transition hover:-translate-y-0.5">
+                <article>
+                  <img src={article.image} alt={article.title} className="aspect-video w-full object-cover" />
+                  <div className="p-6">
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-600))]">
+                      {article.category} <span className="text-on-light-muted">- {article.readTime}</span>
+                    </p>
+                    <h3 className="mt-3 text-2xl font-bold leading-tight text-[hsl(var(--brand-navy-950))]">{article.title}</h3>
+                    <p className="mt-3 text-sm text-on-light-secondary">{article.excerpt}</p>
+                  </div>
+                </article>
+              </Link>
             ))}
           </div>
 
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {briefs.map((brief, index) => (
-              <article key={brief.title} className="theme-card-light rounded-[1.25rem] border-l-4 p-6" style={{ borderLeftColor: index % 2 === 0 ? "hsl(var(--brand-gold-500))" : "hsl(var(--brand-purple-700))" }}>
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-600))]">{brief.tag}</p>
-                <h4 className="mt-3 text-lg font-bold leading-tight text-[hsl(var(--brand-navy-950))]">{brief.title}</h4>
-                <button className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-700))]">
-                  {brief.cta}
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </article>
+              <Link
+                key={brief.title}
+                to={brief.to}
+                className="theme-card-light block rounded-[1.25rem] border-l-4 p-6 transition hover:-translate-y-0.5"
+                style={{ borderLeftColor: index % 2 === 0 ? "hsl(var(--brand-gold-500))" : "hsl(var(--brand-purple-700))" }}
+              >
+                <article>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-600))]">{brief.tag}</p>
+                  <h4 className="mt-3 text-lg font-bold leading-tight text-[hsl(var(--brand-navy-950))]">{brief.title}</h4>
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-700))]">
+                    {brief.cta}
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </article>
+              </Link>
             ))}
           </div>
         </div>

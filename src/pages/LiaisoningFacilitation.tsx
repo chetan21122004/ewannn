@@ -2,6 +2,9 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
+import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
+import { LIAISONING_FAQS } from "@/data/aeoContent";
+import { absoluteUrl, faqPageSchema, serviceSchema } from "@/lib/schemaHelpers";
 
 /** Stitch screen assets (`public/stitch/liaisoning-facilitation/`); replace via `curl -L` from Stitch export when available */
 const stitch = {
@@ -68,12 +71,24 @@ const whoThisIsFor = [
   "Government agencies and trade bodies requiring high-stakes institutional liaison",
 ];
 
+const liaisonLd = [
+  faqPageSchema(absoluteUrl("/liaisoning-facilitation/"), LIAISONING_FAQS),
+  serviceSchema({
+    name: "Business liaisoning & facilitation",
+    description:
+      "Government, institutional, executive, negotiation, coordination, exhibition, and trade-fair liaison with native-language fluency across the India–Asia corridor.",
+    canonicalPath: "/liaisoning-facilitation/",
+    serviceType: "Liaisoning services",
+  }),
+];
+
 const LiaisoningFacilitation = () => {
   return (
     <PageLayout
       title="Executive Liaison & Negotiation Facilitation India | Ewan Business Solutions"
       description="High-stakes executive liaison, government relations, and negotiation facilitation for the India-Asia corridor. 60,000+ hours of boardroom experience in Mandarin, Japanese, and Korean."
       canonicalPath="/liaisoning-facilitation/"
+      jsonLd={liaisonLd}
     >
       {/* Hero */}
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-20 pt-10 text-white md:pb-28 md:pt-14 stitch-line stitch-line-bottom">
@@ -226,9 +241,7 @@ const LiaisoningFacilitation = () => {
         </div>
       </section>
 
-
-   
-
+      <AeoFrequentlyAskedQuestions items={LIAISONING_FAQS} className="theme-section-light px-6 py-16 md:py-20" />
     </PageLayout>
   );
 };

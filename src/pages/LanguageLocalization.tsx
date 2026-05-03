@@ -1,28 +1,36 @@
 import { ArrowRight, CheckCircle2, Globe2, Languages, Mic2, ShieldCheck, Subtitles } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
-import { useTranslation } from "react-i18next";
+import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
+import { LANGUAGE_LOCALIZATION_FAQS, SPEAKABLE_LANGUAGE } from "@/data/aeoContent";
+import {
+  absoluteUrl,
+  breadcrumbSchema,
+  faqPageSchema,
+  serviceSchema,
+  speakableWebPage,
+} from "@/lib/schemaHelpers";
 
 const services = [
   {
     id: "translation",
     title: "Translation",
     description:
-      "Legal, technical, medical, and commercial documents handled by native experts for accurate, validated outcomes.",
+      "Translation is the conversion of written content from one language to another while preserving meaning, tone, and intent. Ewan provides certified translation for legal, technical, medical, and commercial documents across 125+ languages — by native-language experts with sector-specific knowledge.",
     icon: Languages,
   },
   {
     id: "interpretation",
     title: "Interpretation",
     description:
-      "Simultaneous and consecutive interpretation for boardrooms, conferences, exhibitions, and government meetings, backed by 60,000+ hours.",
+      "Interpretation is the oral conversion of spoken language in real time — simultaneous interpretation delivers this as the speaker speaks; consecutive interpretation follows after each segment. Ewan has 60,000+ hours of interpretation experience across Mandarin, Japanese, ASEAN languages and more, across boardroom negotiations, conferences, exhibitions, and government meetings.",
     icon: Globe2,
   },
   {
     id: "localization",
     title: "Localization",
     description:
-      "Website, software, and marketing localization that feels native, with cultural adaptation built into delivery.",
+      "Localization is the adaptation of a product, website, or content for a specific target market — going beyond translation to adjust tone, cultural references, imagery, layout, and user experience. Ewan localizes websites, software, marketing materials, and product content across 125+ languages, with cultural adaptation built in from the start so the result feels native, not translated.",
     icon: ShieldCheck,
   },
   {
@@ -88,14 +96,29 @@ const corridors = [
   },
 ];
 
-const LanguageLocalization = () => {
-  const { t } = useTranslation();
+const languageLd = [
+  speakableWebPage(absoluteUrl("/language-localization/"), [".language-speakable"]),
+  faqPageSchema(absoluteUrl("/language-localization/"), LANGUAGE_LOCALIZATION_FAQS),
+  serviceSchema({
+    name: "Translation, interpretation & localization services",
+    description:
+      "ISO 9001:2015 certified multilingual translation, interpretation, localization, transcription, voiceover, and QA — 125+ languages with corridor-native intelligence.",
+    canonicalPath: "/language-localization/",
+    serviceType: "Language service provider",
+  }),
+  breadcrumbSchema(absoluteUrl("/language-localization/"), [
+    { name: "Home", path: "/" },
+    { name: "Language & Localization", path: "/language-localization/" },
+  ]),
+];
 
+const LanguageLocalization = () => {
   return (
     <PageLayout
       title="Professional Translation, Interpretation & Localization Services India | Ewan Business Solutions"
       description="ISO 9001:2015 certified language service provider offering translation, interpretation, and localization in 125+ languages. Specialist in technical, legal, and pharmaceutical sectors."
       canonicalPath="/language-localization/"
+      jsonLd={languageLd}
     >
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-24 pt-12 text-white">
         <div
@@ -112,10 +135,12 @@ const LanguageLocalization = () => {
           <h1 className="font-serif text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
             Language That <span className="text-[hsl(var(--brand-gold-500))]">Goes Beyond Words.</span>
           </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/75">
-            Ewan provides high-precision language services for companies navigating complex global corridors. Whether
-            it&apos;s simultaneous interpretation in a high-stakes boardroom or technical translation for a
-            manufacturing manual, we deliver with the accuracy and cultural intelligence your business demands.
+          <p className="language-speakable mt-6 max-w-3xl text-lg leading-relaxed text-white/75">
+            {SPEAKABLE_LANGUAGE}
+          </p>
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/70">
+            Whether it&apos;s simultaneous interpretation in a high-stakes boardroom or technical translation for a manufacturing manual, we deliver with the
+            accuracy and cultural intelligence your business demands.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a
@@ -294,6 +319,8 @@ const LanguageLocalization = () => {
           </div>
         </div>
       </section>
+
+      <AeoFrequentlyAskedQuestions items={LANGUAGE_LOCALIZATION_FAQS} className="bg-[#ffffff] px-6 py-16" />
 
       <section className="bg-[hsl(var(--brand-navy-950))] px-6 py-16 text-white">
         <div className="container mx-auto rounded-3xl border border-white/15 bg-white/5 p-8 text-center backdrop-blur-sm">

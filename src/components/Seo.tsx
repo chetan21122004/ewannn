@@ -1,13 +1,20 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { organizationNode } from "@/lib/schemaHelpers";
+import type { JsonLdObject } from "@/lib/schemaHelpers";
+import { SITE_URL } from "@/lib/site";
+
+export const JSON_LD_SCRIPT_ID = "ewan-jsonld";
+
+type JsonLdProp = JsonLdObject | JsonLdObject[] | undefined;
 
 type SeoProps = {
   title: string;
   description: string;
   canonicalPath: string;
+  /** Extra JSON-LD nodes merged with Organization into one @graph */
+  jsonLd?: JsonLdProp;
 };
-
-const SITE_URL = "https://ewan.co.in";
 
 function upsertMeta(name: string, content: string) {
   let node = document.querySelector(`meta[name="${name}"]`);
@@ -40,19 +47,47 @@ function upsertAlternate(hreflang: string, href: string) {
   node.setAttribute("href", href);
 }
 
-const Seo = ({ title, description, canonicalPath }: SeoProps) => {
+function normalizeExtras(jsonLd?: JsonLdProp): JsonLdObject[] {
+  if (!jsonLd) return [];
+  return Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+}
+
+const Seo = ({ title, description, canonicalPath, jsonLd }: SeoProps) => {
   const { i18n } = useTranslation();
 
+  const pathForCanonical =
+    canonicalPath === "/" ? "/" : canonicalPath.endsWith("/") ? canonicalPath : `${canonicalPath}/`;
+
+  const canonicalUrl = pathForCanonical === "/" ? `${SITE_URL}/` : `${SITE_URL}${pathForCanonical}`;
+
   useEffect(() => {
-    const canonicalUrl = `${SITE_URL}${canonicalPath}`;
     document.documentElement.lang = i18n.resolvedLanguage || "en";
     document.title = title;
     upsertMeta("description", description);
     upsertCanonical(canonicalUrl);
     upsertAlternate("en", canonicalUrl);
-    upsertAlternate("zh", `${SITE_URL}/zh${canonicalPath === "/" ? "" : canonicalPath}`);
-    upsertAlternate("ja", `${SITE_URL}/ja${canonicalPath === "/" ? "" : canonicalPath}`);
-  }, [title, description, canonicalPath, i18n.resolvedLanguage]);
+    upsertAlternate("zh", `${SITE_URL}/zh${pathForCanonical === "/" ? "" : pathForCanonical}`);
+    upsertAlternate("ja", `${SITE_URL}/ja${pathForCanonical === "/" ? "" : pathForCanonical}`);
+  }, [canonicalUrl, title, description, pathForCanonical, i18n.resolvedLanguage]);
+
+  useEffect(() => {
+    const extras = normalizeExtras(jsonLd);
+    const merged = {
+      "@context": "https://schema.org",
+      "@graph": [organizationNode, ...extras],
+    };
+    let script = document.getElementById(JSON_LD_SCRIPT_ID) as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement("script");
+      script.id = JSON_LD_SCRIPT_ID;
+      script.type = "application/ld+json";
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(merged);
+    return () => {
+      script?.remove();
+    };
+  }, [canonicalUrl, jsonLd, title]);
 
   return null;
 };

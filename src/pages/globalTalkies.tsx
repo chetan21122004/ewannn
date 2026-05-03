@@ -1,6 +1,17 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import { absoluteUrl, serviceSchema } from "@/lib/schemaHelpers";
+
+const globalTalkiesLd = [
+  serviceSchema({
+    name: "Global Talkies media localisation",
+    description:
+      "Multilingual film distribution, OTT localisation, subtitling, dubbing, voiceover, script adaptation, and cultural compliance for cross-border media.",
+    canonicalPath: "/global-talkies/",
+    serviceType: "Media localisation",
+  }),
+];
 
 const services = [
   {
@@ -101,6 +112,7 @@ const GlobalTalkies = () => {
       title="Global Talkies - Multilingual Film Distribution & Media Localisation | Ewan Business Solutions"
       description="Global Talkies by Ewan - multilingual film distribution, OTT content localisation, subtitling, dubbing, and cultural adaptation for Indian and international content crossing language borders."
       canonicalPath="/global-talkies/"
+      jsonLd={globalTalkiesLd}
     >
       {/* Hero */}
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-24 pt-12 text-white">

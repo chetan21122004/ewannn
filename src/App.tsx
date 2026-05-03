@@ -20,6 +20,9 @@ import Industries from "./pages/Industries.tsx";
 import MarketEntryAudit from "./pages/MarketEntryAudit.tsx";
 import Insights from "./pages/Insights.tsx";
 import LanguageGazette from "./pages/LanguageGazette.tsx";
+import InsightsArticleHowToEnterIndia from "./pages/insights/InsightsArticleHowToEnterIndia.tsx";
+import InsightsArticleChooseTranslationPartner from "./pages/insights/InsightsArticleChooseTranslationPartner.tsx";
+import InsightsArticleSimultaneousInterpretation from "./pages/insights/InsightsArticleSimultaneousInterpretation.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -49,6 +52,9 @@ const App = () => (
           <Route path="/join-us" element={<JoinUs />} />
           <Route path="/language-gazette" element={<LanguageGazette />} />
           <Route path="/insights" element={<Insights />} />
+          <Route path="/insights/how-to-enter-indian-market" element={<InsightsArticleHowToEnterIndia />} />
+          <Route path="/insights/how-to-choose-translation-partner-india" element={<InsightsArticleChooseTranslationPartner />} />
+          <Route path="/insights/what-is-simultaneous-interpretation" element={<InsightsArticleSimultaneousInterpretation />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

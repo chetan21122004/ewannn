@@ -1,6 +1,15 @@
 import { ArrowRight, Download, Image as ImageIcon, Play, Radio } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import { Link } from "react-router-dom";
+import { absoluteUrl, collectionPageSchema } from "@/lib/schemaHelpers";
+
+const mediaLd = [
+  collectionPageSchema(
+    "Media Hub",
+    "Media coverage, case studies, insights, and articles from Ewan Business Solutions.",
+    absoluteUrl("/media/"),
+  ),
+];
 
 const pressItems = [
   {
@@ -47,6 +56,7 @@ const Media = () => {
       title="Media Coverage | Ewan Business Solutions"
       description="Media coverage, case studies, insights, and articles from Ewan Business Solutions. Stay updated on India-Asia trade, business expansion, and language localization trends."
       canonicalPath="/media/"
+      jsonLd={mediaLd}
     >
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-28 pt-14 text-white lg:pb-36 lg:pt-20">

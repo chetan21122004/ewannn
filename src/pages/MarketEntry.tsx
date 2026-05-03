@@ -1,6 +1,15 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
+import { MARKET_ENTRY_FAQS, SPEAKABLE_MARKET_ENTRY } from "@/data/aeoContent";
+import {
+  absoluteUrl,
+  breadcrumbSchema,
+  faqPageSchema,
+  serviceSchema,
+  speakableWebPage,
+} from "@/lib/schemaHelpers";
 
 const whoWeServe = [
   {
@@ -65,12 +74,29 @@ const howItWorks = [
   },
 ];
 
+const marketEntryLd = [
+  speakableWebPage(absoluteUrl("/market-entry/"), [".market-entry-speakable"]),
+  faqPageSchema(absoluteUrl("/market-entry/"), MARKET_ENTRY_FAQS),
+  serviceSchema({
+    name: "India market entry consulting",
+    description:
+      "On-ground India market entry and expansion support covering regulatory navigation, entity formation, bank setup, liaison, staffing, sourcing, execution, and 125+ language capability.",
+    canonicalPath: "/market-entry/",
+    serviceType: "Market entry consulting",
+  }),
+  breadcrumbSchema(absoluteUrl("/market-entry/"), [
+    { name: "Home", path: "/" },
+    { name: "Market Entry", path: "/market-entry/" },
+  ]),
+];
+
 const MarketEntry = () => {
   return (
     <PageLayout
       title="Empowering India's Role in Global Markets | Ewan Business Solutions"
       description="Effective business solutions for companies entering South Asian markets. Ewan erases the communication and cultural gap to build a road to success in India and South Asia."
       canonicalPath="/market-entry/"
+      jsonLd={marketEntryLd}
     >
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-24 pt-12 text-white">
@@ -92,6 +118,9 @@ const MarketEntry = () => {
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/75">
                 We are an on-ground market entry partner for companies operating between India and the emerging world - combining 125+ language capabilities with operational execution.
+              </p>
+              <p className="market-entry-speakable mt-4 max-w-3xl text-lg leading-relaxed text-white/85">
+                {SPEAKABLE_MARKET_ENTRY}
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
@@ -247,6 +276,8 @@ const MarketEntry = () => {
           </div>
         </div>
       </section>
+
+      <AeoFrequentlyAskedQuestions items={MARKET_ENTRY_FAQS} className="bg-[#ffffff] px-6 py-16" />
 
       {/* Final CTA */}
       <section className="bg-white px-6 pb-16 pt-8">

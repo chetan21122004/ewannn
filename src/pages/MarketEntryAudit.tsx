@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
+import { absoluteUrl, webPageWithLeadAction } from "@/lib/schemaHelpers";
+
+const marketEntryAuditLd = [webPageWithLeadAction(absoluteUrl("/market-entry-audit/"))];
 
 const defaultTrustStats = [
   { value: "60,000+", label: "Hours Execution" },
@@ -74,6 +77,7 @@ const MarketEntryAudit = () => {
       title={t("seo.marketEntryAudit.title")}
       description={t("seo.marketEntryAudit.description")}
       canonicalPath="/market-entry-audit/"
+      jsonLd={marketEntryAuditLd}
     >
       <section className="relative overflow-hidden px-6 pb-24 pt-16 theme-section-light">
         <div className="absolute inset-0 theme-grid-overlay-light opacity-20 pointer-events-none" />

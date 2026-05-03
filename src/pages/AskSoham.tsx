@@ -12,6 +12,9 @@ import {
   Video,
 } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
+import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
+import { ASK_SOHAM_FAQS, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
+import { absoluteUrl, faqPageSchema, personSoham, serviceSchema } from "@/lib/schemaHelpers";
 import { useTranslation } from "react-i18next";
 
 const BOOKING_URL = "https://calendly.com";
@@ -40,6 +43,18 @@ const tracks = [
   },
 ];
 
+const askSohamLd = [
+  personSoham(),
+  faqPageSchema(absoluteUrl("/ask-soham/"), ASK_SOHAM_FAQS),
+  serviceSchema({
+    name: "Ask Soham consultation",
+    description:
+      "Free 15-minute strategy call with founder Soham Kakade covering India market entry, language services fit, or language-industry careers — honest, non-sales guidance.",
+    canonicalPath: "/ask-soham/",
+    serviceType: "Business consultation",
+  }),
+];
+
 const AskSoham = () => {
   const { t } = useTranslation();
 
@@ -48,6 +63,7 @@ const AskSoham = () => {
       title={t("seo.askSoham.title")}
       description={t("seo.askSoham.description")}
       canonicalPath="/ask-soham/"
+      jsonLd={askSohamLd}
     >
       <section className="relative overflow-hidden px-6 pb-20 pt-10">
         <div
@@ -194,7 +210,7 @@ const AskSoham = () => {
               Designer. Symbiosis Faculty. IB Board Curriculum Designer.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-[hsl(var(--text-secondary))] sm:text-base">
-              When you book this call, you're talking to someone who has actually been in the room.
+              When you book this call, you&apos;re talking to someone who has actually been in the room.
             </p>
             <div className="mt-7 grid gap-4 border-t border-[hsl(var(--surface-glass)/0.16)] pt-6 sm:grid-cols-2">
               {[
@@ -210,6 +226,13 @@ const AskSoham = () => {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="theme-section-soft border-t border-[hsl(var(--surface-glass)/0.12)] px-6 py-14">
+        <div className="container mx-auto max-w-4xl rounded-3xl border border-[hsl(var(--surface-glass)/0.18)] bg-white p-8 shadow-[0_16px_40px_hsl(var(--surface-1)/0.08)]">
+          <h2 className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))] md:text-3xl">About Soham Kakade</h2>
+          <p className="mt-4 text-sm leading-relaxed text-foreground/80 sm:text-[0.9375rem]">{ENTITY_PARAGRAPH_B}</p>
         </div>
       </section>
 
@@ -319,6 +342,8 @@ const AskSoham = () => {
           </div>
         </div>
       </section>
+
+      <AeoFrequentlyAskedQuestions items={ASK_SOHAM_FAQS} className="bg-[#f7f5ff] px-6 py-16" />
     </PageLayout>
   );
 };

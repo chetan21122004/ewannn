@@ -2,6 +2,9 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
+import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
+import { MARKET_RESEARCH_FAQS } from "@/data/aeoContent";
+import { absoluteUrl, faqPageSchema, serviceSchema } from "@/lib/schemaHelpers";
 
 /** Stitch-aligned imagery (`public/stitch/market-research/`) */
 const stitch = {
@@ -105,12 +108,24 @@ const whoThisIsFor = [
   "Companies requiring multilingual primary research that desk-based agencies cannot deliver",
 ];
 
+const marketResearchLd = [
+  faqPageSchema(absoluteUrl("/market-research/"), MARKET_RESEARCH_FAQS),
+  serviceSchema({
+    name: "Primary market research",
+    description:
+      "Native-language distributor intelligence, competitor analysis, buyer and consumer studies, sector assessments, physical verification fieldwork — primary research grounded in corridor context.",
+    canonicalPath: "/market-research/",
+    serviceType: "Market research",
+  }),
+];
+
 const MarketResearchPage = () => {
   return (
     <PageLayout
       title="Primary Market Research Services India & Asia | Ewan Business Solutions"
       description="On-ground primary market research for companies entering India and Asian markets. Multilingual interviews, distributor intelligence, competitor analysis, and buyer research conducted by native-language experts."
       canonicalPath="/market-research/"
+      jsonLd={marketResearchLd}
     >
       {/* Hero */}
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-20 pt-10 text-white md:pb-28 md:pt-14 stitch-line stitch-line-bottom">
@@ -302,6 +317,8 @@ const MarketResearchPage = () => {
           </div>
         </div>
       </section>
+
+      <AeoFrequentlyAskedQuestions items={MARKET_RESEARCH_FAQS} className="theme-section-soft px-6 py-16 md:py-20" />
 
       <SectionDivider variant="slant" />
 

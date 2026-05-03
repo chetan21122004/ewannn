@@ -1,7 +1,9 @@
 import { ArrowDown, ArrowRight, Car, Factory, Gavel, GraduationCap, Microscope, Network, Plane, PlayCircle, Tent, Terminal, Wheat } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import { absoluteUrl, breadcrumbSchema, itemListFromTitles } from "@/lib/schemaHelpers";
 import { useTranslation } from "react-i18next";
+import { useMemo } from "react";
 
 const defaultSpecializations = [
   { title: "Automotive", copy: "From simultaneous interpretation for boardroom negotiations between Indian OEMs and Japanese or Korean suppliers, to technical manual translation and subsidiary setup support - Ewan is the trusted language and operations partner for the automotive corridor." },
@@ -25,11 +27,24 @@ const Industries = () => {
     defaultValue: defaultSpecializations,
   }) as Array<{ title: string; copy: string }>;
 
+  const industriesLd = useMemo(() => {
+    const pageUrl = absoluteUrl("/industries/");
+    const titles = specializations.map((s) => s.title);
+    return [
+      breadcrumbSchema(pageUrl, [
+        { name: "Home", path: "/" },
+        { name: "Industries", path: "/industries/" },
+      ]),
+      itemListFromTitles(titles, pageUrl),
+    ];
+  }, [specializations]);
+
   return (
     <PageLayout
       title={t("seo.industries.title")}
       description={t("seo.industries.description")}
       canonicalPath="/industries/"
+      jsonLd={industriesLd}
     >
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 py-24 text-white lg:py-32">
         <div

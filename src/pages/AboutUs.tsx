@@ -2,6 +2,9 @@ import { ArrowRight, CheckCircle2, Globe2, Handshake } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
+import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
+import { ABOUT_US_FAQS, ENTITY_PARAGRAPH_A, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
+import { absoluteUrl, faqPageSchema, personSoham, personSukhada } from "@/lib/schemaHelpers";
 
 const metrics = [
   { value: "5+", label: "Years in Operation" },
@@ -54,12 +57,19 @@ const doodleSquiggle = "/stitch/about-us/doodle-squiggle-right.svg";
 const doodleBridge = "/stitch/about-us/doodle-bridge-wave.svg";
 const doodleDots = "/stitch/about-us/doodle-dot-field.svg";
 
+const aboutLd = [
+  personSoham(),
+  personSukhada(),
+  faqPageSchema(absoluteUrl("/about-us/"), ABOUT_US_FAQS),
+];
+
 const AboutUs = () => {
   return (
     <PageLayout
       title="About Ewan Business Solutions | Cross-Border Market Partner India"
       description="Ewan Business Solutions - 5 years, 250+ clients, 125+ languages. Founded by Soham Kakade. Cross-border market entry and language services for the India-Asia corridor."
       canonicalPath="/about-us/"
+      jsonLd={aboutLd}
     >
       {/* Hero */}
       <section
@@ -181,6 +191,9 @@ const AboutUs = () => {
                   Asia, Latin America and Africa. In five years, we have served 250+ clients across 10+ sectors, delivering
                   everything from single document translations to full market entry mandates.
                 </p>
+                <p className="mt-6 rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 text-[0.9375rem] leading-relaxed text-on-light-secondary shadow-[0_8px_24px_rgba(26,22,51,0.04)]">
+                  {ENTITY_PARAGRAPH_A}
+                </p>
               </div>
             </div>
             <div className="grid gap-5 md:gap-6">
@@ -261,6 +274,7 @@ const AboutUs = () => {
                     Founder & CEO
                   </p>
                 </div>
+                <p className="mt-6 text-sm leading-relaxed text-white/85 md:text-[0.9375rem]">{ENTITY_PARAGRAPH_B}</p>
                 <h4 className="mt-6 font-serif text-2xl font-bold leading-tight text-white md:text-[1.65rem]">
                   10 Years in the Room Before Building the Firm.
                 </h4>
@@ -551,6 +565,7 @@ const AboutUs = () => {
         </div>
       </section>
 
+      <AeoFrequentlyAskedQuestions items={ABOUT_US_FAQS} className="theme-section-light px-6 py-16 md:py-20" />
    
     </PageLayout>
   );
