@@ -124,6 +124,14 @@ const enCommon = {
       floatingCard2Label: "Languages",
       floatingCard2Value: "125+",
     },
+    aboutIntro: {
+      badge: "About Ewan",
+      headlinePrefix: "About ",
+      headlineHighlight: "Ewan Business Solutions",
+      headlineSuffix: "",
+      cardLabel: "Company profile",
+      pills: ["Pune, India · Founded 2020", "125+ languages", "ISO 9001:2015", "MSAMB · Bhashini"],
+    },
     stats: {
       badge: "Trusted Track Record",
       items: [

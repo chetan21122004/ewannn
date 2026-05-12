@@ -118,6 +118,14 @@ const zhCommon = {
       floatingCard2Label: "语言",
       floatingCard2Value: "125+",
     },
+    aboutIntro: {
+      badge: "关于 Ewan",
+      headlinePrefix: "关于 ",
+      headlineHighlight: "Ewan Business Solutions",
+      headlineSuffix: "",
+      cardLabel: "公司简介",
+      pills: ["印度浦那 · 创立于 2020", "125+ 语言", "ISO 9001:2015", "MSAMB · Bhashini"],
+    },
     stats: {
       badge: "可信业绩记录",
       items: [

@@ -119,6 +119,14 @@ const jaCommon = {
       floatingCard2Label: "言語",
       floatingCard2Value: "125+",
     },
+    aboutIntro: {
+      badge: "Ewanについて",
+      headlinePrefix: "",
+      headlineHighlight: "Ewan Business Solutions",
+      headlineSuffix: "について",
+      cardLabel: "会社概要",
+      pills: ["プネ拠点 · 2020年創業", "125+ 言語", "ISO 9001:2015", "MSAMB · Bhashini"],
+    },
     stats: {
       badge: "信頼できる実績",
       items: [
