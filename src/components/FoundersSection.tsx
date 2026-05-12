@@ -4,11 +4,23 @@ import { useTranslation } from "react-i18next";
 
 const linkedinUrl = "https://www.linkedin.com/in/soham-kakade-77b2819b/";
 
-const defaultFounders = [
+type FounderItem = {
+  name: string;
+  role: string;
+  img: string;
+  intro: string[];
+  badges: string[];
+  linkedinUrl?: string;
+  linkedinCta?: string;
+};
+
+const defaultFounders: FounderItem[] = [
   {
     name: "Soham Kakade",
     role: "Founder & CEO",
     img: "/Soham-Sir.jpg",
+    linkedinUrl,
+    linkedinCta: "Connect with Soham on LinkedIn →",
     intro: [
       "10 Years in the Room Before Building the Firm. Soham Kakade spent a decade interpreting confidential boardroom negotiations between global leaders and their Asian counterparts - accumulating over 60,000 hours of simultaneous interpretation across Mandarin, Cantonese, Japanese and ASEAN languages before founding Ewan.",
       "His foundation: a full Chinese Government scholarship at Beijing Language and Cultural University (BLCU). Since then: heads of state, Fortune 500 boardrooms, national textbooks, government export programs and geopolitical publications on the India-Asia corridor.",
@@ -51,7 +63,7 @@ const FoundersSection = () => {
   const founders = t("home.founders.items", {
     returnObjects: true,
     defaultValue: defaultFounders,
-  }) as typeof defaultFounders;
+  }) as FounderItem[];
   return (
     <section id="about" className="relative overflow-hidden py-20 lg:py-28 theme-section-soft">
       <div className="glow-orb glow-orb-purple w-[400px] h-[400px] top-10 -left-40 opacity-8" />
@@ -135,16 +147,18 @@ const FoundersSection = () => {
                       ))}
                     </div>
 
+                    {f.linkedinUrl ? (
                     <motion.a
-                      href={linkedinUrl}
+                      href={f.linkedinUrl}
                       target="_blank"
                       rel="noreferrer"
                       whileHover={{ scale: 1.05 }}
                       className={`inline-flex items-center gap-2 pt-1 text-sm font-semibold transition-colors ${accent.link}`}
                     >
                       <Linkedin className="w-3.5 h-3.5" />
-                      {t("home.founders.linkedinCta")}
+                      {f.linkedinCta ?? t("home.founders.linkedinCta")}
                     </motion.a>
+                    ) : null}
                   </div>
                 </div>
               </motion.div>

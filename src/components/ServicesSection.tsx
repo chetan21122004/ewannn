@@ -6,18 +6,18 @@ const defaultBlocks = [
   {
     id: "market-entry",
     label: "Market Entry & Operations",
-    title: "Land. Setup. Scale.",
-    desc: "Full-stack market entry into India and outbound expansion for Indian companies - handled end to end.",
-    features: ["Entity setup & incorporation", "Regulatory & compliance", "Liaison & government affairs", "On-ground execution"],
-    accent: "gold",
+    title: "Full-cycle market entry",
+    desc: "We manage the full complexity of entering a new market — regulatory navigation, entity formation, executive liaison and on-ground operations. For companies moving between India and Asia, we are the partner already in the room.",
+    features: [] as string[],
+    accent: "gold" as const,
   },
   {
     id: "language",
     label: "Language & Localization",
-    title: "Speak Every Market.",
-    desc: "Certified linguists and native experts across 125+ languages - translation, interpretation, and full localization.",
-    features: ["Translation & document services", "Live & remote interpretation", "Voiceover & multimedia localization", "Certified + native expertise"],
-    accent: "purple",
+    title: "Accountable language delivery",
+    desc: "125+ languages. ISO 9001:2015 certified. Native expertise. From simultaneous interpretation in Fortune 500 boardrooms to certified document translation and website localization — every word is accountable.",
+    features: [] as string[],
+    accent: "purple" as const,
   },
 ];
 
@@ -80,6 +80,7 @@ const ServicesSection = () => {
           {blocks.map((block, i) => {
             const Icon = block.id === "language" ? Languages : Building2;
             const accent = accentStyles[block.accent];
+            const features = Array.isArray(block.features) ? block.features : [];
             return (
               <motion.div
                 key={block.id}
@@ -106,21 +107,25 @@ const ServicesSection = () => {
                 <h3 className="text-2xl sm:text-3xl font-serif font-bold text-on-light mb-4">{block.title}</h3>
                 <p className="text-on-light-muted leading-relaxed mb-6">{block.desc}</p>
 
-                <ul className="space-y-3 mb-8">
-                  {block.features.map((f, fi) => (
-                    <motion.li
-                      key={f}
-                      className="flex items-start gap-3 text-sm text-on-light-secondary"
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.15 + fi * 0.08 + 0.3 }}
-                    >
-                      <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${accent.check}`} />
-                      <span>{f}</span>
-                    </motion.li>
-                  ))}
-                </ul>
+                {features.length > 0 ? (
+                  <ul className="space-y-3 mb-8">
+                    {features.map((f, fi) => (
+                      <motion.li
+                        key={f}
+                        className="flex items-start gap-3 text-sm text-on-light-secondary"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.15 + fi * 0.08 + 0.3 }}
+                      >
+                        <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${accent.check}`} />
+                        <span>{f}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                ) : (
+                  <div className="mb-8" />
+                )}
 
                 <motion.a
                   href="#contact"

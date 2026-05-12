@@ -5,11 +5,11 @@ import { useTranslation } from "react-i18next";
 
 const statIcons = [Clock, Languages, Users, Briefcase, MapPin] as const;
 const defaultStats = [
-  { value: 60000, suffix: "+", label: "Interpretation Hours" },
+  { value: 60000, suffix: "+", label: "Hours of Interpretation" },
   { value: 125, suffix: "+", label: "Languages" },
-  { value: 250, suffix: "+", label: "Clients" },
+  { value: 250, suffix: "+", label: "Clients Served" },
   { value: 10, suffix: "+", label: "Sectors" },
-  { display: "5 years / 2 countries", label: "Track Record" },
+  { display: "5 Years · 2 Countries", label: "of Operation" },
 ];
 
 const statAccent = [

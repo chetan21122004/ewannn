@@ -10,6 +10,8 @@ type ClientLogo = {
 
 const clients: ClientLogo[] = [
   { name: "Tata Autocomp", src: "/allLogos/Tata-Autocomp.jpeg", alt: "Tata Autocomp logo" },
+  { name: "Bajaj", isTextOnly: true, alt: "Bajaj logo" },
+  { name: "Japanese Manufacturing Client", isTextOnly: true, alt: "Confidential client — logo withheld" },
   { name: "Markets & Markets", src: "/allLogos/Marketsandmarkets.jpeg", alt: "Markets and Markets logo" },
   { name: "Groupo Antolin", isTextOnly: true, alt: "Groupo Antolin logo" },
   { name: "Mittal Group", src: "/allLogos/Mittal-Group.jpeg", alt: "Mittal Group logo" },

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, MessageCircle, Languages } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const defaultRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
@@ -125,7 +126,7 @@ const ContactSection = () => {
 
             <div className="space-y-3">
               <motion.a
-                href="mailto:hello@ewan.com?subject=Market Entry"
+                href="mailto:info@ewan.co.in?subject=Market%20Entry%20Conversation"
                 whileHover={{ scale: 1.02, boxShadow: "0 0 24px hsl(var(--brand-purple-500) / 0.2)" }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full inline-flex items-center justify-between gap-3 rounded-xl bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-5 py-4 text-white font-semibold text-sm uppercase tracking-[0.08em] border border-[hsl(var(--brand-purple-500)/0.3)]"
@@ -138,7 +139,7 @@ const ContactSection = () => {
               </motion.a>
 
               <motion.a
-                href="mailto:hello@ewan.com?subject=Language Quote"
+                href="mailto:info@ewan.co.in?subject=Language%20Services%20Quote"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full inline-flex items-center justify-between gap-3 rounded-xl border border-[hsl(var(--surface-glass)/0.22)] bg-[hsl(var(--surface-glass)/0.03)] px-5 py-4 text-foreground/92 font-semibold text-sm uppercase tracking-[0.08em] hover:bg-[hsl(var(--surface-glass)/0.08)] transition-colors"
@@ -150,18 +151,18 @@ const ContactSection = () => {
                 <ArrowRight className="h-4 w-4" />
               </motion.a>
 
-              <motion.a
-                href="mailto:soham@ewan.com?subject=15 Min Free Call"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full inline-flex items-center justify-between gap-3 rounded-xl border border-[hsl(var(--brand-purple-500)/0.35)] bg-[hsl(var(--brand-purple-500)/0.09)] px-5 py-4 text-[hsl(var(--brand-purple-500))] font-semibold text-sm uppercase tracking-[0.08em] hover:bg-[hsl(var(--brand-purple-500)/0.14)] transition-colors"
-              >
-                <span className="inline-flex items-center gap-2">
-                  <MessageCircle className="h-4 w-4" />
-                  {t("home.contact.askSohamCta")}
-                </span>
-                <ArrowRight className="h-4 w-4" />
-              </motion.a>
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Link
+                  to="/ask-soham"
+                  className="w-full inline-flex items-center justify-between gap-3 rounded-xl border border-[hsl(var(--brand-purple-500)/0.35)] bg-[hsl(var(--brand-purple-500)/0.09)] px-5 py-4 text-[hsl(var(--brand-purple-500))] font-semibold text-sm uppercase tracking-[0.08em] hover:bg-[hsl(var(--brand-purple-500)/0.14)] transition-colors"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    <MessageCircle className="h-4 w-4" />
+                    {t("home.contact.askSohamCta")}
+                  </span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </motion.div>
             </div>
 
             <motion.div

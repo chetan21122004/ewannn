@@ -8,7 +8,7 @@ const defaultSectors = [
   { name: "Aerospace",            code: "03", icon: Plane,         accent: "gold" },
   { name: "Manufacturing",        code: "04", icon: Factory,       accent: "cyan" },
   { name: "Technology",           code: "05", icon: Cpu,           accent: "gold" },
-  { name: "Exhibitions & Trade",  code: "06", icon: Calendar,      accent: "cyan" },
+  { name: "Exhibitions & Trade Fairs", code: "06", icon: Calendar, accent: "cyan" },
   { name: "Agriculture & Food",   code: "07", icon: Wheat,         accent: "gold" },
   { name: "Legal & Compliance",   code: "08", icon: Scale,         accent: "cyan" },
   { name: "Education",            code: "09", icon: GraduationCap, accent: "gold" },

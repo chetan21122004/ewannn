@@ -12,6 +12,8 @@ type SeoProps = {
   title: string;
   description: string;
   canonicalPath: string;
+  /** Optional legacy meta keywords (comma-separated) */
+  keywords?: string;
   /** Extra JSON-LD nodes merged with Organization into one @graph */
   jsonLd?: JsonLdProp;
 };
@@ -52,7 +54,7 @@ function normalizeExtras(jsonLd?: JsonLdProp): JsonLdObject[] {
   return Array.isArray(jsonLd) ? jsonLd : [jsonLd];
 }
 
-const Seo = ({ title, description, canonicalPath, jsonLd }: SeoProps) => {
+const Seo = ({ title, description, canonicalPath, keywords, jsonLd }: SeoProps) => {
   const { i18n } = useTranslation();
 
   const pathForCanonical =
@@ -64,11 +66,14 @@ const Seo = ({ title, description, canonicalPath, jsonLd }: SeoProps) => {
     document.documentElement.lang = i18n.resolvedLanguage || "en";
     document.title = title;
     upsertMeta("description", description);
+    if (keywords?.trim()) {
+      upsertMeta("keywords", keywords.trim());
+    }
     upsertCanonical(canonicalUrl);
     upsertAlternate("en", canonicalUrl);
     upsertAlternate("zh", `${SITE_URL}/zh${pathForCanonical === "/" ? "" : pathForCanonical}`);
     upsertAlternate("ja", `${SITE_URL}/ja${pathForCanonical === "/" ? "" : pathForCanonical}`);
-  }, [canonicalUrl, title, description, pathForCanonical, i18n.resolvedLanguage]);
+  }, [canonicalUrl, title, description, keywords, pathForCanonical, i18n.resolvedLanguage]);
 
   useEffect(() => {
     const extras = normalizeExtras(jsonLd);

@@ -1,5 +1,6 @@
 import { ArrowRight, Sparkles, MessageCircle, Globe } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const defaultRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
@@ -102,7 +103,7 @@ const HeroSection = () => {
                   {t("home.hero.subheadlinePrefix")}{" "}
                   <span className="text-foreground font-medium">{t("home.hero.subheadlineForeign")}</span>{" "}
                   {t("home.hero.subheadlineAnd")}{" "}
-                  <span className="text-foreground font-medium">{t("home.hero.subheadlineIndian")}</span> -{" "}
+                  <span className="text-foreground font-medium">{t("home.hero.subheadlineIndian")}</span>{" "}
                   {t("home.hero.subheadlineSuffix")}{" "}
                   <span className="text-primary font-semibold">{t("home.hero.subheadlineLanguages")}</span>{" "}
                   {t("home.hero.subheadlineEnd")}
@@ -129,15 +130,14 @@ const HeroSection = () => {
               >
                 {t("home.hero.ctaLanguageQuote")}
               </motion.a>
-              <motion.a
-                href="#contact"
-                whileHover={{ x: 5 }}
-                className="inline-flex items-center gap-2 text-[hsl(var(--brand-purple-500))] font-medium text-sm tracking-wider uppercase group"
+              <Link
+                to="/ask-soham"
+                className="inline-flex items-center gap-2 text-[hsl(var(--brand-purple-500))] font-medium text-sm tracking-wider uppercase group transition-transform hover:translate-x-0.5"
               >
                 <MessageCircle className="w-4 h-4" />
                 {t("home.hero.ctaAskSoham")}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
+              </Link>
             </motion.div>
           </motion.div>
 
@@ -171,10 +171,10 @@ const HeroSection = () => {
                 transition={{ delay: 1.2, duration: 0.8 }}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1 font-medium">On-Ground Experience</p>
-                <h3 className="text-xl font-serif font-bold text-foreground mb-2">
-                  60,000+ Hours Delivered
-                </h3>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1 font-medium">
+                  {t("home.hero.floatingCard1Badge")}
+                </p>
+                <h3 className="text-xl font-serif font-bold text-foreground mb-2">{t("home.hero.floatingCard1Title")}</h3>
                 <div className="flex gap-1 mt-2">
                   {[1,2,3,4,5].map((i) => (
                     <motion.div
@@ -195,8 +195,8 @@ const HeroSection = () => {
                 transition={{ delay: 1, duration: 0.8 }}
                 whileHover={{ y: -3 }}
               >
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Languages</p>
-                <p className="text-2xl font-serif font-bold text-[hsl(var(--brand-purple-500))]">125+</p>
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">{t("home.hero.floatingCard2Label")}</p>
+                <p className="text-2xl font-serif font-bold text-[hsl(var(--brand-purple-500))]">{t("home.hero.floatingCard2Value")}</p>
               </motion.div>
             </div>
           </motion.div>

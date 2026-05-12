@@ -25,8 +25,9 @@ const Index = () => {
   return (
     <div className="min-h-screen relative">
       <Seo
-        title="Ewan Business Solutions | Cross-Border Market Partner for India & Asia"
-        description="Ewan helps foreign companies enter India and Indian companies expand into Asia. Language services, market entry, and on-ground operations — one trusted partner. 125+ languages, 250+ clients, 10+ sectors."
+        title="Cross-Border Market Partner for India & Asia | Ewan Business Solutions"
+        description="Ewan helps foreign companies enter India and Indian companies expand into Asia. Language services, market entry, and on-ground operations — one trusted partner."
+        keywords="India market entry partner, cross-border business India, language services India, translation interpretation India"
         canonicalPath="/"
         jsonLd={homeJsonLd}
       />
@@ -39,9 +40,10 @@ const Index = () => {
       <ClientLogosSection />
       <CaseStudySection />
       <WhyEwanSection />
+      <InstitutionalTrustSection />
+      <PartnersSection />
       <SectorsSection />
       <TestimonialsSection />
-      <InstitutionalTrustSection />
       <FoundersSection />
       <section className="theme-section-soft px-6 py-16 md:py-20">
         <div className="container mx-auto max-w-4xl">

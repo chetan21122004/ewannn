@@ -1,26 +1,27 @@
 import { motion } from "framer-motion";
 import { ArrowRight, AlertCircle, Lightbulb, Trophy } from "lucide-react";
+import { Link } from "react-router-dom";
 import factoryImg from "@/assets/case-study-factory.jpg";
 import { useTranslation } from "react-i18next";
 
 const defaultSteps = [
   {
-    label: "Problem",
-    text: "Japanese manufacturer faced regulatory complexity and a critical language gap entering India.",
+    label: "The mandate",
+    text: "A leading Japanese manufacturer needed a trusted partner to navigate India's regulatory environment, establish local operations and bridge the language gap between Japanese leadership and Indian stakeholders.",
     iconColor: "text-[hsl(var(--brand-gold-500))]",
     ringColor: "border-[hsl(var(--brand-gold-500)/0.26)]",
     labelColor: "text-[hsl(var(--brand-gold-500)/0.9)]",
   },
   {
-    label: "Solution",
-    text: "Ewan handled full market entry - entity setup, compliance, liaison, and on-the-ground language support.",
+    label: "Delivery",
+    text: "Ewan delivered the complete mandate — from initial market assessment and entity formation through to on-ground liaisoning and operational setup.",
     iconColor: "text-[hsl(var(--brand-purple-500))]",
     ringColor: "border-[hsl(var(--brand-purple-500)/0.28)]",
     labelColor: "text-[hsl(var(--brand-purple-500)/0.92)]",
   },
   {
     label: "Outcome",
-    text: "End-to-end execution. Operational launch within months, not years.",
+    text: "A full market entry mandate delivered. Japanese leadership. Indian operations. One partner throughout.",
     iconColor: "text-[hsl(var(--brand-cyan-500))]",
     ringColor: "border-[hsl(var(--brand-cyan-500)/0.24)]",
     labelColor: "text-[hsl(var(--brand-cyan-500)/0.9)]",
@@ -105,14 +106,15 @@ const CaseStudySection = () => {
               );
             })}
 
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.04, x: 4 }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] text-white font-semibold text-sm tracking-wider uppercase card-shine shadow-gold-md border border-[hsl(var(--brand-purple-500)/0.35)]"
-            >
-              {t("home.caseStudy.cta")}
-              <ArrowRight className="w-4 h-4" />
-            </motion.a>
+            <motion.div whileHover={{ scale: 1.04, x: 4 }} className="inline-block">
+              <Link
+                to="/media#case-study"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] text-white font-semibold text-sm tracking-wider uppercase card-shine shadow-gold-md border border-[hsl(var(--brand-purple-500)/0.35)]"
+              >
+                {t("home.caseStudy.cta")}
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
           </div>
         </div>
       </div>

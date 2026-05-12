@@ -25,6 +25,9 @@ const navColumns: FooterColumn[] = [
     links: [
       { label: "About Us", href: "/about-us" },
       { label: "Join Us", href: "/join-us" },
+      { label: "Case Studies", href: "/media#case-study" },
+      { label: "Arogya Yatri", href: "https://www.arogyayatri.com/", external: true },
+      { label: "Privacy Policy", href: "#" },
     ],
   },
   {
@@ -104,6 +107,9 @@ const Footer = () => {
     if (label === "Media Hub") return t("footer.mediaHub");
     if (label === "The Language Gazette") return t("footer.languageGazette");
     if (label === "Contact Us") return t("footer.contactUs");
+    if (label === "Case Studies") return t("footer.caseStudies");
+    if (label === "Arogya Yatri") return t("footer.arogyaYatri");
+    if (label === "Privacy Policy") return t("footer.privacyPolicy");
     return label;
   };
 
@@ -261,6 +267,7 @@ const Footer = () => {
                 </span>
               </motion.div>
             ))}
+            <span className="text-xs font-semibold text-foreground/70">MSAMB Empanelled</span>
             <span className="h-4 w-px bg-[hsl(var(--surface-glass)/0.1)] hidden md:block" aria-hidden />
             <a
               href="https://bhashikskill.co.in"
@@ -268,7 +275,7 @@ const Footer = () => {
               rel="noreferrer"
               className="text-xs text-foreground/52 transition-colors duration-300 hover:text-[hsl(var(--brand-gold-500))]"
             >
-              Part of the Ewan Group - Bhashik Skill Development
+              Part of the Ewan Group — Bhashik Skill Development · bhashikskill.co.in
             </a>
           </div>
         </div>
