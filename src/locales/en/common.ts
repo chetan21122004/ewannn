@@ -66,9 +66,9 @@ const enCommon = {
   },
   seo: {
     marketEntry: {
-      title: "India Market Entry Partner | Cross-Border Expansion | Ewan",
+      title: "India Market Entry Partner | Cross-Border Expansion | Ewan Business Solutions",
       description:
-        "Ewan manages full-cycle India market entry for foreign companies - entity formation, regulatory navigation, executive liaison, and on-ground operations.",
+        "Ewan manages full-cycle India market entry for foreign companies — entity formation, regulatory navigation, executive liaison, and on-ground operations. 10 years. 10+ sectors.",
     },
     languageLocalization: {
       title: "Translation, Interpretation & Localization Services India | Ewan",
@@ -94,14 +94,19 @@ const enCommon = {
       description: "Explore EWAN's Media Hub: The Global Gazette, video insights, and official press room updates.",
     },
     askSoham: {
-      title: "Ask Soham - Free 15-Min Call | Ewan Business Solutions",
+      title: "Ask Soham — Free 15-Min Call | Ewan Business Solutions",
       description:
-        "Book a focused 15-minute conversation with Soham Kakade on market entry, language strategy, or language careers. Honest guidance, no pitch.",
+        "Book a free 15-minute call with Soham Kakade — founder of Ewan. Market entry, language strategy, or career in languages. Honest, focused, no pitch.",
     },
     marketEntryAudit: {
       title: "Global Market Entry Audit | Ewan Business Solutions",
       description:
-        "Download Ewan's 2026 Global Market Entry Audit to identify operational, regulatory, and execution risks before you commit capital.",
+        "Download the 2026 Global Market Entry Audit — a free diagnostic framework built from 10 years of on-ground cross-border experience. Assess your expansion readiness before you commit.",
+    },
+    joinUs: {
+      title: "Join Ewan — Careers, Vendor Network & Collaborators | Ewan Business Solutions",
+      description:
+        "Join Ewan Business Solutions as an employee, freelance language professional, vendor, or institutional collaborator. We're building the cross-border partner for India and the emerging world.",
     },
   },
   home: {
@@ -382,90 +387,49 @@ const enCommon = {
   marketEntryAudit: {
     hero: {
       badge: "The 2026 Global Market Entry Audit",
-      titlePrefix: "The 5 Operational Gaps That Quietly Kill",
-      titleHighlight: "International Expansion",
+      title: "The 5 Operational Gaps That Quietly Kill International Expansion.",
       subtitle:
-        "Distilled from a decade of frontline experience handling complex cross-border setups. This 3-page diagnostic framework evaluates your readiness and exposes hidden risks before capital is committed.",
-      emailPlaceholder: "Enter your executive email",
-      downloadCta: "Download Free Audit",
-      card1Title: "Diagnostic Protocol",
-      card1Copy: "3-page evaluation framework deployed across 15+ markets.",
-      warningLabel: "Critical Warning",
-      warningCopy: "Hidden compliance debt typically accumulates within months 3-6 of entry.",
+        "The 2026 Global Market Entry Audit — a free diagnostic framework built from 10 years of on-ground cross-border experience. Assess your expansion readiness before you commit.",
+      emailPlaceholder: "Enter your work email",
+      downloadCta: "Download the Free Audit",
+      confirmationTitle: "Check your inbox",
+      confirmationCopy:
+        "Your download is ready. Use the link below to access the audit while we send a copy to your inbox.",
+      downloadLink: "Open the 2026 Market Entry Audit",
     },
-    trustStats: [
-      { value: "60,000+", label: "Hours Execution" },
-      { value: "250+", label: "Global Clients" },
-      { value: "125+", label: "Languages Managed" },
-      { value: "ISO", label: "Certified Processes" },
-    ],
-    matrix: {
-      eyebrow: "The Silent Failure Matrix",
-      title: "Why Most Expansion Strategies Fail (Silently)",
-      copy1:
-        "High-level strategy decks rarely survive contact with local operational realities. The failures are usually a slow bleed of capital and momentum.",
-      copy2:
-        "Execution gaps compound daily. Delays in entity formation cascade into hiring freezes. Misaligned partner structures trigger silent liabilities.",
+    inside: {
+      title: "What's inside",
+      intro:
+        "The audit reveals 5 gaps — Regulatory & Entity Infrastructure · Partner Integrity Verification · The Coordination Tax · Human Capital Strategy · Executive Liaison & Negotiation. Each gap includes a self-assessment checklist and an explanation of what it costs companies that leave it unaddressed.",
       items: [
         {
-          title: "Entity Traps",
-          copy: "Incorrect structural choices locking in permanent tax disadvantages.",
+          title: "Regulatory & Entity Infrastructure",
+          copy: "Self-assessment prompts and the operational cost of entering without the right entity and compliance footing.",
         },
         {
-          title: "Partner Friction",
-          copy: "Misaligned distribution channels creating brand dilution.",
-        },
-        {
-          title: "Human Capital",
-          copy: "Local labor law infractions stalling core team deployment.",
-        },
-        {
-          title: "Coordination Tax",
-          copy: "HQ mandates clashing with localized operational necessity.",
-        },
-      ],
-    },
-    gaps: {
-      title: "The 5 Operational Gaps",
-      items: [
-        {
-          title: "Regulatory & Entity Structuring",
-          copy: "Choosing the wrong entity type can trigger irreversible tax liabilities and restrict critical operational licenses.",
-        },
-        {
-          title: "Partner & Distribution Control",
-          copy: "Over-reliance on local distributors without clear exit clauses leads to brand hijacking and margin erosion.",
+          title: "Partner Integrity Verification",
+          copy: "Checklist cues and the cost of partners and distributors that were never verified on the ground.",
         },
         {
           title: "The Coordination Tax",
-          copy: "Misalignment between HQ assumptions and local realities stretches timelines from months to years.",
+          copy: "Self-assessment for coordination overhead and what it costs when HQ and local execution stay misaligned.",
         },
         {
-          title: "Human Capital Deployment",
-          copy: "Visa delays, localized compliance, and cultural mismatch can stall deployment of top-tier teams.",
+          title: "Human Capital Strategy",
+          copy: "Readiness checks for staffing, visas, and local talent — and what slips when this gap is left open.",
         },
         {
-          title: "Executive Liaison Friction",
-          copy: "Without a localized authority bridge, board directives fail to convert into on-ground action.",
+          title: "Executive Liaison & Negotiation",
+          copy: "Assessment prompts for high-stakes liaison and the cost of decisions made without on-ground authority.",
         },
       ],
     },
-    conversion: {
-      title: "Secure Your Operational Footprint",
+    readiness: {
+      title: "Ready to stress-test your expansion plan?",
       copy:
-        "Designed for foreign entities entering complex markets and domestic firms expanding globally. Get the checklist, understand the risks, and deploy with clarity.",
-      form: {
-        fullName: "Full Name",
-        email: "Corporate Email",
-        company: "Company / Organization",
-        cta: "Access The Audit Document",
-      },
-    },
-    finalCta: {
-      title: "Want Help Interpreting Your Results?",
-      copy:
-        "Bypass the guesswork. Schedule a direct consultation to align the audit findings with your expansion roadmap.",
-      button: "Ask Soham - 15 Min Free",
+        "Use the audit to surface hidden gaps, then book a focused conversation to interpret the results against your corridor and sector.",
+      readinessCta: "Book Your India Entry Readiness Call",
+      askSohamCta: "Ask Soham — 15 Min Free",
     },
   },
   industries: {

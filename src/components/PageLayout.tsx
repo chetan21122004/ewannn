@@ -12,14 +12,15 @@ type PageLayoutProps = {
   title: string;
   description: string;
   canonicalPath: string;
+  keywords?: string;
   jsonLd?: JsonLdProp;
   children: ReactNode;
 };
 
-const PageLayout = ({ title, description, canonicalPath, jsonLd, children }: PageLayoutProps) => {
+const PageLayout = ({ title, description, canonicalPath, keywords, jsonLd, children }: PageLayoutProps) => {
   return (
     <div className="min-h-screen relative">
-      <Seo title={title} description={description} canonicalPath={canonicalPath} jsonLd={jsonLd} />
+      <Seo title={title} description={description} canonicalPath={canonicalPath} keywords={keywords} jsonLd={jsonLd} />
       <ScrollProgress />
       <CursorGlow />
       <Navbar />
