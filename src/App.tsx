@@ -24,6 +24,7 @@ import InsightsArticleHowToEnterIndia from "./pages/insights/InsightsArticleHowT
 import InsightsArticleChooseTranslationPartner from "./pages/insights/InsightsArticleChooseTranslationPartner.tsx";
 import InsightsArticleSimultaneousInterpretation from "./pages/insights/InsightsArticleSimultaneousInterpretation.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/import-procurement-export" element={<Navigate to="/import-export" replace />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/join-us" element={<JoinUs />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/language-gazette" element={<LanguageGazette />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/insights/how-to-enter-indian-market" element={<InsightsArticleHowToEnterIndia />} />

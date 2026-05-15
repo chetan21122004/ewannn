@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Globe2, Mail, ShieldCheck } from "lucide-react";
+import { Globe2, Mail, ShieldCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -27,7 +27,7 @@ const navColumns: FooterColumn[] = [
       { label: "Join Us", href: "/join-us" },
       { label: "Case Studies", href: "/media#case-study" },
       { label: "Arogya Yatri", href: "https://www.arogyayatri.com/", external: true },
-      { label: "Privacy Policy", href: "#" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
     ],
   },
   {
@@ -40,8 +40,8 @@ const navColumns: FooterColumn[] = [
   {
     title: "Quick Links",
     links: [
-      { label: "Ask Soham - 15 Min Free", href: "/ask-soham" },
-      { label: "Market Entry Audit", href: "/market-entry-audit" },
+      { label: "Ask Soham — 15 Min Free", href: "/ask-soham" },
+      { label: "Download the 2026 Market Entry Audit", href: "/market-entry-audit" },
       { label: "Contact Us", href: "/contact" },
       { label: "Bhashik Skill Development ↗", href: "https://bhashikskill.co.in", external: true },
     ],
@@ -63,8 +63,6 @@ const socialLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/ewan-business-solutions/" },
   { label: "YouTube", href: "https://www.youtube.com/@EWAN-SSK" },
 ];
-
-const trustPills = ["125+ Languages", "250+ Clients", "60,000+ Hours"];
 
 const coverageRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
 
@@ -110,6 +108,8 @@ const Footer = () => {
     if (label === "Case Studies") return t("footer.caseStudies");
     if (label === "Arogya Yatri") return t("footer.arogyaYatri");
     if (label === "Privacy Policy") return t("footer.privacyPolicy");
+    if (label === "Ask Soham — 15 Min Free") return t("footer.askSohamCta");
+    if (label === "Download the 2026 Market Entry Audit") return t("footer.marketEntryAudit");
     return label;
   };
 
@@ -128,57 +128,11 @@ const Footer = () => {
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[hsl(var(--brand-purple-500)/0.12)] blur-3xl" />
 
       <div className="container relative z-10 mx-auto px-6 py-14 lg:py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12 rounded-3xl border border-[hsl(var(--surface-glass)/0.22)] bg-gradient-to-br from-[hsl(var(--brand-purple-700)/0.32)] via-[hsl(var(--brand-purple-500)/0.14)] to-[hsl(var(--brand-cyan-500)/0.14)] p-6 shadow-[0_20px_45px_hsl(var(--surface-1)/0.42)] backdrop-blur-sm lg:p-8"
-        >
-          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div className="max-w-3xl">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-[hsl(var(--brand-purple-500)/0.92)]">
-                Ready for Cross-Border Execution
-              </p>
-              <h3 className="text-2xl font-serif font-bold leading-tight text-foreground sm:text-3xl">
-                Enter new markets with a team that has already operated inside the room.
-              </h3>
-              <div className="mt-4 flex flex-wrap gap-2.5">
-                {trustPills.map((pill) => (
-                  <span
-                    key={pill}
-                    className="rounded-full border border-[hsl(var(--surface-glass)/0.28)] bg-[hsl(var(--surface-glass)/0.08)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-foreground/78"
-                  >
-                    {pill}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col gap-2.5 sm:flex-row lg:flex-col">
-              <Link
-                to="/ask-soham"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-6 py-3 text-sm font-semibold text-white transition-all hover:scale-[1.02] hover:brightness-110"
-              >
-                Book a Free Strategy Call
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-[hsl(var(--surface-glass)/0.28)] bg-[hsl(var(--surface-glass)/0.08)] px-6 py-3 text-sm font-semibold text-foreground/86 transition-colors hover:border-[hsl(var(--brand-gold-500)/0.5)] hover:text-[hsl(var(--brand-gold-500))]"
-              >
-                Speak With Our Team
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-
         <div className="mb-12 grid gap-10 lg:grid-cols-12">
           <div className="rounded-3xl border border-[hsl(var(--surface-glass)/0.16)] bg-[hsl(var(--surface-glass)/0.05)] p-6 lg:col-span-4 lg:p-7">
             <motion.img src="/logo.png" alt="EWAN Business Solutions logo" className="mb-4 h-16 w-auto object-contain" whileHover={{ scale: 1.03 }} />
 
-            <p className="mb-4 max-w-sm text-sm leading-relaxed text-foreground/74">
-              Cross-Border Market Partner for India & the Emerging World
-            </p>
+            <p className="mb-4 max-w-sm text-sm leading-relaxed text-foreground/74">{t("footer.tagline")}</p>
 
             <a
               href="mailto:info@ewan.co.in"
@@ -282,26 +236,12 @@ const Footer = () => {
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-[hsl(var(--surface-glass)/0.1)] pt-6 text-xs text-foreground/56 sm:flex-row">
           <span>{t("footer.rights")}</span>
-          <div className="flex items-center gap-2">
-            <a
-              href="#"
-              className="rounded-full border border-[hsl(var(--surface-glass)/0.18)] bg-[hsl(var(--surface-glass)/0.04)] px-3 py-1.5 transition-colors hover:border-[hsl(var(--brand-gold-500)/0.38)] hover:text-[hsl(var(--brand-gold-500))]"
-            >
-              {t("footer.privacy")}
-            </a>
-            <a
-              href="#"
-              className="rounded-full border border-[hsl(var(--surface-glass)/0.18)] bg-[hsl(var(--surface-glass)/0.04)] px-3 py-1.5 transition-colors hover:border-[hsl(var(--brand-gold-500)/0.38)] hover:text-[hsl(var(--brand-gold-500))]"
-            >
-              {t("footer.terms")}
-            </a>
-            <a
-              href="#"
-              className="rounded-full border border-[hsl(var(--surface-glass)/0.18)] bg-[hsl(var(--surface-glass)/0.04)] px-3 py-1.5 transition-colors hover:border-[hsl(var(--brand-gold-500)/0.38)] hover:text-[hsl(var(--brand-gold-500))]"
-            >
-              {t("footer.cookies")}
-            </a>
-          </div>
+          <Link
+            to="/privacy-policy"
+            className="rounded-full border border-[hsl(var(--surface-glass)/0.18)] bg-[hsl(var(--surface-glass)/0.04)] px-3 py-1.5 transition-colors hover:border-[hsl(var(--brand-gold-500)/0.38)] hover:text-[hsl(var(--brand-gold-500))]"
+          >
+            {t("footer.privacyPolicy")}
+          </Link>
         </div>
       </div>
     </footer>
