@@ -1,15 +1,8 @@
 import { ArrowRight, Download, Image as ImageIcon, Play, Radio } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { absoluteUrl, collectionPageSchema } from "@/lib/schemaHelpers";
-
-const mediaLd = [
-  collectionPageSchema(
-    "Media Hub",
-    "Media coverage, case studies, insights, and articles from Ewan Business Solutions.",
-    absoluteUrl("/media/"),
-  ),
-];
 
 const pressItems = [
   {
@@ -51,11 +44,22 @@ const pressItems = [
 ];
 
 const Media = () => {
+  const { t } = useTranslation();
+
+  const mediaLd = [
+    collectionPageSchema(
+      "Media, Insights & Press",
+      "Read The Language Gazette, explore blog insights on cross-border business, watch event videos, and access press coverage of Ewan Business Solutions.",
+      absoluteUrl("/media/"),
+    ),
+  ];
+
   return (
     <PageLayout
-      title="Media Coverage | Ewan Business Solutions"
-      description="Media coverage, case studies, insights, and articles from Ewan Business Solutions. Stay updated on India-Asia trade, business expansion, and language localization trends."
+      title={t("seo.media.title")}
+      description={t("seo.media.description")}
       canonicalPath="/media/"
+      keywords={t("seo.media.keywords")}
       jsonLd={mediaLd}
     >
       {/* Hero Section */}
@@ -63,23 +67,30 @@ const Media = () => {
         <div className="pointer-events-none absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-[hsl(var(--brand-gold-500)/0.18)] to-transparent" />
         <div className="container relative mx-auto grid items-center gap-16 lg:grid-cols-2">
           <div>
-            <span className="mb-7 inline-flex rounded-full bg-[hsl(var(--brand-gold-500)/0.2)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">
-              Media Hub
-            </span>
-            <h1 className="font-serif text-5xl font-extrabold leading-[0.95] tracking-tight md:text-7xl xl:text-8xl">
-              Our <br />
-              <span className="text-[hsl(var(--brand-gold-500))]">Coverage.</span>
+            <h1 className="font-serif text-5xl font-extrabold leading-[0.95] tracking-tight md:text-6xl xl:text-7xl">
+              Insights on Language, Culture and{" "}
+              <span className="text-[hsl(var(--brand-gold-500))]">Cross-Border Business.</span>
             </h1>
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-white/80">
-              Case studies, insights, trade analysis, and press coverage from Ewan Business Solutions - building strong international ties across India, Japan, and the Orient.
+              Published by Ewan Business Solutions - for practitioners and professionals navigating the India-Asia corridor and
+              beyond.
             </p>
-            <Link
-              to="/language-gazette"
-              className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-7 py-3.5 text-sm font-bold text-[hsl(var(--brand-navy-950))]"
-            >
-              Read The Language Gazette
-              <Radio className="h-4 w-4" />
-            </Link>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/language-gazette"
+                className="inline-flex items-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-7 py-3.5 text-sm font-bold text-[hsl(var(--brand-navy-950))]"
+              >
+                Browse All Articles
+                <Radio className="h-4 w-4" />
+              </Link>
+              <Link
+                to="/insights"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/25 px-7 py-3.5 text-sm font-semibold text-white/90 transition hover:bg-white/10"
+              >
+                Blog &amp; Insights
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
           <div className="relative h-[420px] lg:h-[500px]">
             <div className="absolute right-0 top-0 w-80 rounded-[2rem] bg-white p-6 text-[hsl(var(--brand-navy-950))] shadow-2xl transition duration-500 hover:rotate-0 lg:rotate-6">
@@ -92,18 +103,18 @@ const Media = () => {
               <h3 className="mt-2 text-base font-bold leading-snug">Ewan × SHOWA Gloves Japan</h3>
             </div>
             <div className="absolute bottom-0 left-0 w-80 rounded-[2rem] bg-[hsl(var(--brand-purple-700))] p-6 shadow-2xl transition duration-500 hover:rotate-0 lg:-rotate-6">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-gold-500))]">On We Are On</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-gold-500))]">From the Gazette</span>
               <p className="mt-4 text-2xl font-bold italic text-white">"Harvesting Asian Prosperity Together"</p>
               <p className="mt-10 text-xs text-white/65">Agricultural sector highlights - Government work report</p>
             </div>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full border-y border-white/10 bg-white/5 py-4">
-          <div className="container mx-auto flex flex-wrap gap-x-10 gap-y-2 px-6 text-xs font-mono tracking-widest text-white/60">
-            <span>📰 Case Studies & Insights</span>
-            <span>🌏 India–Asia Trade Analysis</span>
-            <span>🎬 Videos & Press</span>
-            <span>📖 The Language Gazette</span>
+          <div className="container mx-auto flex flex-wrap gap-x-10 gap-y-2 px-6 text-xs font-medium tracking-wider text-white/65">
+            <span>The Language Gazette</span>
+            <span>Blog &amp; Insights</span>
+            <span>Videos</span>
+            <span>Press</span>
           </div>
         </div>
       </section>

@@ -16,6 +16,7 @@ import SectorsSection from "@/components/SectorsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FoundersSection from "@/components/FoundersSection";
 import ContactSection from "@/components/ContactSection";
+import EntityParagraphHomeBand from "@/components/EntityParagraphHomeBand";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import CursorGlow from "@/components/CursorGlow";
@@ -27,7 +28,7 @@ const Index = () => {
     <div className="min-h-screen relative">
       <Seo
         title="Cross-Border Market Partner for India & Asia | Ewan Business Solutions"
-        description="Ewan helps foreign companies enter India and Indian companies expand into Asia. Language services, market entry, and on-ground operations — one trusted partner."
+        description="Ewan helps foreign companies enter India and Indian companies expand into Asia. Language services, market entry, and on-ground operations - one trusted partner."
         keywords="India market entry partner, cross-border business India, language services India, translation interpretation India"
         canonicalPath="/"
         jsonLd={homeJsonLd}
@@ -49,6 +50,7 @@ const Index = () => {
       <FoundersSection />
       <AeoFrequentlyAskedQuestions items={HOMEPAGE_FAQS} className="theme-section-light px-6 py-16 md:py-20" />
       <ContactSection />
+      <EntityParagraphHomeBand />
       <Footer />
     </div>
   );

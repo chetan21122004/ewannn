@@ -3,14 +3,19 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
-import { absoluteUrl, webPageWithLeadAction } from "@/lib/schemaHelpers";
+import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
+import { MARKET_ENTRY_AUDIT_FAQS } from "@/data/aeoContent";
+import { absoluteUrl, faqPageSchema, webPageWithLeadAction } from "@/lib/schemaHelpers";
 
 const MARKET_ENTRY_AUDIT_KEYWORDS =
   "India market entry checklist free, international expansion audit, cross-border business readiness, India entry risk assessment";
 
 const AUDIT_PDF_URL = import.meta.env.VITE_MARKET_ENTRY_AUDIT_PDF_URL ?? "/Ewan_GlobalMarketEntry_Audit_2026.pdf";
 
-const marketEntryAuditLd = [webPageWithLeadAction(absoluteUrl("/market-entry-audit/"))];
+const marketEntryAuditLd = [
+  webPageWithLeadAction(absoluteUrl("/market-entry-audit/")),
+  faqPageSchema(absoluteUrl("/market-entry-audit/"), MARKET_ENTRY_AUDIT_FAQS),
+];
 
 const defaultInsideItems = [
   {
@@ -27,7 +32,7 @@ const defaultInsideItems = [
   },
   {
     title: "Human Capital Strategy",
-    copy: "Readiness checks for staffing, visas, and local talent — and what slips when this gap is left open.",
+    copy: "Readiness checks for staffing, visas, and local talent - and what slips when this gap is left open.",
   },
   {
     title: "Executive Liaison & Negotiation",
@@ -152,6 +157,8 @@ const MarketEntryAudit = () => {
           </div>
         </div>
       </section>
+
+      <AeoFrequentlyAskedQuestions items={MARKET_ENTRY_AUDIT_FAQS} className="theme-section-light px-6 py-16 md:py-20" />
     </PageLayout>
   );
 };

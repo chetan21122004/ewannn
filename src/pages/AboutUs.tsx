@@ -1,5 +1,6 @@
 import { ArrowRight, CheckCircle2, Globe2, Handshake } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
@@ -64,11 +65,13 @@ const aboutLd = [
 ];
 
 const AboutUs = () => {
+  const { t } = useTranslation();
   return (
     <PageLayout
-      title="About Ewan Business Solutions | Cross-Border Market Partner India"
-      description="Ewan Business Solutions - 5 years, 250+ clients, 125+ languages. Founded by Soham Kakade. Cross-border market entry and language services for the India-Asia corridor."
+      title={t("seo.about.title")}
+      description={t("seo.about.description")}
       canonicalPath="/about-us/"
+      keywords={t("seo.about.keywords")}
       jsonLd={aboutLd}
     >
       {/* Hero */}

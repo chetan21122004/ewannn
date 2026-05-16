@@ -113,7 +113,7 @@ const marketResearchLd = [
   serviceSchema({
     name: "Primary market research",
     description:
-      "Native-language distributor intelligence, competitor analysis, buyer and consumer studies, sector assessments, physical verification fieldwork — primary research grounded in corridor context.",
+      "Native-language distributor intelligence, competitor analysis, buyer and consumer studies, sector assessments, physical verification fieldwork - primary research grounded in corridor context.",
     canonicalPath: "/market-research/",
     serviceType: "Market research",
   }),

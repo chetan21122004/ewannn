@@ -6,7 +6,7 @@ type Props = {
 };
 
 /**
- * Visible FAQ section — heading must remain "Frequently Asked Questions" (AEO).
+ * Visible FAQ section - heading must remain "Frequently Asked Questions" (AEO).
  */
 const AeoFrequentlyAskedQuestions = ({ items, className }: Props) => {
   return (

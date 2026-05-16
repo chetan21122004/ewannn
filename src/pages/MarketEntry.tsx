@@ -20,7 +20,7 @@ const whoWeServe = [
     id: "india-entry-foreign-companies",
     title: "Foreign Companies Entering India",
     description:
-      "You are based in Japan, Southeast Asia, East Asia, Latin America or Africa. You see India as your next growth market. You need a partner who understands both sides — your culture and India's operational reality.",
+      "You are based in Japan, Southeast Asia, East Asia, Latin America or Africa. You see India as your next growth market. You need a partner who understands both sides - your culture and India's operational reality.",
     points: [
       "Japanese and Korean manufacturers setting up India operations",
       "Southeast Asian companies seeking India distribution or manufacturing",
@@ -42,21 +42,21 @@ const whoWeServe = [
 ];
 
 const workstreams = [
-  "Regulatory & Entity Formation — Local entity setup, RBI/FEMA compliance, industry licensing, sectoral approvals",
-  "Bank Onboarding & Financial Setup — Business account establishment, financial infrastructure, payment pathways",
-  "Executive Liaison & Negotiation Support — Native-language liaison for government relations and senior business negotiations",
-  "Local Procurement & Supply Chain — Vetted vendor identification, physical site verification, supply chain establishment",
-  "Payroll & HR Facilitation — Local talent pipeline, labour law compliance, staffing support",
-  "On-Ground Operations Management — Day-to-day operational oversight, vendor coordination, reporting",
-  "Language & Cultural Intelligence — Interpretation, translation and cultural advisory throughout every workstream",
+  "Regulatory & Entity Formation - Local entity setup, RBI/FEMA compliance, industry licensing, sectoral approvals",
+  "Bank Onboarding & Financial Setup - Business account establishment, financial infrastructure, payment pathways",
+  "Executive Liaison & Negotiation Support - Native-language liaison for government relations and senior business negotiations",
+  "Local Procurement & Supply Chain - Vetted vendor identification, physical site verification, supply chain establishment",
+  "Payroll & HR Facilitation - Local talent pipeline, labour law compliance, staffing support",
+  "On-Ground Operations Management - Day-to-day operational oversight, vendor coordination, reporting",
+  "Language & Cultural Intelligence - Interpretation, translation and cultural advisory throughout every workstream",
 ];
 
 const auditGaps = [
-  "Gap 1 — Regulatory & Entity Infrastructure",
-  "Gap 2 — Partner & Distribution Integrity (Physical Verification)",
-  "Gap 3 — The 'Coordination Tax' — Management Overhead",
-  "Gap 4 — Human Capital & Local Staffing Strategy",
-  "Gap 5 — Executive Liaison & High-Stakes Negotiation",
+  "Gap 1 - Regulatory & Entity Infrastructure",
+  "Gap 2 - Partner & Distribution Integrity (Physical Verification)",
+  "Gap 3 - The 'Coordination Tax' - Management Overhead",
+  "Gap 4 - Human Capital & Local Staffing Strategy",
+  "Gap 5 - Executive Liaison & High-Stakes Negotiation",
 ];
 
 const howItWorks = [
@@ -86,7 +86,7 @@ const marketEntryLd = [
   serviceSchema({
     name: "India market entry consulting",
     description:
-      "Ewan manages full-cycle India market entry for foreign companies — entity formation, regulatory navigation, executive liaison, and on-ground operations. 10 years. 10+ sectors.",
+      "Ewan manages full-cycle India market entry for foreign companies - entity formation, regulatory navigation, executive liaison, and on-ground operations. 10 years. 10+ sectors.",
     canonicalPath: "/market-entry/",
     serviceType: "Market entry consulting",
   }),
@@ -190,7 +190,7 @@ const MarketEntry = () => {
       <section id="what-we-deliver" className="bg-[#f2f0fa] px-6 py-16">
         <div className="container mx-auto">
           <div className="mb-8">
-            <h2 className="font-serif text-4xl font-bold text-[#1a1633]">What We Deliver — 7 Workstreams</h2>
+            <h2 className="font-serif text-4xl font-bold text-[#1a1633]">What We Deliver - 7 Workstreams</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {workstreams.map((item) => (
@@ -205,13 +205,13 @@ const MarketEntry = () => {
       <section id="proof" className="scroll-mt-28 bg-[#ffffff] px-6 py-16">
         <div className="container mx-auto rounded-3xl border border-[#e7e3f1] bg-[#f8f7fc] p-8 shadow-[0_10px_28px_rgba(20,16,45,0.06)]">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-500)/0.88)]">
-            Full Market Entry Mandate — Japan to India
+            Full Market Entry Mandate - Japan to India
           </p>
           <h2 className="mt-2 font-serif text-3xl font-bold text-[#1a1633]">
             How a Leading Japanese Manufacturer Successfully Established India Operations
           </h2>
           <p className="mt-4 max-w-4xl text-sm leading-relaxed text-[#3d3859]">
-            A leading Japanese manufacturer, engaged Ewan for a complete India entry mandate — from initial regulatory
+            A leading Japanese manufacturer, engaged Ewan for a complete India entry mandate - from initial regulatory
             mapping and entity formation through to executive liaison, local procurement and on-ground operational setup.
             Ewan served as the single point of coordination across all workstreams, managing the language and cultural
             interface between Japanese leadership and Indian stakeholders simultaneously.
@@ -238,7 +238,7 @@ const MarketEntry = () => {
             Is Your Expansion Strategy Hiding These 5 Operational Gaps?
           </h2>
           <p className="mt-3 max-w-4xl text-sm leading-relaxed text-[#3d3859]">
-            The 2026 Global Market Entry Audit is Ewan&apos;s proprietary framework — built from 10 years of on-ground
+            The 2026 Global Market Entry Audit is Ewan&apos;s proprietary framework - built from 10 years of on-ground
             cross-border expansion experience. It reveals the 5 operational gaps that most companies don&apos;t see until
             capital has been deployed and timelines have slipped. Download it free and assess your readiness before you
             commit.
@@ -289,7 +289,7 @@ const MarketEntry = () => {
               to="/ask-soham"
               className="inline-flex items-center gap-2 rounded-full border border-[#d9d2ea] px-6 py-3 text-sm font-semibold text-[#2d2946] transition hover:border-[hsl(var(--brand-purple-500)/0.6)]"
             >
-              Ask Soham — 15 Min Free
+              Ask Soham - 15 Min Free
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

@@ -14,16 +14,16 @@ import {
 } from "@/lib/schemaHelpers";
 
 const CANONICAL = "/insights/how-to-choose-translation-partner-india/";
-const TITLE = "How to Choose a Translation Partner in India — What Buyers Need to Know";
+const TITLE = "How to Choose a Translation Partner in India - What Buyers Need to Know";
 const DESCRIPTION =
-  "Practical HowTo for procurement and marketing buyers: clarify scope, certify outputs, judge sector depth, align SLAs — then request a grounded quote.";
+  "Practical HowTo for procurement and marketing buyers: clarify scope, certify outputs, judge sector depth, align SLAs - then request a grounded quote.";
 
 const steps = [
-  "Define scope and modality — Decide whether you need translation only, localization (UX, tone, and layout), simultaneous or consecutive interpretation, or certified/legal outputs so vendors quote the same mandate.",
-  "Verify quality governance — Confirm ISO-aligned workflows, dual native review, glossary and TM discipline, secure file handling for confidential materials, and how disputes or rework requests are escalated.",
-  "Match sector terminology — Demand evidence of translators and interpreters who routinely work in your industry (automotive technical, pharma regulatory, legal contracts, aerospace standards, media subtitling, etc.).",
-  "Negotiate SLA and escalation — Anchor turnaround by content type (rush versus standard), designate sign-off personas in your organisation, specify format handoffs, and put commercial penalties or credits for misses in writing.",
-  "Pilot with bounded risk — commission a statistically representative pilot (high complexity slice + edge cases), inspect reviewer comments, judge consistency between batches, then scale once outputs meet contractual acceptance criteria.",
+  "Define scope and modality - Decide whether you need translation only, localization (UX, tone, and layout), simultaneous or consecutive interpretation, or certified/legal outputs so vendors quote the same mandate.",
+  "Verify quality governance - Confirm ISO-aligned workflows, dual native review, glossary and TM discipline, secure file handling for confidential materials, and how disputes or rework requests are escalated.",
+  "Match sector terminology - Demand evidence of translators and interpreters who routinely work in your industry (automotive technical, pharma regulatory, legal contracts, aerospace standards, media subtitling, etc.).",
+  "Negotiate SLA and escalation - Anchor turnaround by content type (rush versus standard), designate sign-off personas in your organisation, specify format handoffs, and put commercial penalties or credits for misses in writing.",
+  "Pilot with bounded risk - commission a statistically representative pilot (high complexity slice + edge cases), inspect reviewer comments, judge consistency between batches, then scale once outputs meet contractual acceptance criteria.",
 ];
 
 const InsightsArticleChooseTranslationPartner = () => {
@@ -61,7 +61,7 @@ const InsightsArticleChooseTranslationPartner = () => {
           <div className="prose prose-neutral mt-10 max-w-none text-on-light-secondary">
             <p>
               India offers depth in Asian-European multilingual teams, accelerated turnaround across time zones when orchestrated correctly, ISO-grade process
-              controls in serious providers — and variability you must deliberately filter before you outsource critical revenue or litigation-adjacent content.
+              controls in serious providers - and variability you must deliberately filter before you outsource critical revenue or litigation-adjacent content.
               The HowTo steps below equip buyers to procure once, cleanly, rather than patching quality issues after reputational hits.
             </p>
             <h2 className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">Steps</h2>
@@ -72,7 +72,7 @@ const InsightsArticleChooseTranslationPartner = () => {
             </ol>
             <h2 className="mt-12 font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">Get a Language Quote from Ewan</h2>
             <p className="mt-3">
-              Attach sample files plus glossaries where available — we prioritise corridors where native expertise and sector density matter most.
+              Attach sample files plus glossaries where available - we prioritise corridors where native expertise and sector density matter most.
             </p>
             <a
               href="mailto:info@ewan.co.in?subject=Language%20Services%20Quote"

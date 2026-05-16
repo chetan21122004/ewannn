@@ -14,7 +14,7 @@ const defaultPartnerItems: PartnerItem[] = [
   {
     id: "bhashini",
     name: "Bhashini",
-    desc: "Bhashini — Ministry of Electronics & IT (MeitY), Government of India · Language technology initiative.",
+    desc: "Bhashini - Ministry of Electronics & IT (MeitY), Government of India · Language technology initiative.",
     alt: "Bhashini logo",
   },
   {

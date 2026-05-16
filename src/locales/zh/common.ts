@@ -70,24 +70,35 @@ const zhCommon = {
       description: "Ewan 为海外企业提供印度市场进入全流程支持：实体设立、监管合规、高层对接与本地运营。",
     },
     languageLocalization: {
-      title: "印度翻译、口译与本地化服务 | Ewan",
-      description: "覆盖 125+ 语言的专业翻译、口译、本地化与配音服务。",
+      title: "印度翻译、口译与本地化服务 | Ewan Business Solutions",
+      description:
+        "125+ 语言的专业笔译、口译、本地化与配音。ISO 9001:2015 认证。覆盖汽车、医药、法律、展会等行业专业经验。",
+      keywords:
+        "translation services India, interpretation services India, localization India, technical translation India, simultaneous interpretation India",
     },
     industries: {
-      title: "行业解决方案 | EWAN Business Solutions",
-      description: "面向汽车、医药、制造、金融等行业的市场进入与本地化策略。",
+      title: "按行业分类的语言与市场进入服务 | Ewan Business Solutions",
+      description:
+        "Ewan 在汽车、医药、航空航天、制造、展会、科技、农业、法律、教育及媒体与 OTT 等行业提供语言与市场进入专业能力。",
+      keywords:
+        "language services automotive India, pharma translation India, exhibition interpretation India, market entry India sector",
     },
     about: {
-      title: "关于 Ewan | 跨境市场合作伙伴",
-      description: "了解 Ewan 的领导团队、能力与生态体系，助力跨境执行与语言智能。",
+      title: "关于 Ewan Business Solutions | 跨境市场合作伙伴（印度）",
+      description:
+        "Ewan Business Solutions - 5 年、250+ 客户、125+ 语言。由 Soham Kakade 创立。面向印度与亚洲走廊的跨境市场进入与语言服务。",
+      keywords: "Ewan Business Solutions about, Soham Kakade Ewan, India language company, cross-border market entry India",
     },
     contact: {
       title: "联系 Ewan Business Solutions | 跨境市场合作伙伴",
       description: "欢迎就市场进入、语言服务与跨境执行与 Ewan 开启交流。",
     },
     media: {
-      title: "媒体中心 | EWAN Business Solutions",
-      description: "探索 EWAN 媒体中心：全球公报、视频洞察与官方新闻动态。",
+      title: "媒体、洞察与新闻 | Ewan Business Solutions",
+      description:
+        "阅读《语言公报》探索跨境商业博客文章，观看活动视频，并了解 Ewan Business Solutions 的新闻报道。",
+      keywords:
+        "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India",
     },
     askSoham: {
       title: "Ask Soham - 免费 15 分钟通话 | Ewan Business Solutions",
@@ -124,6 +135,8 @@ const zhCommon = {
       headlineHighlight: "Ewan Business Solutions",
       headlineSuffix: "",
       cardLabel: "公司简介",
+      cardBlurb:
+        "2020 年创立于浦那，将印度与亚洲市场落地执行与 125+ 语言能力整合为一 -- 通过 ISO 认证，因印中贸易贡献获认可，并与 MSAMB 及 Bhashini 合作。",
       pills: ["印度浦那 · 创立于 2020", "125+ 语言", "ISO 9001:2015", "MSAMB · Bhashini"],
     },
     stats: {
@@ -314,7 +327,7 @@ const zhCommon = {
         {
           id: "bhashini",
           name: "Bhashini",
-          desc: "Bhashini — 印度电子与信息技术部（MeitY）· 语言技术倡议。",
+          desc: "Bhashini - 印度电子与信息技术部（MeitY）· 语言技术倡议。",
           alt: "Bhashini 标志",
         },
         {
@@ -399,40 +412,74 @@ const zhCommon = {
   },
   industries: {
     hero: {
-      badge: "面向未来的战略",
-      titlePrefix: "在",
-      titleHighlight: "每一个",
-      titleSuffix: "领域精确执行。",
-      subtitle: "以技术严谨和文化前瞻应对国际市场复杂性，在他人看到阻碍之处构建增长路径。",
-      cta: "查看能力框架",
+      titleBefore: "跨行业专业深度：",
+      titleHighlight: "覆盖每个主要行业。",
+      subtitle:
+        "10 年积累。10+ 个行业。250+ 家客户。Ewan 的语言与市场进入能力，建立在印度最重要贸易走廊真实的一线经验之上。",
+      cta: "了解行业能力",
     },
     overview: {
-      title: "赋能每一个行业",
-      copy: "在 EWAN，我们深知行业边界正在加速重构。我们以纵向深耕与横向创新结合，确保您不仅进入市场，更能建立领导优势。",
+      title: "发生在关键走廊里的真实项目",
+      copy:
+        "从汽车董事会的同声传译，到医药合规文件与展会现场支持，Ewan 将行业深度与语言、落地执行结合--这正是跨境项目真正需要的组合。",
       stats: {
-        marketAudits: "市场审查",
-        countryHubs: "国家枢纽",
+        clientsValue: "250+",
+        clientsLabel: "服务客户",
+        sectorsValue: "10+",
+        sectorsLabel: "覆盖行业",
       },
-      quote: "我们的战略架构以数据为基座，由人的洞察驱动。",
+      quote: "在我们这里，语言不是后勤保障--它与市场进入执行同等核心。",
     },
     specializations: {
-      title: "战略专长",
-      subtitle: "围绕全球不同行业核心压力点设计的定制化执行框架。",
+      title: "行业专业能力",
+      subtitle: "在每个主要行业提供语言与市场进入深度支持。",
       items: [
-        { title: "汽车", copy: "精准支持电动车基础设施扩张与全球供应链重构。" },
-        { title: "医药与生命科学", copy: "为关键健康创新提供监管路径与本地化落地支持。" },
-        { title: "制造业", copy: "在跨国生产网络中推动工业 4.0 标准执行。" },
-        { title: "金融服务", copy: "支持金融科技与传统金融在新兴市场的合规增长。" },
-        { title: "奢侈品", copy: "在高净值区域实现品牌提升与文化共鸣。" },
-        { title: "科技", copy: "支持 SaaS、AI 与硬件企业快速进入新市场并规模化。" },
-        { title: "绿色能源", copy: "通过全球合作网络推动可持续能源转型。" },
-        { title: "法律与合规", copy: "在跨境法务框架下确保业务执行完整性。" },
+        {
+          title: "汽车",
+          copy: "从印度整车厂与日、韩供应商董事会谈判的同声传译，到技术手册翻译与子公司设立支持--Ewan 是汽车走廊值得信赖的语言与运营合作伙伴。",
+        },
+        {
+          title: "医药",
+          copy: "监管文件翻译、临床试验资料、说明书本地化，以及面向印度制药行业与国际合作伙伴的多语言沟通。",
+        },
+        {
+          title: "航空航天",
+          copy: "专业技术文件翻译、标准解读及面向航空航天客户的高风险谈判支持。",
+        },
+        {
+          title: "制造业",
+          copy: "为进入印度或向海外扩张的制造商提供端到端支持--从初步市场评估与语言服务，到完整运营落地。",
+        },
+        {
+          title: "展会与贸易展",
+          copy: "在印度国际展会与贸易活动提供现场口译、展台材料本地化、买卖双方沟通及实时语言支持。",
+        },
+        {
+          title: "科技",
+          copy: "软件本地化、UI/UX 翻译、技术文档、多语种客服，以及科技企业进入或在亚洲扩张时的市场进入顾问。",
+        },
+        {
+          title: "农业与食品",
+          copy: "面向进军中国、日本、东南亚及更广阔市场的印度农业出口商的出口单证、跨境买家沟通与产品本地化。",
+        },
+        {
+          title: "法律与合规",
+          copy: "合同、协议、法院文件与监管申报的认证翻译--准确、可验证且符合法律要义。",
+        },
+        {
+          title: "教育",
+          copy: "面向教育机构与出版社的课程翻译、IB 与国际课程体系材料、机构沟通及多语种在线学习内容。",
+        },
+        {
+          title: "媒体与 OTT",
+          copy: "为跨语言市场扩张的影视与流媒体平台提供字幕、配音、画外音与内容本地化。",
+        },
       ],
     },
     cta: {
-      title: "不确定您的行业应从哪里切入全球市场？",
-      copy: "我们的顾问专注发掘跨行业增长的隐藏通道。",
-      button: "咨询您的行业策略",
+      title: "与 Ewan 讨论您的行业与走廊",
+      copy: "无论您需要语言服务、市场进入支持，或两者兼顾--都可预约一次聚焦而坦诚的交流。",
+      button: "Ask Soham - 15 分钟免费",
     },
   },
   media: {

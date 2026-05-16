@@ -14,7 +14,7 @@ const defaultSteps = [
   },
   {
     label: "Delivery",
-    text: "Ewan delivered the complete mandate — from initial market assessment and entity formation through to on-ground liaisoning and operational setup.",
+    text: "Ewan delivered the complete mandate - from initial market assessment and entity formation through to on-ground liaisoning and operational setup.",
     iconColor: "text-[hsl(var(--brand-purple-500))]",
     ringColor: "border-[hsl(var(--brand-purple-500)/0.28)]",
     labelColor: "text-[hsl(var(--brand-purple-500)/0.92)]",

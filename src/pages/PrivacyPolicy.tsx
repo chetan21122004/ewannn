@@ -4,7 +4,7 @@ import PageLayout from "@/components/PageLayout";
 const PrivacyPolicy = () => (
   <PageLayout
     title="Privacy Policy | Ewan Business Solutions"
-    description="Privacy policy for Ewan Business Solutions — full publication coming soon."
+    description="Privacy policy for Ewan Business Solutions - full publication coming soon."
     canonicalPath="/privacy-policy"
   >
     <section className="container mx-auto max-w-2xl px-6 py-16">

@@ -71,24 +71,35 @@ const jaCommon = {
         "Ewan は海外企業のインド市場参入をフルサイクルで支援します。法人設立、規制対応、エグゼクティブ折衝、現地運営まで対応。",
     },
     languageLocalization: {
-      title: "翻訳・通訳・ローカリゼーションサービス（インド）| Ewan",
-      description: "125以上の言語に対応する翻訳、通訳、ローカリゼーション、音声サービス。",
+      title: "インドの翻訳・通訳・ローカリゼーション | Ewan Business Solutions",
+      description:
+        "125以上の言語に対応するプロフェッショナルな翻訳・通訳・ローカリゼーション・吹き替え・ナレーション。ISO 9001:2015 認証。自動車、製薬、法務、展示会など業界別の専門性。",
+      keywords:
+        "translation services India, interpretation services India, localization India, technical translation India, simultaneous interpretation India",
     },
     industries: {
-      title: "業界別ソリューション | EWAN Business Solutions",
-      description: "自動車、製薬、製造、金融など業界別の市場参入とローカリゼーション戦略。",
+      title: "業界別の言語サービスと市場参入 | Ewan Business Solutions",
+      description:
+        "Ewan は自動車、製薬、航空宇宙、製造、展示会、テクノロジー、農業、法務・コンプライアンス、教育、メディア・OTT など幅広い業界で言語と市場参入の専門性を提供します。",
+      keywords:
+        "language services automotive India, pharma translation India, exhibition interpretation India, market entry India sector",
     },
     about: {
-      title: "Ewanについて | 越境市場パートナー",
-      description: "越境実行と言語インテリジェンスを支える Ewan の体制・能力・エコシステムをご紹介します。",
+      title: "Ewan Business Solutions について | 越境マーケットパートナー（インド）",
+      description:
+        "Ewan Business Solutions - 5年、250社以上のクライアント、125以上の言語。Soham Kakade により設立。インド・アジア回廊向けの越境市場参入と言語サービス。",
+      keywords: "Ewan Business Solutions about, Soham Kakade Ewan, India language company, cross-border market entry India",
     },
     contact: {
       title: "お問い合わせ | Ewan Business Solutions",
       description: "市場参入、言語サービス、越境実行について Ewan にご相談ください。",
     },
     media: {
-      title: "メディアハブ | EWAN Business Solutions",
-      description: "EWAN のメディアハブ：Global Gazette、動画インサイト、公式プレス情報。",
+      title: "メディア・インサイト・プレス | Ewan Business Solutions",
+      description:
+        "Language Gazette の記事、越境ビジネスに関するブログ洞察、イベント動画、Ewan Business Solutions のプレス情報をご覧ください。",
+      keywords:
+        "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India",
     },
     askSoham: {
       title: "Ask Soham - 15分無料相談 | Ewan Business Solutions",
@@ -125,6 +136,8 @@ const jaCommon = {
       headlineHighlight: "Ewan Business Solutions",
       headlineSuffix: "について",
       cardLabel: "会社概要",
+      cardBlurb:
+        "2020年にプネで創業。インド・アジアの市場参入実行と125以上の言語を一つの体制で提供する - ISO認証、インド・中国貿易への貢献で公的に評価され、MSAMBおよびBhashiniと連携。",
       pills: ["プネ拠点 · 2020年創業", "125+ 言語", "ISO 9001:2015", "MSAMB · Bhashini"],
     },
     stats: {
@@ -317,7 +330,7 @@ const jaCommon = {
         {
           id: "bhashini",
           name: "Bhashini",
-          desc: "Bhashini — インド電子情報技術省（MeitY）· 言語テクノロジー・イニシアチブ。",
+          desc: "Bhashini - インド電子情報技術省（MeitY）· 言語テクノロジー・イニシアチブ。",
           alt: "Bhashini ロゴ",
         },
         {
@@ -402,42 +415,74 @@ const jaCommon = {
   },
   industries: {
     hero: {
-      badge: "将来対応型ストラテジー",
-      titlePrefix: "あらゆる",
-      titleHighlight: "領域",
-      titleSuffix: "で精密に実行。",
+      titleBefore: "全主要業界にわたる",
+      titleHighlight: "セクター専門性。",
       subtitle:
-        "国際市場の複雑性を、技術的精度と文化的洞察で乗り越えます。障壁が見える場所に成長の設計図を描きます。",
-      cta: "ケイパビリティを見る",
+        "10年。10以上の業界。250社以上のクライアント。Ewan の言語と市場参入の専門性は、インドの最も重要な貿易回廊における現場経験に基づいています。",
+      cta: "業界別の強みを見る",
     },
     overview: {
-      title: "すべての業界を加速する",
+      title: "重要な回廊で積み上げてきた実務",
       copy:
-        "EWAN は業界境界が流動化していることを前提に、縦の専門性と横の戦略革新を統合し、市場参入を市場主導へと転換します。",
+        "自動車のボードルーム通訳から製薬の規制ドキュメント、展示会サポートまで。Ewan は業界の深さと言語・オンブラウンド実行を一体で提供します。",
       stats: {
-        marketAudits: "市場監査",
-        countryHubs: "国別ハブ",
+        clientsValue: "250+",
+        clientsLabel: "クライアント",
+        sectorsValue: "10+",
+        sectorsLabel: "業界",
       },
-      quote: "私たちの戦略設計は、データを土台に、人の洞察で駆動します。",
+      quote: "ここでは言語はバックオフィスではありません。市場参入実行の中核です。",
     },
     specializations: {
-      title: "戦略特化領域",
-      subtitle: "グローバル産業ごとの固有課題に合わせた実行フレームワーク。",
+      title: "業界別の専門性",
+      subtitle: "すべての主要業界で言語と市場参入の深さを提供します。",
       items: [
-        { title: "自動車", copy: "EVインフラ拡張とグローバル供給網変化への精密対応。" },
-        { title: "製薬・ライフサイエンス", copy: "重要ヘルスイノベーション向けの規制対応とローカリゼーション。" },
-        { title: "製造業", copy: "多国籍生産拠点での Industry 4.0 標準実装を推進。" },
-        { title: "金融サービス", copy: "新興市場におけるフィンテック・金融機関の成長とコンプライアンスを支援。" },
-        { title: "ラグジュアリー", copy: "富裕層市場でのブランド価値向上と文化適合を実現。" },
-        { title: "テクノロジー", copy: "SaaS・AI・ハードウェアの新市場スケールを加速。" },
-        { title: "グリーンエネルギー", copy: "国際パートナーネットワークを通じた持続可能エネルギー移行を支援。" },
-        { title: "法務・コンプライアンス", copy: "越境法務フレームワーク下での運用整合性を確保。" },
+        {
+          title: "自動車",
+          copy: "インドのOEMと日韓サプライヤー間の役員室交渉の同時通訳から、技術マニュアル翻訳、現地法人設立支援まで--Ewan は自動車回廊の信頼できる言語・オペレーションパートナーです。",
+        },
+        {
+          title: "製薬",
+          copy: "規制文書翻訳、臨床試験資料、製品情報のローカライズ、インド製薬セクターと国際パートナー向けの多言語コミュニケーション。",
+        },
+        {
+          title: "航空宇宙",
+          copy: "専門技術文書翻訳、規格解釈、航空宇宙分野のクライアント向けハイステークス交渉支援。",
+        },
+        {
+          title: "製造業",
+          copy: "インド参入または海外展開を進める製造業向けのエンドツーエンド支援--初期市場評価と言語サポートから本格的なオペレーション構築まで。",
+        },
+        {
+          title: "展示会・見本市",
+          copy: "インド国内外の国際展示会・商談会における現地通訳、ブース資料ローカライズ、売り手・買い手コミュニケーション、リアルタイム言語サポート。",
+        },
+        {
+          title: "テクノロジー",
+          copy: "ソフトウェアローカライズ、UI/UX翻訳、技術文書、多言語カスタマーサポート、アジア展開を進めるテック企業への市場参入アドバイザリー。",
+        },
+        {
+          title: "農業・食品",
+          copy: "中国、日本、東南アジアなどへ輸出するインドの農産物輸出業者向けの輸出書類、クロスボーダー買い手コミュニケーション、製品ローカライズ。",
+        },
+        {
+          title: "法務・コンプライアンス",
+          copy: "契約・合意書、裁判所文書、規制提出文書の認証翻訳--正確で検証可能かつ法的に厳密。",
+        },
+        {
+          title: "教育",
+          copy: "教育機関・出版社向けのカリキュラム翻訳、IB・国際カリキュラム資料、機関コミュニケーション、多言語eラーニングコンテンツ。",
+        },
+        {
+          title: "メディア・OTT",
+          copy: "言語市場へ広がる映画・テレビ・ストリーミング向けの字幕、吹き替え、ナレーション、コンテンツローカライズ。",
+        },
       ],
     },
     cta: {
-      title: "自社業界の最適なグローバル進出ルートに迷っていますか？",
-      copy: "私たちは業界横断で成長の“隠れた回廊”を見つけます。",
-      button: "業界別相談をする",
+      title: "御社の業界と回廊について Ewan に相談する",
+      copy: "言語サービス、市場参入、またはその両方--短時間の対話から正直で焦点を絞った話し合いが始まれます。",
+      button: "Ask Soham - 15分無料",
     },
   },
   media: {

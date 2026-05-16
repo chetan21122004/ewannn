@@ -1,7 +1,7 @@
 import { ArrowUpRight, CheckCircle2, Globe2, Map, MessageCircle, SearchCheck, Sparkles } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
-import { ASK_SOHAM_FAQS } from "@/data/aeoContent";
+import { ASK_SOHAM_FAQS, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, personSoham, serviceSchema } from "@/lib/schemaHelpers";
 import { useTranslation } from "react-i18next";
 
@@ -55,7 +55,7 @@ const askSohamLd = [
   serviceSchema({
     name: "Ask Soham consultation",
     description:
-      "Free 15-minute strategy call with founder Soham Kakade covering India market entry, language services fit, or language-industry careers — honest, non-sales guidance.",
+      "Free 15-minute strategy call with founder Soham Kakade covering India market entry, language services fit, or language-industry careers - honest, non-sales guidance.",
     canonicalPath: "/ask-soham/",
     serviceType: "Business consultation",
   }),
@@ -92,7 +92,7 @@ const AskSoham = () => {
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-foreground/75 sm:text-lg">
                 Whether you&apos;re a company entering India, a business expanding abroad, a professional navigating
-                language services, or a student wondering whether a career in languages is right for you — book 15
+                language services, or a student wondering whether a career in languages is right for you - book 15
                 minutes with Soham Kakade for focused, honest, experience-based guidance.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -129,7 +129,7 @@ const AskSoham = () => {
         <div className="container mx-auto">
           <div className="mb-10 max-w-3xl">
             <h2 className="font-serif text-4xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-5xl">
-              Three Tracks — Who This Is For
+              Three Tracks - Who This Is For
             </h2>
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -182,10 +182,8 @@ const AskSoham = () => {
           <div>
             <h2 className="font-serif text-4xl font-bold text-[hsl(var(--text-primary))]">About Soham</h2>
             <p className="mt-4 text-sm leading-relaxed text-[hsl(var(--text-secondary))] sm:text-base">
-              Soham Kakade is the founder of Ewan Business Solutions. 60,000+ hours of simultaneous interpretation. Full
-              Chinese Government scholarship. VP CITLoB. Bhashini Initiative. MSAMB Export Program. Symbiosis Faculty. IB
-              Board Curriculum Designer. When you book this call, you&apos;re talking to someone who has actually been in
-              the room.
+              When you book this call, you&apos;re scheduling time with someone who has spent years in the room where
+              languages, markets, and institutions meet - not a sales representative.
             </p>
           </div>
         </div>
@@ -193,6 +191,9 @@ const AskSoham = () => {
 
       <section id={BOOKING_WIDGET_ID} className="scroll-mt-28 bg-white px-6 pb-16 pt-12">
         <div className="container mx-auto">
+          <blockquote className="mx-auto mb-10 max-w-3xl rounded-2xl border border-[hsl(var(--surface-glass)/0.2)] bg-[hsl(var(--surface-2)/0.45)] px-6 py-5 text-left text-sm leading-relaxed text-[hsl(var(--brand-navy-950)/0.92)] sm:text-base">
+            {ENTITY_PARAGRAPH_B}
+          </blockquote>
           <div className="mx-auto mb-8 max-w-3xl text-center">
             <h2 className="font-serif text-4xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-5xl">
               Choose a Time That Works For You

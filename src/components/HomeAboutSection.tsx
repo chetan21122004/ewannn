@@ -2,7 +2,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { BadgeCheck, Building2, Languages, MapPin, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { ENTITY_PARAGRAPH_A } from "@/data/aeoContent";
 
 const defaultPills = ["Pune, India · Founded 2020", "125+ languages", "ISO 9001:2015", "MSAMB · Bhashini"];
 
@@ -140,7 +139,7 @@ const HomeAboutSection = () => {
                       <Building2 className="h-5 w-5 shrink-0" aria-hidden />
                       <span className="text-xs font-semibold uppercase tracking-[0.22em]">{t("home.aboutIntro.cardLabel")}</span>
                     </div>
-                    <p className="text-base leading-[1.75] text-on-light-secondary md:text-lg">{ENTITY_PARAGRAPH_A}</p>
+                    <p className="text-base leading-[1.75] text-on-light-secondary md:text-lg">{t("home.aboutIntro.cardBlurb")}</p>
                   </div>
                 </div>
               </div>

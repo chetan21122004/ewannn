@@ -40,7 +40,7 @@ const navColumns: FooterColumn[] = [
   {
     title: "Quick Links",
     links: [
-      { label: "Ask Soham — 15 Min Free", href: "/ask-soham" },
+      { label: "Ask Soham - 15 Min Free", href: "/ask-soham" },
       { label: "Download the 2026 Market Entry Audit", href: "/market-entry-audit" },
       { label: "Contact Us", href: "/contact" },
       { label: "Bhashik Skill Development ↗", href: "https://bhashikskill.co.in", external: true },
@@ -108,7 +108,7 @@ const Footer = () => {
     if (label === "Case Studies") return t("footer.caseStudies");
     if (label === "Arogya Yatri") return t("footer.arogyaYatri");
     if (label === "Privacy Policy") return t("footer.privacyPolicy");
-    if (label === "Ask Soham — 15 Min Free") return t("footer.askSohamCta");
+    if (label === "Ask Soham - 15 Min Free") return t("footer.askSohamCta");
     if (label === "Download the 2026 Market Entry Audit") return t("footer.marketEntryAudit");
     return label;
   };
@@ -229,7 +229,7 @@ const Footer = () => {
               rel="noreferrer"
               className="text-xs text-foreground/52 transition-colors duration-300 hover:text-[hsl(var(--brand-gold-500))]"
             >
-              Part of the Ewan Group — Bhashik Skill Development · bhashikskill.co.in
+              Part of the Ewan Group - Bhashik Skill Development · bhashikskill.co.in
             </a>
           </div>
         </div>

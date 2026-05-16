@@ -3,9 +3,14 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
+import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
+import { JOIN_US_FAQS } from "@/data/aeoContent";
+import { absoluteUrl, faqPageSchema } from "@/lib/schemaHelpers";
 
 const JOIN_US_KEYWORDS =
   "language jobs India, translator jobs India, interpreter jobs Pune, language company career India, freelance translator India";
+
+const joinUsJsonLd = [faqPageSchema(absoluteUrl("/join-us/"), JOIN_US_FAQS)];
 
 const teamLookFor = [
   "Native or near-native proficiency in Asian or emerging market languages (Mandarin, Japanese, Korean, ASEAN, Arabic, Spanish, Portuguese, French, German, etc.)",
@@ -16,7 +21,7 @@ const teamLookFor = [
 
 const vendorOffer = [
   "Ongoing project assignments across 125+ language pairs",
-  "Sector-specific briefs — automotive, pharma, legal, media",
+  "Sector-specific briefs - automotive, pharma, legal, media",
   "Transparent rates and reliable payment cycles",
   "Long-term relationships built on quality and trust",
 ];
@@ -29,17 +34,17 @@ const vendorNeed = [
 ];
 
 const collaborationTypes = [
-  "Language schools and academies — talent pipeline, curriculum, and training partnerships",
-  "Market entry and legal firms — referral and co-delivery arrangements for cross-border clients",
-  "Technology platforms — language AI, localisation tools, and content management integrations",
-  "Government and trade bodies — export promotion, bilateral trade facilitation",
-  "Content and media agencies — multilingual production, OTT localisation, corporate media",
+  "Language schools and academies - talent pipeline, curriculum, and training partnerships",
+  "Market entry and legal firms - referral and co-delivery arrangements for cross-border clients",
+  "Technology platforms - language AI, localisation tools, and content management integrations",
+  "Government and trade bodies - export promotion, bilateral trade facilitation",
+  "Content and media agencies - multilingual production, OTT localisation, corporate media",
 ];
 
 const collaborators = [
-  "Bhashini — MeitY, Government of India",
-  "Tattava CX — Strategic Communications",
-  "CITLoB — Confederation of Indian Translators and Language Professionals",
+  "Bhashini - MeitY, Government of India",
+  "Tattava CX - Strategic Communications",
+  "CITLoB - Confederation of Indian Translators and Language Professionals",
   "Further collaborators as relationships are confirmed",
 ];
 
@@ -64,6 +69,7 @@ const JoinUs = () => {
       description={t("seo.joinUs.description")}
       canonicalPath="/join-us/"
       keywords={JOIN_US_KEYWORDS}
+      jsonLd={joinUsJsonLd}
     >
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-24 pt-14 text-white lg:pb-32 lg:pt-20">
         <div
@@ -82,9 +88,9 @@ const JoinUs = () => {
               Be Part of <span className="text-[hsl(var(--brand-gold-500))]">What We&apos;re Building.</span>
             </h1>
             <p className="mt-8 max-w-3xl text-lg text-white/80 lg:text-xl">
-              Ewan is growing — and we&apos;re looking for people and organisations who want to be part of a cross-border
+              Ewan is growing - and we&apos;re looking for people and organisations who want to be part of a cross-border
               market partner that operates at the intersection of language, culture, and on-ground business operations.
-              Whether you&apos;re a language professional, a specialist vendor, or an institution that shares our vision —
+              Whether you&apos;re a language professional, a specialist vendor, or an institution that shares our vision -
               there&apos;s a place for you here.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
@@ -181,7 +187,7 @@ const JoinUs = () => {
 
           <div className="order-1 lg:order-2">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-500)/0.88)]">
-              01 — Join Our Team
+              01 - Join Our Team
             </p>
             <h2 className="mt-2 font-serif text-4xl font-bold text-[hsl(var(--brand-navy-950))] lg:text-5xl">Join Our Team</h2>
             <p className="text-on-light-secondary mt-6 text-lg leading-relaxed">
@@ -223,7 +229,7 @@ const JoinUs = () => {
         <div className="container mx-auto grid gap-14 lg:grid-cols-2">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-500)/0.88)]">
-              02 — Join Our Vendor Network
+              02 - Join Our Vendor Network
             </p>
             <h2 className="mt-2 font-serif text-4xl font-bold text-[hsl(var(--brand-navy-950))] lg:text-5xl">
               Join Our Vendor Network
@@ -350,7 +356,7 @@ const JoinUs = () => {
         <div className="container mx-auto grid gap-14 lg:grid-cols-2">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-500)/0.88)]">
-              03 — Collaborate With Us
+              03 - Collaborate With Us
             </p>
             <h2 className="mt-2 font-serif text-4xl font-bold text-[hsl(var(--brand-navy-950))] lg:text-5xl">
               Collaborate With Us
@@ -412,7 +418,7 @@ const JoinUs = () => {
             We have spent five years building something that is genuinely hard to replicate: deep language expertise,
             on-ground operational capability, institutional recognition from government bodies and consulates, and a
             community (Oriental Flock) that gives us access to some of the best language professionals in India. If you
-            want to work at the intersection of language, culture, and international business — Ewan is where that work
+            want to work at the intersection of language, culture, and international business - Ewan is where that work
             gets done.
           </p>
           <Link
@@ -424,6 +430,8 @@ const JoinUs = () => {
           </Link>
         </div>
       </section>
+
+      <AeoFrequentlyAskedQuestions items={JOIN_US_FAQS} className="bg-[#f7f5ff] px-6 py-16" />
     </PageLayout>
   );
 };

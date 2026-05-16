@@ -1,5 +1,6 @@
 import { ArrowRight, CheckCircle2, Globe2, Languages, Mic2, ShieldCheck, Subtitles } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { LANGUAGE_LOCALIZATION_FAQS, SPEAKABLE_LANGUAGE } from "@/data/aeoContent";
@@ -16,21 +17,21 @@ const services = [
     id: "translation",
     title: "Translation",
     description:
-      "Translation is the conversion of written content from one language to another while preserving meaning, tone, and intent. Ewan provides certified translation for legal, technical, medical, and commercial documents across 125+ languages — by native-language experts with sector-specific knowledge.",
+      "Translation is the conversion of written content from one language to another while preserving meaning, tone, and intent. Ewan provides certified translation for legal, technical, medical, and commercial documents across 125+ languages - by native-language experts with sector-specific knowledge.",
     icon: Languages,
   },
   {
     id: "interpretation",
     title: "Interpretation",
     description:
-      "Interpretation is the oral conversion of spoken language in real time — simultaneous interpretation delivers this as the speaker speaks; consecutive interpretation follows after each segment. Ewan has 60,000+ hours of interpretation experience across Mandarin, Japanese, ASEAN languages and more, across boardroom negotiations, conferences, exhibitions, and government meetings.",
+      "Interpretation is the oral conversion of spoken language in real time - simultaneous interpretation delivers this as the speaker speaks; consecutive interpretation follows after each segment. Ewan has 60,000+ hours of interpretation experience across Mandarin, Japanese, ASEAN languages and more, across boardroom negotiations, conferences, exhibitions, and government meetings.",
     icon: Globe2,
   },
   {
     id: "localization",
     title: "Localization",
     description:
-      "Localization is the adaptation of a product, website, or content for a specific target market — going beyond translation to adjust tone, cultural references, imagery, layout, and user experience. Ewan localizes websites, software, marketing materials, and product content across 125+ languages, with cultural adaptation built in from the start so the result feels native, not translated.",
+      "Localization is the adaptation of a product, website, or content for a specific target market - going beyond translation to adjust tone, cultural references, imagery, layout, and user experience. Ewan localizes websites, software, marketing materials, and product content across 125+ languages, with cultural adaptation built in from the start so the result feels native, not translated.",
     icon: ShieldCheck,
   },
   {
@@ -102,7 +103,7 @@ const languageLd = [
   serviceSchema({
     name: "Translation, interpretation & localization services",
     description:
-      "ISO 9001:2015 certified multilingual translation, interpretation, localization, transcription, voiceover, and QA — 125+ languages with corridor-native intelligence.",
+      "ISO 9001:2015 certified multilingual translation, interpretation, localization, transcription, voiceover, and QA - 125+ languages with corridor-native intelligence.",
     canonicalPath: "/language-localization/",
     serviceType: "Language service provider",
   }),
@@ -113,11 +114,13 @@ const languageLd = [
 ];
 
 const LanguageLocalization = () => {
+  const { t } = useTranslation();
   return (
     <PageLayout
-      title="Professional Translation, Interpretation & Localization Services India | Ewan Business Solutions"
-      description="ISO 9001:2015 certified language service provider offering translation, interpretation, and localization in 125+ languages. Specialist in technical, legal, and pharmaceutical sectors."
+      title={t("seo.languageLocalization.title")}
+      description={t("seo.languageLocalization.description")}
       canonicalPath="/language-localization/"
+      keywords={t("seo.languageLocalization.keywords")}
       jsonLd={languageLd}
     >
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-24 pt-12 text-white">

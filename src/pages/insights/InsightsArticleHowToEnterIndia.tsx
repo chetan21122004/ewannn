@@ -9,15 +9,15 @@ import {
 } from "@/lib/schemaHelpers";
 
 const CANONICAL = "/insights/how-to-enter-indian-market/";
-const TITLE = "How to Enter the Indian Market as a Foreign Company — A Step-by-Step Guide";
+const TITLE = "How to Enter the Indian Market as a Foreign Company - A Step-by-Step Guide";
 const DESCRIPTION =
-  "Structured India market entry: readiness call, roadmap, execution, and ongoing support — aligned with Ewan's proven four-step mandate.";
+  "Structured India market entry: readiness call, roadmap, execution, and ongoing support - aligned with Ewan's proven four-step mandate.";
 
 const steps = [
-  "India Entry Readiness Call — 30 minutes to assess expansion goals, identify risk gaps, and define what must be in place before you move.",
-  "Custom Entry Roadmap — A sequenced plan covering regulatory, operational, language, and cultural requirements for your sector and corridor.",
-  "Execution — Ewan manages the full mandate on the ground. Regular updates. We handle the complexity.",
-  "Ongoing Operations Support — Once established, Ewan continues as your on-ground liaison, operations manager, and language partner.",
+  "India Entry Readiness Call - 30 minutes to assess expansion goals, identify risk gaps, and define what must be in place before you move.",
+  "Custom Entry Roadmap - A sequenced plan covering regulatory, operational, language, and cultural requirements for your sector and corridor.",
+  "Execution - Ewan manages the full mandate on the ground. Regular updates. We handle the complexity.",
+  "Ongoing Operations Support - Once established, Ewan continues as your on-ground liaison, operations manager, and language partner.",
 ];
 
 const InsightsArticleHowToEnterIndia = () => {
@@ -56,7 +56,7 @@ const InsightsArticleHowToEnterIndia = () => {
             <p>
               Foreign companies approaching India routinely underestimate regulatory sequencing, distributor integrity, coordination overhead across workstreams,
               on-ground liaison for government and negotiation settings, and the language layer threaded through each step. Treating India as translation plus
-              legal misses how decisions are negotiated in practice — which is precisely why Ewan runs market entry language and operational execution together.
+              legal misses how decisions are negotiated in practice - which is precisely why Ewan runs market entry language and operational execution together.
             </p>
             <h2 className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">The four-step process</h2>
             <ol className="mt-4 list-decimal space-y-4 ps-6">

@@ -44,6 +44,7 @@ const Industries = () => {
       title={t("seo.industries.title")}
       description={t("seo.industries.description")}
       canonicalPath="/industries/"
+      keywords={t("seo.industries.keywords")}
       jsonLd={industriesLd}
     >
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 py-24 text-white lg:py-32">
@@ -58,11 +59,9 @@ const Industries = () => {
 
         <div className="container relative mx-auto">
           <div className="max-w-3xl">
-            <p className="mb-6 text-sm font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">
-              {t("industries.hero.badge")}
-            </p>
             <h1 className="font-serif text-5xl font-extrabold leading-tight tracking-tight md:text-7xl xl:text-8xl">
-              {t("industries.hero.titlePrefix")} <span className="text-[hsl(var(--brand-gold-500))]">{t("industries.hero.titleHighlight")}</span> {t("industries.hero.titleSuffix")}
+              <span className="text-white">{t("industries.hero.titleBefore")} </span>
+              <span className="text-[hsl(var(--brand-gold-500))]">{t("industries.hero.titleHighlight")}</span>
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">
               {t("industries.hero.subtitle")}
@@ -90,12 +89,12 @@ const Industries = () => {
 
             <div className="mt-10 grid grid-cols-2 gap-8">
               <div>
-                <p className="text-3xl font-extrabold text-[hsl(var(--brand-gold-600))]">500+</p>
-                <p className="text-on-light-muted mt-1 text-xs font-semibold uppercase tracking-wider">{t("industries.overview.stats.marketAudits")}</p>
+                <p className="text-3xl font-extrabold text-[hsl(var(--brand-gold-600))]">{t("industries.overview.stats.clientsValue")}</p>
+                <p className="text-on-light-muted mt-1 text-xs font-semibold uppercase tracking-wider">{t("industries.overview.stats.clientsLabel")}</p>
               </div>
               <div>
-                <p className="text-3xl font-extrabold text-[hsl(var(--brand-gold-600))]">42</p>
-                <p className="text-on-light-muted mt-1 text-xs font-semibold uppercase tracking-wider">{t("industries.overview.stats.countryHubs")}</p>
+                <p className="text-3xl font-extrabold text-[hsl(var(--brand-gold-600))]">{t("industries.overview.stats.sectorsValue")}</p>
+                <p className="text-on-light-muted mt-1 text-xs font-semibold uppercase tracking-wider">{t("industries.overview.stats.sectorsLabel")}</p>
               </div>
             </div>
           </div>

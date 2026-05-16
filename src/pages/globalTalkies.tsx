@@ -1,7 +1,9 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
-import { absoluteUrl, serviceSchema } from "@/lib/schemaHelpers";
+import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
+import { GLOBAL_TALKIES_FAQS } from "@/data/aeoContent";
+import { absoluteUrl, faqPageSchema, serviceSchema } from "@/lib/schemaHelpers";
 
 const globalTalkiesLd = [
   serviceSchema({
@@ -11,6 +13,7 @@ const globalTalkiesLd = [
     canonicalPath: "/global-talkies/",
     serviceType: "Media localisation",
   }),
+  faqPageSchema(absoluteUrl("/global-talkies/"), GLOBAL_TALKIES_FAQS),
 ];
 
 const services = [
@@ -309,6 +312,8 @@ const GlobalTalkies = () => {
           </article>
         </div>
       </section>
+
+      <AeoFrequentlyAskedQuestions items={GLOBAL_TALKIES_FAQS} className="bg-[#f8f7fc] px-6 py-16" />
 
       {/* CTA */}
       <section className="bg-[hsl(var(--brand-navy-950))] px-6 py-16 text-white">
