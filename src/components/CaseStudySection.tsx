@@ -39,11 +39,14 @@ const CaseStudySection = () => {
   }>;
   const stepIcons = [AlertCircle, Lightbulb, Trophy] as const;
   return (
-    <section id="media" className="py-10 lg:py-32 relative overflow-hidden theme-section-dark">
+    <section
+      id="media"
+      className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-10 lg:py-32 theme-section-soft"
+    >
       <span id="case-study" className="sr-only">{t("home.caseStudy.srLabel")}</span>
-      <div className="glow-orb glow-orb-purple w-[500px] h-[500px] top-10 -right-40 opacity-12" />
-      <div className="glow-orb glow-orb-gold w-[340px] h-[340px] -bottom-24 left-8 opacity-10" />
-      <div className="absolute inset-0 theme-grid-overlay opacity-15 pointer-events-none" />
+      <div className="glow-orb glow-orb-purple w-[460px] h-[460px] -top-36 -left-28 opacity-[0.11]" />
+      <div className="glow-orb glow-orb-gold w-[380px] h-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
+      <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.18]" />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -53,12 +56,12 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full glass-card-purple text-[hsl(var(--brand-purple-500))] text-xs font-semibold tracking-wider uppercase mb-5">
+          <span className="mb-5 inline-block rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.94)] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-purple-700))] shadow-[0_10px_36px_hsl(var(--brand-navy-950)/0.07)]">
             {t("home.caseStudy.badge")}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
+          <h2 className="mb-4 font-serif text-3xl font-bold text-on-light sm:text-4xl lg:text-5xl">
             {t("home.caseStudy.titlePrefix")}{" "}
-            <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-500))] via-white to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
+            <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-800))] via-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-cyan-500))] bg-clip-text font-serif italic text-transparent">
               {t("home.caseStudy.titleHighlight")}
             </span>
           </h2>
@@ -72,10 +75,10 @@ const CaseStudySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="absolute -inset-4 rounded-3xl bg-[hsl(var(--brand-purple-500)/0.12)] blur-2xl" />
-            <div className="relative rounded-3xl overflow-hidden border border-[hsl(var(--surface-glass)/0.16)] shadow-gold-lg">
-              <img src={factoryImg} alt={t("home.caseStudy.imageAlt")} className="w-full h-[400px] object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+            <div className="absolute -inset-4 rounded-3xl bg-[hsl(var(--surface-light-200)/0.9)] blur-2xl" />
+            <div className="relative overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] shadow-premium-lg">
+              <img src={factoryImg} alt={t("home.caseStudy.imageAlt")} className="h-[400px] w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--surface-light-card)/0.85)] via-transparent to-transparent" />
             </div>
           </motion.div>
 
@@ -90,17 +93,17 @@ const CaseStudySection = () => {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, duration: 0.7 }}
                   whileHover={{ x: 4 }}
-                  className="flex gap-5 p-6 rounded-2xl glass-card border border-[hsl(var(--surface-glass)/0.1)]"
+                  className="theme-card-light flex gap-5 rounded-2xl p-6"
                 >
                   <motion.div
-                    className={`w-12 h-12 rounded-xl glass-card-purple flex items-center justify-center shrink-0 border ${step.ringColor}`}
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border bg-[hsl(var(--surface-light-card))] ${step.ringColor}`}
                     whileHover={{ rotate: 8, scale: 1.1 }}
                   >
-                    <Icon className={`w-5 h-5 ${step.iconColor}`} />
+                    <Icon className={`h-5 w-5 ${step.iconColor}`} />
                   </motion.div>
                   <div>
-                    <p className={`text-xs uppercase tracking-wider font-semibold mb-1 ${step.labelColor}`}>{step.label}</p>
-                    <p className="text-foreground/80 leading-relaxed">{step.text}</p>
+                    <p className={`mb-1 text-xs font-semibold uppercase tracking-wider ${step.labelColor}`}>{step.label}</p>
+                    <p className="leading-relaxed text-on-light-secondary">{step.text}</p>
                   </div>
                 </motion.div>
               );
@@ -109,7 +112,7 @@ const CaseStudySection = () => {
             <motion.div whileHover={{ scale: 1.04, x: 4 }} className="inline-block">
               <Link
                 to="/media#case-study"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] text-white font-semibold text-sm tracking-wider uppercase card-shine shadow-gold-md border border-[hsl(var(--brand-purple-500)/0.35)]"
+                className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--brand-purple-500)/0.35)] bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white card-shine shadow-[0_14px_36px_hsl(var(--brand-navy-950)/0.14)]"
               >
                 {t("home.caseStudy.cta")}
                 <ArrowRight className="w-4 h-4" />

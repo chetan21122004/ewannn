@@ -73,14 +73,14 @@ const FooterNavLink = ({ link }: { link: FooterLink }) =>
       href={link.href}
       target="_blank"
       rel="noreferrer"
-      className="text-sm text-foreground/70 transition-colors hover:text-[hsl(var(--brand-gold-500))]"
+      className="text-sm text-on-light-secondary transition-colors hover:text-[hsl(var(--brand-purple-700))]"
     >
       {link.label}
     </a>
   ) : (
     <Link
       to={link.href}
-      className="text-sm text-foreground/70 transition-colors hover:text-[hsl(var(--brand-gold-500))]"
+      className="text-sm text-on-light-secondary transition-colors hover:text-[hsl(var(--brand-purple-700))]"
     >
       {link.label}
     </Link>
@@ -114,40 +114,32 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden border-t border-[hsl(var(--surface-glass)/0.12)] theme-section-dark">
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: `
-            radial-gradient(circle at 14% 18%, hsl(var(--brand-purple-500) / 0.12) 0%, transparent 36%),
-            radial-gradient(circle at 84% 78%, hsl(var(--brand-cyan-500) / 0.1) 0%, transparent 38%),
-            radial-gradient(circle at 50% 12%, hsl(var(--surface-glass) / 0.08) 0%, transparent 45%)
-          `,
-        }}
-      />
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[hsl(var(--brand-purple-500)/0.12)] blur-3xl" />
+    <footer className="relative overflow-hidden border-t border-[hsl(var(--border-light)/0.85)] theme-section-soft">
+      <div className="glow-orb glow-orb-purple pointer-events-none h-[460px] w-[460px] -top-36 -left-28 opacity-[0.11]" />
+      <div className="glow-orb glow-orb-gold pointer-events-none h-[380px] w-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
+      <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.18]" />
 
       <div className="container relative z-10 mx-auto px-6 py-14 lg:py-20">
         <div className="mb-12 grid gap-10 lg:grid-cols-12">
-          <div className="rounded-3xl border border-[hsl(var(--surface-glass)/0.16)] bg-[hsl(var(--surface-glass)/0.05)] p-6 lg:col-span-4 lg:p-7">
+          <div className="theme-card-light rounded-3xl p-6 lg:col-span-4 lg:p-7">
             <motion.img src="/logo.png" alt="EWAN Business Solutions logo" className="mb-4 h-16 w-auto object-contain" whileHover={{ scale: 1.03 }} />
 
-            <p className="mb-4 max-w-sm text-sm leading-relaxed text-foreground/74">{t("footer.tagline")}</p>
+            <p className="mb-4 max-w-sm text-sm leading-relaxed text-on-light-secondary">{t("footer.tagline")}</p>
 
             <a
               href="mailto:info@ewan.co.in"
-              className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--surface-glass)/0.2)] bg-[hsl(var(--surface-glass)/0.06)] px-4 py-2 text-sm text-[hsl(var(--brand-gold-500)/0.92)] transition-colors hover:text-[hsl(var(--brand-gold-500))]"
+              className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.94)] px-4 py-2 text-sm text-[hsl(var(--brand-purple-700))] shadow-[0_8px_24px_hsl(var(--brand-navy-950)/0.06)] transition-colors hover:bg-[hsl(var(--surface-light-200)/0.5)]"
             >
-              <Mail className="h-4 w-4" />
+              <Mail className="h-4 w-4 shrink-0" aria-hidden />
               info@ewan.co.in
             </a>
 
             <div className="mt-6 grid gap-2">
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-foreground/55">
-                <Globe2 className="h-3.5 w-3.5" />
+              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-on-light-muted">
+                <Globe2 className="h-3.5 w-3.5 shrink-0" aria-hidden />
                 Operational Regions
               </span>
-              <p className="text-sm text-foreground/72">{coverageRegions.join(" · ")}</p>
+              <p className="text-sm text-on-light-secondary">{coverageRegions.join(" · ")}</p>
             </div>
 
             <div className="mt-6 flex flex-wrap gap-2">
@@ -157,7 +149,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full border border-[hsl(var(--surface-glass)/0.2)] bg-[hsl(var(--surface-glass)/0.04)] px-3 py-1.5 text-xs font-medium text-foreground/82 transition-colors hover:border-[hsl(var(--brand-gold-500)/0.5)] hover:text-[hsl(var(--brand-gold-500))]"
+                  className="rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.92)] px-3 py-1.5 text-xs font-medium text-on-light-secondary transition-colors hover:border-[hsl(var(--brand-purple-700)/0.35)] hover:text-[hsl(var(--brand-purple-700))]"
                 >
                   {social.label}
                 </a>
@@ -165,15 +157,15 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-[hsl(var(--surface-glass)/0.16)] bg-[hsl(var(--surface-glass)/0.04)] p-6 lg:col-span-8 lg:p-7">
-            <div className="mb-6 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500)/0.86)]">
-              <ShieldCheck className="h-4 w-4" />
+          <div className="theme-card-light rounded-3xl p-6 lg:col-span-8 lg:p-7">
+            <div className="mb-6 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">
+              <ShieldCheck className="h-4 w-4 shrink-0 text-[hsl(var(--brand-gold-600))]" aria-hidden />
               Trusted Navigation
             </div>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {navColumns.map((col) => (
                 <div key={col.title}>
-                  <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500)/0.88)]">
+                  <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">
                     {getColumnTitle(col.title)}
                   </h4>
                   <ul className="space-y-2.5">
@@ -194,8 +186,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mb-8 rounded-3xl border border-[hsl(var(--surface-glass)/0.14)] bg-[hsl(var(--surface-glass)/0.03)] p-6 lg:p-8">
-          <p className="mb-6 text-center text-xs uppercase tracking-[0.28em] text-foreground/58">
+        <div className="theme-card-light mb-8 rounded-3xl p-6 lg:p-8">
+          <p className="mb-6 text-center text-xs uppercase tracking-[0.28em] text-on-light-muted">
             Certifications & Ecosystem
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
@@ -216,29 +208,29 @@ const Footer = () => {
                     if (fallback) fallback.style.display = "inline";
                   }}
                 />
-                <span style={{ display: "none" }} className="text-xs font-medium text-foreground/70">
+                <span style={{ display: "none" }} className="text-xs font-medium text-on-light-secondary">
                   {cert.name}
                 </span>
               </motion.div>
             ))}
-            <span className="text-xs font-semibold text-foreground/70">MSAMB Empanelled</span>
-            <span className="h-4 w-px bg-[hsl(var(--surface-glass)/0.1)] hidden md:block" aria-hidden />
+            <span className="text-xs font-semibold text-on-light-secondary">MSAMB Empanelled</span>
+            <span className="hidden h-4 w-px bg-[hsl(var(--border-light))] md:block" aria-hidden />
             <a
               href="https://bhashikskill.co.in"
               target="_blank"
               rel="noreferrer"
-              className="text-xs text-foreground/52 transition-colors duration-300 hover:text-[hsl(var(--brand-gold-500))]"
+              className="text-xs text-on-light-muted transition-colors duration-300 hover:text-[hsl(var(--brand-purple-700))]"
             >
               Part of the Ewan Group - Bhashik Skill Development · bhashikskill.co.in
             </a>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-[hsl(var(--surface-glass)/0.1)] pt-6 text-xs text-foreground/56 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-[hsl(var(--border-light))] pt-6 text-xs text-on-light-muted sm:flex-row">
           <span>{t("footer.rights")}</span>
           <Link
             to="/privacy-policy"
-            className="rounded-full border border-[hsl(var(--surface-glass)/0.18)] bg-[hsl(var(--surface-glass)/0.04)] px-3 py-1.5 transition-colors hover:border-[hsl(var(--brand-gold-500)/0.38)] hover:text-[hsl(var(--brand-gold-500))]"
+            className="rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.92)] px-3 py-1.5 transition-colors hover:border-[hsl(var(--brand-purple-700)/0.35)] hover:text-[hsl(var(--brand-purple-700))]"
           >
             {t("footer.privacyPolicy")}
           </Link>

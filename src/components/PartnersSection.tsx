@@ -32,24 +32,27 @@ const PartnersSection = () => {
   const exploreHref = t("home.partners.exploreHref", { defaultValue: "/about-us#our-partners" });
 
   return (
-    <section className="py-20 lg:py-10 relative overflow-hidden section-navy">
-      <div className="absolute inset-0 dots-pattern opacity-15 pointer-events-none" />
+    <section className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-20 lg:py-10 theme-section-soft">
+      <div className="glow-orb glow-orb-purple pointer-events-none h-[460px] w-[460px] -top-36 -left-28 opacity-[0.11]" />
+      <div className="glow-orb glow-orb-gold pointer-events-none h-[380px] w-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
+      <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.18]" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container relative z-10 mx-auto px-6">
         <motion.div
-          className="text-center max-w-2xl mx-auto mb-12"
+          className="mx-auto mb-12 max-w-2xl text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card-gold text-primary text-xs font-medium tracking-wider uppercase mb-4">
-            <Handshake className="w-3.5 h-3.5" /> {t("home.partners.badge")}
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.94)] px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-[hsl(var(--brand-purple-700))] shadow-[0_10px_36px_hsl(var(--brand-navy-950)/0.07)]">
+            <Handshake className="h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-gold-600))]" aria-hidden />
+            {t("home.partners.badge")}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-foreground">
+          <h2 className="font-serif text-3xl font-bold text-on-light sm:text-4xl lg:text-5xl">
             {t("home.partners.titleBefore")}
             <span className="gradient-text italic">{t("home.partners.titleGradient")}</span>
           </h2>
-          <p className="mt-5 text-sm sm:text-base text-muted-foreground leading-relaxed">{t("home.partners.intro")}</p>
+          <p className="mt-5 text-sm leading-relaxed text-on-light-secondary sm:text-base">{t("home.partners.intro")}</p>
         </motion.div>
 
         <div className="grid gap-6 max-w-5xl mx-auto md:grid-cols-2 lg:grid-cols-2">
@@ -63,9 +66,9 @@ const PartnersSection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
                 whileHover={{ y: -6, scale: 1.02 }}
-                className="p-6 rounded-2xl glass-card-gold border border-primary/15 card-shine text-center"
+                className="theme-card-light card-shine rounded-2xl p-6 text-center"
               >
-                <div className="h-16 mb-4 flex items-center justify-center">
+                <div className="mb-4 flex h-16 items-center justify-center">
                   {src ? (
                     <img
                       src={src}
@@ -83,8 +86,8 @@ const PartnersSection = () => {
                     />
                   ) : null}
                 </div>
-                <h3 className="mb-2 text-lg font-serif font-bold gradient-text">{p.name}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
+                <h3 className="gradient-text mb-2 font-serif text-lg font-bold">{p.name}</h3>
+                <p className="text-sm leading-relaxed text-on-light-secondary">{p.desc}</p>
               </motion.div>
             );
           })}
@@ -98,7 +101,7 @@ const PartnersSection = () => {
         >
           <Link
             to={exploreHref}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary tracking-wide uppercase hover:underline"
+            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[hsl(var(--brand-purple-700))] hover:underline"
           >
             {t("home.partners.exploreCta")}
           </Link>

@@ -240,27 +240,36 @@ const AboutUs = () => {
       <SectionDivider variant="slant" />
 
       {/* Founders */}
-      <section id="the-founders" className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 py-24 text-white md:py-28 stitch-line stitch-line-bottom">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_72%_-10%,hsl(var(--brand-purple-700)/0.22),transparent_50%)]" />
+      <section
+        id="the-founders"
+        className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] px-6 py-24 theme-section-soft md:py-28 stitch-line stitch-line-bottom"
+      >
+        <div className="glow-orb glow-orb-purple pointer-events-none h-[460px] w-[460px] -top-36 -left-28 opacity-[0.11]" />
+        <div className="glow-orb glow-orb-gold pointer-events-none h-[380px] w-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.18]" />
         <img
           src={doodleSquiggle}
           alt=""
-          className="pointer-events-none absolute -left-12 top-40 z-0 hidden h-72 w-56 -scale-x-100 select-none opacity-25 xl:block"
+          className="pointer-events-none absolute -left-12 top-40 z-0 hidden h-72 w-56 -scale-x-100 select-none opacity-20 xl:block"
         />
         <div className="container relative z-10 mx-auto max-w-6xl">
           <header className="mb-14 text-center md:mb-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-500))]">The Founders</p>
-            <h2 className="mx-auto mt-4 max-w-3xl font-serif text-3xl font-bold md:text-4xl lg:text-5xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">The Founders</p>
+            <h2 className="mx-auto mt-4 max-w-3xl font-serif text-3xl font-bold text-on-light md:text-4xl lg:text-5xl">
               Leadership That Built the Corridors
             </h2>
-            <img src={doodleBridge} alt="" className="pointer-events-none mx-auto mt-6 h-14 w-[min(100%,480px)] max-w-none select-none opacity-40" />
+            <img
+              src={doodleBridge}
+              alt=""
+              className="pointer-events-none mx-auto mt-6 h-14 w-[min(100%,480px)] max-w-none select-none opacity-[0.32]"
+            />
           </header>
 
           {/* Soham */}
-          <article className="mb-14 rounded-2xl border border-[hsl(var(--surface-glass)/0.12)] bg-[hsl(var(--surface-glass)/0.04)] shadow-[0_20px_50px_rgba(0,0,0,0.2)] backdrop-blur-sm md:mb-16">
+          <article className="theme-card-light mb-14 rounded-2xl md:mb-16">
             <div className="flex flex-col gap-8 p-6 sm:p-8 md:gap-10 lg:flex-row lg:items-start lg:p-10">
               <div className="mx-auto w-full max-w-[320px] shrink-0 lg:mx-0 lg:max-w-[300px]">
-                <figure className="overflow-hidden rounded-2xl bg-[hsl(var(--brand-navy-950))] shadow-[inset_0_0_0_1px_hsl(var(--surface-glass)/0.12)]">
+                <figure className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-100))] shadow-[0_8px_28px_hsl(var(--brand-navy-950)/0.08)]">
                   <img
                     src="/Soham-Sir.jpg"
                     alt="Soham Kakade, Founder & CEO of Ewan Business Solutions"
@@ -271,22 +280,22 @@ const AboutUs = () => {
                 </figure>
               </div>
               <div className="min-w-0 flex-1">
-                <div className="border-b border-[hsl(var(--surface-glass)/0.1)] pb-6">
-                  <h3 className="font-serif text-2xl font-bold text-white sm:text-[1.75rem]">Soham Kakade</h3>
-                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))]">
+                <div className="border-b border-[hsl(var(--border-light))] pb-6">
+                  <h3 className="font-serif text-2xl font-bold text-on-light sm:text-[1.75rem]">Soham Kakade</h3>
+                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-600))]">
                     Founder & CEO
                   </p>
                 </div>
-                <p className="mt-6 text-sm leading-relaxed text-white/85 md:text-[0.9375rem]">{ENTITY_PARAGRAPH_B}</p>
-                <h4 className="mt-6 font-serif text-2xl font-bold leading-tight text-white md:text-[1.65rem]">
+                <p className="mt-6 text-sm leading-relaxed text-on-light-secondary md:text-[0.9375rem]">{ENTITY_PARAGRAPH_B}</p>
+                <h4 className="mt-6 font-serif text-2xl font-bold leading-tight text-on-light md:text-[1.65rem]">
                   10 Years in the Room Before Building the Firm.
                 </h4>
-                <p className="mt-5 text-sm leading-relaxed text-white/82 md:text-[0.9375rem]">
+                <p className="mt-5 text-sm leading-relaxed text-on-light-secondary md:text-[0.9375rem]">
                   Soham Kakade spent a decade interpreting confidential boardroom negotiations between global leaders and
                   their Asian counterparts - accumulating over 60,000 hours of simultaneous interpretation across
                   Mandarin, Cantonese, Japanese and ASEAN languages before founding Ewan.
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-white/74 md:text-[0.9375rem]">
+                <p className="mt-3 text-sm leading-relaxed text-on-light-secondary md:text-[0.9375rem]">
                   His foundation: a full Chinese Government scholarship at Beijing Language and Cultural University (BLCU),
                   one of the world&apos;s most rigorous language institutions. Since then: heads of state, Fortune 500
                   boardrooms, national textbooks, government export programs and geopolitical publications on the
@@ -306,7 +315,7 @@ const AboutUs = () => {
                   ].map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-[hsl(var(--surface-glass)/0.14)] bg-[hsl(var(--surface-glass)/0.08)] px-3 py-1 text-[11px] font-semibold tracking-[0.06em] text-[hsl(var(--brand-purple-500))]"
+                      className="rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.92)] px-3 py-1 text-[11px] font-semibold tracking-[0.06em] text-[hsl(var(--brand-purple-700))]"
                     >
                       {tag}
                     </span>
@@ -317,14 +326,14 @@ const AboutUs = () => {
                     href="https://www.linkedin.com/in/soham-kakade-77b2819b/"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--surface-glass)/0.22)] px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-white/10"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-card))] px-5 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-on-light transition hover:bg-[hsl(var(--surface-light-200)/0.65)]"
                   >
                     Connect on LinkedIn
                     <ArrowRight className="h-3.5 w-3.5" />
                   </a>
                   <Link
                     to="/ask-soham"
-                    className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+                    className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--brand-purple-500)/0.3)] bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-5 py-2 text-xs font-semibold text-white transition hover:brightness-105"
                   >
                     Ask Soham - Book a Free 15-Minute Call
                     <ArrowRight className="h-3.5 w-3.5" />
@@ -335,10 +344,10 @@ const AboutUs = () => {
           </article>
 
           {/* Sukhada */}
-          <article className="rounded-2xl border border-[hsl(var(--surface-glass)/0.12)] bg-[hsl(var(--surface-glass)/0.04)] shadow-[0_20px_50px_rgba(0,0,0,0.18)] backdrop-blur-sm">
+          <article className="theme-card-light rounded-2xl">
             <div className="flex flex-col gap-8 p-6 sm:p-8 md:gap-10 lg:flex-row-reverse lg:items-start lg:p-10">
               <div className="mx-auto w-full max-w-[320px] shrink-0 lg:mx-0 lg:max-w-[300px]">
-                <figure className="overflow-hidden rounded-2xl bg-[hsl(var(--brand-navy-950))] shadow-[inset_0_0_0_1px_hsl(var(--surface-glass)/0.12)]">
+                <figure className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-100))] shadow-[0_8px_28px_hsl(var(--brand-navy-950)/0.08)]">
                   <img
                     src="/Sukhada-maam.jpg"
                     alt="CMA Sukhada Kakade Bhalerao, Co-Founder & Director of Ewan Business Solutions"
@@ -349,29 +358,29 @@ const AboutUs = () => {
                 </figure>
               </div>
               <div className="min-w-0 flex-1">
-                <div className="border-b border-[hsl(var(--surface-glass)/0.1)] pb-6">
-                  <h3 className="font-serif text-2xl font-bold text-white sm:text-[1.75rem]">CMA Sukhada Kakade Bhalerao</h3>
-                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))]">
+                <div className="border-b border-[hsl(var(--border-light))] pb-6">
+                  <h3 className="font-serif text-2xl font-bold text-on-light sm:text-[1.75rem]">CMA Sukhada Kakade Bhalerao</h3>
+                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-600))]">
                     Co-Founder & Director
                   </p>
                 </div>
-                <h4 className="mt-6 font-serif text-2xl font-bold leading-tight text-white md:text-[1.65rem]">
+                <h4 className="mt-6 font-serif text-2xl font-bold leading-tight text-on-light md:text-[1.65rem]">
                   The Financial and Operational Intelligence Behind Ewan.
                 </h4>
-                <p className="mt-5 text-sm leading-relaxed text-white/82 md:text-[0.9375rem]">
+                <p className="mt-5 text-sm leading-relaxed text-on-light-secondary md:text-[0.9375rem]">
                   Sukhada Kakade Bhalerao is a Pune-based Certified Management Accountant (CMA), finance educator, and
                   entrepreneur. As Co-Founder and Director of Ewan Business Solutions, she provides the financial rigour
                   and operational structure that allows Ewan to deliver complex, multi-workstream mandates with
                   confidence. Her expertise spans financial planning, auditing, RBI/FEMA compliance advisory, entity
                   formation financial setup, internal controls, and client financial reporting.
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-white/74 md:text-[0.9375rem]">
+                <p className="mt-3 text-sm leading-relaxed text-on-light-secondary md:text-[0.9375rem]">
                   With over 15 years of experience - including her own cost accounting practice (est. 2010), faculty
                   roles, and committee contributions - she brings a discipline that is rarely found in language or market
                   entry firms: the ability to see the financial architecture of an expansion before it is built, and to ensure
                   clients move quickly without financial exposure.
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-white/74 md:text-[0.9375rem]">
+                <p className="mt-3 text-sm leading-relaxed text-on-light-secondary md:text-[0.9375rem]">
                   She is also Co-Founder and Director of Bhashik Skill Development, Ewan&apos;s sister institution focused on language training, vocational skills, and career development - ensuring a steady pipeline of skilled, job-ready language professionals for the industry.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
@@ -385,7 +394,7 @@ const AboutUs = () => {
                   ].map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-[hsl(var(--surface-glass)/0.14)] bg-[hsl(var(--surface-glass)/0.08)] px-3 py-1 text-[11px] font-semibold tracking-[0.06em] text-[hsl(var(--brand-gold-500))]"
+                      className="rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.92)] px-3 py-1 text-[11px] font-semibold tracking-[0.06em] text-[hsl(var(--brand-gold-600))]"
                     >
                       {tag}
                     </span>
