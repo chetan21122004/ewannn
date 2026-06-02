@@ -1,0 +1,202 @@
+import type { ReactNode } from "react";
+import { ArrowRight, BookOpen, Clock, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import PageLayout from "@/components/PageLayout";
+import { aug25Articles, gazetteArticlePath } from "@/data/languageGazetteIssues";
+import { absoluteUrl, articleSchema, breadcrumbSchema } from "@/lib/schemaHelpers";
+
+type LanguageGazetteArticleShellProps = {
+  slug: string;
+  title: string;
+  description: string;
+  canonicalPath: string;
+  category: string;
+  author: string;
+  datePublished: string;
+  readTime: string;
+  image: string;
+  issueLabel?: string;
+  children: ReactNode;
+};
+
+const LanguageGazetteArticleShell = ({
+  slug,
+  title,
+  description,
+  canonicalPath,
+  category,
+  author,
+  datePublished,
+  readTime,
+  image,
+  issueLabel = "Aug 2025",
+  children,
+}: LanguageGazetteArticleShellProps) => {
+  const pageUrl = absoluteUrl(canonicalPath);
+  const formattedDate = new Date(datePublished).toLocaleDateString("en-IN", { month: "long", day: "numeric", year: "numeric" });
+  const authorInitial = author.charAt(0).toUpperCase();
+  const relatedArticles = aug25Articles.filter((a) => a.slug !== slug);
+
+  const jsonLd = [
+    breadcrumbSchema(pageUrl, [
+      { name: "Home", path: "/" },
+      { name: "The Language Gazette", path: "/language-gazette/" },
+      { name: issueLabel, path: "/language-gazette/aug-25/" },
+      { name: title, path: canonicalPath },
+    ]),
+    articleSchema({
+      headline: title,
+      description,
+      canonicalPath,
+      datePublished,
+      dateModified: datePublished,
+    }),
+  ];
+
+  return (
+    <PageLayout title={`${title} | The Language Gazette | Ewan`} description={description} canonicalPath={canonicalPath} jsonLd={jsonLd}>
+      {/* Hero */}
+      <header className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))]">
+        <div className="absolute inset-0">
+          <img src={image} alt="" aria-hidden="true" className="h-full w-full object-cover opacity-35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950))] via-[hsl(var(--brand-navy-950)/0.85)] to-[hsl(var(--brand-navy-950)/0.6)]" />
+        </div>
+
+        <div className="container relative mx-auto px-6 pb-16 pt-8 md:pb-20 md:pt-10">
+          <nav aria-label="Breadcrumb" className="mb-10 flex flex-wrap items-center gap-1.5 text-sm text-white/60">
+            <Link to="/" className="transition hover:text-white">
+              Home
+            </Link>
+            <ChevronRight className="h-3.5 w-3.5 shrink-0" />
+            <Link to="/language-gazette" className="transition hover:text-white">
+              The Language Gazette
+            </Link>
+            <ChevronRight className="h-3.5 w-3.5 shrink-0" />
+            <Link to="/language-gazette/aug-25" className="transition hover:text-white">
+              {issueLabel}
+            </Link>
+            <ChevronRight className="h-3.5 w-3.5 shrink-0" />
+            <span className="text-white/90">{title}</span>
+          </nav>
+
+          <div className="max-w-4xl">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-navy-950))]">
+                {category}
+              </span>
+              <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white/80">
+                {issueLabel}
+              </span>
+            </div>
+
+            <h1 className="mt-6 font-serif text-4xl font-extrabold leading-[1.08] text-white md:text-6xl lg:text-[4.25rem]">{title}</h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75 md:text-xl">{description}</p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-5 border-t border-white/15 pt-8">
+              <div className="flex items-center gap-3">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[hsl(var(--brand-purple-700))] font-serif text-lg font-bold text-white">
+                  {authorInitial}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-white">{author}</p>
+                  <p className="text-xs text-white/55">Contributing Writer</p>
+                </div>
+              </div>
+              <span className="hidden h-8 w-px bg-white/15 sm:block" />
+              <time dateTime={datePublished} className="flex items-center gap-1.5 text-sm text-white/65">
+                <BookOpen className="h-4 w-4" />
+                {formattedDate}
+              </time>
+              <span className="flex items-center gap-1.5 text-sm text-white/65">
+                <Clock className="h-4 w-4" />
+                {readTime}
+              </span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Body */}
+      <article className="theme-section-light px-6 py-14 md:py-20">
+        <div className="container mx-auto max-w-3xl">
+          <div className="gazette-article-body [&_.gazette-lead:first-child]:first-letter:float-left [&_.gazette-lead:first-child]:first-letter:mr-3 [&_.gazette-lead:first-child]:first-letter:mt-1 [&_.gazette-lead:first-child]:first-letter:font-serif [&_.gazette-lead:first-child]:first-letter:text-6xl [&_.gazette-lead:first-child]:first-letter:font-bold [&_.gazette-lead:first-child]:first-letter:text-[hsl(var(--brand-gold-600))] [&_.gazette-lead:first-child]:first-letter:leading-none">
+            {children}
+          </div>
+
+          {/* Author card */}
+          <aside className="mt-16 flex gap-5 rounded-2xl border border-black/8 bg-white p-6 shadow-sm md:p-8">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-navy-950))] font-serif text-xl font-bold text-white">
+              {authorInitial}
+            </span>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-600))]">About the author</p>
+              <p className="mt-2 font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))]">{author}</p>
+              <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">
+                A contributor to <strong>The Language Gazette</strong> - EWAN&apos;s quarterly publication on language, culture, and human connection.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </article>
+
+      {/* Related + issue CTA */}
+      <section className="theme-section-soft px-6 py-16 md:py-20">
+        <div className="container mx-auto max-w-5xl">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-600))]">Continue Reading</p>
+              <h2 className="mt-2 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))]">More from {issueLabel}</h2>
+            </div>
+            <Link to="/language-gazette/aug-25" className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-700))]">
+              View full issue
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {relatedArticles.map((related) => (
+              <Link
+                key={related.slug}
+                to={gazetteArticlePath(related.slug)}
+                className="theme-card-light group flex overflow-hidden rounded-2xl transition hover:-translate-y-0.5"
+              >
+                <img src={related.image} alt="" className="hidden w-36 shrink-0 object-cover sm:block" />
+                <div className="flex flex-1 flex-col justify-center p-6">
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-600))]">{related.category}</p>
+                  <h3 className="mt-2 font-serif text-lg font-bold leading-snug text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))]">
+                    {related.title}
+                  </h3>
+                  <p className="mt-2 line-clamp-2 text-sm text-on-light-secondary">{related.excerpt}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <footer className="mt-12 rounded-2xl bg-[hsl(var(--brand-navy-950))] px-8 py-10 text-center md:px-12">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">The Language Gazette</p>
+            <p className="mt-3 font-serif text-2xl font-bold text-white">
+              This article first appeared in the {issueLabel} issue.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <Link
+                to="/language-gazette/aug-25"
+                className="inline-flex items-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))]"
+              >
+                Browse the full issue
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                to="/language-localization"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-sm font-semibold text-white/90"
+              >
+                Language &amp; Localization
+              </Link>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </PageLayout>
+  );
+};
+
+export default LanguageGazetteArticleShell;

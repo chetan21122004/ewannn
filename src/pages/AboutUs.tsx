@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
+import HomeAboutSection from "@/components/HomeAboutSection";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { ABOUT_US_FAQS, ENTITY_PARAGRAPH_A, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, personSoham, personSukhada } from "@/lib/schemaHelpers";
@@ -160,6 +161,8 @@ const AboutUs = () => {
       </section>
 
       <SectionDivider variant="wave" fromDark />
+
+      <HomeAboutSection />
 
       {/* About the Firm */}
       <section className="theme-section-soft relative overflow-hidden px-6 py-20 md:py-24 stitch-line stitch-line-bottom">

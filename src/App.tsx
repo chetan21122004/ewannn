@@ -20,6 +20,10 @@ import Industries from "./pages/Industries.tsx";
 import MarketEntryAudit from "./pages/MarketEntryAudit.tsx";
 import Insights from "./pages/Insights.tsx";
 import LanguageGazette from "./pages/LanguageGazette.tsx";
+import LanguageGazetteIssueAug25 from "./pages/language-gazette/LanguageGazetteIssueAug25.tsx";
+import LanguageGazetteWhenSadnessGaveMeJoy from "./pages/language-gazette/LanguageGazetteWhenSadnessGaveMeJoy.tsx";
+import LanguageGazetteMotherTongueComfort from "./pages/language-gazette/LanguageGazetteMotherTongueComfort.tsx";
+import LanguageGazetteBeBraveYouWomen from "./pages/language-gazette/LanguageGazetteBeBraveYouWomen.tsx";
 import InsightsArticleHowToEnterIndia from "./pages/insights/InsightsArticleHowToEnterIndia.tsx";
 import InsightsArticleChooseTranslationPartner from "./pages/insights/InsightsArticleChooseTranslationPartner.tsx";
 import InsightsArticleSimultaneousInterpretation from "./pages/insights/InsightsArticleSimultaneousInterpretation.tsx";
@@ -53,6 +57,10 @@ const App = () => (
           <Route path="/join-us" element={<JoinUs />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/language-gazette" element={<LanguageGazette />} />
+          <Route path="/language-gazette/aug-25" element={<LanguageGazetteIssueAug25 />} />
+          <Route path="/language-gazette/when-sadness-gave-me-joy" element={<LanguageGazetteWhenSadnessGaveMeJoy />} />
+          <Route path="/language-gazette/mother-tongue-greatest-comfort" element={<LanguageGazetteMotherTongueComfort />} />
+          <Route path="/language-gazette/be-brave-you-women" element={<LanguageGazetteBeBraveYouWomen />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/insights/how-to-enter-indian-market" element={<InsightsArticleHowToEnterIndia />} />
           <Route path="/insights/how-to-choose-translation-partner-india" element={<InsightsArticleChooseTranslationPartner />} />

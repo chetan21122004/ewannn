@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, MessageCircle, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -44,7 +44,7 @@ const mobileNavGroups: NavGroup[] = [
       { labelKey: "navMenu.marketEntry.liaisoning", href: "/liaisoning-facilitation" },
       { labelKey: "navMenu.marketEntry.marketResearch", href: "/market-research" },
       { labelKey: "navMenu.marketEntry.importExport", href: "/import-export" },
-      { labelKey: "navMenu.marketEntry.arogyaYatri", href: "https://www.arogyayatri.com/", external: true },
+      { labelKey: "navMenu.marketEntry.sano", href: "https://www.arogyayatri.com/", external: true },
       { labelKey: "navMenu.marketEntry.culturalKnowHow", href: "https://bhashikskill.co.in", external: true },
     ],
   },
@@ -107,7 +107,7 @@ const desktopNavGroups: DesktopNavGroup[] = [
       { labelKey: "navMenu.marketEntry.liaisoning", href: "/liaisoning-facilitation" },
       { labelKey: "navMenu.marketEntry.marketResearch", href: "/market-research" },
       { labelKey: "navMenu.marketEntry.importExport", href: "/import-export" },
-      { labelKey: "navMenu.marketEntry.arogyaYatri", href: "https://www.arogyayatri.com/", external: true },
+      { labelKey: "navMenu.marketEntry.sano", href: "https://www.arogyayatri.com/", external: true },
       { labelKey: "navMenu.marketEntry.culturalKnowHow", href: "https://bhashikskill.co.in", external: true },
     ],
   },
@@ -193,12 +193,19 @@ const Navbar = () => {
     return pathname === base || pathname.startsWith(`${base}/`);
   };
 
+  const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 overflow-visible nav-glass">
       <div className="container mx-auto flex items-center justify-between gap-4 overflow-visible px-6 py-3">
 
         {/* Logo */}
-        <Link to="/" className="shrink-0">
+        <Link to="/" className="shrink-0" onClick={handleLogoClick}>
           <img src="/logo.png" alt="Ewan Business Solutions" className="h-12 w-auto object-contain" />
         </Link>
 

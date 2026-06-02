@@ -17,7 +17,7 @@ const enCommon = {
       marketResearch: "Market Research",
       importExport: "Import, Procurement & Export",
       marketAudit: "Global Market Entry Audit",
-      arogyaYatri: "Arogya Yatri ↗",
+      sano: "SANO ↗",
       culturalKnowHow: "Cultural & Language Know-How ↗",
     },
     language: {
@@ -62,7 +62,7 @@ const enCommon = {
     rights: "© 2026 Ewan Business Solutions. All rights reserved.",
     privacyPolicy: "Privacy Policy",
     caseStudies: "Case Studies",
-    arogyaYatri: "Arogya Yatri",
+    sano: "SANO",
   },
   seo: {
     marketEntry: {
@@ -133,8 +133,8 @@ const enCommon = {
       ctaMarketEntry: "Explore Market Entry",
       ctaLanguageQuote: "Get a Language Quote",
       ctaAskSoham: "Ask Soham - 15 Min Free",
-      floatingCard1Badge: "On-Ground Experience",
-      floatingCard1Title: "60,000+ Hours of Interpretation",
+      floatingCard1Badge: "Cross-Border Expertise",
+      floatingCard1Title: "10+ Sectors · 125+ Languages",
       floatingCard2Label: "Languages",
       floatingCard2Value: "125+",
     },
@@ -162,27 +162,23 @@ const enCommon = {
       badge: "What We Do",
       titlePrefix: "Two Capabilities.",
       titleHighlight: "One Partner.",
-      subtitle:
-        "Most firms do one or the other. We do both - and that combination is exactly what cross-border expansion requires.",
       learnMore: "Learn More",
-      footerPrefix: "Most firms do one or the other.",
-      footerHighlight: "We do both.",
       blocks: [
         {
           id: "market-entry",
           label: "Market Entry & Operations",
-          title: "Full-cycle market entry",
           desc: "We manage the full complexity of entering a new market - regulatory navigation, entity formation, executive liaison and on-ground operations. For companies moving between India and Asia, we are the partner already in the room.",
           features: [],
           accent: "gold",
+          href: "/market-entry",
         },
         {
           id: "language",
           label: "Language & Localization",
-          title: "Accountable language delivery",
           desc: "125+ languages. ISO 9001:2015 certified. Native expertise. From simultaneous interpretation in Fortune 500 boardrooms to certified document translation and website localization - every word is accountable.",
           features: [],
           accent: "purple",
+          href: "/language-localization",
         },
       ],
     },
@@ -259,12 +255,6 @@ const enCommon = {
         { name: "Education", code: "09", accent: "gold" },
         { name: "Media & OTT", code: "10", accent: "cyan" },
       ],
-      footerStats: [
-        { value: "10+", label: "Sectors Covered" },
-        { value: "15+", label: "Countries" },
-        { value: "125+", label: "Languages" },
-        { value: "60K+", label: "Hours Delivered" },
-      ],
     },
     testimonials: {
       badge: "Testimonials",
@@ -306,7 +296,7 @@ const enCommon = {
       titlePrefix: "Recognised by the",
       titleHighlight: "Consulate General of the People's Republic of China",
       subtitle:
-        "In a formal letter of recognition, the Consulate General acknowledged Ewan's contribution to strengthening India-China agricultural and trade relations - noting that over 1,200 farmers and 800 hectares of farmland would benefit from the work. This is the kind of institutional trust that takes years to build and cannot be replicated overnight.",
+        "In a formal letter of recognition, the Consulate General acknowledged Ewan's contribution to strengthening India-China agricultural and trade relations. This is the kind of institutional trust that takes years to build and cannot be replicated overnight.",
       letters: [
         {
           src: "/Ewan-Consulate-experience-letter-page-001-min.jpg",
@@ -318,10 +308,6 @@ const enCommon = {
           alt: "Chinese Consulate appreciation letter page 2",
           label: "Page 2 · English Translation",
         },
-      ],
-      impacts: [
-        { value: 1200, suffix: "+", label: "Farmers Impacted" },
-        { value: 800, suffix: "", label: "Hectares Covered" },
       ],
     },
     founders: {

@@ -41,7 +41,7 @@ const CaseStudySection = () => {
   return (
     <section
       id="media"
-      className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-10 lg:py-32 theme-section-soft"
+      className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-8 lg:py-16 theme-section-soft"
     >
       <span id="case-study" className="sr-only">{t("home.caseStudy.srLabel")}</span>
       <div className="glow-orb glow-orb-purple w-[460px] h-[460px] -top-36 -left-28 opacity-[0.11]" />

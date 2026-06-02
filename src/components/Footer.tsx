@@ -1,9 +1,7 @@
-import { motion } from "framer-motion";
-import { Globe2, Mail, ShieldCheck } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-/* ─── Footer Nav Columns ─────────────────────────────────────────────── */
 type FooterLink = { label: string; href: string; external?: boolean };
 type FooterColumn = { title: string; links: FooterLink[] };
 
@@ -26,7 +24,7 @@ const navColumns: FooterColumn[] = [
       { label: "About Us", href: "/about-us" },
       { label: "Join Us", href: "/join-us" },
       { label: "Case Studies", href: "/media#case-study" },
-      { label: "Arogya Yatri", href: "https://www.arogyayatri.com/", external: true },
+      { label: "SANO", href: "https://www.arogyayatri.com/", external: true },
       { label: "Privacy Policy", href: "/privacy-policy" },
     ],
   },
@@ -48,45 +46,35 @@ const navColumns: FooterColumn[] = [
   },
 ];
 
-/* ─── Certifications ─────────────────────────────────────────────────── */
 const certifications = [
-  { name: "ISO 9001:2015 Certified", src: "/allLogos/ISO-9001.png", alt: "ISO 9001:2015 certification logo" },
-  { name: "CITLoB Member", src: "/allLogos/CITLoB-logo-2023.jpg", alt: "CITLoB logo" },
-  { name: "Bhashini Initiative Partner", src: "/allLogos/Bhashini-Logo.png", alt: "Bhashini initiative logo" },
+  { name: "ISO 9001:2015", src: "/allLogos/ISO-9001.png", alt: "ISO 9001:2015 certification logo" },
+  { name: "CITLoB", src: "/allLogos/CITLoB-logo-2023.jpg", alt: "CITLoB logo" },
+  { name: "Bhashini", src: "/allLogos/Bhashini-Logo.png", alt: "Bhashini initiative logo" },
 ];
 
-/* ─── Social Links ───────────────────────────────────────────────────── */
 const socialLinks = [
-  { label: "Facebook", href: "https://www.facebook.com/EwanBusinessSolutions?mibextid=ZbWKwL" },
-  { label: "X", href: "https://x.com/ewanbusiness" },
-  { label: "Instagram", href: "https://www.instagram.com/ewanbizsolution/" },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/ewan-business-solutions/" },
   { label: "YouTube", href: "https://www.youtube.com/@EWAN-SSK" },
+  { label: "Instagram", href: "https://www.instagram.com/ewanbizsolution/" },
+  { label: "X", href: "https://x.com/ewanbusiness" },
 ];
 
-const coverageRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
-
-/* ─── Reusable footer link renderer ─────────────────────────────────── */
 const FooterNavLink = ({ link }: { link: FooterLink }) =>
   link.external ? (
     <a
       href={link.href}
       target="_blank"
       rel="noreferrer"
-      className="text-sm text-on-light-secondary transition-colors hover:text-[hsl(var(--brand-purple-700))]"
+      className="text-sm text-white/60 transition-colors hover:text-white"
     >
       {link.label}
     </a>
   ) : (
-    <Link
-      to={link.href}
-      className="text-sm text-on-light-secondary transition-colors hover:text-[hsl(var(--brand-purple-700))]"
-    >
+    <Link to={link.href} className="text-sm text-white/60 transition-colors hover:text-white">
       {link.label}
     </Link>
   );
 
-/* ─── Footer Component ───────────────────────────────────────────────── */
 const Footer = () => {
   const { t } = useTranslation();
 
@@ -106,7 +94,7 @@ const Footer = () => {
     if (label === "The Language Gazette") return t("footer.languageGazette");
     if (label === "Contact Us") return t("footer.contactUs");
     if (label === "Case Studies") return t("footer.caseStudies");
-    if (label === "Arogya Yatri") return t("footer.arogyaYatri");
+    if (label === "SANO") return t("footer.sano");
     if (label === "Privacy Policy") return t("footer.privacyPolicy");
     if (label === "Ask Soham - 15 Min Free") return t("footer.askSohamCta");
     if (label === "Download the 2026 Market Entry Audit") return t("footer.marketEntryAudit");
@@ -114,42 +102,27 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden border-t border-[hsl(var(--border-light)/0.85)] theme-section-soft">
-      <div className="glow-orb glow-orb-purple pointer-events-none h-[460px] w-[460px] -top-36 -left-28 opacity-[0.11]" />
-      <div className="glow-orb glow-orb-gold pointer-events-none h-[380px] w-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
-      <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.18]" />
-
-      <div className="container relative z-10 mx-auto px-6 py-14 lg:py-20">
-        <div className="mb-12 grid gap-10 lg:grid-cols-12">
-          <div className="theme-card-light rounded-3xl p-6 lg:col-span-4 lg:p-7">
-            <motion.img src="/logo.png" alt="EWAN Business Solutions logo" className="mb-4 h-16 w-auto object-contain" whileHover={{ scale: 1.03 }} />
-
-            <p className="mb-4 max-w-sm text-sm leading-relaxed text-on-light-secondary">{t("footer.tagline")}</p>
-
+    <footer className="border-t border-[hsl(var(--border-light))] bg-[hsl(var(--brand-navy-950))] text-white">
+      <div className="container mx-auto px-6 py-10 lg:py-12">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-4">
+            <img src="/logo.png" alt="EWAN Business Solutions logo" className="mb-4 h-12 w-auto brightness-0 invert" />
+            <p className="max-w-xs text-sm leading-relaxed text-white/65">{t("footer.tagline")}</p>
             <a
               href="mailto:info@ewan.co.in"
-              className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.94)] px-4 py-2 text-sm text-[hsl(var(--brand-purple-700))] shadow-[0_8px_24px_hsl(var(--brand-navy-950)/0.06)] transition-colors hover:bg-[hsl(var(--surface-light-200)/0.5)]"
+              className="mt-4 inline-flex items-center gap-2 text-sm text-[hsl(var(--brand-gold-500))] transition-colors hover:text-white"
             >
-              <Mail className="h-4 w-4 shrink-0" aria-hidden />
+              <Mail className="h-4 w-4" />
               info@ewan.co.in
             </a>
-
-            <div className="mt-6 grid gap-2">
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-on-light-muted">
-                <Globe2 className="h-3.5 w-3.5 shrink-0" aria-hidden />
-                Operational Regions
-              </span>
-              <p className="text-sm text-on-light-secondary">{coverageRegions.join(" · ")}</p>
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-5 flex flex-wrap gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.92)] px-3 py-1.5 text-xs font-medium text-on-light-secondary transition-colors hover:border-[hsl(var(--brand-purple-700)/0.35)] hover:text-[hsl(var(--brand-purple-700))]"
+                  className="text-xs text-white/50 transition-colors hover:text-white"
                 >
                   {social.label}
                 </a>
@@ -157,81 +130,34 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="theme-card-light rounded-3xl p-6 lg:col-span-8 lg:p-7">
-            <div className="mb-6 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">
-              <ShieldCheck className="h-4 w-4 shrink-0 text-[hsl(var(--brand-gold-600))]" aria-hidden />
-              Trusted Navigation
-            </div>
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {navColumns.map((col) => (
-                <div key={col.title}>
-                  <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">
-                    {getColumnTitle(col.title)}
-                  </h4>
-                  <ul className="space-y-2.5">
-                    {col.links.map((link) => (
-                      <li key={link.label}>
-                        <FooterNavLink
-                          link={{
-                            ...link,
-                            label: getLinkLabel(link.label),
-                          }}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="theme-card-light mb-8 rounded-3xl p-6 lg:p-8">
-          <p className="mb-6 text-center text-xs uppercase tracking-[0.28em] text-on-light-muted">
-            Certifications & Ecosystem
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-            {certifications.map((cert) => (
-              <motion.div
-                key={cert.name}
-                whileHover={{ opacity: 1, y: -2 }}
-                className="flex items-center justify-center duration-300"
-              >
-                <img
-                  src={cert.src}
-                  alt={cert.alt}
-                  loading="lazy"
-                  className="h-8 w-auto max-w-[130px] object-contain"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                    const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;
-                    if (fallback) fallback.style.display = "inline";
-                  }}
-                />
-                <span style={{ display: "none" }} className="text-xs font-medium text-on-light-secondary">
-                  {cert.name}
-                </span>
-              </motion.div>
+          <div className="grid gap-8 sm:grid-cols-2 lg:col-span-8 lg:grid-cols-4">
+            {navColumns.map((col) => (
+              <div key={col.title}>
+                <h4 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))]">
+                  {getColumnTitle(col.title)}
+                </h4>
+                <ul className="space-y-2">
+                  {col.links.map((link) => (
+                    <li key={link.label}>
+                      <FooterNavLink link={{ ...link, label: getLinkLabel(link.label) }} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-            <span className="text-xs font-semibold text-on-light-secondary">MSAMB Empanelled</span>
-            <span className="hidden h-4 w-px bg-[hsl(var(--border-light))] md:block" aria-hidden />
-            <a
-              href="https://bhashikskill.co.in"
-              target="_blank"
-              rel="noreferrer"
-              className="text-xs text-on-light-muted transition-colors duration-300 hover:text-[hsl(var(--brand-purple-700))]"
-            >
-              Part of the Ewan Group - Bhashik Skill Development · bhashikskill.co.in
-            </a>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-[hsl(var(--border-light))] pt-6 text-xs text-on-light-muted sm:flex-row">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-6 border-t border-white/10 pt-8">
+          {certifications.map((cert) => (
+            <img key={cert.name} src={cert.src} alt={cert.alt} loading="lazy" className="h-7 w-auto max-w-[100px] object-contain opacity-80 brightness-0 invert" />
+          ))}
+          <span className="text-xs text-white/40">MSAMB Empanelled</span>
+        </div>
+
+        <div className="mt-6 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/45 sm:flex-row">
           <span>{t("footer.rights")}</span>
-          <Link
-            to="/privacy-policy"
-            className="rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.92)] px-3 py-1.5 transition-colors hover:border-[hsl(var(--brand-purple-700)/0.35)] hover:text-[hsl(var(--brand-purple-700))]"
-          >
+          <Link to="/privacy-policy" className="transition-colors hover:text-white/80">
             {t("footer.privacyPolicy")}
           </Link>
         </div>

@@ -4,8 +4,6 @@ import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestion
 import { HOMEPAGE_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, webSiteWithSearchAction } from "@/lib/schemaHelpers";
 import HeroSection from "@/components/HeroSection";
-import HomeAboutSection from "@/components/HomeAboutSection";
-import StatsSection from "@/components/StatsSection";
 import ServicesSection from "@/components/ServicesSection";
 import ClientLogosSection from "@/components/ClientLogosSection";
 import CaseStudySection from "@/components/CaseStudySection";
@@ -14,9 +12,7 @@ import InstitutionalTrustSection from "@/components/InstitutionalTrustSection";
 import PartnersSection from "@/components/PartnersSection";
 import SectorsSection from "@/components/SectorsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import FoundersSection from "@/components/FoundersSection";
 import ContactSection from "@/components/ContactSection";
-import EntityParagraphHomeBand from "@/components/EntityParagraphHomeBand";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import CursorGlow from "@/components/CursorGlow";
@@ -37,8 +33,6 @@ const Index = () => {
       <CursorGlow />
       <Navbar />
       <HeroSection />
-      <HomeAboutSection />
-      <StatsSection />
       <ServicesSection />
       <ClientLogosSection />
       <CaseStudySection />
@@ -47,10 +41,8 @@ const Index = () => {
       <PartnersSection />
       <SectorsSection />
       <TestimonialsSection />
-      <FoundersSection />
-      <AeoFrequentlyAskedQuestions items={HOMEPAGE_FAQS} className="theme-section-light px-6 py-16 md:py-20" />
+      <AeoFrequentlyAskedQuestions items={HOMEPAGE_FAQS} className="theme-section-light px-6 py-10 md:py-14" />
       <ContactSection />
-      <EntityParagraphHomeBand />
       <Footer />
     </div>
   );

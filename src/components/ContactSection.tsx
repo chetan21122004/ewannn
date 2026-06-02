@@ -20,7 +20,7 @@ const ContactSection = () => {
     defaultValue: defaultContactPillars,
   }) as string[];
   return (
-    <section id="contact" className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-14 lg:py-28 theme-section-soft">
+    <section id="contact" className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-10 lg:py-16 theme-section-soft">
       <div className="glow-orb glow-orb-purple pointer-events-none h-[460px] w-[460px] -top-36 -left-28 opacity-[0.11]" />
       <div className="glow-orb glow-orb-gold pointer-events-none h-[380px] w-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
       <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.18]" />

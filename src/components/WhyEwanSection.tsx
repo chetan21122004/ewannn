@@ -46,7 +46,7 @@ const WhyEwanSection = () => {
   }) as Array<{ title: string; desc: string }>;
   const differentiatorIcons = [Layers, Award, Landmark] as const;
   return (
-    <section id="why-ewan" className="py-10 lg:py-32 relative overflow-hidden theme-section-soft">
+    <section id="why-ewan" className="py-8 lg:py-16 relative overflow-hidden theme-section-soft">
       <div className="glow-orb glow-orb-purple w-[360px] h-[360px] top-20 right-10 opacity-8" />
       <div className="glow-orb glow-orb-gold w-[300px] h-[300px] -bottom-16 left-10 opacity-8" />
       <div className="absolute inset-0 theme-grid-overlay-light opacity-18 pointer-events-none" />
