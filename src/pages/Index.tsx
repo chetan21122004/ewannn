@@ -21,7 +21,7 @@ const Index = () => {
   const homeJsonLd = [webSiteWithSearchAction(), faqPageSchema(absoluteUrl("/"), HOMEPAGE_FAQS)];
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative pb-[calc(4rem+env(safe-area-inset-bottom,0px))] lg:pb-0">
       <Seo
         title="Cross-Border Market Partner for India & Asia | Ewan Business Solutions"
         description="Ewan helps foreign companies enter India and Indian companies expand into Asia. Language services, market entry, and on-ground operations - one trusted partner."

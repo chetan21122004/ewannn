@@ -77,7 +77,7 @@ const HeroSection = () => {
 
       <div className="absolute inset-0 grain-overlay pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10 pt-28 pb-16">
+      <div className="container mx-auto px-6 relative z-10 pt-20 pb-16 lg:pt-28">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           <motion.div variants={staggerContainer} initial="hidden" animate="visible">
             {/* Pre-headline */}
