@@ -21,7 +21,7 @@ const LanguageGazetteBeBraveYouWomen = () => (
     canonicalPath={CANONICAL}
     category="Essay"
     author="Meera Kathija"
-    datePublished="2025-08-01"
+    datePublished="2025-04-01"
     readTime="8 min read"
     image="/stitch/language-gazette/article-operations.jpg"
   >

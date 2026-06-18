@@ -15,7 +15,7 @@ const LanguageGazetteMotherTongueComfort = () => (
     canonicalPath={CANONICAL}
     category="Culture"
     author="EWAN Contributor"
-    datePublished="2025-08-01"
+    datePublished="2025-04-01"
     readTime="6 min read"
     image="/stitch/language-gazette/article-market-entry.jpg"
   >

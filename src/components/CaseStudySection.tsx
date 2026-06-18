@@ -78,7 +78,6 @@ const CaseStudySection = () => {
             <div className="absolute -inset-4 rounded-3xl bg-[hsl(var(--surface-light-200)/0.9)] blur-2xl" />
             <div className="relative overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] shadow-premium-lg">
               <img src={factoryImg} alt={t("home.caseStudy.imageAlt")} className="h-[400px] w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--surface-light-card)/0.85)] via-transparent to-transparent" />
             </div>
           </motion.div>
 

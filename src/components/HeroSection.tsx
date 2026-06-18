@@ -164,7 +164,6 @@ const HeroSection = () => {
                   width={800}
                   height={500}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--surface-light-card)/0.85)] via-transparent to-transparent" />
               </div>
 
               <motion.div

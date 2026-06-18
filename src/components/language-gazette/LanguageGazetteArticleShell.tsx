@@ -2,7 +2,8 @@ import type { ReactNode } from "react";
 import { ArrowRight, BookOpen, Clock, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
-import { aug25Articles, gazetteArticlePath } from "@/data/languageGazetteIssues";
+import GazetteCoverImage from "@/components/language-gazette/GazetteCoverImage";
+import { latestGazetteIssue, gazetteArticlePath } from "@/data/languageGazetteIssues";
 import { absoluteUrl, articleSchema, breadcrumbSchema } from "@/lib/schemaHelpers";
 
 type LanguageGazetteArticleShellProps = {
@@ -19,6 +20,9 @@ type LanguageGazetteArticleShellProps = {
   children: ReactNode;
 };
 
+const issue = latestGazetteIssue;
+const issuePath = issue.path.replace(/\/$/, "");
+
 const LanguageGazetteArticleShell = ({
   slug,
   title,
@@ -29,19 +33,19 @@ const LanguageGazetteArticleShell = ({
   datePublished,
   readTime,
   image,
-  issueLabel = "Aug 2025",
+  issueLabel = issue.shortLabel,
   children,
 }: LanguageGazetteArticleShellProps) => {
   const pageUrl = absoluteUrl(canonicalPath);
   const formattedDate = new Date(datePublished).toLocaleDateString("en-IN", { month: "long", day: "numeric", year: "numeric" });
   const authorInitial = author.charAt(0).toUpperCase();
-  const relatedArticles = aug25Articles.filter((a) => a.slug !== slug);
+  const relatedArticles = issue.articles.filter((a) => a.slug !== slug);
 
   const jsonLd = [
     breadcrumbSchema(pageUrl, [
       { name: "Home", path: "/" },
       { name: "The Language Gazette", path: "/language-gazette/" },
-      { name: issueLabel, path: "/language-gazette/aug-25/" },
+      { name: issue.label, path: issue.path },
       { name: title, path: canonicalPath },
     ]),
     articleSchema({
@@ -55,10 +59,9 @@ const LanguageGazetteArticleShell = ({
 
   return (
     <PageLayout title={`${title} | The Language Gazette | Ewan`} description={description} canonicalPath={canonicalPath} jsonLd={jsonLd}>
-      {/* Hero */}
       <header className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))]">
         <div className="absolute inset-0">
-          <img src={image} alt="" aria-hidden="true" className="h-full w-full object-cover opacity-35" />
+          <GazetteCoverImage src={image} alt="" className="h-full w-full object-cover opacity-35" />
           <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950))] via-[hsl(var(--brand-navy-950)/0.85)] to-[hsl(var(--brand-navy-950)/0.6)]" />
         </div>
 
@@ -72,7 +75,7 @@ const LanguageGazetteArticleShell = ({
               The Language Gazette
             </Link>
             <ChevronRight className="h-3.5 w-3.5 shrink-0" />
-            <Link to="/language-gazette/aug-25" className="transition hover:text-white">
+            <Link to={issuePath} className="transition hover:text-white">
               {issueLabel}
             </Link>
             <ChevronRight className="h-3.5 w-3.5 shrink-0" />
@@ -116,15 +119,15 @@ const LanguageGazetteArticleShell = ({
         </div>
       </header>
 
-      {/* Body */}
-      <article className="theme-section-light px-6 py-14 md:py-20">
+      <article className="gazette-paper px-6 py-14 md:py-20">
         <div className="container mx-auto max-w-3xl">
-          <div className="gazette-article-body [&_.gazette-lead:first-child]:first-letter:float-left [&_.gazette-lead:first-child]:first-letter:mr-3 [&_.gazette-lead:first-child]:first-letter:mt-1 [&_.gazette-lead:first-child]:first-letter:font-serif [&_.gazette-lead:first-child]:first-letter:text-6xl [&_.gazette-lead:first-child]:first-letter:font-bold [&_.gazette-lead:first-child]:first-letter:text-[hsl(var(--brand-gold-600))] [&_.gazette-lead:first-child]:first-letter:leading-none">
-            {children}
+          <div className="gazette-article-page rounded-[1.25rem] border border-[hsl(var(--brand-navy-950)/0.08)] bg-white px-8 py-10 shadow-[0_12px_48px_-20px_rgba(15,23,42,0.18)] md:px-12 md:py-14">
+            <div className="gazette-article-body [&_.gazette-lead:first-child]:first-letter:float-left [&_.gazette-lead:first-child]:first-letter:mr-3 [&_.gazette-lead:first-child]:first-letter:mt-1 [&_.gazette-lead:first-child]:first-letter:font-serif [&_.gazette-lead:first-child]:first-letter:text-6xl [&_.gazette-lead:first-child]:first-letter:font-bold [&_.gazette-lead:first-child]:first-letter:text-[hsl(var(--brand-gold-600))] [&_.gazette-lead:first-child]:first-letter:leading-none">
+              {children}
+            </div>
           </div>
 
-          {/* Author card */}
-          <aside className="mt-16 flex gap-5 rounded-2xl border border-black/8 bg-white p-6 shadow-sm md:p-8">
+          <aside className="mt-10 flex gap-5 rounded-2xl border border-[hsl(var(--brand-navy-950)/0.08)] bg-white p-6 shadow-sm md:p-8">
             <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-navy-950))] font-serif text-xl font-bold text-white">
               {authorInitial}
             </span>
@@ -139,15 +142,14 @@ const LanguageGazetteArticleShell = ({
         </div>
       </article>
 
-      {/* Related + issue CTA */}
-      <section className="theme-section-soft px-6 py-16 md:py-20">
+      <section className="gazette-paper-section px-6 py-16 md:py-20">
         <div className="container mx-auto max-w-5xl">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-600))]">Continue Reading</p>
               <h2 className="mt-2 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))]">More from {issueLabel}</h2>
             </div>
-            <Link to="/language-gazette/aug-25" className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-700))]">
+            <Link to={issuePath} className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-700))]">
               View full issue
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -158,9 +160,9 @@ const LanguageGazetteArticleShell = ({
               <Link
                 key={related.slug}
                 to={gazetteArticlePath(related.slug)}
-                className="theme-card-light group flex overflow-hidden rounded-2xl transition hover:-translate-y-0.5"
+                className="gazette-article-card group flex overflow-hidden rounded-2xl border border-[hsl(var(--brand-navy-950)/0.08)] bg-white transition hover:-translate-y-0.5"
               >
-                <img src={related.image} alt="" className="hidden w-36 shrink-0 object-cover sm:block" />
+                <GazetteCoverImage src={related.image} alt="" className="hidden w-36 shrink-0 object-cover sm:block" />
                 <div className="flex flex-1 flex-col justify-center p-6">
                   <p className="text-xs font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-600))]">{related.category}</p>
                   <h3 className="mt-2 font-serif text-lg font-bold leading-snug text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))]">
@@ -174,12 +176,10 @@ const LanguageGazetteArticleShell = ({
 
           <footer className="mt-12 rounded-2xl bg-[hsl(var(--brand-navy-950))] px-8 py-10 text-center md:px-12">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">The Language Gazette</p>
-            <p className="mt-3 font-serif text-2xl font-bold text-white">
-              This article first appeared in the {issueLabel} issue.
-            </p>
+            <p className="mt-3 font-serif text-2xl font-bold text-white">This article first appeared in the {issue.label} issue.</p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <Link
-                to="/language-gazette/aug-25"
+                to={issuePath}
                 className="inline-flex items-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))]"
               >
                 Browse the full issue

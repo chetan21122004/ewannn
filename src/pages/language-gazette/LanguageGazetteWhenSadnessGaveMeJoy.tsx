@@ -14,7 +14,7 @@ const LanguageGazetteWhenSadnessGaveMeJoy = () => (
     canonicalPath={CANONICAL}
     category="Poetry"
     author="Armaan"
-    datePublished="2025-08-01"
+    datePublished="2025-04-01"
     readTime="3 min read"
     image="/stitch/language-gazette/article-cultural-iq.jpg"
   >
