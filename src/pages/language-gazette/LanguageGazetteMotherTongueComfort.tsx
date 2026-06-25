@@ -14,7 +14,7 @@ const LanguageGazetteMotherTongueComfort = () => (
     description={DESCRIPTION}
     canonicalPath={CANONICAL}
     category="Culture"
-    author="EWAN Contributor"
+    author="UVAN Contributor"
     datePublished="2025-04-01"
     readTime="6 min read"
     image="/stitch/language-gazette/article-market-entry.jpg"
@@ -88,7 +88,7 @@ const LanguageGazetteMotherTongueComfort = () => (
       <p className="mt-6">
         It is the language that saved me, the language that comforts me, and the language that I will always be proud to speak. At{" "}
         <Link to="/language-localization/" className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
-          Ewan
+          UVAN
         </Link>
         , we see every day how mother-tongue depth unlocks trust in business, healthcare, and cross-border work - because the right
         words, in the right language, reach people where policy and pitch decks cannot.

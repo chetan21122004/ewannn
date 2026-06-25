@@ -112,8 +112,8 @@ const whoThisIsFor = [
 const GlobalTalkies = () => {
   return (
     <PageLayout
-      title="Global Talkies - Multilingual Film Distribution & Media Localisation | Ewan Business Solutions"
-      description="Global Talkies by Ewan - multilingual film distribution, OTT content localisation, subtitling, dubbing, and cultural adaptation for Indian and international content crossing language borders."
+      title="Global Talkies - Multilingual Film Distribution & Media Localisation | UVAN"
+      description="Global Talkies by UVAN - multilingual film distribution, OTT content localisation, subtitling, dubbing, and cultural adaptation for Indian and international content crossing language borders."
       canonicalPath="/global-talkies/"
       jsonLd={globalTalkiesLd}
     >
@@ -139,7 +139,7 @@ const GlobalTalkies = () => {
                 <span className="text-[hsl(var(--brand-gold-500))]">Every Language.</span>
               </h1>
               <p className="mt-8 max-w-3xl text-lg leading-relaxed text-white/78">
-                Global Talkies is Ewan's media and film services vertical - built for content creators, distributors,
+                Global Talkies is UVAN's media and film services vertical - built for content creators, distributors,
                 OTT platforms, and production companies that want to move stories across language barriers without losing
                 what makes them powerful.
               </p>
@@ -190,7 +190,7 @@ const GlobalTalkies = () => {
             </h2>
             <div className="mt-4 grid gap-4 text-sm leading-relaxed text-[#3d3859] md:grid-cols-2">
               <p>
-                Global Talkies exists to remove it. We combine Ewan's deep multilingual capability - 125+ languages,
+                Global Talkies exists to remove it. We combine UVAN's deep multilingual capability - 125+ languages,
                 native-expert translators, cultural intelligence built across 10 years in the India-Asia corridor - with
                 a focused understanding of what media localisation actually requires: not just linguistic accuracy, but
                 emotional and cultural fidelity.
@@ -248,7 +248,7 @@ const GlobalTalkies = () => {
               <h2 className="font-serif text-5xl font-bold tracking-tight">Language Corridors - Media</h2>
             </div>
             <p className="max-w-md font-light leading-relaxed text-white/70">
-              Our deepest media localisation experience sits in the corridors that mirror Ewan's broader expertise.
+              Our deepest media localisation experience sits in the corridors that mirror UVAN's broader expertise.
             </p>
           </div>
           <div className="flex flex-col space-y-1">
@@ -304,7 +304,7 @@ const GlobalTalkies = () => {
             </h2>
             <p className="mt-4 max-w-4xl text-sm leading-relaxed text-[#3d3859]">
               Most media localisation providers treat content as a throughput problem. Global Talkies treats it as a
-              cultural translation challenge - because that is what it is. When Ewan's interpreters sit in boardrooms
+              cultural translation challenge - because that is what it is. When UVAN's interpreters sit in boardrooms
               between Japanese and Indian executives, they are doing the same thing a good subtitle editor does: finding
               the version of an idea that lands correctly on the other side of a cultural boundary. Global Talkies brings
               that sensibility to every piece of content we touch.

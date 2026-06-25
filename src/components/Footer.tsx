@@ -1,6 +1,7 @@
 import { ArrowUpRight, ChevronDown, Mail, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
 
 type FooterLink = { label: string; href: string; external?: boolean };
 type FooterColumn = { title: string; links: FooterLink[] };
@@ -157,7 +158,7 @@ const Footer = () => {
         <div className="lg:grid lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">
             <Link to="/" className="inline-block">
-              <img src="/logo.png" alt="EWAN Business Solutions" className="h-11 w-auto sm:h-14" />
+              <img src={SITE_LOGO} alt={SITE_LOGO_ALT} className="h-11 w-auto sm:h-14" />
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-[hsl(var(--brand-navy-950)/0.72)]">{t("footer.tagline")}</p>
 
@@ -259,5 +260,4 @@ const Footer = () => {
     </footer>
   );
 };
-
 export default Footer;

@@ -74,7 +74,7 @@ const ServicesSection = () => {
             <Globe2 className="w-3.5 h-3.5" /> {t("home.services.badge")}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light">
-            {t("home.services.titlePrefix")} <span className="gradient-text italic">{t("home.services.titleHighlight")}</span>
+            {t("home.services.titlePrefix")} <span className="text-[hsl(var(--brand-purple-700))] italic">{t("home.services.titleHighlight")}</span>
           </h2>
         </motion.div>
 
@@ -96,43 +96,64 @@ const ServicesSection = () => {
               >
                 <div className={`absolute -top-20 -right-20 w-60 h-60 rounded-full border-[20px] ${accent.haloBorder}`} />
 
-                <motion.div
-                  className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${accent.iconWrap} shadow-gold-md`}
-                  whileHover={{ rotate: 8, scale: 1.08 }}
-                >
-                  <Icon className="w-7 h-7 text-white" />
-                </motion.div>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+                  <div className="flex-1">
+                    <motion.div
+                      className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${accent.iconWrap} shadow-gold-md`}
+                      whileHover={{ rotate: 8, scale: 1.08 }}
+                    >
+                      <Icon className="w-7 h-7 text-white" />
+                    </motion.div>
 
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-on-light mb-4">{block.label}</h3>
-                <p className="text-on-light-muted leading-relaxed mb-6">{block.desc}</p>
+                    <h3 className="text-2xl sm:text-3xl font-serif font-bold text-on-light mb-4">{block.label}</h3>
+                    <p className="text-on-light-muted leading-relaxed mb-6">{block.desc}</p>
 
-                {features.length > 0 ? (
-                  <ul className="space-y-3 mb-8">
-                    {features.map((f, fi) => (
-                      <motion.li
-                        key={f}
-                        className="flex items-start gap-3 text-sm text-on-light-secondary"
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.15 + fi * 0.08 + 0.3 }}
-                      >
-                        <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${accent.check}`} />
-                        <span>{f}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                ) : (
-                  <div className="mb-8" />
-                )}
+                    {features.length > 0 ? (
+                      <ul className="space-y-3 mb-8">
+                        {features.map((f, fi) => (
+                          <motion.li
+                            key={f}
+                            className="flex items-start gap-3 text-sm text-on-light-secondary"
+                            initial={{ opacity: 0, x: -10 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.15 + fi * 0.08 + 0.3 }}
+                          >
+                            <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${accent.check}`} />
+                            <span>{f}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <div className="mb-8" />
+                    )}
 
-                <Link
-                  to={block.href}
-                  className={`inline-flex items-center gap-2 text-sm font-semibold tracking-wider uppercase ${accent.link} group/link`}
-                >
-                  {t("home.services.learnMore")}
-                  <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                </Link>
+                    <Link
+                      to={block.href}
+                      className={`inline-flex items-center gap-2 text-sm font-semibold tracking-wider uppercase ${accent.link} group/link`}
+                    >
+                      {t("home.services.learnMore")}
+                      <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+
+                  <div className="flex justify-center items-center shrink-0 w-32 h-32 md:w-44 md:h-44 relative mx-auto md:mx-0">
+                    <motion.img
+                      src={block.id === "language" ? "/doodles/Group discussion-bro.svg" : "/doodles/Business Plan-pana.svg"}
+                      alt=""
+                      aria-hidden="true"
+                      className="relative z-10 w-full h-full object-contain"
+                      animate={{ y: [0, -6, 0] }}
+                      transition={{ 
+                        duration: 5, 
+                        repeat: Infinity, 
+                        ease: "easeInOut",
+                        delay: i * 0.4 
+                      }}
+                      whileHover={{ scale: 1.1, rotate: block.id === "language" ? 2 : -2 }}
+                    />
+                  </div>
+                </div>
               </motion.div>
             );
           })}

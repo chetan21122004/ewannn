@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
@@ -16,7 +17,7 @@ const services = [
     id: "vendor-sourcing",
     title: "Local Vendor Sourcing & Procurement",
     description:
-      "Identifying and verifying the right vendors, suppliers, and manufacturers in India for foreign companies requires more than a supplier directory. Ewan conducts on-ground vendor sourcing - with physical verification, quality pre-assessment, and direct negotiation support in the local language.",
+      "Identifying and verifying the right vendors, suppliers, and manufacturers in India for foreign companies requires more than a supplier directory. UVAN conducts on-ground vendor sourcing - with physical verification, quality pre-assessment, and direct negotiation support in the local language.",
     points: [
       "Vendor identification and long-listing",
       "Physical premises and capacity verification",
@@ -29,7 +30,7 @@ const services = [
     id: "export-support",
     title: "Export Support for Indian Companies",
     description:
-      "For Indian companies exporting to Japan, China, Southeast Asia, Latin America or Africa, Ewan provides the language and liaison support that turns export ambition into export execution - from buyer-ready communication materials to facilitating introductions with overseas buyers.",
+      "For Indian companies exporting to Japan, China, Southeast Asia, Latin America or Africa, UVAN provides the language and liaison support that turns export ambition into export execution - from buyer-ready communication materials to facilitating introductions with overseas buyers.",
     points: [
       "Product documentation in target language (Japanese, Mandarin, Korean, ASEAN, Spanish, Portuguese)",
       "Buyer communication and negotiation facilitation",
@@ -42,7 +43,7 @@ const services = [
     id: "import-facilitation",
     title: "Import Facilitation for Foreign Companies",
     description:
-      "Companies importing goods or components into India face regulatory requirements, customs procedures, and supplier communication challenges that are significantly easier to navigate with a partner already embedded in the market. Ewan provides coordinated import facilitation - working with your logistics provider and managing local supplier communication.",
+      "Companies importing goods or components into India face regulatory requirements, customs procedures, and supplier communication challenges that are significantly easier to navigate with a partner already embedded in the market. UVAN provides coordinated import facilitation - working with your logistics provider and managing local supplier communication.",
     points: [
       "Import documentation translation and review",
       "Customs and regulatory requirement guidance",
@@ -67,7 +68,7 @@ const services = [
     id: "trade-documentation",
     title: "Trade Documentation & Compliance",
     description:
-      "Every cross-border transaction generates paperwork - and every piece needs to be accurate, compliant, and understood by both sides. Ewan provides multilingual review and translation of trade documentation - contracts, letters of credit, inspection reports, certificates of origin, and customs filings.",
+      "Every cross-border transaction generates paperwork - and every piece needs to be accurate, compliant, and understood by both sides. UVAN provides multilingual review and translation of trade documentation - contracts, letters of credit, inspection reports, certificates of origin, and customs filings.",
     points: [
       "Contract and trade agreement translation",
       "Certificate of origin and compliance documentation",
@@ -95,15 +96,30 @@ const whoThisIsFor = [
 const ImportExport = () => {
   return (
     <PageLayout
-      title="Import, Procurement & Export Support India | Ewan Business Solutions"
-      description="Ewan provides multilingual import, procurement and export support for companies operating between India, Japan, Southeast Asia and beyond - from vendor identification and negotiation to documentation and logistics liaison."
+      title="Import, Procurement & Export Support India | UVAN"
+      description="UVAN provides multilingual import, procurement and export support for companies operating between India, Japan, Southeast Asia and beyond - from vendor identification and negotiation to documentation and logistics liaison."
       canonicalPath="/import-export/"
     >
       {/* Hero */}
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-20 pt-10 text-white md:pb-28 md:pt-14 stitch-line stitch-line-bottom">
+        {/* Section Background Blob */}
+        <div 
+          className="absolute inset-0 z-0 opacity-25 mix-blend-color-dodge bg-cover bg-center pointer-events-none"
+          style={{ backgroundImage: "url('/bg-blobs/beautiful-purple-color-gradient-background-free-vector.jpg')" }}
+        />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_-10%,hsl(var(--brand-purple-700)/0.35),transparent_55%)]" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_70%,hsl(var(--brand-cyan-500)/0.12),transparent_45%)]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.2)] via-transparent to-[hsl(var(--brand-navy-950))]" />
+
+        {/* Transparent Trade Doodle */}
+        <motion.img
+          src="/doodles/International trade-bro.svg"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-10 right-4 hidden h-64 w-64 opacity-[0.12] lg:block"
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
         <div className="container relative z-10 mx-auto max-w-6xl">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-7">
@@ -116,7 +132,7 @@ const ImportExport = () => {
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/78 sm:text-lg">
                 Whether you are sourcing products from India for Asian markets, or importing goods and components into India
-                from abroad, Ewan provides the language, liaison, and operational support that makes cross-border trade flow
+                from abroad, UVAN provides the language, liaison, and operational support that makes cross-border trade flow
                 - from vendor identification and negotiation to documentation, customs coordination and delivery.
               </p>
               <div className="mt-9 flex flex-wrap gap-4">
@@ -162,7 +178,7 @@ const ImportExport = () => {
 
       <SectionDivider variant="wave" fromDark />
 
-      {/* Where Ewan Adds Value */}
+      {/* Where UVAN Adds Value */}
       <section className="theme-section-soft relative overflow-hidden px-6 py-16 md:py-20 stitch-line stitch-line-bottom">
         <div className="pointer-events-none absolute -right-24 top-0 h-96 w-96 rounded-full bg-[radial-gradient(circle,hsl(var(--brand-purple-500)/0.12),transparent_70%)]" />
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -177,7 +193,7 @@ const ImportExport = () => {
             </div>
             <article className="order-1 rounded-[1.75rem] border border-[hsl(var(--border-light))] bg-white p-8 shadow-[0_14px_40px_rgba(26,22,51,0.06)] md:p-10 lg:order-2">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">
-                Where Ewan Adds Value in Trade
+                Where UVAN Adds Value in Trade
               </p>
               <h2 className="mt-3 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] md:text-4xl">
                 Most Trade Breakdowns Happen in Communication, Not Logistics.
@@ -185,7 +201,7 @@ const ImportExport = () => {
               <div className="mt-6 space-y-4 text-sm leading-relaxed text-on-light-secondary md:text-base">
                 <p>
                   A misunderstood specification, a cultural misread in a negotiation, a documentation error that delays
-                  clearance, a vendor who presented well but delivered poorly. Ewan sits at every one of these points,
+                  clearance, a vendor who presented well but delivered poorly. UVAN sits at every one of these points,
                   providing the language and cultural intelligence that keeps trade moving cleanly.
                 </p>
                 <p>

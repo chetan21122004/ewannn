@@ -25,6 +25,18 @@ const ContactSection = () => {
       <div className="glow-orb glow-orb-gold pointer-events-none h-[380px] w-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
       <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.18]" />
 
+      {/* Decorative background support visual */}
+      <motion.img
+        src="/doodles/Call center-amico.svg"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-12 top-1/4 hidden h-52 w-52 opacity-[0.09] lg:block"
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 0.09, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      />
+
       <div className="container relative z-10 mx-auto px-6">
         <div className="mx-auto grid max-w-6xl items-start gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           <motion.div
@@ -52,7 +64,7 @@ const ContactSection = () => {
                 transition={{ duration: 0.7 }}
               >
                 {t("home.contact.titlePrefix")}{" "}
-                <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-800))] via-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-cyan-500))] bg-clip-text italic text-transparent">
+                <span className="text-[hsl(var(--brand-purple-700))] italic">
                   {t("home.contact.titleHighlight")}
                 </span>
               </motion.h2>
@@ -104,13 +116,19 @@ const ContactSection = () => {
           </motion.div>
 
           <motion.div
-            className="theme-card-light rounded-3xl p-6 sm:p-7"
+            className="theme-card-light relative overflow-hidden rounded-3xl p-6 sm:p-7"
             initial={{ opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <h3 className="mb-2 font-serif text-2xl font-bold text-on-light">{t("home.contact.cardTitle")}</h3>
+            <img
+              src="/doodles/Sent Message-pana.svg"
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-8 -right-10 h-44 w-44 opacity-[0.1] sm:h-52 sm:w-52"
+            />
+            <h3 className="relative mb-2 font-serif text-2xl font-bold text-on-light">{t("home.contact.cardTitle")}</h3>
             <p className="mb-6 text-sm text-on-light-secondary sm:text-base">
               {t("home.contact.cardSubtitle")}
             </p>

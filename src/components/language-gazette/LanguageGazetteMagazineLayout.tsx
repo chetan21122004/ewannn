@@ -53,7 +53,7 @@ const ArticleCard = ({ article }: { article: GazetteArticle }) => (
 
 export const GazetteMasthead = ({ issueLabel }: { issueLabel?: string }) => (
   <header className="gazette-masthead text-center">
-    <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[hsl(var(--brand-gold-600))]">Ewan Business Solutions presents</p>
+    <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[hsl(var(--brand-gold-600))]">UVAN presents</p>
     <h2 className="mt-2 font-serif text-3xl font-extrabold tracking-tight text-[hsl(var(--brand-navy-950))] md:text-4xl">The Language Gazette</h2>
     <div className="gazette-rule mx-auto mt-4 max-w-xs" />
     {issueLabel ? (
@@ -95,7 +95,7 @@ const LanguageGazetteMagazineLayout = ({
                 </h1>
                 <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
                   {heroSubtitle ??
-                    "EWAN's quarterly publication exploring language, cultural intelligence, and the human stories behind global business."}
+                    "UVAN's quarterly publication exploring language, cultural intelligence, and the human stories behind global business."}
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a

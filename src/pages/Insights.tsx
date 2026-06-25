@@ -101,8 +101,8 @@ const insightsLd = [
 const Insights = () => {
   return (
     <PageLayout
-      title="Blog & Insights | Ewan Business Solutions"
-      description="Strategic articles, market narratives, and execution intelligence from EWAN's cross-border language and operations teams."
+      title="Blog & Insights | UVAN"
+      description="Strategic articles, market narratives, and execution intelligence from UVAN's cross-border language and operations teams."
       canonicalPath="/insights/"
       jsonLd={insightsLd}
     >
@@ -130,7 +130,7 @@ const Insights = () => {
               Cross-Border Business
             </h1>
             <p className="mt-5 max-w-xl text-sm font-light leading-relaxed text-on-light-secondary md:text-lg">
-              Published by Ewan for business leaders, language professionals, and cross-border operators seeking tectonic shifts in global expansion.
+              Published by UVAN for business leaders, language professionals, and cross-border operators seeking tectonic shifts in global expansion.
             </p>
             <div className="mt-6 flex flex-wrap gap-2.5">
               <a

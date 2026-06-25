@@ -52,6 +52,27 @@ const SectorsSection = () => {
 
   return (
     <section id="sectors" className="relative overflow-hidden py-6 lg:py-10 theme-section-soft">
+      {/* Decorative background doodles */}
+      <motion.img
+        src="/doodles/Bookmarks-pana.svg"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-10 -bottom-10 hidden h-48 w-48 opacity-[0.1] lg:block"
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 0.1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      />
+      <motion.img
+        src="/doodles/Preferences-bro.svg"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-10 -top-10 hidden h-48 w-48 opacity-[0.1] lg:block"
+        initial={{ opacity: 0, x: 20 }}
+        whileInView={{ opacity: 0.1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      />
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           className="text-center max-w-3xl mx-auto mb-8"
@@ -68,11 +89,10 @@ const SectorsSection = () => {
             <span className="h-px w-8 bg-[hsl(var(--brand-purple-700)/0.5)]" aria-hidden />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light leading-[1.08]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light leading-[1.08] text-balance">
             {t("home.sectors.titlePrefix")}{" "}
-            <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
-              {t("home.sectors.titleHighlight")}
-              <br className="hidden sm:block" /> {t("home.sectors.titleHighlightLine2")}
+            <span className="text-[hsl(var(--brand-purple-700))] italic">
+              {t("home.sectors.titleHighlight")} {t("home.sectors.titleHighlightLine2")}
             </span>
           </h2>
         </motion.div>

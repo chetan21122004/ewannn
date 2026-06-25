@@ -14,7 +14,7 @@ const defaultSteps = [
   },
   {
     label: "Delivery",
-    text: "Ewan delivered the complete mandate - from initial market assessment and entity formation through to on-ground liaisoning and operational setup.",
+    text: "UVAN delivered the complete mandate - from initial market assessment and entity formation through to on-ground liaisoning and operational setup.",
     iconColor: "text-[hsl(var(--brand-purple-500))]",
     ringColor: "border-[hsl(var(--brand-purple-500)/0.28)]",
     labelColor: "text-[hsl(var(--brand-purple-500)/0.92)]",
@@ -56,12 +56,9 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <span className="mb-5 inline-block rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.94)] px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-purple-700))] shadow-[0_10px_36px_hsl(var(--brand-navy-950)/0.07)]">
-            {t("home.caseStudy.badge")}
-          </span>
           <h2 className="mb-4 font-serif text-3xl font-bold text-on-light sm:text-4xl lg:text-5xl">
             {t("home.caseStudy.titlePrefix")}{" "}
-            <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-800))] via-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-cyan-500))] bg-clip-text font-serif italic text-transparent">
+            <span className="text-[hsl(var(--brand-purple-700))] font-serif italic">
               {t("home.caseStudy.titleHighlight")}
             </span>
           </h2>
@@ -78,7 +75,23 @@ const CaseStudySection = () => {
             <div className="absolute -inset-4 rounded-3xl bg-[hsl(var(--surface-light-200)/0.9)] blur-2xl" />
             <div className="relative overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] shadow-premium-lg">
               <img src={factoryImg} alt={t("home.caseStudy.imageAlt")} className="h-[400px] w-full object-cover" />
+              <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.4)] to-transparent pointer-events-none" />
             </div>
+            
+            {/* Transparent Charts Doodle */}
+            <motion.div
+              className="absolute -bottom-12 -right-12 hidden lg:block"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 0.15 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <img
+                src="/doodles/Charts-cuate.svg"
+                alt=""
+                className="w-40 h-40 object-contain pointer-events-none"
+              />
+            </motion.div>
           </motion.div>
 
           <div className="space-y-6">

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { ArrowUpRight, CheckCircle2, Globe2, Map, MessageCircle, SearchCheck, Sparkles } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
@@ -10,20 +11,20 @@ const BOOKING_EMBED_URL = `${BOOKING_SCHEDULING_URL.replace(/\?.*$/, "").replace
 const BOOKING_WIDGET_ID = "booking-widget";
 
 const ASK_SOHAM_KEYWORDS =
-  "talk to language expert, India market entry consultation free, Soham Kakade Ewan";
+  "talk to language expert, India market entry consultation free, Soham Kakade UVAN";
 
 const tracks = [
   {
     icon: SearchCheck,
     title: "Market Entry & Cross-Border Expansion",
     description:
-      "For companies exploring India entry, Indian firms going abroad, executives evaluating corridors. You'll get a clear picture of the actual complexity involved, what Ewan has done in your sector, and whether we're the right partner for your expansion.",
+      "For companies exploring India entry, Indian firms going abroad, executives evaluating corridors. You'll get a clear picture of the actual complexity involved, what UVAN has done in your sector, and whether we're the right partner for your expansion.",
   },
   {
     icon: Globe2,
     title: "Language Strategy & Localization",
     description:
-      "For marketing managers, procurement leads, or businesses evaluating language service needs. You'll get guidance on what kind of service fits your use case, how to evaluate quality, and a straight answer on whether Ewan can help.",
+      "For marketing managers, procurement leads, or businesses evaluating language service needs. You'll get guidance on what kind of service fits your use case, how to evaluate quality, and a straight answer on whether UVAN can help.",
   },
   {
     icon: Map,
@@ -73,14 +74,29 @@ const AskSoham = () => {
       jsonLd={askSohamLd}
     >
       <section className="relative overflow-hidden px-6 pb-20 pt-10">
+        {/* Section Background Blob */}
+        <div 
+          className="absolute inset-0 z-0 opacity-15 mix-blend-multiply bg-cover bg-center pointer-events-none"
+          style={{ backgroundImage: "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')" }}
+        />
         <div
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 z-10"
           style={{
             background:
               "radial-gradient(circle at 78% 20%, hsl(var(--brand-purple-500) / 0.18) 0%, transparent 34%), radial-gradient(circle at 22% 82%, hsl(var(--brand-cyan-500) / 0.08) 0%, transparent 42%)",
           }}
         />
-        <div className="container relative mx-auto">
+
+        {/* Transparent Calling Doodle */}
+        <motion.img
+          src="/doodles/Calling-amico.svg"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-10 left-4 hidden h-64 w-64 opacity-[0.12] lg:block z-0"
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <div className="container relative z-20 mx-auto">
           <div className="grid items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--surface-glass)/0.24)] bg-[hsl(var(--surface-glass)/0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500)/0.92)]">
@@ -109,7 +125,7 @@ const AskSoham = () => {
               <div className="relative overflow-hidden rounded-[2.25rem] border border-[hsl(var(--surface-glass)/0.24)] shadow-[0_28px_70px_hsl(var(--surface-1)/0.35)]">
                 <img
                   src="/Soham-Sir.jpg"
-                  alt="Soham Kakade, Founder of Ewan Business Solutions"
+                  alt="Soham Kakade, Founder of UVAN"
                   className="h-full min-h-[460px] w-full object-cover object-[center_20%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.55)] to-transparent" />
@@ -157,9 +173,9 @@ const AskSoham = () => {
             </p>
             <h2 className="mt-2 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))]">What This Call Is Not</h2>
             <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/75">
-              This is not a sales call. Soham will not pitch Ewan services unless asked. This call is designed to give
+              This is not a sales call. Soham will not pitch UVAN services unless asked. This call is designed to give
               you 15 minutes of focused, honest guidance from someone who has actually spent 10 years inside the
-              corridors you&apos;re trying to navigate. If Ewan is not the right fit, Soham will tell you.
+              corridors you&apos;re trying to navigate. If UVAN is not the right fit, Soham will tell you.
             </p>
           </div>
         </div>
@@ -170,7 +186,7 @@ const AskSoham = () => {
           <div className="relative aspect-[4/5] max-h-[min(560px,70vh)] overflow-hidden rounded-[2.25rem] border border-[hsl(var(--surface-glass)/0.22)] shadow-[0_20px_50px_hsl(var(--surface-1)/0.2)] sm:aspect-[3/4] lg:max-h-none lg:min-h-[460px] lg:aspect-auto">
             <img
               src="/Soham-Sir.jpg"
-              alt="Soham Kakade, Founder of Ewan Business Solutions"
+              alt="Soham Kakade, Founder of UVAN"
               className="h-full min-h-[280px] w-full object-cover object-[center_20%] sm:min-h-[360px] lg:min-h-[460px]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.75)] to-transparent" />

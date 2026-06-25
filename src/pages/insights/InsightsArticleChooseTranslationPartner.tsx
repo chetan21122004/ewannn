@@ -51,7 +51,7 @@ const InsightsArticleChooseTranslationPartner = () => {
   ];
 
   return (
-    <PageLayout title={`${TITLE} | Ewan`} description={DESCRIPTION} canonicalPath={CANONICAL} jsonLd={jsonLd}>
+    <PageLayout title={`${TITLE} | UVAN`} description={DESCRIPTION} canonicalPath={CANONICAL} jsonLd={jsonLd}>
       <article className="theme-section-light px-6 py-16 md:py-24">
         <div className="container mx-auto max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">Insights · Language</p>
@@ -70,7 +70,7 @@ const InsightsArticleChooseTranslationPartner = () => {
                 <li key={s}>{s}</li>
               ))}
             </ol>
-            <h2 className="mt-12 font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">Get a Language Quote from Ewan</h2>
+            <h2 className="mt-12 font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">Get a Language Quote from UVAN</h2>
             <p className="mt-3">
               Attach sample files plus glossaries where available - we prioritise corridors where native expertise and sector density matter most.
             </p>

@@ -58,7 +58,7 @@ const LanguageGazetteArticleShell = ({
   ];
 
   return (
-    <PageLayout title={`${title} | The Language Gazette | Ewan`} description={description} canonicalPath={canonicalPath} jsonLd={jsonLd}>
+    <PageLayout title={`${title} | The Language Gazette | UVAN`} description={description} canonicalPath={canonicalPath} jsonLd={jsonLd}>
       <header className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))]">
         <div className="absolute inset-0">
           <GazetteCoverImage src={image} alt="" className="h-full w-full object-cover opacity-35" />
@@ -135,7 +135,7 @@ const LanguageGazetteArticleShell = ({
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-600))]">About the author</p>
               <p className="mt-2 font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))]">{author}</p>
               <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">
-                A contributor to <strong>The Language Gazette</strong> - EWAN&apos;s quarterly publication on language, culture, and human connection.
+                A contributor to <strong>The Language Gazette</strong> - UVAN&apos;s quarterly publication on language, culture, and human connection.
               </p>
             </div>
           </aside>

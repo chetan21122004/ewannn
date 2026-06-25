@@ -29,7 +29,7 @@ const vendorOffer = [
 const vendorNeed = [
   "Proven experience in your language pair and sector",
   "CAT tool proficiency preferred (SDL Trados, memoQ, or equivalent)",
-  "Commitment to Ewan's quality standards and deadlines",
+  "Commitment to UVAN's quality standards and deadlines",
   "ISO 17100 compliance preferred",
 ];
 
@@ -88,7 +88,7 @@ const JoinUs = () => {
               Be Part of <span className="text-[hsl(var(--brand-gold-500))]">What We&apos;re Building.</span>
             </h1>
             <p className="mt-8 max-w-3xl text-lg text-white/80 lg:text-xl">
-              Ewan is growing - and we&apos;re looking for people and organisations who want to be part of a cross-border
+              UVAN is growing - and we&apos;re looking for people and organisations who want to be part of a cross-border
               market partner that operates at the intersection of language, culture, and on-ground business operations.
               Whether you&apos;re a language professional, a specialist vendor, or an institution that shares our vision -
               there&apos;s a place for you here.
@@ -192,7 +192,7 @@ const JoinUs = () => {
             <h2 className="mt-2 font-serif text-4xl font-bold text-[hsl(var(--brand-navy-950))] lg:text-5xl">Join Our Team</h2>
             <p className="text-on-light-secondary mt-6 text-lg leading-relaxed">
               Language professionals, interpreters, translators, operations specialists, business development
-              professionals, and account managers who want a full-time or contract role at Ewan.
+              professionals, and account managers who want a full-time or contract role at UVAN.
             </p>
             <p className="mt-8 text-sm font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))]">
               What we look for
@@ -411,21 +411,21 @@ const JoinUs = () => {
       <section id="why-ewan" className="theme-section-soft px-6 py-20">
         <div className="container mx-auto max-w-4xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-500)/0.88)]">
-            Why Ewan
+            Why UVAN
           </p>
-          <h2 className="mt-2 font-serif text-4xl font-bold text-[hsl(var(--brand-navy-950))]">Why Ewan</h2>
+          <h2 className="mt-2 font-serif text-4xl font-bold text-[hsl(var(--brand-navy-950))]">Why UVAN</h2>
           <p className="mt-6 text-lg leading-relaxed text-[#4b4566]">
             We have spent five years building something that is genuinely hard to replicate: deep language expertise,
             on-ground operational capability, institutional recognition from government bodies and consulates, and a
             community (Oriental Flock) that gives us access to some of the best language professionals in India. If you
-            want to work at the intersection of language, culture, and international business - Ewan is where that work
+            want to work at the intersection of language, culture, and international business - UVAN is where that work
             gets done.
           </p>
           <Link
             to="/ask-soham"
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-8 py-3.5 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
           >
-            Ask Soham About Working With Ewan
+            Ask Soham About Working With UVAN
             <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>

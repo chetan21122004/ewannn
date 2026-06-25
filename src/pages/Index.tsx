@@ -23,8 +23,8 @@ const Index = () => {
   return (
     <div className="min-h-screen relative pb-[calc(4rem+env(safe-area-inset-bottom,0px))] lg:pb-0">
       <Seo
-        title="Cross-Border Market Partner for India & Asia | Ewan Business Solutions"
-        description="Ewan helps foreign companies enter India and Indian companies expand into Asia. Language services, market entry, and on-ground operations - one trusted partner."
+        title="Cross-Border Market Partner for India & Asia | UVAN"
+        description="UVAN helps foreign companies enter India and Indian companies expand into Asia. Language services, market entry, and on-ground operations - one trusted partner."
         keywords="India market entry partner, cross-border business India, language services India, translation interpretation India"
         canonicalPath="/"
         jsonLd={homeJsonLd}

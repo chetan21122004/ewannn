@@ -77,10 +77,10 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-6">
-              Leadership & <span className="gradient-text-purple">Vision</span>
+              Leadership & <span className="text-[hsl(var(--brand-purple-700))]">Vision</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Founded by industry forerunners and deep experts in cross-border trade and linguistics, EWAN was built on the principle that global success is local at its core.
+              Founded by industry forerunners and deep experts in cross-border trade and linguistics, UVAN was built on the principle that global success is local at its core.
             </p>
 
             {/* Feature items with animations */}

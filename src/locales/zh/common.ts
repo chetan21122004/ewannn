@@ -36,7 +36,7 @@ const zhCommon = {
       learnLanguage: "和我们一起学习语言 ↗",
     },
     about: {
-      aboutEwan: "关于 Ewan",
+      aboutEwan: "关于 UVAN",
       founders: "创始团队",
       orientalFlock: "Oriental Flock",
       partners: "我们的伙伴",
@@ -60,7 +60,7 @@ const zhCommon = {
     emailLabel: "邮件联系",
     ctaHeadline: "与一个值得信赖的伙伴一起跨境拓展？",
     certificationsLabel: "认证与生态体系",
-    bhashikGroup: "Ewan 集团 · Bhashik Skill Development",
+    bhashikGroup: "UVAN 集团 · Bhashik Skill Development",
     bhashikSkill: "Bhashik Skill Development",
     blogInsights: "博客与洞察",
     aboutUs: "关于我们",
@@ -70,7 +70,7 @@ const zhCommon = {
     contactUs: "联系我们",
     askSohamCta: "Ask Soham - 15 分钟免费",
     marketEntryAudit: "下载 2026 市场进入审计",
-    rights: "© 2026 Ewan Business Solutions. 版权所有。",
+    rights: "© 2026 UVAN. 版权所有。",
     privacy: "隐私",
     privacyPolicy: "隐私政策",
     caseStudies: "案例研究",
@@ -80,47 +80,47 @@ const zhCommon = {
   },
   seo: {
     marketEntry: {
-      title: "印度市场进入合作伙伴 | 跨境扩张 | Ewan",
-      description: "Ewan 为海外企业提供印度市场进入全流程支持：实体设立、监管合规、高层对接与本地运营。",
+      title: "印度市场进入合作伙伴 | 跨境扩张 | UVAN",
+      description: "UVAN 为海外企业提供印度市场进入全流程支持：实体设立、监管合规、高层对接与本地运营。",
     },
     languageLocalization: {
-      title: "印度翻译、口译与本地化服务 | Ewan Business Solutions",
+      title: "印度翻译、口译与本地化服务 | UVAN",
       description:
         "125+ 语言的专业笔译、口译、本地化与配音。ISO 9001:2015 认证。覆盖汽车、医药、法律、展会等行业专业经验。",
       keywords:
         "translation services India, interpretation services India, localization India, technical translation India, simultaneous interpretation India",
     },
     industries: {
-      title: "按行业分类的语言与市场进入服务 | Ewan Business Solutions",
+      title: "按行业分类的语言与市场进入服务 | UVAN",
       description:
-        "Ewan 在汽车、医药、航空航天、制造、展会、科技、农业、法律、教育及媒体与 OTT 等行业提供语言与市场进入专业能力。",
+        "UVAN 在汽车、医药、航空航天、制造、展会、科技、农业、法律、教育及媒体与 OTT 等行业提供语言与市场进入专业能力。",
       keywords:
         "language services automotive India, pharma translation India, exhibition interpretation India, market entry India sector",
     },
     about: {
-      title: "关于 Ewan Business Solutions | 跨境市场合作伙伴（印度）",
+      title: "关于 UVAN | 跨境市场合作伙伴（印度）",
       description:
-        "Ewan Business Solutions - 5 年、250+ 客户、125+ 语言。由 Soham Kakade 创立。面向印度与亚洲走廊的跨境市场进入与语言服务。",
-      keywords: "Ewan Business Solutions about, Soham Kakade Ewan, India language company, cross-border market entry India",
+        "UVAN - 5 年、250+ 客户、125+ 语言。由 Soham Kakade 创立。面向印度与亚洲走廊的跨境市场进入与语言服务。",
+      keywords: "UVAN about, Soham Kakade UVAN, India language company, cross-border market entry India",
     },
     contact: {
-      title: "联系 Ewan Business Solutions | 跨境市场合作伙伴",
-      description: "欢迎就市场进入、语言服务与跨境执行与 Ewan 开启交流。",
+      title: "联系 UVAN | 跨境市场合作伙伴",
+      description: "欢迎就市场进入、语言服务与跨境执行与 UVAN 开启交流。",
     },
     media: {
-      title: "媒体、洞察与新闻 | Ewan Business Solutions",
+      title: "媒体、洞察与新闻 | UVAN",
       description:
-        "阅读《语言公报》探索跨境商业博客文章，观看活动视频，并了解 Ewan Business Solutions 的新闻报道。",
+        "阅读《语言公报》探索跨境商业博客文章，观看活动视频，并了解 UVAN 的新闻报道。",
       keywords:
         "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India",
     },
     askSoham: {
-      title: "Ask Soham - 免费 15 分钟通话 | Ewan Business Solutions",
+      title: "Ask Soham - 免费 15 分钟通话 | UVAN",
       description: "预约与 Soham Kakade 的 15 分钟聚焦沟通，获取市场进入与语言策略建议。",
     },
     marketEntryAudit: {
-      title: "全球市场进入审计 | Ewan Business Solutions",
-      description: "下载 EWAN 2026 全球市场进入审计框架，在投入资本前识别运营、合规与执行风险。",
+      title: "全球市场进入审计 | UVAN",
+      description: "下载 UVAN 2026 全球市场进入审计框架，在投入资本前识别运营、合规与执行风险。",
     },
   },
   home: {
@@ -144,9 +144,9 @@ const zhCommon = {
       floatingCard2Value: "125+",
     },
     aboutIntro: {
-      badge: "关于 Ewan",
+      badge: "关于 UVAN",
       headlinePrefix: "关于 ",
-      headlineHighlight: "Ewan Business Solutions",
+      headlineHighlight: "UVAN",
       headlineSuffix: "",
       cardLabel: "公司简介",
       cardBlurb:
@@ -167,10 +167,10 @@ const zhCommon = {
       badge: "我们的能力",
       titlePrefix: "两大能力。",
       titleHighlight: "一个伙伴。",
-      subtitle: "多数同行只做其一。Ewan 同时提供语言能力与市场进入执行，实现一体化落地。",
+      subtitle: "多数同行只做其一。UVAN 同时提供语言能力与市场进入执行，实现一体化落地。",
       learnMore: "了解更多",
       footerPrefix: "多数同行只做其一。",
-      footerHighlight: "Ewan 两者都做。",
+      footerHighlight: "UVAN 两者都做。",
       blocks: [
         {
           id: "market-entry",
@@ -210,7 +210,7 @@ const zhCommon = {
         },
         {
           label: "方案",
-          text: "Ewan 提供市场进入全链路支持：设立实体、合规管理、联络协调与本地语言执行。",
+          text: "UVAN 提供市场进入全链路支持：设立实体、合规管理、联络协调与本地语言执行。",
           iconColor: "text-[hsl(var(--brand-purple-500))]",
           ringColor: "border-[hsl(var(--brand-purple-500)/0.28)]",
           labelColor: "text-[hsl(var(--brand-purple-500)/0.92)]",
@@ -225,10 +225,10 @@ const zhCommon = {
       ],
     },
     whyEwan: {
-      badge: "为什么选择 Ewan",
+      badge: "为什么选择 UVAN",
       titlePrefix: "真正",
       titleHighlight: "在场实战过的伙伴。",
-      subtitle: "多数市场进入顾问没进过谈判现场，多数翻译机构没做过落地运营。Ewan 两者都做过，并持续十年。",
+      subtitle: "多数市场进入顾问没进过谈判现场，多数翻译机构没做过落地运营。UVAN 两者都做过，并持续十年。",
       differentiators: [
         {
           title: "语言与运营一体化",
@@ -277,18 +277,18 @@ const zhCommon = {
       next: "下一条评价",
       goTo: "跳转到评价",
       items: [
-        { quote: "Ewan 将语言与运营无缝结合，真正成为我们在印度的耳目与执行中枢。", author: "运营总监", company: "日本制造客户" },
-        { quote: "可靠、精准、专业，Ewan 同时理解业务目标与本地现实。", author: "采购负责人", company: "Tata Autocomp" },
-        { quote: "Ewan 的口译团队让跨境会议变得高效顺畅，价值远超翻译本身。", author: "高级管理者", company: "Groupo Antolin" },
-        { quote: "速度、准确与文化深度兼具，Ewan 为全球市场研究提供了关键支持。", author: "研究总监", company: "Markets & Markets" },
-        { quote: "从谈判到文档，Ewan 对每个细节都处理得非常稳健。", author: "创始人", company: "Seasonz International" },
+        { quote: "UVAN 将语言与运营无缝结合，真正成为我们在印度的耳目与执行中枢。", author: "运营总监", company: "日本制造客户" },
+        { quote: "可靠、精准、专业，UVAN 同时理解业务目标与本地现实。", author: "采购负责人", company: "Tata Autocomp" },
+        { quote: "UVAN 的口译团队让跨境会议变得高效顺畅，价值远超翻译本身。", author: "高级管理者", company: "Groupo Antolin" },
+        { quote: "速度、准确与文化深度兼具，UVAN 为全球市场研究提供了关键支持。", author: "研究总监", company: "Markets & Markets" },
+        { quote: "从谈判到文档，UVAN 对每个细节都处理得非常稳健。", author: "创始人", company: "Seasonz International" },
       ],
     },
     institutionalTrust: {
       badge: "领馆认可",
       titlePrefix: "获得",
       titleHighlight: "中华人民共和国驻外总领馆认可",
-      subtitle: "Ewan 因推动中印农业与贸易合作获得正式感谢信，并在 1,200 位农户与 800 公顷农地上产生实际影响。",
+      subtitle: "UVAN 因推动中印农业与贸易合作获得正式感谢信，并在 1,200 位农户与 800 公顷农地上产生实际影响。",
       letters: [
         { src: "/Ewan-Consulate-experience-letter-page-001-min.jpg", alt: "中国总领馆感谢信第1页", label: "第1页 · 中文原文" },
         { src: "/Ewan-Consulate-experience-letter-page-002-min.jpg", alt: "中国总领馆感谢信第2页", label: "第2页 · 英文译文" },
@@ -313,7 +313,7 @@ const zhCommon = {
           intro: [
             "在创立公司前，Soham 已有十年跨国高层会议口译与谈判支持经验。",
             "其职业基础来自北京语言大学（BLCU）中国政府奖学金背景，并长期服务于国际化战略场景。",
-            "Ewan 的成立源于一个判断：跨境扩张需要真正上过谈判桌两侧的伙伴。",
+            "UVAN 的成立源于一个判断：跨境扩张需要真正上过谈判桌两侧的伙伴。",
           ],
           badges: ["BLCU 学者", "60,000+ 小时口译", "ISO 9001:2015 认证", "CITLoB 副会长", "Bhashini 计划", "MSAMB 项目设计者"],
         },
@@ -323,7 +323,7 @@ const zhCommon = {
           img: "/Sukhada-maam.jpg",
           intro: [
             "Sukhada 是来自浦那的注册管理会计师（CMA）、财务教育者与创业者，拥有 15+ 年经验。",
-            "作为联合创始人，她为 Ewan 提供财务纪律与运营底盘，支撑实体设立到合规执行的全链路。",
+            "作为联合创始人，她为 UVAN 提供财务纪律与运营底盘，支撑实体设立到合规执行的全链路。",
             "她同时运营独立成本会计业务，长期推动产业与教育的连接。",
           ],
           badges: ["CMA 认证", "15+ 年经验", "财务与合规专家", "RBI/FEMA 咨询", "内控体系专家", "实体架构设计", "2010年起创业"],
@@ -356,7 +356,7 @@ const zhCommon = {
       badge: "开始合作",
       titlePrefix: "清晰地推进",
       titleHighlight: "跨境增长。",
-      subtitle: "无论是进入印度、全球扩张，还是多语言执行难题，Ewan 都能提供一体化支持。",
+      subtitle: "无论是进入印度、全球扩张，还是多语言执行难题，UVAN 都能提供一体化支持。",
       cardTitle: "开启对话",
       cardSubtitle: "选择你最合适的起点，我们会快速给出定制化下一步建议。",
       marketEntryCta: "启动市场进入咨询",
@@ -429,13 +429,13 @@ const zhCommon = {
       titleBefore: "跨行业专业深度：",
       titleHighlight: "覆盖每个主要行业。",
       subtitle:
-        "10 年积累。10+ 个行业。250+ 家客户。Ewan 的语言与市场进入能力，建立在印度最重要贸易走廊真实的一线经验之上。",
+        "10 年积累。10+ 个行业。250+ 家客户。UVAN 的语言与市场进入能力，建立在印度最重要贸易走廊真实的一线经验之上。",
       cta: "了解行业能力",
     },
     overview: {
       title: "发生在关键走廊里的真实项目",
       copy:
-        "从汽车董事会的同声传译，到医药合规文件与展会现场支持，Ewan 将行业深度与语言、落地执行结合--这正是跨境项目真正需要的组合。",
+        "从汽车董事会的同声传译，到医药合规文件与展会现场支持，UVAN 将行业深度与语言、落地执行结合--这正是跨境项目真正需要的组合。",
       stats: {
         clientsValue: "250+",
         clientsLabel: "服务客户",
@@ -450,7 +450,7 @@ const zhCommon = {
       items: [
         {
           title: "汽车",
-          copy: "从印度整车厂与日、韩供应商董事会谈判的同声传译，到技术手册翻译与子公司设立支持--Ewan 是汽车走廊值得信赖的语言与运营合作伙伴。",
+          copy: "从印度整车厂与日、韩供应商董事会谈判的同声传译，到技术手册翻译与子公司设立支持--UVAN 是汽车走廊值得信赖的语言与运营合作伙伴。",
         },
         {
           title: "医药",
@@ -491,7 +491,7 @@ const zhCommon = {
       ],
     },
     cta: {
-      title: "与 Ewan 讨论您的行业与走廊",
+      title: "与 UVAN 讨论您的行业与走廊",
       copy: "无论您需要语言服务、市场进入支持，或两者兼顾--都可预约一次聚焦而坦诚的交流。",
       button: "Ask Soham - 15 分钟免费",
     },
@@ -509,7 +509,7 @@ const zhCommon = {
       flashQuote: "“一致性，就是新的货币。”",
       flashMeta: "02 / 24 / 2024 - 新闻办公室",
       ticker: [
-        "EWAN 收购 LOCAL_HUB 数据",
+        "UVAN 收购 LOCAL_HUB 数据",
         "中东与北非区域扩张率 +14%",
         "可持续发展指数发布",
         "AI 翻译准确率达 99.8%",
@@ -563,7 +563,7 @@ const zhCommon = {
         {
           date: "2月12日",
           year: "2024",
-          title: "EWAN 发布“Prism”：面向语境感知语言 AI 的未来",
+          title: "UVAN 发布“Prism”：面向语境感知语言 AI 的未来",
           desc: "面向企业级全球运营的语言计算能力重大突破。",
         },
         {
@@ -576,7 +576,7 @@ const zhCommon = {
           date: "12月15日",
           year: "2023",
           title: "高管任命：Elena Vance 博士出任首席战略官",
-          desc: "为 EWAN 管理层带来二十年全球贸易经验。",
+          desc: "为 UVAN 管理层带来二十年全球贸易经验。",
         },
       ],
     },

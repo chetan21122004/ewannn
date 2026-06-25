@@ -12,8 +12,8 @@ const NotFound = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <Seo
-        title="Page Not Found | Ewan Business Solutions"
-        description="The page you are looking for does not exist. Return to Ewan Business Solutions."
+        title="Page Not Found | UVAN"
+        description="The page you are looking for does not exist. Return to UVAN."
         canonicalPath="/"
       />
       <div className="text-center">

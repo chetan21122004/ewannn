@@ -44,13 +44,9 @@ const PartnersSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.94)] px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-[hsl(var(--brand-purple-700))] shadow-[0_10px_36px_hsl(var(--brand-navy-950)/0.07)]">
-            <Handshake className="h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-gold-600))]" aria-hidden />
-            {t("home.partners.badge")}
-          </span>
           <h2 className="font-serif text-3xl font-bold text-on-light sm:text-4xl lg:text-5xl">
             {t("home.partners.titleBefore")}
-            <span className="gradient-text italic">{t("home.partners.titleGradient")}</span>
+            <span className="text-[hsl(var(--brand-purple-700))] italic">{t("home.partners.titleGradient")}</span>
           </h2>
           <p className="mt-5 text-sm leading-relaxed text-on-light-secondary sm:text-base">{t("home.partners.intro")}</p>
         </motion.div>
@@ -78,7 +74,7 @@ const PartnersSection = () => {
                       onError={(e) => {
                         if (!e.currentTarget.dataset.fallbackApplied) {
                           e.currentTarget.dataset.fallbackApplied = "true";
-                          e.currentTarget.src = "/logo.png";
+                          e.currentTarget.src = "/placeholder.svg";
                           return;
                         }
                         e.currentTarget.style.display = "none";
@@ -86,7 +82,7 @@ const PartnersSection = () => {
                     />
                   ) : null}
                 </div>
-                <h3 className="gradient-text mb-2 font-serif text-lg font-bold">{p.name}</h3>
+                <h3 className="text-[hsl(var(--brand-purple-700))] mb-2 font-serif text-lg font-bold">{p.name}</h3>
                 <p className="text-sm leading-relaxed text-on-light-secondary">{p.desc}</p>
               </motion.div>
             );

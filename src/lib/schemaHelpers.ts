@@ -1,5 +1,5 @@
 import type { AeoFaqItem } from "@/data/aeoContent";
-import { COMPANY_LINKEDIN, SITE_URL, SOHAM_LINKEDIN } from "@/lib/site";
+import { COMPANY_LINKEDIN, SITE_LOGO, SITE_URL, SOHAM_LINKEDIN } from "@/lib/site";
 
 export type JsonLdObject = Record<string, unknown>;
 
@@ -7,8 +7,9 @@ export type JsonLdObject = Record<string, unknown>;
 export const organizationNode: JsonLdObject = {
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
-  name: "Ewan Business Solutions",
+  name: "UVAN",
   url: SITE_URL,
+  logo: `${SITE_URL}${SITE_LOGO}`,
   foundingDate: "2020",
 };
 
@@ -23,7 +24,7 @@ export function webSiteWithSearchAction(): JsonLdObject {
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
     url: SITE_URL,
-    name: "Ewan Business Solutions",
+    name: "UVAN",
     publisher: { "@id": `${SITE_URL}/#organization` },
     potentialAction: {
       "@type": "SearchAction",

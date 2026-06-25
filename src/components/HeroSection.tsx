@@ -92,26 +92,24 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Main headline */}
-            <motion.h1 variants={fadeUpItem} className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold leading-[1.05] mb-6">
+            <motion.h1 variants={fadeUpItem} className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold leading-[1.05] mb-6 text-balance">
               <span className="text-on-light block">{t("home.hero.headingLine1")}</span>
-              <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-800))] via-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] bg-clip-text text-transparent block italic">
+              <span className="text-[hsl(var(--brand-purple-700))] block italic">
                 {t("home.hero.headingLine2")}
               </span>
             </motion.h1>
 
             {/* Subheadline */}
             <motion.div variants={fadeUpItem} className="mb-8">
-              <div className="border-l-[3px] border-[hsl(var(--brand-purple-700)/0.45)] pl-5 space-y-2">
-                <p className="text-base sm:text-lg text-on-light-muted leading-relaxed max-w-xl">
-                  {t("home.hero.subheadlinePrefix")}{" "}
-                  <span className="text-on-light font-medium">{t("home.hero.subheadlineForeign")}</span>{" "}
-                  {t("home.hero.subheadlineAnd")}{" "}
-                  <span className="text-on-light font-medium">{t("home.hero.subheadlineIndian")}</span>{" "}
-                  {t("home.hero.subheadlineSuffix")}{" "}
-                  <span className="text-[hsl(var(--brand-purple-700))] font-semibold">{t("home.hero.subheadlineLanguages")}</span>{" "}
-                  {t("home.hero.subheadlineEnd")}
-                </p>
-              </div>
+              <p className="text-base sm:text-lg text-on-light-muted leading-relaxed max-w-xl text-pretty">
+                {t("home.hero.subheadlinePrefix")}{" "}
+                <span className="text-on-light font-medium">{t("home.hero.subheadlineForeign")}</span>{" "}
+                {t("home.hero.subheadlineAnd")}{" "}
+                <span className="text-on-light font-medium">{t("home.hero.subheadlineIndian")}</span>{" "}
+                {t("home.hero.subheadlineSuffix")}{" "}
+                <span className="text-[hsl(var(--brand-purple-700))] font-semibold">{t("home.hero.subheadlineLanguages")}</span>{" "}
+                {t("home.hero.subheadlineEnd")}
+              </p>
             </motion.div>
 
             {/* CTAs */}
@@ -159,7 +157,7 @@ const HeroSection = () => {
               <div className="relative rounded-3xl overflow-hidden shadow-premium-lg border border-[hsl(var(--border-light))]">
                 <img
                   src="/hero-bg-new.png"
-                  alt="EWAN cross-border market expansion"
+                  alt="UVAN cross-border market expansion"
                   className="w-full h-[400px] lg:h-[500px] object-cover"
                   width={800}
                   height={500}
@@ -178,7 +176,7 @@ const HeroSection = () => {
                 </p>
                 <h3 className="text-xl font-serif font-bold text-on-light mb-2">{t("home.hero.floatingCard1Title")}</h3>
                 <div className="flex gap-1 mt-2">
-                  {[1,2,3,4,5].map((i) => (
+                  {[1, 2, 3, 4, 5].map((i) => (
                     <motion.div
                       key={i}
                       className="h-1 flex-1 rounded-full bg-[hsl(var(--brand-purple-700))]"
@@ -204,21 +202,6 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
-
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <span className="text-xs text-on-light-muted tracking-widest uppercase font-medium">Scroll</span>
-        <div className="w-5 h-9 rounded-full border-2 border-[hsl(var(--border-light-strong))] flex justify-center pt-2">
-          <motion.div
-            className="w-1 h-2 rounded-full bg-[hsl(var(--brand-purple-700))]"
-            animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
-        </div>
-      </motion.div>
 
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[hsl(var(--surface-light-100))] to-transparent pointer-events-none" />
     </section>

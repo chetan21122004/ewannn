@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Globe2, Languages, Mic2, ShieldCheck, Subtitles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -17,21 +18,21 @@ const services = [
     id: "translation",
     title: "Translation",
     description:
-      "Translation is the conversion of written content from one language to another while preserving meaning, tone, and intent. Ewan provides certified translation for legal, technical, medical, and commercial documents across 125+ languages - by native-language experts with sector-specific knowledge.",
+      "Translation is the conversion of written content from one language to another while preserving meaning, tone, and intent. UVAN provides certified translation for legal, technical, medical, and commercial documents across 125+ languages - by native-language experts with sector-specific knowledge.",
     icon: Languages,
   },
   {
     id: "interpretation",
     title: "Interpretation",
     description:
-      "Interpretation is the oral conversion of spoken language in real time - simultaneous interpretation delivers this as the speaker speaks; consecutive interpretation follows after each segment. Ewan has 60,000+ hours of interpretation experience across Mandarin, Japanese, ASEAN languages and more, across boardroom negotiations, conferences, exhibitions, and government meetings.",
+      "Interpretation is the oral conversion of spoken language in real time - simultaneous interpretation delivers this as the speaker speaks; consecutive interpretation follows after each segment. UVAN has 60,000+ hours of interpretation experience across Mandarin, Japanese, ASEAN languages and more, across boardroom negotiations, conferences, exhibitions, and government meetings.",
     icon: Globe2,
   },
   {
     id: "localization",
     title: "Localization",
     description:
-      "Localization is the adaptation of a product, website, or content for a specific target market - going beyond translation to adjust tone, cultural references, imagery, layout, and user experience. Ewan localizes websites, software, marketing materials, and product content across 125+ languages, with cultural adaptation built in from the start so the result feels native, not translated.",
+      "Localization is the adaptation of a product, website, or content for a specific target market - going beyond translation to adjust tone, cultural references, imagery, layout, and user experience. UVAN localizes websites, software, marketing materials, and product content across 125+ languages, with cultural adaptation built in from the start so the result feels native, not translated.",
     icon: ShieldCheck,
   },
   {
@@ -124,35 +125,54 @@ const LanguageLocalization = () => {
       jsonLd={languageLd}
     >
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-24 pt-12 text-white">
+        {/* Section Background Blob */}
+        <div 
+          className="absolute inset-0 z-0 opacity-35 mix-blend-color-dodge bg-cover bg-center pointer-events-none"
+          style={{ backgroundImage: "url('/bg-blobs/abstract-background-purple-dark-blue-gradient-wave-modern-background-combination-curve-free-vector.jpg')" }}
+        />
         <div
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 z-10"
           style={{
             background:
               "radial-gradient(circle at 75% 20%, hsl(var(--brand-purple-500)/0.22) 0%, transparent 34%), radial-gradient(circle at 15% 80%, hsl(var(--brand-cyan-500)/0.14) 0%, transparent 40%)",
           }}
         />
-        <div className="container relative mx-auto max-w-4xl">
-          <p className="mb-5 inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
-            125+ Languages. Every Sector. ISO 9001:2015 Certified.
-          </p>
-          <h1 className="font-serif text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
-            Language That <span className="text-[hsl(var(--brand-gold-500))]">Goes Beyond Words.</span>
-          </h1>
-          <p className="language-speakable mt-6 max-w-3xl text-lg leading-relaxed text-white/75">
-            {SPEAKABLE_LANGUAGE}
-          </p>
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/70">
-            Whether it&apos;s simultaneous interpretation in a high-stakes boardroom or technical translation for a manufacturing manual, we deliver with the
-            accuracy and cultural intelligence your business demands.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="mailto:info@ewan.co.in?subject=Language%20Services%20Quote"
-              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-            >
-              Get a Quote in 24 Hours
-              <ArrowRight className="h-4 w-4" />
-            </a>
+        <div className="container relative z-20 mx-auto max-w-6xl">
+          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-7">
+              <p className="mb-5 inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+                125+ Languages. Every Sector. ISO 9001:2015 Certified.
+              </p>
+              <h1 className="font-serif text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
+                Language That <span className="text-[hsl(var(--brand-gold-500))]">Goes Beyond Words.</span>
+              </h1>
+              <p className="language-speakable mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
+                {SPEAKABLE_LANGUAGE}
+              </p>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/70">
+                Whether it&apos;s simultaneous interpretation in a high-stakes boardroom or technical translation for a manufacturing manual, we deliver with the
+                accuracy and cultural intelligence your business demands.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="mailto:info@ewan.co.in?subject=Language%20Services%20Quote"
+                  className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+                >
+                  Get a Quote in 24 Hours
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+
+            <div className="relative mx-auto w-full max-w-[440px] lg:col-span-5 lg:mx-0 lg:max-w-none">
+              <motion.img
+                src="/doodles/Group discussion-bro.svg"
+                alt="Multilingual Group Discussion"
+                className="w-full h-auto object-contain opacity-95"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </div>
           </div>
         </div>
       </section>

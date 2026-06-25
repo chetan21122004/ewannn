@@ -39,7 +39,7 @@ const apr25ArticlesList: GazetteArticle[] = [
     title: "The Language of the Heart: Why Our Mother Tongue is Our Greatest Comfort",
     excerpt:
       "Gujarati is not just a collection of words - it is a sanctuary where I feel most like myself.",
-    author: "EWAN Contributor",
+    author: "UVAN Contributor",
     image: "/stitch/language-gazette/article-market-entry.jpg",
     datePublished: "2025-04-01",
   },

@@ -4,7 +4,7 @@ import { organizationNode } from "@/lib/schemaHelpers";
 import type { JsonLdObject } from "@/lib/schemaHelpers";
 import { SITE_URL } from "@/lib/site";
 
-export const JSON_LD_SCRIPT_ID = "ewan-jsonld";
+export const JSON_LD_SCRIPT_ID = "uvan-jsonld";
 
 type JsonLdProp = JsonLdObject | JsonLdObject[] | undefined;
 

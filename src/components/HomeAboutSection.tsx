@@ -82,7 +82,7 @@ const HomeAboutSection = () => {
                   >
                     {t("home.aboutIntro.headlineHighlight")}
                   </span>
-                  <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
+                  <span className="text-[hsl(var(--brand-purple-700))] italic">
                     {t("home.aboutIntro.headlineHighlight")}
                   </span>
                 </span>

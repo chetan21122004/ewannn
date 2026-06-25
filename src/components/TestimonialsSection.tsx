@@ -5,27 +5,27 @@ import { useTranslation } from "react-i18next";
 
 const defaultTestimonials = [
   {
-    quote: "Ewan bridged language and operations seamlessly. They were our hands, ears, and voice in India.",
+    quote: "UVAN bridged language and operations seamlessly. They were our hands, ears, and voice in India.",
     author: "Operations Director",
     company: "Japanese Manufacturing Client",
   },
   {
-    quote: "Reliable, precise, and deeply professional. Ewan understood both our business and the local context.",
+    quote: "Reliable, precise, and deeply professional. UVAN understood both our business and the local context.",
     author: "Procurement Lead",
     company: "Tata Autocomp",
   },
   {
-    quote: "Ewan's interpretation team made our cross-border meetings effortless. Strategic value beyond translation.",
+    quote: "UVAN's interpretation team made our cross-border meetings effortless. Strategic value beyond translation.",
     author: "Senior Executive",
     company: "Groupo Antolin",
   },
   {
-    quote: "Speed, accuracy, and cultural depth. Ewan delivered exactly what we needed for global market research.",
+    quote: "Speed, accuracy, and cultural depth. UVAN delivered exactly what we needed for global market research.",
     author: "Research Director",
     company: "Markets & Markets",
   },
   {
-    quote: "From negotiations to documentation, Ewan handled every detail with care and precision.",
+    quote: "From negotiations to documentation, UVAN handled every detail with care and precision.",
     author: "Founder",
     company: "Seasonz International",
   },
@@ -56,12 +56,9 @@ const TestimonialsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-4">
-            {t("home.testimonials.badge")}
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light">
             {t("home.testimonials.titlePrefix")}{" "}
-            <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
+            <span className="text-[hsl(var(--brand-purple-700))] italic">
               {t("home.testimonials.titleHighlight")}
             </span>
           </h2>

@@ -36,7 +36,7 @@ const enCommon = {
       learnLanguage: "Learn a Language With Us ↗",
     },
     about: {
-      aboutEwan: "About Ewan",
+      aboutEwan: "About UVAN",
       founders: "The Founders",
       orientalFlock: "Oriental Flock",
       partners: "Our Partners",
@@ -60,7 +60,7 @@ const enCommon = {
     emailLabel: "Email us",
     ctaHeadline: "Ready to expand across borders with one trusted partner?",
     certificationsLabel: "Certifications & Ecosystem",
-    bhashikGroup: "Part of the Ewan Group · Bhashik Skill Development",
+    bhashikGroup: "Part of the UVAN Group · Bhashik Skill Development",
     bhashikSkill: "Bhashik Skill Development",
     blogInsights: "Blog & Insights",
     aboutUs: "About Us",
@@ -70,63 +70,63 @@ const enCommon = {
     contactUs: "Contact Us",
     askSohamCta: "Ask Soham - 15 Min Free",
     marketEntryAudit: "Download the 2026 Market Entry Audit",
-    rights: "© 2026 Ewan Business Solutions. All rights reserved.",
+    rights: "© 2026 UVAN. All rights reserved.",
     privacyPolicy: "Privacy Policy",
     caseStudies: "Case Studies",
     sano: "SANO",
   },
   seo: {
     marketEntry: {
-      title: "India Market Entry Partner | Cross-Border Expansion | Ewan Business Solutions",
+      title: "India Market Entry Partner | Cross-Border Expansion | UVAN",
       description:
-        "Ewan manages full-cycle India market entry for foreign companies - entity formation, regulatory navigation, executive liaison, and on-ground operations. 10 years. 10+ sectors.",
+        "UVAN manages full-cycle India market entry for foreign companies - entity formation, regulatory navigation, executive liaison, and on-ground operations. 10 years. 10+ sectors.",
     },
     languageLocalization: {
-      title: "Translation, Interpretation & Localization Services India | Ewan Business Solutions",
+      title: "Translation, Interpretation & Localization Services India | UVAN",
       description:
         "Professional translation, interpretation, localization and voiceover in 125+ languages. ISO 9001:2015 certified. Sector expertise across automotive, pharma, legal, exhibitions and more.",
       keywords:
         "translation services India, interpretation services India, localization India, technical translation India, simultaneous interpretation India",
     },
     industries: {
-      title: "Language & Market Entry Services by Industry | Ewan Business Solutions",
+      title: "Language & Market Entry Services by Industry | UVAN",
       description:
-        "Ewan provides language and market entry expertise across automotive, pharma, aerospace, manufacturing, exhibitions, technology, agriculture, legal, education and media sectors.",
+        "UVAN provides language and market entry expertise across automotive, pharma, aerospace, manufacturing, exhibitions, technology, agriculture, legal, education and media sectors.",
       keywords:
         "language services automotive India, pharma translation India, exhibition interpretation India, market entry India sector",
     },
     about: {
-      title: "About Ewan Business Solutions | Cross-Border Market Partner India",
+      title: "About UVAN | Cross-Border Market Partner India",
       description:
-        "Ewan Business Solutions - 5 years, 250+ clients, 125+ languages. Founded by Soham Kakade. Cross-border market entry and language services for the India-Asia corridor.",
-      keywords: "Ewan Business Solutions about, Soham Kakade Ewan, India language company, cross-border market entry India",
+        "UVAN - 5 years, 250+ clients, 125+ languages. Founded by Soham Kakade. Cross-border market entry and language services for the India-Asia corridor.",
+      keywords: "UVAN about, Soham Kakade UVAN, India language company, cross-border market entry India",
     },
     contact: {
-      title: "Contact Ewan Business Solutions | Cross-Border Market Partner",
+      title: "Contact UVAN | Cross-Border Market Partner",
       description:
-        "Start a conversation with Ewan for market entry, language services, and cross-border execution support.",
+        "Start a conversation with UVAN for market entry, language services, and cross-border execution support.",
     },
     media: {
-      title: "Media, Insights & Press | Ewan Business Solutions",
+      title: "Media, Insights & Press | UVAN",
       description:
-        "Read The Language Gazette, explore blog insights on cross-border business, watch event videos, and access press coverage of Ewan Business Solutions.",
+        "Read The Language Gazette, explore blog insights on cross-border business, watch event videos, and access press coverage of UVAN.",
       keywords:
         "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India",
     },
     askSoham: {
-      title: "Ask Soham - Free 15-Min Call | Ewan Business Solutions",
+      title: "Ask Soham - Free 15-Min Call | UVAN",
       description:
-        "Book a free 15-minute call with Soham Kakade - founder of Ewan. Market entry, language strategy, or career in languages. Honest, focused, no pitch.",
+        "Book a free 15-minute call with Soham Kakade - founder of UVAN. Market entry, language strategy, or career in languages. Honest, focused, no pitch.",
     },
     marketEntryAudit: {
-      title: "Global Market Entry Audit | Ewan Business Solutions",
+      title: "Global Market Entry Audit | UVAN",
       description:
         "Download the 2026 Global Market Entry Audit - a free diagnostic framework built from 10 years of on-ground cross-border experience. Assess your expansion readiness before you commit.",
     },
     joinUs: {
-      title: "Join Ewan - Careers, Vendor Network & Collaborators | Ewan Business Solutions",
+      title: "Join UVAN - Careers, Vendor Network & Collaborators | UVAN",
       description:
-        "Join Ewan Business Solutions as an employee, freelance language professional, vendor, or institutional collaborator. We're building the cross-border partner for India and the emerging world.",
+        "Join UVAN as an employee, freelance language professional, vendor, or institutional collaborator. We're building the cross-border partner for India and the emerging world.",
     },
   },
   home: {
@@ -150,13 +150,13 @@ const enCommon = {
       floatingCard2Value: "125+",
     },
     aboutIntro: {
-      badge: "About Ewan",
+      badge: "About UVAN",
       headlinePrefix: "About ",
-      headlineHighlight: "Ewan Business Solutions",
+      headlineHighlight: "UVAN",
       headlineSuffix: "",
       cardLabel: "Company profile",
       cardBlurb:
-        "Founded in Pune in 2020, Ewan brings together India–Asia market entry execution and 125+ languages under one roof - ISO certified, recognised for India–China trade ties, and partnered with MSAMB and Bhashini.",
+        "Founded in Pune in 2020, UVAN brings together India–Asia market entry execution and 125+ languages under one roof - ISO certified, recognised for India–China trade ties, and partnered with MSAMB and Bhashini.",
       pills: ["Pune, India · Founded 2020", "125+ languages", "ISO 9001:2015", "MSAMB · Bhashini"],
     },
     stats: {
@@ -213,7 +213,7 @@ const enCommon = {
         },
         {
           label: "Delivery",
-          text: "Ewan delivered the complete mandate - from initial market assessment and entity formation through to on-ground liaisoning and operational setup.",
+          text: "UVAN delivered the complete mandate - from initial market assessment and entity formation through to on-ground liaisoning and operational setup.",
           iconColor: "text-[hsl(var(--brand-purple-500))]",
           ringColor: "border-[hsl(var(--brand-purple-500)/0.28)]",
           labelColor: "text-[hsl(var(--brand-purple-500)/0.92)]",
@@ -228,11 +228,11 @@ const enCommon = {
       ],
     },
     whyEwan: {
-      badge: "Why Ewan",
+      badge: "Why UVAN",
       titlePrefix: "The Partner Who's",
       titleHighlight: "Already Been in the Room.",
       subtitle:
-        "Most market entry consultants have never interpreted a boardroom negotiation. Most translation agencies have never set up a subsidiary. Ewan has done both - for 10 years, across every major sector, in the corridors that matter.",
+        "Most market entry consultants have never interpreted a boardroom negotiation. Most translation agencies have never set up a subsidiary. UVAN has done both - for 10 years, across every major sector, in the corridors that matter.",
       differentiators: [
         {
           title: "Language Meets Operations",
@@ -276,27 +276,27 @@ const enCommon = {
       goTo: "Go to testimonial",
       items: [
         {
-          quote: "Ewan bridged language and operations seamlessly. They were our hands, ears, and voice in India.",
+          quote: "UVAN bridged language and operations seamlessly. They were our hands, ears, and voice in India.",
           author: "Operations Director",
           company: "Japanese Manufacturing Client",
         },
         {
-          quote: "Reliable, precise, and deeply professional. Ewan understood both our business and the local context.",
+          quote: "Reliable, precise, and deeply professional. UVAN understood both our business and the local context.",
           author: "Procurement Lead",
           company: "Tata Autocomp",
         },
         {
-          quote: "Ewan's interpretation team made our cross-border meetings effortless. Strategic value beyond translation.",
+          quote: "UVAN's interpretation team made our cross-border meetings effortless. Strategic value beyond translation.",
           author: "Senior Executive",
           company: "Groupo Antolin",
         },
         {
-          quote: "Speed, accuracy, and cultural depth. Ewan delivered exactly what we needed for global market research.",
+          quote: "Speed, accuracy, and cultural depth. UVAN delivered exactly what we needed for global market research.",
           author: "Research Director",
           company: "Markets and Markets",
         },
         {
-          quote: "From negotiations to documentation, Ewan handled every detail with care and precision.",
+          quote: "From negotiations to documentation, UVAN handled every detail with care and precision.",
           author: "Founder",
           company: "Seasonz International",
         },
@@ -307,7 +307,7 @@ const enCommon = {
       titlePrefix: "Recognised by the",
       titleHighlight: "Consulate General of the People's Republic of China",
       subtitle:
-        "In a formal letter of recognition, the Consulate General acknowledged Ewan's contribution to strengthening India-China agricultural and trade relations. This is the kind of institutional trust that takes years to build and cannot be replicated overnight.",
+        "In a formal letter of recognition, the Consulate General acknowledged UVAN's contribution to strengthening India-China agricultural and trade relations. This is the kind of institutional trust that takes years to build and cannot be replicated overnight.",
       letters: [
         {
           src: "/Ewan-Consulate-experience-letter-page-001-min.jpg",
@@ -334,9 +334,9 @@ const enCommon = {
           linkedinUrl: "https://www.linkedin.com/in/soham-kakade-77b2819b/",
           linkedinCta: "Connect with Soham on LinkedIn →",
           intro: [
-            "10 Years in the Room Before Building the Firm. Soham Kakade spent a decade interpreting confidential boardroom negotiations between global leaders and their Asian counterparts - accumulating over 60,000 hours of simultaneous interpretation across Mandarin, Cantonese, Japanese and ASEAN languages before founding Ewan.",
+            "10 Years in the Room Before Building the Firm. Soham Kakade spent a decade interpreting confidential boardroom negotiations between global leaders and their Asian counterparts - accumulating over 60,000 hours of simultaneous interpretation across Mandarin, Cantonese, Japanese and ASEAN languages before founding UVAN.",
             "His foundation: a full Chinese Government scholarship at Beijing Language and Cultural University (BLCU). Since then: heads of state, Fortune 500 boardrooms, national textbooks, government export programs and geopolitical publications on the India-Asia corridor.",
-            "Ewan exists because cross-border expansion deserves a partner who has actually been on both sides of the table.",
+            "UVAN exists because cross-border expansion deserves a partner who has actually been on both sides of the table.",
           ],
           badges: ["BLCU Scholarship Recipient", "60,000+ Hours Interpretation", "ISO 9001:2015 Certified", "Vice President, CITLoB", "Bhashini Initiative, MeitY", "MSAMB Export Program Designer"],
         },
@@ -346,7 +346,7 @@ const enCommon = {
           img: "/Sukhada-maam.jpg",
           intro: [
             "Sukhada Kakade Bhalerao is a Pune-based Certified Management Accountant (CMA), finance educator, and entrepreneur with over 15 years of experience in finance, auditing, and professional training.",
-            "As Co-Founder and Director of Ewan Business Solutions and Bhashik Skill Development, she brings the financial rigour and operational backbone that underpins everything Ewan delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
+            "As Co-Founder and Director of UVAN and Bhashik Skill Development, she brings the financial rigour and operational backbone that underpins everything UVAN delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
             "She also runs her own cost accounting practice (est. 2010) and is passionate about bridging industry and academia.",
           ],
           badges: ["CMA Certified", "15+ Years Experience", "Finance & Compliance Expert", "RBI & FEMA Advisory", "Internal Controls Specialist", "Entity Setup & Structuring", "Entrepreneur Since 2010"],
@@ -358,7 +358,7 @@ const enCommon = {
       titleBefore: "Built With ",
       titleGradient: "Trusted Partners.",
       intro:
-        "Ewan's work is strengthened by institutional and industry partnerships that extend our capabilities across language, technology, and government programs.",
+        "UVAN's work is strengthened by institutional and industry partnerships that extend our capabilities across language, technology, and government programs.",
       exploreCta: "Explore Our Partner Network →",
       exploreHref: "/about-us#our-partners",
       items: [
@@ -445,13 +445,13 @@ const enCommon = {
       titleBefore: "Sector Expertise Across",
       titleHighlight: "Every Major Industry.",
       subtitle:
-        "10 years. 10+ sectors. 250+ clients. Ewan's language and market entry expertise is built on real, on-the-ground experience across India's most significant trade and business corridors.",
+        "10 years. 10+ sectors. 250+ clients. UVAN's language and market entry expertise is built on real, on-the-ground experience across India's most significant trade and business corridors.",
       cta: "Explore sector expertise",
     },
     overview: {
       title: "Real work in the corridors that matter",
       copy:
-        "From simultaneous interpretation in automotive boardrooms to certified pharma documentation and exhibition support, Ewan delivers sector depth with language and on-ground execution together - the combination cross-border mandates actually require.",
+        "From simultaneous interpretation in automotive boardrooms to certified pharma documentation and exhibition support, UVAN delivers sector depth with language and on-ground execution together - the combination cross-border mandates actually require.",
       stats: {
         clientsValue: "250+",
         clientsLabel: "Clients served",
@@ -464,7 +464,7 @@ const enCommon = {
       title: "Sector expertise",
       subtitle: "Language and market entry depth across every major industry.",
       items: [
-        { title: "Automotive", copy: "From simultaneous interpretation for boardroom negotiations between Indian OEMs and Japanese or Korean suppliers, to technical manual translation and subsidiary setup support - Ewan is the trusted language and operations partner for the automotive corridor." },
+        { title: "Automotive", copy: "From simultaneous interpretation for boardroom negotiations between Indian OEMs and Japanese or Korean suppliers, to technical manual translation and subsidiary setup support - UVAN is the trusted language and operations partner for the automotive corridor." },
         { title: "Pharmaceuticals", copy: "Regulatory document translation, clinical trial materials, product literature localization and multilingual communication for India's pharma sector and international partners." },
         { title: "Aerospace", copy: "Specialist technical documentation translation, standards interpretation and high-stakes negotiation support for aerospace sector clients." },
         { title: "Manufacturing", copy: "End-to-end support for manufacturers entering India or expanding abroad - from initial market assessment and language support through to full operational setup." },
@@ -477,7 +477,7 @@ const enCommon = {
       ],
     },
     cta: {
-      title: "Discuss your sector and corridor with Ewan",
+      title: "Discuss your sector and corridor with UVAN",
       copy: "Whether you need language services, market entry support, or both - book a short call for a straight conversation.",
       button: "Ask Soham - 15 Min Free",
     },
@@ -496,7 +496,7 @@ const enCommon = {
       flashQuote: "\"Consistency is the new currency.\"",
       flashMeta: "02 / 24 / 2024 - Press Office",
       ticker: [
-        "EWAN ACQUIRES LOCAL_HUB DATA",
+        "UVAN ACQUIRES LOCAL_HUB DATA",
         "MENA REGION EXPANSION RATE +14%",
         "SUSTAINABILITY INDEX REVEALED",
         "AI TRANSLATION ACCURACY AT 99.8%",
@@ -551,7 +551,7 @@ const enCommon = {
         {
           date: "FEB 12",
           year: "2024",
-          title: "EWAN Unveils 'Prism' - The Future of Context-Aware Language AI",
+          title: "UVAN Unveils 'Prism' - The Future of Context-Aware Language AI",
           desc: "A revolutionary leap in linguistic computation designed for enterprise-scale global operations.",
         },
         {
@@ -564,7 +564,7 @@ const enCommon = {
           date: "DEC 15",
           year: "2023",
           title: "New Executive Appointment: Dr. Elena Vance as Chief Strategy Officer",
-          desc: "Bringing two decades of global trade experience to the EWAN leadership cabinet.",
+          desc: "Bringing two decades of global trade experience to the UVAN leadership cabinet.",
         },
       ],
     },

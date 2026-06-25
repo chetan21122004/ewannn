@@ -43,7 +43,7 @@ const InsightsArticleSimultaneousInterpretation = () => {
   ];
 
   return (
-    <PageLayout title={`${TITLE} | Ewan`} description={DESCRIPTION} canonicalPath={CANONICAL} jsonLd={jsonLd}>
+    <PageLayout title={`${TITLE} | UVAN`} description={DESCRIPTION} canonicalPath={CANONICAL} jsonLd={jsonLd}>
       <article className="theme-section-light px-6 py-16 md:py-24">
         <div className="container mx-auto max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">Insights · Language</p>
@@ -58,7 +58,7 @@ const InsightsArticleSimultaneousInterpretation = () => {
               or multi-country delegations disallow stop-start dialogue.
             </p>
             <p>
-              Ewan aggregates 60,000+ hours across Mandarin, Japanese, Cantonese, and ASEAN corridors - aligning linguists who already understand your sectors
+              UVAN aggregates 60,000+ hours across Mandarin, Japanese, Cantonese, and ASEAN corridors - aligning linguists who already understand your sectors
               rather than parachuting generic resources that slow board decisions.
             </p>
             <h2 className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">Book Ask Soham for interpretation mandates</h2>

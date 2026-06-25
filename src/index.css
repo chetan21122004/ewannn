@@ -146,24 +146,13 @@
     transform: perspective(1000px) rotateY(-5deg) rotateX(5deg) scale(1.02);
   }
 
-  /* Gradient text - gold */
+  /* Solid emphasis text (legacy gradient classes retired per design audit) */
   .gradient-text {
-    background: linear-gradient(90deg, hsl(var(--brand-purple-700)), hsl(var(--brand-purple-500)), hsl(var(--brand-gold-500)));
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmerText 4s ease-in-out infinite;
+    color: hsl(var(--brand-purple-700));
   }
 
-  /* Gradient text - purple to gold */
   .gradient-text-purple {
-    background: linear-gradient(90deg, hsl(var(--brand-purple-700)), hsl(var(--purple-light)), hsl(var(--brand-cyan-500)));
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmerText 5s ease-in-out infinite;
+    color: hsl(var(--brand-purple-700));
   }
 
   /* Glass Cards - dark */
@@ -666,4 +655,15 @@ html {
   height: 3px;
   background: linear-gradient(90deg, hsl(var(--brand-gold-500)), hsl(var(--brand-purple-700)));
   border-radius: 1.25rem 1.25rem 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

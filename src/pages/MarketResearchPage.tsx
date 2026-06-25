@@ -18,7 +18,7 @@ const services = [
   {
     title: "Distributor & Partner Intelligence",
     description:
-      "Before committing to a distribution partner or vendor relationship, you need to know who they actually are - not just what their credentials say. Ewan conducts in-person distributor research that goes beyond document review: physical site visits, local reputation checks, operational capacity assessment, and stakeholder interviews.",
+      "Before committing to a distribution partner or vendor relationship, you need to know who they actually are - not just what their credentials say. UVAN conducts in-person distributor research that goes beyond document review: physical site visits, local reputation checks, operational capacity assessment, and stakeholder interviews.",
     points: [
       "Physical site verification of distributor premises",
       "Local reputation and reference checks",
@@ -30,7 +30,7 @@ const services = [
   {
     title: "Competitor Analysis",
     description:
-      "Understanding your competitive landscape in a new market requires more than reading annual reports. Ewan conducts on-ground competitor intelligence - visiting retail and trade channels, speaking to buyers and distributors, and assessing positioning, pricing, and distribution reach in the local language and context.",
+      "Understanding your competitive landscape in a new market requires more than reading annual reports. UVAN conducts on-ground competitor intelligence - visiting retail and trade channels, speaking to buyers and distributors, and assessing positioning, pricing, and distribution reach in the local language and context.",
     points: [
       "Competitor product and pricing analysis",
       "Distribution channel mapping",
@@ -63,7 +63,7 @@ const services = [
   {
     title: "Primary Market Research for Government Programs",
     description:
-      "Ewan has designed and conducted primary market research for export promotion programs under MSAMB (Government of Maharashtra) - giving us direct experience with government-commissioned research methodology and reporting standards.",
+      "UVAN has designed and conducted primary market research for export promotion programs under MSAMB (Government of Maharashtra) - giving us direct experience with government-commissioned research methodology and reporting standards.",
     points: [
       "Government export program research design",
       "Primary data collection with institutional standards",
@@ -122,7 +122,7 @@ const marketResearchLd = [
 const MarketResearchPage = () => {
   return (
     <PageLayout
-      title="Primary Market Research Services India & Asia | Ewan Business Solutions"
+      title="Primary Market Research Services India & Asia | UVAN"
       description="On-ground primary market research for companies entering India and Asian markets. Multilingual interviews, distributor intelligence, competitor analysis, and buyer research conducted by native-language experts."
       canonicalPath="/market-research/"
       jsonLd={marketResearchLd}
@@ -151,7 +151,7 @@ const MarketResearchPage = () => {
                 Market Research That <span className="text-[hsl(var(--brand-gold-500))]">Goes Beyond the Report.</span>
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/78 sm:text-lg">
-                Most market research for India is desk-based, English-language, and built on secondary data. Ewan's market
+                Most market research for India is desk-based, English-language, and built on secondary data. UVAN's market
                 research is different - conducted on the ground, in the local language, by people who understand what
                 they're actually hearing. The difference is not methodological. It is the difference between data and
                 intelligence.
@@ -193,7 +193,7 @@ const MarketResearchPage = () => {
 
       <SectionDivider variant="wave" fromDark />
 
-      {/* The Ewan Difference */}
+      {/* The UVAN Difference */}
       <section className="theme-section-soft relative overflow-hidden px-6 py-16 md:py-20 stitch-line stitch-line-bottom">
         <div className="pointer-events-none absolute -left-32 top-1/3 h-[min(90vw,480px)] w-[min(90vw,480px)] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,hsl(var(--brand-purple-500)/0.1),transparent_68%)]" />
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -203,7 +203,7 @@ const MarketResearchPage = () => {
             </div>
             <article className="order-1 rounded-[1.75rem] border border-[hsl(var(--border-light))] bg-white p-8 shadow-[0_14px_40px_rgba(26,22,51,0.06)] md:p-10 lg:order-2">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-500))]">
-                The Ewan Difference
+                The UVAN Difference
               </p>
               <h2 className="mt-3 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] md:text-4xl">
                 The Biggest Risk Is Not a Lack of Data. It's the Wrong Data.
@@ -216,7 +216,7 @@ const MarketResearchPage = () => {
                   reality on the ground.
                 </p>
                 <p>
-                  Ewan conducts primary market research using native-language researchers across India and Asia. We speak
+                  UVAN conducts primary market research using native-language researchers across India and Asia. We speak
                   to distributors, buyers, government officials, industry experts, and end consumers in their own language
                   - and we interpret what we hear with the cultural and sector intelligence to tell you what it actually
                   means.

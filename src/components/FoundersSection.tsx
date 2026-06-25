@@ -22,9 +22,9 @@ const defaultFounders: FounderItem[] = [
     linkedinUrl,
     linkedinCta: "Connect with Soham on LinkedIn →",
     intro: [
-      "10 Years in the Room Before Building the Firm. Soham Kakade spent a decade interpreting confidential boardroom negotiations between global leaders and their Asian counterparts - accumulating over 60,000 hours of simultaneous interpretation across Mandarin, Cantonese, Japanese and ASEAN languages before founding Ewan.",
+      "10 Years in the Room Before Building the Firm. Soham Kakade spent a decade interpreting confidential boardroom negotiations between global leaders and their Asian counterparts - accumulating over 60,000 hours of simultaneous interpretation across Mandarin, Cantonese, Japanese and ASEAN languages before founding UVAN.",
       "His foundation: a full Chinese Government scholarship at Beijing Language and Cultural University (BLCU). Since then: heads of state, Fortune 500 boardrooms, national textbooks, government export programs and geopolitical publications on the India-Asia corridor.",
-      "Ewan exists because cross-border expansion deserves a partner who has actually been on both sides of the table.",
+      "UVAN exists because cross-border expansion deserves a partner who has actually been on both sides of the table.",
     ],
     badges: ["BLCU Scholar", "60,000+ Hours Interpretation", "ISO 9001:2015 Certified", "Vice President, CITLoB", "Bhashini Initiative, MeitY", "MSAMB Export Program Designer"],
   },
@@ -34,7 +34,7 @@ const defaultFounders: FounderItem[] = [
     img: "/Sukhada-maam.jpg",
     intro: [
       "Sukhada Kakade Bhalerao is a Pune-based Certified Management Accountant (CMA), finance educator, and entrepreneur with over 15 years of experience in finance, auditing, and professional training.",
-      "As Co-Founder and Director of Ewan Business Solutions and Bhashik Skill Development, she brings the financial rigour and operational backbone that underpins everything Ewan delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
+      "As Co-Founder and Director of UVAN and Bhashik Skill Development, she brings the financial rigour and operational backbone that underpins everything UVAN delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
       "She also runs her own cost accounting practice (est. 2010) and is passionate about bridging industry and academia.",
     ],
     badges: ["CMA Certified", "15+ Years Experience", "Finance & Compliance Expert", "RBI & FEMA Advisory", "Internal Controls Specialist", "Entity Setup & Structuring", "Entrepreneur Since 2010"],
@@ -90,7 +90,7 @@ const FoundersSection = () => {
             {t("home.founders.badge")}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light mb-4">
-            <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
+            <span className="text-[hsl(var(--brand-purple-700))] italic">
               {t("home.founders.title")}
             </span>
           </h2>

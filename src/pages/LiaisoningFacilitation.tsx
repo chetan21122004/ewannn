@@ -30,7 +30,7 @@ const services = [
     id: "government-liaison",
     title: "Government & Regulatory Liaison",
     description:
-      "Navigating government departments and regulatory bodies requires a specific kind of liaison - one built on institutional trust and professional standing. Ewan has formal recognition and experience with the Consulate General of the PRC, MSAMB, and the Bhashini Initiative (MeitY).",
+      "Navigating government departments and regulatory bodies requires a specific kind of liaison - one built on institutional trust and professional standing. UVAN has formal recognition and experience with the Consulate General of the PRC, MSAMB, and the Bhashini Initiative (MeitY).",
     points: [
       "Government department and official liaison",
       "Regulatory and compliance communication",
@@ -54,7 +54,7 @@ const services = [
     id: "crisis-resolution",
     title: "Crisis & Conflict Resolution",
     description:
-      "When cross-border relationships break down, miscommunication is almost always at the center. Ewan provides neutral, professional mediation and liaison to resolve conflicts, clarify intent, and rebuild the communication bridge.",
+      "When cross-border relationships break down, miscommunication is almost always at the center. UVAN provides neutral, professional mediation and liaison to resolve conflicts, clarify intent, and rebuild the communication bridge.",
     points: [
       "Communication breakdown mediation",
       "Dispute resolution facilitation",
@@ -85,24 +85,38 @@ const liaisonLd = [
 const LiaisoningFacilitation = () => {
   return (
     <PageLayout
-      title="Executive Liaison & Negotiation Facilitation India | Ewan Business Solutions"
+      title="Executive Liaison & Negotiation Facilitation India | UVAN"
       description="High-stakes executive liaison, government relations, and negotiation facilitation for the India-Asia corridor. 60,000+ hours of boardroom experience in Mandarin, Japanese, and Korean."
       canonicalPath="/liaisoning-facilitation/"
       jsonLd={liaisonLd}
     >
-      {/* Hero */}
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-20 pt-10 text-white md:pb-28 md:pt-14 stitch-line stitch-line-bottom">
         <div
-          className="pointer-events-none absolute inset-0 opacity-30 md:opacity-40"
+          className="pointer-events-none absolute inset-0 opacity-[0.18]"
           style={{
             backgroundImage: `url('${stitch.heroBg}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_45%_at_65%_0%,hsl(var(--brand-purple-700)/0.42),transparent_55%)]" />
+        {/* Section Background Blob */}
+        <div 
+          className="absolute inset-0 z-0 opacity-35 mix-blend-color-dodge bg-cover bg-center pointer-events-none"
+          style={{ backgroundImage: "url('/bg-blobs/abstract-background-purple-dark-blue-gradient-wave-modern-background-combination-curve-free-vector.jpg')" }}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_45%_at_65%_0%,hsl(var(--brand-purple-700)/0.35),transparent_55%)]" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_85%,hsl(var(--brand-cyan-500)/0.12),transparent_42%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.5)] via-[hsl(var(--brand-navy-950)/0.78)] to-[hsl(var(--brand-navy-950))]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.2)] via-[hsl(var(--brand-navy-950)/0.65)] to-[hsl(var(--brand-navy-950))]" />
+
+        {/* Transparent Liaison/Merger Doodle */}
+        <motion.img
+          src="/doodles/Business merger-amico.svg"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-10 right-4 hidden h-64 w-64 opacity-[0.12] lg:block"
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
@@ -115,7 +129,7 @@ const LiaisoningFacilitation = () => {
                 <span className="text-[hsl(var(--brand-gold-500))]">the Right Partner Makes the Difference.</span>
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/78 sm:text-lg">
-                Ewan provides executive liaison and negotiation support for cross-border business. We sit between you and
+                UVAN provides executive liaison and negotiation support for cross-border business. We sit between you and
                 your partners, government officials, or vendors - ensuring that intent is never lost in translation.
               </p>
               <div className="mt-9 flex flex-wrap gap-4">
@@ -153,7 +167,7 @@ const LiaisoningFacilitation = () => {
         </div>
       </section>
 
-      {/* The Ewan Difference */}
+      {/* The UVAN Difference */}
       <section className="theme-section-soft relative overflow-hidden px-6 py-12">
         <div className="pointer-events-none absolute right-0 top-1/2 h-[min(80vw,400px)] w-[min(80vw,400px)] -translate-y-1/3 translate-x-1/4 rounded-full bg-[radial-gradient(circle,hsl(var(--brand-purple-500)/0.1),transparent_70%)]" />
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -171,7 +185,7 @@ const LiaisoningFacilitation = () => {
               <div className="mt-6 space-y-4 text-sm leading-relaxed text-on-light-secondary md:text-base">
                 <p>
                   In high-stakes business environments - whether it's a joint venture negotiation, a government audit, or
-                  a supplier dispute - what you say is as important as how it is understood. Ewan provides the
+                  a supplier dispute - what you say is as important as how it is understood. UVAN provides the
                   professional standing and cultural intelligence to represent your interests accurately.
                 </p>
                 <p>

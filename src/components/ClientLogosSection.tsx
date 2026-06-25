@@ -48,13 +48,9 @@ const ClientLogosSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="flex items-center gap-2.5">
-            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-purple-700))]" aria-hidden />
-            <p className="text-center text-xs font-semibold uppercase tracking-[0.32em] text-[hsl(var(--text-on-light-muted))]">
-              {t("home.clientLogos.badge")}
-            </p>
-            <span className="h-px w-10 max-w-[40vw] bg-gradient-to-r from-[hsl(var(--brand-purple-700)/0.6)] to-transparent" aria-hidden />
-          </div>
+          <p className="text-center text-sm font-medium text-on-light-muted">
+            {t("home.clientLogos.badge")}
+          </p>
         </motion.div>
 
         <div className="client-logos-fade relative overflow-hidden">

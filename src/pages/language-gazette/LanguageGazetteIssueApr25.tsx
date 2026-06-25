@@ -24,7 +24,7 @@ const LanguageGazetteIssueApr25 = () => {
   const issueDate = formatIssueDate(issue.published);
 
   return (
-    <PageLayout title={`${TITLE} | Ewan`} description={DESCRIPTION} canonicalPath={CANONICAL} jsonLd={jsonLd}>
+    <PageLayout title={`${TITLE} | UVAN`} description={DESCRIPTION} canonicalPath={CANONICAL} jsonLd={jsonLd}>
       <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 py-14 text-white md:py-20">
         <div className="container mx-auto max-w-6xl">
           <nav className="mb-8 text-sm text-white/60">

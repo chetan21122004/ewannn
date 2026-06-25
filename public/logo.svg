@@ -1,0 +1,71 @@
+<svg viewBox="0 0 820 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UVAN - Asia Market Entry">
+<defs>
+<linearGradient id="uvanBridgeGradient" gradientUnits="userSpaceOnUse" x1="18" y1="0" x2="802" y2="0"><stop offset="0%" stop-color="#8DC63F"/><stop offset="32%" stop-color="#4FB857"/><stop offset="55%" stop-color="#2FB0C2"/><stop offset="78%" stop-color="#1E8FD5"/><stop offset="100%" stop-color="#1B5FBF"/></linearGradient>
+</defs>
+<text x="410.0" y="92" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="92" letter-spacing="10" fill="#0a0a0a">UVAN</text>
+<text x="804" y="34" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="16" fill="#0a0a0a">TM</text>
+<g fill="none" stroke="url(#uvanBridgeGradient)" stroke-linecap="round">
+<line x1="18" y1="168" x2="802" y2="168" stroke-width="3"/>
+<path d="M 18.0,168.0 Q 18.0,168.0 67.0,129.0 Q 116.0,90.0 165.0,120.0 Q 214.0,150.0 263.0,120.0 Q 312.0,90.0 361.0,120.0 Q 410.0,150.0 459.0,120.0 Q 508.0,90.0 557.0,120.0 Q 606.0,150.0 655.0,120.0 Q 704.0,90.0 753.0,129.0 T 802.0,168.0" stroke-width="3.2"/>
+<line x1="32.0" y1="163.7" x2="32.0" y2="168.0" stroke-width="1.6"/>
+<line x1="46.0" y1="152.5" x2="46.0" y2="168.0" stroke-width="1.6"/>
+<line x1="60.0" y1="137.3" x2="60.0" y2="168.0" stroke-width="1.6"/>
+<line x1="74.0" y1="120.7" x2="74.0" y2="168.0" stroke-width="1.6"/>
+<line x1="88.0" y1="105.5" x2="88.0" y2="168.0" stroke-width="1.6"/>
+<line x1="102.0" y1="94.3" x2="102.0" y2="168.0" stroke-width="1.6"/>
+<line x1="116.0" y1="90.0" x2="116.0" y2="168.0" stroke-width="1.6"/>
+<line x1="130.0" y1="93.3" x2="130.0" y2="168.0" stroke-width="1.6"/>
+<line x1="144.0" y1="101.9" x2="144.0" y2="168.0" stroke-width="1.6"/>
+<line x1="158.0" y1="113.6" x2="158.0" y2="168.0" stroke-width="1.6"/>
+<line x1="172.0" y1="126.4" x2="172.0" y2="168.0" stroke-width="1.6"/>
+<line x1="186.0" y1="138.1" x2="186.0" y2="168.0" stroke-width="1.6"/>
+<line x1="200.0" y1="146.7" x2="200.0" y2="168.0" stroke-width="1.6"/>
+<line x1="214.0" y1="150.0" x2="214.0" y2="168.0" stroke-width="1.6"/>
+<line x1="228.0" y1="146.7" x2="228.0" y2="168.0" stroke-width="1.6"/>
+<line x1="242.0" y1="138.1" x2="242.0" y2="168.0" stroke-width="1.6"/>
+<line x1="256.0" y1="126.4" x2="256.0" y2="168.0" stroke-width="1.6"/>
+<line x1="270.0" y1="113.6" x2="270.0" y2="168.0" stroke-width="1.6"/>
+<line x1="284.0" y1="101.9" x2="284.0" y2="168.0" stroke-width="1.6"/>
+<line x1="298.0" y1="93.3" x2="298.0" y2="168.0" stroke-width="1.6"/>
+<line x1="312.0" y1="90.0" x2="312.0" y2="168.0" stroke-width="1.6"/>
+<line x1="326.0" y1="93.3" x2="326.0" y2="168.0" stroke-width="1.6"/>
+<line x1="340.0" y1="101.9" x2="340.0" y2="168.0" stroke-width="1.6"/>
+<line x1="354.0" y1="113.6" x2="354.0" y2="168.0" stroke-width="1.6"/>
+<line x1="368.0" y1="126.4" x2="368.0" y2="168.0" stroke-width="1.6"/>
+<line x1="382.0" y1="138.1" x2="382.0" y2="168.0" stroke-width="1.6"/>
+<line x1="396.0" y1="146.7" x2="396.0" y2="168.0" stroke-width="1.6"/>
+<line x1="410.0" y1="150.0" x2="410.0" y2="168.0" stroke-width="1.6"/>
+<line x1="424.0" y1="146.7" x2="424.0" y2="168.0" stroke-width="1.6"/>
+<line x1="438.0" y1="138.1" x2="438.0" y2="168.0" stroke-width="1.6"/>
+<line x1="452.0" y1="126.4" x2="452.0" y2="168.0" stroke-width="1.6"/>
+<line x1="466.0" y1="113.6" x2="466.0" y2="168.0" stroke-width="1.6"/>
+<line x1="480.0" y1="101.9" x2="480.0" y2="168.0" stroke-width="1.6"/>
+<line x1="494.0" y1="93.3" x2="494.0" y2="168.0" stroke-width="1.6"/>
+<line x1="508.0" y1="90.0" x2="508.0" y2="168.0" stroke-width="1.6"/>
+<line x1="522.0" y1="93.3" x2="522.0" y2="168.0" stroke-width="1.6"/>
+<line x1="536.0" y1="101.9" x2="536.0" y2="168.0" stroke-width="1.6"/>
+<line x1="550.0" y1="113.6" x2="550.0" y2="168.0" stroke-width="1.6"/>
+<line x1="564.0" y1="126.4" x2="564.0" y2="168.0" stroke-width="1.6"/>
+<line x1="578.0" y1="138.1" x2="578.0" y2="168.0" stroke-width="1.6"/>
+<line x1="592.0" y1="146.7" x2="592.0" y2="168.0" stroke-width="1.6"/>
+<line x1="606.0" y1="150.0" x2="606.0" y2="168.0" stroke-width="1.6"/>
+<line x1="620.0" y1="146.7" x2="620.0" y2="168.0" stroke-width="1.6"/>
+<line x1="634.0" y1="138.1" x2="634.0" y2="168.0" stroke-width="1.6"/>
+<line x1="648.0" y1="126.4" x2="648.0" y2="168.0" stroke-width="1.6"/>
+<line x1="662.0" y1="113.6" x2="662.0" y2="168.0" stroke-width="1.6"/>
+<line x1="676.0" y1="101.9" x2="676.0" y2="168.0" stroke-width="1.6"/>
+<line x1="690.0" y1="93.3" x2="690.0" y2="168.0" stroke-width="1.6"/>
+<line x1="704.0" y1="90.0" x2="704.0" y2="168.0" stroke-width="1.6"/>
+<line x1="718.0" y1="94.3" x2="718.0" y2="168.0" stroke-width="1.6"/>
+<line x1="732.0" y1="105.5" x2="732.0" y2="168.0" stroke-width="1.6"/>
+<line x1="746.0" y1="120.7" x2="746.0" y2="168.0" stroke-width="1.6"/>
+<line x1="760.0" y1="137.3" x2="760.0" y2="168.0" stroke-width="1.6"/>
+<line x1="774.0" y1="152.5" x2="774.0" y2="168.0" stroke-width="1.6"/>
+<line x1="788.0" y1="163.7" x2="788.0" y2="168.0" stroke-width="1.6"/>
+<line x1="116.0" y1="168" x2="116.0" y2="76.0" stroke-width="4.2"/>
+<line x1="312.0" y1="168" x2="312.0" y2="76.0" stroke-width="4.2"/>
+<line x1="508.0" y1="168" x2="508.0" y2="76.0" stroke-width="4.2"/>
+<line x1="704.0" y1="168" x2="704.0" y2="76.0" stroke-width="4.2"/>
+</g>
+<text x="410.0" y="226" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="30" letter-spacing="9" fill="#0a0a0a">ASIA MARKET ENTRY</text>
+</svg>

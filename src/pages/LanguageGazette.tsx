@@ -31,8 +31,8 @@ const briefs = [
 
 const LanguageGazette = () => (
   <PageLayout
-    title="Language Gazette | Ewan Business Solutions"
-    description="The Language Gazette by EWAN: editorial intelligence on language, culture, and international business execution."
+    title="Language Gazette | UVAN"
+    description="The Language Gazette by UVAN: editorial intelligence on language, culture, and international business execution."
     canonicalPath="/language-gazette/"
   >
     <LanguageGazetteMagazineLayout
@@ -80,7 +80,7 @@ const LanguageGazette = () => (
         <div className="mb-8 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-on-light-muted">Media</p>
           <h2 className="mt-2 font-serif text-3xl font-extrabold text-[hsl(var(--brand-navy-950))]">In Action</h2>
-          <p className="mt-2 text-sm text-on-light-secondary">Watch Soham and the EWAN team driving global discourse.</p>
+          <p className="mt-2 text-sm text-on-light-secondary">Watch Soham and the UVAN team driving global discourse.</p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-12">

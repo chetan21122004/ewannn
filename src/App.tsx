@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -34,43 +35,45 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <HashScrollHandler />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/ask-soham" element={<AskSoham />} />
-          <Route path="/market-entry" element={<MarketEntry />} />
-          <Route path="/language-localization" element={<LanguageLocalization />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/media" element={<Media />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/global-talkies" element={<GlobalTalkies />} />
-          <Route path="/import-export" element={<ImportExport />} />
-          <Route path="/market-research" element={<MarketResearchPage />} />
-          <Route path="/market-entry-audit" element={<MarketEntryAudit />} />
-          <Route path="/liaisoning-facilitation" element={<LiaisoningFacilitation />} />
-          <Route path="/import-procurement-export" element={<Navigate to="/import-export" replace />} />
-          <Route path="/industries" element={<Industries />} />
-          <Route path="/join-us" element={<JoinUs />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/language-gazette" element={<LanguageGazette />} />
-          <Route path="/language-gazette/apr-25" element={<LanguageGazetteIssueApr25 />} />
-          <Route path="/language-gazette/aug-25" element={<Navigate to="/language-gazette/apr-25" replace />} />
-          <Route path="/language-gazette/when-sadness-gave-me-joy" element={<LanguageGazetteWhenSadnessGaveMeJoy />} />
-          <Route path="/language-gazette/mother-tongue-greatest-comfort" element={<LanguageGazetteMotherTongueComfort />} />
-          <Route path="/language-gazette/be-brave-you-women" element={<LanguageGazetteBeBraveYouWomen />} />
-          <Route path="/insights" element={<Insights />} />
-          <Route path="/insights/how-to-enter-indian-market" element={<InsightsArticleHowToEnterIndia />} />
-          <Route path="/insights/how-to-choose-translation-partner-india" element={<InsightsArticleChooseTranslationPartner />} />
-          <Route path="/insights/what-is-simultaneous-interpretation" element={<InsightsArticleSimultaneousInterpretation />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <MotionConfig reducedMotion="user">
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <HashScrollHandler />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/ask-soham" element={<AskSoham />} />
+            <Route path="/market-entry" element={<MarketEntry />} />
+            <Route path="/language-localization" element={<LanguageLocalization />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/media" element={<Media />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/global-talkies" element={<GlobalTalkies />} />
+            <Route path="/import-export" element={<ImportExport />} />
+            <Route path="/market-research" element={<MarketResearchPage />} />
+            <Route path="/market-entry-audit" element={<MarketEntryAudit />} />
+            <Route path="/liaisoning-facilitation" element={<LiaisoningFacilitation />} />
+            <Route path="/import-procurement-export" element={<Navigate to="/import-export" replace />} />
+            <Route path="/industries" element={<Industries />} />
+            <Route path="/join-us" element={<JoinUs />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/language-gazette" element={<LanguageGazette />} />
+            <Route path="/language-gazette/apr-25" element={<LanguageGazetteIssueApr25 />} />
+            <Route path="/language-gazette/aug-25" element={<Navigate to="/language-gazette/apr-25" replace />} />
+            <Route path="/language-gazette/when-sadness-gave-me-joy" element={<LanguageGazetteWhenSadnessGaveMeJoy />} />
+            <Route path="/language-gazette/mother-tongue-greatest-comfort" element={<LanguageGazetteMotherTongueComfort />} />
+            <Route path="/language-gazette/be-brave-you-women" element={<LanguageGazetteBeBraveYouWomen />} />
+            <Route path="/insights" element={<Insights />} />
+            <Route path="/insights/how-to-enter-indian-market" element={<InsightsArticleHowToEnterIndia />} />
+            <Route path="/insights/how-to-choose-translation-partner-india" element={<InsightsArticleChooseTranslationPartner />} />
+            <Route path="/insights/what-is-simultaneous-interpretation" element={<InsightsArticleSimultaneousInterpretation />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </MotionConfig>
   </QueryClientProvider>
 );
 

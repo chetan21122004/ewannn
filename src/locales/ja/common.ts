@@ -36,7 +36,7 @@ const jaCommon = {
       learnLanguage: "言語学習プログラム ↗",
     },
     about: {
-      aboutEwan: "Ewanについて",
+      aboutEwan: "UVANについて",
       founders: "創業メンバー",
       orientalFlock: "Oriental Flock",
       partners: "パートナー",
@@ -60,7 +60,7 @@ const jaCommon = {
     emailLabel: "メール",
     ctaHeadline: "国境を越える展開を、信頼できる一つのパートナーと。",
     certificationsLabel: "認証とエコシステム",
-    bhashikGroup: "Ewanグループ · Bhashik Skill Development",
+    bhashikGroup: "UVANグループ · Bhashik Skill Development",
     bhashikSkill: "Bhashik Skill Development",
     blogInsights: "ブログとインサイト",
     aboutUs: "会社情報",
@@ -70,7 +70,7 @@ const jaCommon = {
     contactUs: "お問い合わせ",
     askSohamCta: "Ask Soham - 15分無料",
     marketEntryAudit: "2026年市場参入監査をダウンロード",
-    rights: "© 2026 Ewan Business Solutions. All rights reserved.",
+    rights: "© 2026 UVAN. All rights reserved.",
     privacy: "プライバシー",
     privacyPolicy: "プライバシーポリシー",
     caseStudies: "ケーススタディ",
@@ -80,48 +80,48 @@ const jaCommon = {
   },
   seo: {
     marketEntry: {
-      title: "インド市場参入パートナー | 越境展開 | Ewan",
+      title: "インド市場参入パートナー | 越境展開 | UVAN",
       description:
-        "Ewan は海外企業のインド市場参入をフルサイクルで支援します。法人設立、規制対応、エグゼクティブ折衝、現地運営まで対応。",
+        "UVAN は海外企業のインド市場参入をフルサイクルで支援します。法人設立、規制対応、エグゼクティブ折衝、現地運営まで対応。",
     },
     languageLocalization: {
-      title: "インドの翻訳・通訳・ローカリゼーション | Ewan Business Solutions",
+      title: "インドの翻訳・通訳・ローカリゼーション | UVAN",
       description:
         "125以上の言語に対応するプロフェッショナルな翻訳・通訳・ローカリゼーション・吹き替え・ナレーション。ISO 9001:2015 認証。自動車、製薬、法務、展示会など業界別の専門性。",
       keywords:
         "translation services India, interpretation services India, localization India, technical translation India, simultaneous interpretation India",
     },
     industries: {
-      title: "業界別の言語サービスと市場参入 | Ewan Business Solutions",
+      title: "業界別の言語サービスと市場参入 | UVAN",
       description:
-        "Ewan は自動車、製薬、航空宇宙、製造、展示会、テクノロジー、農業、法務・コンプライアンス、教育、メディア・OTT など幅広い業界で言語と市場参入の専門性を提供します。",
+        "UVAN は自動車、製薬、航空宇宙、製造、展示会、テクノロジー、農業、法務・コンプライアンス、教育、メディア・OTT など幅広い業界で言語と市場参入の専門性を提供します。",
       keywords:
         "language services automotive India, pharma translation India, exhibition interpretation India, market entry India sector",
     },
     about: {
-      title: "Ewan Business Solutions について | 越境マーケットパートナー（インド）",
+      title: "UVAN について | 越境マーケットパートナー（インド）",
       description:
-        "Ewan Business Solutions - 5年、250社以上のクライアント、125以上の言語。Soham Kakade により設立。インド・アジア回廊向けの越境市場参入と言語サービス。",
-      keywords: "Ewan Business Solutions about, Soham Kakade Ewan, India language company, cross-border market entry India",
+        "UVAN - 5年、250社以上のクライアント、125以上の言語。Soham Kakade により設立。インド・アジア回廊向けの越境市場参入と言語サービス。",
+      keywords: "UVAN about, Soham Kakade UVAN, India language company, cross-border market entry India",
     },
     contact: {
-      title: "お問い合わせ | Ewan Business Solutions",
-      description: "市場参入、言語サービス、越境実行について Ewan にご相談ください。",
+      title: "お問い合わせ | UVAN",
+      description: "市場参入、言語サービス、越境実行について UVAN にご相談ください。",
     },
     media: {
-      title: "メディア・インサイト・プレス | Ewan Business Solutions",
+      title: "メディア・インサイト・プレス | UVAN",
       description:
-        "Language Gazette の記事、越境ビジネスに関するブログ洞察、イベント動画、Ewan Business Solutions のプレス情報をご覧ください。",
+        "Language Gazette の記事、越境ビジネスに関するブログ洞察、イベント動画、UVAN のプレス情報をご覧ください。",
       keywords:
         "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India",
     },
     askSoham: {
-      title: "Ask Soham - 15分無料相談 | Ewan Business Solutions",
+      title: "Ask Soham - 15分無料相談 | UVAN",
       description: "Soham Kakade との15分相談を予約し、市場参入と言語戦略の実務的な示唆を得ましょう。",
     },
     marketEntryAudit: {
-      title: "グローバル市場参入監査 | Ewan Business Solutions",
-      description: "EWAN 2026 グローバル市場参入監査をダウンロードし、投資前に運用・規制・実行リスクを可視化します。",
+      title: "グローバル市場参入監査 | UVAN",
+      description: "UVAN 2026 グローバル市場参入監査をダウンロードし、投資前に運用・規制・実行リスクを可視化します。",
     },
   },
   home: {
@@ -145,9 +145,9 @@ const jaCommon = {
       floatingCard2Value: "125+",
     },
     aboutIntro: {
-      badge: "Ewanについて",
+      badge: "UVANについて",
       headlinePrefix: "",
-      headlineHighlight: "Ewan Business Solutions",
+      headlineHighlight: "UVAN",
       headlineSuffix: "について",
       cardLabel: "会社概要",
       cardBlurb:
@@ -168,10 +168,10 @@ const jaCommon = {
       badge: "私たちの提供価値",
       titlePrefix: "2つの中核能力。",
       titleHighlight: "1つのパートナー。",
-      subtitle: "多くの企業はどちらか一方だけ。Ewan は言語と市場参入実行の両方を一体で提供します。",
+      subtitle: "多くの企業はどちらか一方だけ。UVAN は言語と市場参入実行の両方を一体で提供します。",
       learnMore: "詳しく見る",
       footerPrefix: "他社は片方だけ。",
-      footerHighlight: "Ewan は両方対応。",
+      footerHighlight: "UVAN は両方対応。",
       blocks: [
         {
           id: "market-entry",
@@ -211,7 +211,7 @@ const jaCommon = {
         },
         {
           label: "解決策",
-          text: "Ewan が法人設立、コンプライアンス、渉外、現地言語対応を含む市場参入を一括支援しました。",
+          text: "UVAN が法人設立、コンプライアンス、渉外、現地言語対応を含む市場参入を一括支援しました。",
           iconColor: "text-[hsl(var(--brand-purple-500))]",
           ringColor: "border-[hsl(var(--brand-purple-500)/0.28)]",
           labelColor: "text-[hsl(var(--brand-purple-500)/0.92)]",
@@ -226,10 +226,10 @@ const jaCommon = {
       ],
     },
     whyEwan: {
-      badge: "Why Ewan",
+      badge: "Why UVAN",
       titlePrefix: "実際に",
       titleHighlight: "現場にいたパートナー。",
-      subtitle: "市場参入だけ、翻訳だけでは越境実行は完成しません。Ewan は両輪を10年以上の実務で統合してきました。",
+      subtitle: "市場参入だけ、翻訳だけでは越境実行は完成しません。UVAN は両輪を10年以上の実務で統合してきました。",
       differentiators: [
         {
           title: "言語 × オペレーション統合",
@@ -278,7 +278,7 @@ const jaCommon = {
       next: "次のコメント",
       goTo: "コメントへ移動",
       items: [
-        { quote: "Ewan は言語と実行をシームレスにつなぎ、インドでの私たちの手足となってくれました。", author: "オペレーション責任者", company: "日系製造業クライアント" },
+        { quote: "UVAN は言語と実行をシームレスにつなぎ、インドでの私たちの手足となってくれました。", author: "オペレーション責任者", company: "日系製造業クライアント" },
         { quote: "正確で信頼でき、非常にプロフェッショナル。事業と現地文脈の両方を理解しています。", author: "調達責任者", company: "Tata Autocomp" },
         { quote: "越境会議が驚くほどスムーズになりました。翻訳以上の戦略価値があります。", author: "シニアエグゼクティブ", company: "Groupo Antolin" },
         { quote: "スピード、精度、文化理解のすべてが高水準。グローバル調査に不可欠な存在でした。", author: "リサーチディレクター", company: "Markets & Markets" },
@@ -290,7 +290,7 @@ const jaCommon = {
       titlePrefix: "",
       titleHighlight: "中華人民共和国 総領事館より正式認定",
       subtitle:
-        "Ewan は印中の農業・貿易連携への貢献に対し正式な感謝状を受領し、1,200名以上の農家・800ヘクタールへ実質的な成果を生みました。",
+        "UVAN は印中の農業・貿易連携への貢献に対し正式な感謝状を受領し、1,200名以上の農家・800ヘクタールへ実質的な成果を生みました。",
       letters: [
         { src: "/Ewan-Consulate-experience-letter-page-001-min.jpg", alt: "中国総領事館の感謝状 1ページ目", label: "1ページ目 · 中国語原文" },
         { src: "/Ewan-Consulate-experience-letter-page-002-min.jpg", alt: "中国総領事館の感謝状 2ページ目", label: "2ページ目 · 英語翻訳" },
@@ -315,7 +315,7 @@ const jaCommon = {
           intro: [
             "Soham は起業前に10年間、グローバル経営層の機密交渉を通訳・支援してきました。",
             "北京語言大学の中国政府奨学金を基盤に、国家案件からFortune 500会議まで対応してきた実績があります。",
-            "Ewan は、越境拡大には“実際に両側の席にいた”パートナーが必要という確信から生まれました。",
+            "UVAN は、越境拡大には“実際に両側の席にいた”パートナーが必要という確信から生まれました。",
           ],
           badges: ["BLCU Scholarship", "60,000+ 通訳時間", "ISO 9001:2015 認証", "CITLoB Vice President", "Bhashini Initiative", "MSAMB Program Designer"],
         },
@@ -325,7 +325,7 @@ const jaCommon = {
           img: "/Sukhada-maam.jpg",
           intro: [
             "Sukhada はプネ拠点のCMA（管理会計士）で、15年以上の財務・監査・教育経験を有します。",
-            "共同創業者として、Ewan の財務規律と運用基盤を設計し、実行品質を支えています。",
+            "共同創業者として、UVAN の財務規律と運用基盤を設計し、実行品質を支えています。",
             "独自のコスト会計実務も運営し、産業と教育をつなぐ活動を続けています。",
           ],
           badges: ["CMA資格", "15年以上の経験", "財務・コンプライアンス専門", "RBI/FEMA対応", "内部統制設計", "法人設計支援", "2010年から起業"],
@@ -337,7 +337,7 @@ const jaCommon = {
       titleBefore: "信頼できる ",
       titleGradient: "パートナーと共に。",
       intro:
-        "言語、テクノロジー、政府プログラムまで、Ewan の提供価値を補完する機関・産業パートナーと協働しています。",
+        "言語、テクノロジー、政府プログラムまで、UVAN の提供価値を補完する機関・産業パートナーと協働しています。",
       exploreCta: "パートナーネットワークを見る →",
       exploreHref: "/about-us#our-partners",
       items: [
@@ -359,7 +359,7 @@ const jaCommon = {
       badge: "ご相談開始",
       titlePrefix: "越境展開を",
       titleHighlight: "明確に前進。",
-      subtitle: "インド進出、グローバル拡大、多言語実行の課題まで、Ewan が統合パートナーとして支援します。",
+      subtitle: "インド進出、グローバル拡大、多言語実行の課題まで、UVAN が統合パートナーとして支援します。",
       cardTitle: "会話を始める",
       cardSubtitle: "最適な入口を選んでください。状況に合わせた次の一手を素早く提案します。",
       marketEntryCta: "市場参入を相談",
@@ -432,13 +432,13 @@ const jaCommon = {
       titleBefore: "全主要業界にわたる",
       titleHighlight: "セクター専門性。",
       subtitle:
-        "10年。10以上の業界。250社以上のクライアント。Ewan の言語と市場参入の専門性は、インドの最も重要な貿易回廊における現場経験に基づいています。",
+        "10年。10以上の業界。250社以上のクライアント。UVAN の言語と市場参入の専門性は、インドの最も重要な貿易回廊における現場経験に基づいています。",
       cta: "業界別の強みを見る",
     },
     overview: {
       title: "重要な回廊で積み上げてきた実務",
       copy:
-        "自動車のボードルーム通訳から製薬の規制ドキュメント、展示会サポートまで。Ewan は業界の深さと言語・オンブラウンド実行を一体で提供します。",
+        "自動車のボードルーム通訳から製薬の規制ドキュメント、展示会サポートまで。UVAN は業界の深さと言語・オンブラウンド実行を一体で提供します。",
       stats: {
         clientsValue: "250+",
         clientsLabel: "クライアント",
@@ -453,7 +453,7 @@ const jaCommon = {
       items: [
         {
           title: "自動車",
-          copy: "インドのOEMと日韓サプライヤー間の役員室交渉の同時通訳から、技術マニュアル翻訳、現地法人設立支援まで--Ewan は自動車回廊の信頼できる言語・オペレーションパートナーです。",
+          copy: "インドのOEMと日韓サプライヤー間の役員室交渉の同時通訳から、技術マニュアル翻訳、現地法人設立支援まで--UVAN は自動車回廊の信頼できる言語・オペレーションパートナーです。",
         },
         {
           title: "製薬",
@@ -494,7 +494,7 @@ const jaCommon = {
       ],
     },
     cta: {
-      title: "御社の業界と回廊について Ewan に相談する",
+      title: "御社の業界と回廊について UVAN に相談する",
       copy: "言語サービス、市場参入、またはその両方--短時間の対話から正直で焦点を絞った話し合いが始まれます。",
       button: "Ask Soham - 15分無料",
     },
@@ -512,7 +512,7 @@ const jaCommon = {
       flashQuote: "「一貫性こそ新しい通貨だ。」",
       flashMeta: "02 / 24 / 2024 - プレスオフィス",
       ticker: [
-        "EWAN が LOCAL_HUB データを取得",
+        "UVAN が LOCAL_HUB データを取得",
         "MENA地域の拡張率 +14%",
         "サステナビリティ指数を公開",
         "AI翻訳精度 99.8% 達成",
@@ -566,7 +566,7 @@ const jaCommon = {
         {
           date: "FEB 12",
           year: "2024",
-          title: "EWAN、「Prism」を発表 - 文脈認識型言語AIの未来",
+          title: "UVAN、「Prism」を発表 - 文脈認識型言語AIの未来",
           desc: "企業規模グローバル運用向け言語計算の大きな進展。",
         },
         {
@@ -579,7 +579,7 @@ const jaCommon = {
           date: "DEC 15",
           year: "2023",
           title: "新役員任命：Elena Vance 博士がCSOに就任",
-          desc: "20年の国際通商経験をEWAN経営陣へ。",
+          desc: "20年の国際通商経験をUVAN経営陣へ。",
         },
       ],
     },

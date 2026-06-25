@@ -8,8 +8,8 @@ const pressItems = [
   {
     date: "2024",
     year: "CASE STUDY",
-    title: "Building Strong International Ties: Ewan Business Solutions' Successful Partnership with SHOWA Gloves Japan",
-    desc: "How Ewan served as the single point of coordination for SHOWA's complete India market entry mandate.",
+    title: "Building Strong International Ties: UVAN' Successful Partnership with SHOWA Gloves Japan",
+    desc: "How UVAN served as the single point of coordination for SHOWA's complete India market entry mandate.",
   },
   {
     date: "2024",
@@ -49,7 +49,7 @@ const Media = () => {
   const mediaLd = [
     collectionPageSchema(
       "Media, Insights & Press",
-      "Read The Language Gazette, explore blog insights on cross-border business, watch event videos, and access press coverage of Ewan Business Solutions.",
+      "Read The Language Gazette, explore blog insights on cross-border business, watch event videos, and access press coverage of UVAN.",
       absoluteUrl("/media/"),
     ),
   ];
@@ -72,7 +72,7 @@ const Media = () => {
               <span className="text-[hsl(var(--brand-gold-500))]">Cross-Border Business.</span>
             </h1>
             <p className="mt-7 max-w-lg text-lg leading-relaxed text-white/80">
-              Published by Ewan Business Solutions - for practitioners and professionals navigating the India-Asia corridor and
+              Published by UVAN - for practitioners and professionals navigating the India-Asia corridor and
               beyond.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -96,11 +96,11 @@ const Media = () => {
             <div className="absolute right-0 top-0 w-80 rounded-[2rem] bg-white p-6 text-[hsl(var(--brand-navy-950))] shadow-2xl transition duration-500 hover:rotate-0 lg:rotate-6">
               <img
                 src="/page-assets/Building-Strong-International-Ties-Header-img-V2.jpg"
-                alt="Building Strong International Ties - SHOWA Gloves Japan & Ewan case study"
+                alt="Building Strong International Ties - SHOWA Gloves Japan & UVAN case study"
                 className="mb-4 h-48 w-full rounded-2xl object-cover"
               />
               <span className="text-xs font-bold uppercase tracking-wider text-[hsl(var(--brand-gold-600))]">Featured Case Study</span>
-              <h3 className="mt-2 text-base font-bold leading-snug">Ewan × SHOWA Gloves Japan</h3>
+              <h3 className="mt-2 text-base font-bold leading-snug">UVAN × SHOWA Gloves Japan</h3>
             </div>
             <div className="absolute bottom-0 left-0 w-80 rounded-[2rem] bg-[hsl(var(--brand-purple-700))] p-6 shadow-2xl transition duration-500 hover:rotate-0 lg:-rotate-6">
               <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-gold-500))]">From the Gazette</span>
@@ -140,14 +140,14 @@ const Media = () => {
             <article className="relative overflow-hidden rounded-[2.5rem] md:col-span-8">
               <img
                 src="/page-assets/Building-Strong-International-Ties-Header-img-V2.jpg"
-                alt="Building Strong International Ties - Ewan & SHOWA Gloves Japan"
+                alt="Building Strong International Ties - UVAN & SHOWA Gloves Japan"
                 className="h-[420px] w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.75)] to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-10">
                 <span className="rounded-full bg-[hsl(var(--brand-purple-700))] px-4 py-1 text-xs font-bold text-white">Featured Case Study</span>
                 <h3 className="mt-4 font-serif text-3xl font-bold leading-tight text-white">
-                  Building Strong International Ties: Ewan's Successful Partnership with SHOWA Gloves Japan
+                  Building Strong International Ties: UVAN's Successful Partnership with SHOWA Gloves Japan
                 </h3>
                 <button className="mt-5 border-b-2 border-[hsl(var(--brand-gold-500))] pb-1 font-semibold text-[hsl(var(--brand-gold-500))]">
                   View More
@@ -191,7 +191,7 @@ const Media = () => {
             <article className="group relative aspect-video overflow-hidden rounded-[2.5rem]">
               <img
                 src="/page-assets/Building-Strong-International-Ties-Header-img-V2.jpg"
-                alt="SHOWA Gloves Japan - Ewan's successful India entry partnership"
+                alt="SHOWA Gloves Japan - UVAN's successful India entry partnership"
                 className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-[hsl(var(--brand-navy-950)/0.5)] transition group-hover:bg-[hsl(var(--brand-navy-950)/0.3)]" />
@@ -206,7 +206,7 @@ const Media = () => {
                 </a>
               </div>
               <div className="absolute bottom-8 left-8 right-8 text-white">
-                <h3 className="text-2xl font-bold">Ewan on YouTube</h3>
+                <h3 className="text-2xl font-bold">UVAN on YouTube</h3>
                 <p className="mt-2 text-sm text-white/80">Watch our full video series on India-Asia business expansion - @EWAN-SSK</p>
               </div>
             </article>

@@ -38,15 +38,6 @@ const InstitutionalTrustSection = () => {
               <Landmark className="w-8 h-8 text-white" />
             </motion.div>
 
-            <motion.span
-              className="block text-xs uppercase tracking-[0.3em] text-[hsl(var(--brand-purple-700)/0.86)] font-semibold mb-3"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              {t("home.institutionalTrust.badge")}
-            </motion.span>
-
             <motion.h2
               className="text-3xl sm:text-4xl font-serif font-bold text-on-light mb-4"
               initial={{ opacity: 0, y: 20 }}
@@ -54,7 +45,7 @@ const InstitutionalTrustSection = () => {
               viewport={{ once: true }}
             >
               {t("home.institutionalTrust.titlePrefix")}{" "}
-              <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
+              <span className="text-[hsl(var(--brand-purple-700))] italic">
                 {t("home.institutionalTrust.titleHighlight")}
               </span>
             </motion.h2>
@@ -74,7 +65,7 @@ const InstitutionalTrustSection = () => {
             {consulateLetters.map((letter, index) => (
               <motion.figure
                 key={letter.src}
-                className="overflow-hidden rounded-[28px] border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.96)] shadow-[0_20px_56px_hsl(var(--brand-navy-950)/0.14)]"
+                className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.96)] shadow-[0_8px_24px_hsl(var(--brand-navy-950)/0.08)]"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

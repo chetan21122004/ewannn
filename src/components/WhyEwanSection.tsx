@@ -47,31 +47,54 @@ const WhyEwanSection = () => {
   const differentiatorIcons = [Layers, Award, Landmark] as const;
   return (
     <section id="why-ewan" className="py-8 lg:py-16 relative overflow-hidden theme-section-soft">
+      {/* Section Background Blob */}
+      <div 
+        className="absolute inset-0 z-0 opacity-15 mix-blend-multiply bg-cover bg-center pointer-events-none"
+        style={{ backgroundImage: "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')" }}
+      />
       <div className="glow-orb glow-orb-purple w-[360px] h-[360px] top-20 right-10 opacity-8" />
       <div className="glow-orb glow-orb-gold w-[300px] h-[300px] -bottom-16 left-10 opacity-8" />
       <div className="absolute inset-0 theme-grid-overlay-light opacity-18 pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          className="text-center max-w-3xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-5">
-            {t("home.whyEwan.badge")}
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light mb-5">
-            {t("home.whyEwan.titlePrefix")}{" "}
-            <span className="bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] bg-clip-text text-transparent italic">
-              {t("home.whyEwan.titleHighlight")}
+        <div className="grid lg:grid-cols-[1fr_360px] gap-8 items-center mb-16">
+          <motion.div
+            className="text-left"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-5">
+              {t("home.whyEwan.badge")}
             </span>
-          </h2>
-          <p className="text-on-light-muted text-base sm:text-lg leading-relaxed">
-            {t("home.whyEwan.subtitle")}
-          </p>
-        </motion.div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light mb-5 leading-tight">
+              {t("home.whyEwan.titlePrefix")}{" "}
+              <span className="text-[hsl(var(--brand-purple-700))] italic block sm:inline">
+                {t("home.whyEwan.titleHighlight")}
+              </span>
+            </h2>
+            <p className="text-on-light-muted text-base sm:text-lg leading-relaxed max-w-3xl">
+              {t("home.whyEwan.subtitle")}
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="relative flex items-center justify-center h-52 lg:h-56 max-w-md mx-auto lg:mx-0 w-full"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <motion.img
+              src="/doodles/Advantages-bro.svg"
+              alt="UVAN Differentiators"
+              className="relative z-10 h-full w-auto object-contain"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-6">
           {differentiators.map((d, i) => {

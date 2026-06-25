@@ -2,6 +2,7 @@ import { useEffect, useState, type MouseEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, MessageCircle, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
 import { useTranslation } from "react-i18next";
 import MobileBottomNav from "@/components/MobileBottomNav";
 
@@ -218,7 +219,7 @@ const Navbar = () => {
       <header className="fixed top-0 left-0 right-0 z-50 nav-glass">
         <div className="container mx-auto flex h-14 items-center justify-between gap-3 px-4 lg:h-auto lg:gap-4 lg:px-6 lg:py-3">
           <Link to="/" className="shrink-0" onClick={handleLogoClick}>
-            <img src="/logo.png" alt="Ewan Business Solutions" className="h-9 w-auto object-contain lg:h-12" />
+            <img src={SITE_LOGO} alt={SITE_LOGO_ALT} className="h-9 w-auto object-contain lg:h-12" />
           </Link>
 
           {/* Desktop nav */}
