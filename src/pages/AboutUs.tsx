@@ -1,12 +1,12 @@
-import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Globe2, Handshake } from "lucide-react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, CheckCircle2, Globe2, Handshake, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
-import HomeAboutSection from "@/components/HomeAboutSection";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
-import { ABOUT_US_FAQS, ENTITY_PARAGRAPH_A, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
+import { ABOUT_US_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, personSoham, personSukhada } from "@/lib/schemaHelpers";
 
 const metrics = [
@@ -27,13 +27,37 @@ const languageGroups = [
   { name: "Vietnamese", speakers: "70 million", desc: "National and official language of Vietnam." },
 ];
 
-const institutionalRecognitions = [
-  "Recognised by the Consulate General of the People's Republic of China - formal letter acknowledging contribution to India-China agricultural and trade relations, benefiting 1,200+ farmers and 800+ hectares of farmland.",
-  "MSAMB Government of Maharashtra - Export Program Empanelment",
-  "Bhashini Initiative - Ministry of Electronics & IT (MeitY), Government of India",
-  "CITLoB - Confederation of Indian Translators and Language Professionals (Vice President)",
-  "Symbiosis International University - Faculty",
-  "IB Board - International Baccalaureate Curriculum Designer",
+const recognitions = [
+  {
+    title: "Consulate General of the People's Republic of China",
+    desc: "Received a formal letter of recognition acknowledging our contribution to India-China agricultural and trade relations, benefiting 1,200+ farmers and 800+ hectares of farmland.",
+    badge: "Government Recognition"
+  },
+  {
+    title: "MSAMB Government of Maharashtra",
+    desc: "Empaneled for the state export program, assisting agricultural exporters with international language facilitation and trade setup.",
+    badge: "State Empanelment"
+  },
+  {
+    title: "Bhashini Initiative (MeitY)",
+    desc: "Strategic partner of India's national language technology mission under the Ministry of Electronics & IT.",
+    badge: "National AI Mission"
+  },
+  {
+    title: "CITLoB",
+    desc: "Executive representation as Vice President of the Confederation of Indian Translators and Language Professionals.",
+    badge: "Industry Leadership"
+  },
+  {
+    title: "Symbiosis International University",
+    desc: "Active academic faculty engagement, training the next generation of translation and interpretation professionals.",
+    badge: "Academic Engagement"
+  },
+  {
+    title: "IB Board (International Baccalaureate)",
+    desc: "Appointed curriculum designer, shaping the pedagogical framework for international language education.",
+    badge: "Curriculum Design"
+  }
 ];
 
 const partners = [
@@ -50,9 +74,22 @@ const partners = [
   {
     name: "Bhashik Skill Development - Sister Institution",
     description:
-      "Bhashik Skill Development (bhashikskill.co.in) is UVAN's sister institution - a skill development organisation focused on language training, commerce education, and vocational upskilling across 125+ languages.",
+      "Bhashik Skill Development is UVAN's sister institution - a skill development organisation focused on language training, commerce education, and vocational upskilling across 125+ languages.",
     link: "https://bhashikskill.co.in",
   },
+];
+
+const foundationCredentials = [
+  "Founded in Pune in 2020",
+  "125+ language capability",
+  "On-ground market execution",
+  "ISO 9001:2015 certified",
+];
+
+const foundationProofPoints = [
+  { value: "125+", label: "Languages" },
+  { value: "250+", label: "Clients" },
+  { value: "10+", label: "Sectors" },
 ];
 
 const doodleCorner = "/stitch/about-us/doodle-arc-corner.svg";
@@ -66,8 +103,49 @@ const aboutLd = [
   faqPageSchema(absoluteUrl("/about-us/"), ABOUT_US_FAQS),
 ];
 
+const revealUp = {
+  hidden: { opacity: 0, y: 34, filter: "blur(10px)" },
+  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+};
+
+const revealLeft = {
+  hidden: { opacity: 0, x: -34, filter: "blur(10px)" },
+  visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+};
+
+const revealRight = {
+  hidden: { opacity: 0, x: 34, filter: "blur(10px)" },
+  visible: { opacity: 1, x: 0, filter: "blur(0px)" },
+};
+
+const springReveal = { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const };
+
 const AboutUs = () => {
   const { t } = useTranslation();
+  const pageRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
+  const foundationRef = useRef<HTMLElement>(null);
+  const leadershipRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: pageRef, offset: ["start start", "end end"] });
+  const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const { scrollYProgress: foundationScroll } = useScroll({ target: foundationRef, offset: ["start end", "end start"] });
+  const { scrollYProgress: leadershipScroll } = useScroll({ target: leadershipRef, offset: ["start end", "end start"] });
+  const corridorScale = useTransform(scrollYProgress, [0, 1], [0.06, 1]);
+  const corridorGlowY = useTransform(scrollYProgress, [0, 1], ["0%", "82%"]);
+  const heroImageY = useTransform(heroScroll, [0, 1], ["0%", "18%"]);
+  const heroOverlayY = useTransform(heroScroll, [0, 1], ["0%", "10%"]);
+  const heroCopyY = useTransform(heroScroll, [0, 1], ["0%", "-12%"]);
+  const heroStatsY = useTransform(heroScroll, [0, 1], ["0%", "16%"]);
+  const heroFade = useTransform(heroScroll, [0, 0.72, 1], [1, 0.92, 0.68]);
+  const foundationTitleY = useTransform(foundationScroll, [0, 0.5, 1], ["12%", "0%", "-8%"]);
+  const foundationCardY = useTransform(foundationScroll, [0, 0.5, 1], ["10%", "0%", "-10%"]);
+  const foundationIllustrationY = useTransform(foundationScroll, [0, 1], ["18%", "-18%"]);
+  const foundationSideY = useTransform(foundationScroll, [0, 1], ["18%", "-8%"]);
+  const leadershipHeaderY = useTransform(leadershipScroll, [0, 0.5, 1], ["14%", "0%", "-12%"]);
+  const leadershipSohamY = useTransform(leadershipScroll, [0, 0.45, 1], ["18%", "0%", "-10%"]);
+  const leadershipSukhadaY = useTransform(leadershipScroll, [0, 0.55, 1], ["26%", "0%", "-6%"]);
+  const leadershipPortraitY = useTransform(leadershipScroll, [0, 1], ["10%", "-12%"]);
+
   return (
     <PageLayout
       title={t("seo.about.title")}
@@ -76,58 +154,95 @@ const AboutUs = () => {
       keywords={t("seo.about.keywords")}
       jsonLd={aboutLd}
     >
-      {/* Hero */}
+      <div ref={pageRef} className="relative">
+        <div className="pointer-events-none fixed right-4 top-28 z-40 hidden h-[52vh] w-px overflow-hidden rounded-full bg-[hsl(var(--brand-navy-950)/0.08)] xl:block">
+          <motion.div
+            className="absolute left-0 top-0 h-full w-full origin-top rounded-full bg-gradient-to-b from-[hsl(var(--brand-gold-500))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))]"
+            style={{ scaleY: corridorScale }}
+          />
+          <motion.div
+            className="absolute -left-1.5 h-4 w-4 rounded-full bg-[hsl(var(--brand-gold-500))] blur-[3px]"
+            style={{ y: corridorGlowY }}
+          />
+        </div>
+
+      {/* Hero Section */}
       <section
+        ref={heroRef}
         id="about-ewan"
         className="relative overflow-hidden stitch-line stitch-line-bottom bg-[hsl(var(--brand-navy-950))] px-6 pb-28 pt-10 md:pb-36 md:pt-16"
       >
-        <div
+        <motion.div
           className="absolute inset-0 z-0 opacity-[0.25]"
-          style={{
+          style={{ y: heroImageY, scale: 1.08 }}
+          data-bg="about-hero"
+        >
+          <div
+            className="h-full w-full"
+            style={{
             backgroundImage: "url('/page-assets/Building-Strong-International-Ties-Header-img-V2.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
-        />
+          />
+        </motion.div>
         {/* Luxury wave background overlay */}
-        <div 
+        <motion.div
           className="absolute inset-0 z-0 opacity-40 mix-blend-color-dodge bg-cover bg-center"
-          style={{ backgroundImage: "url('/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg')" }}
+          style={{ y: heroOverlayY, scale: 1.05 }}
+        >
+          <div
+            className="h-full w-full bg-cover bg-center"
+            style={{ backgroundImage: "url('/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg')" }}
+          />
+        </motion.div>
+        <motion.div
+          className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_90%_60%_at_18%_18%,hsl(var(--brand-purple-700)/0.25),transparent_55%)]"
+          animate={{ scale: [1, 1.08, 1], opacity: [0.75, 1, 0.75] }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
         />
-        <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_90%_60%_at_18%_18%,hsl(var(--brand-purple-700)/0.25),transparent_55%)]" />
-        <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_88%_72%,hsl(var(--brand-gold-500)/0.12),transparent_42%)]" />
+        <motion.div
+          className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_88%_72%,hsl(var(--brand-gold-500)/0.12),transparent_42%)]"
+          animate={{ scale: [1, 1.12, 1], x: [0, -18, 0] }}
+          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+        />
         <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.2)] via-[hsl(var(--brand-navy-950)/0.7)] to-[hsl(var(--brand-navy-950))]" />
 
-        <img
+        <motion.img
           src={doodleCorner}
           alt=""
           className="pointer-events-none absolute -left-4 top-16 z-[1] h-40 w-40 select-none opacity-50 sm:h-48 sm:w-48 md:left-2 md:top-24 animate-float"
+          animate={{ rotate: [0, -4, 0], y: [0, -10, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         />
-        <img
+        <motion.img
           src={doodleSquiggle}
           alt=""
           className="pointer-events-none absolute -right-8 bottom-24 z-[1] hidden h-64 w-52 select-none opacity-60 md:block lg:bottom-32 lg:h-80 lg:w-64"
+          animate={{ rotate: [0, 3, 0], x: [0, -8, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
-        <img
+        <motion.img
           src={doodleDots}
           alt=""
           className="pointer-events-none absolute left-1/2 top-1/2 z-[1] h-56 w-72 -translate-x-1/2 -translate-y-[30%] select-none opacity-[0.1] sm:opacity-15 animate-pulse-glow"
+          animate={{ scale: [1, 1.08, 1], rotate: [0, 1, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        <div className="pointer-events-none absolute left-6 top-28 hidden select-none text-4xl font-extrabold tracking-tight text-[hsl(var(--brand-purple-500)/0.12)] lg:block xl:left-12 xl:text-5xl">
-          {`{"ewan":"bridge"}`}
-        </div>
         <div className="pointer-events-none absolute bottom-40 right-8 hidden select-none text-[10px] font-semibold uppercase tracking-[0.28em] text-[hsl(var(--brand-gold-500)/0.18)] xl:block">
           good · bridge · two corridors
         </div>
 
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <div className="grid gap-14 lg:grid-cols-12 lg:gap-12 lg:items-start">
+          <div className="grid gap-14 lg:grid-cols-12 lg:gap-12 lg:items-center">
             <motion.div
               className="lg:col-span-7"
-              initial={{ opacity: 0, y: 26 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              style={{ y: heroCopyY, opacity: heroFade }}
+              initial="hidden"
+              animate="visible"
+              variants={revealLeft}
+              transition={springReveal}
             >
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-gold-500))] flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--brand-gold-500))] animate-pulse" />
@@ -152,11 +267,17 @@ const AboutUs = () => {
 
             <motion.div
               className="relative lg:col-span-5"
-              initial={{ opacity: 0, y: 26, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              style={{ y: heroStatsY, opacity: heroFade }}
+              initial="hidden"
+              animate="visible"
+              variants={revealRight}
+              transition={{ ...springReveal, delay: 0.16 }}
             >
-              <div className="relative mx-auto max-w-[400px] rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl shadow-2xl lg:mr-0 lg:ml-auto lg:max-w-none">
+              <motion.div
+                className="relative mx-auto max-w-[400px] rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl shadow-2xl lg:mr-0 lg:ml-auto lg:max-w-none"
+                whileHover={{ y: -8, rotateX: 1.5, rotateY: -1.5 }}
+                transition={{ type: "spring", stiffness: 220, damping: 22 }}
+              >
                 <div className="pointer-events-none absolute -right-3 -top-3 h-20 w-20 rounded-full border-2 border-dashed border-[hsl(var(--brand-gold-500)/0.25)] animate-spin-slow" style={{ animationDuration: '24s' }} />
                 <div className="pointer-events-none absolute -bottom-4 left-8 h-4 w-20 rounded-full bg-[hsl(var(--brand-purple-500)/0.3)] blur-md" />
                 
@@ -176,7 +297,7 @@ const AboutUs = () => {
                     </motion.article>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -184,119 +305,201 @@ const AboutUs = () => {
 
       <SectionDivider variant="wave" fromDark />
 
-      <HomeAboutSection />
-
       {/* About the Firm */}
-      <section className="theme-section-soft relative overflow-hidden px-6 py-20 md:py-24 stitch-line stitch-line-bottom">
-        <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 translate-x-1/4 -translate-y-1/4 bg-[radial-gradient(circle,hsl(var(--brand-purple-500)/0.12),transparent_70%)]" />
-        
-        {/* Subtle decorative doodles in the background */}
-        <motion.img
-          src="/doodles/Business growth-cuate.svg"
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-10 top-10 hidden h-56 w-56 opacity-[0.06] lg:block"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        />
+      <section
+        ref={foundationRef}
+        className="theme-section-soft relative overflow-hidden px-6 py-20 md:py-24 stitch-line stitch-line-bottom"
+      >
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.16]" />
+        <div className="pointer-events-none absolute left-[-8rem] top-10 h-[28rem] w-[28rem] rounded-full bg-[hsl(var(--brand-purple-500)/0.13)] blur-3xl" />
+        <div className="pointer-events-none absolute bottom-[-10rem] right-[-8rem] h-[30rem] w-[30rem] rounded-full bg-[hsl(var(--brand-gold-500)/0.12)] blur-3xl" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <div className="grid items-start gap-14 lg:grid-cols-2 lg:gap-16">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <h2 className="font-serif text-3xl sm:text-4xl font-bold leading-tight text-[hsl(var(--brand-navy-950))]">
-                Built for the Corridors Others Don&apos;t Know.
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={revealUp}
+            transition={springReveal}
+            style={{ y: foundationTitleY }}
+            className="mb-10 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(280px,0.45fr)] lg:items-end"
+          >
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--brand-purple-700)/0.16)] bg-white/80 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))] shadow-sm backdrop-blur">
+                <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--brand-gold-500))]" />
+                Our Foundation
+              </span>
+              <h2 className="mt-5 max-w-4xl font-serif text-3xl font-bold leading-[1.02] text-[hsl(var(--brand-navy-950))] sm:text-4xl lg:text-[2.9rem]">
+                Built where language, paperwork, people and pressure all collide.
               </h2>
-              <div className="relative mt-6">
-                <div className="h-1.5 w-24 rounded-full bg-[hsl(var(--brand-gold-500))]" />
+            </div>
+            <p className="max-w-md text-sm leading-relaxed text-on-light-secondary lg:pb-1">
+              The foundation is simple: cross-border work fails when communication and execution live in separate rooms.
+              UVAN was built to keep them together.
+            </p>
+          </motion.div>
+
+          <div className="grid gap-5 lg:grid-cols-12">
+            <motion.article
+              className="relative overflow-hidden rounded-[2rem] border border-[hsl(var(--brand-navy-950)/0.12)] bg-[hsl(var(--brand-navy-950))] p-6 text-white shadow-[0_22px_60px_rgba(20,18,47,0.22)] sm:p-8 lg:col-span-8 lg:row-span-2"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={revealLeft}
+              transition={springReveal}
+              style={{ y: foundationCardY }}
+              whileHover={{ y: -8, rotateX: 1, rotateY: -1 }}
+            >
+              <motion.div
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,hsl(var(--brand-purple-500)/0.34),transparent_34%),radial-gradient(circle_at_18%_88%,hsl(var(--brand-gold-500)/0.16),transparent_32%)]"
+                animate={{ opacity: [0.72, 1, 0.72], scale: [1, 1.05, 1] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <div className="relative z-10 grid gap-7 lg:grid-cols-[minmax(0,1fr)_240px] lg:items-center">
+                <div className="min-w-0">
+                  <p className="text-xs font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-gold-500))]">
+                    The operating thesis
+                  </p>
+                  <p className="mt-5 max-w-xl text-lg font-semibold leading-relaxed text-white/90 sm:text-xl">
+                    UVAN was founded in 2020 on a single conviction: companies win cross-border expansion when their partner has
+                    already been on both sides of the table.
+                  </p>
+                  <blockquote className="mt-7 max-w-lg border-l-4 border-[hsl(var(--brand-gold-500))] bg-white/[0.07] py-5 pl-5 pr-5 font-serif text-lg italic leading-relaxed text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] sm:text-xl">
+                    &ldquo;We don&apos;t separate language from operations. In our experience, they are the same problem.&rdquo;
+                  </blockquote>
+                </div>
+                <motion.img
+                  src="/doodles/International trade-bro.svg"
+                  alt="International trade illustration representing UVAN's cross-border operating foundation"
+                  className="mx-auto h-52 w-full max-w-[280px] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.24)] sm:h-60 lg:h-72"
+                  loading="lazy"
+                  decoding="async"
+                  style={{ y: foundationIllustrationY }}
+                  animate={{ rotate: [0, 1.5, 0], scale: [1, 1.03, 1] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <div className="grid gap-4 border-t border-white/10 pt-6 text-sm font-semibold leading-relaxed text-white/78 md:grid-cols-2 lg:col-span-2">
+                  <p>
+                    We sit at a rare intersection of <strong className="text-white">125+ language capability</strong> and
+                    <strong className="text-white"> on-ground operational expertise</strong>.
+                  </p>
+                  <p>
+                    That makes UVAN different from both traditional language agencies and conventional market entry consultants.
+                  </p>
+                </div>
               </div>
-              <div className="relative mt-8 space-y-5 text-[0.9375rem] leading-relaxed text-on-light-secondary md:text-base [&_strong]:text-[hsl(var(--brand-navy-950))]">
-                <p>
-                  UVAN was founded in 2020 on a single conviction: that the companies who win in
-                  cross-border expansion are the ones with a partner who has already been on both sides of the table.
+            </motion.article>
+
+            <motion.article
+              className="relative flex min-h-[232px] overflow-hidden rounded-[2rem] border border-[hsl(var(--border-light-strong))] bg-white p-6 shadow-[0_16px_38px_rgba(26,22,51,0.08)] sm:p-7 lg:col-span-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={revealRight}
+              transition={{ ...springReveal, delay: 0.08 }}
+              style={{ y: foundationSideY }}
+              whileHover={{ y: -8, rotateZ: -0.35, boxShadow: "0 24px 54px rgba(26,22,51,0.12)" }}
+            >
+              <div className="my-auto">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--brand-purple-500)/0.12)] text-[hsl(var(--brand-purple-700))]">
+                  <Globe2 className="h-6 w-6" />
+                </div>
+                <h3 className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">Our Mission</h3>
+                <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">
+                  Help customers grow by communicating clearly with global markets, while preserving language, heritage and
+                  business intent through accurate translation, interpretation and localization.
                 </p>
-                <p>
-                  We sit at a rare intersection - <strong>125+ language capability</strong> and <strong>on-ground operational expertise</strong> - that
-                  makes us genuinely different from both traditional language agencies and conventional market entry
-                  consultants. We don&apos;t separate language from operations. In our experience, they are the same problem.
+              </div>
+            </motion.article>
+
+            <motion.article
+              className="relative flex min-h-[232px] overflow-hidden rounded-[2rem] border border-[hsl(var(--brand-purple-500)/0.24)] bg-white/75 p-6 shadow-[0_16px_38px_rgba(26,22,51,0.07)] backdrop-blur sm:p-7 lg:col-span-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={revealRight}
+              transition={{ ...springReveal, delay: 0.14 }}
+              style={{ y: foundationSideY }}
+              whileHover={{ y: -8, rotateZ: 0.35, boxShadow: "0 24px 54px rgba(26,22,51,0.11)" }}
+            >
+              <div className="my-auto">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--brand-navy-950))] text-[hsl(var(--brand-gold-500))]">
+                  <Handshake className="h-6 w-6" />
+                </div>
+                <h3 className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">Our Vision</h3>
+                <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">
+                  Become the leading cross-border partner for companies operating between India and the emerging world,
+                  combining language excellence, operational capability and institutional credibility.
                 </p>
-                <p>
-                  We work with foreign companies entering India and Indian companies expanding across Southeast Asia, East
-                  Asia, Latin America and Africa. In five years, we have served 250+ clients across 10+ sectors, delivering
-                  everything from single document translations to full market entry mandates.
-                </p>
-                <div className="mt-8 rounded-2xl border border-[hsl(var(--border-light-strong))] bg-white/70 backdrop-blur-sm p-6 text-[0.9375rem] leading-relaxed text-on-light-secondary shadow-[0_12px_30px_rgba(26,22,51,0.03)] border-l-4 border-l-[hsl(var(--brand-purple-700))]">
-                  <p className="font-medium text-[hsl(var(--brand-navy-950))] mb-2">Registration Details</p>
-                  <p className="text-xs sm:text-sm">{ENTITY_PARAGRAPH_A}</p>
+              </div>
+            </motion.article>
+
+            <motion.div
+              className="relative flex min-h-[160px] flex-col justify-center overflow-hidden rounded-[2rem] border border-[hsl(var(--border-light-strong))] bg-white p-5 shadow-[0_16px_38px_rgba(26,22,51,0.06)] sm:p-6 lg:col-span-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={revealUp}
+              transition={{ ...springReveal, delay: 0.18 }}
+              style={{ y: foundationTitleY }}
+              whileHover={{ y: -7 }}
+            >
+              <p className="relative z-10 text-[10px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">
+                Proof in motion
+              </p>
+              <div className="relative z-10 mt-5 grid grid-cols-3 gap-2 sm:gap-3">
+                {foundationProofPoints.map((item) => (
+                  <div key={item.label} className="rounded-2xl bg-[hsl(var(--surface-light-100))] px-2 py-3 text-center">
+                    <p className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">{item.value}</p>
+                    <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-on-light-muted">{item.label}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="relative flex min-h-[160px] overflow-hidden rounded-[2rem] border border-[hsl(var(--brand-gold-500)/0.34)] bg-[hsl(var(--brand-gold-500)/0.12)] p-5 shadow-[0_16px_38px_rgba(26,22,51,0.05)] sm:p-6 lg:col-span-8"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={revealUp}
+              transition={{ ...springReveal, delay: 0.22 }}
+              style={{ y: foundationTitleY }}
+              whileHover={{ y: -7, boxShadow: "0 22px 50px rgba(176,139,48,0.14)" }}
+            >
+              <div className="flex w-full flex-col gap-5 md:flex-row md:items-center md:justify-between">
+                <div className="max-w-xl">
+                  <p className="flex items-center gap-2 font-serif text-lg font-bold text-[hsl(var(--brand-navy-950))]">
+                    <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white text-[hsl(var(--brand-purple-700))] shadow-sm">
+                      <Award className="h-4.5 w-4.5" />
+                    </span>
+                    Official Credentials & Registration
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">
+                    Recognized by institutional partners, certified for quality, and built from real corridor work across
+                    India, Asia, Latin America and Africa.
+                  </p>
+                </div>
+                <div className="grid gap-2 sm:grid-cols-2 md:min-w-[320px]">
+                  {foundationCredentials.map((item) => (
+                    <span
+                      key={item}
+                      className="inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/72 px-3 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950)/0.78)] shadow-sm"
+                    >
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-700))]" />
+                      {item}
+                    </span>
+                  ))}
                 </div>
               </div>
             </motion.div>
-            
-            <div className="grid gap-6 md:gap-8">
-              {/* Mission Card */}
-              <motion.article
-                className="group relative overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] bg-white p-8 shadow-[0_12px_28px_rgba(26,22,51,0.05)] md:p-10"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                whileHover={{ y: -6 }}
-              >
-                {/* Background doodle watermark */}
-                <img
-                  src="/doodles/Light bulb-bro (1).svg"
-                  alt=""
-                  className="pointer-events-none absolute -right-4 -bottom-4 h-32 w-32 select-none opacity-[0.08] transition-transform duration-500 group-hover:scale-110"
-                />
-                
-                <div className="relative z-10">
-                  <div className="mb-5 inline-flex items-center justify-center rounded-2xl bg-[hsl(var(--brand-purple-500)/0.1)] p-4 text-[hsl(var(--brand-purple-700))] shadow-inner">
-                    <Globe2 className="h-7 w-7" />
-                  </div>
-                  <h3 className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))] mb-3">Our Mission</h3>
-                  <p className="text-sm leading-relaxed text-on-light-secondary md:text-[0.9375rem]">
-                    To help our customers grow their business by enabling them to communicate with their global markets. We
-                    strive to preserve languages and heritage around the globe, improving worldwide communication through
-                    accurate, localized translation and interpretation services.
-                  </p>
-                </div>
-              </motion.article>
-
-              {/* Vision Card */}
-              <motion.article
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-[hsl(var(--brand-navy-950))] p-8 text-white shadow-[0_16px_48px_rgba(26,22,51,0.22)] md:p-10"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.15 }}
-                whileHover={{ y: -6 }}
-              >
-                <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_80%_60%_at_100%_0%,hsl(var(--brand-purple-700)/0.35),transparent_55%)]" />
-                
-                <div className="relative z-10">
-                  <div className="mb-5 inline-flex items-center justify-center rounded-2xl bg-white/10 p-4 text-[hsl(var(--brand-gold-500))]">
-                    <Handshake className="h-7 w-7" />
-                  </div>
-                  <h3 className="font-serif text-2xl font-bold mb-3 text-white">Our Vision</h3>
-                  <p className="text-sm leading-relaxed text-white/80 md:text-[0.9375rem]">
-                    To become the leading cross-border partner for companies operating between India and the emerging world -
-                    combining language excellence, on-ground operational capability, and institutional credibility that
-                    cannot be replicated overnight.
-                  </p>
-                </div>
-              </motion.article>
-            </div>
           </div>
         </div>
       </section>
 
       <SectionDivider variant="slant" />
 
-      {/* Founders */}
+      {/* Founders Section */}
       <section
         id="the-founders"
         className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] px-6 py-24 theme-section-soft md:py-28 stitch-line stitch-line-bottom"
@@ -311,191 +514,221 @@ const AboutUs = () => {
         />
         <div className="container relative z-10 mx-auto max-w-6xl">
           <header className="mb-16 text-center">
-            <span className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-4">
+            <motion.span
+              className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-4"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55 }}
+            >
               Executive Leadership
-            </span>
-            <h2 className="mx-auto max-w-3xl font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-on-light leading-tight">
+            </motion.span>
+            <motion.h2
+              className="mx-auto max-w-3xl font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-on-light leading-tight"
+              initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true }}
+              transition={springReveal}
+            >
               Leadership That Built the Corridors
-            </h2>
-            <img
+            </motion.h2>
+            <motion.img
               src={doodleBridge}
               alt=""
               className="pointer-events-none mx-auto mt-6 h-14 w-[min(100%,480px)] max-w-none select-none opacity-[0.25]"
+              animate={{ scaleX: [0.96, 1.04, 0.96], opacity: [0.18, 0.34, 0.18] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
           </header>
 
-          {/* Soham */}
-          <motion.article
-            className="theme-card-light mb-16 rounded-3xl border border-[hsl(var(--border-light))] bg-white/90 backdrop-blur-md shadow-premium-lg overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="flex flex-col gap-8 p-6 sm:p-8 md:gap-10 lg:flex-row lg:items-start lg:p-10">
-              <div className="mx-auto w-full max-w-[320px] shrink-0 lg:mx-0 lg:max-w-[280px]">
-                <figure className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-100))] shadow-[0_12px_36px_hsl(var(--brand-navy-950)/0.1)] relative group">
-                  <img
+          <div className="grid gap-6 lg:grid-cols-12">
+            <motion.article
+              className="relative overflow-hidden rounded-[2rem] border border-[hsl(var(--brand-navy-950)/0.14)] bg-[hsl(var(--brand-navy-950))] p-5 text-white shadow-[0_22px_60px_rgba(20,18,47,0.2)] sm:p-6 lg:col-span-7"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={revealLeft}
+              transition={springReveal}
+              whileHover={{ y: -8, rotateX: 0.75, rotateY: -0.75 }}
+            >
+              <motion.div
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_95%_0%,hsl(var(--brand-purple-500)/0.34),transparent_42%)]"
+                animate={{ opacity: [0.72, 1, 0.72], scale: [1, 1.04, 1] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <div className="relative z-10 grid gap-6 md:grid-cols-[220px_minmax(0,1fr)]">
+                <figure className="relative overflow-hidden rounded-2xl bg-white/8">
+                  <motion.img
                     src="/Soham-Sir.jpg"
-                    alt="Soham Kakade, Founder & CEO of UVAN"
-                    className="aspect-[4/5] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    alt="Soham Kakade, Founder and CEO of UVAN"
+                    className="aspect-[4/5] h-full min-h-[300px] w-full object-cover object-center"
                     loading="lazy"
                     decoding="async"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.3)] to-transparent pointer-events-none" />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.9)] to-transparent p-4">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">
+                      Founder & CEO
+                    </p>
+                  </div>
                 </figure>
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="border-b border-[hsl(var(--border-light))] pb-6">
-                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-on-light">Soham Kakade</h3>
-                  <p className="mt-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-600))]">
-                    Founder & CEO
-                  </p>
-                </div>
-                
-                <p className="mt-6 text-sm sm:text-base leading-relaxed text-on-light-secondary font-medium italic border-l-2 border-l-[hsl(var(--brand-purple-700))] pl-4">
-                  {ENTITY_PARAGRAPH_B}
-                </p>
-                
-                <h4 className="mt-6 font-serif text-xl sm:text-2xl font-bold leading-tight text-on-light">
-                  10 Years in the Room Before Building the Firm.
-                </h4>
-                
-                <p className="mt-4 text-sm leading-relaxed text-on-light-secondary">
-                  Soham Kakade spent a decade interpreting confidential boardroom negotiations between global leaders and
-                  their Asian counterparts - accumulating over 60,000 hours of simultaneous interpretation across
-                  Mandarin, Cantonese, Japanese and ASEAN languages before founding UVAN.
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">
-                  His foundation: a full Chinese Government scholarship at Beijing Language and Cultural University (BLCU),
-                  one of the world&apos;s most rigorous language institutions. Since then: heads of state, Fortune 500
-                  boardrooms, national textbooks, government export programs and geopolitical publications on the
-                  India-Asia corridor. UVAN exists because Soham saw, repeatedly, what happens when companies enter new
-                  markets without someone who truly understands both sides of the conversation. He built the firm he wished had existed.
-                </p>
-                
-                <div className="mt-6">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-on-light-muted mb-3">Key Credentials</p>
-                  <div className="flex flex-wrap gap-2">
+
+                <div className="flex min-w-0 flex-col">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-gold-500))]">
+                      Corridor Builder
+                    </p>
+                    <h3 className="mt-2 font-serif text-3xl font-bold leading-tight text-white sm:text-4xl">
+                      Soham Kakade
+                    </h3>
+                    <p className="mt-4 max-w-xl text-sm font-medium leading-relaxed text-white/78">
+                      A decade inside confidential boardroom negotiations before building UVAN. Soham brings 60,000+ hours
+                      of interpretation experience across Mandarin, Cantonese, Japanese and ASEAN corridors.
+                    </p>
+                  </div>
+
+                  <div className="mt-6 grid gap-3 sm:grid-cols-3">
                     {[
-                      "BLCU Scholarship Recipient",
-                      "60,000+ Hours Interpretation",
-                      "ISO 9001:2015 Certified",
-                      "Vice President, CITLoB",
-                      "Bhashini Initiative, MeitY",
-                      "MSAMB Export Program Designer",
-                      "Faculty, Symbiosis",
-                      "IB Board Curriculum Designer",
-                    ].map((tag) => (
+                      { value: "60k+", label: "Interpretation hours" },
+                      { value: "125+", label: "Languages" },
+                      { value: "10+", label: "Sectors" },
+                    ].map((item, index) => (
+                      <motion.div
+                        key={item.label}
+                        className="rounded-2xl border border-white/10 bg-white/[0.06] p-3"
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.45, delay: 0.2 + index * 0.08 }}
+                        whileHover={{ y: -4, backgroundColor: "rgba(255,255,255,0.1)" }}
+                      >
+                        <p className="font-serif text-2xl font-bold text-[hsl(var(--brand-gold-500))]">{item.value}</p>
+                        <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white/55">{item.label}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 flex flex-wrap gap-1.5">
+                    {["BLCU Scholarship", "Vice President, CITLoB", "Bhashini Partner", "MSAMB Program Designer"].map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-100))] px-3.5 py-1.5 text-[10px] sm:text-xs font-semibold tracking-wide text-[hsl(var(--brand-purple-700))]"
+                        className="rounded-full border border-white/12 bg-white/[0.07] px-3 py-1 text-[10px] font-semibold tracking-wide text-white/78"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                </div>
-                
-                <div className="mt-8 flex flex-wrap gap-3.5">
-                  <motion.a
-                    href="https://www.linkedin.com/in/soham-kakade-77b2819b/"
-                    target="_blank"
-                    rel="noreferrer"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-2 rounded-full border-2 border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-card))] px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-on-light transition hover:bg-[hsl(var(--surface-light-200)/0.65)]"
-                  >
-                    Connect on LinkedIn
-                    <ArrowRight className="h-4 w-4 text-[hsl(var(--brand-purple-700))]" />
-                  </motion.a>
-                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+
+                  <div className="mt-auto flex flex-wrap gap-3 border-t border-white/10 pt-6">
+                    <a
+                      href="https://www.linkedin.com/in/soham-kakade-77b2819b/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:bg-white/12"
+                    >
+                      LinkedIn
+                      <ArrowRight className="h-4 w-4 text-[hsl(var(--brand-gold-500))]" />
+                    </a>
                     <Link
                       to="/ask-soham"
-                      className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--brand-purple-500)/0.3)] bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-6 py-3 text-xs font-bold uppercase tracking-[0.08em] text-white shadow-gold-sm"
+                      className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
                     >
-                      Ask Soham - Book a Free 15-Minute Call
+                      Ask Soham
                       <ArrowRight className="h-4 w-4" />
                     </Link>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.article>
+            </motion.article>
 
-          {/* Sukhada */}
-          <motion.article
-            className="theme-card-light rounded-3xl border border-[hsl(var(--border-light))] bg-white/90 backdrop-blur-md shadow-premium-lg overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="flex flex-col gap-8 p-6 sm:p-8 md:gap-10 lg:flex-row-reverse lg:items-start lg:p-10">
-              <div className="mx-auto w-full max-w-[320px] shrink-0 lg:mx-0 lg:max-w-[280px]">
-                <figure className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-100))] shadow-[0_12px_36px_hsl(var(--brand-navy-950)/0.1)] relative group">
-                  <img
-                    src="/Sukhada-maam.jpg"
-                    alt="CMA Sukhada Kakade Bhalerao, Co-Founder & Director of UVAN"
-                    className="aspect-[4/5] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.3)] to-transparent pointer-events-none" />
-                </figure>
-              </div>
-              <div className="min-w-0 flex-1">
-                <div className="border-b border-[hsl(var(--border-light))] pb-6">
-                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-on-light">CMA Sukhada Kakade Bhalerao</h3>
-                  <p className="mt-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-600))]">
-                    Co-Founder & Director
+            <motion.article
+              className="relative overflow-hidden rounded-[2rem] border border-[hsl(var(--border-light-strong))] bg-white p-5 shadow-[0_18px_44px_rgba(26,22,51,0.08)] sm:p-6 lg:col-span-5"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={revealRight}
+              transition={{ ...springReveal, delay: 0.12 }}
+              whileHover={{ y: -8, rotateX: 0.75, rotateY: 0.75, boxShadow: "0 26px 62px rgba(26,22,51,0.13)" }}
+            >
+              <motion.div
+                className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full bg-[hsl(var(--brand-gold-500)/0.16)] blur-3xl"
+                animate={{ scale: [1, 1.18, 1], opacity: [0.5, 0.9, 0.5] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <div className="grid gap-6">
+                <div className="grid gap-5 sm:grid-cols-[170px_minmax(0,1fr)] lg:grid-cols-1 xl:grid-cols-[170px_minmax(0,1fr)]">
+                  <figure className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-100))]">
+                    <motion.img
+                      src="/Sukhada-maam.jpg"
+                      alt="CMA Sukhada Kakade Bhalerao, Co-Founder and Director of UVAN"
+                      className="aspect-[4/5] h-full min-h-[220px] w-full object-cover object-center"
+                      loading="lazy"
+                      decoding="async"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    />
+                  </figure>
+                  <div className="min-w-0 self-center">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-gold-600))]">
+                      Co-Founder & Director
+                    </p>
+                    <h3 className="mt-2 font-serif text-2xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] sm:text-3xl">
+                      CMA Sukhada K. Bhalerao
+                    </h3>
+                    <p className="mt-4 border-l-2 border-[hsl(var(--brand-gold-600))] pl-4 text-sm font-medium italic leading-relaxed text-on-light-secondary">
+                      Certified Management Accountant and the financial operations backbone behind UVAN&apos;s market entry mandates.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="border-t border-[hsl(var(--border-light))] pt-6">
+                  <h4 className="font-serif text-xl font-bold leading-tight text-[hsl(var(--brand-navy-950))]">
+                    Financial discipline for complex cross-border work.
+                  </h4>
+                  <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">
+                    Sukhada brings 15+ years across finance, auditing, RBI/FEMA compliance, internal controls and entity
+                    setup, giving UVAN the operating discipline needed for multi-workstream client mandates.
                   </p>
                 </div>
-                
-                <h4 className="mt-6 font-serif text-xl sm:text-2xl font-bold leading-tight text-on-light">
-                  The Financial and Operational Intelligence Behind UVAN.
-                </h4>
-                
-                <p className="mt-4 text-sm leading-relaxed text-on-light-secondary">
-                  Sukhada Kakade Bhalerao is a Pune-based Certified Management Accountant (CMA), finance educator, and
-                  entrepreneur. As Co-Founder and Director of UVAN, she provides the financial rigour
-                  and operational structure that allows UVAN to deliver complex, multi-workstream mandates with
-                  confidence. Her expertise spans financial planning, auditing, RBI/FEMA compliance advisory, entity
-                  formation financial setup, internal controls, and client financial reporting.
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">
-                  With over 15 years of experience - including her own cost accounting practice (est. 2010), faculty
-                  roles, and committee contributions - she brings a discipline that is rarely found in language or market
-                  entry firms: the ability to see the financial architecture of an expansion before it is built, and to ensure
-                  clients move quickly without financial exposure.
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">
-                  She is also Co-Founder and Director of Bhashik Skill Development, UVAN&apos;s sister institution focused on language training, vocational skills, and career development - ensuring a steady pipeline of skilled, job-ready language professionals for the industry.
-                </p>
-                
-                <div className="mt-6">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-on-light-muted mb-3">Key Credentials</p>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Certified Management Accountant (CMA)",
-                      "Cost Accounting Practice (est. 2010)",
-                      "Finance Educator & Faculty",
-                      "RBI & FEMA Advisory",
-                      "Committee Contributor",
-                      "Co-Founder, Bhashik Skill Development",
-                    ].map((tag) => (
+
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-on-light-muted">Key Credentials</p>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {["Certified CMA", "15+ Years Experience", "RBI & FEMA Advisory", "Internal Controls", "Co-Founder, Bhashik"].map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-100))] px-3.5 py-1.5 text-[10px] sm:text-xs font-semibold tracking-wide text-[hsl(var(--brand-gold-600))]"
+                        className="rounded-full border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-100))] px-3 py-1 text-[10px] font-semibold tracking-wide text-[hsl(var(--brand-gold-600))]"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
+
+                <div className="flex flex-wrap gap-3 border-t border-[hsl(var(--border-light))] pt-5">
+                  <a
+                    href="https://www.linkedin.com/company/ewan-business-solutions/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-4 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
+                  >
+                    LinkedIn
+                    <ArrowRight className="h-4 w-4 text-[hsl(var(--brand-gold-600))]" />
+                  </a>
+                  <a
+                    href="https://bhashikskill.co.in"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-navy-950))] px-4 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[hsl(var(--brand-navy-900))]"
+                  >
+                    Bhashik Skill
+                    <ArrowRight className="h-4 w-4 text-[hsl(var(--brand-gold-500))]" />
+                  </a>
+                </div>
               </div>
-            </div>
-          </motion.article>
+            </motion.article>
+          </div>
         </div>
       </section>
 
@@ -503,16 +736,18 @@ const AboutUs = () => {
 
       {/* Institutional Recognition */}
       <section className="theme-section-light relative overflow-hidden px-6 py-20 md:py-24 stitch-line stitch-line-bottom">
-        <img
+        <motion.img
           src={doodleCorner}
           alt=""
           className="pointer-events-none absolute right-[-3rem] bottom-[-2rem] z-0 hidden h-40 w-40 rotate-180 select-none opacity-25 lg:block"
+          animate={{ rotate: [180, 186, 180], y: [0, -10, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         />
         <div className="container relative z-10 mx-auto max-w-6xl">
           <div className="mb-12 md:mb-14">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">
+            <span className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-4">
               Recognised by Governments and Institutions
-            </p>
+            </span>
             <h2 className="mt-3 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] md:text-[2.25rem]">
               Recognised by the Consulate General of the People&apos;s Republic of China
             </h2>
@@ -523,25 +758,38 @@ const AboutUs = () => {
               to build and cannot be replicated overnight.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {institutionalRecognitions.map((item, i) => (
-              <motion.p
-                key={item}
-                className="flex items-start gap-3 rounded-2xl border border-[hsl(var(--border-light))] bg-white p-5 text-sm text-on-light-secondary shadow-[0_8px_24px_rgba(26,22,51,0.04)] md:p-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {recognitions.map((item, i) => (
+              <motion.div
+                key={item.title}
+                className="flex flex-col justify-between rounded-3xl border border-[hsl(var(--border-light))] bg-white p-6 shadow-[0_8px_24px_rgba(26,22,51,0.04)] md:p-7 hover:border-[hsl(var(--brand-purple-500)/0.25)] hover:shadow-premium-sm transition-all duration-300"
+                initial={{ opacity: 0, y: 24, rotateX: 3 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                whileHover={{ y: -3 }}
+                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -8, rotateZ: i % 2 === 0 ? -0.5 : 0.5, boxShadow: "0 22px 46px rgba(26,22,51,0.1)" }}
               >
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-500))]" />
-                <span>{item}</span>
-              </motion.p>
+                <div>
+                  <span className="inline-block mb-3.5 px-2.5 py-1 rounded-full bg-[hsl(var(--brand-purple-500)/0.1)] text-[hsl(var(--brand-purple-700))] text-[10px] font-bold uppercase tracking-wider">
+                    {item.badge}
+                  </span>
+                  <h3 className="font-serif text-lg font-bold text-[hsl(var(--brand-navy-950))] leading-tight mb-2.5">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-on-light-secondary leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-[hsl(var(--border-light))] flex items-center justify-between">
+                  <span className="text-[10px] font-semibold text-on-light-muted flex items-center gap-1.5">
+                    <CheckCircle2 className="h-4 w-4 text-[hsl(var(--brand-purple-500))]" /> Verified Credential
+                  </span>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
-
 
       {/* Partners */}
       <section id="our-partners" className="theme-section-soft relative overflow-hidden px-6 py-16 md:py-20">
@@ -566,10 +814,11 @@ const AboutUs = () => {
               <motion.article
                 key={partner.name}
                 className="group rounded-3xl border border-[hsl(var(--border-light))] bg-white p-7 shadow-[0_12px_32px_rgba(26,22,51,0.04)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(26,22,51,0.08)] md:p-8 flex flex-col justify-between"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 28, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.12 }}
+                transition={{ duration: 0.62, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -10, rotateZ: i === 1 ? -0.45 : 0.45 }}
               >
                 <div>
                   <h3 className="font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))] transition-colors">{partner.name}</h3>
@@ -606,13 +855,22 @@ const AboutUs = () => {
 
       {/* Oriental Flock */}
       <section id="oriental-flock" className="theme-section-light relative overflow-hidden px-6 py-16 md:py-20">
-        <img
+        <motion.img
           src={doodleSquiggle}
           alt=""
           className="pointer-events-none absolute -right-6 top-24 z-0 h-52 w-40 select-none opacity-[0.08]"
+          animate={{ y: [0, 14, 0], rotate: [0, 3, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <div className="relative overflow-hidden rounded-[2.5rem] border border-[hsl(var(--border-light-strong))] bg-white p-8 shadow-[0_16px_40px_rgba(26,22,51,0.06)] md:p-12">
+          <motion.div
+            className="relative overflow-hidden rounded-[2.5rem] border border-[hsl(var(--border-light-strong))] bg-white p-8 shadow-[0_16px_40px_rgba(26,22,51,0.06)] md:p-12 border-glow"
+            initial={{ opacity: 0, y: 34, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={springReveal}
+            whileHover={{ y: -8, boxShadow: "0 28px 70px rgba(26,22,51,0.12)" }}
+          >
             
             <div className="grid lg:grid-cols-[1fr_260px] gap-8 items-center">
               <div>
@@ -676,7 +934,7 @@ const AboutUs = () => {
               </div>
             </div>
             
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -701,11 +959,11 @@ const AboutUs = () => {
               <motion.article
                 key={lang.name}
                 className="group relative rounded-2xl border border-[hsl(var(--border-light-strong))] bg-white p-6 shadow-[0_8px_24px_rgba(26,22,51,0.03)] md:p-7 flex flex-col justify-between"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 24, rotateX: 4 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: (i % 4) * 0.08 }}
-                whileHover={{ y: -6, borderColor: 'hsl(var(--brand-purple-700)/0.25)', boxShadow: '0 16px 36px rgba(26,22,51,0.06)' }}
+                transition={{ duration: 0.55, delay: (i % 4) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -10, rotateZ: i % 2 === 0 ? -0.45 : 0.45, borderColor: 'hsl(var(--brand-purple-700)/0.25)', boxShadow: '0 20px 44px rgba(26,22,51,0.09)' }}
               >
                 <div>
                   <h3 className="font-serif text-lg sm:text-xl font-bold text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))] transition-colors">{lang.name}</h3>
@@ -723,6 +981,7 @@ const AboutUs = () => {
 
       <AeoFrequentlyAskedQuestions items={ABOUT_US_FAQS} className="theme-section-light px-6 py-16 md:py-20" />
 
+      </div>
     </PageLayout>
   );
 };

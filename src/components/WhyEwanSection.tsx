@@ -57,9 +57,9 @@ const WhyEwanSection = () => {
       <div className="absolute inset-0 theme-grid-overlay-light opacity-18 pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-[1fr_360px] gap-8 items-center mb-16">
+        <div className="mb-14 grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(220px,300px)] lg:gap-10">
           <motion.div
-            className="text-left"
+            className="max-w-3xl"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -74,26 +74,26 @@ const WhyEwanSection = () => {
                 {t("home.whyEwan.titleHighlight")}
               </span>
             </h2>
-            <p className="text-on-light-muted text-base sm:text-lg leading-relaxed max-w-3xl">
+            <p className="text-on-light-muted text-base sm:text-lg leading-relaxed">
               {t("home.whyEwan.subtitle")}
             </p>
           </motion.div>
 
-          <motion.div
-            className="relative flex items-center justify-center h-52 lg:h-56 max-w-md mx-auto lg:mx-0 w-full"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+          <motion.figure
+            className="mx-auto w-full max-w-[280px] lg:max-w-none lg:justify-self-end"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.75, delay: 0.12 }}
           >
             <motion.img
               src="/doodles/Advantages-bro.svg"
-              alt="UVAN Differentiators"
-              className="relative z-10 h-full w-auto object-contain"
-              animate={{ y: [0, -10, 0] }}
+              alt="UVAN differentiators illustration"
+              className="h-44 w-full object-contain sm:h-48 lg:h-52"
+              animate={{ y: [0, -8, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />
-          </motion.div>
+          </motion.figure>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">

@@ -471,6 +471,44 @@
     border-radius: 50%;
     pointer-events: none;
   }
+
+  .homepage-ambient {
+    background:
+      linear-gradient(180deg, hsl(var(--surface-light-50)) 0%, hsl(var(--surface-light-100)) 42%, hsl(var(--surface-light-200)) 100%);
+  }
+
+  .homepage-ambient__veil {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(115deg, transparent 0%, hsl(var(--brand-purple-700) / 0.035) 36%, transparent 68%),
+      linear-gradient(180deg, hsl(var(--surface-light-50) / 0.92), hsl(var(--surface-light-100) / 0.42));
+    mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+  }
+
+  .homepage-scroll-scene {
+    position: relative;
+  }
+
+  .homepage-scroll-scene + .homepage-scroll-scene::before {
+    content: "";
+    position: absolute;
+    left: max(1.5rem, calc((100vw - 1180px) / 2));
+    right: max(1.5rem, calc((100vw - 1180px) / 2));
+    top: 0;
+    z-index: 20;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--brand-purple-700) / 0.1),
+      hsl(var(--brand-gold-500) / 0.22),
+      hsl(var(--brand-purple-700) / 0.1),
+      transparent
+    );
+  }
 }
 
 /* ========================

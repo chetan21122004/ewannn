@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { ArrowRight, AlertCircle, Lightbulb, Trophy } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, AlertCircle, Building2, CheckCircle2, Factory, Lightbulb, Route, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import factoryImg from "@/assets/case-study-factory.jpg";
 import { useTranslation } from "react-i18next";
@@ -30,6 +30,7 @@ const defaultSteps = [
 
 const CaseStudySection = () => {
   const { t } = useTranslation();
+  const reduceMotion = useReducedMotion();
   const steps = t("home.caseStudy.steps", { returnObjects: true, defaultValue: defaultSteps }) as Array<{
     label: string;
     text: string;
@@ -38,96 +39,129 @@ const CaseStudySection = () => {
     labelColor: string;
   }>;
   const stepIcons = [AlertCircle, Lightbulb, Trophy] as const;
+  const ease = [0.22, 1, 0.36, 1] as const;
+  const fadeUp = reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 };
+  const show = reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 };
+  const transition = (delay = 0) => ({ duration: reduceMotion ? 0.35 : 0.72, delay, ease });
+
   return (
     <section
       id="media"
-      className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-8 lg:py-16 theme-section-soft"
+      className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-10 lg:py-16 theme-section-soft"
     >
       <span id="case-study" className="sr-only">{t("home.caseStudy.srLabel")}</span>
       <div className="glow-orb glow-orb-purple w-[460px] h-[460px] -top-36 -left-28 opacity-[0.11]" />
       <div className="glow-orb glow-orb-gold w-[380px] h-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
       <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.18]" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          className="text-center max-w-3xl mx-auto mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="mb-4 font-serif text-3xl font-bold text-on-light sm:text-4xl lg:text-5xl">
-            {t("home.caseStudy.titlePrefix")}{" "}
-            <span className="text-[hsl(var(--brand-purple-700))] font-serif italic">
-              {t("home.caseStudy.titleHighlight")}
-            </span>
-          </h2>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container relative z-10 mx-auto max-w-6xl px-6">
+        <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center xl:gap-12">
           <motion.div
-            className="relative"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="relative overflow-hidden rounded-[2rem] border border-[hsl(var(--brand-purple-700)/0.18)] bg-[hsl(var(--brand-navy-950))] p-4 text-white shadow-[0_24px_70px_hsl(var(--brand-navy-950)/0.18)] sm:p-5"
+            initial={fadeUp}
+            whileInView={show}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={transition(0)}
           >
-            <div className="absolute -inset-4 rounded-3xl bg-[hsl(var(--surface-light-200)/0.9)] blur-2xl" />
-            <div className="relative overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] shadow-premium-lg">
-              <img src={factoryImg} alt={t("home.caseStudy.imageAlt")} className="h-[400px] w-full object-cover" />
-              <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.4)] to-transparent pointer-events-none" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,hsl(var(--brand-purple-500)/0.28),transparent_28%),radial-gradient(circle_at_88%_20%,hsl(var(--brand-gold-500)/0.18),transparent_24%)]" />
+            <div className="pointer-events-none absolute -bottom-24 -right-20 h-72 w-72 rounded-full border border-white/10" />
+
+            <div className="relative z-10">
+              <div className="overflow-hidden rounded-[1.4rem] border border-white/12 bg-white/8 shadow-[0_18px_50px_hsl(var(--brand-navy-950)/0.28)]">
+                <img
+                  src={factoryImg}
+                  alt={t("home.caseStudy.imageAlt")}
+                  className="h-64 w-full object-cover sm:h-80 lg:h-[410px]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                {[
+                  { icon: Route, value: "Japan -> India", label: "Corridor" },
+                  { icon: Building2, value: "Full mandate", label: "Scope" },
+                  { icon: CheckCircle2, value: "One partner", label: "Outcome" },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-2xl border border-white/10 bg-white/8 p-4 backdrop-blur">
+                    <item.icon className="mb-3 h-4 w-4 text-[hsl(var(--brand-gold-500))]" aria-hidden />
+                    <p className="text-sm font-bold leading-tight text-white">{item.value}</p>
+                    <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/52">{item.label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-            
-            {/* Transparent Charts Doodle */}
-            <motion.div
-              className="absolute -bottom-12 -right-12 hidden lg:block"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 0.15 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <img
-                src="/doodles/Charts-cuate.svg"
-                alt=""
-                className="w-40 h-40 object-contain pointer-events-none"
-              />
-            </motion.div>
           </motion.div>
 
-          <div className="space-y-6">
-            {steps.map((step, i) => {
-              const Icon = stepIcons[i] ?? AlertCircle;
-              return (
-                <motion.div
-                  key={step.label}
-                  initial={{ opacity: 0, x: 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.15, duration: 0.7 }}
-                  whileHover={{ x: 4 }}
-                  className="theme-card-light flex gap-5 rounded-2xl p-6"
-                >
-                  <motion.div
-                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border bg-[hsl(var(--surface-light-card))] ${step.ringColor}`}
-                    whileHover={{ rotate: 8, scale: 1.1 }}
-                  >
-                    <Icon className={`h-5 w-5 ${step.iconColor}`} />
-                  </motion.div>
-                  <div>
-                    <p className={`mb-1 text-xs font-semibold uppercase tracking-wider ${step.labelColor}`}>{step.label}</p>
-                    <p className="leading-relaxed text-on-light-secondary">{step.text}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
+          <div className="relative">
+            <motion.div
+              initial={fadeUp}
+              whileInView={show}
+              viewport={{ once: true }}
+              transition={transition(0.08)}
+              className="mb-7"
+            >
+              <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-[hsl(var(--brand-purple-700)/0.14)] bg-white/75 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-purple-700))] shadow-sm backdrop-blur">
+                <Factory className="h-3.5 w-3.5 text-[hsl(var(--brand-gold-600))]" aria-hidden />
+                {t("home.caseStudy.badge")}
+              </div>
+              <h2 className="max-w-3xl font-serif text-3xl font-bold leading-[1.04] tracking-tight text-on-light sm:text-4xl lg:text-5xl">
+                {t("home.caseStudy.titlePrefix")}{" "}
+                <span className="font-serif italic text-[hsl(var(--brand-purple-700))]">
+                  {t("home.caseStudy.titleHighlight")}
+                </span>
+              </h2>
+            </motion.div>
 
-            <motion.div whileHover={{ scale: 1.04, x: 4 }} className="inline-block">
+            <div className="grid gap-3">
+              {steps.map((step, i) => {
+                const Icon = stepIcons[i] ?? AlertCircle;
+                return (
+                  <motion.div
+                    key={step.label}
+                    initial={fadeUp}
+                    whileInView={show}
+                    viewport={{ once: true }}
+                    transition={transition(0.16 + i * 0.09)}
+                    whileHover={reduceMotion ? undefined : { y: -3 }}
+                    className="group relative overflow-hidden rounded-[1.5rem] border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.9)] p-5 shadow-[0_14px_40px_hsl(var(--brand-navy-950)/0.06)] backdrop-blur-sm transition-colors duration-300 hover:border-[hsl(var(--brand-purple-500)/0.28)] sm:p-6"
+                  >
+                    <div className="pointer-events-none absolute inset-y-5 left-0 w-1 rounded-r-full bg-gradient-to-b from-[hsl(var(--brand-gold-500))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))] opacity-45 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="flex gap-4 sm:gap-5">
+                      <motion.div
+                        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border bg-[hsl(var(--surface-light-card))] ${step.ringColor}`}
+                        whileHover={reduceMotion ? undefined : { rotate: 6, scale: 1.06 }}
+                      >
+                        <Icon className={`h-5 w-5 ${step.iconColor}`} aria-hidden />
+                      </motion.div>
+                      <div>
+                        <div className="mb-2 flex flex-wrap items-center gap-2">
+                          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-on-light-muted">
+                            0{i + 1}
+                          </span>
+                          <p className={`text-xs font-bold uppercase tracking-[0.16em] ${step.labelColor}`}>{step.label}</p>
+                        </div>
+                        <p className="text-sm leading-[1.72] text-on-light-secondary sm:text-base">{step.text}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            <motion.div
+              initial={fadeUp}
+              whileInView={show}
+              viewport={{ once: true }}
+              transition={transition(0.42)}
+              className="pt-5"
+            >
               <Link
                 to="/media#case-study"
-                className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--brand-purple-500)/0.35)] bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white card-shine shadow-[0_14px_36px_hsl(var(--brand-navy-950)/0.14)]"
+                className="inline-flex min-h-12 items-center gap-2 rounded-full border border-[hsl(var(--brand-purple-500)/0.35)] bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-6 py-3 text-sm font-bold uppercase tracking-[0.1em] text-white shadow-[0_14px_36px_hsl(var(--brand-navy-950)/0.14)] transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-gold-500))] focus-visible:ring-offset-2"
               >
                 {t("home.caseStudy.cta")}
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </motion.div>
           </div>

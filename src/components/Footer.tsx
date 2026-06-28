@@ -1,4 +1,4 @@
-import { ArrowUpRight, ChevronDown, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Instagram, Linkedin, Mail, MapPin, Twitter, Youtube, type LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
@@ -54,11 +54,11 @@ const certifications = [
   { name: "Bhashini", src: "/allLogos/Bhashini-Logo.png", alt: "Bhashini initiative logo" },
 ];
 
-const socialLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/ewan-business-solutions/" },
-  { label: "YouTube", href: "https://www.youtube.com/@EWAN-SSK" },
-  { label: "Instagram", href: "https://www.instagram.com/ewanbizsolution/" },
-  { label: "X", href: "https://x.com/ewanbusiness" },
+const socialLinks: Array<{ label: string; href: string; Icon: LucideIcon }> = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/ewan-business-solutions/", Icon: Linkedin },
+  { label: "YouTube", href: "https://www.youtube.com/@EWAN-SSK", Icon: Youtube },
+  { label: "Instagram", href: "https://www.instagram.com/ewanbizsolution/", Icon: Instagram },
+  { label: "X", href: "https://x.com/ewanbusiness", Icon: Twitter },
 ];
 
 const coverageRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
@@ -188,16 +188,18 @@ const Footer = () => {
               ))}
             </div>
 
-            <div className="mt-5 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
-              {socialLinks.map((social) => (
+            <div className="mt-5 flex flex-wrap gap-2.5">
+              {socialLinks.map(({ label, href, Icon }) => (
                 <a
-                  key={social.label}
-                  href={social.href}
+                  key={label}
+                  href={href}
                   target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex min-h-[40px] items-center justify-center rounded-lg border border-[hsl(var(--border-light))] bg-white px-3 text-xs font-semibold text-[hsl(var(--brand-navy-950)/0.75)] transition hover:border-[hsl(var(--brand-purple-700)/0.3)] hover:text-[hsl(var(--brand-purple-700))] sm:min-h-0"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  title={label}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[hsl(var(--border-light))] bg-white text-[hsl(var(--brand-navy-950)/0.78)] transition hover:border-[hsl(var(--brand-purple-700)/0.35)] hover:bg-[hsl(var(--brand-navy-950))] hover:text-white"
                 >
-                  {social.label}
+                  <Icon className="h-[18px] w-[18px]" aria-hidden />
                 </a>
               ))}
             </div>

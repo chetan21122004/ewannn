@@ -88,6 +88,24 @@ const HomeAboutSection = () => {
                 </span>
                 <span className="text-[hsl(var(--text-on-light))]">{t("home.aboutIntro.headlineSuffix")}</span>
               </h2>
+
+              <motion.figure
+                initial={itemHidden}
+                whileInView={itemShow}
+                viewport={viewFade}
+                transition={itemTransition(reduceMotion ? 0 : 0.1)}
+                className="relative max-w-[340px] sm:max-w-[390px] lg:max-w-[420px]"
+              >
+                <motion.img
+                  src="/doodles/International trade-rafiki.svg"
+                  alt="International trade illustration representing UVAN's cross-border market entry and language services"
+                  className="h-56 w-full object-contain object-left sm:h-64 lg:h-72"
+                  loading="lazy"
+                  decoding="async"
+                  animate={reduceMotion ? undefined : { y: [0, -8, 0], rotate: [0, 1.2, 0] }}
+                  transition={reduceMotion ? undefined : { duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </motion.figure>
             </motion.div>
           </div>
 

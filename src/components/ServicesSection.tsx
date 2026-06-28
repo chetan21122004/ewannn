@@ -22,15 +22,26 @@ const defaultBlocks = [
   },
 ];
 
+const serviceIllustrations: Record<string, { src: string; alt: string }> = {
+  "market-entry": {
+    src: "/doodles/Business Plan-pana.svg",
+    alt: "Market entry planning illustration",
+  },
+  language: {
+    src: "/doodles/Group discussion-bro.svg",
+    alt: "Language and localization illustration",
+  },
+};
+
 const accentStyles = {
   gold: {
-    haloBorder: "border-[hsl(var(--brand-gold-500)/0.2)]",
+    haloBorder: "border-[hsl(var(--brand-gold-500)/0.14)]",
     iconWrap: "bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-gold-600))_100%)]",
     check: "text-[hsl(var(--brand-gold-600))]",
     link: "text-[hsl(var(--brand-purple-700))]",
   },
   purple: {
-    haloBorder: "border-[hsl(var(--brand-purple-500)/0.24)]",
+    haloBorder: "border-[hsl(var(--brand-purple-500)/0.16)]",
     iconWrap: "bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)]",
     check: "text-[hsl(var(--brand-purple-700))]",
     link: "text-[hsl(var(--brand-purple-700))]",
@@ -78,80 +89,94 @@ const ServicesSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="mx-auto grid max-w-6xl items-stretch gap-5 md:gap-6 lg:grid-cols-2 lg:gap-7">
           {blocks.map((block, i) => {
             const Icon = block.id === "language" ? Languages : Building2;
             const accent = accentStyles[block.accent];
             const features = Array.isArray(block.features) ? block.features : [];
+            const illustration = serviceIllustrations[block.id];
             return (
               <motion.div
                 key={block.id}
                 id={block.id === "language" ? "language" : undefined}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -8 }}
-                className="group relative p-8 lg:p-10 rounded-3xl theme-card-light card-shine overflow-hidden border border-[hsl(var(--border-light))]"
+                transition={{ delay: i * 0.12, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -4 }}
+                className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] p-6 sm:p-7 lg:p-8 theme-card-light card-shine"
               >
-                <div className={`absolute -top-20 -right-20 w-60 h-60 rounded-full border-[20px] ${accent.haloBorder}`} />
+                <div className={`pointer-events-none absolute -right-14 -top-14 h-40 w-40 rounded-full border-[14px] ${accent.haloBorder}`} />
 
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
-                  <div className="flex-1">
+                <div className="relative z-10 flex h-full min-w-0 flex-col">
+                  <div className="mb-5 flex items-start gap-3.5 sm:gap-4">
                     <motion.div
-                      className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${accent.iconWrap} shadow-gold-md`}
-                      whileHover={{ rotate: 8, scale: 1.08 }}
+                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl ${accent.iconWrap} shadow-gold-md`}
+                      whileHover={{ rotate: 6, scale: 1.05 }}
                     >
-                      <Icon className="w-7 h-7 text-white" />
+                      <Icon className="h-5 w-5 text-white sm:h-6 sm:w-6" />
                     </motion.div>
-
-                    <h3 className="text-2xl sm:text-3xl font-serif font-bold text-on-light mb-4">{block.label}</h3>
-                    <p className="text-on-light-muted leading-relaxed mb-6">{block.desc}</p>
-
-                    {features.length > 0 ? (
-                      <ul className="space-y-3 mb-8">
-                        {features.map((f, fi) => (
-                          <motion.li
-                            key={f}
-                            className="flex items-start gap-3 text-sm text-on-light-secondary"
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.15 + fi * 0.08 + 0.3 }}
-                          >
-                            <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${accent.check}`} />
-                            <span>{f}</span>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <div className="mb-8" />
-                    )}
-
-                    <Link
-                      to={block.href}
-                      className={`inline-flex items-center gap-2 text-sm font-semibold tracking-wider uppercase ${accent.link} group/link`}
-                    >
-                      {t("home.services.learnMore")}
-                      <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-serif text-xl font-bold leading-snug text-on-light sm:text-2xl lg:text-[1.65rem]">
+                        {block.label}
+                      </h3>
+                    </div>
                   </div>
 
-                  <div className="flex justify-center items-center shrink-0 w-32 h-32 md:w-44 md:h-44 relative mx-auto md:mx-0">
-                    <motion.img
-                      src={block.id === "language" ? "/doodles/Group discussion-bro.svg" : "/doodles/Business Plan-pana.svg"}
-                      alt=""
-                      aria-hidden="true"
-                      className="relative z-10 w-full h-full object-contain"
-                      animate={{ y: [0, -6, 0] }}
-                      transition={{ 
-                        duration: 5, 
-                        repeat: Infinity, 
-                        ease: "easeInOut",
-                        delay: i * 0.4 
-                      }}
-                      whileHover={{ scale: 1.1, rotate: block.id === "language" ? 2 : -2 }}
-                    />
+                  <div className="flex flex-1 flex-col gap-5 sm:flex-row sm:items-center sm:gap-6 lg:gap-8">
+                    <div className="flex min-w-0 flex-1 flex-col">
+                      <p className="text-sm leading-relaxed text-on-light-muted sm:text-[0.95rem]">{block.desc}</p>
+
+                      {features.length > 0 ? (
+                        <ul className="mt-5 space-y-2.5">
+                          {features.map((f, fi) => (
+                            <motion.li
+                              key={f}
+                              className="flex items-start gap-3 text-sm text-on-light-secondary"
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: i * 0.12 + fi * 0.08 + 0.25 }}
+                            >
+                              <CheckCircle2 className={`mt-0.5 h-4 w-4 shrink-0 ${accent.check}`} />
+                              <span>{f}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      ) : null}
+
+                      <Link
+                        to={block.href}
+                        className={`mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold uppercase tracking-wider ${accent.link} group/link`}
+                      >
+                        {t("home.services.learnMore")}
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                      </Link>
+                    </div>
+
+                    {illustration ? (
+                      <motion.figure
+                        className="mx-auto shrink-0 sm:mx-0 sm:w-[42%] lg:w-[38%]"
+                        initial={{ opacity: 0, scale: 0.94 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.12 + 0.15, duration: 0.55 }}
+                      >
+                        <motion.img
+                          src={illustration.src}
+                          alt={illustration.alt}
+                          className="mx-auto h-36 w-full max-w-[220px] object-contain sm:h-40 sm:max-w-none lg:h-44"
+                          animate={{ y: [0, -6, 0] }}
+                          transition={{
+                            duration: 5.5,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: i * 0.35,
+                          }}
+                          whileHover={{ scale: 1.04 }}
+                        />
+                      </motion.figure>
+                    ) : null}
                   </div>
                 </div>
               </motion.div>

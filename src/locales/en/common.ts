@@ -22,7 +22,7 @@ const enCommon = {
       marketResearch: "Market Research",
       importExport: "Import, Procurement & Export",
       marketAudit: "Global Market Entry Audit",
-      sano: "SANO ↗",
+      sano: "Arogya Yatri ↗",
       culturalKnowHow: "Cultural & Language Know-How ↗",
     },
     language: {
@@ -73,7 +73,7 @@ const enCommon = {
     rights: "© 2026 UVAN. All rights reserved.",
     privacyPolicy: "Privacy Policy",
     caseStudies: "Case Studies",
-    sano: "SANO",
+    sano: "Arogya Yatri",
   },
   seo: {
     marketEntry: {

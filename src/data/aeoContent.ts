@@ -50,7 +50,7 @@ export const MARKET_ENTRY_FAQS: AeoFaqItem[] = [
   {
     question: "How long does it take to set up a company in India?",
     answer:
-      "Depending on the business structure and sector, entity formation in India typically takes 4–12 weeks. Regulatory approvals and operational setup can extend the timeline. UVAN provides a structured roadmap covering each workstream and milestone.",
+      "Depending on the business structure and sector, entity formation in India typically takes 4-12 weeks. Regulatory approvals and operational setup can extend the timeline. UVAN provides a structured roadmap covering each workstream and milestone.",
   },
   {
     question: "What is the difference between a market entry consultant and a legal firm?",
