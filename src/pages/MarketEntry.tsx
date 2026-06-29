@@ -1,5 +1,15 @@
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  Banknote,
+  Building2,
+  CheckCircle2,
+  FileCheck,
+  Globe2,
+  Languages,
+  Package,
+  Users,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
@@ -20,8 +30,11 @@ const whoWeServe = [
   {
     id: "india-entry-foreign-companies",
     title: "Foreign Companies Entering India",
+    badge: "Into India",
     description:
       "You are based in Japan, Southeast Asia, East Asia, Latin America or Africa. You see India as your next growth market. You need a partner who understands both sides - your culture and India's operational reality.",
+    illustration: "/doodles/International trade-bro.svg",
+    illustrationAlt: "Foreign companies entering India illustration",
     points: [
       "Japanese and Korean manufacturers setting up India operations",
       "Southeast Asian companies seeking India distribution or manufacturing",
@@ -32,8 +45,11 @@ const whoWeServe = [
   {
     id: "indian-companies-going-abroad",
     title: "Indian Companies Going Abroad",
+    badge: "Out of India",
     description:
       "You are an Indian company ready to expand into Southeast Asia, East Asia or beyond. You need on-ground support, local language capability and someone who can open doors in markets you don't yet know.",
+    illustration: "/doodles/Business growth-cuate.svg",
+    illustrationAlt: "Indian companies expanding abroad illustration",
     points: [
       "Indian manufacturers seeking Southeast Asian distribution",
       "Indian exporters entering Japan, China, Vietnam or Indonesia",
@@ -43,13 +59,41 @@ const whoWeServe = [
 ];
 
 const workstreams = [
-  "Regulatory & Entity Formation - Local entity setup, RBI/FEMA compliance, industry licensing, sectoral approvals",
-  "Bank Onboarding & Financial Setup - Business account establishment, financial infrastructure, payment pathways",
-  "Executive Liaison & Negotiation Support - Native-language liaison for government relations and senior business negotiations",
-  "Local Procurement & Supply Chain - Vetted vendor identification, physical site verification, supply chain establishment",
-  "Payroll & HR Facilitation - Local talent pipeline, labour law compliance, staffing support",
-  "On-Ground Operations Management - Day-to-day operational oversight, vendor coordination, reporting",
-  "Language & Cultural Intelligence - Interpretation, translation and cultural advisory throughout every workstream",
+  {
+    title: "Regulatory & Entity Formation",
+    description: "Local entity setup, RBI/FEMA compliance, industry licensing, sectoral approvals",
+    icon: Building2,
+  },
+  {
+    title: "Bank Onboarding & Financial Setup",
+    description: "Business account establishment, financial infrastructure, payment pathways",
+    icon: Banknote,
+  },
+  {
+    title: "Executive Liaison & Negotiation Support",
+    description: "Native-language liaison for government relations and senior business negotiations",
+    icon: Users,
+  },
+  {
+    title: "Local Procurement & Supply Chain",
+    description: "Vetted vendor identification, physical site verification, supply chain establishment",
+    icon: Package,
+  },
+  {
+    title: "Payroll & HR Facilitation",
+    description: "Local talent pipeline, labour law compliance, staffing support",
+    icon: FileCheck,
+  },
+  {
+    title: "On-Ground Operations Management",
+    description: "Day-to-day operational oversight, vendor coordination, reporting",
+    icon: Globe2,
+  },
+  {
+    title: "Language & Cultural Intelligence",
+    description: "Interpretation, translation and cultural advisory throughout every workstream",
+    icon: Languages,
+  },
 ];
 
 const auditGaps = [
@@ -65,19 +109,27 @@ const howItWorks = [
     title: "India Entry Readiness Call",
     detail:
       "30 minutes. We assess your expansion goals, identify highest-risk gaps and give you a clear picture of what needs to be in place before you move.",
+    illustration: "/doodles/Calling-amico.svg",
+    illustrationAlt: "India entry readiness call illustration",
   },
   {
     title: "Custom Entry Roadmap",
     detail:
       "A structured, sequenced plan covering regulatory, operational, language and cultural requirements specific to your sector and corridor.",
+    illustration: "/doodles/Business Plan-pana.svg",
+    illustrationAlt: "Custom market entry roadmap illustration",
   },
   {
     title: "Execution",
     detail: "UVAN manages the full mandate on the ground. Regular updates. We handle the complexity.",
+    illustration: "/doodles/Business merger-amico.svg",
+    illustrationAlt: "On-ground market entry execution illustration",
   },
   {
     title: "Ongoing Operations Support",
     detail: "Once established, UVAN continues as your on-ground liaison, operations manager and language partner.",
+    illustration: "/doodles/Schedule-amico.svg",
+    illustrationAlt: "Ongoing operations support illustration",
   },
 ];
 
@@ -108,10 +160,10 @@ const MarketEntry = () => {
       keywords={MARKET_ENTRY_KEYWORDS}
       jsonLd={marketEntryLd}
     >
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-24 pt-12 text-white">
+      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 pb-14 pt-8 text-white sm:px-6 lg:px-6 lg:pb-24 lg:pt-12">
         {/* Section Background Blob */}
         <div 
-          className="absolute inset-0 z-0 opacity-25 mix-blend-color-dodge bg-cover bg-center pointer-events-none"
+          className="absolute inset-0 z-0 opacity-20 mix-blend-color-dodge bg-cover bg-center pointer-events-none lg:opacity-25"
           style={{ backgroundImage: "url('/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg')" }}
         />
         <div
@@ -128,40 +180,40 @@ const MarketEntry = () => {
           className="pointer-events-none absolute -bottom-10 right-0 hidden h-72 w-72 opacity-[0.12] lg:block xl:h-80 xl:w-80"
         />
         <div className="container relative mx-auto">
-          <div className="grid items-center gap-14 lg:grid-cols-[3fr_2fr]">
+          <div className="grid items-center gap-8 lg:grid-cols-[3fr_2fr] lg:gap-14">
             <motion.div
               className="max-w-4xl"
               initial={{ opacity: 0, y: 26 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="mb-5 inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+              <p className="mb-4 inline-flex max-w-full rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/80 sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]">
                 India Entry. ASEAN Expansion. One Partner.
               </p>
-              <h1 className="font-serif text-5xl font-bold leading-tight sm:text-6xl">
+              <h1 className="font-serif text-[1.85rem] font-bold leading-[1.08] sm:text-4xl lg:text-5xl xl:text-6xl xl:leading-tight">
                 We've Already Been in the Room.{" "}
                 <span className="text-[hsl(var(--brand-gold-500))]">Now We'll Be in It With You.</span>
               </h1>
-              <p className="market-entry-speakable mt-6 max-w-3xl text-lg leading-relaxed text-white/85">
+              <p className="market-entry-speakable mt-4 max-w-3xl text-sm leading-relaxed text-white/85 sm:mt-6 sm:text-base lg:text-lg">
                 {SPEAKABLE_MARKET_ENTRY}
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+              <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap lg:gap-4">
+                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
                   <Link
                     to="/ask-soham"
-                    className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
                   >
                     Book Your India Entry Readiness Call
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4 shrink-0" />
                   </Link>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
                   <Link
                     to="/market-entry-audit"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10"
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10 sm:w-auto sm:px-6"
                   >
                     Download the 2026 Market Entry Audit
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4 shrink-0" />
                   </Link>
                 </motion.div>
               </div>
@@ -185,112 +237,263 @@ const MarketEntry = () => {
         </div>
       </section>
 
-      <section id="who-we-serve" className="theme-section-soft relative overflow-hidden px-6 py-16">
+      <section id="who-we-serve" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+        <div className="glow-orb glow-orb-purple pointer-events-none h-[240px] w-[240px] -left-20 top-0 opacity-[0.08] lg:h-[420px] lg:w-[420px] lg:-left-32 lg:opacity-[0.1]" />
+        <div className="glow-orb glow-orb-gold pointer-events-none h-[200px] w-[200px] -right-16 bottom-0 opacity-[0.06] lg:h-[360px] lg:w-[360px] lg:-right-24 lg:opacity-[0.08]" />
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.16]" />
+
         <div className="container relative z-10 mx-auto">
           <motion.div
-            className="mb-8"
+            className="mx-auto mb-6 max-w-3xl text-center lg:mb-12"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-serif text-4xl font-bold text-on-light">Who We Serve</h2>
+            <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.18em]">
+              Audience
+            </span>
+            <h2 className="font-serif text-[1.65rem] font-bold text-on-light sm:text-4xl lg:text-5xl">Who We Serve</h2>
+            <p className="mt-3 text-sm leading-relaxed text-on-light-secondary sm:mt-4 sm:text-base">
+              Two corridors. One partner. Whether you are entering India or expanding out of it, UVAN operates on both sides of the table.
+            </p>
           </motion.div>
-          <div className="grid gap-6 lg:grid-cols-2">
-            {whoWeServe.map((segment, i) => (
-              <motion.article
-                key={segment.title}
-                id={segment.id}
-                className="theme-card-light scroll-mt-28 rounded-3xl p-8"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                whileHover={{ y: -4 }}
-              >
-                <h3 className="font-serif text-2xl font-bold text-on-light">{segment.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">{segment.description}</p>
-                <div className="mt-5 space-y-2.5">
-                  {segment.points.map((point) => (
-                    <p key={point} className="flex items-start gap-2 text-sm text-on-light-secondary">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-500))]" />
-                      <span>{point}</span>
-                    </p>
-                  ))}
-                </div>
-              </motion.article>
-            ))}
+
+          <div className="mx-auto flex max-w-5xl flex-col gap-4 sm:gap-6 lg:gap-8">
+            {whoWeServe.map((segment, i) => {
+              const illustrationFirst = i % 2 === 0;
+              return (
+                <motion.article
+                  key={segment.title}
+                  id={segment.id}
+                  className="group theme-card-light card-shine scroll-mt-28 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] lg:rounded-3xl"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.65, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -4 }}
+                >
+                  <div className="grid items-center gap-5 p-4 sm:gap-8 sm:p-6 lg:grid-cols-2 lg:gap-10 lg:p-10">
+                    <motion.figure
+                      className={`order-2 flex items-center justify-center px-1 sm:px-4 ${illustrationFirst ? "lg:order-1" : "lg:order-2"}`}
+                      initial={{ opacity: 0, scale: 0.96 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 + 0.12, duration: 0.55 }}
+                    >
+                      <motion.img
+                        src={segment.illustration}
+                        alt={segment.illustrationAlt}
+                        className="h-32 w-full max-w-[240px] object-contain sm:h-44 sm:max-w-[320px] lg:h-52 lg:max-w-none"
+                        animate={{ y: [0, -7, 0] }}
+                        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.35 }}
+                        whileHover={{ scale: 1.03 }}
+                      />
+                    </motion.figure>
+
+                    <div className={`order-1 min-w-0 ${illustrationFirst ? "lg:order-2" : "lg:order-1"}`}>
+                      <span className="inline-flex rounded-full bg-[hsl(var(--brand-purple-700)/0.08)] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:px-3 sm:py-1 sm:text-[11px] sm:tracking-[0.16em]">
+                        {segment.badge}
+                      </span>
+                      <h3 className="mt-2 font-serif text-xl font-bold leading-snug text-on-light sm:mt-3 sm:text-2xl lg:text-3xl">{segment.title}</h3>
+                      <p className="mt-2 text-xs leading-relaxed text-on-light-secondary sm:mt-3 sm:text-sm lg:text-base">{segment.description}</p>
+                      <ul className="mt-4 space-y-2 sm:mt-5 sm:space-y-2.5">
+                        {segment.points.map((point, pi) => (
+                          <motion.li
+                            key={point}
+                            className="flex items-start gap-2 text-xs text-on-light-secondary sm:gap-2.5 sm:text-sm"
+                            initial={{ opacity: 0, x: -10 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 + pi * 0.06 + 0.2 }}
+                          >
+                            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-500))] sm:h-4 sm:w-4" />
+                            <span>{point}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section id="what-we-deliver" className="theme-section-light relative overflow-hidden px-6 py-16">
+      <section id="what-we-deliver" className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
+
         <div className="container relative z-10 mx-auto">
           <motion.div
-            className="mb-8"
+            className="mb-6 grid items-center gap-5 lg:mb-12 lg:grid-cols-[minmax(0,1fr)_minmax(220px,280px)] lg:gap-8"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-serif text-4xl font-bold text-on-light">What We Deliver - 7 Workstreams</h2>
+            <div className="max-w-3xl">
+              <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.18em]">
+                End-to-end delivery
+              </span>
+              <h2 className="font-serif text-[1.65rem] font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
+                What We Deliver <span className="text-[hsl(var(--brand-purple-700))] italic">- 7 Workstreams</span>
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-on-light-secondary sm:mt-4 sm:text-base">
+                Every mandate is sequenced across regulatory, financial, operational and language workstreams - managed as one coordinated program, not seven disconnected vendors.
+              </p>
+            </div>
+            <motion.figure
+              className="mx-auto hidden w-full max-w-[260px] lg:block lg:max-w-none lg:justify-self-end"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.65, delay: 0.1 }}
+            >
+              <motion.img
+                src="/doodles/Business Plan-pana.svg"
+                alt="Market entry workstreams illustration"
+                className="h-40 w-full object-contain sm:h-44 lg:h-48"
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.figure>
           </motion.div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {workstreams.map((item, i) => (
-              <motion.article
-                key={item}
-                className="theme-card-light rounded-2xl p-5"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-                whileHover={{ y: -3 }}
-              >
-                <p className="text-sm leading-relaxed text-on-light-secondary">{item}</p>
-              </motion.article>
-            ))}
+
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
+            {workstreams.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.article
+                  key={item.title}
+                  className={`group theme-card-light card-shine relative overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-4 sm:p-5 lg:p-6 ${
+                    i === 6 ? "xl:col-span-3 xl:grid xl:grid-cols-[minmax(0,1fr)_220px] xl:items-center xl:gap-8" : ""
+                  }`}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: (i % 3) * 0.08 }}
+                  whileHover={{ y: -4 }}
+                >
+                  <div className={i === 6 ? "min-w-0" : undefined}>
+                    <div className="mb-3 flex items-start justify-between gap-3 sm:mb-4">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700)/0.75)] sm:text-[11px] sm:tracking-[0.18em]">
+                        Workstream {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <motion.span
+                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm sm:h-10 sm:w-10"
+                        whileHover={{ rotate: 8, scale: 1.05 }}
+                      >
+                        <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      </motion.span>
+                    </div>
+                    <h3 className="font-serif text-base font-bold text-on-light sm:text-lg lg:text-xl">{item.title}</h3>
+                    <p className="mt-1.5 text-xs leading-relaxed text-on-light-secondary sm:mt-2 sm:text-sm">{item.description}</p>
+                  </div>
+
+                  {i === 6 ? (
+                    <motion.figure
+                      className="mt-4 xl:mt-0"
+                      initial={{ opacity: 0, scale: 0.94 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      <motion.img
+                        src="/doodles/Group discussion-bro.svg"
+                        alt="Language and cultural intelligence illustration"
+                        className="mx-auto h-24 w-full max-w-[180px] object-contain sm:h-32 sm:max-w-[220px] xl:mx-0 xl:h-36"
+                        animate={{ y: [0, -6, 0] }}
+                        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                    </motion.figure>
+                  ) : null}
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section id="proof" className="theme-section-soft relative scroll-mt-28 overflow-hidden px-6 py-16">
+      <section id="proof" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+        <div className="glow-orb glow-orb-purple pointer-events-none h-[240px] w-[240px] -right-16 top-8 opacity-[0.07] lg:h-[380px] lg:w-[380px] lg:-right-24 lg:opacity-[0.09]" />
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
+
         <motion.div
-          className="theme-card-light container relative z-10 mx-auto rounded-3xl p-8"
+          className="theme-card-light card-shine container relative z-10 mx-auto overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-4 sm:rounded-3xl sm:p-6 lg:p-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">
-            Full Market Entry Mandate - Japan to India
-          </p>
-          <h2 className="mt-2 font-serif text-3xl font-bold text-on-light">
-            How a Leading Japanese Manufacturer Successfully Established India Operations
-          </h2>
-          <p className="mt-4 max-w-4xl text-sm leading-relaxed text-on-light-secondary">
-            A leading Japanese manufacturer, engaged UVAN for a complete India entry mandate - from initial regulatory
-            mapping and entity formation through to executive liaison, local procurement and on-ground operational setup.
-            UVAN served as the single point of coordination across all workstreams, managing the language and cultural
-            interface between Japanese leadership and Indian stakeholders simultaneously.
-          </p>
-          <p className="mt-3 text-sm font-medium text-on-light">
-            Full market entry delivered. One partner. Zero coordination overhead.
-          </p>
-          <div className="mt-6">
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
-              <Link
-                to="/media"
-                className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-card))] px-5 py-2.5 text-sm font-semibold text-on-light transition hover:border-[hsl(var(--brand-purple-500)/0.6)]"
-              >
-                Read the Full Case Study
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </motion.div>
+          <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(240px,320px)] lg:items-center lg:gap-10">
+            <div className="min-w-0">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.18em]">
+                Full Market Entry Mandate - Japan to India
+              </p>
+              <h2 className="mt-2 font-serif text-[1.45rem] font-bold leading-tight text-on-light sm:mt-3 sm:text-3xl lg:text-4xl">
+                How a Leading Japanese Manufacturer Successfully Established India Operations
+              </h2>
+              <p className="mt-3 text-xs leading-relaxed text-on-light-secondary sm:mt-4 sm:text-sm lg:text-base">
+                A leading Japanese manufacturer engaged UVAN for a complete India entry mandate - from initial regulatory
+                mapping and entity formation through to executive liaison, local procurement and on-ground operational setup.
+                UVAN served as the single point of coordination across all workstreams, managing the language and cultural
+                interface between Japanese leadership and Indian stakeholders simultaneously.
+              </p>
+
+              <div className="mt-4 grid grid-cols-3 gap-2 sm:mt-6 sm:gap-3">
+                {["Regulatory setup", "Executive liaison", "Operations live"].map((label, i) => (
+                  <motion.div
+                    key={label}
+                    className="rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-2 py-2.5 text-center sm:px-4 sm:py-3"
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 + 0.15 }}
+                  >
+                    <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[hsl(var(--brand-purple-700))] sm:text-[10px] sm:tracking-[0.16em]">Delivered</p>
+                    <p className="mt-0.5 text-[11px] font-semibold leading-snug text-on-light sm:mt-1 sm:text-sm">{label}</p>
+                  </motion.div>
+                ))}
+              </div>
+
+              <p className="mt-4 text-xs font-medium text-on-light sm:mt-5 sm:text-sm">
+                Full market entry delivered. One partner. Zero coordination overhead.
+              </p>
+
+              <div className="mt-4 sm:mt-6">
+                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="block w-full sm:inline-block sm:w-auto">
+                  <Link
+                    to="/media"
+                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-card))] px-5 py-2.5 text-sm font-semibold text-on-light transition hover:border-[hsl(var(--brand-purple-500)/0.6)] sm:w-auto"
+                  >
+                    Read the Full Case Study
+                    <ArrowRight className="h-4 w-4 shrink-0" />
+                  </Link>
+                </motion.div>
+              </div>
+            </div>
+
+            <motion.figure
+              className="mx-auto w-full max-w-[220px] lg:max-w-none"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.65, delay: 0.12 }}
+            >
+              <motion.img
+                src="/doodles/Charts-cuate.svg"
+                alt="Japan to India market entry case study illustration"
+                className="h-32 w-full object-contain sm:h-44 sm:max-w-[300px] lg:h-52"
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </motion.figure>
           </div>
         </motion.div>
       </section>
 
-      <section id="audit" className="theme-section-light relative overflow-hidden px-6 py-16">
+      <section id="audit" className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-16">
         <img
           src="/doodles/Light bulb-bro (1).svg"
           alt=""
@@ -298,103 +501,192 @@ const MarketEntry = () => {
           className="pointer-events-none absolute -right-6 -top-6 hidden h-40 w-40 opacity-[0.14] lg:block"
         />
         <motion.div
-          className="theme-card-light container relative z-10 mx-auto rounded-3xl p-8"
+          className="theme-card-light container relative z-10 mx-auto rounded-2xl p-5 sm:rounded-3xl sm:p-8"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">Free Resource</p>
-          <h2 className="mt-2 font-serif text-4xl font-bold text-on-light">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.18em]">Free Resource</p>
+          <h2 className="mt-2 font-serif text-[1.55rem] font-bold leading-tight text-on-light sm:text-3xl lg:text-4xl">
             Is Your Expansion Strategy Hiding These 5 Operational Gaps?
           </h2>
-          <p className="mt-3 max-w-4xl text-sm leading-relaxed text-on-light-secondary">
+          <p className="mt-3 max-w-4xl text-xs leading-relaxed text-on-light-secondary sm:text-sm">
             The 2026 Global Market Entry Audit is UVAN&apos;s proprietary framework - built from 10 years of on-ground
             cross-border expansion experience. It reveals the 5 operational gaps that most companies don&apos;t see until
             capital has been deployed and timelines have slipped. Download it free and assess your readiness before you
             commit.
           </p>
-          <div className="mt-6 grid gap-2 md:grid-cols-2">
+          <div className="mt-4 grid gap-2 sm:mt-6 md:grid-cols-2">
             {auditGaps.map((gap, i) => (
               <motion.p
                 key={gap}
-                className="flex items-start gap-2 text-sm text-on-light-secondary"
+                className="flex items-start gap-2 text-xs text-on-light-secondary sm:text-sm"
                 initial={{ opacity: 0, x: -12 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
               >
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-500))]" />
+                <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-500))] sm:h-4 sm:w-4" />
                 <span>{gap}</span>
               </motion.p>
             ))}
           </div>
-          <div className="mt-7 flex flex-wrap gap-4">
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+          <div className="mt-5 sm:mt-7">
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
               <Link
                 to="/market-entry-audit"
-                className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
               >
                 Download the Free 2026 Market Entry Audit
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4 shrink-0" />
               </Link>
             </motion.div>
           </div>
         </motion.div>
       </section>
 
-      <section className="theme-section-soft relative overflow-hidden px-6 py-16">
-        <motion.div
-          className="theme-card-light container relative z-10 mx-auto rounded-3xl p-8"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <h2 className="font-serif text-4xl font-bold text-on-light">How It Works</h2>
-          <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {howItWorks.map((step, index) => (
-              <motion.article
-                key={step.title}
-                className="rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-5"
-                initial={{ opacity: 0, y: 24 }}
+      <section id="how-it-works" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+        <div className="glow-orb glow-orb-gold pointer-events-none h-[200px] w-[200px] -left-16 bottom-0 opacity-[0.06] lg:h-[360px] lg:w-[360px] lg:-left-24 lg:opacity-[0.08]" />
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
+
+        <div className="container relative z-10 mx-auto">
+          <motion.div
+            className="theme-card-light card-shine overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-4 md:rounded-3xl md:p-6 lg:p-10"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="mb-5 md:mb-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(220px,260px)] lg:items-center lg:gap-8">
+              <div>
+                <span className="mb-2 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] md:mb-4 md:px-4 md:py-1.5 md:text-xs md:tracking-[0.18em]">
+                  Process
+                </span>
+                <h2 className="font-serif text-[1.5rem] font-bold leading-tight text-on-light md:text-4xl lg:text-5xl">How It Works</h2>
+                <p className="mt-2 max-w-2xl text-xs leading-relaxed text-on-light-secondary md:mt-4 md:text-base">
+                  From first call to on-ground operations - a sequenced path designed to reduce risk before capital is deployed.
+                </p>
+              </div>
+              <motion.figure
+                className="mx-auto hidden w-full max-w-[240px] lg:block lg:max-w-none lg:justify-self-end"
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.12 }}
-                whileHover={{ y: -3 }}
+                transition={{ delay: 0.1 }}
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))]">
-                  Step {index + 1}
-                </p>
-                <h3 className="mt-2 text-base font-semibold text-on-light">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">{step.detail}</p>
-              </motion.article>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Link
-                to="/ask-soham"
-                className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-              >
-                Book Your India Entry Readiness Call
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Link
-                to="/ask-soham"
-                className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] px-6 py-3 text-sm font-semibold text-on-light transition hover:border-[hsl(var(--brand-purple-500)/0.6)]"
-              >
-                Ask Soham - 15 Min Free
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </motion.div>
-          </div>
-        </motion.div>
+                <motion.img
+                  src="/doodles/Schedule-amico.svg"
+                  alt="Market entry process illustration"
+                  className="h-36 w-full object-contain sm:h-40 lg:h-44"
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                />
+              </motion.figure>
+            </div>
+
+            <div className="relative md:hidden">
+              <div
+                className="pointer-events-none absolute bottom-4 left-4 top-4 w-px bg-gradient-to-b from-[hsl(var(--brand-purple-500)/0.45)] via-[hsl(var(--brand-purple-500)/0.2)] to-transparent"
+                aria-hidden
+              />
+              <ol className="space-y-3">
+                {howItWorks.map((step, index) => (
+                  <motion.li
+                    key={step.title}
+                    className="relative flex gap-3"
+                    initial={{ opacity: 0, x: -12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: index * 0.08 }}
+                  >
+                    <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-purple-700))] text-xs font-bold text-white ring-4 ring-[hsl(var(--surface-light-50))]">
+                      {index + 1}
+                    </span>
+                    <div className="min-w-0 flex-1 rounded-xl border border-[hsl(var(--border-light))] bg-white px-3.5 py-3 shadow-sm">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
+                        Step {index + 1}
+                      </p>
+                      <h3 className="mt-1 text-sm font-semibold leading-snug text-on-light">{step.title}</h3>
+                      <p className="mt-1.5 text-xs leading-relaxed text-on-light-secondary">{step.detail}</p>
+                    </div>
+                  </motion.li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="relative hidden gap-3 sm:gap-4 md:grid md:grid-cols-2 xl:grid-cols-4 xl:gap-5">
+              <div
+                className="pointer-events-none absolute left-[12.5%] right-[12.5%] top-10 hidden h-px bg-gradient-to-r from-transparent via-[hsl(var(--brand-purple-500)/0.35)] to-transparent xl:block"
+                aria-hidden
+              />
+
+              {howItWorks.map((step, index) => (
+                <motion.article
+                  key={step.title}
+                  className="relative rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-4 sm:p-5 lg:p-6"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: index * 0.12 }}
+                  whileHover={{ y: -4 }}
+                >
+                  <div className="mb-3 flex items-center justify-between gap-3 sm:mb-4">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.16em]">
+                      Step {index + 1}
+                    </p>
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[hsl(var(--brand-purple-700))] text-[11px] font-bold text-white sm:h-8 sm:w-8 sm:text-xs">
+                      {index + 1}
+                    </span>
+                  </div>
+
+                  <motion.figure
+                    className="mb-3 sm:mb-4"
+                    initial={{ opacity: 0, scale: 0.94 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.12 + 0.1 }}
+                  >
+                    <motion.img
+                      src={step.illustration}
+                      alt={step.illustrationAlt}
+                      className="mx-auto h-24 w-full max-w-[160px] object-contain sm:h-28 sm:max-w-[180px] lg:h-32"
+                      animate={{ y: [0, -5, 0] }}
+                      transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.3 }}
+                    />
+                  </motion.figure>
+
+                  <h3 className="text-sm font-semibold text-on-light sm:text-base lg:text-lg">{step.title}</h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-on-light-secondary sm:mt-2 sm:text-sm">{step.detail}</p>
+                </motion.article>
+              ))}
+            </div>
+
+            <div className="mt-5 flex flex-col gap-2.5 border-t border-[hsl(var(--border-light))] pt-5 md:mt-8 md:flex-row md:flex-wrap md:gap-4 md:pt-8">
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full md:w-auto">
+                <Link
+                  to="/ask-soham"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 md:w-auto md:px-6"
+                >
+                  Book Your India Entry Readiness Call
+                  <ArrowRight className="h-4 w-4 shrink-0" />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full md:w-auto">
+                <Link
+                  to="/ask-soham"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] px-5 py-3 text-sm font-semibold text-on-light transition hover:border-[hsl(var(--brand-purple-500)/0.6)] md:w-auto md:px-6"
+                >
+                  Ask Soham - 15 Min Free
+                  <ArrowRight className="h-4 w-4 shrink-0" />
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      <AeoFrequentlyAskedQuestions items={MARKET_ENTRY_FAQS} className="theme-section-light px-6 py-16" />
+      <AeoFrequentlyAskedQuestions items={MARKET_ENTRY_FAQS} className="theme-section-light px-5 py-10 sm:px-6 sm:py-16" />
     </PageLayout>
   );
 };

@@ -76,7 +76,7 @@ FAQ Block - Market Entry Page
 
 Question	Answer
 What is India market entry consulting?	India market entry consulting covers the full process of establishing a business presence in India - including regulatory navigation, entity formation, bank account setup, local staffing, vendor sourcing, and executive liaison. Ewan manages this end-to-end as a single partner.
-How long does it take to set up a company in India?	Depending on the business structure and sector, entity formation in India typically takes 4–12 weeks. Regulatory approvals and operational setup can extend the timeline. Ewan provides a structured roadmap covering each workstream and milestone.
+How long does it take to set up a company in India?	Depending on the business structure and sector, entity formation in India typically takes 4-12 weeks. Regulatory approvals and operational setup can extend the timeline. Ewan provides a structured roadmap covering each workstream and milestone.
 What is the difference between a market entry consultant and a legal firm?	A market entry consultant manages the full operational complexity of entering a new market - including language, culture, liaising with government bodies, and on-ground execution. A legal firm handles documentation and compliance. Ewan combines both capabilities with language and cultural intelligence built in.
 Which foreign companies has Ewan helped enter India?	Ewan has delivered India market entry mandates for manufacturers from Japan, Southeast Asia, and other corridors across automotive, pharmaceutical, manufacturing, and agricultural sectors. A full case study for a leading Japanese manufacturer is available on the Market Entry page.
 Can Ewan help Indian companies expand abroad?	Yes. Ewan supports Indian companies expanding into Southeast Asia, East Asia, Japan, China, Latin America, and Africa - providing language support, distributor research, buyer communication, and market assessment in the target corridor.
@@ -164,7 +164,7 @@ Priority Article 3 - What-Is Format
 •	Article + FAQPage Schema:
 •	Book Ask Soham call for interpretation enquiries CTA:
 
-🔍 AEO: These three articles, once published with correct schema and internal links, will begin feeding AI answer engines within 4–8 weeks of Google indexation. Prioritise these before the other blog articles listed in the Master Document.
+🔍 AEO: These three articles, once published with correct schema and internal links, will begin feeding AI answer engines within 4-8 weeks of Google indexation. Prioritise these before the other blog articles listed in the Master Document.
 
 06 - Speakable Schema
 Speakable schema tags specific sections of a page as the best answer to be read aloud by voice assistants (Google Assistant, Siri, Alexa). Apply to the two paragraphs below on their respective pages.

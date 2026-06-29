@@ -118,14 +118,26 @@ export function personSukhada(): JsonLdObject {
   };
 }
 
+export function personSchema(name: string): JsonLdObject {
+  return {
+    "@type": "Person",
+    "@id": `${SITE_URL}/#person-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`,
+    name,
+  };
+}
+
 export function articleSchema(opts: {
   headline: string;
   description: string;
   canonicalPath: string;
   datePublished: string;
   dateModified?: string;
+  authorName?: string;
 }): JsonLdObject {
   const url = absoluteUrl(opts.canonicalPath);
+  const author = opts.authorName
+    ? { "@id": `${SITE_URL}/#person-${opts.authorName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}` }
+    : { "@id": `${SITE_URL}/#person-soham-kakade` };
   return {
     "@type": "Article",
     headline: opts.headline,
@@ -133,7 +145,7 @@ export function articleSchema(opts: {
     url,
     datePublished: opts.datePublished,
     dateModified: opts.dateModified ?? opts.datePublished,
-    author: { "@id": `${SITE_URL}/#person-soham-kakade` },
+    author,
     publisher: { "@id": `${SITE_URL}/#organization` },
   };
 }
@@ -157,9 +169,9 @@ export function webPageWithLeadAction(pageUrl: string): JsonLdObject {
     url: pageUrl,
     potentialAction: [
       {
-        "@type": "CommunicateAction",
-        name: "Book a consultation",
-        target: absoluteUrl("/ask-soham/"),
+        "@type": "LeadAction",
+        name: "Download the 2026 Global Market Entry Audit",
+        target: pageUrl,
       },
     ],
   };

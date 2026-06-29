@@ -986,7 +986,7 @@ Dialogue and independent language professionals from across India. Topics have r
 hiring challenges to freelancer-to-LSP connections to cross-cultural communication in high-stakes
 settings.
 FORMAT
-Regular gatherings · 91Springboard, Baner, Pune · 4:00 PM – 6:00 PM · Open to language
+Regular gatherings · 91Springboard, Baner, Pune · 4:00 PM - 6:00 PM · Open to language
 professionals, learners and companies
 Follow @orientalflock on Instagram for upcoming editions and session highlights.
 [ Ask Soham About the Next Edition → ]
@@ -1155,7 +1155,7 @@ Continue publishing the PDF issue for existing readers. Additionally publish eve
 individual web page. At the end of each web article add: 'This article first appeared in The Language
 Gazette Issue [X]. Download the full issue →'
 Step 4 - Back-Catalogue Recovery
-Identify the 5–10 best articles from past TLG issues. Publish these as web articles first - prioritising
+Identify the 5-10 best articles from past TLG issues. Publish these as web articles first - prioritising
 market entry and language-for-business topics. These begin building keyword rankings immediately.
 Step 5 - TLG Landing Page
 URL: ewan.co.in/language-gazette/ Meta Title: The Language Gazette | Ewan Business Solutions Meta

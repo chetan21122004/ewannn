@@ -51,131 +51,175 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden theme-section-soft">
-      <div className="glow-orb glow-orb-purple w-[460px] h-[460px] -top-36 -left-28 opacity-[0.11]" />
-      <div className="glow-orb glow-orb-gold w-[380px] h-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
+    <section
+      id="home"
+      className="relative flex min-h-0 items-start overflow-hidden theme-section-soft lg:min-h-screen lg:items-center"
+    >
+      <div className="glow-orb glow-orb-purple -left-20 -top-24 h-[280px] w-[280px] opacity-[0.08] lg:-left-28 lg:-top-36 lg:h-[460px] lg:w-[460px] lg:opacity-[0.11]" />
+      <div className="glow-orb glow-orb-gold -bottom-20 right-[-18%] h-[240px] w-[240px] opacity-[0.07] lg:-bottom-32 lg:right-[-12%] lg:h-[380px] lg:w-[380px] lg:opacity-[0.09]" />
 
       <FloatingParticle delay={0} x="10%" y="20%" size={4} color={heroParticleColors[0]} />
       <FloatingParticle delay={1} x="80%" y="30%" size={3} color={heroParticleColors[1]} />
       <FloatingParticle delay={2} x="60%" y="70%" size={5} color={heroParticleColors[2]} />
-      <FloatingParticle delay={0.5} x="30%" y="80%" size={3} color={heroParticleColors[3]} />
-      <FloatingParticle delay={1.5} x="90%" y="60%" size={4} color={heroParticleColors[4]} />
-
-      <div className="absolute inset-0 pointer-events-none opacity-[0.18] theme-grid-overlay-light" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.14] theme-grid-overlay-light lg:opacity-[0.18]" />
 
       <motion.div
-        className="absolute top-0 right-[25%] w-[500px] h-[500px] pointer-events-none"
+        className="pointer-events-none absolute right-[25%] top-0 hidden h-[500px] w-[500px] lg:block"
         initial={{ opacity: 0, rotate: -20 }}
         animate={{ opacity: 1, rotate: 0 }}
         transition={{ duration: 1.5, delay: 0.5 }}
       >
         <div
-          className="w-full h-full rounded-full border-[40px] border-[hsl(var(--brand-purple-700)/0.12)]"
+          className="h-full w-full rounded-full border-[40px] border-[hsl(var(--brand-purple-700)/0.12)]"
           style={{ clipPath: "inset(0 50% 50% 0)" }}
         />
       </motion.div>
 
-      <div className="absolute inset-0 grain-overlay pointer-events-none" />
+      <div className="pointer-events-none absolute inset-0 grain-overlay" />
 
-      <div className="container mx-auto px-6 relative z-10 pt-20 pb-16 lg:pt-28">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+      <div className="container relative z-10 mx-auto px-5 pb-10 pt-16 sm:px-6 lg:pb-16 lg:pt-28">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <motion.div variants={staggerContainer} initial="hidden" animate="visible">
-            {/* Pre-headline */}
-            <motion.div variants={fadeUpItem} className="mb-6 flex flex-wrap items-center gap-2">
-              <Globe className="w-4 h-4 text-[hsl(var(--brand-purple-700))]" />
-              {regions.map((r, i) => (
-                <span key={r} className="text-xs sm:text-sm text-[hsl(var(--brand-purple-700))] font-medium tracking-wider uppercase">
-                  {r}
-                  {i < regions.length - 1 && <span className="mx-1 text-[hsl(var(--brand-purple-700)/0.35)]">.</span>}
-                </span>
-              ))}
+            {/* Pre-headline - mobile: scroll pills; desktop: dot-separated list */}
+            <motion.div variants={fadeUpItem} className="mb-4 lg:mb-6">
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
+                <Globe className="h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+                {regions.map((r) => (
+                  <span
+                    key={r}
+                    className="shrink-0 rounded-full border border-[hsl(var(--border-light))] bg-white/85 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[hsl(var(--brand-purple-700))] shadow-sm"
+                  >
+                    {r}
+                  </span>
+                ))}
+              </div>
+              <div className="hidden flex-wrap items-center gap-2 lg:flex">
+                <Globe className="h-4 w-4 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+                {regions.map((r, i) => (
+                  <span
+                    key={r}
+                    className="text-xs font-medium uppercase tracking-wider text-[hsl(var(--brand-purple-700))] sm:text-sm"
+                  >
+                    {r}
+                    {i < regions.length - 1 && (
+                      <span className="mx-1 text-[hsl(var(--brand-purple-700)/0.35)]">.</span>
+                    )}
+                  </span>
+                ))}
+              </div>
             </motion.div>
 
             {/* Main headline */}
-            <motion.h1 variants={fadeUpItem} className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold leading-[1.05] mb-6 text-balance">
-              <span className="text-on-light block">{t("home.hero.headingLine1")}</span>
-              <span className="text-[hsl(var(--brand-purple-700))] block italic">
-                {t("home.hero.headingLine2")}
-              </span>
+            <motion.h1
+              variants={fadeUpItem}
+              className="mb-4 text-[2rem] font-serif font-bold leading-[1.08] text-balance sm:text-5xl sm:leading-[1.05] sm:mb-6 lg:text-6xl xl:text-7xl"
+            >
+              <span className="block text-on-light">{t("home.hero.headingLine1")}</span>
+              <span className="block italic text-[hsl(var(--brand-purple-700))]">{t("home.hero.headingLine2")}</span>
             </motion.h1>
 
             {/* Subheadline */}
-            <motion.div variants={fadeUpItem} className="mb-8">
-              <p className="text-base sm:text-lg text-on-light-muted leading-relaxed max-w-xl text-pretty">
+            <motion.div variants={fadeUpItem} className="mb-6 lg:mb-8">
+              <p className="max-w-xl text-[0.9375rem] leading-[1.65] text-on-light-muted text-pretty sm:text-lg sm:leading-relaxed">
                 {t("home.hero.subheadlinePrefix")}{" "}
-                <span className="text-on-light font-medium">{t("home.hero.subheadlineForeign")}</span>{" "}
+                <span className="font-medium text-on-light">{t("home.hero.subheadlineForeign")}</span>{" "}
                 {t("home.hero.subheadlineAnd")}{" "}
-                <span className="text-on-light font-medium">{t("home.hero.subheadlineIndian")}</span>{" "}
+                <span className="font-medium text-on-light">{t("home.hero.subheadlineIndian")}</span>{" "}
                 {t("home.hero.subheadlineSuffix")}{" "}
-                <span className="text-[hsl(var(--brand-purple-700))] font-semibold">{t("home.hero.subheadlineLanguages")}</span>{" "}
+                <span className="font-semibold text-[hsl(var(--brand-purple-700))]">
+                  {t("home.hero.subheadlineLanguages")}
+                </span>{" "}
                 {t("home.hero.subheadlineEnd")}
               </p>
             </motion.div>
 
-            {/* CTAs */}
-            <motion.div variants={fadeUpItem} className="flex flex-wrap items-center gap-4">
+            {/* CTAs - mobile: full-width stack */}
+            <motion.div
+              variants={fadeUpItem}
+              className="flex flex-col gap-3 max-lg:w-full lg:flex-row lg:flex-wrap lg:items-center lg:gap-4"
+            >
               <motion.a
                 href="#services"
                 whileHover={{ scale: 1.05, boxShadow: "0 0 20px hsl(var(--brand-purple-500) / 0.26)" }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] text-white font-semibold text-sm tracking-wider uppercase transition-all duration-300 card-shine border border-[hsl(var(--brand-purple-500)/0.35)]"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--brand-purple-500)/0.35)] bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 card-shine lg:w-auto lg:px-7 lg:py-4"
               >
-                <Sparkles className="w-4 h-4" />
+                <Sparkles className="h-4 w-4" aria-hidden />
                 {t("home.hero.ctaMarketEntry")}
               </motion.a>
               <motion.a
                 href="#language"
                 whileHover={{ scale: 1.05, borderColor: "hsl(var(--brand-purple-500) / 0.6)" }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-7 py-4 rounded-full border-2 border-[hsl(var(--border-light-strong))] text-on-light font-semibold text-sm tracking-wider uppercase transition-all duration-300 hover:bg-[hsl(var(--surface-light-200)/0.65)]"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-[hsl(var(--border-light-strong))] px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-on-light transition-all duration-300 hover:bg-[hsl(var(--surface-light-200)/0.65)] lg:w-auto lg:px-7 lg:py-4"
               >
                 {t("home.hero.ctaLanguageQuote")}
               </motion.a>
               <Link
                 to="/ask-soham"
-                className="inline-flex items-center gap-2 text-[hsl(var(--brand-purple-700))] font-medium text-sm tracking-wider uppercase group transition-transform hover:translate-x-0.5"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 py-1 text-sm font-medium uppercase tracking-wider text-[hsl(var(--brand-purple-700))] transition-transform group hover:translate-x-0.5 lg:w-auto lg:justify-start lg:py-0"
               >
-                <MessageCircle className="w-4 h-4" />
+                <MessageCircle className="h-4 w-4" aria-hidden />
                 {t("home.hero.ctaAskSoham")}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
               </Link>
             </motion.div>
           </motion.div>
 
           {/* Right column */}
-          <motion.div variants={fadeRightItem} initial="hidden" animate="visible" className="relative">
+          <motion.div variants={fadeRightItem} initial="hidden" animate="visible" className="relative max-lg:mt-2">
             <div className="relative">
-              <div className="absolute -inset-4 rounded-3xl bg-[hsl(var(--surface-light-200)/0.9)] blur-2xl" />
+              <div className="absolute -inset-3 rounded-3xl bg-[hsl(var(--surface-light-200)/0.9)] blur-2xl lg:-inset-4" />
 
               <motion.div
-                className="absolute -top-8 -right-8 w-[80%] h-[80%] rounded-full border-[30px] border-[hsl(var(--brand-purple-700)/0.1)]"
+                className="absolute -right-6 -top-6 hidden h-[80%] w-[80%] rounded-full border-[30px] border-[hsl(var(--brand-purple-700)/0.1)] lg:block"
                 style={{ clipPath: "inset(0 0 40% 40%)" }}
                 animate={{ rotate: [0, 3, 0] }}
                 transition={{ duration: 10, repeat: Infinity }}
               />
 
-              <div className="relative rounded-3xl overflow-hidden shadow-premium-lg border border-[hsl(var(--border-light))]">
+              <div className="relative overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] shadow-premium-lg lg:rounded-3xl">
                 <img
                   src="/hero-bg-new.png"
                   alt="UVAN cross-border market expansion"
-                  className="w-full h-[400px] lg:h-[500px] object-cover"
+                  className="h-52 w-full object-cover sm:h-64 lg:h-[500px]"
                   width={800}
                   height={500}
                 />
               </div>
 
+              {/* Mobile: inline stat cards instead of overlapping floats */}
+              <div className="mt-3 grid grid-cols-2 gap-2.5 lg:hidden">
+                <div className="theme-card-light rounded-xl border border-[hsl(var(--border-light))] p-3.5">
+                  <p className="text-[9px] font-medium uppercase tracking-wider text-on-light-muted">
+                    {t("home.hero.floatingCard2Label")}
+                  </p>
+                  <p className="mt-0.5 font-serif text-xl font-bold text-[hsl(var(--brand-purple-700))]">
+                    {t("home.hero.floatingCard2Value")}
+                  </p>
+                </div>
+                <div className="theme-card-light rounded-xl border border-[hsl(var(--border-light))] p-3.5">
+                  <p className="text-[9px] font-medium uppercase tracking-wider text-on-light-muted">
+                    {t("home.hero.floatingCard1Badge")}
+                  </p>
+                  <p className="mt-0.5 font-serif text-sm font-bold leading-snug text-on-light">
+                    {t("home.hero.floatingCard1Title")}
+                  </p>
+                </div>
+              </div>
+
               <motion.div
-                className="absolute -bottom-6 -left-6 sm:left-4 theme-card-light rounded-2xl p-5 max-w-[280px]"
+                className="theme-card-light absolute -bottom-6 -left-6 hidden max-w-[280px] rounded-2xl p-5 sm:left-4 lg:block"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2, duration: 0.8 }}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <p className="text-xs text-on-light-muted uppercase tracking-wider mb-1 font-medium">
+                <p className="mb-1 text-xs font-medium uppercase tracking-wider text-on-light-muted">
                   {t("home.hero.floatingCard1Badge")}
                 </p>
-                <h3 className="text-xl font-serif font-bold text-on-light mb-2">{t("home.hero.floatingCard1Title")}</h3>
-                <div className="flex gap-1 mt-2">
+                <h3 className="mb-2 font-serif text-xl font-bold text-on-light">{t("home.hero.floatingCard1Title")}</h3>
+                <div className="mt-2 flex gap-1">
                   {[1, 2, 3, 4, 5].map((i) => (
                     <motion.div
                       key={i}
@@ -189,21 +233,25 @@ const HeroSection = () => {
               </motion.div>
 
               <motion.div
-                className="absolute -top-4 right-4 sm:-top-6 sm:right-8 theme-card-light rounded-xl p-4"
+                className="theme-card-light absolute -top-4 right-4 hidden rounded-xl p-4 sm:-top-6 sm:right-8 lg:block"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.8 }}
                 whileHover={{ y: -3 }}
               >
-                <p className="text-[10px] uppercase tracking-wider text-on-light-muted mb-1">{t("home.hero.floatingCard2Label")}</p>
-                <p className="text-2xl font-serif font-bold text-[hsl(var(--brand-purple-700))]">{t("home.hero.floatingCard2Value")}</p>
+                <p className="mb-1 text-[10px] uppercase tracking-wider text-on-light-muted">
+                  {t("home.hero.floatingCard2Label")}
+                </p>
+                <p className="font-serif text-2xl font-bold text-[hsl(var(--brand-purple-700))]">
+                  {t("home.hero.floatingCard2Value")}
+                </p>
               </motion.div>
             </div>
           </motion.div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[hsl(var(--surface-light-100))] to-transparent pointer-events-none" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[hsl(var(--surface-light-100))] to-transparent lg:h-32" />
     </section>
   );
 };

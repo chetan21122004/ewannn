@@ -2,20 +2,12 @@ import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { SIMULTANEOUS_INTERPRETATION_ARTICLE_FAQS } from "@/data/aeoContent";
-import { absoluteUrl, articleSchema, breadcrumbSchema, faqPageSchema, howToSchema, personSoham } from "@/lib/schemaHelpers";
+import { absoluteUrl, articleSchema, breadcrumbSchema, faqPageSchema, personSoham } from "@/lib/schemaHelpers";
 
 const CANONICAL = "/insights/what-is-simultaneous-interpretation/";
 const TITLE = "What Is Simultaneous Interpretation? A Plain-English Guide";
 const DESCRIPTION =
   "Understand real-time multilingual communication for conferences, boardrooms, and government engagements - plus when to escalate to specialised interpretation teams.";
-
-const steps = [
-  "Clarify event format and risk - identify whether your setting is a conference, board meeting, negotiation, or government engagement where speed and precision are critical.",
-  "Choose interpretation mode - use simultaneous interpretation when real-time flow is essential; use consecutive interpretation for smaller sessions where pauses are acceptable.",
-  "Define language pairs and relay logic - map source and target languages, including any relay path needed for multi-country delegations.",
-  "Coordinate delivery infrastructure - align interpreters, AV, booth/headset setup, and handoff protocols so the room runs without communication breakdowns.",
-  "Brief interpreters on context - share agenda, terminology, stakeholder profiles, and sector background before the session to preserve nuance and decision quality.",
-];
 
 const InsightsArticleSimultaneousInterpretation = () => {
   const pageUrl = absoluteUrl(CANONICAL);
@@ -32,12 +24,6 @@ const InsightsArticleSimultaneousInterpretation = () => {
       canonicalPath: CANONICAL,
       datePublished: "2024-08-21",
       dateModified: "2026-01-15",
-    }),
-    howToSchema({
-      name: TITLE,
-      description:
-        "A plain-English decision framework for planning simultaneous interpretation in high-stakes multilingual settings.",
-      steps,
     }),
     faqPageSchema(pageUrl, SIMULTANEOUS_INTERPRETATION_ARTICLE_FAQS),
   ];

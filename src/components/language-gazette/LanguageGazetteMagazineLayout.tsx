@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import type { GazetteArticle, GazetteIssue } from "@/data/languageGazetteIssues";
 import { gazetteArticlePath } from "@/data/languageGazetteIssues";
@@ -19,29 +20,53 @@ type LanguageGazetteMagazineLayoutProps = {
 const formatIssueDate = (iso: string) =>
   new Date(iso).toLocaleDateString("en-IN", { month: "long", year: "numeric" });
 
-const ArticleCard = ({ article }: { article: GazetteArticle }) => (
+const ArticleCard = ({
+  article,
+  featured = false,
+  index,
+}: {
+  article: GazetteArticle;
+  featured?: boolean;
+  index?: number;
+}) => (
   <Link
     to={gazetteArticlePath(article.slug)}
-    className="gazette-article-card group block overflow-hidden rounded-[1.25rem] border border-[hsl(var(--brand-navy-950)/0.08)] bg-white transition hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-24px_rgba(15,23,42,0.35)]"
+    className={`group block overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] bg-white transition hover:-translate-y-1 hover:shadow-[0_24px_60px_-28px_hsl(var(--brand-navy-950)/0.35)] ${
+      featured ? "card-shine lg:min-h-full" : "card-shine"
+    }`}
   >
-    <article>
-      <div className="relative overflow-hidden">
+    <article className={featured ? "flex h-full flex-col" : undefined}>
+      <div className={`relative overflow-hidden ${featured ? "lg:flex-1" : ""}`}>
         <GazetteCoverImage
           src={article.image}
           alt={article.title}
-          className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+          className={`w-full object-cover transition duration-500 group-hover:scale-[1.03] ${
+            featured ? "aspect-[16/10] lg:aspect-[16/11]" : "aspect-[16/10]"
+          }`}
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.55)] via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
         <span className="absolute left-4 top-4 rounded-full bg-[hsl(var(--brand-navy-950))] px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))]">
           {article.category}
         </span>
+        {typeof index === "number" ? (
+          <span className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/25 bg-white/15 text-xs font-bold text-white backdrop-blur-sm">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        ) : null}
       </div>
-      <div className="border-t border-[hsl(var(--brand-navy-950)/0.06)] p-6">
-        <p className="text-xs text-on-light-muted">{article.readTime}</p>
-        <h3 className="mt-2 font-serif text-xl font-bold leading-snug text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))] md:text-2xl">
+      <div className={`border-t border-[hsl(var(--brand-navy-950)/0.06)] ${featured ? "p-7 lg:p-8" : "p-6"}`}>
+        <p className="text-xs font-medium text-on-light-muted">{article.readTime}</p>
+        <h3
+          className={`mt-2 font-serif font-bold leading-snug text-[hsl(var(--brand-navy-950))] transition group-hover:text-[hsl(var(--brand-purple-700))] ${
+            featured ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"
+          }`}
+        >
           {article.title}
         </h3>
         <p className="mt-2 text-sm font-medium text-on-light-muted">By {article.author}</p>
-        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-on-light-secondary">{article.excerpt}</p>
+        <p className={`mt-3 leading-relaxed text-on-light-secondary ${featured ? "line-clamp-4 text-base" : "line-clamp-3 text-sm"}`}>
+          {article.excerpt}
+        </p>
         <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-700))]">
           Read article
           <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
@@ -72,8 +97,14 @@ const LanguageGazetteMagazineLayout = ({
   articleGridTitle,
   articleGridSubtitle,
 }: LanguageGazetteMagazineLayoutProps) => {
+  const reduceMotion = useReducedMotion();
   const displayArticles = articles ?? issue?.articles ?? [];
   const issuePath = issue ? issue.path.replace(/\/$/, "") : "/language-gazette/apr-25";
+  const [featuredArticle, ...restArticles] = displayArticles;
+
+  const hidden = reduceMotion ? false : { opacity: 0, y: 24 };
+  const show = { opacity: 1, y: 0 };
+  const transition = (delay = 0) => ({ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] as const });
 
   return (
     <div className="gazette-paper">
@@ -109,7 +140,7 @@ const LanguageGazetteMagazineLayout = ({
                     to={issuePath}
                     className="inline-flex items-center gap-2 rounded-xl border border-white/25 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10"
                   >
-                    {issue.label} — table of contents
+                    {issue.label} - table of contents
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
@@ -136,28 +167,89 @@ const LanguageGazetteMagazineLayout = ({
       {children}
 
       {displayArticles.length > 0 ? (
-        <section id={showHero ? "latest-issue" : undefined} className="gazette-paper-section px-6 py-16 md:py-20">
-          <div className="container mx-auto max-w-6xl">
-            {(articleGridTitle || articleGridSubtitle) && (
-              <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
-                <div>
-                  {articleGridTitle ? (
-                    <h2 className="font-serif text-3xl font-extrabold text-[hsl(var(--brand-navy-950))] md:text-4xl">{articleGridTitle}</h2>
-                  ) : null}
-                  {articleGridSubtitle ? <p className="mt-3 max-w-2xl text-on-light-secondary">{articleGridSubtitle}</p> : null}
-                </div>
+        <section id={showHero ? "latest-issue" : undefined} className="gazette-paper-section relative overflow-hidden px-6 py-16 md:py-20">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_0%,hsl(var(--brand-purple-700)/0.08),transparent_38%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_88%_100%,hsl(var(--brand-gold-500)/0.07),transparent_34%)]" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--brand-gold-500)/0.45)] to-transparent" />
+
+          <div className="container relative z-10 mx-auto max-w-6xl">
+            <motion.div
+              initial={hidden}
+              whileInView={show}
+              viewport={{ once: true }}
+              transition={transition(0)}
+              className="mb-12 grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
+            >
+              <div className="max-w-3xl">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
+                  <BookOpen className="h-3.5 w-3.5" aria-hidden />
+                  Latest Issue
+                </span>
+                {articleGridTitle ? (
+                  <h2 className="mt-4 font-serif text-3xl font-extrabold text-[hsl(var(--brand-navy-950))] md:text-4xl lg:text-5xl">
+                    {articleGridTitle}
+                  </h2>
+                ) : null}
+                {articleGridSubtitle ? (
+                  <p className="mt-4 text-base leading-relaxed text-on-light-secondary">{articleGridSubtitle}</p>
+                ) : null}
                 {issue ? (
-                  <Link
-                    to={issuePath}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline"
-                  >
-                    View full issue
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  <p className="mt-3 text-sm font-medium text-on-light-muted">
+                    Published {formatIssueDate(issue.published)} · {displayArticles.length} readable articles
+                  </p>
                 ) : null}
               </div>
+              {issue ? (
+                <Link
+                  to={issuePath}
+                  className="inline-flex items-center gap-2 self-start rounded-full border border-[hsl(var(--border-light))] bg-white px-5 py-2.5 text-sm font-semibold text-[hsl(var(--brand-purple-700))] shadow-sm transition hover:-translate-y-0.5 hover:border-[hsl(var(--brand-purple-700)/0.25)] lg:self-auto"
+                >
+                  View full issue
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              ) : null}
+            </motion.div>
+
+            {featuredArticle ? (
+              <div className="grid gap-8 lg:grid-cols-12 lg:gap-8">
+                <motion.div
+                  initial={hidden}
+                  whileInView={show}
+                  viewport={{ once: true }}
+                  transition={transition(0.08)}
+                  className="lg:col-span-7"
+                >
+                  <ArticleCard article={featuredArticle} featured index={0} />
+                </motion.div>
+                <div className="grid gap-8 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
+                  {restArticles.map((article, index) => (
+                    <motion.div
+                      key={article.slug}
+                      initial={hidden}
+                      whileInView={show}
+                      viewport={{ once: true }}
+                      transition={transition(0.12 + index * 0.08)}
+                    >
+                      <ArticleCard article={article} index={index + 1} />
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {displayArticles.map((article, index) => (
+                  <motion.div
+                    key={article.slug}
+                    initial={hidden}
+                    whileInView={show}
+                    viewport={{ once: true }}
+                    transition={transition(0.08 + index * 0.06)}
+                  >
+                    <ArticleCard article={article} index={index} />
+                  </motion.div>
+                ))}
+              </div>
             )}
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">{displayArticles.map((article) => <ArticleCard key={article.slug} article={article} />)}</div>
           </div>
         </section>
       ) : null}

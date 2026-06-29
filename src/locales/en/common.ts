@@ -22,7 +22,7 @@ const enCommon = {
       marketResearch: "Market Research",
       importExport: "Import, Procurement & Export",
       marketAudit: "Global Market Entry Audit",
-      sano: "Arogya Yatri ↗",
+      sano: "SANO ↗",
       culturalKnowHow: "Cultural & Language Know-How ↗",
     },
     language: {
@@ -73,7 +73,7 @@ const enCommon = {
     rights: "© 2026 UVAN. All rights reserved.",
     privacyPolicy: "Privacy Policy",
     caseStudies: "Case Studies",
-    sano: "Arogya Yatri",
+    sano: "SANO",
   },
   seo: {
     marketEntry: {
@@ -156,7 +156,7 @@ const enCommon = {
       headlineSuffix: "",
       cardLabel: "Company profile",
       cardBlurb:
-        "Founded in Pune in 2020, UVAN brings together India–Asia market entry execution and 125+ languages under one roof - ISO certified, recognised for India–China trade ties, and partnered with MSAMB and Bhashini.",
+        "Founded in Pune in 2020, UVAN brings together India-Asia market entry execution and 125+ languages under one roof - ISO certified, recognised for India-China trade ties, and partnered with MSAMB and Bhashini.",
       pills: ["Pune, India · Founded 2020", "125+ languages", "ISO 9001:2015", "MSAMB · Bhashini"],
     },
     stats: {

@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, CheckCircle2, Globe2, Handshake, Award } from "lucide-react";
+import { ArrowRight, Award, CheckCircle2, Globe2, Handshake, Languages } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
-import { ABOUT_US_FAQS } from "@/data/aeoContent";
+import { ABOUT_US_FAQS, ENTITY_PARAGRAPH_A, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, personSoham, personSukhada } from "@/lib/schemaHelpers";
 
 const metrics = [
@@ -17,47 +17,166 @@ const metrics = [
 ];
 
 const languageGroups = [
-  { name: "Chinese (Mandarin)", speakers: "929 million", desc: "Based on the Beijing dialect, widely spoken in northern China." },
-  { name: "Japanese", speakers: "128 million", desc: "The de-facto official language of Japan." },
-  { name: "Taiwanese", speakers: "23.6 million", desc: "Traditionally the most widely spoken language in Taiwan." },
-  { name: "Cantonese", speakers: "80 million", desc: "Official language of Hong Kong and Macau." },
-  { name: "Korean", speakers: "80 million", desc: "Native language of South Korea with its own unique alphabet." },
-  { name: "Bahasa (Indonesian/Malay)", speakers: "590 million", desc: "Official languages of Indonesia and Malaysia." },
-  { name: "Filipino & Tagalog", speakers: "139 million", desc: "National and official languages of the Philippines." },
-  { name: "Vietnamese", speakers: "70 million", desc: "National and official language of Vietnam." },
+  {
+    name: "Chinese (Mandarin)",
+    speakers: "929M",
+    speakersDetail: "929 million speakers",
+    desc: "Based on the Beijing dialect, widely spoken in northern China.",
+    flagSrc: "/page-assets/flags/cn-flag.png",
+    flagAlt: "China flag",
+    region: "East Asia",
+    accent: "gold" as const,
+  },
+  {
+    name: "Japanese",
+    speakers: "128M",
+    speakersDetail: "128 million speakers",
+    desc: "The de-facto official language of Japan.",
+    flagSrc: "/page-assets/flags/jp-flag.png",
+    flagAlt: "Japan flag",
+    region: "East Asia",
+    accent: "purple" as const,
+  },
+  {
+    name: "Taiwanese",
+    speakers: "23.6M",
+    speakersDetail: "23.6 million speakers",
+    desc: "Traditionally the most widely spoken language in Taiwan.",
+    flagSrc: "/page-assets/flags/tw-flag.png",
+    flagAlt: "Taiwan flag",
+    region: "East Asia",
+    accent: "cyan" as const,
+  },
+  {
+    name: "Cantonese",
+    speakers: "80M",
+    speakersDetail: "80 million speakers",
+    desc: "Official language of Hong Kong and Macau.",
+    flagSrc: "/page-assets/flags/hk-flag.png",
+    flagAlt: "Hong Kong flag",
+    region: "Greater China",
+    accent: "gold" as const,
+  },
+  {
+    name: "Korean",
+    speakers: "80M",
+    speakersDetail: "80 million speakers",
+    desc: "Native language of South Korea with its own unique alphabet.",
+    flagSrc: "/page-assets/flags/kr-flag.png",
+    flagAlt: "South Korea flag",
+    region: "East Asia",
+    accent: "purple" as const,
+  },
+  {
+    name: "Bahasa (Indonesian/Malay)",
+    speakers: "590M",
+    speakersDetail: "590 million speakers",
+    desc: "Official languages of Indonesia and Malaysia.",
+    flagSrc: "/page-assets/flags/id-flag.png",
+    flagAlt: "Indonesia flag",
+    region: "ASEAN",
+    accent: "cyan" as const,
+  },
+  {
+    name: "Filipino & Tagalog",
+    speakers: "139M",
+    speakersDetail: "139 million speakers",
+    desc: "National and official languages of the Philippines.",
+    flagSrc: "/page-assets/flags/ph-flag.png",
+    flagAlt: "Philippines flag",
+    region: "ASEAN",
+    accent: "gold" as const,
+  },
+  {
+    name: "Vietnamese",
+    speakers: "70M",
+    speakersDetail: "70 million speakers",
+    desc: "National and official language of Vietnam.",
+    flagSrc: "/page-assets/flags/vn-flag.png",
+    flagAlt: "Vietnam flag",
+    region: "ASEAN",
+    accent: "purple" as const,
+  },
 ];
+
+const LanguageFlag = ({ src, alt }: { src: string; alt: string }) => (
+  <img
+    src={src}
+    alt={alt}
+    loading="lazy"
+    className="h-full w-full object-cover"
+    onError={(event) => {
+      if (!event.currentTarget.dataset.fallbackApplied) {
+        event.currentTarget.dataset.fallbackApplied = "true";
+        event.currentTarget.src = "/placeholder.svg";
+      }
+    }}
+  />
+);
 
 const recognitions = [
   {
     title: "Consulate General of the People's Republic of China",
     desc: "Received a formal letter of recognition acknowledging our contribution to India-China agricultural and trade relations, benefiting 1,200+ farmers and 800+ hectares of farmland.",
-    badge: "Government Recognition"
+    badge: "Government Recognition",
+    logo: "/page-assets/cn-flag.png",
+    logoAlt: "Flag of the People's Republic of China",
+    featured: true,
+    proofImages: [
+      {
+        src: "/Ewan-Consulate-experience-letter-page-001-min.jpg",
+        alt: "Chinese Consulate appreciation letter page 1",
+        label: "Page 1 · Chinese Original",
+      },
+      {
+        src: "/Ewan-Consulate-experience-letter-page-002-min.jpg",
+        alt: "Chinese Consulate appreciation letter page 2",
+        label: "Page 2 · English Translation",
+      },
+    ],
   },
   {
     title: "MSAMB Government of Maharashtra",
     desc: "Empaneled for the state export program, assisting agricultural exporters with international language facilitation and trade setup.",
-    badge: "State Empanelment"
+    badge: "State Empanelment",
+    logo: "/allLogos/MSAMB-logo.png",
+    logoAlt: "Maharashtra State Agricultural Marketing Board logo",
   },
   {
     title: "Bhashini Initiative (MeitY)",
     desc: "Strategic partner of India's national language technology mission under the Ministry of Electronics & IT.",
-    badge: "National AI Mission"
+    badge: "National AI Mission",
+    logo: "/allLogos/Bhashini-Logo.png",
+    logoAlt: "Bhashini initiative logo",
   },
   {
     title: "CITLoB",
     desc: "Executive representation as Vice President of the Confederation of Indian Translators and Language Professionals.",
-    badge: "Industry Leadership"
+    badge: "Industry Leadership",
+    logo: "/allLogos/CITLoB-logo-2023.jpg",
+    logoAlt: "CITLoB logo",
+  },
+  {
+    title: "ISO 9001:2015 Certification",
+    desc: "Quality management system certification validating UVAN's structured processes for translation, interpretation, and cross-border service delivery.",
+    badge: "Quality Certified",
+    logo: "/allLogos/ISO-9001.png",
+    logoAlt: "ISO 9001:2015 certification logo",
   },
   {
     title: "Symbiosis International University",
     desc: "Active academic faculty engagement, training the next generation of translation and interpretation professionals.",
-    badge: "Academic Engagement"
+    badge: "Academic Engagement",
+    logo: "/allLogos/Symbiosis-logo.png",
+    logoAlt: "Symbiosis International University logo",
   },
   {
     title: "IB Board (International Baccalaureate)",
     desc: "Appointed curriculum designer, shaping the pedagogical framework for international language education.",
-    badge: "Curriculum Design"
-  }
+    badge: "Curriculum Design",
+    logo: "/allLogos/IB-logo.svg",
+    logoAlt: "International Baccalaureate logo",
+  },
 ];
 
 const partners = [
@@ -65,19 +184,48 @@ const partners = [
     name: "Bhashini - MeitY, Government of India",
     description:
       "India's national language technology initiative. Our partnership with Bhashini aligns UVAN with the country's most significant investment in multilingual AI - strengthening our language technology capabilities and our institutional standing.",
+    logo: "/allLogos/Bhashini-Logo.png",
+    logoAlt: "Bhashini logo",
   },
   {
     name: "Tattava CX",
     description:
       "Strategic communications and customer experience partner. Tattava CX brings expertise in brand communication, client experience design, and strategic messaging - complementing UVAN's cross-border language and market entry work.",
+    logo: "/allLogos/tattava-cx.svg",
+    logoAlt: "Tattava CX logo",
   },
   {
     name: "Bhashik Skill Development - Sister Institution",
     description:
       "Bhashik Skill Development is UVAN's sister institution - a skill development organisation focused on language training, commerce education, and vocational upskilling across 125+ languages.",
+    logo: "/allLogos/bhashik-logo.png",
+    logoAlt: "Bhashik Skill Development logo",
     link: "https://bhashikskill.co.in",
   },
 ];
+
+const BrandLogo = ({
+  src,
+  alt,
+  className = "max-h-14 w-auto max-w-[180px] object-contain",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) => (
+  <img
+    src={src}
+    alt={alt}
+    loading="lazy"
+    className={className}
+    onError={(event) => {
+      if (!event.currentTarget.dataset.fallbackApplied) {
+        event.currentTarget.dataset.fallbackApplied = "true";
+        event.currentTarget.src = "/placeholder.svg";
+      }
+    }}
+  />
+);
 
 const foundationCredentials = [
   "Founded in Pune in 2020",
@@ -494,6 +642,20 @@ const AboutUs = () => {
               </div>
             </motion.div>
           </div>
+
+          <motion.aside
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={revealUp}
+            transition={{ ...springReveal, delay: 0.26 }}
+            className="mt-6 rounded-[1.75rem] border border-[hsl(var(--brand-purple-700)/0.14)] bg-white/82 p-6 text-sm leading-[1.85] text-on-light-secondary shadow-[0_18px_46px_rgba(26,22,51,0.06)] backdrop-blur sm:p-8"
+          >
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-purple-700))]">
+              What is UVAN?
+            </p>
+            {ENTITY_PARAGRAPH_A}
+          </motion.aside>
         </div>
       </section>
 
@@ -585,6 +747,9 @@ const AboutUs = () => {
                     <p className="mt-4 max-w-xl text-sm font-medium leading-relaxed text-white/78">
                       A decade inside confidential boardroom negotiations before building UVAN. Soham brings 60,000+ hours
                       of interpretation experience across Mandarin, Cantonese, Japanese and ASEAN corridors.
+                    </p>
+                    <p className="mt-4 max-w-xl rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-xs leading-relaxed text-white/72">
+                      {ENTITY_PARAGRAPH_B}
                     </p>
                   </div>
 
@@ -735,112 +900,275 @@ const AboutUs = () => {
       <SectionDivider variant="slant" flip fromDark />
 
       {/* Institutional Recognition */}
-      <section className="theme-section-light relative overflow-hidden px-6 py-20 md:py-24 stitch-line stitch-line-bottom">
-        <motion.img
-          src={doodleCorner}
-          alt=""
-          className="pointer-events-none absolute right-[-3rem] bottom-[-2rem] z-0 hidden h-40 w-40 rotate-180 select-none opacity-25 lg:block"
-          animate={{ rotate: [180, 186, 180], y: [0, -10, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        />
+      <section className="relative overflow-hidden px-6 py-20 theme-section-light md:py-24 stitch-line stitch-line-bottom">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_0%,hsl(var(--brand-purple-700)/0.07),transparent_38%)]" />
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
+
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <div className="mb-12 md:mb-14">
-            <span className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            className="mb-10 max-w-3xl"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
+              <Award className="h-3.5 w-3.5" aria-hidden />
               Recognised by Governments and Institutions
             </span>
-            <h2 className="mt-3 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] md:text-[2.25rem]">
-              Recognised by the Consulate General of the People&apos;s Republic of China
+            <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] sm:text-4xl lg:text-5xl">
+              Institutional trust built over years of corridor work
             </h2>
-            <p className="mt-5 max-w-4xl text-sm leading-relaxed text-on-light-secondary md:text-base">
+            <p className="mt-4 text-base leading-relaxed text-on-light-secondary">
               In a formal letter of recognition, the Consulate General acknowledged UVAN&apos;s contribution to
               strengthening India-China agricultural and trade relations - noting that over 1,200 farmers and 800
-              hectares of farmland would benefit from the work. This is the kind of institutional trust that takes years
-              to build and cannot be replicated overnight.
+              hectares of farmland would benefit from the work.
             </p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {recognitions.map((item, i) => (
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.08 }}
+            className="mb-10 overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] bg-white p-4 sm:p-5"
+          >
+            <p className="mb-4 px-2 text-[10px] font-bold uppercase tracking-[0.18em] text-on-light-muted">
+              Credentials at a glance
+            </p>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-7">
+              {recognitions.map((item) => (
+                <div
+                  key={item.title}
+                  className="flex min-h-[88px] items-center justify-center rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-3 py-4"
+                >
+                  <BrandLogo
+                    src={item.logo}
+                    alt={item.logoAlt}
+                    className="max-h-12 w-full max-w-[120px] object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {recognitions
+            .filter((item) => item.featured)
+            .map((item) => (
               <motion.div
                 key={item.title}
-                className="flex flex-col justify-between rounded-3xl border border-[hsl(var(--border-light))] bg-white p-6 shadow-[0_8px_24px_rgba(26,22,51,0.04)] md:p-7 hover:border-[hsl(var(--brand-purple-500)/0.25)] hover:shadow-premium-sm transition-all duration-300"
-                initial={{ opacity: 0, y: 24, rotateX: 3 }}
-                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -8, rotateZ: i % 2 === 0 ? -0.5 : 0.5, boxShadow: "0 22px 46px rgba(26,22,51,0.1)" }}
+                transition={{ duration: 0.6 }}
+                className="theme-card-light card-shine mb-10 overflow-hidden rounded-3xl border border-[hsl(var(--border-light))]"
               >
-                <div>
-                  <span className="inline-block mb-3.5 px-2.5 py-1 rounded-full bg-[hsl(var(--brand-purple-500)/0.1)] text-[hsl(var(--brand-purple-700))] text-[10px] font-bold uppercase tracking-wider">
-                    {item.badge}
-                  </span>
-                  <h3 className="font-serif text-lg font-bold text-[hsl(var(--brand-navy-950))] leading-tight mb-2.5">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-on-light-secondary leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-                <div className="mt-6 pt-3 border-t border-[hsl(var(--border-light))] flex items-center justify-between">
-                  <span className="text-[10px] font-semibold text-on-light-muted flex items-center gap-1.5">
-                    <CheckCircle2 className="h-4 w-4 text-[hsl(var(--brand-purple-500))]" /> Verified Credential
-                  </span>
+                <div className="grid lg:grid-cols-12">
+                  <div className="border-b border-[hsl(var(--border-light))] p-8 lg:col-span-5 lg:border-b-0 lg:border-r lg:p-10">
+                    <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl border border-[hsl(var(--border-light))] bg-white p-3 shadow-sm">
+                      <BrandLogo src={item.logo} alt={item.logoAlt} className="max-h-12 w-full object-contain" />
+                    </div>
+                    <span className="inline-flex rounded-full bg-[hsl(var(--brand-gold-500)/0.14)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-600))]">
+                      {item.badge}
+                    </span>
+                    <h3 className="mt-4 font-serif text-2xl font-bold leading-snug text-[hsl(var(--brand-navy-950))] sm:text-3xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-sm leading-relaxed text-on-light-secondary sm:text-base">{item.desc}</p>
+                  </div>
+                  <div className="grid gap-4 p-6 sm:grid-cols-2 lg:col-span-7 lg:p-8">
+                    {item.proofImages?.map((letter) => (
+                      <figure
+                        key={letter.src}
+                        className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))]"
+                      >
+                        <div className="p-3 sm:p-4">
+                          <img
+                            src={letter.src}
+                            alt={letter.alt}
+                            loading="lazy"
+                            className="w-full rounded-xl border border-[hsl(var(--border-light-strong))] object-cover"
+                          />
+                        </div>
+                        <figcaption className="border-t border-[hsl(var(--border-light))] px-4 py-3 text-center text-[10px] font-bold uppercase tracking-[0.14em] text-on-light-muted">
+                          {letter.label}
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}
+
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {recognitions
+              .filter((item) => !item.featured)
+              .map((item, i) => (
+                <motion.article
+                  key={item.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: i * 0.06 }}
+                  whileHover={{ y: -6 }}
+                  className="theme-card-light card-shine flex h-full flex-col overflow-hidden rounded-3xl border border-[hsl(var(--border-light))]"
+                >
+                  <div className="flex min-h-[108px] items-center justify-center border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-6 py-5">
+                    <BrandLogo
+                      src={item.logo}
+                      alt={item.logoAlt}
+                      className="max-h-16 w-full max-w-[200px] object-contain"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6 sm:p-7">
+                    <span className="inline-flex w-fit rounded-full bg-[hsl(var(--brand-purple-700)/0.1)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
+                      {item.badge}
+                    </span>
+                    <h3 className="mt-4 font-serif text-xl font-bold leading-snug text-[hsl(var(--brand-navy-950))]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 flex-grow text-sm leading-relaxed text-on-light-secondary">{item.desc}</p>
+                    <div className="mt-5 flex items-center gap-2 border-t border-[hsl(var(--border-light))] pt-4 text-[11px] font-semibold text-on-light-muted">
+                      <CheckCircle2 className="h-4 w-4 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+                      Verified credential
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
           </div>
         </div>
       </section>
 
       {/* Partners */}
-      <section id="our-partners" className="theme-section-soft relative overflow-hidden px-6 py-16 md:py-20">
-        <div className="pointer-events-none absolute left-[-20%] top-1/2 h-[min(80vw,420px)] w-[min(80vw,420px)] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,hsl(var(--brand-gold-500)/0.06),transparent_70%)]" />
+      <section id="our-partners" className="relative overflow-hidden px-6 py-16 theme-section-soft md:py-20">
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-[position:72%_35%] opacity-[0.15] mix-blend-multiply"
+          style={{
+            backgroundImage: "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')",
+          }}
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-[position:12%_78%] opacity-[0.13] mix-blend-multiply"
+          style={{
+            backgroundImage: "url('/bg-blobs/beautiful-purple-color-gradient-background-free-vector.jpg')",
+          }}
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-[position:8%_18%] opacity-[0.09] mix-blend-soft-light"
+          style={{
+            backgroundImage:
+              "url('/bg-blobs/banner-background-colorful-bright-purple-gradient-geometric-effect-eps-10-free-vector.jpg')",
+          }}
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-[position:88%_82%] opacity-[0.11] mix-blend-multiply"
+          style={{
+            backgroundImage: "url('/bg-blobs/purple-abstract-background-luxury-elements-260nw-2723588695.webp')",
+          }}
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-soft-light"
+          style={{
+            backgroundImage:
+              "url('/bg-blobs/abstract-technology-futuristic-digital-square-pattern-with-lighting-glowing-particles-square-elements-on-dark-purple-background-free-vector.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at 84% 24%, hsl(var(--brand-purple-700)/0.1) 0%, transparent 40%), radial-gradient(circle at 14% 72%, hsl(var(--brand-gold-500)/0.09) 0%, transparent 36%)",
+          }}
+          aria-hidden
+        />
+        <div className="glow-orb glow-orb-purple pointer-events-none -right-20 top-8 h-[340px] w-[340px] opacity-[0.08]" />
+        <div className="glow-orb glow-orb-gold pointer-events-none -bottom-16 -left-20 h-[300px] w-[300px] opacity-[0.07]" />
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
+        <img
+          src={doodleDots}
+          alt=""
+          className="pointer-events-none absolute left-8 top-20 hidden h-36 w-48 select-none opacity-[0.11] lg:block"
+          aria-hidden
+        />
+
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <div className="mb-12 md:mb-14">
-            <span className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-4">
-              Ecosystem & Alliance
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[hsl(var(--brand-navy-950))] leading-tight">
-              Partners & Collaborators Who Extend Our Reach.
-            </h2>
-            <p className="mt-5 max-w-3xl text-sm sm:text-base leading-relaxed text-on-light-secondary">
-              UVAN works with trusted institutional and commercial partners whose capabilities complement our own -
-              allowing us to deliver more comprehensive solutions for clients navigating complex cross-border
-              environments.
-            </p>
-          </div>
-          
-          <div className="grid gap-6 md:grid-cols-3">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            className="mb-12 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(200px,240px)] lg:items-end"
+          >
+            <div className="max-w-2xl">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
+                <Handshake className="h-3.5 w-3.5" aria-hidden />
+                Ecosystem & Alliance
+              </span>
+              <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] sm:text-4xl lg:text-5xl">
+                Partners & Collaborators Who Extend Our Reach
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-on-light-secondary">
+                UVAN works with trusted institutional and commercial partners whose capabilities complement our own -
+                allowing us to deliver more comprehensive solutions for clients navigating complex cross-border environments.
+              </p>
+            </div>
+            <motion.img
+              src="/doodles/Business merger-amico.svg"
+              alt="Partnership illustration"
+              className="mx-auto h-36 w-full max-w-[220px] object-contain lg:mx-0 lg:ml-auto"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
+
+          <div className="grid gap-6 lg:grid-cols-3">
             {partners.map((partner, i) => (
               <motion.article
                 key={partner.name}
-                className="group rounded-3xl border border-[hsl(var(--border-light))] bg-white p-7 shadow-[0_12px_32px_rgba(26,22,51,0.04)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(26,22,51,0.08)] md:p-8 flex flex-col justify-between"
-                initial={{ opacity: 0, y: 28, scale: 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.62, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -10, rotateZ: i === 1 ? -0.45 : 0.45 }}
+                transition={{ duration: 0.55, delay: i * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="theme-card-light card-shine group flex h-full flex-col overflow-hidden rounded-3xl border border-[hsl(var(--border-light))]"
               >
-                <div>
-                  <h3 className="font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))] transition-colors">{partner.name}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">{partner.description}</p>
+                <div className="flex min-h-[132px] items-center justify-center border-b border-[hsl(var(--border-light))] bg-white px-8 py-6">
+                  <BrandLogo
+                    src={partner.logo}
+                    alt={partner.logoAlt}
+                    className="max-h-16 w-full max-w-[220px] object-contain transition duration-300 group-hover:scale-[1.03]"
+                  />
                 </div>
-                {partner.link && (
-                  <div className="mt-6 pt-4 border-t border-[hsl(var(--border-light))]">
-                    <a
-                      href={partner.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[hsl(var(--brand-purple-700))] transition group-hover:translate-x-1"
-                    >
-                      Visit Website
-                      <ArrowRight className="h-3 w-3" />
-                    </a>
-                  </div>
-                )}
+                <div className="flex flex-1 flex-col p-7 sm:p-8">
+                  <h3 className="font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))] transition group-hover:text-[hsl(var(--brand-purple-700))]">
+                    {partner.name}
+                  </h3>
+                  <p className="mt-3 flex-grow text-sm leading-relaxed text-on-light-secondary">{partner.description}</p>
+                  {partner.link ? (
+                    <div className="mt-6 border-t border-[hsl(var(--border-light))] pt-4">
+                      <a
+                        href={partner.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-[hsl(var(--brand-purple-700))] transition group-hover:translate-x-0.5"
+                      >
+                        Visit Website
+                        <ArrowRight className="h-4 w-4" />
+                      </a>
+                    </div>
+                  ) : null}
+                </div>
               </motion.article>
             ))}
           </div>
-          
+
           <p className="mt-12 text-center text-sm text-on-light-secondary">
             Interested in partnering with UVAN?{" "}
             <a
@@ -896,7 +1224,7 @@ const AboutUs = () => {
                   {[
                     "Regular gatherings",
                     "91Springboard, Baner, Pune",
-                    "4:00 PM – 6:00 PM",
+                    "4:00 PM - 6:00 PM",
                     "Open to language professionals, learners and companies",
                   ].map((item) => (
                     <span
@@ -939,39 +1267,130 @@ const AboutUs = () => {
       </section>
 
       {/* Language Cards */}
-      <section className="theme-section-soft relative overflow-hidden px-6 py-16 md:py-20">
-        <div className="pointer-events-none absolute right-12 top-20 hidden lg:block">
-          <img src={doodleDots} alt="" className="h-48 w-64 select-none opacity-[0.16] animate-pulse-glow" />
-        </div>
+      <section className="relative overflow-hidden px-6 py-16 theme-section-soft md:py-20">
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-[position:20%_30%] opacity-[0.16] mix-blend-multiply"
+          style={{
+            backgroundImage:
+              "url('/bg-blobs/abstract-background-purple-dark-blue-gradient-wave-modern-background-combination-curve-free-vector.jpg')",
+          }}
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-[position:85%_70%] opacity-[0.14] mix-blend-multiply"
+          style={{
+            backgroundImage: "url('/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg')",
+          }}
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.1] mix-blend-soft-light"
+          style={{
+            backgroundImage: "url('/bg-blobs/magic-background-with-purple-light-rays-effect-free-vector.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center top",
+          }}
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at 18% 22%, hsl(var(--brand-purple-700)/0.1) 0%, transparent 42%), radial-gradient(circle at 82% 78%, hsl(var(--brand-gold-500)/0.08) 0%, transparent 38%)",
+          }}
+          aria-hidden
+        />
+        <div className="glow-orb glow-orb-purple pointer-events-none -left-24 top-12 h-[380px] w-[380px] opacity-[0.09]" />
+        <div className="glow-orb glow-orb-gold pointer-events-none -bottom-20 -right-16 h-[320px] w-[320px] opacity-[0.07]" />
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
+        <img
+          src={doodleDots}
+          alt=""
+          className="pointer-events-none absolute right-8 top-16 hidden h-40 w-52 select-none opacity-[0.12] lg:block"
+          aria-hidden
+        />
+
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <div className="mb-12 text-center md:mb-16">
-            <span className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-4">
-              Linguistic Footprint
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[hsl(var(--brand-navy-950))] leading-tight">Languages We Master</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-on-light-secondary">
-              We handle 125+ languages, with deep specialization in Oriental, European, and Indian corridors.
-            </p>
-          </div>
-          
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            className="mb-12 grid gap-8 lg:mb-14 lg:grid-cols-[minmax(0,1fr)_minmax(200px,240px)] lg:items-end"
+          >
+            <div className="max-w-2xl text-center lg:text-left">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
+                <Languages className="h-3.5 w-3.5" aria-hidden />
+                Linguistic Footprint
+              </span>
+              <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] sm:text-4xl lg:text-5xl">
+                Languages We <span className="italic text-[hsl(var(--brand-purple-700))]">Master</span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-on-light-secondary lg:mx-0">
+                125+ languages with deep specialization across Oriental, ASEAN, European, and Indian corridors - built
+                from real boardroom and market execution work.
+              </p>
+            </div>
+            <motion.div
+              className="mx-auto flex h-24 w-24 items-center justify-center rounded-3xl border border-[hsl(var(--border-light))] bg-white shadow-sm lg:mx-0 lg:ml-auto"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Globe2 className="h-11 w-11 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+            </motion.div>
+          </motion.div>
+
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {languageGroups.map((lang, i) => (
               <motion.article
                 key={lang.name}
-                className="group relative rounded-2xl border border-[hsl(var(--border-light-strong))] bg-white p-6 shadow-[0_8px_24px_rgba(26,22,51,0.03)] md:p-7 flex flex-col justify-between"
-                initial={{ opacity: 0, y: 24, rotateX: 4 }}
-                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                className="group theme-card-light card-shine flex h-full flex-col overflow-hidden rounded-3xl border border-[hsl(var(--border-light))]"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: (i % 4) * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -10, rotateZ: i % 2 === 0 ? -0.45 : 0.45, borderColor: 'hsl(var(--brand-purple-700)/0.25)', boxShadow: '0 20px 44px rgba(26,22,51,0.09)' }}
+                transition={{ duration: 0.55, delay: (i % 4) * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -6 }}
               >
-                <div>
-                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))] transition-colors">{lang.name}</h3>
-                  <span className="inline-block mt-1 text-[10px] font-bold uppercase tracking-wider text-[hsl(var(--brand-gold-600))]">{lang.speakers} Speakers</span>
-                  <p className="mt-4 text-xs sm:text-sm text-on-light-secondary leading-relaxed">{lang.desc}</p>
+                <div className="flex items-start justify-between gap-3 border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-5 py-4">
+                  <div className="flex items-center gap-3">
+                    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-white shadow-[0_4px_14px_hsl(var(--brand-navy-950)/0.12)] ring-1 ring-[hsl(var(--border-light))]">
+                      <LanguageFlag src={lang.flagSrc} alt={lang.flagAlt} />
+                    </div>
+                    <span
+                      className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] ${
+                        lang.accent === "gold"
+                          ? "bg-[hsl(var(--brand-gold-500)/0.14)] text-[hsl(var(--brand-gold-600))]"
+                          : lang.accent === "cyan"
+                            ? "bg-[hsl(var(--brand-cyan-500)/0.14)] text-[hsl(var(--brand-cyan-500))]"
+                            : "bg-[hsl(var(--brand-purple-700)/0.1)] text-[hsl(var(--brand-purple-700))]"
+                      }`}
+                    >
+                      {lang.region}
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-on-light-muted">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                 </div>
-                <div className="mt-5 pt-3 border-t border-[hsl(var(--border-light))] flex justify-end">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--brand-purple-700)/0.4)] group-hover:bg-[hsl(var(--brand-purple-700))] transition-colors" />
+
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <h3 className="font-serif text-lg font-bold leading-snug text-[hsl(var(--brand-navy-950))] transition group-hover:text-[hsl(var(--brand-purple-700))] sm:text-xl">
+                    {lang.name}
+                  </h3>
+                  <div className="mt-4 flex items-end gap-2">
+                    <p className="font-serif text-3xl font-bold leading-none text-[hsl(var(--brand-navy-950))]">
+                      {lang.speakers}
+                    </p>
+                    <p className="pb-0.5 text-[10px] font-bold uppercase tracking-[0.14em] text-on-light-muted">
+                      speakers
+                    </p>
+                  </div>
+                  <p className="mt-1 text-[11px] font-medium text-on-light-muted">{lang.speakersDetail}</p>
+                  <p className="mt-4 flex-grow text-sm leading-relaxed text-on-light-secondary">{lang.desc}</p>
+                  <div className="mt-5 flex items-center gap-2 border-t border-[hsl(var(--border-light))] pt-4 text-[11px] font-semibold text-[hsl(var(--brand-purple-700))]">
+                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                    Corridor-ready capability
+                  </div>
                 </div>
               </motion.article>
             ))}

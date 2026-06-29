@@ -1,10 +1,24 @@
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, MessageCircle, X } from "lucide-react";
+import {
+  ArrowUpRight,
+  Building2,
+  ChevronDown,
+  ChevronRight,
+  Languages,
+  Mail,
+  Menu,
+  MessageCircle,
+  Newspaper,
+  Users,
+  X,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
 import { useTranslation } from "react-i18next";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import type { LucideIcon } from "lucide-react";
 
 type NavItem = {
   labelKey: string;
@@ -162,38 +176,80 @@ const languageOptions = [
   { code: "ja", label: "日本語" },
 ];
 
-const DropdownLinkItem = ({ item, onClick, t }: { item: NavItem; onClick?: () => void; t: (key: string) => string }) =>
-  item.external ? (
-    <a
-      className="block rounded-lg px-3 py-2.5 text-sm text-[hsl(var(--brand-navy-950)/0.88)] transition hover:bg-[hsl(var(--surface-light-100))]"
-      href={item.href}
-      target="_blank"
-      rel="noreferrer"
-      onClick={onClick}
-    >
-      {t(item.labelKey)}
+const mobileGroupMeta: Record<string, { icon: LucideIcon; tint: string }> = {
+  "nav.marketEntry": { icon: Building2, tint: "bg-[hsl(var(--brand-purple-700)/0.1)] text-[hsl(var(--brand-purple-700))]" },
+  "nav.languageLocalization": { icon: Languages, tint: "bg-[hsl(var(--brand-cyan-500)/0.12)] text-[hsl(var(--brand-cyan-500))]" },
+  "nav.aboutUs": { icon: Users, tint: "bg-[hsl(var(--brand-gold-500)/0.15)] text-[hsl(var(--brand-gold-500))]" },
+  "nav.media": { icon: Newspaper, tint: "bg-[hsl(var(--brand-purple-500)/0.1)] text-[hsl(var(--brand-purple-700))]" },
+  "nav.contactUs": { icon: Mail, tint: "bg-[hsl(var(--brand-navy-950)/0.08)] text-[hsl(var(--brand-navy-950))]" },
+};
+
+const isPathActive = (href: string, pathname: string) => {
+  const base = href.split("#")[0] ?? href;
+  if (base === "/") return pathname === "/";
+  return pathname === base || pathname.startsWith(`${base}/`);
+};
+
+const MobileNavSubLink = ({
+  item,
+  onClick,
+  active,
+  t,
+}: {
+  item: NavItem;
+  onClick?: () => void;
+  active?: boolean;
+  t: (key: string) => string;
+}) => {
+  const className = cn(
+    "flex min-h-10 items-center justify-between gap-3 rounded-lg border-l-2 py-2 pl-3 pr-2 text-[13px] font-medium transition",
+    active
+      ? "border-[hsl(var(--brand-purple-700))] bg-[hsl(var(--brand-purple-700)/0.06)] text-[hsl(var(--brand-purple-700))]"
+      : "border-transparent text-[hsl(var(--brand-navy-950)/0.82)] hover:border-[hsl(var(--brand-purple-500)/0.35)] hover:bg-[hsl(var(--surface-light-50))]",
+  );
+
+  const content = (
+    <>
+      <span className="min-w-0 leading-snug">{t(item.labelKey)}</span>
+      {item.external ? <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-45" aria-hidden /> : null}
+    </>
+  );
+
+  return item.external ? (
+    <a className={className} href={item.href} target="_blank" rel="noreferrer" onClick={onClick}>
+      {content}
     </a>
   ) : (
-    <Link
-      className="block rounded-lg px-3 py-2.5 text-sm text-[hsl(var(--brand-navy-950)/0.88)] transition hover:bg-[hsl(var(--surface-light-100))]"
-      to={item.href}
-      onClick={onClick}
-    >
-      {t(item.labelKey)}
+    <Link className={className} to={item.href} onClick={onClick}>
+      {content}
     </Link>
   );
+};
+
+const getActiveMobileGroup = (pathname: string) =>
+  mobileNavGroups.find(
+    (group) =>
+      isPathActive(group.href, pathname) ||
+      group.links?.some((link) => isPathActive(link.href, pathname)),
+  )?.labelKey;
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [expandedGroup, setExpandedGroup] = useState<string>("");
   const { t, i18n } = useTranslation();
   const { pathname } = useLocation();
   const closeMobile = () => setMobileOpen(false);
 
-  const isDesktopGroupActive = (href: string) => {
-    const base = href.split("#")[0] ?? href;
-    if (base === "/") return pathname === "/";
-    return pathname === base || pathname.startsWith(`${base}/`);
-  };
+  const isDesktopGroupActive = (href: string) => isPathActive(href, pathname);
+
+  const mobileGroupsWithLinks = useMemo(
+    () => mobileNavGroups.filter((group) => group.links?.length),
+    [],
+  );
+  const mobileStandaloneLinks = useMemo(
+    () => mobileNavGroups.filter((group) => !group.links?.length),
+    [],
+  );
 
   const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (pathname === "/") {
@@ -212,6 +268,20 @@ const Navbar = () => {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    setExpandedGroup(getActiveMobileGroup(pathname) ?? "");
+  }, [mobileOpen, pathname]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeMobile();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [mobileOpen]);
 
   return (
@@ -340,59 +410,184 @@ const Navbar = () => {
             </div>
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[hsl(var(--border-light))] bg-white text-[hsl(var(--brand-navy-950))] shadow-sm"
+              className={cn(
+                "inline-flex h-9 w-9 items-center justify-center rounded-full border shadow-sm transition",
+                mobileOpen
+                  ? "border-[hsl(var(--brand-navy-950))] bg-[hsl(var(--brand-navy-950))] text-white"
+                  : "border-[hsl(var(--border-light))] bg-white text-[hsl(var(--brand-navy-950))]",
+              )}
               onClick={() => setMobileOpen((prev) => !prev)}
               aria-expanded={mobileOpen}
-              aria-label="Open menu"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
               {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
+      </header>
 
-        {/* Mobile menu drawer */}
-        {mobileOpen ? (
-          <div className="lg:hidden">
+      {/* Mobile drawer outside header — backdrop-filter on header breaks nested position:fixed */}
+      <div className="lg:hidden" aria-hidden={!mobileOpen}>
+        <button
+          type="button"
+          className={cn(
+            "fixed inset-0 z-[55] bg-[hsl(var(--brand-navy-950)/0.45)] backdrop-blur-[2px] transition-opacity duration-300",
+            mobileOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
+          )}
+          aria-label="Close menu"
+          onClick={closeMobile}
+          tabIndex={mobileOpen ? 0 : -1}
+        />
+
+        <aside
+          id="mobile-nav-drawer"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
+          className={cn(
+            "fixed inset-y-0 right-0 z-[60] flex w-[min(100%,340px)] flex-col border-l border-[hsl(var(--border-light))] bg-white shadow-[-12px_0_40px_-8px_rgba(15,23,42,0.22)] transition-transform duration-300 ease-out",
+            mobileOpen ? "translate-x-0" : "translate-x-full pointer-events-none",
+          )}
+          style={{ paddingTop: "env(safe-area-inset-top, 0px)", paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
+        >
+          <div className="flex shrink-0 items-center justify-between gap-3 border-b border-[hsl(var(--border-light))] px-4 py-3.5">
+            <div className="min-w-0">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">Menu</p>
+              <p className="font-serif text-base font-bold leading-tight text-[hsl(var(--brand-navy-950))]">Explore UVAN</p>
+            </div>
             <button
               type="button"
-              className="fixed inset-0 top-14 z-40 bg-[hsl(var(--brand-navy-950)/0.45)] backdrop-blur-[2px]"
-              aria-label="Close menu"
               onClick={closeMobile}
-            />
-            <div className="fixed left-0 right-0 top-14 z-[45] max-h-[min(75vh,calc(100dvh-3.5rem-4rem))] overflow-y-auto border-b border-[hsl(var(--border-light))] bg-white shadow-[0_20px_50px_-12px_rgba(15,23,42,0.2)]">
-              <div className="space-y-4 px-4 py-4">
-                <Link
-                  to="/ask-soham"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-4 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))]"
-                  onClick={closeMobile}
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  {t("nav.askSoham")}
-                </Link>
+              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] text-[hsl(var(--brand-navy-950))] transition hover:bg-[hsl(var(--surface-light-100))]"
+              aria-label="Close menu"
+            >
+              <X className="h-4 w-4" aria-hidden />
+            </button>
+          </div>
 
-                {mobileNavGroups.map((group) => (
-                  <div key={group.labelKey} className="rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50)/0.5)] p-3">
-                    <Link
-                      to={group.href}
-                      onClick={closeMobile}
-                      className="mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))]"
+          <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain px-4 py-4">
+            <Link
+              to="/ask-soham"
+              className="mb-4 flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-4 py-2.5 text-sm font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_8px_20px_-10px_hsl(var(--brand-gold-500)/0.7)] transition active:scale-[0.99]"
+              onClick={closeMobile}
+            >
+              <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
+              {t("nav.askSoham")}
+            </Link>
+
+            <p className="mb-2 px-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-navy-950)/0.45)]">
+              Services &amp; pages
+            </p>
+
+            <Accordion
+              type="single"
+              collapsible
+              value={expandedGroup}
+              onValueChange={setExpandedGroup}
+              className="rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50)/0.6)] px-1"
+            >
+              {mobileGroupsWithLinks.map((group) => {
+                const meta = mobileGroupMeta[group.labelKey];
+                const Icon = meta?.icon ?? ChevronRight;
+                const sectionActive =
+                  isPathActive(group.href, pathname) ||
+                  group.links?.some((link) => isPathActive(link.href, pathname));
+
+                return (
+                  <AccordionItem key={group.labelKey} value={group.labelKey} className="border-[hsl(var(--border-light))] px-1 last:border-b-0">
+                    <AccordionTrigger
+                      className={cn(
+                        "gap-3 rounded-lg px-2 py-3.5 text-left hover:no-underline [&[data-state=open]]:bg-white [&[data-state=open]]:shadow-sm",
+                        sectionActive && "text-[hsl(var(--brand-purple-700))]",
+                      )}
                     >
-                      {t(group.labelKey)}
-                    </Link>
-                    {group.links ? (
-                      <div className="space-y-0.5">
-                        {group.links.map((item) => (
-                          <DropdownLinkItem key={`mobile-${group.labelKey}-${item.labelKey}`} item={item} onClick={closeMobile} t={t} />
+                      <span className="flex min-w-0 flex-1 items-center gap-3">
+                        <span className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-lg", meta?.tint)}>
+                          <Icon className="h-4 w-4" aria-hidden />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block text-sm font-semibold text-[hsl(var(--brand-navy-950))]">{t(group.labelKey)}</span>
+                          <span className="block text-[11px] font-normal text-[hsl(var(--brand-navy-950)/0.5)]">
+                            {group.links?.length} links
+                          </span>
+                        </span>
+                      </span>
+                    </AccordionTrigger>
+                    <AccordionContent className="pb-2 pt-0">
+                      <div className="space-y-0.5 rounded-lg bg-white px-1 py-1.5">
+                        {group.links?.map((item) => (
+                          <MobileNavSubLink
+                            key={`mobile-${group.labelKey}-${item.labelKey}`}
+                            item={item}
+                            active={isPathActive(item.href, pathname)}
+                            onClick={closeMobile}
+                            t={t}
+                          />
                         ))}
                       </div>
-                    ) : null}
-                  </div>
-                ))}
-              </div>
+                      <Link
+                        to={group.href}
+                        onClick={closeMobile}
+                        className="mt-2 flex min-h-9 items-center justify-center gap-1.5 rounded-lg text-xs font-semibold text-[hsl(var(--brand-purple-700))] transition hover:bg-[hsl(var(--brand-purple-700)/0.06)]"
+                      >
+                        View all {t(group.labelKey)}
+                        <ChevronRight className="h-3.5 w-3.5" aria-hidden />
+                      </Link>
+                    </AccordionContent>
+                  </AccordionItem>
+                );
+              })}
+            </Accordion>
+
+            {mobileStandaloneLinks.map((group) => {
+              const meta = mobileGroupMeta[group.labelKey];
+              const Icon = meta?.icon ?? Mail;
+              const active = isPathActive(group.href, pathname);
+
+              return (
+                <Link
+                  key={group.labelKey}
+                  to={group.href}
+                  onClick={closeMobile}
+                  className={cn(
+                    "mt-3 flex min-h-12 items-center gap-3 rounded-xl border px-3 py-2.5 transition active:scale-[0.99]",
+                    active
+                      ? "border-[hsl(var(--brand-purple-500)/0.4)] bg-[hsl(var(--brand-purple-700)/0.05)]"
+                      : "border-[hsl(var(--border-light))] bg-white hover:bg-[hsl(var(--surface-light-50))]",
+                  )}
+                >
+                  <span className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-lg", meta?.tint)}>
+                    <Icon className="h-4 w-4" aria-hidden />
+                  </span>
+                  <span className="min-w-0 flex-1 text-sm font-semibold text-[hsl(var(--brand-navy-950))]">{t(group.labelKey)}</span>
+                  <ChevronRight className="h-4 w-4 shrink-0 text-[hsl(var(--brand-navy-950)/0.35)]" aria-hidden />
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="shrink-0 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-4 py-3.5">
+            <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-navy-950)/0.45)]">Language</p>
+            <div className="flex gap-1 rounded-full border border-[hsl(var(--border-light))] bg-white p-0.5">
+              {languageOptions.map(({ code, label }) => (
+                <button
+                  key={code}
+                  type="button"
+                  onClick={() => void i18n.changeLanguage(code)}
+                  className={cn(
+                    "flex-1 rounded-full px-2 py-1.5 text-[11px] font-semibold transition",
+                    i18n.resolvedLanguage?.startsWith(code)
+                      ? "bg-[hsl(var(--brand-navy-950))] text-white"
+                      : "text-[hsl(var(--brand-navy-950)/0.65)] hover:text-[hsl(var(--brand-navy-950))]",
+                  )}
+                >
+                  {code === "en" ? "EN" : label}
+                </button>
+              ))}
             </div>
           </div>
-        ) : null}
-      </header>
+        </aside>
+      </div>
 
       <MobileBottomNav />
     </>

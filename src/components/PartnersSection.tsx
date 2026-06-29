@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Handshake } from "lucide-react";
+import { ArrowRight, Handshake } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const partnerImages: Record<string, string> = {
   bhashini: "/allLogos/Bhashini-Logo.png",
-  tattava: "/allLogos/tattava-cx.png",
+  tattava: "/allLogos/tattava-cx.svg",
 };
 
 type PartnerItem = { id: string; name: string; desc: string; alt: string };
@@ -25,6 +26,32 @@ const defaultPartnerItems: PartnerItem[] = [
   },
 ];
 
+const PartnerLogo = ({
+  src,
+  alt,
+  name,
+  className = "max-h-11 w-auto max-w-[170px] object-contain lg:max-h-14 lg:max-w-[210px]",
+}: {
+  src?: string;
+  alt: string;
+  name: string;
+  className?: string;
+}) => {
+  const [failed, setFailed] = useState(false);
+
+  if (!src || failed) {
+    return (
+      <span className="font-serif text-base font-bold tracking-tight text-[hsl(var(--brand-navy-950))] sm:text-lg">
+        {name}
+      </span>
+    );
+  }
+
+  return (
+    <img src={src} alt={alt} loading="lazy" className={className} onError={() => setFailed(true)} />
+  );
+};
+
 const PartnersSection = () => {
   const { t } = useTranslation();
   const itemsRaw = t("home.partners.items", { returnObjects: true, defaultValue: defaultPartnerItems }) as PartnerItem[];
@@ -32,74 +59,67 @@ const PartnersSection = () => {
   const exploreHref = t("home.partners.exploreHref", { defaultValue: "/about-us#our-partners" });
 
   return (
-    <section className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-8 lg:py-12 theme-section-soft">
-      <div className="glow-orb glow-orb-purple pointer-events-none h-[460px] w-[460px] -top-36 -left-28 opacity-[0.11]" />
-      <div className="glow-orb glow-orb-gold pointer-events-none h-[380px] w-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
-      <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.18]" />
+    <section className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-6 theme-section-soft lg:py-12">
+      <div className="glow-orb glow-orb-purple pointer-events-none -left-20 -top-24 h-[280px] w-[280px] opacity-[0.08] lg:-left-28 lg:-top-36 lg:h-[460px] lg:w-[460px] lg:opacity-[0.11]" />
+      <div className="glow-orb glow-orb-gold pointer-events-none -bottom-20 right-[-18%] h-[240px] w-[240px] opacity-[0.07] lg:-bottom-32 lg:right-[-12%] lg:h-[380px] lg:w-[380px] lg:opacity-[0.09]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.12] theme-grid-overlay-light lg:opacity-[0.18]" />
 
-      <div className="container relative z-10 mx-auto px-6">
+      <div className="container relative z-10 mx-auto px-5 sm:px-6">
         <motion.div
-          className="mx-auto mb-12 max-w-2xl text-center"
+          className="mx-auto mb-6 max-w-2xl text-center lg:mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-serif text-3xl font-bold text-on-light sm:text-4xl lg:text-5xl">
+          <h2 className="font-serif text-[1.65rem] font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
             {t("home.partners.titleBefore")}
-            <span className="text-[hsl(var(--brand-purple-700))] italic">{t("home.partners.titleGradient")}</span>
+            <span className="italic text-[hsl(var(--brand-purple-700))]">{t("home.partners.titleGradient")}</span>
           </h2>
-          <p className="mt-5 text-sm leading-relaxed text-on-light-secondary sm:text-base">{t("home.partners.intro")}</p>
+          <p className="mt-3 text-sm leading-relaxed text-on-light-secondary sm:mt-5 sm:text-base">
+            {t("home.partners.intro")}
+          </p>
         </motion.div>
 
-        <div className="grid gap-6 max-w-5xl mx-auto md:grid-cols-2 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-5xl gap-3 sm:gap-4 lg:grid-cols-2 lg:gap-6">
           {items.map((p, i) => {
             const src = partnerImages[p.id];
             return (
-              <motion.div
+              <motion.article
                 key={p.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                className="theme-card-light card-shine rounded-2xl p-6 text-center"
+                transition={{ delay: i * 0.12 }}
+                whileHover={{ y: -6 }}
+                className="theme-card-light card-shine group overflow-hidden rounded-2xl border border-[hsl(var(--border-light)/0.9)]"
               >
-                <div className="mb-4 flex h-16 items-center justify-center">
-                  {src ? (
-                    <img
-                      src={src}
-                      alt={p.alt}
-                      loading="lazy"
-                      className="max-h-14 w-auto object-contain"
-                      onError={(e) => {
-                        if (!e.currentTarget.dataset.fallbackApplied) {
-                          e.currentTarget.dataset.fallbackApplied = "true";
-                          e.currentTarget.src = "/placeholder.svg";
-                          return;
-                        }
-                        e.currentTarget.style.display = "none";
-                      }}
-                    />
-                  ) : null}
+                <div className="flex min-h-[84px] items-center justify-center border-b border-[hsl(var(--border-light))] bg-white px-5 py-4 sm:min-h-[96px] lg:min-h-[112px] lg:px-8">
+                  <PartnerLogo src={src} alt={p.alt} name={p.name} />
                 </div>
-                <h3 className="text-[hsl(var(--brand-purple-700))] mb-2 font-serif text-lg font-bold">{p.name}</h3>
-                <p className="text-sm leading-relaxed text-on-light-secondary">{p.desc}</p>
-              </motion.div>
+                <div className="p-4 text-left sm:p-5 lg:p-6 lg:text-center">
+                  <h3 className="mb-1.5 font-serif text-base font-bold text-[hsl(var(--brand-purple-700))] sm:mb-2 sm:text-lg">
+                    {p.name}
+                  </h3>
+                  <p className="text-xs leading-relaxed text-on-light-secondary sm:text-sm">{p.desc}</p>
+                </div>
+              </motion.article>
             );
           })}
         </div>
 
         <motion.div
-          className="mt-12 flex justify-center"
+          className="mt-6 flex justify-center lg:mt-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
           <Link
             to={exploreHref}
-            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[hsl(var(--brand-purple-700))] hover:underline"
+            className="inline-flex min-h-11 w-full max-w-md items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card))] px-5 text-xs font-semibold uppercase tracking-wide text-[hsl(var(--brand-purple-700))] transition hover:bg-[hsl(var(--surface-light-50))] sm:text-sm lg:w-auto lg:max-w-none lg:border-0 lg:bg-transparent lg:px-0 lg:hover:underline"
           >
+            <Handshake className="h-4 w-4 shrink-0 lg:hidden" aria-hidden />
             {t("home.partners.exploreCta")}
+            <ArrowRight className="hidden h-4 w-4 shrink-0 lg:inline" aria-hidden />
           </Link>
         </motion.div>
       </div>

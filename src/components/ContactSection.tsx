@@ -20,12 +20,11 @@ const ContactSection = () => {
     defaultValue: defaultContactPillars,
   }) as string[];
   return (
-    <section id="contact" className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-10 lg:py-16 theme-section-soft">
-      <div className="glow-orb glow-orb-purple pointer-events-none h-[460px] w-[460px] -top-36 -left-28 opacity-[0.11]" />
-      <div className="glow-orb glow-orb-gold pointer-events-none h-[380px] w-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
-      <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.18]" />
+    <section id="contact" className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-8 theme-section-soft lg:py-16">
+      <div className="glow-orb glow-orb-purple pointer-events-none -left-20 -top-24 h-[280px] w-[280px] opacity-[0.08] lg:-left-28 lg:-top-36 lg:h-[460px] lg:w-[460px] lg:opacity-[0.11]" />
+      <div className="glow-orb glow-orb-gold pointer-events-none -bottom-20 right-[-18%] h-[240px] w-[240px] opacity-[0.07] lg:-bottom-32 lg:right-[-12%] lg:h-[380px] lg:w-[380px] lg:opacity-[0.09]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.12] theme-grid-overlay-light lg:opacity-[0.18]" />
 
-      {/* Decorative background support visual */}
       <motion.img
         src="/doodles/Call center-amico.svg"
         alt=""
@@ -37,15 +36,15 @@ const ContactSection = () => {
         transition={{ duration: 0.8 }}
       />
 
-      <div className="container relative z-10 mx-auto px-6">
-        <div className="mx-auto grid max-w-6xl items-start gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="container relative z-10 mx-auto px-5 sm:px-6">
+        <div className="mx-auto grid max-w-6xl items-start gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
           <motion.div
-            className="space-y-8"
+            className="space-y-5 lg:space-y-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="space-y-4">
+            <div className="space-y-3 lg:space-y-4">
               <motion.span
                 className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.94)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-[hsl(var(--brand-purple-700))] shadow-[0_10px_36px_hsl(var(--brand-navy-950)/0.07)]"
                 initial={{ opacity: 0, y: 14 }}
@@ -57,20 +56,20 @@ const ContactSection = () => {
               </motion.span>
 
               <motion.h2
-                className="font-serif text-4xl font-bold leading-[1.06] text-on-light sm:text-5xl lg:text-6xl"
+                className="font-serif text-[1.75rem] font-bold leading-[1.08] text-on-light sm:text-5xl lg:text-6xl lg:leading-[1.06]"
                 initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
               >
                 {t("home.contact.titlePrefix")}{" "}
-                <span className="text-[hsl(var(--brand-purple-700))] italic">
+                <span className="italic text-[hsl(var(--brand-purple-700))]">
                   {t("home.contact.titleHighlight")}
                 </span>
               </motion.h2>
 
               <motion.p
-                className="max-w-2xl text-base leading-relaxed text-on-light-secondary sm:text-lg"
+                className="max-w-2xl text-sm leading-relaxed text-on-light-secondary sm:text-lg"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -81,7 +80,7 @@ const ContactSection = () => {
             </div>
 
             <motion.div
-              className="flex flex-wrap gap-2.5"
+              className="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-wrap lg:gap-2.5 lg:overflow-visible [&::-webkit-scrollbar]:hidden"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -90,7 +89,7 @@ const ContactSection = () => {
               {regions.map((region) => (
                 <span
                   key={region}
-                  className="rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.92)] px-3 py-1.5 text-xs font-medium uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))]"
+                  className="shrink-0 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.92)] px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.16em]"
                 >
                   {region}
                 </span>
@@ -98,7 +97,7 @@ const ContactSection = () => {
             </motion.div>
 
             <motion.div
-              className="grid gap-3 sm:grid-cols-2"
+              className="grid grid-cols-2 gap-2 sm:gap-3"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -107,7 +106,7 @@ const ContactSection = () => {
               {contactPillars.map((pillar) => (
                 <div
                   key={pillar}
-                  className="rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.94)] px-4 py-3 text-sm font-medium text-on-light-secondary shadow-[0_8px_24px_hsl(var(--brand-navy-950)/0.05)]"
+                  className="rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.94)] px-3 py-2.5 text-xs font-medium leading-snug text-on-light-secondary shadow-[0_8px_24px_hsl(var(--brand-navy-950)/0.05)] sm:px-4 sm:py-3 sm:text-sm"
                 >
                   {pillar}
                 </div>
@@ -116,7 +115,7 @@ const ContactSection = () => {
           </motion.div>
 
           <motion.div
-            className="theme-card-light relative overflow-hidden rounded-3xl p-6 sm:p-7"
+            className="theme-card-light relative overflow-hidden rounded-2xl p-5 sm:rounded-3xl sm:p-7"
             initial={{ opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -126,19 +125,19 @@ const ContactSection = () => {
               src="/doodles/Sent Message-pana.svg"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute -bottom-8 -right-10 h-44 w-44 opacity-[0.1] sm:h-52 sm:w-52"
+              className="pointer-events-none absolute -bottom-6 -right-8 h-32 w-32 opacity-[0.08] sm:-bottom-8 sm:-right-10 sm:h-52 sm:w-52 sm:opacity-[0.1]"
             />
-            <h3 className="relative mb-2 font-serif text-2xl font-bold text-on-light">{t("home.contact.cardTitle")}</h3>
-            <p className="mb-6 text-sm text-on-light-secondary sm:text-base">
+            <h3 className="relative mb-2 font-serif text-xl font-bold text-on-light sm:text-2xl">{t("home.contact.cardTitle")}</h3>
+            <p className="mb-5 text-sm text-on-light-secondary sm:mb-6 sm:text-base">
               {t("home.contact.cardSubtitle")}
             </p>
 
-            <div className="space-y-3">
+            <div className="space-y-2.5 sm:space-y-3">
               <motion.a
                 href="mailto:info@ewan.co.in?subject=Market%20Entry%20Conversation"
                 whileHover={{ scale: 1.02, boxShadow: "0 0 24px hsl(var(--brand-purple-700) / 0.22)" }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex w-full items-center justify-between gap-3 rounded-xl border border-[hsl(var(--brand-purple-500)/0.3)] bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-5 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-white"
+                className="inline-flex w-full min-h-12 items-center justify-between gap-3 rounded-xl border border-[hsl(var(--brand-purple-500)/0.3)] bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.08em] text-white sm:px-5 sm:py-4 sm:text-sm"
               >
                 <span className="inline-flex items-center gap-2">
                   <Sparkles className="h-4 w-4" />
@@ -151,7 +150,7 @@ const ContactSection = () => {
                 href="mailto:info@ewan.co.in?subject=Language%20Services%20Quote"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex w-full items-center justify-between gap-3 rounded-xl border-2 border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-card))] px-5 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-on-light transition-colors hover:bg-[hsl(var(--surface-light-200)/0.65)]"
+                className="inline-flex w-full min-h-12 items-center justify-between gap-3 rounded-xl border-2 border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-card))] px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.08em] text-on-light transition-colors hover:bg-[hsl(var(--surface-light-200)/0.65)] sm:px-5 sm:py-4 sm:text-sm"
               >
                 <span className="inline-flex items-center gap-2">
                   <Languages className="h-4 w-4" />
@@ -163,7 +162,7 @@ const ContactSection = () => {
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   to="/ask-soham"
-                  className="inline-flex w-full items-center justify-between gap-3 rounded-xl border border-[hsl(var(--brand-purple-500)/0.4)] bg-[hsl(var(--brand-purple-700)/0.08)] px-5 py-4 text-sm font-semibold uppercase tracking-[0.08em] text-[hsl(var(--brand-purple-700))] transition-colors hover:bg-[hsl(var(--brand-purple-700)/0.12)]"
+                  className="inline-flex w-full min-h-12 items-center justify-between gap-3 rounded-xl border border-[hsl(var(--brand-purple-500)/0.4)] bg-[hsl(var(--brand-purple-700)/0.08)] px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.08em] text-[hsl(var(--brand-purple-700))] transition-colors hover:bg-[hsl(var(--brand-purple-700)/0.12)] sm:px-5 sm:py-4 sm:text-sm"
                 >
                   <span className="inline-flex items-center gap-2">
                     <MessageCircle className="h-4 w-4" />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import GazetteCoverImage from "@/components/language-gazette/GazetteCoverImage";
 import { latestGazetteIssue, gazetteArticlePath } from "@/data/languageGazetteIssues";
-import { absoluteUrl, articleSchema, breadcrumbSchema } from "@/lib/schemaHelpers";
+import { absoluteUrl, articleSchema, breadcrumbSchema, personSchema } from "@/lib/schemaHelpers";
 
 type LanguageGazetteArticleShellProps = {
   slug: string;
@@ -42,6 +42,7 @@ const LanguageGazetteArticleShell = ({
   const relatedArticles = issue.articles.filter((a) => a.slug !== slug);
 
   const jsonLd = [
+    personSchema(author),
     breadcrumbSchema(pageUrl, [
       { name: "Home", path: "/" },
       { name: "The Language Gazette", path: "/language-gazette/" },
@@ -54,6 +55,7 @@ const LanguageGazetteArticleShell = ({
       canonicalPath,
       datePublished,
       dateModified: datePublished,
+      authorName: author,
     }),
   ];
 

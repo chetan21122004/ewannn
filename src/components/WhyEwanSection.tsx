@@ -46,18 +46,17 @@ const WhyEwanSection = () => {
   }) as Array<{ title: string; desc: string }>;
   const differentiatorIcons = [Layers, Award, Landmark] as const;
   return (
-    <section id="why-ewan" className="py-8 lg:py-16 relative overflow-hidden theme-section-soft">
-      {/* Section Background Blob */}
-      <div 
-        className="absolute inset-0 z-0 opacity-15 mix-blend-multiply bg-cover bg-center pointer-events-none"
+    <section id="why-ewan" className="relative overflow-hidden py-6 theme-section-soft lg:py-16">
+      <div
+        className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center opacity-[0.1] mix-blend-multiply lg:opacity-15"
         style={{ backgroundImage: "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')" }}
       />
-      <div className="glow-orb glow-orb-purple w-[360px] h-[360px] top-20 right-10 opacity-8" />
-      <div className="glow-orb glow-orb-gold w-[300px] h-[300px] -bottom-16 left-10 opacity-8" />
-      <div className="absolute inset-0 theme-grid-overlay-light opacity-18 pointer-events-none" />
+      <div className="glow-orb glow-orb-purple -right-8 top-10 h-[240px] w-[240px] opacity-8 lg:right-10 lg:h-[360px] lg:w-[360px]" />
+      <div className="glow-orb glow-orb-gold -bottom-12 left-4 h-[200px] w-[200px] opacity-8 lg:-bottom-16 lg:left-10 lg:h-[300px] lg:w-[300px]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.12] theme-grid-overlay-light lg:opacity-[0.18]" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="mb-14 grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(220px,300px)] lg:gap-10">
+      <div className="container relative z-10 mx-auto px-5 sm:px-6">
+        <div className="mb-8 grid items-center gap-6 lg:mb-14 lg:grid-cols-[minmax(0,1fr)_minmax(220px,300px)] lg:gap-10">
           <motion.div
             className="max-w-3xl"
             initial={{ opacity: 0, y: 30 }}
@@ -65,22 +64,22 @@ const WhyEwanSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-block px-4 py-1.5 rounded-full theme-card-light text-[hsl(var(--brand-purple-700))] text-xs font-semibold tracking-wider uppercase mb-5">
+            <span className="mb-4 inline-block rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider theme-card-light text-[hsl(var(--brand-purple-700))] lg:mb-5">
               {t("home.whyEwan.badge")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light mb-5 leading-tight">
+            <h2 className="mb-4 font-serif text-[1.65rem] font-bold leading-tight text-on-light sm:text-4xl lg:mb-5 lg:text-5xl">
               {t("home.whyEwan.titlePrefix")}{" "}
-              <span className="text-[hsl(var(--brand-purple-700))] italic block sm:inline">
+              <span className="block italic text-[hsl(var(--brand-purple-700))] sm:inline">
                 {t("home.whyEwan.titleHighlight")}
               </span>
             </h2>
-            <p className="text-on-light-muted text-base sm:text-lg leading-relaxed">
+            <p className="text-sm leading-relaxed text-on-light-muted sm:text-lg">
               {t("home.whyEwan.subtitle")}
             </p>
           </motion.div>
 
           <motion.figure
-            className="mx-auto w-full max-w-[280px] lg:max-w-none lg:justify-self-end"
+            className="mx-auto hidden w-full max-w-[280px] lg:block lg:max-w-none lg:justify-self-end"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -96,7 +95,7 @@ const WhyEwanSection = () => {
           </motion.figure>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid gap-4 md:grid-cols-3 md:gap-6">
           {differentiators.map((d, i) => {
             const Icon = differentiatorIcons[i] ?? Layers;
             const accent = accentStyles[i % accentStyles.length];
@@ -108,22 +107,22 @@ const WhyEwanSection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -10 }}
-                className="group relative p-8 rounded-3xl theme-card-light card-shine overflow-hidden border border-[hsl(var(--border-light))]"
+                className="group relative overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-5 theme-card-light card-shine sm:rounded-3xl sm:p-8"
               >
-                <div className={`absolute -top-16 -right-16 w-48 h-48 rounded-full border-[15px] transition-colors duration-500 ${accent.halo}`} />
+                <div className={`absolute -right-16 -top-16 hidden h-48 w-48 rounded-full border-[15px] transition-colors duration-500 sm:block ${accent.halo}`} />
 
                 <div className="relative">
-                  <div className="flex items-center gap-3 mb-5">
-                    <span className={`text-5xl font-serif font-bold ${accent.number}`}>0{i + 1}</span>
+                  <div className="mb-4 flex items-center gap-3 sm:mb-5">
+                    <span className={`font-serif text-3xl font-bold sm:text-5xl ${accent.number}`}>0{i + 1}</span>
                     <motion.div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-gold-sm ml-auto ${accent.iconWrap}`}
+                      className={`ml-auto flex h-10 w-10 items-center justify-center rounded-xl shadow-gold-sm sm:h-12 sm:w-12 ${accent.iconWrap}`}
                       whileHover={{ rotate: 12, scale: 1.1 }}
                     >
-                      <Icon className={`w-5 h-5 ${accent.iconColor}`} />
+                      <Icon className={`h-4 w-4 sm:h-5 sm:w-5 ${accent.iconColor}`} />
                     </motion.div>
                   </div>
-                  <h3 className="text-xl font-serif font-bold text-on-light mb-3">{d.title}</h3>
-                  <p className="text-on-light-muted text-sm leading-relaxed">{d.desc}</p>
+                  <h3 className="mb-2 font-serif text-lg font-bold text-on-light sm:mb-3 sm:text-xl">{d.title}</h3>
+                  <p className="text-sm leading-relaxed text-on-light-muted">{d.desc}</p>
                 </div>
               </motion.div>
             );
