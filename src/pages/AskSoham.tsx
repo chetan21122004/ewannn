@@ -182,7 +182,7 @@ const AskSoham = () => {
 
               <p className="mt-6 max-w-2xl text-base leading-[1.78] text-white/75 sm:text-lg">
                 Whether you&apos;re a company entering India, a business expanding abroad, a professional navigating
-                language services, or a student wondering whether a career in languages is right for you — book 15
+                language services, or a student wondering whether a career in languages is right for you - book 15
                 minutes with Soham Kakade for focused, honest, experience-based guidance.
               </p>
 
@@ -258,7 +258,7 @@ const AskSoham = () => {
             className="mx-auto mb-12 max-w-3xl text-center"
           >
             <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
-              Three Tracks — Who This Is For
+              Three Tracks - Who This Is For
             </span>
             <h2 className="font-serif text-4xl font-bold leading-tight text-on-light sm:text-5xl">
               Pick the conversation{" "}

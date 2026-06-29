@@ -97,11 +97,11 @@ const workstreams = [
 ];
 
 const auditGaps = [
-  "Gap 1 - Regulatory & Entity Infrastructure",
-  "Gap 2 - Partner & Distribution Integrity (Physical Verification)",
-  "Gap 3 - The 'Coordination Tax' - Management Overhead",
-  "Gap 4 - Human Capital & Local Staffing Strategy",
-  "Gap 5 - Executive Liaison & High-Stakes Negotiation",
+  "Gap 1 — Regulatory & Entity Infrastructure",
+  "Gap 2 — Partner & Distribution Integrity (Physical Verification)",
+  "Gap 3 — The 'Coordination Tax' — Management Overhead",
+  "Gap 4 — Human Capital & Local Staffing Strategy",
+  "Gap 5 — Executive Liaison & High-Stakes Negotiation",
 ];
 
 const howItWorks = [
@@ -139,7 +139,7 @@ const marketEntryLd = [
   serviceSchema({
     name: "India market entry consulting",
     description:
-      "UVAN manages full-cycle India market entry for foreign companies - entity formation, regulatory navigation, executive liaison, and on-ground operations. 10 years. 10+ sectors.",
+      "UVAN manages full-cycle India market entry for foreign companies — entity formation, regulatory navigation, executive liaison, and on-ground operations. 10 years. 10+ sectors.",
     canonicalPath: "/market-entry/",
     serviceType: "Market entry consulting",
   }),
@@ -251,12 +251,9 @@ const MarketEntry = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.18em]">
-              Audience
+              Who We Serve
             </span>
             <h2 className="font-serif text-[1.65rem] font-bold text-on-light sm:text-4xl lg:text-5xl">Who We Serve</h2>
-            <p className="mt-3 text-sm leading-relaxed text-on-light-secondary sm:mt-4 sm:text-base">
-              Two corridors. One partner. Whether you are entering India or expanding out of it, UVAN operates on both sides of the table.
-            </p>
           </motion.div>
 
           <div className="mx-auto flex max-w-5xl flex-col gap-4 sm:gap-6 lg:gap-8">
@@ -333,15 +330,9 @@ const MarketEntry = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="max-w-3xl">
-              <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.18em]">
-                End-to-end delivery
-              </span>
               <h2 className="font-serif text-[1.65rem] font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
-                What We Deliver <span className="text-[hsl(var(--brand-purple-700))] italic">- 7 Workstreams</span>
+                What We Deliver — <span className="text-[hsl(var(--brand-purple-700))] italic">7 Workstreams</span>
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-on-light-secondary sm:mt-4 sm:text-base">
-                Every mandate is sequenced across regulatory, financial, operational and language workstreams - managed as one coordinated program, not seven disconnected vendors.
-              </p>
             </div>
             <motion.figure
               className="mx-auto hidden w-full max-w-[260px] lg:block lg:max-w-none lg:justify-self-end"
@@ -429,7 +420,7 @@ const MarketEntry = () => {
           <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(240px,320px)] lg:items-center lg:gap-10">
             <div className="min-w-0">
               <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.18em]">
-                Full Market Entry Mandate - Japan to India
+                Full Market Entry Mandate — Japan to India
               </p>
               <h2 className="mt-2 font-serif text-[1.45rem] font-bold leading-tight text-on-light sm:mt-3 sm:text-3xl lg:text-4xl">
                 How a Leading Japanese Manufacturer Successfully Established India Operations
@@ -464,7 +455,7 @@ const MarketEntry = () => {
               <div className="mt-4 sm:mt-6">
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="block w-full sm:inline-block sm:w-auto">
                   <Link
-                    to="/media"
+                    to="/media#case-study"
                     className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-card))] px-5 py-2.5 text-sm font-semibold text-on-light transition hover:border-[hsl(var(--brand-purple-500)/0.6)] sm:w-auto"
                   >
                     Read the Full Case Study
@@ -512,7 +503,7 @@ const MarketEntry = () => {
             Is Your Expansion Strategy Hiding These 5 Operational Gaps?
           </h2>
           <p className="mt-3 max-w-4xl text-xs leading-relaxed text-on-light-secondary sm:text-sm">
-            The 2026 Global Market Entry Audit is UVAN&apos;s proprietary framework - built from 10 years of on-ground
+            The 2026 Global Market Entry Audit is UVAN&apos;s proprietary framework — built from 10 years of on-ground
             cross-border expansion experience. It reveals the 5 operational gaps that most companies don&apos;t see until
             capital has been deployed and timelines have slipped. Download it free and assess your readiness before you
             commit.
@@ -564,9 +555,6 @@ const MarketEntry = () => {
                   Process
                 </span>
                 <h2 className="font-serif text-[1.5rem] font-bold leading-tight text-on-light md:text-4xl lg:text-5xl">How It Works</h2>
-                <p className="mt-2 max-w-2xl text-xs leading-relaxed text-on-light-secondary md:mt-4 md:text-base">
-                  From first call to on-ground operations - a sequenced path designed to reduce risk before capital is deployed.
-                </p>
               </div>
               <motion.figure
                 className="mx-auto hidden w-full max-w-[240px] lg:block lg:max-w-none lg:justify-self-end"
@@ -604,10 +592,9 @@ const MarketEntry = () => {
                       {index + 1}
                     </span>
                     <div className="min-w-0 flex-1 rounded-xl border border-[hsl(var(--border-light))] bg-white px-3.5 py-3 shadow-sm">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
-                        Step {index + 1}
-                      </p>
-                      <h3 className="mt-1 text-sm font-semibold leading-snug text-on-light">{step.title}</h3>
+                      <h3 className="mt-1 text-sm font-semibold leading-snug text-on-light">
+                        Step {index + 1} — {step.title}
+                      </h3>
                       <p className="mt-1.5 text-xs leading-relaxed text-on-light-secondary">{step.detail}</p>
                     </div>
                   </motion.li>

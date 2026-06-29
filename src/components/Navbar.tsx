@@ -426,7 +426,7 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* Mobile drawer outside header — backdrop-filter on header breaks nested position:fixed */}
+      {/* Mobile drawer outside header - backdrop-filter on header breaks nested position:fixed */}
       <div className="lg:hidden" aria-hidden={!mobileOpen}>
         <button
           type="button"

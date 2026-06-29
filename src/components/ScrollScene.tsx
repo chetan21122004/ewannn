@@ -5,7 +5,7 @@ type ScrollSceneProps = {
   children: ReactNode;
   index: number;
   intensity?: number;
-  /** Skip scroll transforms — required for nested `position: sticky` layouts */
+  /** Skip scroll transforms - required for nested `position: sticky` layouts */
   preserveLayout?: boolean;
 };
 
