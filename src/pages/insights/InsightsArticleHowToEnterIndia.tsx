@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import MarketEntryAuditInlineCta from "@/components/MarketEntryAuditInlineCta";
 import {
   absoluteUrl,
   articleSchema,
@@ -64,16 +65,7 @@ const InsightsArticleHowToEnterIndia = () => {
                 <li key={s}>{s}</li>
               ))}
             </ol>
-            <h2 className="mt-12 font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">Download the 2026 Market Entry Audit</h2>
-            <p className="mt-3">
-              Midway through planning, sanity-check readiness against five operational gaps before you accelerate spend. Grab the audit here:
-            </p>
-            <Link
-              to="/market-entry-audit"
-              className="mt-4 inline-flex rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))]"
-            >
-              Download the 2026 Market Entry Audit
-            </Link>
+            <MarketEntryAuditInlineCta />
             <p className="mt-8">
               <Link to="/market-entry/" className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
                 Explore the full Market Entry mandate →

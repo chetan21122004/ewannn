@@ -87,6 +87,10 @@ const zhCommon = {
     contact: "您好 UVAN 团队，我想就跨境项目与贵司取得联系。",
     askSoham: "您好，我想预约与 Soham 就市场进入或语言战略进行简短交流。",
   },
+  askSohamFloating: {
+    ariaLabel: "预约 Ask Soham - 免费 15 分钟咨询",
+    tooltip: "Ask Soham - 15 分钟免费",
+  },
   seo: {
     marketEntry: {
       title: "印度市场进入合作伙伴 | 跨境扩张 | UVAN",

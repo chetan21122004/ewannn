@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 export const ArticleLead = ({ children }: { children: ReactNode }) => (
   <p className="gazette-lead text-lg leading-[1.85] text-[hsl(var(--brand-navy-950))] md:text-xl">{children}</p>
@@ -30,6 +31,31 @@ export const ArticleClosing = ({ children }: { children: ReactNode }) => (
   <div className="mt-14 border-t border-black/10 pt-10">
     <p className="font-serif text-xl font-semibold leading-relaxed text-[hsl(var(--brand-navy-950))] md:text-2xl">{children}</p>
   </div>
+);
+
+export const ArticleServiceLinks = () => (
+  <nav aria-label="Related UVAN services" className="mt-14 rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-6 md:p-8">
+    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">
+      Explore UVAN services
+    </p>
+    <ul className="mt-4 space-y-3">
+      <li>
+        <Link to="/market-entry/" className="text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
+          Market Entry — India &amp; Asia corridor mandates
+        </Link>
+      </li>
+      <li>
+        <Link to="/language-localization/" className="text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
+          Language &amp; Localization — translation, interpretation, localization
+        </Link>
+      </li>
+      <li>
+        <Link to="/ask-soham/" className="text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
+          Ask Soham — free 15-minute call
+        </Link>
+      </li>
+    </ul>
+  </nav>
 );
 
 export const ArticleTranslation = ({ title, author, lang, children }: { title: string; author: string; lang: string; children: ReactNode }) => (

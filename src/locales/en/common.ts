@@ -21,7 +21,7 @@ const enCommon = {
       liaisoning: "Liaisoning & Facilitation",
       marketResearch: "Market Research",
       importExport: "Import, Procurement & Export",
-      marketAudit: "Global Market Entry Audit",
+      marketAudit: "2026 Market Entry Audit",
       sano: "SANO ↗",
       culturalKnowHow: "Cultural & Language Know-How ↗",
     },
@@ -87,11 +87,36 @@ const enCommon = {
     contact: "Hello UVAN team, I would like to get in touch regarding a cross-border mandate.",
     askSoham: "Hello, I would like to book a conversation with Soham regarding market entry or language strategy.",
   },
+  askSohamFloating: {
+    ariaLabel: "Book Ask Soham - free 15-minute consultation",
+    tooltip: "Ask Soham - 15 Min Free",
+  },
   seo: {
     marketEntry: {
       title: "India Market Entry Partner | Cross-Border Expansion | UVAN",
       description:
         "UVAN manages full-cycle India market entry for foreign companies - entity formation, regulatory navigation, executive liaison, and on-ground operations. 10 years. 10+ sectors.",
+    },
+    liaisoning: {
+      title: "Business Liaisoning & Facilitation Services India | UVAN",
+      description:
+        "Expert liaisoning and business facilitation services for cross-border operations between India and Asia. Single point of coordination. Cultural intelligence. Government and corporate liaison.",
+      keywords:
+        "liaisoning services India, business facilitation India, India Japan liaison services, cross-border liaison India, corporate liaison India, government liaison India, business intermediary India Asia",
+    },
+    marketResearch: {
+      title: "Primary Market Research Services India & Asia | UVAN",
+      description:
+        "On-ground primary market research for companies entering India and Asian markets. Multilingual interviews, distributor intelligence, competitor analysis, and buyer research conducted by native-language experts.",
+      keywords:
+        "primary market research India, market research services India, India market entry research, multilingual market research India, B2B market research India, distributor research India, competitor analysis India, market assessment India Japan",
+    },
+    importExport: {
+      title: "Import, Procurement & Export Support India | UVAN",
+      description:
+        "UVAN provides multilingual import, procurement and export support for companies operating between India, Japan, Southeast Asia and beyond - from vendor identification and negotiation to documentation and logistics liaison.",
+      keywords:
+        "import export services India, procurement support India, India export assistance, Indian agricultural export, India Japan trade support, vendor sourcing India, export documentation India, cross-border procurement India Asia",
     },
     languageLocalization: {
       title: "Translation, Interpretation & Localization Services India | UVAN",
@@ -111,7 +136,8 @@ const enCommon = {
       title: "About UVAN | Cross-Border Market Partner India",
       description:
         "UVAN - 5 years, 250+ clients, 125+ languages. Founded by Soham Kakade. Cross-border market entry and language services for the India-Asia corridor.",
-      keywords: "UVAN about, Soham Kakade UVAN, India language company, cross-border market entry India",
+      keywords:
+        "UVAN about, Soham Kakade UVAN, India language company, cross-border market entry India, Ewan Business Solutions about",
     },
     contact: {
       title: "Contact UVAN | Cross-Border Market Partner",
@@ -123,7 +149,14 @@ const enCommon = {
       description:
         "Read The Language Gazette, explore blog insights on cross-border business, watch event videos, and access press coverage of UVAN.",
       keywords:
-        "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India",
+        "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India, Ewan Business Solutions media",
+    },
+    languageGazette: {
+      title: "The Language Gazette | UVAN",
+      description:
+        "Insights on language, culture and cross-border business — for practitioners and professionals navigating the India-Asia corridor. Published by UVAN.",
+      keywords:
+        "language gazette India, language industry publication, cross-border business insights India",
     },
     askSoham: {
       title: "Ask Soham - Free 15-Min Call | UVAN",
@@ -131,9 +164,11 @@ const enCommon = {
         "Book a free 15-minute call with Soham Kakade - founder of UVAN. Market entry, language strategy, or career in languages. Honest, focused, no pitch.",
     },
     marketEntryAudit: {
-      title: "Global Market Entry Audit | UVAN",
+      title: "2026 Global Market Entry Audit | Free India Entry Checklist | UVAN",
       description:
-        "Download the 2026 Global Market Entry Audit - a free diagnostic framework built from 10 years of on-ground cross-border experience. Assess your expansion readiness before you commit.",
+        "The 2026 Global Market Entry Audit — a free diagnostic framework built from 10 years of on-ground cross-border experience. Assess your expansion readiness before you commit.",
+      keywords:
+        "India market entry checklist free, international expansion audit, cross-border business readiness, India entry risk assessment",
     },
     joinUs: {
       title: "Join UVAN - Careers, Vendor Network & Collaborators | UVAN",
@@ -411,22 +446,26 @@ const enCommon = {
       badge: "The 2026 Global Market Entry Audit",
       title: "The 5 Operational Gaps That Quietly Kill International Expansion.",
       subtitle:
-        "The 2026 Global Market Entry Audit - a free diagnostic framework built from 10 years of on-ground cross-border experience. Assess your expansion readiness before you commit.",
+        "The 2026 Global Market Entry Audit — a free diagnostic framework built from 10 years of on-ground cross-border experience. Assess your expansion readiness before you commit.",
+      whatItIs:
+        "UVAN's proprietary 3-page diagnostic framework presents five operational gaps that commonly derail international expansion — framed as a self-assessment checklist. Written in Soham Kakade's voice, it closes with a CTA to book an India Entry Readiness Call.",
+      formLabel: "Download the Free Audit",
       emailPlaceholder: "Enter your work email",
       downloadCta: "Download the Free Audit",
-      confirmationTitle: "Check your inbox",
+      confirmationTitle: "Your download is ready",
       confirmationCopy:
-        "Your download is ready. Use the link below to access the audit while we send a copy to your inbox.",
+        "Open the audit below. We will also send a copy to your inbox so you can retrieve it later.",
       downloadLink: "Open the 2026 Market Entry Audit",
+      readinessNote: "After you complete the audit, book a focused conversation to interpret the results against your corridor and sector.",
     },
     inside: {
       title: "What's inside",
       intro:
-        "The audit reveals 5 gaps - Regulatory & Entity Infrastructure · Partner Integrity Verification · The Coordination Tax · Human Capital Strategy · Executive Liaison & Negotiation. Each gap includes a self-assessment checklist and an explanation of what it costs companies that leave it unaddressed.",
+        "The audit reveals 5 gaps — Regulatory & Entity Infrastructure · Partner Integrity Verification · The Coordination Tax · Human Capital Strategy · Executive Liaison & Negotiation. Each gap includes a self-assessment checklist and an explanation of what it costs companies that leave it unaddressed.",
       items: [
         {
           title: "Regulatory & Entity Infrastructure",
-          copy: "Self-assessment prompts and the operational cost of entering without the right entity and compliance footing.",
+          copy: "Self-assessment checklist and what it costs companies that enter without the right entity and compliance footing.",
         },
         {
           title: "Partner Integrity Verification",
@@ -438,7 +477,7 @@ const enCommon = {
         },
         {
           title: "Human Capital Strategy",
-          copy: "Readiness checks for staffing, visas, and local talent - and what slips when this gap is left open.",
+          copy: "Readiness checks for staffing, visas, and local talent — and what slips when this gap is left open.",
         },
         {
           title: "Executive Liaison & Negotiation",
@@ -447,11 +486,11 @@ const enCommon = {
       ],
     },
     readiness: {
-      title: "Ready to stress-test your expansion plan?",
+      title: "Book Your India Entry Readiness Call",
       copy:
-        "Use the audit to surface hidden gaps, then book a focused conversation to interpret the results against your corridor and sector.",
+        "Use the audit to surface hidden gaps, then book a focused conversation with Soham to interpret the results against your corridor and sector.",
       readinessCta: "Book Your India Entry Readiness Call",
-      askSohamCta: "Ask Soham - 15 Min Free",
+      askSohamCta: "Ask Soham — 15 Min Free",
     },
   },
   industries: {

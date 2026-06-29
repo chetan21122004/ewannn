@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import HashScrollHandler from "@/components/HashScrollHandler";
+import AskSohamFloatingButton from "@/components/AskSohamFloatingButton";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import Index from "./pages/Index.tsx";
 import AskSoham from "./pages/AskSoham.tsx";
@@ -42,6 +43,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <HashScrollHandler />
+          <AskSohamFloatingButton />
           <WhatsAppFloatingButton />
           <Routes>
             <Route path="/" element={<Index />} />

@@ -77,5 +77,48 @@ export const gazetteIssueCanonical = (slug: string) => `/language-gazette/${slug
 export const gazetteArticlePath = (slug: string) => `/language-gazette/${slug}` as const;
 export const gazetteArticleCanonical = (slug: string) => `/language-gazette/${slug}/` as const;
 
+/** Step 2 / Step 4 — keyword-mapped articles published as web pages (insights + gazette). */
+export const gazetteKeywordCatalog = [
+  {
+    title: "Why Japanese companies struggle entering India — and what to do differently",
+    targetKeyword: "Japanese company India market entry",
+    href: "/insights/how-to-enter-indian-market",
+    source: "Insights",
+  },
+  {
+    title: "Simultaneous interpretation vs consecutive — which does your event need?",
+    targetKeyword: "simultaneous interpretation India",
+    href: "/insights/what-is-simultaneous-interpretation",
+    source: "Insights",
+  },
+  {
+    title: "India-Vietnam trade corridor: what businesses need to know in 2026",
+    targetKeyword: "India Vietnam trade expansion",
+    href: "/insights/how-to-enter-indian-market",
+    source: "Insights",
+  },
+  {
+    title: "Is a career in Asian languages worth it in India? An honest guide",
+    targetKeyword: "Mandarin career opportunities India",
+    href: "/insights",
+    source: "Insights",
+  },
+  {
+    title: "How to choose a translation partner — what most buyers get wrong",
+    targetKeyword: "translation partner India",
+    href: "/insights/how-to-choose-translation-partner-india",
+    source: "Insights",
+  },
+  {
+    title: "The Language of the Heart: Why Our Mother Tongue is Our Greatest Comfort",
+    targetKeyword: "mother tongue language India business",
+    href: "/language-gazette/mother-tongue-greatest-comfort",
+    source: "The Language Gazette",
+  },
+] as const;
+
+export const GAZETTE_LANDING_KEYWORDS =
+  "language gazette India, language industry publication, cross-border business insights India";
+
 /** Fallback cover when issue-specific art is not yet in public/ */
 export const gazetteCoverFallback = "/stitch/language-gazette/hero-cover-fallback.svg";

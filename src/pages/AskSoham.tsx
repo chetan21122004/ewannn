@@ -509,6 +509,22 @@ const AskSoham = () => {
                   </li>
                 ))}
               </ul>
+              <div className="mt-5 rounded-2xl border border-[hsl(var(--brand-purple-500)/0.18)] bg-white p-4 sm:p-5">
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">
+                  Market Entry track — read this first
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">
+                  Before your call, complete the 2026 Global Market Entry Audit — a free 3-page self-assessment covering
+                  the five operational gaps that commonly derail cross-border expansion.
+                </p>
+                <Link
+                  to="/market-entry-audit"
+                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline"
+                >
+                  Download the 2026 Market Entry Audit
+                  <ArrowUpRight className="h-4 w-4" aria-hidden />
+                </Link>
+              </div>
             </div>
 
             {calendlyEmbedUrl ? (

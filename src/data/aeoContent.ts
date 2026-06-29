@@ -80,7 +80,7 @@ export const MARKET_ENTRY_AUDIT_FAQS: AeoFaqItem[] = [
   {
     question: "What is the 2026 Global Market Entry Audit for?",
     answer:
-      "It is a free self-assessment PDF that walks you through five operational gaps teams often miss before or during cross-border expansion - so you can stress-test readiness before committing capital and headcount.",
+      "It is UVAN's proprietary diagnostic framework — a free self-assessment PDF that walks you through five operational gaps teams often miss before or during cross-border expansion, so you can stress-test readiness before committing capital and headcount.",
   },
   {
     question: "How do I download the audit?",

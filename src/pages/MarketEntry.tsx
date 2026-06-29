@@ -97,11 +97,11 @@ const workstreams = [
 ];
 
 const auditGaps = [
-  "Gap 1 — Regulatory & Entity Infrastructure",
-  "Gap 2 — Partner & Distribution Integrity (Physical Verification)",
-  "Gap 3 — The 'Coordination Tax' — Management Overhead",
-  "Gap 4 — Human Capital & Local Staffing Strategy",
-  "Gap 5 — Executive Liaison & High-Stakes Negotiation",
+  "Regulatory & Entity Infrastructure",
+  "Partner Integrity Verification",
+  "The Coordination Tax",
+  "Human Capital Strategy",
+  "Executive Liaison & Negotiation",
 ];
 
 const howItWorks = [
@@ -139,7 +139,7 @@ const marketEntryLd = [
   serviceSchema({
     name: "India market entry consulting",
     description:
-      "UVAN manages full-cycle India market entry for foreign companies — entity formation, regulatory navigation, executive liaison, and on-ground operations. 10 years. 10+ sectors.",
+      "UVAN manages full-cycle India market entry for foreign companies - entity formation, regulatory navigation, executive liaison, and on-ground operations. 10 years. 10+ sectors.",
     canonicalPath: "/market-entry/",
     serviceType: "Market entry consulting",
   }),
@@ -331,7 +331,7 @@ const MarketEntry = () => {
           >
             <div className="max-w-3xl">
               <h2 className="font-serif text-[1.65rem] font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
-                What We Deliver — <span className="text-[hsl(var(--brand-purple-700))] italic">7 Workstreams</span>
+                What We Deliver - <span className="text-[hsl(var(--brand-purple-700))] italic">7 Workstreams</span>
               </h2>
             </div>
             <motion.figure
@@ -420,7 +420,7 @@ const MarketEntry = () => {
           <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(240px,320px)] lg:items-center lg:gap-10">
             <div className="min-w-0">
               <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.18em]">
-                Full Market Entry Mandate — Japan to India
+                Full Market Entry Mandate - Japan to India
               </p>
               <h2 className="mt-2 font-serif text-[1.45rem] font-bold leading-tight text-on-light sm:mt-3 sm:text-3xl lg:text-4xl">
                 How a Leading Japanese Manufacturer Successfully Established India Operations
@@ -500,13 +500,12 @@ const MarketEntry = () => {
         >
           <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.18em]">Free Resource</p>
           <h2 className="mt-2 font-serif text-[1.55rem] font-bold leading-tight text-on-light sm:text-3xl lg:text-4xl">
-            Is Your Expansion Strategy Hiding These 5 Operational Gaps?
+            The 5 Operational Gaps That Quietly Kill International Expansion.
           </h2>
           <p className="mt-3 max-w-4xl text-xs leading-relaxed text-on-light-secondary sm:text-sm">
-            The 2026 Global Market Entry Audit is UVAN&apos;s proprietary framework — built from 10 years of on-ground
-            cross-border expansion experience. It reveals the 5 operational gaps that most companies don&apos;t see until
-            capital has been deployed and timelines have slipped. Download it free and assess your readiness before you
-            commit.
+            The 2026 Global Market Entry Audit is UVAN&apos;s proprietary 3-page diagnostic framework. It presents five
+            operational gaps that commonly derail international expansion — framed as a self-assessment checklist. Assess
+            your expansion readiness before you commit.
           </p>
           <div className="mt-4 grid gap-2 sm:mt-6 md:grid-cols-2">
             {auditGaps.map((gap, i) => (
@@ -529,7 +528,7 @@ const MarketEntry = () => {
                 to="/market-entry-audit"
                 className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
               >
-                Download the Free 2026 Market Entry Audit
+                Download the 2026 Market Entry Audit
                 <ArrowRight className="h-4 w-4 shrink-0" />
               </Link>
             </motion.div>
@@ -593,7 +592,7 @@ const MarketEntry = () => {
                     </span>
                     <div className="min-w-0 flex-1 rounded-xl border border-[hsl(var(--border-light))] bg-white px-3.5 py-3 shadow-sm">
                       <h3 className="mt-1 text-sm font-semibold leading-snug text-on-light">
-                        Step {index + 1} — {step.title}
+                        Step {index + 1} - {step.title}
                       </h3>
                       <p className="mt-1.5 text-xs leading-relaxed text-on-light-secondary">{step.detail}</p>
                     </div>

@@ -44,7 +44,6 @@ const WhatsAppFloatingButton = () => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t("whatsapp.ariaLabel")}
-      title={t("whatsapp.tooltip")}
       initial={reduceMotion ? false : { opacity: 0, scale: 0.85, y: 12 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ delay: 0.8, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
@@ -57,7 +56,7 @@ const WhatsAppFloatingButton = () => {
         aria-hidden
       />
       <WhatsAppIcon className="h-[1.65rem] w-[1.65rem]" />
-      <span className="pointer-events-none absolute right-full mr-3 hidden max-w-[11rem] rounded-xl border border-[hsl(var(--border-light))] bg-white px-3 py-2 text-left text-xs font-semibold leading-snug text-[hsl(var(--brand-navy-950))] opacity-0 shadow-[0_12px_28px_-12px_rgba(15,23,42,0.22)] transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 lg:block">
+      <span className="pointer-events-none absolute bottom-full right-0 mb-2.5 hidden whitespace-nowrap rounded-xl border border-[hsl(var(--border-light))] bg-white px-3 py-2 text-xs font-semibold leading-none text-[hsl(var(--brand-navy-950))] opacity-0 shadow-[0_12px_28px_-12px_rgba(15,23,42,0.22)] transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 lg:block">
         {t("whatsapp.tooltip")}
       </span>
     </motion.a>

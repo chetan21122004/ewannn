@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2, FileText } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
+import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { MARKET_ENTRY_AUDIT_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, webPageWithLeadAction } from "@/lib/schemaHelpers";
 
 const MARKET_ENTRY_AUDIT_KEYWORDS =
-  "India market entry checklist free, international expansion audit, cross-border business readiness, India entry risk assessment";
+  "India market entry checklist free, international expansion audit, cross-border business readiness, India entry risk assessment, 2026 global market entry audit";
 
 const AUDIT_PDF_URL = import.meta.env.VITE_MARKET_ENTRY_AUDIT_PDF_URL ?? "/Ewan_GlobalMarketEntry_Audit_2026.pdf";
 
@@ -20,7 +21,7 @@ const marketEntryAuditLd = [
 const defaultInsideItems = [
   {
     title: "Regulatory & Entity Infrastructure",
-    copy: "Self-assessment prompts and the operational cost of entering without the right entity and compliance footing.",
+    copy: "Self-assessment checklist and what it costs companies that enter without the right entity and compliance footing.",
   },
   {
     title: "Partner Integrity Verification",
@@ -32,7 +33,7 @@ const defaultInsideItems = [
   },
   {
     title: "Human Capital Strategy",
-    copy: "Readiness checks for staffing, visas, and local talent - and what slips when this gap is left open.",
+    copy: "Readiness checks for staffing, visas, and local talent — and what slips when this gap is left open.",
   },
   {
     title: "Executive Liaison & Negotiation",
@@ -66,93 +67,127 @@ const MarketEntryAudit = () => {
       keywords={MARKET_ENTRY_AUDIT_KEYWORDS}
       jsonLd={marketEntryAuditLd}
     >
-      <section className="theme-section-light relative overflow-hidden px-6 pb-20 pt-16">
-        <div className="theme-grid-overlay-light pointer-events-none absolute inset-0 opacity-20" />
-        <div className="container relative mx-auto max-w-4xl">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.95)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))]">
+      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-20 pt-14 text-white lg:pb-28 lg:pt-20">
+        <div
+          className="pointer-events-none absolute inset-0 z-0 opacity-20"
+          style={{
+            backgroundImage: "url('/page-assets/bsnssltn-4-min.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.55)] via-[hsl(var(--brand-navy-950)/0.92)] to-[hsl(var(--brand-navy-950))]" />
+
+        <div className="container relative z-10 mx-auto max-w-4xl">
+          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-gold-500))]">
             {t("marketEntryAudit.hero.badge")}
-          </div>
-          <h1 className="mb-5 text-4xl font-extrabold leading-[1.08] text-on-light md:text-6xl">
+          </p>
+          <h1 className="mt-5 font-serif text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
             {t("marketEntryAudit.hero.title")}
           </h1>
-          <p className="mb-8 max-w-3xl border-l-2 border-[hsl(var(--brand-purple-700)/0.3)] pl-5 text-base leading-relaxed text-on-light-secondary md:text-lg">
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/82 sm:text-lg">
             {t("marketEntryAudit.hero.subtitle")}
           </p>
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/72 sm:text-base">
+            {t("marketEntryAudit.hero.whatItIs")}
+          </p>
 
-          {submitted ? (
-            <div className="max-w-xl rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.95)] p-6 shadow-gold-sm">
-              <h2 className="text-xl font-bold text-on-light">{t("marketEntryAudit.hero.confirmationTitle")}</h2>
-              <p className="mt-2 text-sm text-on-light-secondary">{t("marketEntryAudit.hero.confirmationCopy")}</p>
-              <a
-                href={AUDIT_PDF_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition-transform hover:scale-[1.01]"
+          <div className="mt-10 max-w-xl">
+            {submitted ? (
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+                <h2 className="font-serif text-xl font-bold text-white">{t("marketEntryAudit.hero.confirmationTitle")}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-white/75">{t("marketEntryAudit.hero.confirmationCopy")}</p>
+                <a
+                  href={AUDIT_PDF_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+                >
+                  {t("marketEntryAudit.hero.downloadLink")}
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </a>
+                <p className="mt-5 text-xs leading-relaxed text-white/60">{t("marketEntryAudit.hero.readinessNote")}</p>
+                <Link
+                  to="/ask-soham"
+                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-gold-500))] hover:underline"
+                >
+                  {t("marketEntryAudit.readiness.readinessCta")}
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleDownload}
+                className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl sm:p-5"
               >
-                {t("marketEntryAudit.hero.downloadLink")}
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-          ) : (
-            <form
-              onSubmit={handleDownload}
-              className="flex max-w-xl flex-col gap-3 rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.95)] p-3 shadow-gold-sm sm:flex-row"
-            >
-              <input
-                className="w-full rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-4 py-3 text-sm text-on-light placeholder:text-on-light-muted focus:outline-none"
-                placeholder={t("marketEntryAudit.hero.emailPlaceholder")}
-                type="email"
-                required
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-              />
-              <button
-                type="submit"
-                className="rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition-transform hover:scale-[1.01]"
-              >
-                {t("marketEntryAudit.hero.downloadCta")}
-              </button>
-            </form>
-          )}
+                <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-white">
+                  <FileText className="h-4 w-4 text-[hsl(var(--brand-gold-500))]" aria-hidden />
+                  {t("marketEntryAudit.hero.formLabel")}
+                </p>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <input
+                    className="min-h-11 w-full rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[hsl(var(--brand-gold-500)/0.5)] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-gold-500)/0.2)]"
+                    placeholder={t("marketEntryAudit.hero.emailPlaceholder")}
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                    aria-label={t("marketEntryAudit.hero.emailPlaceholder")}
+                  />
+                  <button
+                    type="submit"
+                    className="min-h-11 shrink-0 rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+                  >
+                    {t("marketEntryAudit.hero.downloadCta")}
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
         </div>
       </section>
 
-      <section className="theme-section-soft px-6 py-20">
+      <SectionDivider variant="wave" fromDark />
+
+      <section className="theme-section-light px-6 py-16 md:py-20">
         <div className="container mx-auto max-w-5xl">
-          <h2 className="font-serif text-4xl font-bold text-on-light">{t("marketEntryAudit.inside.title")}</h2>
+          <h2 className="font-serif text-3xl font-bold text-on-light sm:text-4xl">{t("marketEntryAudit.inside.title")}</h2>
           <p className="mt-4 max-w-4xl text-base leading-relaxed text-on-light-secondary">{t("marketEntryAudit.inside.intro")}</p>
           <div className="mt-10 grid gap-4 md:grid-cols-2">
             {insideItems.map((item) => (
               <article
                 key={item.title}
-                className="rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.95)] p-6 shadow-gold-sm"
+                className="rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 shadow-sm"
               >
-                <h3 className="text-lg font-bold text-on-light">{item.title}</h3>
-                <p className="mt-2 text-sm text-on-light-secondary">{item.copy}</p>
+                <div className="mb-3 flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+                  <h3 className="text-lg font-bold text-on-light">{item.title}</h3>
+                </div>
+                <p className="text-sm leading-relaxed text-on-light-secondary">{item.copy}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="theme-section-dark px-6 py-20 text-center">
+      <section className="theme-section-dark px-6 py-16 text-center md:py-20">
         <div className="container mx-auto max-w-3xl">
-          <h2 className="text-4xl font-extrabold text-foreground">{t("marketEntryAudit.readiness.title")}</h2>
-          <p className="mt-4 text-foreground/80">{t("marketEntryAudit.readiness.copy")}</p>
+          <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl">{t("marketEntryAudit.readiness.title")}</h2>
+          <p className="mt-4 text-sm leading-relaxed text-foreground/80 sm:text-base">{t("marketEntryAudit.readiness.copy")}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               to="/ask-soham"
-              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
             >
               {t("marketEntryAudit.readiness.readinessCta")}
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
             <Link
-              to="/ask-soham"
-              className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--surface-glass)/0.24)] px-6 py-3 text-sm font-semibold text-foreground/90 transition hover:bg-[hsl(var(--surface-glass)/0.08)]"
+              to="/market-entry"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[hsl(var(--surface-glass)/0.24)] px-6 py-3 text-sm font-semibold text-foreground/90 transition hover:bg-[hsl(var(--surface-glass)/0.08)]"
             >
-              {t("marketEntryAudit.readiness.askSohamCta")}
-              <ArrowRight className="h-4 w-4" />
+              Explore Market Entry Services
+              <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </div>
         </div>

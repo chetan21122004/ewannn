@@ -20,6 +20,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import CursorGlow from "@/components/CursorGlow";
 import ScrollScene from "@/components/ScrollScene";
 import EntityParagraphHomeBand from "@/components/EntityParagraphHomeBand";
+import MarketEntryAuditHomeBand from "@/components/MarketEntryAuditHomeBand";
 
 const Index = () => {
   const homeJsonLd = [webSiteWithSearchAction(), faqPageSchema(absoluteUrl("/"), HOMEPAGE_FAQS)];
@@ -41,6 +42,7 @@ const Index = () => {
       intensity: 0.65,
     },
     { key: "contact", component: <ContactSection />, intensity: 1 },
+    { key: "audit-resource", component: <MarketEntryAuditHomeBand />, intensity: 0.7 },
     { key: "entity-paragraph", component: <EntityParagraphHomeBand />, intensity: 0.55 },
   ];
 

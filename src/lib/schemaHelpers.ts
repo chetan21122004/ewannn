@@ -1,16 +1,36 @@
 import type { AeoFaqItem } from "@/data/aeoContent";
-import { COMPANY_LINKEDIN, SITE_LOGO, SITE_URL, SOHAM_LINKEDIN } from "@/lib/site";
+import {
+  COMPANY_EMAIL,
+  COMPANY_LINKEDIN,
+  COMPANY_PHONE,
+  ORGANIZATION_SAME_AS,
+  SITE_LOGO,
+  SITE_URL,
+  SOHAM_LINKEDIN,
+} from "@/lib/site";
 
 export type JsonLdObject = Record<string, unknown>;
 
-/** Core Organization node referenced from other schema (AEO verbatim fields). */
+/** Core Organization node referenced from other schema (AEO + NAP). */
 export const organizationNode: JsonLdObject = {
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
   name: "UVAN",
+  alternateName: ["Ewan Business Solutions", "Ewan"],
   url: SITE_URL,
   logo: `${SITE_URL}${SITE_LOGO}`,
   foundingDate: "2020",
+  email: COMPANY_EMAIL,
+  telephone: COMPANY_PHONE,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Pune",
+    addressRegion: "Maharashtra",
+    postalCode: "411004",
+    addressCountry: "IN",
+    streetAddress: "Erandwane",
+  },
+  sameAs: [...ORGANIZATION_SAME_AS],
 };
 
 export function absoluteUrl(canonicalPath: string): string {

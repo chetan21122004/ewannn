@@ -126,22 +126,22 @@ const LanguageGazetteMagazineLayout = ({
                 </h1>
                 <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
                   {heroSubtitle ??
-                    "UVAN's quarterly publication exploring language, cultural intelligence, and the human stories behind global business."}
+                    "UVAN's quarterly publication exploring the intersection of language, cultural intelligence and international business. Available as a full digital issue and as individual articles."}
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
                     href="#latest-issue"
-                    className="inline-flex items-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))]"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))]"
                   >
-                    Browse articles
-                    <ArrowRight className="h-4 w-4" />
+                    Browse All Articles
+                    <ArrowRight className="h-4 w-4" aria-hidden />
                   </a>
                   <Link
                     to={issuePath}
-                    className="inline-flex items-center gap-2 rounded-xl border border-white/25 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/25 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10"
                   >
-                    {issue.label} - table of contents
-                    <ArrowRight className="h-4 w-4" />
+                    Download the Latest Issue
+                    <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
                 </div>
               </div>

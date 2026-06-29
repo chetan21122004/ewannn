@@ -2,121 +2,122 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   Briefcase,
-  Building2,
   CheckCircle2,
+  Globe2,
   Handshake,
-  Scale,
-  ShieldAlert,
+  Landmark,
   Sparkles,
-  Quote,
+  Store,
   Users,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
-import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { LIAISONING_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, serviceSchema } from "@/lib/schemaHelpers";
 
-/** Stitch screen assets (`public/stitch/liaisoning-facilitation/`); replace via `curl -L` from Stitch export when available */
-const stitch = {
-  heroBg: "/stitch/liaisoning-facilitation/hero-bg.jpg",
-  heroVisual: "/stitch/liaisoning-facilitation/hero-visual.jpg",
-  executive: "/stitch/liaisoning-facilitation/executive.jpg",
-} as const;
+const LIAISONING_EMAIL =
+  "mailto:info@ewan.co.in?subject=Liaisoning%20%26%20Facilitation%20Enquiry&body=Please%20share%3A%0A-%20Your%20organisation%20and%20corridor%0A-%20The%20liaison%20support%20you%20need%0A-%20Your%20biggest%20challenge%20right%20now";
 
-const heroCapabilities = [
-  "Executive boardrooms",
-  "Government corridors",
-  "Negotiation tables",
+const whatLiaisoningParagraphs = [
+  "Liaisoning is not translation. It is not project management. It is the human infrastructure that sits between two organisations operating across cultural, linguistic, and institutional boundaries - and makes sure that what one party intends is what the other party receives.",
+  "In practice, it means: someone in the room who understands both sides. Someone who knows when to push, when to wait, and when a silence means agreement versus concern. Someone with existing relationships in the institutions, ministries, industry bodies, and boardrooms that matter.",
+  "After 10 years operating at the intersection of Indian and Asian business, UVAN brings exactly that.",
 ];
 
-const heroStats = [
-  { value: "60,000+", label: "Boardroom hours" },
-  { value: "Consulate", label: "Gov. recognition" },
-  { value: "4 corridors", label: "Japan · China · Korea · ASEAN" },
-];
-
-const executiveProofPoints = [
-  { value: "60,000+", label: "Boardroom hours", detail: "Simultaneous interpretation in sensitive executive settings" },
-  { value: "Consulate", label: "Recognised liaison", detail: "Formal government and institutional relationships" },
-  { value: "4 corridors", label: "Asia coverage", detail: "Japan · China · Korea · ASEAN language depth" },
-];
-
-const executiveHighlights = [
-  "Boardroom interpretation in Mandarin, Japanese, Korean, and ASEAN languages",
-  "Government and institutional liaison with formal recognition",
-  "Negotiation facilitation when intent - not just words - must align",
-];
-
-const services = [
+const liaisonServices = [
   {
-    id: "executive-liaison",
-    title: "Executive Business Liaison",
+    id: "government-institutional",
+    title: "Government & Institutional Liaison",
     description:
-      "High-stakes boardroom and executive-level liaison for cross-border business. We don't just translate words; we translate authority, intent, and nuance. Our practitioners have spent a decade in the rooms where global leaders and Fortune 500 boards make decisions.",
+      "Direct engagement with ministries, regulatory bodies, trade associations, and government-linked entities on behalf of your organisation. We manage formal correspondence, meeting facilitation, and ongoing institutional relationships - navigating procedural requirements and cultural protocols so your organisation's interests are represented accurately and with credibility.",
     points: [
-      "Boardroom interpretation and meeting facilitation",
-      "Executive communication strategy for Asian markets",
-      "Strategic partner relationship management",
-      "Cross-cultural management advisory",
+      "Ministry and regulatory body communication",
+      "Trade body and industry association engagement",
+      "Consulate and embassy facilitation",
+      "Government project coordination",
     ],
-    icon: Briefcase,
-    doodle: "/doodles/Group discussion-bro.svg",
-    doodleAlt: "Executive liaison illustration",
-  },
-  {
-    id: "government-liaison",
-    title: "Government & Regulatory Liaison",
-    description:
-      "Navigating government departments and regulatory bodies requires a specific kind of liaison - one built on institutional trust and professional standing. UVAN has formal recognition and experience with the Consulate General of the PRC, MSAMB, and the Bhashini Initiative (MeitY).",
-    points: [
-      "Government department and official liaison",
-      "Regulatory and compliance communication",
-      "Institutional partner relationship building",
-      "Public sector project coordination",
-    ],
-    icon: Building2,
+    icon: Landmark,
     doodle: "/doodles/Call center-amico.svg",
     doodleAlt: "Government liaison illustration",
   },
   {
-    id: "negotiation-facilitation",
-    title: "Negotiation Facilitation",
+    id: "corporate-business",
+    title: "Corporate & Business Liaison",
     description:
-      "Negotiations in the India-Asia corridor often stall not because of the numbers, but because of how they are presented. We facilitate negotiations in Mandarin, Japanese, Korean, and ASEAN languages - ensuring that both sides are operating with the same understanding of intent.",
+      "Bridging the gap between your organisation and Indian or Asian corporate counterparts - whether for initial introductions, ongoing partner management, or high-stakes negotiation support. We provide a professionally credible interface that reflects your organisation's standing and intent.",
     points: [
-      "Bilingual negotiation support",
-      "Conflict mediation and bridge-building",
-      "Contract and term-sheet negotiation liaison",
-      "Cultural negotiation advisory",
+      "Board-level and senior executive introductions",
+      "Partner and distributor relationship management",
+      "Negotiation facilitation and cultural mediation",
+      "Joint venture and MOU facilitation",
     ],
-    icon: Scale,
-    doodle: "/doodles/International trade-bro.svg",
-    doodleAlt: "Negotiation facilitation illustration",
+    icon: Briefcase,
+    doodle: "/doodles/Group discussion-bro.svg",
+    doodleAlt: "Corporate liaison illustration",
   },
   {
-    id: "crisis-resolution",
-    title: "Crisis & Conflict Resolution",
+    id: "single-point-coordination",
+    title: "Single Point of Coordination",
     description:
-      "When cross-border relationships break down, miscommunication is almost always at the center. UVAN provides neutral, professional mediation and liaison to resolve conflicts, clarify intent, and rebuild the communication bridge.",
+      "For companies managing multiple vendor relationships, regulatory tracks, and operational workstreams simultaneously in a new market, the cost of fragmented coordination is enormous. UVAN acts as your single point of contact - consolidating communication, aligning workstreams, and giving your leadership one clear line of accountability.",
     points: [
-      "Communication breakdown mediation",
-      "Dispute resolution facilitation",
-      "Relationship recovery and turnaround",
-      "Crisis communication support",
+      "Multi-vendor coordination and management",
+      "Workstream alignment across legal, financial, operational, and language functions",
+      "Regular structured reporting to your leadership",
+      "Issue escalation and resolution",
     ],
-    icon: ShieldAlert,
-    doodle: "/doodles/Happy announcement-cuate.svg",
-    doodleAlt: "Crisis resolution illustration",
+    icon: Users,
+    doodle: "/doodles/Schedule-amico.svg",
+    doodleAlt: "Coordination illustration",
+  },
+  {
+    id: "cultural-intelligence",
+    title: "Cultural Intelligence & Communication Advisory",
+    description:
+      "Many deals that should close, don't - because something in the communication created friction that neither side could name. UVAN's cultural advisory work helps your team understand what is actually being communicated in meetings, correspondence, and negotiations - and how to respond in ways that build rather than erode trust.",
+    points: [
+      "Pre-meeting cultural briefings for your leadership team",
+      "Post-meeting debrief and communication review",
+      "Cultural sensitivity training for India-entry teams",
+      "Communication strategy advisory for Asian market engagement",
+    ],
+    icon: Globe2,
+    doodle: "/doodles/Light bulb-bro (1).svg",
+    doodleAlt: "Cultural intelligence illustration",
+    crossRef: {
+      label: "Structured language training via Bhashik Skill Development ↗",
+      href: "https://bhashikskill.co.in",
+    },
+  },
+  {
+    id: "exhibition-trade-fair",
+    title: "Exhibition & Trade Fair Facilitation",
+    description:
+      "At international exhibitions and trade events across India, UVAN provides on-ground facilitation - managing introductions, interpreting buyer-seller conversations, and ensuring your team can operate with full confidence in a multilingual, multicultural environment.",
+    points: [
+      "On-site interpretation and facilitation at exhibitions",
+      "Buyer-seller introduction and matchmaking",
+      "Booth communication and materials support",
+      "Post-event follow-up coordination",
+    ],
+    icon: Store,
+    doodle: "/doodles/International trade-bro.svg",
+    doodleAlt: "Exhibition facilitation illustration",
   },
 ];
 
 const whoThisIsFor = [
-  "CEOs and Directors leading cross-border expansion or procurement",
-  "Foreign companies navigating Indian government or regulatory bodies",
-  "Indian companies in complex negotiations with Japanese, Chinese, or Korean partners",
-  "Government agencies and trade bodies requiring high-stakes institutional liaison",
+  "Foreign companies managing government approvals, licensing, or regulatory engagement in India",
+  "Japanese, Korean, and Southeast Asian manufacturers coordinating with Indian partners or suppliers",
+  "Indian companies managing distributor or partner relationships in Asia",
+  "Any organisation that needs a trusted, culturally fluent point of contact in a market they are still learning",
+];
+
+const whyUvanParagraphs = [
+  "We have held this role - formally and informally - for 10 years. Our founder has sat across the table from heads of state, multinational CEOs, government officials, and trade body leaders in some of the most consequential meetings in the India-Asia corridor. When UVAN liaises on your behalf, the person in the room is not a coordinator reading from a brief. They are someone who has been in that room before.",
+  "We are also formally recognised by the Consulate General of the People's Republic of China for our contribution to India-China trade relations - an institutional endorsement that reflects the trust we have built across years of credible, culturally intelligent engagement.",
 ];
 
 const liaisonLd = [
@@ -124,13 +125,14 @@ const liaisonLd = [
   serviceSchema({
     name: "Business liaisoning & facilitation",
     description:
-      "Government, institutional, executive, negotiation, coordination, exhibition, and trade-fair liaison with native-language fluency across the India-Asia corridor.",
+      "Government, institutional, corporate, coordination, cultural intelligence, and exhibition liaison with native-language fluency across the India-Asia corridor.",
     canonicalPath: "/liaisoning-facilitation/",
     serviceType: "Liaisoning services",
   }),
 ];
 
 const LiaisoningFacilitation = () => {
+  const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
   const hidden = reduceMotion ? false : { opacity: 0, y: 24 };
   const show = { opacity: 1, y: 0 };
@@ -138,208 +140,92 @@ const LiaisoningFacilitation = () => {
 
   return (
     <PageLayout
-      title="Executive Liaison & Negotiation Facilitation India | UVAN"
-      description="High-stakes executive liaison, government relations, and negotiation facilitation for the India-Asia corridor. 60,000+ hours of boardroom experience in Mandarin, Japanese, and Korean."
+      title={t("seo.liaisoning.title")}
+      description={t("seo.liaisoning.description")}
       canonicalPath="/liaisoning-facilitation/"
+      keywords={t("seo.liaisoning.keywords")}
       jsonLd={liaisonLd}
     >
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-12 pt-10 text-white md:pb-14 md:pt-14">
+      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 pb-14 pt-8 text-white sm:px-6 lg:pb-24 lg:pt-12">
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.24] md:opacity-[0.3]"
+          className="pointer-events-none absolute inset-0 z-0 opacity-20 mix-blend-color-dodge lg:opacity-25"
           style={{
-            backgroundImage: `url('${stitch.heroBg}')`,
+            backgroundImage: "url('/stitch/liaisoning-facilitation/hero-bg.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center top",
           }}
           aria-hidden
         />
-        <div
-          className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center opacity-[0.14] mix-blend-soft-light"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/abstract-background-purple-dark-blue-gradient-wave-modern-background-combination-curve-free-vector.jpg')",
-          }}
-          aria-hidden
-        />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_72%_52%_at_78%_8%,hsl(var(--brand-purple-700)/0.38),transparent_52%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_8%_88%,hsl(var(--brand-cyan-500)/0.1),transparent_40%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.55)] via-[hsl(var(--brand-navy-950)/0.88)] to-[hsl(var(--brand-navy-950))]" />
-        <div className="glow-orb glow-orb-gold pointer-events-none -bottom-24 -left-20 h-[280px] w-[280px] opacity-[0.07]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.2)] via-[hsl(var(--brand-navy-950)/0.88)] to-[hsl(var(--brand-navy-950))]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_80%_10%,hsl(var(--brand-purple-700)/0.35),transparent_55%)]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-10 xl:gap-14">
-            <motion.div
-              className="lg:col-span-7"
-              initial={hidden}
-              animate={show}
-              transition={transition(0)}
-            >
-              <motion.span
-                initial={{ opacity: 0, scale: 0.92 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm"
-              >
-                <Handshake className="h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-gold-500))]" aria-hidden />
-                High-Stakes Liaison
-              </motion.span>
-
-              <h1 className="max-w-2xl font-serif text-4xl font-bold leading-[0.98] tracking-tight sm:text-5xl lg:text-[3.25rem] lg:leading-[0.96] xl:text-[3.5rem]">
-                When the Room Is{" "}
-                <span className="text-[hsl(var(--brand-gold-500))]">Tense,</span>
-                <br className="hidden sm:block" />
-                {" "}the Right Partner{" "}
-                <span className="relative inline-block italic text-[hsl(var(--brand-gold-500))]">
-                  Makes the Difference.
-                  {!reduceMotion ? (
-                    <motion.span
-                      className="absolute -bottom-1.5 left-0 h-[4px] w-full rounded-full bg-[hsl(var(--brand-gold-500)/0.35)]"
-                      initial={{ scaleX: 0, originX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.45, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                      aria-hidden
-                    />
-                  ) : null}
-                </span>
-              </h1>
-
-              <p className="mt-6 max-w-xl text-base leading-[1.75] text-white/76 sm:text-lg">
-                UVAN provides executive liaison and negotiation support for cross-border business - sitting between you
-                and your partners, government officials, or vendors so intent is never lost in translation.
+          <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+            <motion.div initial={hidden} animate={show} transition={transition(0)} className="max-w-3xl">
+              <p className="mb-4 inline-flex max-w-full rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/80 sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]">
+                India. Japan. Southeast Asia. One Point of Contact.
               </p>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                {heroCapabilities.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-white/12 bg-white/[0.06] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/62 backdrop-blur-sm"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-8 grid max-w-xl grid-cols-3 gap-3 sm:max-w-2xl">
-                {heroStats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={hidden}
-                    animate={show}
-                    transition={transition(0.14 + index * 0.05)}
-                    className="min-w-0 rounded-xl bg-white/[0.05] px-3 py-3 sm:px-4 sm:py-3.5"
-                  >
-                    <p className="font-serif text-lg font-bold leading-none text-[hsl(var(--brand-gold-500))] sm:text-xl">
-                      {stat.value}
-                    </p>
-                    <p className="mt-1.5 text-[9px] font-bold uppercase leading-snug tracking-[0.08em] text-white/52 sm:text-[10px]">
-                      {stat.label}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="mt-8 flex flex-wrap gap-3">
+              <h1 className="font-serif text-[1.75rem] font-bold leading-[1.08] sm:text-4xl lg:text-5xl xl:text-[3.25rem]">
+                When the Room Matters, You Need Someone Who Knows How to{" "}
+                <span className="text-[hsl(var(--brand-gold-500))]">Read It.</span>
+              </h1>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/80 sm:mt-6 sm:text-base lg:text-lg">
+                UVAN&apos;s liaisoning and facilitation services provide a single, trusted point of coordination between
+                your organisation and its counterparts in India and across Asia - managing the communication, cultural
+                interface, and operational connections that determine whether agreements get made or opportunities get
+                missed.
+              </p>
+              <div className="mt-6 sm:mt-8">
                 <motion.a
-                  href="mailto:info@ewan.co.in?subject=Liaisoning%20Requirement"
+                  href={LIAISONING_EMAIL}
                   whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] shadow-[0_14px_36px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105"
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] shadow-[0_14px_36px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105 sm:w-auto sm:px-6"
                 >
-                  Discuss Your Requirement
-                  <ArrowRight className="h-4 w-4" aria-hidden />
+                  Discuss Your Liaisoning Needs
+                  <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
                 </motion.a>
-                <Link
-                  to="/ask-soham"
-                  className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/22 bg-white/[0.06] px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/12"
-                >
-                  Ask Soham - 15 Min Free
-                  <ArrowRight className="h-4 w-4" aria-hidden />
-                </Link>
+                <p className="mt-2 text-center text-xs text-white/55 sm:text-left">info@ewan.co.in</p>
               </div>
             </motion.div>
 
             <motion.figure
-              className="flex flex-col items-center lg:col-span-5 lg:items-end lg:justify-center"
+              className="hidden lg:block"
               initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 24 }}
               animate={reduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
               transition={transition(0.12)}
             >
               <motion.img
                 src="/doodles/Group discussion-bro.svg"
-                alt="Executive liaison and negotiation illustration"
-                className="h-48 w-full max-w-[340px] object-contain sm:h-52 lg:h-60 lg:max-w-[380px]"
-                animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
+                alt=""
+                aria-hidden
+                className="mx-auto h-56 w-full max-w-[360px] object-contain opacity-90"
+                animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               />
-              <figcaption className="mt-5 max-w-[320px] text-center lg:max-w-[340px] lg:text-right">
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))]">
-                  Representation, not interpretation
-                </p>
-                <p className="mt-1.5 text-sm leading-relaxed text-white/68">
-                  Boardroom-grade liaison across the India-Asia corridor.
-                </p>
-              </figcaption>
             </motion.figure>
           </div>
         </div>
       </section>
 
-      <SectionDivider variant="wave" fromDark />
-
-      {/* Executive Liaison */}
-      <section
-        id="executive-liaison"
-        className="theme-section-soft relative scroll-mt-28 overflow-hidden px-6 py-16 md:py-20"
-      >
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-multiply"
-          style={{
-            backgroundImage: "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(circle at 14% 12%, hsl(var(--brand-purple-700)/0.08) 0%, transparent 42%), radial-gradient(circle at 92% 88%, hsl(var(--brand-gold-500)/0.06) 0%, transparent 38%)",
-          }}
-          aria-hidden
-        />
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.07]" />
-
+      {/* What liaisoning means */}
+      <section id="what-liaisoning-means" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
             initial={hidden}
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0)}
-            className="mb-10 grid items-end gap-8 lg:mb-12 lg:grid-cols-[minmax(0,1fr)_minmax(200px,240px)]"
+            className="mx-auto mb-6 max-w-3xl lg:mb-10"
           >
-            <div className="max-w-3xl">
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
-                <Handshake className="h-3.5 w-3.5" aria-hidden />
-                Executive Liaison
-              </span>
-              <h2 className="font-serif text-3xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] sm:text-4xl lg:text-5xl">
-                Liaison Is Not Just Interpretation. It Is{" "}
-                <span className="italic text-[hsl(var(--brand-purple-700))]">Representation.</span>
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-on-light-secondary">
-                Professional standing and cultural intelligence for the rooms where cross-border deals, audits, and
-                disputes are decided.
-              </p>
-            </div>
-            <motion.img
-              src="/doodles/Group discussion-bro.svg"
-              alt="Executive liaison illustration"
-              className="mx-auto h-36 w-full max-w-[220px] object-contain lg:mx-0 lg:ml-auto"
-              animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            />
+            <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.18em]">
+              Definition
+            </span>
+            <h2 className="font-serif text-[1.65rem] font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
+              What Liaisoning Actually Means
+            </h2>
           </motion.div>
 
           <motion.div
@@ -347,147 +233,39 @@ const LiaisoningFacilitation = () => {
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0.08)}
-            className="overflow-hidden rounded-[2rem] border border-[hsl(var(--border-light))] bg-white shadow-[0_20px_56px_rgba(26,22,51,0.08)] lg:rounded-[2.5rem]"
+            className="theme-card-light card-shine mx-auto max-w-4xl rounded-2xl border border-[hsl(var(--border-light))] p-5 sm:rounded-3xl sm:p-8 lg:p-10"
           >
-            <div className="grid lg:grid-cols-12">
-              <div className="relative lg:col-span-5">
-                <img
-                  src={stitch.executive}
-                  alt="UVAN executive liaison practitioner in a boardroom setting"
-                  className="aspect-[16/11] w-full object-cover object-[center_18%] sm:aspect-[5/4] lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
-                  loading="lazy"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.55)] via-transparent to-transparent lg:from-[hsl(var(--brand-navy-950)/0.35)]" />
-                <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2 sm:bottom-6 sm:left-6 sm:right-6">
-                  {executiveProofPoints.slice(0, 2).map((point) => (
-                    <div
-                      key={point.label}
-                      className="rounded-xl border border-white/15 bg-[hsl(var(--brand-navy-950)/0.72)] px-3 py-2 backdrop-blur-md sm:px-4 sm:py-2.5"
-                    >
-                      <p className="font-serif text-sm font-bold text-[hsl(var(--brand-gold-500))] sm:text-base">
-                        {point.value}
-                      </p>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/70">
-                        {point.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex flex-col justify-center p-8 sm:p-10 lg:col-span-7 lg:p-12">
-                <p className="text-sm leading-relaxed text-on-light-secondary md:text-base">
-                  In high-stakes business environments - whether it&apos;s a joint venture negotiation, a government audit, or
-                  a supplier dispute - what you say is as important as how it is understood. UVAN provides the
-                  professional standing and cultural intelligence to represent your interests accurately.
-                </p>
-
-                <blockquote className="relative mt-6 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-5 md:p-6">
-                  <Quote
-                    className="absolute right-4 top-4 h-8 w-8 text-[hsl(var(--brand-purple-700)/0.12)]"
-                    aria-hidden
-                  />
-                  <p className="relative text-sm leading-relaxed text-on-light-secondary md:text-base">
-                    Our founder, Soham Kakade, brings over{" "}
-                    <span className="font-semibold text-[hsl(var(--brand-navy-950))]">60,000 hours</span> of simultaneous
-                    interpretation experience in the most sensitive boardroom environments - the foundation of our ability
-                    to read a room, manage expectations, and keep cross-border relationships clear.
-                  </p>
-                </blockquote>
-
-                <ul className="mt-6 space-y-3 border-t border-[hsl(var(--border-light))] pt-6">
-                  {executiveHighlights.map((item, index) => (
-                    <motion.li
-                      key={item}
-                      initial={hidden}
-                      whileInView={show}
-                      viewport={{ once: true }}
-                      transition={transition(0.12 + index * 0.05)}
-                      className="flex items-start gap-3 text-sm leading-relaxed text-on-light-secondary"
-                    >
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-purple-700)/0.1)]">
-                        <CheckCircle2 className="h-3 w-3 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-                      </span>
-                      <span>{item}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
+            <div className="space-y-4 text-sm leading-[1.85] text-on-light-secondary sm:space-y-5 sm:text-base">
+              {whatLiaisoningParagraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={hidden}
-            whileInView={show}
-            viewport={{ once: true }}
-            transition={transition(0.16)}
-            className="mt-6 grid gap-4 sm:grid-cols-3"
-          >
-            {executiveProofPoints.map((point, index) => (
-              <motion.div
-                key={point.label}
-                initial={hidden}
-                whileInView={show}
-                viewport={{ once: true }}
-                transition={transition(0.18 + index * 0.05)}
-                whileHover={reduceMotion ? undefined : { y: -4 }}
-                className="theme-card-light rounded-2xl border border-[hsl(var(--border-light))] p-5"
-              >
-                <p className="font-serif text-2xl font-bold text-[hsl(var(--brand-purple-700))]">{point.value}</p>
-                <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.14em] text-on-light-muted">
-                  {point.label}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">{point.detail}</p>
-              </motion.div>
-            ))}
           </motion.div>
         </div>
       </section>
 
       {/* Services */}
-      <section id="services" className="theme-section-light relative scroll-mt-28 overflow-hidden px-6 py-16 md:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-[position:72%_40%] opacity-[0.1] mix-blend-multiply"
-          style={{
-            backgroundImage: "url('/bg-blobs/beautiful-purple-color-gradient-background-free-vector.jpg')",
-          }}
-          aria-hidden
-        />
+      <section id="services" className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
-
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
             initial={hidden}
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0)}
-            className="mb-10 grid items-center gap-8 lg:mb-12 lg:grid-cols-[minmax(0,1fr)_minmax(200px,260px)]"
+            className="mb-6 max-w-3xl lg:mb-10"
           >
-            <div>
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
-                <Sparkles className="h-3.5 w-3.5 text-[hsl(var(--brand-gold-600))]" aria-hidden />
-                Our Liaisoning Services
-              </span>
-              <h2 className="font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-4xl lg:text-5xl">
-                Four Liaisoning{" "}
-                <span className="italic text-[hsl(var(--brand-purple-700))]">Capabilities</span>
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-on-light-secondary">
-                From executive boardrooms to government corridors - liaison support built on institutional trust and
-                native-language fluency across the India-Asia corridor.
-              </p>
-            </div>
-            <motion.img
-              src="/doodles/Charts-cuate.svg"
-              alt="Liaison services illustration"
-              className="mx-auto h-40 w-full max-w-[240px] object-contain lg:max-w-none"
-              animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            />
+            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.18em]">
+              <Sparkles className="h-3.5 w-3.5 text-[hsl(var(--brand-gold-600))]" aria-hidden />
+              Our Services
+            </span>
+            <h2 className="font-serif text-[1.65rem] font-bold text-on-light sm:text-4xl lg:text-5xl">
+              Our Liaisoning &amp; Facilitation Services
+            </h2>
           </motion.div>
 
-          <div className="grid gap-5 lg:grid-cols-2">
-            {services.map((service, index) => {
+          <div className="flex flex-col gap-4 sm:gap-5">
+            {liaisonServices.map((service, index) => {
               const Icon = service.icon;
               return (
                 <motion.article
@@ -496,35 +274,49 @@ const LiaisoningFacilitation = () => {
                   initial={hidden}
                   whileInView={show}
                   viewport={{ once: true }}
-                  transition={transition((index % 2) * 0.08)}
-                  whileHover={reduceMotion ? undefined : { y: -5 }}
-                  className="group theme-card-light card-shine scroll-mt-28 overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] p-6 sm:p-7"
+                  transition={transition(index * 0.06)}
+                  whileHover={reduceMotion ? undefined : { y: -3 }}
+                  className="theme-card-light card-shine scroll-mt-28 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-4 sm:rounded-3xl sm:p-6 lg:p-8"
                 >
-                  <div className="mb-4 flex items-start justify-between gap-3">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700)/0.75)]">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
-                      <Icon className="h-5 w-5" aria-hidden />
+                  <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_200px] lg:items-start lg:gap-8">
+                    <div className="min-w-0">
+                      <div className="mb-3 flex items-start justify-between gap-3 sm:mb-4">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm sm:h-11 sm:w-11">
+                          <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden />
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700)/0.7)] sm:text-[11px]">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <h3 className="font-serif text-xl font-bold text-on-light sm:text-2xl">{service.title}</h3>
+                      <p className="mt-3 text-xs leading-relaxed text-on-light-secondary sm:text-sm">{service.description}</p>
+                      <ul className="mt-4 space-y-2 border-t border-[hsl(var(--border-light))] pt-4 sm:mt-5">
+                        {service.points.map((point) => (
+                          <li key={point} className="flex items-start gap-2 text-xs text-on-light-secondary sm:text-sm">
+                            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-700))] sm:h-4 sm:w-4" aria-hidden />
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      {"crossRef" in service && service.crossRef ? (
+                        <a
+                          href={service.crossRef.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mt-4 inline-flex text-xs font-semibold text-[hsl(var(--brand-purple-700))] underline-offset-4 hover:underline sm:text-sm"
+                        >
+                          {service.crossRef.label}
+                        </a>
+                      ) : null}
                     </div>
+                    <motion.img
+                      src={service.doodle}
+                      alt={service.doodleAlt}
+                      className="mx-auto hidden h-28 w-full max-w-[180px] object-contain lg:block lg:h-36"
+                      animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
+                      transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.25 }}
+                    />
                   </div>
-                  <motion.img
-                    src={service.doodle}
-                    alt={service.doodleAlt}
-                    className="mx-auto mb-4 h-24 w-full max-w-[140px] object-contain"
-                    animate={reduceMotion ? undefined : { y: [0, -5, 0] }}
-                    transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
-                  />
-                  <h3 className="font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-2xl">{service.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">{service.description}</p>
-                  <ul className="mt-5 space-y-2 border-t border-[hsl(var(--border-light))] pt-4">
-                    {service.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2 text-sm text-on-light-secondary">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </motion.article>
               );
             })}
@@ -532,93 +324,84 @@ const LiaisoningFacilitation = () => {
         </div>
       </section>
 
-      {/* Who This Is For */}
-      <section className="theme-section-soft relative overflow-hidden px-6 py-16 md:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.14] mix-blend-multiply"
-          style={{
-            backgroundImage: "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-[position:10%_80%] opacity-[0.11] mix-blend-multiply"
-          style={{
-            backgroundImage: "url('/bg-blobs/purple-abstract-background-luxury-elements-260nw-2723588695.webp')",
-          }}
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(circle at 78% 22%, hsl(var(--brand-purple-700)/0.09) 0%, transparent 38%), radial-gradient(circle at 18% 78%, hsl(var(--brand-gold-500)/0.07) 0%, transparent 34%)",
-          }}
-          aria-hidden
-        />
-        <div className="glow-orb glow-orb-gold pointer-events-none -left-20 bottom-0 h-[280px] w-[280px] opacity-[0.07]" />
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
-
+      {/* Who this is for */}
+      <section id="who-this-is-for" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
             initial={hidden}
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0)}
-            className="grid items-center gap-10 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)]"
+            className="theme-card-light card-shine rounded-2xl border border-[hsl(var(--border-light))] p-5 sm:rounded-3xl sm:p-8 lg:p-10"
           >
-            <motion.figure
-              initial={hidden}
-              whileInView={show}
-              viewport={{ once: true }}
-              transition={transition(0.08)}
-              className="order-2 lg:order-1"
-            >
-              <motion.img
-                src="/doodles/Address-cuate.svg"
-                alt="Stakeholders for liaison services illustration"
-                className="mx-auto h-44 w-full max-w-[260px] object-contain lg:mx-0"
-                animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </motion.figure>
+            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.18em]">
+              <Users className="h-3.5 w-3.5" aria-hidden />
+              Who This Is For
+            </span>
+            <h2 className="font-serif text-[1.65rem] font-bold text-on-light sm:text-3xl lg:text-4xl">Who This Is For</h2>
+            <ul className="mt-5 space-y-3 sm:mt-6">
+              {whoThisIsFor.map((item, index) => (
+                <motion.li
+                  key={item}
+                  initial={hidden}
+                  whileInView={show}
+                  viewport={{ once: true }}
+                  transition={transition(0.08 + index * 0.04)}
+                  className="flex items-start gap-2.5 rounded-xl border border-[hsl(var(--border-light))] bg-white/80 px-3 py-3 sm:gap-3 sm:px-4"
+                >
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-gold-600))]" aria-hidden />
+                  <span className="text-xs leading-relaxed text-on-light-secondary sm:text-sm">{item}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+      </section>
 
-            <div className="order-1 theme-card-light card-shine rounded-3xl border border-[hsl(var(--border-light))] p-8 sm:p-10 lg:order-2">
-              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
-                <Users className="h-3.5 w-3.5" aria-hidden />
-                Who This Is For
+      {/* Why UVAN */}
+      <section className="theme-section-light relative overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <motion.div
+            initial={hidden}
+            whileInView={show}
+            viewport={{ once: true }}
+            transition={transition(0)}
+            className="overflow-hidden rounded-2xl bg-[hsl(var(--brand-navy-950))] p-5 text-white sm:rounded-3xl sm:p-8 lg:p-10"
+          >
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,hsl(var(--brand-purple-500)/0.35),transparent_45%)]" />
+            <div className="relative z-10">
+              <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/80 sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs">
+                <Handshake className="h-3.5 w-3.5 text-[hsl(var(--brand-gold-500))]" aria-hidden />
+                Why UVAN
               </span>
-              <h2 className="font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-4xl">
-                Built for High-Stakes{" "}
-                <span className="italic text-[hsl(var(--brand-purple-700))]">Communication</span>
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-on-light-secondary sm:text-base">
-                When the outcome depends on how you are understood - not just what you say - UVAN liaison support is
-                built for leaders operating at the intersection of business, government, and culture.
-              </p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {whoThisIsFor.map((item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={hidden}
-                    whileInView={show}
-                    viewport={{ once: true }}
-                    transition={transition(0.1 + index * 0.04)}
-                    className="flex items-start gap-3 rounded-2xl border border-[hsl(var(--border-light))] bg-white/70 p-4"
-                  >
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-gold-600))]" aria-hidden />
-                    <span className="text-sm leading-relaxed text-on-light-secondary">{item}</span>
-                  </motion.div>
+              <h2 className="font-serif text-[1.65rem] font-bold leading-tight sm:text-3xl lg:text-4xl">Why UVAN</h2>
+              <div className="mt-4 space-y-4 text-sm leading-[1.85] text-white/78 sm:mt-6 sm:text-base">
+                {whyUvanParagraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
                 ))}
+              </div>
+              <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
+                <a
+                  href={LIAISONING_EMAIL}
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
+                >
+                  Start a Conversation
+                  <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
+                </a>
+                <Link
+                  to="/ask-soham"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/18 sm:w-auto sm:px-6"
+                >
+                  Ask Soham - 15 Min Free
+                  <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
+                </Link>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <AeoFrequentlyAskedQuestions items={LIAISONING_FAQS} className="theme-section-light px-6 py-16 md:py-20" />
+      <AeoFrequentlyAskedQuestions items={LIAISONING_FAQS} className="theme-section-soft px-5 py-10 sm:px-6 sm:py-16" />
     </PageLayout>
   );
 };

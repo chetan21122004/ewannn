@@ -5,7 +5,6 @@ import {
   Globe2,
   Languages,
   Mic2,
-  Quote,
   ShieldCheck,
   Sparkles,
   Subtitles,
@@ -29,7 +28,7 @@ const services = [
     id: "translation",
     title: "Translation",
     description:
-      "Translation is the conversion of written content from one language to another while preserving meaning, tone, and intent. UVAN provides certified translation for legal, technical, medical, and commercial documents across 125+ languages - by native-language experts with sector-specific knowledge.",
+      "Translation is the conversion of written content from one language to another while preserving meaning, tone, and intent. UVAN provides certified translation for legal, technical, medical, and commercial documents across 125+ languages — by native-language experts with sector-specific knowledge.",
     icon: Languages,
     doodle: "/doodles/Mail-amico.svg",
     doodleAlt: "Document translation illustration",
@@ -38,7 +37,7 @@ const services = [
     id: "interpretation",
     title: "Interpretation",
     description:
-      "Interpretation is the oral conversion of spoken language in real time - simultaneous interpretation delivers this as the speaker speaks; consecutive interpretation follows after each segment. UVAN has 60,000+ hours of interpretation experience across Mandarin, Japanese, ASEAN languages and more, across boardroom negotiations, conferences, exhibitions, and government meetings.",
+      "Interpretation is the oral conversion of spoken language in real time — simultaneous interpretation delivers this as the speaker speaks; consecutive interpretation follows after each segment. UVAN has 60,000+ hours of interpretation experience across Mandarin, Japanese, ASEAN languages and more, across boardroom negotiations, conferences, exhibitions, and government meetings.",
     icon: Globe2,
     doodle: "/doodles/Calling-amico.svg",
     doodleAlt: "Interpretation illustration",
@@ -47,7 +46,7 @@ const services = [
     id: "localization",
     title: "Localization",
     description:
-      "Localization is the adaptation of a product, website, or content for a specific target market - going beyond translation to adjust tone, cultural references, imagery, layout, and user experience. UVAN localizes websites, software, marketing materials, and product content across 125+ languages, with cultural adaptation built in from the start so the result feels native, not translated.",
+      "Localization is the adaptation of a product, website, or content for a specific target market — going beyond translation to adjust tone, cultural references, imagery, layout, and user experience. UVAN localizes websites, software, marketing materials, and product content across 125+ languages, with cultural adaptation built in from the start so the result feels native, not translated.",
     icon: ShieldCheck,
     doodle: "/doodles/Preferences-bro.svg",
     doodleAlt: "Localization illustration",
@@ -56,7 +55,7 @@ const services = [
     id: "transcription",
     title: "Transcription",
     description:
-      "Accurate multilingual transcription for meetings, interviews, and recordings, including timestamped formatting.",
+      "Accurate multilingual transcription for meetings, interviews, recordings and media content. Timestamped and formatted to your requirements.",
     icon: Subtitles,
     doodle: "/doodles/Video tutorial-rafiki (1).svg",
     doodleAlt: "Transcription illustration",
@@ -65,7 +64,7 @@ const services = [
     id: "voiceover",
     title: "Voiceover",
     description:
-      "100+ language voiceover and dubbing for corporate videos, training modules, and media production.",
+      "Multilingual voiceover and dubbing in 100+ languages for corporate videos, training content, explainers and media productions.",
     icon: Mic2,
     doodle: "/doodles/Cloud sync-amico.svg",
     doodleAlt: "Voiceover illustration",
@@ -74,7 +73,7 @@ const services = [
     id: "proofreading",
     title: "Proofreading & QA",
     description:
-      "Final linguistic quality checks with native-language review before content goes live.",
+      "Expert review and quality assurance for translated content. Native eyes on every final deliverable before it goes live.",
     icon: CheckCircle2,
     doodle: "/doodles/Bookmarks-pana.svg",
     doodleAlt: "Proofreading illustration",
@@ -82,25 +81,81 @@ const services = [
 ];
 
 const industryFocus = [
-  { title: "Automotive", description: "Simultaneous interpretation and technical documentation for global OEMs and suppliers." },
-  { title: "Pharmaceuticals", description: "Regulatory document translation and product literature localization for life sciences." },
-  { title: "Aerospace", description: "Specialist technical translation and high-stakes negotiation support for aerospace leaders." },
-  { title: "Manufacturing", description: "Operational setup and multilingual language support for cross-border production hubs." },
-  { title: "Exhibitions", description: "On-site interpretation and booth localization for international trade fairs across India." },
-  { title: "Technology", description: "Software localization and technical UI/UX translation for global tech firms." },
-  { title: "Agriculture", description: "Export documentation and buyer communication support for international agri-trade." },
-  { title: "Legal & Compliance", description: "Certified translation of contracts, agreements, and regulatory filings." },
-  { title: "Education", description: "Curriculum localization and international board materials for educational institutions." },
-  { title: "Media & OTT", description: "Subtitling, dubbing, and content localization for global streaming platforms." },
+  {
+    title: "Automotive",
+    description:
+      "Technical manuals, supplier communications, negotiation interpretation and localization for automotive manufacturers and tier-1 suppliers across India-Japan and India-Korea corridors.",
+  },
+  {
+    title: "Pharmaceuticals",
+    description:
+      "Regulatory documents, clinical trial materials, product literature and labelling localization with full compliance awareness.",
+  },
+  {
+    title: "Aerospace",
+    description:
+      "Technical documentation, standards translation and specialist interpretation for aerospace sector engagements.",
+  },
+  {
+    title: "Exhibitions & Trade Fairs",
+    description:
+      "On-site interpretation, booth materials localization and real-time communication support for international exhibitions across India.",
+  },
+  {
+    title: "Legal & Compliance",
+    description:
+      "Certified translation of contracts, agreements, court documents and regulatory filings. Validated and legally precise.",
+  },
+  {
+    title: "Technology",
+    description:
+      "Software localization, UI/UX translation, technical documentation and multilingual customer support content.",
+  },
+  {
+    title: "Agriculture & Food",
+    description:
+      "Export documentation, buyer communication and product localization for agricultural exporters entering Asian markets.",
+  },
+  {
+    title: "Education",
+    description:
+      "Curriculum translation, IB and international board materials, institutional communication and multilingual e-learning content.",
+  },
+  {
+    title: "Media & OTT",
+    description:
+      "Subtitling, dubbing, voiceover and content localization for film, television and streaming platforms.",
+  },
 ];
 
 const corridors = [
-  { market: "Japan", majorSectors: "Automotive & Electronics" },
-  { market: "China", majorSectors: "Manufacturing & Logistics" },
-  { market: "SE Asia", majorSectors: "Tech Hubs & Agriculture" },
-  { market: "Korea", majorSectors: "Semiconductors & Entertainment" },
-  { market: "Middle East & Africa", majorSectors: "Energy, Oil & Healthcare" },
-  { market: "Latin America", majorSectors: "Mining & Trade Policy" },
+  {
+    market: "Japan",
+    detail:
+      "Mandarin, Cantonese, Japanese - Automotive, Manufacturing, Technology. 10 years of boardroom interpretation experience in this corridor.",
+  },
+  {
+    market: "China",
+    detail:
+      "Mandarin, Cantonese, Taiwanese - Trade, Agriculture, Manufacturing. Formally recognised by the Consulate General of the People's Republic of China.",
+  },
+  {
+    market: "Southeast Asia",
+    detail:
+      "Bahasa Indonesia, Vietnamese, Thai, Tagalog, Malay - all sectors. India's fastest growing trade corridor.",
+  },
+  {
+    market: "Korea",
+    detail: "Korean - Manufacturing, Technology, Beauty & Wellness.",
+  },
+  {
+    market: "Middle East & Africa",
+    detail: "Arabic, Swahili, French - Trade, Infrastructure, Energy.",
+  },
+  {
+    market: "Latin America",
+    detail: "Spanish, Portuguese - Pharmaceuticals, Agriculture, Technology.",
+  },
 ];
 
 const globalTalkiesFeatures = [
@@ -183,7 +238,7 @@ const LanguageLocalization = () => {
               transition={transition(0)}
             >
               <p className="mb-4 inline-flex max-w-full rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85 backdrop-blur-sm sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]">
-                125+ Languages · Every Sector · ISO 9001:2015 Certified
+                125+ Languages. Every Sector. ISO 9001:2015 Certified.
               </p>
               <h1 className="font-serif text-[1.85rem] font-bold leading-[1.08] sm:text-4xl lg:text-5xl xl:text-7xl xl:leading-tight">
                 Language That{" "}
@@ -192,11 +247,7 @@ const LanguageLocalization = () => {
               <p className="language-speakable mt-4 max-w-2xl text-sm leading-relaxed text-white/78 sm:mt-6 sm:text-base lg:text-lg">
                 {SPEAKABLE_LANGUAGE}
               </p>
-              <p className="mt-3 max-w-2xl text-xs leading-relaxed text-white/68 sm:mt-4 sm:text-base">
-                Whether it&apos;s simultaneous interpretation in a high-stakes boardroom or technical translation for
-                a manufacturing manual, we deliver with the accuracy and cultural intelligence your business demands.
-              </p>
-              <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap lg:gap-4">
+              <div className="mt-6 sm:mt-8">
                 <motion.a
                   href="mailto:info@ewan.co.in?subject=Language%20Services%20Quote"
                   whileHover={reduceMotion ? undefined : { scale: 1.03 }}
@@ -206,12 +257,6 @@ const LanguageLocalization = () => {
                   Get a Quote in 24 Hours
                   <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
                 </motion.a>
-                <a
-                  href="#services"
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18 sm:w-auto sm:px-6"
-                >
-                  See Capabilities
-                </a>
               </div>
             </motion.div>
 
@@ -263,8 +308,9 @@ const LanguageLocalization = () => {
                 <span className="italic text-[hsl(var(--brand-purple-700))]">Changes Everything.</span>
               </h2>
               <p className="mt-3 max-w-3xl text-sm leading-relaxed text-on-light-secondary sm:mt-5 sm:text-base">
-                In cross-border execution, language is credibility and risk management, not a generic translation step.
-                Cultural intelligence and accuracy protect outcomes.
+                Language credibility is the core differentiator in cross-border execution. Cultural intelligence and
+                credibility &amp; risk management sit at the centre of how UVAN delivers - not as a generic translation
+                step, but as the layer that protects outcomes when being understood changes everything.
               </p>
             </div>
             <motion.figure
@@ -300,12 +346,9 @@ const LanguageLocalization = () => {
             <div>
               <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em]">
                 <Sparkles className="h-3 w-3 text-[hsl(var(--brand-gold-600))] sm:h-3.5 sm:w-3.5" aria-hidden />
-                Our Capabilities
+                Six Services
               </span>
-              <h2 className="font-serif text-[1.65rem] font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
-                Six Language <span className="italic text-[hsl(var(--brand-purple-700))]">Disciplines</span>
-              </h2>
-              <p className="mt-2 text-xs text-on-light-secondary md:hidden">Tap a discipline to expand details.</p>
+              <p className="mt-2 text-xs text-on-light-secondary md:hidden">Tap a service to expand details.</p>
             </div>
             <motion.img
               src="/doodles/Advantages-bro.svg"
@@ -389,47 +432,8 @@ const LanguageLocalization = () => {
         </div>
       </section>
 
-      {/* Mid CTA */}
-      <section className="relative overflow-hidden px-5 py-8 theme-section-soft sm:px-6 lg:py-12">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.1] mix-blend-multiply lg:opacity-[0.12]"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
-        <div className="container relative z-10 mx-auto max-w-4xl">
-          <motion.div
-            initial={hidden}
-            whileInView={show}
-            viewport={{ once: true }}
-            transition={transition(0)}
-            className="theme-card-light rounded-2xl border border-[hsl(var(--border-light))] p-5 text-center sm:rounded-3xl sm:p-8 lg:p-10"
-          >
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:text-[11px] sm:tracking-[0.22em]">
-              Ready to Execute
-            </p>
-            <h3 className="mt-2 font-serif text-xl font-bold leading-tight text-on-light sm:mt-3 sm:text-3xl lg:text-4xl">
-              Need language support for your next market move?
-            </h3>
-            <motion.a
-              href="mailto:info@ewan.co.in?subject=Language%20Services%20Quote"
-              whileHover={reduceMotion ? undefined : { scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_14px_36px_hsl(var(--brand-gold-500)/0.22)] transition hover:brightness-105 sm:mt-6 sm:w-auto sm:px-6"
-            >
-              Get a Quote in 24 Hours
-              <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
-            </motion.a>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Sector expertise */}
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 py-10 text-white sm:px-6 lg:py-24">
+      <section id="sectors" className="relative scroll-mt-24 overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 py-10 text-white sm:px-6 lg:py-24">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,hsl(var(--brand-purple-500)/0.3),transparent_40%)]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay opacity-[0.06] lg:opacity-[0.08]" />
 
@@ -444,13 +448,6 @@ const LanguageLocalization = () => {
             <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.24em]">
               Sector Expertise
             </span>
-            <h2 className="mt-3 font-serif text-[1.65rem] font-bold leading-tight sm:mt-4 sm:text-4xl lg:text-5xl">
-              Precision at the Core of Every Sector
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-white/72 sm:mt-4 sm:text-base">
-              Domain-first language operations designed for technical sectors where precision, context, and trust
-              directly affect outcomes.
-            </p>
             <p className="mt-2 text-xs text-white/55 md:hidden">Tap a sector to read how we support it.</p>
           </motion.div>
 
@@ -501,25 +498,11 @@ const LanguageLocalization = () => {
               </motion.div>
             ))}
           </div>
-
-          <motion.blockquote
-            initial={hidden}
-            whileInView={show}
-            viewport={{ once: true }}
-            transition={transition(0.1)}
-            className="relative mt-5 overflow-hidden rounded-xl border border-white/10 bg-white/5 p-4 text-center backdrop-blur-sm sm:mt-10 sm:rounded-3xl sm:p-8 lg:p-10"
-          >
-            <Quote className="mx-auto mb-2 h-5 w-5 text-[hsl(var(--brand-gold-500))] sm:mb-4 sm:h-8 sm:w-8" aria-hidden />
-            <p className="mx-auto max-w-3xl font-serif text-sm italic leading-relaxed text-white/85 sm:text-xl lg:text-2xl">
-              Context is everything. We don&apos;t just translate words; we translate the technical intent of an
-              entire industry.
-            </p>
-          </motion.blockquote>
         </div>
       </section>
 
-      {/* Strategic corridors */}
-      <section className="relative overflow-hidden px-5 py-8 theme-section-light sm:px-6 lg:py-20">
+      {/* Language corridors */}
+      <section id="corridors" className="relative scroll-mt-24 overflow-hidden px-5 py-8 theme-section-light sm:px-6 lg:py-20">
         <div className="glow-orb glow-orb-gold pointer-events-none h-[220px] w-[220px] -left-20 bottom-0 opacity-[0.06] lg:h-[360px] lg:w-[360px] lg:-left-32 lg:opacity-[0.08]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.12]" />
 
@@ -532,11 +515,14 @@ const LanguageLocalization = () => {
               transition={transition(0)}
             >
               <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em]">
-                Network
+                Language Corridors
               </span>
-              <h2 className="font-serif text-[1.65rem] font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">Strategic Corridors</h2>
+              <h2 className="font-serif text-[1.65rem] font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
+                The Ones We Know Best
+              </h2>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-on-light-secondary sm:mt-4 sm:text-base">
-                Specialized linguistic infrastructure bridging India with the world&apos;s most influential trade hubs.
+                Our deepest expertise sits at the intersection of Indian business and Asian markets - the corridors
+                where language and culture are the difference between a deal that closes and one that doesn&apos;t.
               </p>
             </motion.div>
             <motion.figure
@@ -566,20 +552,18 @@ const LanguageLocalization = () => {
                 transition={transition(index * 0.06)}
                 className="group flex items-center gap-3 rounded-xl border border-[hsl(var(--border-light))] bg-white/80 px-3.5 py-3 transition hover:border-[hsl(var(--brand-purple-700)/0.3)] hover:bg-white sm:gap-5 sm:rounded-2xl sm:px-6 sm:py-5 lg:flex-row lg:items-center lg:justify-between lg:py-6"
               >
-                <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-5 lg:gap-8">
-                  <span className="shrink-0 font-serif text-lg font-bold text-[hsl(var(--brand-purple-700)/0.35)] transition group-hover:text-[hsl(var(--brand-purple-700))] sm:text-2xl">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div className="min-w-0">
+                <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                  <div className="flex min-w-0 items-center gap-3 sm:gap-5 lg:gap-8">
+                    <span className="shrink-0 font-serif text-lg font-bold text-[hsl(var(--brand-purple-700)/0.35)] transition group-hover:text-[hsl(var(--brand-purple-700))] sm:text-2xl">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                     <h3 className="font-serif text-sm font-bold leading-snug text-on-light sm:text-lg lg:text-2xl">
                       India <span className="mx-1 text-[hsl(var(--brand-purple-700))] sm:mx-2">↔</span> {corridor.market}
                     </h3>
-                    <p className="mt-0.5 text-[10px] font-medium text-on-light-secondary sm:hidden">{corridor.majorSectors}</p>
                   </div>
-                </div>
-                <div className="hidden shrink-0 sm:block sm:text-right">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-on-light-muted">Major Sectors</p>
-                  <p className="mt-1 text-sm font-medium text-on-light-secondary">{corridor.majorSectors}</p>
+                  <p className="min-w-0 text-xs leading-relaxed text-on-light-secondary sm:max-w-xl sm:text-sm lg:text-right">
+                    {corridor.detail}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -685,9 +669,6 @@ const LanguageLocalization = () => {
             <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] sm:text-[11px] sm:tracking-[0.24em]">
               Next Step
             </p>
-            <h3 className="mt-2 font-serif text-xl font-bold sm:mt-3 sm:text-3xl lg:text-4xl">
-              Move Faster Across Languages and Markets
-            </h3>
             <div className="mt-5 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
               <motion.a
                 href="mailto:info@ewan.co.in?subject=Language%20Services%20Quote"

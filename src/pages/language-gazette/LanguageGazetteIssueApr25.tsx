@@ -40,8 +40,15 @@ const LanguageGazetteIssueApr25 = () => {
               <h1 className="mt-4 font-serif text-4xl font-extrabold leading-tight md:text-6xl">{issue.label} Issue</h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">{issue.description}</p>
               <p className="mt-4 text-sm text-white/60">
-                Published {issueDate} · {issue.articles.length} articles
+                Published {issueDate} · {issue.articles.length} articles · also available as a digital issue
               </p>
+              <a
+                href="#issue-articles"
+                className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))]"
+              >
+                Read the full issue online
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </a>
             </div>
             <div className="lg:col-span-5">
               <div className="gazette-cover-shadow overflow-hidden rounded-[1.5rem] border border-white/15">
@@ -59,7 +66,7 @@ const LanguageGazetteIssueApr25 = () => {
             Select an article below to read the full text on the web.
           </p>
 
-          <ol className="mt-12 space-y-4 md:hidden">
+          <ol id="issue-articles" className="mt-12 space-y-4 md:hidden">
             {issue.articles.map((article, index) => (
               <li key={article.slug}>
                 <Link

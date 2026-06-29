@@ -88,6 +88,10 @@ const jaCommon = {
     contact: "UVANチームの皆様、越境案件についてご連絡したいです。",
     askSoham: "Soham氏と市場参入または言語戦略について短時間お話ししたいです。",
   },
+  askSohamFloating: {
+    ariaLabel: "Ask Soham - 15分無料相談を予約",
+    tooltip: "Ask Soham - 15分無料",
+  },
   seo: {
     marketEntry: {
       title: "インド市場参入パートナー | 越境展開 | UVAN",
