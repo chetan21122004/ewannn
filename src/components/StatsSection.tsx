@@ -43,14 +43,14 @@ const StatsSection = () => {
   });
 
   return (
-    <section className="py-16 lg:py-20 relative overflow-hidden theme-section-soft stitch-line stitch-line-bottom">
+    <section className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-8 theme-section-soft stitch-line stitch-line-bottom lg:py-16">
       <div className="absolute inset-0 theme-grid-overlay-light opacity-20 pointer-events-none" />
       <div className="glow-orb glow-orb-purple w-[360px] h-[360px] -top-40 left-1/4 opacity-8" />
       <div className="glow-orb glow-orb-gold w-[320px] h-[320px] -bottom-24 right-1/4 opacity-8" />
 
-      <div className="container mx-auto px-6 relative z-10" ref={ref}>
+      <div className="container relative z-10 mx-auto px-5 sm:px-6" ref={ref}>
         <motion.p
-          className="text-center text-xs uppercase tracking-[0.3em] text-[hsl(var(--brand-purple-700)/0.9)] mb-10 font-semibold"
+          className="mb-6 text-center text-[10px] font-semibold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700)/0.9)] sm:mb-8 sm:text-xs sm:tracking-[0.3em] lg:mb-10"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -58,7 +58,7 @@ const StatsSection = () => {
           {t("home.stats.badge")}
         </motion.p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-5 lg:gap-4">
           {stats.map((stat, i) => (
             <StatItem key={stat.label} stat={stat} isVisible={isVisible} index={i} />
           ))}
@@ -84,7 +84,7 @@ function StatItem({
 
   return (
     <motion.div
-      className="text-center relative group rounded-2xl px-3 py-5 theme-card-light"
+      className="group relative rounded-xl px-2 py-4 text-center theme-card-light sm:rounded-2xl sm:px-3 sm:py-5"
       initial={{ opacity: 0, y: 40, scale: 0.8 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
@@ -98,13 +98,13 @@ function StatItem({
         <Icon className={`w-5 h-5 ${statAccent[index % statAccent.length]}`} />
       </motion.div>
       <motion.div
-        className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[hsl(var(--text-on-light))] mb-2"
+        className="mb-1.5 font-serif text-2xl font-bold text-[hsl(var(--text-on-light))] sm:mb-2 sm:text-4xl lg:text-5xl"
         animate={isVisible ? { scale: [1, 1.08, 1] } : {}}
         transition={{ delay: index * 0.1 + 0.5, duration: 0.5 }}
       >
         {displayValue ?? `${count.toLocaleString()}${suffix}`}
       </motion.div>
-      <p className="text-[hsl(var(--text-on-light-muted))] text-xs sm:text-sm font-medium tracking-wide uppercase">{stat.label}</p>
+      <p className="text-[9px] font-medium uppercase leading-snug tracking-[0.08em] text-[hsl(var(--text-on-light-muted))] sm:text-xs sm:tracking-wide">{stat.label}</p>
       <motion.div
         className="mx-auto mt-3 h-[2px] rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))]"
         initial={{ width: 0 }}

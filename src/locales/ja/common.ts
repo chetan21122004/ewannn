@@ -78,6 +78,16 @@ const jaCommon = {
     terms: "利用規約",
     cookies: "Cookies",
   },
+  whatsapp: {
+    ariaLabel: "WhatsAppでUVANに連絡",
+    tooltip: "WhatsAppで相談",
+    default:
+      "UVANチームの皆様、越境市場参入と言語サービスについてお問い合わせしたいです。次のステップをご教示ください。",
+    marketEntry: "UVANチームの皆様、市場参入支援について相談したいです。短時間のお話は可能でしょうか。",
+    language: "UVANチームの皆様、翻訳・通訳・ローカリゼーションについてお問い合わせしたいです。",
+    contact: "UVANチームの皆様、越境案件についてご連絡したいです。",
+    askSoham: "Soham氏と市場参入または言語戦略について短時間お話ししたいです。",
+  },
   seo: {
     marketEntry: {
       title: "インド市場参入パートナー | 越境展開 | UVAN",

@@ -28,7 +28,7 @@
 
 - **Metadata**: Meta titles and descriptions aligned with README SEO strategy for all key pages.
 - **Navigation**: Clean, route-based navigation (no legacy hash-links for main pages).
-- **Responsive Design**: All sections verified for mobile and desktop performance.
+- ** Responsive Design**: All sections verified for mobile and desktop performance.
 
 ---
 **Alignment Confirmed.** The website is now a definitive digital representation of the Ewan Business Solutions master data.

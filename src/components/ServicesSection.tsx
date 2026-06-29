@@ -88,6 +88,9 @@ const ServicesSection = () => {
             {t("home.services.titlePrefix")}{" "}
             <span className="italic text-[hsl(var(--brand-purple-700))]">{t("home.services.titleHighlight")}</span>
           </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-on-light-muted sm:mt-4 sm:text-base">
+            {t("home.services.subtitle")}
+          </p>
         </motion.div>
 
         <div className="mx-auto grid max-w-6xl items-stretch gap-4 md:gap-6 lg:grid-cols-2 lg:gap-7">

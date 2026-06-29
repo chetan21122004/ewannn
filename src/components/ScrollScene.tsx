@@ -5,9 +5,11 @@ type ScrollSceneProps = {
   children: ReactNode;
   index: number;
   intensity?: number;
+  /** Skip scroll transforms — required for nested `position: sticky` layouts */
+  preserveLayout?: boolean;
 };
 
-const ScrollScene = ({ children, index, intensity = 1 }: ScrollSceneProps) => {
+const ScrollScene = ({ children, index, intensity = 1, preserveLayout = false }: ScrollSceneProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -20,6 +22,21 @@ const ScrollScene = ({ children, index, intensity = 1 }: ScrollSceneProps) => {
   const opacity = useTransform(scrollYProgress, [0, 0.14, 0.88, 1], [0.84, 1, 1, 0.94]);
   const haloY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [36 * intensity, -46 * intensity]);
   const haloX = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [index % 2 === 0 ? -18 : 18, index % 2 === 0 ? 18 : -18]);
+
+  if (preserveLayout) {
+    return (
+      <div ref={ref} className="homepage-scroll-scene relative isolate overflow-visible">
+        <motion.div
+          aria-hidden="true"
+          className={`pointer-events-none absolute top-1/2 z-0 hidden h-56 w-56 rounded-full blur-3xl lg:block ${
+            index % 2 === 0 ? "left-[-7rem] bg-[hsl(var(--brand-purple-500)/0.1)]" : "right-[-7rem] bg-[hsl(var(--brand-gold-500)/0.11)]"
+          }`}
+          style={{ x: haloX, y: haloY }}
+        />
+        <div className="relative z-10">{children}</div>
+      </div>
+    );
+  }
 
   return (
     <div ref={ref} className="homepage-scroll-scene relative isolate overflow-hidden">

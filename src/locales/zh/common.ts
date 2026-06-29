@@ -78,6 +78,15 @@ const zhCommon = {
     terms: "条款",
     cookies: "Cookies",
   },
+  whatsapp: {
+    ariaLabel: "通过 WhatsApp 联系 UVAN",
+    tooltip: "WhatsApp 咨询",
+    default: "您好 UVAN 团队，我想咨询跨境市场进入与语言服务，请告知最合适的下一步。",
+    marketEntry: "您好 UVAN 团队，我想讨论市场进入支持，能否安排简短沟通？",
+    language: "您好 UVAN 团队，我想咨询翻译、口译或本地化服务。",
+    contact: "您好 UVAN 团队，我想就跨境项目与贵司取得联系。",
+    askSoham: "您好，我想预约与 Soham 就市场进入或语言战略进行简短交流。",
+  },
   seo: {
     marketEntry: {
       title: "印度市场进入合作伙伴 | 跨境扩张 | UVAN",

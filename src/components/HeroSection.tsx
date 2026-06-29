@@ -138,23 +138,25 @@ const HeroSection = () => {
               variants={fadeUpItem}
               className="flex flex-col gap-3 max-lg:w-full lg:flex-row lg:flex-wrap lg:items-center lg:gap-4"
             >
-              <motion.a
-                href="#services"
-                whileHover={{ scale: 1.05, boxShadow: "0 0 20px hsl(var(--brand-purple-500) / 0.26)" }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--brand-purple-500)/0.35)] bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 card-shine lg:w-auto lg:px-7 lg:py-4"
-              >
-                <Sparkles className="h-4 w-4" aria-hidden />
-                {t("home.hero.ctaMarketEntry")}
-              </motion.a>
-              <motion.a
-                href="#language"
-                whileHover={{ scale: 1.05, borderColor: "hsl(var(--brand-purple-500) / 0.6)" }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-[hsl(var(--border-light-strong))] px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-on-light transition-all duration-300 hover:bg-[hsl(var(--surface-light-200)/0.65)] lg:w-auto lg:px-7 lg:py-4"
-              >
-                {t("home.hero.ctaLanguageQuote")}
-              </motion.a>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} className="w-full lg:w-auto">
+                <Link
+                  to="/market-entry"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-[hsl(var(--brand-navy-950))] shadow-[0_8px_24px_-10px_hsl(var(--brand-gold-500)/0.65)] transition-all duration-300 hover:brightness-105 lg:w-auto lg:px-7 lg:py-4"
+                >
+                  <Sparkles className="h-4 w-4" aria-hidden />
+                  {t("home.hero.ctaMarketEntry")}
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} className="w-full lg:w-auto">
+                <Link
+                  to="/language-localization"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border-2 border-[hsl(var(--border-light-strong))] bg-transparent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-on-light transition-all duration-300 hover:border-[hsl(var(--brand-purple-500)/0.45)] hover:bg-[hsl(var(--surface-light-200)/0.65)] lg:w-auto lg:px-7 lg:py-4"
+                >
+                  {t("home.hero.ctaLanguageQuote")}
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
+              </motion.div>
               <Link
                 to="/ask-soham"
                 className="inline-flex min-h-11 w-full items-center justify-center gap-2 py-1 text-sm font-medium uppercase tracking-wider text-[hsl(var(--brand-purple-700))] transition-transform group hover:translate-x-0.5 lg:w-auto lg:justify-start lg:py-0"

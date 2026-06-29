@@ -75,6 +75,18 @@ const enCommon = {
     caseStudies: "Case Studies",
     sano: "SANO",
   },
+  whatsapp: {
+    ariaLabel: "Chat with UVAN on WhatsApp",
+    tooltip: "WhatsApp UVAN",
+    default:
+      "Hello UVAN team, I would like to enquire about your cross-border market entry and language services. Please advise on the best next step.",
+    marketEntry:
+      "Hello UVAN team, I would like to discuss market entry support for our business. Could we schedule a brief conversation?",
+    language:
+      "Hello UVAN team, I would like to enquire about translation, interpretation, or localization services.",
+    contact: "Hello UVAN team, I would like to get in touch regarding a cross-border mandate.",
+    askSoham: "Hello, I would like to book a conversation with Soham regarding market entry or language strategy.",
+  },
   seo: {
     marketEntry: {
       title: "India Market Entry Partner | Cross-Border Expansion | UVAN",
@@ -173,6 +185,8 @@ const enCommon = {
       badge: "What We Do",
       titlePrefix: "Two Capabilities.",
       titleHighlight: "One Partner.",
+      subtitle:
+        "Most firms do one or the other. We do both - and that combination is exactly what cross-border expansion requires.",
       learnMore: "Learn More",
       blocks: [
         {
@@ -307,7 +321,7 @@ const enCommon = {
       titlePrefix: "Recognised by the",
       titleHighlight: "Consulate General of the People's Republic of China",
       subtitle:
-        "In a formal letter of recognition, the Consulate General acknowledged UVAN's contribution to strengthening India-China agricultural and trade relations. This is the kind of institutional trust that takes years to build and cannot be replicated overnight.",
+        "In a formal letter of recognition, the Consulate General acknowledged UVAN's contribution to strengthening India-China agricultural and trade relations - noting that over 1,200 farmers and 800 hectares of farmland would benefit from the work. This is the kind of institutional trust that takes years to build and cannot be replicated overnight.",
       letters: [
         {
           src: "/Ewan-Consulate-experience-letter-page-001-min.jpg",
