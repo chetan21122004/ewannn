@@ -126,9 +126,9 @@ const enCommon = {
         "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India",
     },
     askSoham: {
-      title: "Ask Soham - Free 15-Min Call | UVAN",
+      title: "Ask Soham — Free 15-Min Call | UVAN",
       description:
-        "Book a free 15-minute call with Soham Kakade - founder of UVAN. Market entry, language strategy, or career in languages. Honest, focused, no pitch.",
+        "Book a free 15-minute call with Soham Kakade — founder of UVAN. Market entry, language strategy, or career in languages. Honest, focused, no pitch.",
     },
     marketEntryAudit: {
       title: "Global Market Entry Audit | UVAN",
