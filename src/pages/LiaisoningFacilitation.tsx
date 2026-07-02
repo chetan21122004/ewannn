@@ -176,17 +176,25 @@ const LiaisoningFacilitation = () => {
                 interface, and operational connections that determine whether agreements get made or opportunities get
                 missed.
               </p>
-              <div className="mt-6 sm:mt-8">
+              <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
                 <motion.a
                   href={LIAISONING_EMAIL}
                   whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
                   whileTap={{ scale: 0.97 }}
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] shadow-[0_14px_36px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105 sm:w-auto sm:px-6"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] shadow-[0_14px_36px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105 sm:w-auto sm:px-6"
                 >
                   Discuss Your Liaisoning Needs
                   <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
                 </motion.a>
-                <p className="mt-2 text-center text-xs text-white/55 sm:text-left">info@ewan.co.in</p>
+                <motion.div whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
+                  <Link
+                    to="/ask-soham"
+                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/12 sm:w-auto sm:px-6"
+                  >
+                    Ask Soham - 15 Min Free
+                    <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
+                  </Link>
+                </motion.div>
               </div>
             </motion.div>
 

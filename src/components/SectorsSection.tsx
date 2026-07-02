@@ -75,13 +75,13 @@ const SectorsSection = () => {
       />
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
-          className="text-center max-w-3xl mx-auto mb-8"
+          className="mx-auto mb-8 max-w-5xl text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="inline-flex items-center gap-3 mb-4">
+          <div className="mb-4 inline-flex items-center gap-3">
             <span className="h-px w-8 bg-[hsl(var(--brand-purple-700)/0.5)]" aria-hidden />
             <span className="font-mono text-[10px] font-bold uppercase tracking-[0.45em] text-[hsl(var(--brand-purple-700)/0.78)]">
               {t("home.sectors.badge")}
@@ -89,9 +89,9 @@ const SectorsSection = () => {
             <span className="h-px w-8 bg-[hsl(var(--brand-purple-700)/0.5)]" aria-hidden />
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light leading-[1.08] text-balance">
+          <h2 className="font-serif text-3xl font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
             {t("home.sectors.titlePrefix")}{" "}
-            <span className="text-[hsl(var(--brand-purple-700))] italic">
+            <span className="whitespace-nowrap italic text-[hsl(var(--brand-purple-700))]">
               {t("home.sectors.titleHighlight")} {t("home.sectors.titleHighlightLine2")}
             </span>
           </h2>

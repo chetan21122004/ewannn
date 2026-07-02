@@ -449,10 +449,13 @@ const AboutUs = () => {
             transition={springReveal}
             className="rounded-[1.75rem] border border-[hsl(var(--brand-purple-700)/0.14)] bg-white/82 p-6 text-sm leading-[1.85] text-on-light-secondary shadow-[0_18px_46px_rgba(26,22,51,0.06)] backdrop-blur sm:p-8"
           >
-            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-purple-700))]">
+            <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
+              About the Firm
+            </span>
+            <h2 className="font-serif text-3xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] sm:text-4xl">
               What is UVAN?
-            </p>
-            {ENTITY_PARAGRAPH_A}
+            </h2>
+            <p className="mt-5">{ENTITY_PARAGRAPH_A}</p>
           </motion.aside>
         </div>
       </section>
@@ -744,11 +747,14 @@ const AboutUs = () => {
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
               <Award className="h-3.5 w-3.5" aria-hidden />
-              Recognised by Governments and Institutions
+              Institutional Recognition
             </span>
             <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] sm:text-4xl lg:text-5xl">
-              Recognised by the Consulate General of the People&apos;s Republic of China
+              Recognised by Governments and Institutions
             </h2>
+            <h3 className="mt-5 font-serif text-xl font-bold leading-snug text-[hsl(var(--brand-purple-700))] sm:text-2xl lg:text-3xl">
+              Recognised by the Consulate General of the People&apos;s Republic of China
+            </h3>
             <p className="mt-4 text-base leading-relaxed text-on-light-secondary">
               In a formal letter of recognition, the Consulate General acknowledged UVAN&apos;s contribution to
               strengthening India-China agricultural and trade relations - noting that over 1,200 farmers and 800
@@ -802,9 +808,9 @@ const AboutUs = () => {
                     <span className="inline-flex rounded-full bg-[hsl(var(--brand-gold-500)/0.14)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-600))]">
                       {item.badge}
                     </span>
-                    <h3 className="mt-4 font-serif text-2xl font-bold leading-snug text-[hsl(var(--brand-navy-950))] sm:text-3xl">
+                    <h4 className="mt-4 font-serif text-2xl font-bold leading-snug text-[hsl(var(--brand-navy-950))] sm:text-3xl">
                       {item.title}
-                    </h3>
+                    </h4>
                     <p className="mt-4 text-sm leading-relaxed text-on-light-secondary sm:text-base">{item.desc}</p>
                   </div>
                   <div className="grid gap-4 p-6 sm:grid-cols-2 lg:col-span-7 lg:p-8">
@@ -855,9 +861,9 @@ const AboutUs = () => {
                     <span className="inline-flex w-fit rounded-full bg-[hsl(var(--brand-purple-700)/0.1)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
                       {item.badge}
                     </span>
-                    <h3 className="mt-4 font-serif text-xl font-bold leading-snug text-[hsl(var(--brand-navy-950))]">
+                    <h4 className="mt-4 font-serif text-xl font-bold leading-snug text-[hsl(var(--brand-navy-950))]">
                       {item.title}
-                    </h3>
+                    </h4>
                     <p className="mt-3 flex-grow text-sm leading-relaxed text-on-light-secondary">{item.desc}</p>
                     <div className="mt-5 flex items-center gap-2 border-t border-[hsl(var(--border-light))] pt-4 text-[11px] font-semibold text-on-light-muted">
                       <CheckCircle2 className="h-4 w-4 text-[hsl(var(--brand-purple-700))]" aria-hidden />

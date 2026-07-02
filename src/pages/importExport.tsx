@@ -191,22 +191,22 @@ const ImportExport = () => {
               <div className="mt-6 flex flex-col gap-2.5 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4">
                 <motion.a
                   href="mailto:info@ewan.co.in?subject=Trade%20Requirements"
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
                   whileHover={reduceMotion ? undefined : { scale: 1.03 }}
                   whileTap={reduceMotion ? undefined : { scale: 0.97 }}
                 >
                   Discuss Your Trade Requirements
                   <ArrowRight className="h-4 w-4 shrink-0" />
                 </motion.a>
-                <motion.a
-                  href="mailto:info@ewan.co.in?subject=Trade%20Requirements"
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/12 sm:w-auto sm:px-6"
-                  whileHover={reduceMotion ? undefined : { scale: 1.03 }}
-                  whileTap={reduceMotion ? undefined : { scale: 0.97 }}
-                >
-                  info@ewan.co.in
-                  <ArrowRight className="h-4 w-4 shrink-0" />
-                </motion.a>
+                <motion.div whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={reduceMotion ? undefined : { scale: 0.97 }} className="w-full sm:w-auto">
+                  <Link
+                    to="/ask-soham"
+                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/12 sm:w-auto sm:px-6"
+                  >
+                    Ask Soham - 15 Min Free
+                    <ArrowRight className="h-4 w-4 shrink-0" />
+                  </Link>
+                </motion.div>
               </div>
             </motion.div>
 
@@ -492,6 +492,7 @@ const ImportExport = () => {
             <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.2em]">
               Who This Is For
             </p>
+            <h2 className="mt-3 font-serif text-2xl font-bold text-on-light sm:text-3xl lg:text-4xl">Who This Is For</h2>
 
             <div className="mt-5 grid gap-3 sm:mt-6 sm:grid-cols-2 sm:gap-4">
               {whoThisIsFor.map((item, index) => (

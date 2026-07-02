@@ -191,10 +191,6 @@ const enCommon = {
       ctaMarketEntry: "Explore Market Entry",
       ctaLanguageQuote: "Get a Language Quote",
       ctaAskSoham: "Ask Soham - 15 Min Free",
-      floatingCard1Badge: "Cross-Border Expertise",
-      floatingCard1Title: "10+ Sectors · 125+ Languages",
-      floatingCard2Label: "Languages",
-      floatingCard2Value: "125+",
     },
     aboutIntro: {
       badge: "About UVAN",

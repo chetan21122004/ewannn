@@ -13,6 +13,7 @@ import {
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
+import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { MARKET_ENTRY_FAQS, SPEAKABLE_MARKET_ENTRY } from "@/data/aeoContent";
 import {
@@ -73,11 +74,13 @@ const workstreams = [
     title: "Executive Liaison & Negotiation Support",
     description: "Native-language liaison for government relations and senior business negotiations",
     icon: Users,
+    href: "/liaisoning-facilitation/",
   },
   {
     title: "Local Procurement & Supply Chain",
     description: "Vetted vendor identification, physical site verification, supply chain establishment",
     icon: Package,
+    href: "/import-export/",
   },
   {
     title: "Payroll & HR Facilitation",
@@ -237,6 +240,8 @@ const MarketEntry = () => {
         </div>
       </section>
 
+      <SectionDivider variant="wave" fromDark />
+
       <section id="who-we-serve" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
         <div className="glow-orb glow-orb-purple pointer-events-none h-[240px] w-[240px] -left-20 top-0 opacity-[0.08] lg:h-[420px] lg:w-[420px] lg:-left-32 lg:opacity-[0.1]" />
         <div className="glow-orb glow-orb-gold pointer-events-none h-[200px] w-[200px] -right-16 bottom-0 opacity-[0.06] lg:h-[360px] lg:w-[360px] lg:-right-24 lg:opacity-[0.08]" />
@@ -318,93 +323,80 @@ const MarketEntry = () => {
         </div>
       </section>
 
+      <SectionDivider variant="slant" />
+
       <section id="what-we-deliver" className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
 
         <div className="container relative z-10 mx-auto">
           <motion.div
-            className="mb-6 grid items-center gap-5 lg:mb-12 lg:grid-cols-[minmax(0,1fr)_minmax(220px,280px)] lg:gap-8"
+            className="mb-8 lg:mb-12"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="max-w-3xl">
-              <h2 className="font-serif text-[1.65rem] font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
-                What We Deliver - <span className="text-[hsl(var(--brand-purple-700))] italic">7 Workstreams</span>
-              </h2>
-            </div>
-            <motion.figure
-              className="mx-auto hidden w-full max-w-[260px] lg:block lg:max-w-none lg:justify-self-end"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.65, delay: 0.1 }}
-            >
-              <motion.img
-                src="/doodles/Business Plan-pana.svg"
-                alt="Market entry workstreams illustration"
-                className="h-40 w-full object-contain sm:h-44 lg:h-48"
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </motion.figure>
+            <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em]">
+              What We Deliver
+            </span>
+            <h2 className="font-serif text-3xl font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
+              <span className="text-[hsl(var(--brand-purple-700))] italic">7 Workstreams</span>{" "}
+              Under One Partner
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-on-light-secondary sm:text-base">
+              Every market entry mandate runs across these operational workstreams - language and cultural intelligence
+              threaded through each one.
+            </p>
           </motion.div>
 
-          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
             {workstreams.map((item, i) => {
               const Icon = item.icon;
+              const cardInner = (
+                <div className="theme-card-light card-shine flex h-full flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] border-l-4 border-l-[hsl(var(--brand-gold-500))] p-5 sm:rounded-3xl sm:p-6">
+                  <div className="mb-4 flex items-start justify-between gap-3">
+                    <span className="inline-flex h-8 min-w-[2rem] items-center justify-center rounded-lg bg-[hsl(var(--brand-navy-950))] px-2 font-mono text-xs font-bold text-[hsl(var(--brand-gold-500))]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
+                      <Icon className="h-4 w-4" aria-hidden />
+                    </span>
+                  </div>
+                  <h3 className="font-serif text-xl font-bold leading-snug text-on-light sm:text-2xl">{item.title}</h3>
+                  <p className="mt-3 flex-grow text-sm leading-relaxed text-on-light-secondary">{item.description}</p>
+                  {"href" in item && item.href ? (
+                    <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[hsl(var(--brand-purple-700))] group-hover:underline">
+                      Explore this service →
+                    </p>
+                  ) : null}
+                </div>
+              );
+
               return (
                 <motion.article
                   key={item.title}
-                  className={`group theme-card-light card-shine relative overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-4 sm:p-5 lg:p-6 ${
-                    i === 6 ? "xl:col-span-3 xl:grid xl:grid-cols-[minmax(0,1fr)_220px] xl:items-center xl:gap-8" : ""
-                  }`}
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.55, delay: (i % 3) * 0.08 }}
                   whileHover={{ y: -4 }}
+                  className="h-full"
                 >
-                  <div className={i === 6 ? "min-w-0" : undefined}>
-                    <div className="mb-3 flex items-start justify-between gap-3 sm:mb-4">
-                      <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700)/0.75)] sm:text-[11px] sm:tracking-[0.18em]">
-                        Workstream {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <motion.span
-                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm sm:h-10 sm:w-10"
-                        whileHover={{ rotate: 8, scale: 1.05 }}
-                      >
-                        <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                      </motion.span>
-                    </div>
-                    <h3 className="font-serif text-base font-bold text-on-light sm:text-lg lg:text-xl">{item.title}</h3>
-                    <p className="mt-1.5 text-xs leading-relaxed text-on-light-secondary sm:mt-2 sm:text-sm">{item.description}</p>
-                  </div>
-
-                  {i === 6 ? (
-                    <motion.figure
-                      className="mt-4 xl:mt-0"
-                      initial={{ opacity: 0, scale: 0.94 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      <motion.img
-                        src="/doodles/Group discussion-bro.svg"
-                        alt="Language and cultural intelligence illustration"
-                        className="mx-auto h-24 w-full max-w-[180px] object-contain sm:h-32 sm:max-w-[220px] xl:mx-0 xl:h-36"
-                        animate={{ y: [0, -6, 0] }}
-                        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                    </motion.figure>
-                  ) : null}
+                  {"href" in item && item.href ? (
+                    <Link to={item.href} className="group block h-full">
+                      {cardInner}
+                    </Link>
+                  ) : (
+                    <div className="group h-full">{cardInner}</div>
+                  )}
                 </motion.article>
               );
             })}
           </div>
         </div>
       </section>
+
+      <SectionDivider variant="slant" flip />
 
       <section id="proof" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
         <div className="glow-orb glow-orb-purple pointer-events-none h-[240px] w-[240px] -right-16 top-8 opacity-[0.07] lg:h-[380px] lg:w-[380px] lg:-right-24 lg:opacity-[0.09]" />
@@ -536,24 +528,33 @@ const MarketEntry = () => {
         </motion.div>
       </section>
 
-      <section id="how-it-works" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
-        <div className="glow-orb glow-orb-gold pointer-events-none h-[200px] w-[200px] -left-16 bottom-0 opacity-[0.06] lg:h-[360px] lg:w-[360px] lg:-left-24 lg:opacity-[0.08]" />
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
+      <SectionDivider variant="wave" />
+
+      <section id="how-it-works" className="relative scroll-mt-24 overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 py-10 text-white sm:px-6 lg:py-20">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-25 mix-blend-color-dodge"
+          style={{
+            backgroundImage: "url('/bg-blobs/abstract-background-purple-dark-blue-gradient-wave-modern-background-combination-curve-free-vector.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          aria-hidden
+        />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,hsl(var(--brand-purple-500)/0.28),transparent_42%)]" aria-hidden />
 
         <div className="container relative z-10 mx-auto">
           <motion.div
-            className="theme-card-light card-shine overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-4 md:rounded-3xl md:p-6 lg:p-10"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="mb-5 md:mb-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(220px,260px)] lg:items-center lg:gap-8">
+            <div className="mb-8 lg:mb-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(220px,260px)] lg:items-center lg:gap-8">
               <div>
-                <span className="mb-2 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] md:mb-4 md:px-4 md:py-1.5 md:text-xs md:tracking-[0.18em]">
+                <span className="mb-3 inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em]">
                   Process
                 </span>
-                <h2 className="font-serif text-[1.5rem] font-bold leading-tight text-on-light md:text-4xl lg:text-5xl">How It Works</h2>
+                <h2 className="font-serif text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">How It Works</h2>
               </div>
               <motion.figure
                 className="mx-auto hidden w-full max-w-[240px] lg:block lg:max-w-none lg:justify-self-end"
@@ -587,14 +588,14 @@ const MarketEntry = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.45, delay: index * 0.08 }}
                   >
-                    <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-purple-700))] text-xs font-bold text-white ring-4 ring-[hsl(var(--surface-light-50))]">
+                    <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-gold-500))] text-xs font-bold text-[hsl(var(--brand-navy-950))] ring-4 ring-[hsl(var(--brand-navy-950))]">
                       {index + 1}
                     </span>
-                    <div className="min-w-0 flex-1 rounded-xl border border-[hsl(var(--border-light))] bg-white px-3.5 py-3 shadow-sm">
-                      <h3 className="mt-1 text-sm font-semibold leading-snug text-on-light">
+                    <div className="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.06] px-3.5 py-3">
+                      <h3 className="mt-1 font-serif text-sm font-bold leading-snug text-white sm:text-base">
                         Step {index + 1} - {step.title}
                       </h3>
-                      <p className="mt-1.5 text-xs leading-relaxed text-on-light-secondary">{step.detail}</p>
+                      <p className="mt-1.5 text-xs leading-relaxed text-white/75">{step.detail}</p>
                     </div>
                   </motion.li>
                 ))}
@@ -610,7 +611,7 @@ const MarketEntry = () => {
               {howItWorks.map((step, index) => (
                 <motion.article
                   key={step.title}
-                  className="relative rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-4 sm:p-5 lg:p-6"
+                  className="relative rounded-2xl border border-white/10 bg-white/[0.06] p-4 sm:p-5 lg:p-6"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -618,10 +619,10 @@ const MarketEntry = () => {
                   whileHover={{ y: -4 }}
                 >
                   <div className="mb-3 flex items-center justify-between gap-3 sm:mb-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.16em]">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-gold-500))] sm:text-xs sm:tracking-[0.16em]">
                       Step {index + 1}
                     </p>
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[hsl(var(--brand-purple-700))] text-[11px] font-bold text-white sm:h-8 sm:w-8 sm:text-xs">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[hsl(var(--brand-gold-500))] text-[11px] font-bold text-[hsl(var(--brand-navy-950))] sm:h-8 sm:w-8 sm:text-xs">
                       {index + 1}
                     </span>
                   </div>
@@ -642,33 +643,61 @@ const MarketEntry = () => {
                     />
                   </motion.figure>
 
-                  <h3 className="text-sm font-semibold text-on-light sm:text-base lg:text-lg">{step.title}</h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-on-light-secondary sm:mt-2 sm:text-sm">{step.detail}</p>
+                  <h3 className="font-serif text-sm font-bold text-white sm:text-base lg:text-lg">{step.title}</h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-white/75 sm:mt-2 sm:text-sm">{step.detail}</p>
                 </motion.article>
               ))}
             </div>
 
-            <div className="mt-5 flex flex-col gap-2.5 border-t border-[hsl(var(--border-light))] pt-5 md:mt-8 md:flex-row md:flex-wrap md:gap-4 md:pt-8">
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full md:w-auto">
+            <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-8 sm:flex-row sm:flex-wrap">
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
                 <Link
                   to="/ask-soham"
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 md:w-auto md:px-6"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto"
                 >
                   Book Your India Entry Readiness Call
                   <ArrowRight className="h-4 w-4 shrink-0" />
                 </Link>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full md:w-auto">
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
                 <Link
-                  to="/ask-soham"
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] px-5 py-3 text-sm font-semibold text-on-light transition hover:border-[hsl(var(--brand-purple-500)/0.6)] md:w-auto md:px-6"
+                  to="/market-entry-audit"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto"
                 >
-                  Ask Soham - 15 Min Free
+                  Download the 2026 Market Entry Audit
                   <ArrowRight className="h-4 w-4 shrink-0" />
                 </Link>
               </motion.div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      <SectionDivider variant="slant" fromDark />
+
+      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 py-12 text-white sm:px-6 lg:py-16">
+        <div className="container relative z-10 mx-auto max-w-4xl text-center">
+          <h2 className="font-serif text-3xl font-bold leading-tight sm:text-4xl">Ready to Stress-Test Your Market Entry Plan?</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/78 sm:text-base">
+            Start with a free 15-minute readiness call with founder Soham Kakade, or download the 2026 Market Entry Audit
+            to identify gaps before you commit capital.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              to="/ask-soham"
+              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto"
+            >
+              Ask Soham - 15 Min Free
+              <ArrowRight className="h-4 w-4 shrink-0" />
+            </Link>
+            <a
+              href="mailto:info@ewan.co.in?subject=Market%20Entry%20Enquiry"
+              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto"
+            >
+              Email info@ewan.co.in
+              <ArrowRight className="h-4 w-4 shrink-0" />
+            </a>
+          </div>
         </div>
       </section>
 

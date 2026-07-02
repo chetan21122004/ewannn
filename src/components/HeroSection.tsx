@@ -189,65 +189,6 @@ const HeroSection = () => {
                   height={500}
                 />
               </div>
-
-              {/* Mobile: inline stat cards instead of overlapping floats */}
-              <div className="mt-3 grid grid-cols-2 gap-2.5 lg:hidden">
-                <div className="theme-card-light rounded-xl border border-[hsl(var(--border-light))] p-3.5">
-                  <p className="text-[9px] font-medium uppercase tracking-wider text-on-light-muted">
-                    {t("home.hero.floatingCard2Label")}
-                  </p>
-                  <p className="mt-0.5 font-serif text-xl font-bold text-[hsl(var(--brand-purple-700))]">
-                    {t("home.hero.floatingCard2Value")}
-                  </p>
-                </div>
-                <div className="theme-card-light rounded-xl border border-[hsl(var(--border-light))] p-3.5">
-                  <p className="text-[9px] font-medium uppercase tracking-wider text-on-light-muted">
-                    {t("home.hero.floatingCard1Badge")}
-                  </p>
-                  <p className="mt-0.5 font-serif text-sm font-bold leading-snug text-on-light">
-                    {t("home.hero.floatingCard1Title")}
-                  </p>
-                </div>
-              </div>
-
-              <motion.div
-                className="theme-card-light absolute -bottom-6 -left-6 hidden max-w-[280px] rounded-2xl p-5 sm:left-4 lg:block"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-              >
-                <p className="mb-1 text-xs font-medium uppercase tracking-wider text-on-light-muted">
-                  {t("home.hero.floatingCard1Badge")}
-                </p>
-                <h3 className="mb-2 font-serif text-xl font-bold text-on-light">{t("home.hero.floatingCard1Title")}</h3>
-                <div className="mt-2 flex gap-1">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <motion.div
-                      key={i}
-                      className="h-1 flex-1 rounded-full bg-[hsl(var(--brand-purple-700))]"
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 1.4 + i * 0.1 }}
-                    />
-                  ))}
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="theme-card-light absolute -top-4 right-4 hidden rounded-xl p-4 sm:-top-6 sm:right-8 lg:block"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.8 }}
-                whileHover={{ y: -3 }}
-              >
-                <p className="mb-1 text-[10px] uppercase tracking-wider text-on-light-muted">
-                  {t("home.hero.floatingCard2Label")}
-                </p>
-                <p className="font-serif text-2xl font-bold text-[hsl(var(--brand-purple-700))]">
-                  {t("home.hero.floatingCard2Value")}
-                </p>
-              </motion.div>
             </div>
           </motion.div>
         </div>

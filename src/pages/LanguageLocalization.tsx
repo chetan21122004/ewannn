@@ -97,14 +97,9 @@ const industryFocus = [
       "Technical documentation, standards translation and specialist interpretation for aerospace sector engagements.",
   },
   {
-    title: "Exhibitions & Trade Fairs",
+    title: "Manufacturing",
     description:
-      "On-site interpretation, booth materials localization and real-time communication support for international exhibitions across India.",
-  },
-  {
-    title: "Legal & Compliance",
-    description:
-      "Certified translation of contracts, agreements, court documents and regulatory filings. Validated and legally precise.",
+      "End-to-end language support for manufacturers entering India or expanding abroad - from technical documentation and supplier liaison to on-site interpretation and operational setup.",
   },
   {
     title: "Technology",
@@ -112,9 +107,19 @@ const industryFocus = [
       "Software localization, UI/UX translation, technical documentation and multilingual customer support content.",
   },
   {
+    title: "Exhibitions & Trade Fairs",
+    description:
+      "On-site interpretation, booth materials localization and real-time communication support for international exhibitions across India.",
+  },
+  {
     title: "Agriculture & Food",
     description:
       "Export documentation, buyer communication and product localization for agricultural exporters entering Asian markets.",
+  },
+  {
+    title: "Legal & Compliance",
+    description:
+      "Certified translation of contracts, agreements, court documents and regulatory filings. Validated and legally precise.",
   },
   {
     title: "Education",
@@ -278,60 +283,6 @@ const LanguageLocalization = () => {
         </div>
       </section>
 
-      {/* Brand positioning */}
-      <section className="relative overflow-hidden px-5 py-8 theme-section-soft sm:px-6 lg:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.14] mix-blend-multiply lg:opacity-[0.2]"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/magic-background-with-purple-light-rays-effect-free-vector.jpg')",
-          }}
-          aria-hidden
-        />
-        <div className="glow-orb glow-orb-purple pointer-events-none h-[240px] w-[240px] -right-20 top-0 opacity-[0.07] lg:h-[400px] lg:w-[400px] lg:-right-32 lg:opacity-[0.09]" />
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
-
-        <div className="container relative z-10 mx-auto max-w-6xl">
-          <motion.div
-            initial={hidden}
-            whileInView={show}
-            viewport={{ once: true }}
-            transition={transition(0)}
-            className="grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(220px,280px)] lg:gap-12"
-          >
-            <div className="theme-card-light card-shine rounded-2xl border border-[hsl(var(--border-light))] p-5 sm:rounded-3xl sm:p-8 lg:p-10">
-              <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em]">
-                Brand Positioning
-              </span>
-              <h2 className="font-serif text-[1.55rem] font-bold leading-tight text-on-light sm:text-3xl lg:text-5xl">
-                Because Being Understood{" "}
-                <span className="italic text-[hsl(var(--brand-purple-700))]">Changes Everything.</span>
-              </h2>
-              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-on-light-secondary sm:mt-5 sm:text-base">
-                Language credibility is the core differentiator in cross-border execution. Cultural intelligence and
-                credibility &amp; risk management sit at the centre of how UVAN delivers - not as a generic translation
-                step, but as the layer that protects outcomes when being understood changes everything.
-              </p>
-            </div>
-            <motion.figure
-              className="hidden lg:block"
-              initial={hidden}
-              whileInView={show}
-              viewport={{ once: true }}
-              transition={transition(0.1)}
-            >
-              <motion.img
-                src="/doodles/Light bulb-bro (1).svg"
-                alt="Language credibility illustration"
-                className="mx-auto h-44 w-full max-w-[260px] object-contain sm:h-48 lg:h-52"
-                animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </motion.figure>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Six disciplines */}
       <section id="services" className="relative scroll-mt-24 overflow-hidden px-5 py-8 theme-section-light sm:px-6 lg:py-20">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.12]" />
@@ -448,6 +399,9 @@ const LanguageLocalization = () => {
             <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.24em]">
               Sector Expertise
             </span>
+            <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+              Language Services Across Every Major Industry
+            </h2>
             <p className="mt-2 text-xs text-white/55 md:hidden">Tap a sector to read how we support it.</p>
           </motion.div>
 

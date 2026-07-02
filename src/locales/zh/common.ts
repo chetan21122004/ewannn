@@ -151,10 +151,6 @@ const zhCommon = {
       ctaMarketEntry: "查看市场进入方案",
       ctaLanguageQuote: "获取语言服务报价",
       ctaAskSoham: "咨询 Soham",
-      floatingCard1Badge: "一线经验",
-      floatingCard1Title: "10+ 行业 · 125+ 语言",
-      floatingCard2Label: "语言",
-      floatingCard2Value: "125+",
     },
     aboutIntro: {
       badge: "关于 UVAN",

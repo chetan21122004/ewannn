@@ -153,10 +153,6 @@ const jaCommon = {
       ctaMarketEntry: "市場参入を見る",
       ctaLanguageQuote: "言語サービス見積り",
       ctaAskSoham: "Sohamに相談",
-      floatingCard1Badge: "現場経験",
-      floatingCard1Title: "10+ セクター · 125+ 言語",
-      floatingCard2Label: "言語",
-      floatingCard2Value: "125+",
     },
     aboutIntro: {
       badge: "UVANについて",

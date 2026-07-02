@@ -1,4 +1,4 @@
-import { ArrowUpRight, ChevronDown, Instagram, Linkedin, Mail, MapPin, Twitter, Youtube, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Instagram, Linkedin, Mail, Twitter, Youtube, type LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
@@ -64,7 +64,7 @@ const socialLinks: Array<{ label: string; href: string; Icon: LucideIcon }> = [
 const coverageRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
 
 const linkClass =
-  "group inline-flex min-h-[44px] w-full items-center gap-1 text-sm text-[hsl(var(--brand-navy-950)/0.78)] transition-colors hover:text-[hsl(var(--brand-purple-700))] lg:min-h-0 lg:w-auto";
+  "group inline-flex min-h-[44px] w-full items-center gap-1 text-sm text-white/75 transition-colors hover:text-[hsl(var(--brand-gold-500))] lg:min-h-0 lg:w-auto";
 
 const FooterNavLink = ({ link }: { link: FooterLink }) =>
   link.external ? (
@@ -80,11 +80,10 @@ const FooterNavLink = ({ link }: { link: FooterLink }) =>
 
 const FooterLinkColumn = ({ title, links }: { title: string; links: FooterLink[] }) => (
   <>
-    {/* Mobile accordion */}
-    <details className="group border-b border-[hsl(var(--border-light))] lg:hidden">
-      <summary className="flex cursor-pointer list-none items-center justify-between py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] [&::-webkit-details-marker]:hidden">
+    <details className="group border-b border-white/10 lg:hidden">
+      <summary className="flex cursor-pointer list-none items-center justify-between py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] [&::-webkit-details-marker]:hidden">
         {title}
-        <ChevronDown className="h-4 w-4 shrink-0 text-[hsl(var(--brand-navy-950)/0.45)] transition-transform group-open:rotate-180" />
+        <ChevronDown className="h-4 w-4 shrink-0 text-white/45 transition-transform group-open:rotate-180" />
       </summary>
       <ul className="space-y-0.5 pb-4">
         {links.map((link) => (
@@ -95,10 +94,9 @@ const FooterLinkColumn = ({ title, links }: { title: string; links: FooterLink[]
       </ul>
     </details>
 
-    {/* Desktop column */}
     <div className="hidden lg:block">
-      <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">{title}</h4>
-      <ul className="space-y-2">
+      <h4 className="mb-4 text-[11px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">{title}</h4>
+      <ul className="space-y-2.5">
         {links.map((link) => (
           <li key={link.label}>
             <FooterNavLink link={link} />
@@ -147,33 +145,39 @@ const Footer = () => {
   }));
 
   return (
-    <footer className="relative overflow-hidden border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] pb-[calc(4.5rem+env(safe-area-inset-bottom,0px))] lg:pb-0">
-      {/* Accent bar */}
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[hsl(var(--brand-navy-950))] pb-[calc(4.5rem+env(safe-area-inset-bottom,0px))] text-white lg:pb-0">
       <div className="h-1 w-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-gold-500))] to-[hsl(var(--brand-cyan-500))]" />
 
-      <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage: "url('/bg-blobs/abstract-background-purple-dark-blue-gradient-wave-modern-background-combination-curve-free-vector.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        aria-hidden
+      />
 
-      <div className="container relative z-10 mx-auto px-4 py-8 sm:px-6 sm:py-10 lg:py-14">
-        {/* Brand + links */}
+      <div className="container relative z-10 mx-auto px-4 py-10 sm:px-6 sm:py-12 lg:py-14">
         <div className="lg:grid lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">
             <Link to="/" className="inline-block">
-              <img src={SITE_LOGO} alt={SITE_LOGO_ALT} className="h-11 w-auto sm:h-14" />
+              <img src={SITE_LOGO} alt={SITE_LOGO_ALT} className="h-11 w-auto brightness-0 invert sm:h-14" />
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-[hsl(var(--brand-navy-950)/0.72)]">{t("footer.tagline")}</p>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">{t("footer.tagline")}</p>
 
             <a
               href="mailto:info@ewan.co.in"
-              className="mt-5 flex w-full items-center gap-3 rounded-xl border border-[hsl(var(--brand-purple-700)/0.2)] bg-[hsl(var(--brand-purple-700)/0.06)] px-4 py-3.5 transition hover:border-[hsl(var(--brand-purple-700)/0.35)] hover:bg-[hsl(var(--brand-purple-700)/0.09)] sm:max-w-sm"
+              className="mt-5 flex w-full items-center gap-3 rounded-xl border border-white/12 bg-white/5 px-4 py-3.5 transition hover:border-[hsl(var(--brand-gold-500)/0.4)] hover:bg-white/8 sm:max-w-sm"
             >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white shadow-sm">
-                <Mail className="h-5 w-5 text-[hsl(var(--brand-gold-600))]" aria-hidden />
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--brand-gold-500)/0.15)]">
+                <Mail className="h-5 w-5 text-[hsl(var(--brand-gold-500))]" aria-hidden />
               </span>
               <span className="min-w-0 text-left">
-                <span className="block text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
+                <span className="block text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-gold-500))]">
                   {t("footer.emailLabel")}
                 </span>
-                <span className="block truncate text-sm font-semibold text-[hsl(var(--brand-navy-950))]">info@ewan.co.in</span>
+                <span className="block truncate text-sm font-semibold text-white">info@ewan.co.in</span>
               </span>
             </a>
 
@@ -181,7 +185,7 @@ const Footer = () => {
               {coverageRegions.map((region) => (
                 <span
                   key={region}
-                  className="rounded-full border border-[hsl(var(--border-light))] bg-white px-2.5 py-1 text-[10px] font-semibold text-[hsl(var(--brand-navy-950)/0.65)] sm:text-[11px]"
+                  className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-semibold text-white/65 sm:text-[11px]"
                 >
                   {region}
                 </span>
@@ -197,7 +201,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   aria-label={label}
                   title={label}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[hsl(var(--border-light))] bg-white text-[hsl(var(--brand-navy-950)/0.78)] transition hover:border-[hsl(var(--brand-purple-700)/0.35)] hover:bg-[hsl(var(--brand-navy-950))] hover:text-white"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/12 bg-white/5 text-white/75 transition hover:border-[hsl(var(--brand-gold-500)/0.45)] hover:bg-[hsl(var(--brand-gold-500)/0.12)] hover:text-[hsl(var(--brand-gold-500))]"
                 >
                   <Icon className="h-[18px] w-[18px]" aria-hidden />
                 </a>
@@ -205,19 +209,19 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Mobile: accordions in one card */}
-          <div className="mt-8 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white px-4 lg:mt-0 lg:col-span-8 lg:border-0 lg:bg-transparent lg:p-0">
-            <div className="lg:grid lg:grid-cols-4 lg:gap-8">
-              {columnsWithLabels.map((col) => (
-                <FooterLinkColumn key={col.title} title={col.translatedTitle} links={col.translatedLinks} />
-              ))}
+          <div className="mt-8 lg:col-span-8 lg:mt-0">
+            <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] px-4 lg:border-0 lg:bg-transparent lg:p-0">
+              <div className="lg:grid lg:grid-cols-4 lg:gap-8">
+                {columnsWithLabels.map((col) => (
+                  <FooterLinkColumn key={col.title} title={col.translatedTitle} links={col.translatedLinks} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Certifications */}
-        <div className="mt-8 rounded-2xl border border-[hsl(var(--border-light))] bg-white p-5 sm:p-7">
-          <p className="mb-5 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-navy-950)/0.5)] sm:text-[11px]">
+        <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-7">
+          <p className="mb-5 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-white/45 sm:text-[11px]">
             {t("footer.certificationsLabel")}
           </p>
           <div className="grid grid-cols-3 place-items-center gap-4 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-8">
@@ -227,33 +231,32 @@ const Footer = () => {
                 src={cert.src}
                 alt={cert.alt}
                 loading="lazy"
-                className="h-8 w-auto max-w-[90px] object-contain sm:h-9 sm:max-w-[110px]"
+                className="h-8 w-auto max-w-[90px] object-contain brightness-0 invert opacity-80 sm:h-9 sm:max-w-[110px]"
               />
             ))}
           </div>
-          <div className="mt-5 flex flex-col items-center gap-3 border-t border-[hsl(var(--border-light))] pt-5 sm:flex-row sm:justify-center sm:gap-6">
-            <span className="rounded-full bg-[hsl(var(--surface-light-50))] px-4 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950)/0.75)]">
+          <div className="mt-5 flex flex-col items-center gap-3 border-t border-white/10 pt-5 sm:flex-row sm:justify-center sm:gap-6">
+            <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-white/75">
               MSAMB Empanelled
             </span>
             <a
               href="https://bhashikskill.co.in"
               target="_blank"
               rel="noreferrer"
-              className="text-center text-xs font-medium text-[hsl(var(--brand-navy-950)/0.6)] transition-colors hover:text-[hsl(var(--brand-purple-700))]"
+              className="text-center text-xs font-medium text-white/60 transition-colors hover:text-[hsl(var(--brand-gold-500))]"
             >
               {t("footer.bhashikGroup")}
             </a>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-6 flex flex-col gap-3 border-t border-[hsl(var(--border-light))] pt-6 text-center text-xs text-[hsl(var(--brand-navy-950)/0.55)] sm:mt-8 sm:flex-row sm:items-center sm:justify-between sm:text-left sm:text-sm">
+        <div className="mt-6 flex flex-col gap-3 border-t border-white/10 pt-6 text-center text-xs text-white/50 sm:mt-8 sm:flex-row sm:items-center sm:justify-between sm:text-left sm:text-sm">
           <p>{t("footer.rights")}</p>
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:justify-end">
-            <Link to="/privacy-policy" className="font-semibold text-[hsl(var(--brand-navy-950)/0.7)] hover:text-[hsl(var(--brand-purple-700))]">
+            <Link to="/privacy-policy" className="font-semibold text-white/70 hover:text-[hsl(var(--brand-gold-500))]">
               {t("footer.privacyPolicy")}
             </Link>
-            <a href="mailto:info@ewan.co.in" className="font-semibold text-[hsl(var(--brand-navy-950)/0.7)] hover:text-[hsl(var(--brand-purple-700))]">
+            <a href="mailto:info@ewan.co.in" className="font-semibold text-white/70 hover:text-[hsl(var(--brand-gold-500))]">
               info@ewan.co.in
             </a>
           </div>
