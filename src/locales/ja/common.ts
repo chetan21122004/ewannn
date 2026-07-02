@@ -273,12 +273,6 @@ const jaCommon = {
         { name: "教育", code: "09", accent: "gold" },
         { name: "メディア・OTT", code: "10", accent: "cyan" },
       ],
-      footerStats: [
-        { value: "10+", label: "対応セクター" },
-        { value: "15+", label: "対応国" },
-        { value: "125+", label: "対応言語" },
-        { value: "60K+", label: "提供時間" },
-      ],
     },
     testimonials: {
       badge: "お客様の声",
@@ -304,10 +298,6 @@ const jaCommon = {
       letters: [
         { src: "/Ewan-Consulate-experience-letter-page-001-min.jpg", alt: "中国総領事館の感謝状 1ページ目", label: "1ページ目 · 中国語原文" },
         { src: "/Ewan-Consulate-experience-letter-page-002-min.jpg", alt: "中国総領事館の感謝状 2ページ目", label: "2ページ目 · 英語翻訳" },
-      ],
-      impacts: [
-        { value: 1200, suffix: "+", label: "支援農家数" },
-        { value: 800, suffix: "", label: "対象ヘクタール" },
       ],
     },
     founders: {

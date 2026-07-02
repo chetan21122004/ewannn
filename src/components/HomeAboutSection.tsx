@@ -27,7 +27,7 @@ const HomeAboutSection = () => {
     <section
       id="about-ewan-intro"
       aria-labelledby="about-ewan-intro-heading"
-      className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-6 theme-section-soft stitch-line stitch-line-bottom lg:py-14"
+      className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-5 theme-section-soft stitch-line stitch-line-bottom lg:py-10"
     >
       <div className="pointer-events-none absolute inset-0 opacity-[0.12] theme-grid-overlay-light lg:opacity-[0.18]" />
       <div className="glow-orb glow-orb-purple -left-20 -top-24 h-[280px] w-[280px] opacity-[0.08] lg:-left-28 lg:-top-36 lg:h-[460px] lg:w-[460px] lg:opacity-[0.11]" />

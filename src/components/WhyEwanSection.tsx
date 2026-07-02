@@ -9,7 +9,7 @@ const defaultDifferentiators = [
   },
   {
     title: "Corridors Not Classrooms",
-    desc: "Our expertise comes from 60,000+ hours of real boardroom interpretation - in Mandarin, Japanese, Cantonese, and ASEAN languages. We didn't study these corridors. We built careers inside them.",
+    desc: "Our expertise comes from real boardroom interpretation - in Mandarin, Japanese, Cantonese, and ASEAN languages. We didn't study these corridors. We built careers inside them.",
   },
   {
     title: "Recognised by Governments and Institutions",
@@ -46,7 +46,7 @@ const WhyEwanSection = () => {
   }) as Array<{ title: string; desc: string }>;
   const differentiatorIcons = [Layers, Award, Landmark] as const;
   return (
-    <section id="why-ewan" className="relative overflow-hidden py-6 theme-section-soft lg:py-16">
+    <section id="why-ewan" className="relative overflow-hidden py-5 theme-section-soft lg:py-10">
       <div
         className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center opacity-[0.1] mix-blend-multiply lg:opacity-15"
         style={{ backgroundImage: "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')" }}

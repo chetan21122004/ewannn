@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const MarketEntryAuditHomeBand = () => (
   <section
     aria-label="Free resource — 2026 Global Market Entry Audit"
-    className="theme-section-soft relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] px-5 py-8 sm:px-6 md:py-12"
+    className="theme-section-soft relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] px-5 py-6 sm:px-6 md:py-8"
   >
     <div className="pointer-events-none absolute inset-0 opacity-[0.1] theme-grid-overlay-light" aria-hidden />
     <div className="container relative z-10 mx-auto max-w-6xl">

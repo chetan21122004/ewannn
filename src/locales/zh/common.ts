@@ -271,12 +271,6 @@ const zhCommon = {
         { name: "教育", code: "09", accent: "gold" },
         { name: "媒体与OTT", code: "10", accent: "cyan" },
       ],
-      footerStats: [
-        { value: "10+", label: "覆盖行业" },
-        { value: "15+", label: "覆盖国家" },
-        { value: "125+", label: "覆盖语言" },
-        { value: "60K+", label: "累计小时" },
-      ],
     },
     testimonials: {
       badge: "客户评价",
@@ -301,10 +295,6 @@ const zhCommon = {
       letters: [
         { src: "/Ewan-Consulate-experience-letter-page-001-min.jpg", alt: "中国总领馆感谢信第1页", label: "第1页 · 中文原文" },
         { src: "/Ewan-Consulate-experience-letter-page-002-min.jpg", alt: "中国总领馆感谢信第2页", label: "第2页 · 英文译文" },
-      ],
-      impacts: [
-        { value: 1200, suffix: "+", label: "受益农户" },
-        { value: 800, suffix: "", label: "覆盖公顷" },
       ],
     },
     founders: {

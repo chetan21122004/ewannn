@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
+import HomeAboutSection from "@/components/HomeAboutSection";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { ABOUT_US_FAQS, ENTITY_PARAGRAPH_A, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, personSoham, personSukhada } from "@/lib/schemaHelpers";
@@ -428,6 +429,8 @@ const AboutUs = () => {
           </div>
         </div>
       </section>
+
+      <HomeAboutSection />
 
       <SectionDivider variant="wave" fromDark />
 

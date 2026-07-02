@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
+import { scrollToPageTop } from "@/lib/scrollToTop";
 import { useTranslation } from "react-i18next";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -256,7 +257,7 @@ const Navbar = () => {
   const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (pathname === "/") {
       event.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollToPageTop("smooth");
     }
     closeMobile();
   };

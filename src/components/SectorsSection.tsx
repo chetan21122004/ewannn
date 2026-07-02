@@ -51,7 +51,7 @@ const SectorsSection = () => {
   });
 
   return (
-    <section id="sectors" className="relative overflow-hidden py-6 lg:py-10 theme-section-soft">
+    <section id="sectors" className="relative overflow-hidden py-4 lg:py-6 theme-section-soft">
       {/* Decorative background doodles */}
       <motion.img
         src="/doodles/Bookmarks-pana.svg"
@@ -75,20 +75,12 @@ const SectorsSection = () => {
       />
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
-          className="mx-auto mb-8 max-w-5xl text-center"
+          className="mx-auto mb-5 max-w-5xl text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="mb-4 inline-flex items-center gap-3">
-            <span className="h-px w-8 bg-[hsl(var(--brand-purple-700)/0.5)]" aria-hidden />
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.45em] text-[hsl(var(--brand-purple-700)/0.78)]">
-              {t("home.sectors.badge")}
-            </span>
-            <span className="h-px w-8 bg-[hsl(var(--brand-purple-700)/0.5)]" aria-hidden />
-          </div>
-
           <h2 className="font-serif text-3xl font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
             {t("home.sectors.titlePrefix")}{" "}
             <span className="whitespace-nowrap italic text-[hsl(var(--brand-purple-700))]">
@@ -97,7 +89,7 @@ const SectorsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 lg:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 lg:gap-3">
           {sectors.map((sector, i) => {
             const Icon = sector.icon;
             const accent = accentColorMap[sector.accent];
@@ -110,7 +102,7 @@ const SectorsSection = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.04, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -4 }}
-                className="group relative overflow-hidden rounded-2xl p-5 text-center cursor-default select-none border border-transparent hover:border-[hsl(var(--brand-purple-700)/0.15)] transition-colors"
+                className="group relative overflow-hidden rounded-2xl p-4 text-center cursor-default select-none border border-transparent hover:border-[hsl(var(--brand-purple-700)/0.15)] transition-colors"
               >
                 <span
                   className="absolute top-2.5 left-2.5 w-3.5 h-3.5 transition-colors duration-300"

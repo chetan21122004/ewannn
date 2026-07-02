@@ -77,7 +77,7 @@ const HeroSection = () => {
 
       <div className="pointer-events-none absolute inset-0 grain-overlay" />
 
-      <div className="container relative z-10 mx-auto px-5 pb-10 pt-16 sm:px-6 lg:pb-16 lg:pt-28">
+      <div className="container relative z-10 mx-auto px-5 pb-8 pt-14 sm:px-6 lg:pb-12 lg:pt-24">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <motion.div variants={staggerContainer} initial="hidden" animate="visible">
             {/* Pre-headline - mobile: scroll pills; desktop: dot-separated list */}

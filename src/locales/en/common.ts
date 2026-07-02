@@ -285,7 +285,7 @@ const enCommon = {
         },
         {
           title: "Corridors Not Classrooms",
-          desc: "Our expertise comes from 60,000+ hours of real boardroom interpretation - in Mandarin, Japanese, Cantonese, and ASEAN languages. We didn't study these corridors. We built careers inside them.",
+          desc: "Our expertise comes from real boardroom interpretation - in Mandarin, Japanese, Cantonese, and ASEAN languages. We didn't study these corridors. We built careers inside them.",
         },
         {
           title: "Recognised by Governments and Institutions",

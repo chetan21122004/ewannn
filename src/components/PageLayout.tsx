@@ -24,7 +24,7 @@ const PageLayout = ({ title, description, canonicalPath, keywords, jsonLd, child
       <ScrollProgress />
       <CursorGlow />
       <Navbar />
-      <main className="pt-14 pb-[calc(4rem+env(safe-area-inset-bottom,0px))] lg:pt-28 lg:pb-0">{children}</main>
+      <main className="pt-14 pb-[calc(4rem+env(safe-area-inset-bottom,0px))] lg:pt-24 lg:pb-0">{children}</main>
       <Footer />
     </div>
   );
