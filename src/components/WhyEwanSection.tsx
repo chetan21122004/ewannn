@@ -1,8 +1,10 @@
 import { useState, type KeyboardEvent } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Layers, Award, Landmark } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Layers, Award, Landmark, ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
+import { blurReveal, fadeOnly, scaleUp } from "@/lib/animationVariants";
+import { useCountUp, useScrollReveal } from "@/hooks/useScrollReveal";
 
 const defaultDifferentiators = [
   {
@@ -15,36 +17,91 @@ const defaultDifferentiators = [
   },
   {
     title: "Recognised by Governments and Institutions",
-    desc: "Formally recognised by the Consulate General of the People's Republic of China. Export program designers for the Government of Maharashtra (MSAMB). Faculty at Symbiosis. IB Board curriculum designers. Our institutional credentials are not decorative - they are evidence of the depth of trust we have built across borders.",
+    desc: "Consulate General of China recognition\nMaharashtra export programs (MSAMB)\nSymbiosis faculty and IB curriculum design",
   },
 ];
 
 const accentStyles = [
   {
-    number: "text-[hsl(var(--brand-purple-700)/0.28)]",
+    number: "text-[hsl(var(--brand-purple-700)/0.32)]",
     iconWrap: "bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-purple-500))_100%)]",
     iconColor: "text-white",
-    overlay: "from-[hsl(var(--brand-purple-700)/0.96)] via-[hsl(var(--brand-navy-950)/0.94)] to-[hsl(var(--brand-navy-950)/0.98)]",
-    ring: "ring-[hsl(var(--brand-purple-500)/0.45)]",
+    overlay: "bg-[hsl(var(--brand-navy-950))]",
+    overlayAccent: "from-[hsl(var(--brand-purple-700)/0.55)] to-transparent",
+    accentLine: "bg-[hsl(var(--brand-purple-500))]",
+    ring: "ring-[hsl(var(--brand-purple-500)/0.35)]",
+    bullet: "bg-[hsl(var(--brand-purple-400))]",
   },
   {
-    number: "text-[hsl(var(--brand-cyan-500)/0.28)]",
+    number: "text-[hsl(var(--brand-cyan-500)/0.32)]",
     iconWrap: "bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)]",
     iconColor: "text-white",
-    overlay: "from-[hsl(var(--brand-cyan-500)/0.22)] via-[hsl(var(--brand-navy-950)/0.95)] to-[hsl(var(--brand-navy-950)/0.98)]",
-    ring: "ring-[hsl(var(--brand-cyan-500)/0.4)]",
+    overlay: "bg-[hsl(var(--brand-navy-950))]",
+    overlayAccent: "from-[hsl(var(--brand-cyan-500)/0.35)] to-transparent",
+    accentLine: "bg-[hsl(var(--brand-cyan-500))]",
+    ring: "ring-[hsl(var(--brand-cyan-500)/0.35)]",
+    bullet: "bg-[hsl(var(--brand-cyan-400))]",
   },
   {
-    number: "text-[hsl(var(--brand-gold-600)/0.3)]",
+    number: "text-[hsl(var(--brand-gold-600)/0.34)]",
     iconWrap: "bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-gold-600))_100%)]",
     iconColor: "text-white",
-    overlay: "from-[hsl(var(--brand-gold-600)/0.2)] via-[hsl(var(--brand-navy-950)/0.95)] to-[hsl(var(--brand-navy-950)/0.98)]",
-    ring: "ring-[hsl(var(--brand-gold-500)/0.45)]",
+    overlay: "bg-[hsl(var(--brand-navy-950))]",
+    overlayAccent: "from-[hsl(var(--brand-gold-600)/0.38)] to-transparent",
+    accentLine: "bg-[hsl(var(--brand-gold-500))]",
+    ring: "ring-[hsl(var(--brand-gold-500)/0.35)]",
+    bullet: "bg-[hsl(var(--brand-gold-500))]",
   },
 ] as const;
 
+const renderCardDetail = (desc: string, bulletClass: string) => {
+  const lines = desc.split("\n").map((line) => line.trim()).filter(Boolean);
+
+  if (lines.length > 1) {
+    return (
+      <ul className="space-y-2">
+        {lines.map((line) => (
+          <li key={line} className="flex gap-2.5 text-[13px] leading-snug text-white sm:text-sm sm:leading-snug">
+            <span className={cn("mt-[7px] h-1 w-1 shrink-0 rounded-full", bulletClass)} aria-hidden />
+            <span>{line}</span>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  return (
+    <p className="text-[13px] leading-[1.65] text-white sm:text-sm sm:leading-[1.7]">
+      {desc}
+    </p>
+  );
+};
+
+const CardNumeral = ({
+  value,
+  isVisible,
+  reduceMotion,
+  className,
+}: {
+  value: number;
+  isVisible: boolean;
+  reduceMotion: boolean;
+  className?: string;
+}) => {
+  const count = useCountUp(value, 900, isVisible && !reduceMotion);
+  const display = reduceMotion || !isVisible ? value : count;
+
+  return (
+    <span className={className}>
+      {String(display).padStart(2, "0")}
+    </span>
+  );
+};
+
 const WhyEwanSection = () => {
   const { t } = useTranslation();
+  const reduceMotion = useReducedMotion() ?? false;
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal(0.12);
   const [pinnedIndex, setPinnedIndex] = useState<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const differentiators = t("home.whyEwan.differentiators", {
@@ -52,6 +109,8 @@ const WhyEwanSection = () => {
     defaultValue: defaultDifferentiators,
   }) as Array<{ title: string; desc: string }>;
   const differentiatorIcons = [Layers, Award, Landmark] as const;
+  const headerVariant = reduceMotion ? fadeOnly : blurReveal;
+  const cardVariant = reduceMotion ? fadeOnly : scaleUp;
 
   const activeIndex = hoveredIndex ?? pinnedIndex;
 
@@ -84,10 +143,10 @@ const WhyEwanSection = () => {
         <div className="mb-8 grid items-center gap-6 lg:mb-10 lg:grid-cols-[minmax(0,1fr)_minmax(220px,300px)] lg:gap-10">
           <motion.div
             className="max-w-3xl"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            variants={headerVariant}
           >
             <span className="mb-4 inline-block rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider theme-card-light text-[hsl(var(--brand-purple-700))] lg:mb-5">
               {t("home.whyEwan.badge")}
@@ -105,7 +164,7 @@ const WhyEwanSection = () => {
 
           <motion.figure
             className="mx-auto hidden w-full max-w-[280px] lg:block lg:max-w-none lg:justify-self-end"
-            initial={{ opacity: 0, y: 24 }}
+            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.75, delay: 0.12 }}
@@ -114,18 +173,17 @@ const WhyEwanSection = () => {
               src="/doodles/Advantages-bro.svg"
               alt="UVAN differentiators illustration"
               className="h-44 w-full object-contain sm:h-48 lg:h-52"
-              animate={{ y: [0, -8, 0] }}
+              animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />
           </motion.figure>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3 md:gap-5">
+        <div ref={cardsRef} className="grid gap-4 md:grid-cols-3 md:gap-5">
           {differentiators.map((d, i) => {
             const Icon = differentiatorIcons[i] ?? Layers;
             const accent = accentStyles[i % accentStyles.length];
             const isActive = activeIndex === i;
-            const isPinned = pinnedIndex === i;
 
             return (
               <motion.article
@@ -134,86 +192,87 @@ const WhyEwanSection = () => {
                 tabIndex={0}
                 aria-expanded={isActive}
                 aria-label={`${d.title}. ${isActive ? "Hide details" : "Show details"}`}
-                initial={{ opacity: 0, y: 40, scale: 0.97 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.12, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                variants={cardVariant}
+                transition={{ delay: i * 0.12 }}
                 onMouseEnter={() => setHoveredIndex(i)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 onClick={() => togglePin(i)}
                 onKeyDown={(event) => handleCardKeyDown(event, i)}
                 className={cn(
-                  "relative min-h-[148px] cursor-pointer overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] theme-card-light card-shine transition-[box-shadow,transform,border-color] duration-300 sm:min-h-[160px] sm:rounded-3xl",
+                  "group relative h-[200px] cursor-pointer overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card))] shadow-[0_4px_20px_hsl(var(--brand-navy-950)/0.06)] transition-[box-shadow,border-color,opacity] duration-300 sm:h-[208px] sm:rounded-3xl",
                   isActive
-                    ? cn("z-10 scale-[1.02] shadow-[0_20px_48px_hsl(var(--brand-navy-950)/0.16)] ring-2 ring-offset-2 ring-offset-[hsl(var(--surface-light-100))]", accent.ring)
-                    : activeIndex !== null && "opacity-70 saturate-[0.92]",
+                    ? cn(
+                        "z-10 border-transparent shadow-[0_18px_44px_hsl(var(--brand-navy-950)/0.18)] ring-1 ring-inset",
+                        accent.ring,
+                      )
+                    : "hover:border-[hsl(var(--border-light-strong))] hover:shadow-[0_10px_28px_hsl(var(--brand-navy-950)/0.1)]",
+                  !isActive && activeIndex !== null && "opacity-80",
                 )}
               >
-                {/* Base layer — title only */}
-                <div className="relative flex h-full min-h-[inherit] flex-col p-5 sm:p-6">
-                  <div className="mb-3 flex items-center gap-3">
-                    <span className={`font-serif text-3xl font-bold sm:text-4xl ${accent.number}`}>0{i + 1}</span>
+                <div
+                  className={cn(
+                    "absolute inset-0 flex flex-col p-5 transition-opacity duration-250",
+                    isActive ? "pointer-events-none opacity-0" : "opacity-100",
+                  )}
+                  aria-hidden={isActive}
+                >
+                  <div className="mb-3 flex items-start justify-between gap-3">
+                    <CardNumeral
+                      value={i + 1}
+                      isVisible={cardsVisible}
+                      reduceMotion={reduceMotion}
+                      className={`font-serif text-2xl font-bold leading-none sm:text-[1.75rem] ${accent.number}`}
+                    />
                     <div
-                      className={`ml-auto flex h-10 w-10 items-center justify-center rounded-xl shadow-gold-sm sm:h-11 sm:w-11 ${accent.iconWrap}`}
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl shadow-[0_4px_12px_hsl(var(--brand-navy-950)/0.12)] sm:h-10 sm:w-10 ${accent.iconWrap}`}
                     >
-                      <Icon className={`h-4 w-4 sm:h-5 sm:w-5 ${accent.iconColor}`} />
+                      <Icon className={`h-4 w-4 ${accent.iconColor}`} strokeWidth={1.75} />
                     </div>
                   </div>
 
-                  <h3 className="font-serif text-lg font-bold leading-snug text-on-light sm:text-xl">{d.title}</h3>
+                  <h3 className="line-clamp-2 flex-1 font-serif text-[1.05rem] font-bold leading-snug text-on-light sm:text-lg">
+                    {d.title}
+                  </h3>
 
-                  <p
-                    className={cn(
-                      "mt-auto pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700)/0.65)] transition-opacity duration-200",
-                      isActive && "opacity-0",
-                    )}
-                  >
-                    {isPinned ? "Tap to close" : "Hover or tap to read"}
-                  </p>
+                  <div className="mt-3 flex items-center gap-1.5 border-t border-[hsl(var(--border-light))] pt-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] transition-transform duration-300 group-hover:gap-2">
+                    <span>{t("home.whyEwan.knowMore", { defaultValue: "Know more" })}</span>
+                    <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden />
+                  </div>
                 </div>
 
-                {/* Detail overlay — only on active card */}
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {isActive ? (
                     <motion.div
-                      key="overlay"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                      className={cn(
-                        "absolute inset-0 z-20 flex flex-col bg-gradient-to-br p-5 text-white sm:p-6",
-                        accent.overlay,
-                      )}
+                      key="detail"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+                      className={cn("absolute inset-0 flex flex-col p-5 text-white", accent.overlay)}
                     >
                       <div
-                        className="pointer-events-none absolute inset-0 opacity-30"
-                        style={{
-                          backgroundImage:
-                            "radial-gradient(circle at 85% 0%, hsl(var(--brand-gold-500) / 0.35), transparent 42%)",
-                        }}
+                        className={cn(
+                          "pointer-events-none absolute inset-0 bg-gradient-to-br opacity-90",
+                          accent.overlayAccent,
+                        )}
                         aria-hidden
                       />
 
-                      <div className="relative z-10 flex h-full flex-col">
-                        <div className="mb-3 flex items-start justify-between gap-3">
-                          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">
-                            0{i + 1}
-                          </span>
-                          <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${accent.iconWrap}`}>
-                            <Icon className={`h-4 w-4 ${accent.iconColor}`} aria-hidden />
-                          </div>
+                      <div className="relative z-10 mb-3 flex items-center justify-between gap-3">
+                        <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-white/70">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <div className={cn("h-px flex-1", accent.accentLine, "opacity-40")} aria-hidden />
+                        <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${accent.iconWrap}`}>
+                          <Icon className={`h-3.5 w-3.5 ${accent.iconColor}`} strokeWidth={1.75} aria-hidden />
                         </div>
+                      </div>
 
-                        <h3 className="font-serif text-lg font-bold leading-snug text-white sm:text-xl">{d.title}</h3>
-
-                        <p className="mt-3 flex-1 overflow-y-auto text-sm leading-relaxed text-white/82 [scrollbar-width:thin]">
-                          {d.desc}
-                        </p>
-
-                        <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/45">
-                          {isPinned ? "Tap again to close" : "Tap to keep open"}
-                        </p>
+                      <div className="relative z-10 min-h-0 flex-1 overflow-hidden">
+                        {renderCardDetail(d.desc, accent.bullet)}
                       </div>
                     </motion.div>
                   ) : null}

@@ -3,6 +3,7 @@ import { ArrowRight, AlertCircle, Building2, CheckCircle2, Factory, Lightbulb, R
 import { Link } from "react-router-dom";
 import factoryImg from "@/assets/case-study-factory.jpg";
 import { useTranslation } from "react-i18next";
+import { blurReveal, fadeOnly, slideLeft, slideRight } from "@/lib/animationVariants";
 
 const defaultSteps = [
   {
@@ -30,7 +31,7 @@ const defaultSteps = [
 
 const CaseStudySection = () => {
   const { t } = useTranslation();
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = useReducedMotion() ?? false;
   const steps = t("home.caseStudy.steps", { returnObjects: true, defaultValue: defaultSteps }) as Array<{
     label: string;
     text: string;
@@ -39,10 +40,8 @@ const CaseStudySection = () => {
     labelColor: string;
   }>;
   const stepIcons = [AlertCircle, Lightbulb, Trophy] as const;
-  const ease = [0.22, 1, 0.36, 1] as const;
-  const fadeUp = reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 };
-  const show = reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 };
-  const transition = (delay = 0) => ({ duration: reduceMotion ? 0.35 : 0.72, delay, ease });
+  const headerVariant = reduceMotion ? fadeOnly : blurReveal;
+  const stepVariant = (index: number) => (reduceMotion ? fadeOnly : index % 2 === 0 ? slideLeft : slideRight);
 
   return (
     <section
@@ -58,22 +57,26 @@ const CaseStudySection = () => {
         <div className="grid gap-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:gap-8 xl:gap-12">
           <motion.div
             className="relative order-2 overflow-hidden rounded-[1.5rem] border border-[hsl(var(--brand-purple-700)/0.18)] bg-[hsl(var(--brand-navy-950))] p-3 text-white shadow-[0_24px_70px_hsl(var(--brand-navy-950)/0.18)] sm:rounded-[2rem] sm:p-5 lg:order-1"
-            initial={fadeUp}
-            whileInView={show}
+            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={transition(0)}
+            transition={{ duration: reduceMotion ? 0.35 : 0.72 }}
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,hsl(var(--brand-purple-500)/0.28),transparent_28%),radial-gradient(circle_at_88%_20%,hsl(var(--brand-gold-500)/0.18),transparent_24%)]" />
             <div className="pointer-events-none absolute -bottom-24 -right-20 hidden h-72 w-72 rounded-full border border-white/10 lg:block" />
 
             <div className="relative z-10">
               <div className="overflow-hidden rounded-[1.1rem] border border-white/12 bg-white/8 shadow-[0_18px_50px_hsl(var(--brand-navy-950)/0.28)] sm:rounded-[1.4rem]">
-                <img
+                <motion.img
                   src={factoryImg}
                   alt={t("home.caseStudy.imageAlt")}
                   className="h-44 w-full object-cover sm:h-80 lg:h-[410px]"
                   loading="lazy"
                   decoding="async"
+                  initial={reduceMotion ? { opacity: 0 } : { scale: 1.04 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
                 />
               </div>
 
@@ -97,10 +100,10 @@ const CaseStudySection = () => {
 
           <div className="relative order-1 lg:order-2">
             <motion.div
-              initial={fadeUp}
-              whileInView={show}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={transition(0.08)}
+              variants={headerVariant}
               className="mb-5 lg:mb-7"
             >
               <div className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-[hsl(var(--brand-purple-700)/0.14)] bg-white/75 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-purple-700))] shadow-sm backdrop-blur lg:mb-5">
@@ -115,16 +118,28 @@ const CaseStudySection = () => {
               </h2>
             </motion.div>
 
-            <div className="grid gap-2.5 sm:gap-3">
+            <div className="relative grid gap-2.5 sm:gap-3">
+              {!reduceMotion && steps.length > 1 ? (
+                <motion.div
+                  className="pointer-events-none absolute left-[1.35rem] right-[1.35rem] top-[2.75rem] hidden h-px origin-left bg-gradient-to-r from-[hsl(var(--brand-gold-500)/0.5)] via-[hsl(var(--brand-purple-500)/0.45)] to-[hsl(var(--brand-cyan-500)/0.5)] sm:block lg:top-[3rem]"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                  aria-hidden
+                />
+              ) : null}
+
               {steps.map((step, i) => {
                 const Icon = stepIcons[i] ?? AlertCircle;
                 return (
                   <motion.div
                     key={step.label}
-                    initial={fadeUp}
-                    whileInView={show}
+                    initial="hidden"
+                    whileInView="visible"
                     viewport={{ once: true }}
-                    transition={transition(0.16 + i * 0.09)}
+                    variants={stepVariant(i)}
+                    transition={{ delay: 0.16 + i * 0.09 }}
                     whileHover={reduceMotion ? undefined : { y: -3 }}
                     className="group relative overflow-hidden rounded-[1.25rem] border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.9)] p-4 shadow-[0_14px_40px_hsl(var(--brand-navy-950)/0.06)] backdrop-blur-sm transition-colors duration-300 hover:border-[hsl(var(--brand-purple-500)/0.28)] sm:rounded-[1.5rem] sm:p-6"
                   >
@@ -132,6 +147,10 @@ const CaseStudySection = () => {
                     <div className="flex gap-3 sm:gap-5">
                       <motion.div
                         className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border bg-[hsl(var(--surface-light-card))] sm:h-11 sm:w-11 sm:rounded-2xl ${step.ringColor}`}
+                        initial={reduceMotion ? { opacity: 0 } : { scale: 0 }}
+                        whileInView={reduceMotion ? { opacity: 1 } : { scale: [0, 1.2, 1] }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.55, delay: 0.2 + i * 0.1, ease: [0.34, 1.56, 0.64, 1] }}
                         whileHover={reduceMotion ? undefined : { rotate: 6, scale: 1.06 }}
                       >
                         <Icon className={`h-4 w-4 sm:h-5 sm:w-5 ${step.iconColor}`} aria-hidden />
@@ -154,10 +173,10 @@ const CaseStudySection = () => {
             </div>
 
             <motion.div
-              initial={fadeUp}
-              whileInView={show}
+              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={transition(0.42)}
+              transition={{ duration: reduceMotion ? 0.35 : 0.72, delay: 0.42 }}
               className="pt-4 lg:pt-5"
             >
               <Link

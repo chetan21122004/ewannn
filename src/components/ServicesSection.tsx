@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Building2, Languages, ArrowRight, CheckCircle2, Globe2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { blurReveal, fadeOnly } from "@/lib/animationVariants";
 
 const defaultBlocks = [
   {
@@ -50,6 +51,8 @@ const accentStyles = {
 
 const ServicesSection = () => {
   const { t } = useTranslation();
+  const reduceMotion = useReducedMotion() ?? false;
+  const headerVariant = reduceMotion ? fadeOnly : blurReveal;
   const blocksRaw = t("home.services.blocks", {
     returnObjects: true,
     defaultValue: defaultBlocks,
@@ -76,10 +79,10 @@ const ServicesSection = () => {
       <div className="container relative z-10 mx-auto px-5 sm:px-6">
         <motion.div
           className="mx-auto mb-6 max-w-3xl text-center lg:mb-10"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          variants={headerVariant}
         >
           <span className="mb-3 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider theme-card-light text-[hsl(var(--brand-purple-700))] lg:mb-4">
             <Globe2 className="h-3.5 w-3.5" aria-hidden /> {t("home.services.badge")}
@@ -90,21 +93,31 @@ const ServicesSection = () => {
           </h2>
         </motion.div>
 
-        <div className="mx-auto grid max-w-6xl items-stretch gap-4 md:gap-6 lg:grid-cols-2 lg:gap-7">
+        <div className="mx-auto grid max-w-6xl items-stretch gap-4 md:gap-6 lg:grid-cols-2 lg:gap-7" style={{ perspective: "1200px" }}>
           {blocks.map((block, i) => {
             const Icon = block.id === "language" ? Languages : Building2;
             const accent = accentStyles[block.accent];
             const features = Array.isArray(block.features) ? block.features : [];
             const illustration = serviceIllustrations[block.id];
+            const fromRight = i % 2 === 0;
+            const cardInitial = reduceMotion
+              ? { opacity: 0 }
+              : { opacity: 0, rotateY: 12, x: fromRight ? 30 : -30 };
+            const cardAnimate = reduceMotion ? { opacity: 1 } : { opacity: 1, rotateY: 0, x: 0 };
+
             return (
               <motion.div
                 key={block.id}
                 id={block.id === "language" ? "language" : undefined}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={cardInitial}
+                whileInView={cardAnimate}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -4 }}
+                whileHover={
+                  reduceMotion
+                    ? undefined
+                    : { y: -8, scale: 1.02, boxShadow: "0 24px 48px rgba(0,0,0,0.12)" }
+                }
                 className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-5 theme-card-light card-shine sm:rounded-3xl sm:p-7 lg:p-8"
               >
                 <div className={`pointer-events-none absolute -right-14 -top-14 hidden h-40 w-40 rounded-full border-[14px] sm:block ${accent.haloBorder}`} />

@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Car, Pill, Plane, Factory, Cpu, Calendar, Wheat, Scale, GraduationCap, Film } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { blurReveal, fadeOnly } from "@/lib/animationVariants";
 
 const defaultSectors = [
   { name: "Automotive", code: "01", icon: Car, accent: "gold" },
@@ -22,6 +23,7 @@ const accentColorMap = {
     badge: "hsl(var(--brand-purple-700) / 0.42)",
     iconBg: "hsl(var(--brand-purple-700) / 0.08)",
     iconBorder: "hsl(var(--brand-purple-700) / 0.18)",
+    hoverSolid: "hsl(var(--brand-gold-600))",
   },
   cyan: {
     solid: "hsl(var(--brand-cyan-500))",
@@ -29,11 +31,13 @@ const accentColorMap = {
     badge: "hsl(var(--brand-cyan-500) / 0.4)",
     iconBg: "hsl(var(--brand-cyan-500) / 0.08)",
     iconBorder: "hsl(var(--brand-cyan-500) / 0.18)",
+    hoverSolid: "hsl(var(--brand-purple-700))",
   },
 } as const;
 
 const SectorsSection = () => {
   const { t } = useTranslation();
+  const reduceMotion = useReducedMotion() ?? false;
   const sectorIcons = [Car, Pill, Plane, Factory, Cpu, Calendar, Wheat, Scale, GraduationCap, Film] as const;
   const sectorsRaw = t("home.sectors.items", { returnObjects: true, defaultValue: defaultSectors }) as Array<{
     name?: string;
@@ -49,10 +53,17 @@ const SectorsSection = () => {
       icon: sectorIcons[index] ?? fallback.icon,
     };
   });
+  const headerVariant = reduceMotion ? fadeOnly : blurReveal;
+  const colsLg = 5;
+
+  const waveDelay = (index: number) => {
+    const rowLg = Math.floor(index / colsLg);
+    const colLg = index % colsLg;
+    return rowLg * 0.08 + colLg * 0.05;
+  };
 
   return (
     <section id="sectors" className="relative overflow-hidden py-4 lg:py-6 theme-section-soft">
-      {/* Decorative background doodles */}
       <motion.img
         src="/doodles/Bookmarks-pana.svg"
         alt=""
@@ -76,10 +87,10 @@ const SectorsSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           className="mx-auto mb-5 max-w-5xl text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          variants={headerVariant}
         >
           <h2 className="font-serif text-3xl font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
             {t("home.sectors.titlePrefix")}{" "}
@@ -93,15 +104,16 @@ const SectorsSection = () => {
           {sectors.map((sector, i) => {
             const Icon = sector.icon;
             const accent = accentColorMap[sector.accent];
+            const delay = waveDelay(i);
 
             return (
               <motion.div
                 key={sector.name}
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.04, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -4 }}
+                transition={{ delay, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={reduceMotion ? undefined : { y: -8, scale: 1.06 }}
                 className="group relative overflow-hidden rounded-2xl p-4 text-center cursor-default select-none border border-transparent hover:border-[hsl(var(--brand-purple-700)/0.15)] transition-colors"
               >
                 <span
@@ -133,10 +145,13 @@ const SectorsSection = () => {
                 </span>
 
                 <div
-                  className="relative mx-auto mb-3 mt-3 flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300"
+                  className="relative mx-auto mb-3 mt-3 flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300 group-hover:shadow-[0_8px_20px_hsl(var(--brand-navy-950)/0.08)]"
                   style={{ background: accent.iconBg, border: `1px solid ${accent.iconBorder}` }}
                 >
-                  <Icon className="h-5 w-5 transition-colors duration-300" style={{ color: accent.solid }} />
+                  <Icon
+                    className="h-5 w-5 transition-colors duration-300 group-hover:text-[hsl(var(--brand-gold-600))]"
+                    style={{ color: accent.solid }}
+                  />
                 </div>
 
                 <p className="relative z-10 text-xs sm:text-sm font-semibold leading-snug text-on-light-secondary group-hover:text-[hsl(var(--text-on-light))] transition-colors duration-300">

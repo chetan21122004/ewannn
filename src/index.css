@@ -608,6 +608,40 @@
   50% { transform: scale(1.05); opacity: 0.6; }
 }
 
+@keyframes drawLineX {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes shimmerGold {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.shimmer-gold-cta {
+  background-image: linear-gradient(
+    110deg,
+    hsl(var(--brand-gold-500)) 0%,
+    hsl(var(--brand-gold-500)) 40%,
+    hsl(var(--brand-gold-600)) 50%,
+    hsl(var(--brand-gold-500)) 60%,
+    hsl(var(--brand-gold-500)) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmerGold 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-gold-cta {
+    animation: none;
+  }
+}
+
 /* ========================
    SMOOTH SCROLL & SCROLLBAR
    ======================== */

@@ -278,6 +278,7 @@ const enCommon = {
       titleHighlight: "Already Been in the Room.",
       subtitle:
         "Most market entry consultants have never interpreted a boardroom negotiation. Most translation agencies have never set up a subsidiary. UVAN has done both - for 10 years, across every major sector, in the corridors that matter.",
+      knowMore: "Know more",
       differentiators: [
         {
           title: "Language Meets Operations",
@@ -289,7 +290,7 @@ const enCommon = {
         },
         {
           title: "Recognised by Governments and Institutions",
-          desc: "Formally recognised by the Consulate General of the People's Republic of China. Export program designers for the Government of Maharashtra (MSAMB). Faculty at Symbiosis. IB Board curriculum designers. Our institutional credentials are not decorative - they are evidence of the depth of trust we have built across borders.",
+          desc: "Consulate General of China recognition\nMaharashtra export programs (MSAMB)\nSymbiosis faculty and IB curriculum design",
         },
       ],
     },

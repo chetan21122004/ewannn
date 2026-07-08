@@ -1,7 +1,10 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useCallback, useEffect, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { blurReveal, fadeOnly } from "@/lib/animationVariants";
+
+const AUTO_ADVANCE_MS = 5000;
 
 const defaultTestimonials = [
   {
@@ -33,15 +36,28 @@ const defaultTestimonials = [
 
 const TestimonialsSection = () => {
   const { t } = useTranslation();
+  const reduceMotion = useReducedMotion() ?? false;
   const testimonials = t("home.testimonials.items", {
     returnObjects: true,
     defaultValue: defaultTestimonials,
   }) as Array<{ quote: string; author: string; company: string }>;
   const [index, setIndex] = useState(0);
   const currentTestimonial = testimonials[index];
+  const quoteVariant = reduceMotion ? fadeOnly : blurReveal;
 
-  const next = () => setIndex((i) => (i + 1) % testimonials.length);
-  const prev = () => setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
+  const next = useCallback(() => {
+    setIndex((i) => (i + 1) % testimonials.length);
+  }, [testimonials.length]);
+
+  const prev = useCallback(() => {
+    setIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
+  }, [testimonials.length]);
+
+  useEffect(() => {
+    if (reduceMotion || testimonials.length <= 1) return;
+    const timer = window.setInterval(next, AUTO_ADVANCE_MS);
+    return () => window.clearInterval(timer);
+  }, [index, next, reduceMotion, testimonials.length]);
 
   return (
     <section id="testimonials" className="relative overflow-hidden py-6 theme-section-soft lg:py-10 scroll-mt-28">
@@ -67,13 +83,25 @@ const TestimonialsSection = () => {
         <div className="max-w-4xl mx-auto relative rounded-3xl theme-card-light border border-[hsl(var(--border-light))] px-6 py-10 sm:px-10 lg:px-14">
           <Quote className="w-16 h-16 text-[hsl(var(--brand-purple-700)/0.22)] mx-auto mb-6" />
 
+          {!reduceMotion ? (
+            <div className="mb-6 h-1 overflow-hidden rounded-full bg-[hsl(var(--brand-purple-700)/0.12)]">
+              <motion.div
+                key={index}
+                className="h-full origin-left rounded-full bg-[hsl(var(--brand-purple-700))]"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: AUTO_ADVANCE_MS / 1000, ease: "linear" }}
+              />
+            </div>
+          ) : null}
+
           <AnimatePresence mode="wait">
             <motion.blockquote
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
+              initial="hidden"
+              animate="visible"
+              exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -20, filter: "blur(8px)" }}
+              variants={quoteVariant}
               className="text-center"
             >
               <p className="text-2xl sm:text-3xl lg:text-4xl font-serif font-medium text-[hsl(var(--text-on-light))] leading-relaxed italic mb-8">

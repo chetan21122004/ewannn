@@ -1,7 +1,9 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles, MessageCircle, Languages } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { fadeOnly, slideLeft, slideRight } from "@/lib/animationVariants";
 
 const defaultRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
 
@@ -14,13 +16,44 @@ const defaultContactPillars = [
 
 const ContactSection = () => {
   const { t } = useTranslation();
+  const reduceMotion = useReducedMotion() ?? false;
+  const sectionRef = useRef<HTMLElement>(null);
   const regions = t("home.contact.regions", { returnObjects: true, defaultValue: defaultRegions }) as string[];
   const contactPillars = t("home.contact.pillars", {
     returnObjects: true,
     defaultValue: defaultContactPillars,
   }) as string[];
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const gradientPosition = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    reduceMotion ? ["50% 50%", "50% 50%", "50% 50%"] : ["0% 50%", "50% 50%", "100% 50%"],
+  );
+
+  const copyVariant = reduceMotion ? fadeOnly : slideLeft;
+  const cardVariant = reduceMotion ? fadeOnly : slideRight;
+
   return (
-    <section id="contact" className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-6 theme-section-soft lg:py-10">
+    <section
+      ref={sectionRef}
+      id="contact"
+      className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-6 theme-section-soft lg:py-10"
+    >
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.35]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 20% 30%, hsl(var(--brand-purple-700) / 0.14), transparent 42%), radial-gradient(circle at 80% 70%, hsl(var(--brand-gold-500) / 0.12), transparent 38%)",
+          backgroundSize: "200% 200%",
+          backgroundPosition: gradientPosition,
+        }}
+      />
       <div className="glow-orb glow-orb-purple pointer-events-none -left-20 -top-24 h-[280px] w-[280px] opacity-[0.08] lg:-left-28 lg:-top-36 lg:h-[460px] lg:w-[460px] lg:opacity-[0.11]" />
       <div className="glow-orb glow-orb-gold pointer-events-none -bottom-20 right-[-18%] h-[240px] w-[240px] opacity-[0.07] lg:-bottom-32 lg:right-[-12%] lg:h-[380px] lg:w-[380px] lg:opacity-[0.09]" />
       <div className="pointer-events-none absolute inset-0 opacity-[0.12] theme-grid-overlay-light lg:opacity-[0.18]" />
@@ -40,9 +73,10 @@ const ContactSection = () => {
         <div className="mx-auto grid max-w-6xl items-start gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
           <motion.div
             className="space-y-5 lg:space-y-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
+            variants={copyVariant}
           >
             <div className="space-y-3 lg:space-y-4">
               <motion.span
@@ -67,7 +101,6 @@ const ContactSection = () => {
                   {t("home.contact.titleHighlight")}
                 </span>
               </motion.h2>
-
             </div>
 
             <motion.div
@@ -107,10 +140,11 @@ const ContactSection = () => {
 
           <motion.div
             className="theme-card-light relative overflow-hidden rounded-2xl p-5 sm:rounded-3xl sm:p-7"
-            initial={{ opacity: 0, y: 26 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.15 }}
+            variants={cardVariant}
+            whileHover={reduceMotion ? undefined : { scale: 1.02 }}
           >
             <img
               src="/doodles/Sent Message-pana.svg"

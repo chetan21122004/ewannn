@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Handshake } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { blurReveal, fadeOnly, scaleUp } from "@/lib/animationVariants";
 
 const partnerImages: Record<string, string> = {
   bhashini: "/allLogos/Bhashini-Logo.png",
@@ -54,9 +55,12 @@ const PartnerLogo = ({
 
 const PartnersSection = () => {
   const { t } = useTranslation();
+  const reduceMotion = useReducedMotion() ?? false;
   const itemsRaw = t("home.partners.items", { returnObjects: true, defaultValue: defaultPartnerItems }) as PartnerItem[];
   const items = Array.isArray(itemsRaw) ? itemsRaw : defaultPartnerItems;
   const exploreHref = t("home.partners.exploreHref", { defaultValue: "/about-us#our-partners" });
+  const headerVariant = reduceMotion ? fadeOnly : blurReveal;
+  const cardVariant = reduceMotion ? fadeOnly : scaleUp;
 
   return (
     <section className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-5 theme-section-soft lg:py-8">
@@ -67,9 +71,10 @@ const PartnersSection = () => {
       <div className="container relative z-10 mx-auto px-5 sm:px-6">
         <motion.div
           className="mx-auto mb-6 max-w-2xl text-center lg:mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
+          variants={headerVariant}
         >
           <h2 className="font-serif text-[1.65rem] font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
             {t("home.partners.titleBefore")}
@@ -86,11 +91,12 @@ const PartnersSection = () => {
             return (
               <motion.article
                 key={p.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
+                variants={cardVariant}
                 transition={{ delay: i * 0.12 }}
-                whileHover={{ y: -6 }}
+                whileHover={reduceMotion ? undefined : { y: -6 }}
                 className="theme-card-light card-shine group overflow-hidden rounded-2xl border border-[hsl(var(--border-light)/0.9)]"
               >
                 <div className="flex min-h-[84px] items-center justify-center border-b border-[hsl(var(--border-light))] bg-white px-5 py-4 sm:min-h-[96px] lg:min-h-[112px] lg:px-8">
@@ -117,7 +123,13 @@ const PartnersSection = () => {
             to={exploreHref}
             className="inline-flex min-h-11 w-full max-w-md items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card))] px-5 text-xs font-semibold uppercase tracking-wide text-[hsl(var(--brand-purple-700))] transition hover:bg-[hsl(var(--surface-light-50))] sm:text-sm lg:w-auto lg:max-w-none lg:border-0 lg:bg-transparent lg:px-0 lg:hover:underline"
           >
-            <Handshake className="h-4 w-4 shrink-0 lg:hidden" aria-hidden />
+            <motion.span
+              animate={reduceMotion ? undefined : { rotate: [0, -8, 8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="inline-flex"
+            >
+              <Handshake className="h-4 w-4 shrink-0" aria-hidden />
+            </motion.span>
             {t("home.partners.exploreCta")}
             <ArrowRight className="hidden h-4 w-4 shrink-0 lg:inline" aria-hidden />
           </Link>

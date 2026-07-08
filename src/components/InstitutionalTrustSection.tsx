@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Landmark } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { blurReveal, fadeOnly, slideLeft, slideRight } from "@/lib/animationVariants";
 
 const defaultConsulateLetters = [
   {
@@ -17,10 +18,12 @@ const defaultConsulateLetters = [
 
 const InstitutionalTrustSection = () => {
   const { t } = useTranslation();
+  const reduceMotion = useReducedMotion() ?? false;
   const consulateLetters = t("home.institutionalTrust.letters", {
     returnObjects: true,
     defaultValue: defaultConsulateLetters,
   }) as Array<{ src: string; alt: string; label: string }>;
+  const headerVariant = reduceMotion ? fadeOnly : blurReveal;
 
   return (
     <section className="relative overflow-hidden py-5 lg:py-10 theme-section-soft">
@@ -29,10 +32,10 @@ const InstitutionalTrustSection = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8">
             <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={reduceMotion ? { opacity: 0 } : { scale: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
               className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] mb-4 shadow-gold-md"
             >
               <Landmark className="w-8 h-8 text-white" />
@@ -40,9 +43,10 @@ const InstitutionalTrustSection = () => {
 
             <motion.h2
               className="text-3xl sm:text-4xl font-serif font-bold text-on-light mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
+              variants={headerVariant}
             >
               {t("home.institutionalTrust.titlePrefix")}{" "}
               <span className="text-[hsl(var(--brand-purple-700))] italic">
@@ -52,7 +56,7 @@ const InstitutionalTrustSection = () => {
 
             <motion.p
               className="text-base text-on-light-muted leading-relaxed max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
+              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
@@ -66,9 +70,10 @@ const InstitutionalTrustSection = () => {
               <motion.figure
                 key={letter.src}
                 className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.96)] shadow-[0_8px_24px_hsl(var(--brand-navy-950)/0.08)]"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
+                variants={index === 0 ? (reduceMotion ? fadeOnly : slideLeft) : reduceMotion ? fadeOnly : slideRight}
                 transition={{ duration: 0.7, delay: index * 0.1 }}
               >
                 <div className="relative bg-[hsl(var(--surface-light-50))] p-4 sm:p-5">

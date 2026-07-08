@@ -238,6 +238,7 @@ const zhCommon = {
       titlePrefix: "真正",
       titleHighlight: "在场实战过的伙伴。",
       subtitle: "多数市场进入顾问没进过谈判现场，多数翻译机构没做过落地运营。UVAN 两者都做过，并持续十年。",
+      knowMore: "了解更多",
       differentiators: [
         {
           title: "语言与运营一体化",
@@ -249,7 +250,7 @@ const zhCommon = {
         },
         {
           title: "获得政府与机构认可",
-          desc: "获得中国总领馆正式认可，并参与政府项目、学术与课程体系建设，具备真实机构信任背书。",
+          desc: "中国总领馆正式认可\n马哈拉施特拉邦出口项目（MSAMB）\n辛比西斯大学教职与 IB 课程设计",
         },
       ],
     },
