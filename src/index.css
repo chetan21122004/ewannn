@@ -25,9 +25,9 @@
     --surface-2: 243 36% 18%;
     --surface-elevated: 248 32% 22%;
     --surface-glass: 0 0% 100%;
-    --surface-light-50: 250 44% 98%;
-    --surface-light-100: 252 39% 96%;
-    --surface-light-200: 252 32% 92%;
+    --surface-light-50: 220 14% 99%;
+    --surface-light-100: 220 10% 97%;
+    --surface-light-200: 220 8% 94%;
     --surface-light-card: 0 0% 100%;
 
     --text-primary: 0 0% 100%;
@@ -283,8 +283,8 @@
 
   .theme-grid-overlay-light {
     background-image:
-      linear-gradient(hsl(var(--brand-purple-700) / 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--brand-purple-700) / 0.08) 1px, transparent 1px);
+      linear-gradient(hsl(var(--brand-purple-700) / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--brand-purple-700) / 0.04) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
@@ -483,7 +483,7 @@
     z-index: 0;
     pointer-events: none;
     background:
-      linear-gradient(115deg, transparent 0%, hsl(var(--brand-purple-700) / 0.035) 36%, transparent 68%),
+      linear-gradient(115deg, transparent 0%, hsl(var(--brand-purple-700) / 0.015) 36%, transparent 68%),
       linear-gradient(180deg, hsl(var(--surface-light-50) / 0.92), hsl(var(--surface-light-100) / 0.42));
     mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
   }
