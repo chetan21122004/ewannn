@@ -447,7 +447,7 @@ const MarketEntry = () => {
               <div className="mt-4 sm:mt-6">
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="block w-full sm:inline-block sm:w-auto">
                   <Link
-                    to="/media#case-study"
+                    to="/case-study"
                     className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-card))] px-5 py-2.5 text-sm font-semibold text-on-light transition hover:border-[hsl(var(--brand-purple-500)/0.6)] sm:w-auto"
                   >
                     Read the Full Case Study

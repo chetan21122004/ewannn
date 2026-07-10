@@ -87,7 +87,7 @@ const liaisonServices = [
     doodle: "/doodles/Light bulb-bro (1).svg",
     doodleAlt: "Cultural intelligence illustration",
     crossRef: {
-      label: "Structured language training via Bhashik Skill Development ↗",
+      label: "Structured language training via Vaani Skills ↗",
       href: "https://bhashikskill.co.in",
     },
   },

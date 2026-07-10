@@ -249,8 +249,7 @@ const Contact = () => {
               </p>
               <p className="mt-2 inline-flex items-start gap-2 text-xs leading-relaxed text-on-light-secondary sm:mt-3 sm:gap-2.5 sm:text-sm">
                 <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-gold-600))] sm:h-4 sm:w-4" aria-hidden />
-                Flat no. 14, Asmanth Appartment, Karve Rd, near Quantum Works, behind SBI, Pandurang Colony,
-                Erandwane, Pune, Maharashtra 411004
+                Flat no 14, Fourth Floor, Asmant Apartment, near Quantum Works, Erandwane, Karve Road, Pune - 411004
               </p>
             </div>
 
@@ -502,6 +501,7 @@ const Contact = () => {
       </section>
 
       {/* Trust stats */}
+      {false && (
       <section className="relative px-5 py-8 theme-section-light sm:px-6 lg:py-14">
         <div className="container mx-auto max-w-6xl">
           <motion.div
@@ -539,6 +539,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
+      )}
 
       {/* Bottom CTA */}
       <section className="px-5 pb-14 pt-2 theme-section-soft sm:px-6 lg:pb-20 lg:pt-4">

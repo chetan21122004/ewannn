@@ -180,7 +180,7 @@ const CaseStudySection = () => {
               className="pt-4 lg:pt-5"
             >
               <Link
-                to="/media#case-study"
+                to="/case-study"
                 className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--brand-purple-500)/0.35)] bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-6 py-3 text-sm font-bold uppercase tracking-[0.1em] text-white shadow-[0_14px_36px_hsl(var(--brand-navy-950)/0.14)] transition-transform duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-gold-500))] focus-visible:ring-offset-2 lg:w-auto lg:justify-start"
               >
                 {t("home.caseStudy.cta")}

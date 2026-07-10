@@ -13,6 +13,8 @@ import MarketEntry from "./pages/MarketEntry.tsx";
 import LanguageLocalization from "./pages/LanguageLocalization.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
 import Media from "./pages/Media.tsx";
+import CaseStudy from "./pages/CaseStudy.tsx";
+import Newsletter from "./pages/Newsletter.tsx";
 import Contact from "./pages/Contact.tsx";
 import GlobalTalkies from "./pages/globalTalkies.tsx";
 import ImportExport from "./pages/importExport.tsx";
@@ -52,6 +54,8 @@ const App = () => (
             <Route path="/language-localization" element={<LanguageLocalization />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/media" element={<Media />} />
+            <Route path="/case-study" element={<CaseStudy />} />
+            <Route path="/newsletter" element={<Newsletter />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/global-talkies" element={<GlobalTalkies />} />
             <Route path="/import-export" element={<ImportExport />} />

@@ -25,12 +25,6 @@ const JOIN_US_KEYWORDS =
 
 const joinUsJsonLd = [faqPageSchema(absoluteUrl("/join-us/"), JOIN_US_FAQS)];
 
-const heroMetrics = [
-  { value: "125+", label: "Languages" },
-  { value: "250+", label: "Clients served" },
-  { value: "5", label: "Years operating" },
-];
-
 const tracks = [
   {
     id: "join-team",
@@ -313,18 +307,6 @@ const JoinUs = () => {
                     );
                   })}
                 </div>
-                <div className="mt-5 grid grid-cols-3 gap-3 border-t border-white/10 pt-5">
-                  {heroMetrics.map((item) => (
-                    <div key={item.label} className="text-center">
-                      <p className="font-serif text-xl font-bold text-[hsl(var(--brand-gold-500))] sm:text-2xl">
-                        {item.value}
-                      </p>
-                      <p className="mt-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-white/55">
-                        {item.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
               </div>
             </motion.div>
           </div>
@@ -334,6 +316,7 @@ const JoinUs = () => {
       <SectionDivider variant="wave" fromDark />
 
       {/* Why UVAN */}
+      {false && (
       <section id="why-ewan" className="theme-section-soft scroll-mt-28 px-6 py-16 md:py-20">
         <div className="container mx-auto max-w-6xl">
           <motion.div {...motionProps} className="mx-auto max-w-3xl text-center">
@@ -382,6 +365,7 @@ const JoinUs = () => {
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* Sticky track nav */}
       <nav
@@ -510,8 +494,8 @@ const JoinUs = () => {
               </div>
 
               <p className="mt-8 rounded-2xl border border-[hsl(var(--border-light))] bg-white/70 p-5 text-sm leading-relaxed text-on-light-secondary">
-                Many of our language professionals come through Bhashik Skill Development, our sister institution focused
-                on language and vocational training. If you have trained with Bhashik, you are encouraged to apply
+                Many of our language professionals come through Vaani Skills, our sister institution focused
+                on language and vocational training. If you have trained with Vaani, you are encouraged to apply
                 directly.
               </p>
             </motion.div>
@@ -610,13 +594,6 @@ const JoinUs = () => {
                 ))}
               </div>
 
-              <Link
-                to="/ask-soham"
-                className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-navy-950))] px-7 py-3 text-sm font-semibold text-white transition hover:brightness-110"
-              >
-                Explore a Collaboration
-                <ArrowUpRight className="h-4 w-4" aria-hidden />
-              </Link>
             </motion.div>
 
             <motion.div {...motionProps} className="lg:col-span-5">

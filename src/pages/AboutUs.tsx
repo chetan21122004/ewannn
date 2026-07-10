@@ -10,13 +10,6 @@ import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestion
 import { ABOUT_US_FAQS, ENTITY_PARAGRAPH_A, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, personSoham, personSukhada } from "@/lib/schemaHelpers";
 
-const metrics = [
-  { value: "5+", label: "Years in Operation" },
-  { value: "125+", label: "Languages" },
-  { value: "250+", label: "Global Clients" },
-  { value: "10+", label: "Sectors Served" },
-];
-
 const languageGroups = [
   {
     name: "Chinese (Mandarin)",
@@ -193,11 +186,11 @@ const partners = [
   },
   {
     type: "Sister Institution",
-    name: "Bhashik Skill Development",
+    name: "Vaani Skills",
     description:
-      "Bhashik Skill Development (bhashikskill.co.in) is UVAN's sister institution - a skill development organisation focused on language training, commerce education, and vocational upskilling. Bhashik trains language professionals across 125+ languages including Japanese, Mandarin, Korean, German, French, Spanish, Arabic, and all major Indian regional languages. This institutional link ensures UVAN has access to a trained, job-ready talent pipeline - and gives our clients confidence in the quality of professionals behind every engagement.",
+      "Vaani Skills is UVAN's sister institution - a skill development organisation focused on language training, commerce education, and vocational upskilling. Vaani trains language professionals across 125+ languages including Japanese, Mandarin, Korean, German, French, Spanish, Arabic, and all major Indian regional languages. This institutional link ensures UVAN has access to a trained, job-ready talent pipeline - and gives our clients confidence in the quality of professionals behind every engagement.",
     logo: "/allLogos/bhashik-logo.png",
-    logoAlt: "Bhashik Skill Development logo",
+    logoAlt: "Vaani Skills logo",
     link: "https://bhashikskill.co.in",
   },
 ] as const;
@@ -265,7 +258,6 @@ const AboutUs = () => {
   const heroImageY = useTransform(heroScroll, [0, 1], ["0%", "18%"]);
   const heroOverlayY = useTransform(heroScroll, [0, 1], ["0%", "10%"]);
   const heroCopyY = useTransform(heroScroll, [0, 1], ["0%", "-12%"]);
-  const heroStatsY = useTransform(heroScroll, [0, 1], ["0%", "16%"]);
   const heroFade = useTransform(heroScroll, [0, 0.72, 1], [1, 0.92, 0.68]);
 
   return (
@@ -294,20 +286,6 @@ const AboutUs = () => {
         id="about-ewan"
         className="relative overflow-hidden stitch-line stitch-line-bottom bg-[hsl(var(--brand-navy-950))] px-6 pb-28 pt-10 md:pb-36 md:pt-16"
       >
-        <motion.div
-          className="absolute inset-0 z-0 opacity-[0.25]"
-          style={{ y: heroImageY, scale: 1.08 }}
-          data-bg="about-hero"
-        >
-          <div
-            className="h-full w-full"
-            style={{
-            backgroundImage: "url('/page-assets/Building-Strong-International-Ties-Header-img-V2.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          />
-        </motion.div>
         {/* Luxury wave background overlay */}
         <motion.div
           className="absolute inset-0 z-0 opacity-40 mix-blend-color-dodge bg-cover bg-center"
@@ -357,9 +335,8 @@ const AboutUs = () => {
         </div>
 
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <div className="grid gap-14 lg:grid-cols-12 lg:gap-12 lg:items-center">
+          <div className="max-w-3xl">
             <motion.div
-              className="lg:col-span-7"
               style={{ y: heroCopyY, opacity: heroFade }}
               initial="hidden"
               animate="visible"
@@ -390,41 +367,6 @@ const AboutUs = () => {
                   delivering everything from single document translations to full market entry mandates.
                 </p>
               </div>
-            </motion.div>
-
-            <motion.div
-              className="relative lg:col-span-5"
-              style={{ y: heroStatsY, opacity: heroFade }}
-              initial="hidden"
-              animate="visible"
-              variants={revealRight}
-              transition={{ ...springReveal, delay: 0.16 }}
-            >
-              <motion.div
-                className="relative mx-auto max-w-[400px] rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl shadow-2xl lg:mr-0 lg:ml-auto lg:max-w-none"
-                whileHover={{ y: -8, rotateX: 1.5, rotateY: -1.5 }}
-                transition={{ type: "spring", stiffness: 220, damping: 22 }}
-              >
-                <div className="pointer-events-none absolute -right-3 -top-3 h-20 w-20 rounded-full border-2 border-dashed border-[hsl(var(--brand-gold-500)/0.25)] animate-spin-slow" style={{ animationDuration: '24s' }} />
-                <div className="pointer-events-none absolute -bottom-4 left-8 h-4 w-20 rounded-full bg-[hsl(var(--brand-purple-500)/0.3)] blur-md" />
-                
-                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[hsl(var(--brand-purple-500))] mb-4">Live footprint</p>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {metrics.map((item, i) => (
-                    <motion.article
-                      key={item.label}
-                      className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md hover:bg-white/10 transition-colors"
-                      initial={{ opacity: 0, y: 14 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.35 + i * 0.08 }}
-                      whileHover={{ y: -4, scale: 1.02 }}
-                    >
-                      <p className="font-serif text-3xl font-bold text-[hsl(var(--brand-gold-500))]">{item.value}</p>
-                      <p className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-white/60 leading-none">{item.label}</p>
-                    </motion.article>
-                  ))}
-                </div>
-              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -559,26 +501,6 @@ const AboutUs = () => {
                     who truly understands both sides of the conversation. He built the firm he wished had existed.
                   </p>
 
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    {[
-                      { value: "60k+", label: "Interpretation hours" },
-                      { value: "125+", label: "Languages" },
-                      { value: "10+", label: "Sectors" },
-                    ].map((item, index) => (
-                      <motion.div
-                        key={item.label}
-                        className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 text-center sm:text-left"
-                        initial={{ opacity: 0, y: 12 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.45, delay: 0.15 + index * 0.08 }}
-                      >
-                        <p className="font-serif text-2xl font-bold text-[hsl(var(--brand-gold-500))]">{item.value}</p>
-                        <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white/55">{item.label}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-
                   <div className="flex flex-wrap gap-2">
                     {[
                       "BLCU Scholarship Recipient",
@@ -658,7 +580,14 @@ const AboutUs = () => {
                       02 · Co-Founder
                     </span>
                     <h3 className="font-serif text-3xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] sm:text-4xl">
-                      CMA Sukhada Kakade Bhalerao
+                      <a
+                        href="https://www.linkedin.com/in/cma-sukhada-kakade-bhalerao-5b3789401/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition hover:text-[hsl(var(--brand-purple-700))] hover:underline"
+                      >
+                        CMA Sukhada Kakade Bhalerao
+                      </a>
                     </h3>
                     <p className="max-w-2xl text-base font-semibold leading-snug text-[hsl(var(--brand-purple-700))] sm:text-lg">
                       The Financial and Operational Intelligence Behind UVAN.
@@ -680,7 +609,7 @@ const AboutUs = () => {
                       clients move quickly without financial exposure.
                     </p>
                     <p className="rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-5 py-4">
-                      She is also Co-Founder and Director of Bhashik Skill Development, UVAN&apos;s sister institution focused
+                      She is also Co-Founder and Director of Vaani Skills, UVAN&apos;s sister institution focused
                       on language training, vocational skills, and career development - ensuring a steady pipeline of skilled,
                       job-ready language professionals for the industry.
                     </p>
@@ -694,7 +623,7 @@ const AboutUs = () => {
                         "Cost Accounting Practice (est. 2010)",
                         "Finance Educator & Faculty",
                         "Committee Contributor",
-                        "Co-Founder, Bhashik Skill Development",
+                        "Co-Founder, Vaani Skills",
                       ].map((tag) => (
                         <span
                           key={tag}
@@ -722,7 +651,7 @@ const AboutUs = () => {
                       rel="noreferrer"
                       className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-navy-950))] px-5 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[hsl(var(--brand-navy-900))]"
                     >
-                      Bhashik Skill
+                      Vaani Skills
                       <ArrowRight className="h-4 w-4 shrink-0 text-[hsl(var(--brand-gold-500))]" />
                     </a>
                   </div>
@@ -1109,18 +1038,6 @@ const AboutUs = () => {
                   ))}
                 </div>
                 
-                <p className="mt-6 text-xs sm:text-sm text-on-light-muted">
-                  Follow{" "}
-                  <a
-                    href="https://www.instagram.com/orientalflock/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-bold text-[hsl(var(--brand-purple-700))] hover:underline"
-                  >
-                    @orientalflock
-                  </a>{" "}
-                  on Instagram for upcoming editions and session highlights.
-                </p>
                 <Link
                   to="/ask-soham"
                   className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-2.5 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
@@ -1143,138 +1060,6 @@ const AboutUs = () => {
             </div>
             
           </motion.div>
-        </div>
-      </section>
-
-      {/* Language Cards */}
-      <section className="relative overflow-hidden px-6 py-16 theme-section-soft md:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-[position:20%_30%] opacity-[0.16] mix-blend-multiply"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/abstract-background-purple-dark-blue-gradient-wave-modern-background-combination-curve-free-vector.jpg')",
-          }}
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-[position:85%_70%] opacity-[0.14] mix-blend-multiply"
-          style={{
-            backgroundImage: "url('/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg')",
-          }}
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.1] mix-blend-soft-light"
-          style={{
-            backgroundImage: "url('/bg-blobs/magic-background-with-purple-light-rays-effect-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center top",
-          }}
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(circle at 18% 22%, hsl(var(--brand-purple-700)/0.1) 0%, transparent 42%), radial-gradient(circle at 82% 78%, hsl(var(--brand-gold-500)/0.08) 0%, transparent 38%)",
-          }}
-          aria-hidden
-        />
-        <div className="glow-orb glow-orb-purple pointer-events-none -left-24 top-12 h-[380px] w-[380px] opacity-[0.09]" />
-        <div className="glow-orb glow-orb-gold pointer-events-none -bottom-20 -right-16 h-[320px] w-[320px] opacity-[0.07]" />
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
-        <img
-          src={doodleDots}
-          alt=""
-          className="pointer-events-none absolute right-8 top-16 hidden h-40 w-52 select-none opacity-[0.12] lg:block"
-          aria-hidden
-        />
-
-        <div className="container relative z-10 mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
-            className="mb-12 grid gap-8 lg:mb-14 lg:grid-cols-[minmax(0,1fr)_minmax(200px,240px)] lg:items-end"
-          >
-            <div className="max-w-2xl text-center lg:text-left">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
-                <Languages className="h-3.5 w-3.5" aria-hidden />
-                Linguistic Footprint
-              </span>
-              <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] sm:text-4xl lg:text-5xl">
-                Languages We <span className="italic text-[hsl(var(--brand-purple-700))]">Master</span>
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-on-light-secondary lg:mx-0">
-                125+ languages with deep specialization across Oriental, ASEAN, European, and Indian corridors - built
-                from real boardroom and market execution work.
-              </p>
-            </div>
-            <motion.div
-              className="mx-auto flex h-24 w-24 items-center justify-center rounded-3xl border border-[hsl(var(--border-light))] bg-white shadow-sm lg:mx-0 lg:ml-auto"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Globe2 className="h-11 w-11 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-            </motion.div>
-          </motion.div>
-
-          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {languageGroups.map((lang, i) => (
-              <motion.article
-                key={lang.name}
-                className="group theme-card-light card-shine flex h-full flex-col overflow-hidden rounded-3xl border border-[hsl(var(--border-light))]"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: (i % 4) * 0.07, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -6 }}
-              >
-                <div className="flex items-start justify-between gap-3 border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-5 py-4">
-                  <div className="flex items-center gap-3">
-                    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-white shadow-[0_4px_14px_hsl(var(--brand-navy-950)/0.12)] ring-1 ring-[hsl(var(--border-light))]">
-                      <LanguageFlag src={lang.flagSrc} alt={lang.flagAlt} />
-                    </div>
-                    <span
-                      className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] ${
-                        lang.accent === "gold"
-                          ? "bg-[hsl(var(--brand-gold-500)/0.14)] text-[hsl(var(--brand-gold-600))]"
-                          : lang.accent === "cyan"
-                            ? "bg-[hsl(var(--brand-cyan-500)/0.14)] text-[hsl(var(--brand-cyan-500))]"
-                            : "bg-[hsl(var(--brand-purple-700)/0.1)] text-[hsl(var(--brand-purple-700))]"
-                      }`}
-                    >
-                      {lang.region}
-                    </span>
-                  </div>
-                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-on-light-muted">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                </div>
-
-                <div className="flex flex-1 flex-col p-5 sm:p-6">
-                  <h3 className="font-serif text-lg font-bold leading-snug text-[hsl(var(--brand-navy-950))] transition group-hover:text-[hsl(var(--brand-purple-700))] sm:text-xl">
-                    {lang.name}
-                  </h3>
-                  <div className="mt-4 flex items-end gap-2">
-                    <p className="font-serif text-3xl font-bold leading-none text-[hsl(var(--brand-navy-950))]">
-                      {lang.speakers}
-                    </p>
-                    <p className="pb-0.5 text-[10px] font-bold uppercase tracking-[0.14em] text-on-light-muted">
-                      speakers
-                    </p>
-                  </div>
-                  <p className="mt-1 text-[11px] font-medium text-on-light-muted">{lang.speakersDetail}</p>
-                  <p className="mt-4 flex-grow text-sm leading-relaxed text-on-light-secondary">{lang.desc}</p>
-                  <div className="mt-5 flex items-center gap-2 border-t border-[hsl(var(--border-light))] pt-4 text-[11px] font-semibold text-[hsl(var(--brand-purple-700))]">
-                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0" aria-hidden />
-                    Corridor-ready capability
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
         </div>
       </section>
 

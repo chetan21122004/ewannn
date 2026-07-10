@@ -34,7 +34,7 @@ const ClientLogosSection = () => {
   const { t } = useTranslation();
   return (
     <section
-      className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] theme-section-light px-4 py-5 sm:p-6"
+      className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] theme-section-light px-4 py-3 sm:p-4"
       aria-label="Client logos"
     >
       <div className="pointer-events-none absolute inset-0 opacity-[0.12] theme-grid-overlay-light lg:opacity-15" />
@@ -43,7 +43,7 @@ const ClientLogosSection = () => {
 
       <div className="container relative z-10 mx-auto px-2 sm:px-6">
         <motion.div
-          className="mb-5 flex flex-col items-center gap-2 lg:mb-10 lg:gap-3"
+          className="mb-3 flex flex-col items-center gap-2 lg:mb-5 lg:gap-3"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -58,7 +58,7 @@ const ClientLogosSection = () => {
             {[...clients, ...clients].map((client, i) => (
               <motion.div
                 key={`${client.name}-${i}`}
-                className="mx-1.5 flex min-h-[5.5rem] min-w-[11rem] shrink-0 items-center justify-center px-3 py-3 sm:mx-2 sm:min-h-[11rem] sm:min-w-[280px] sm:px-6 sm:py-5 md:min-h-[12rem] md:min-w-[320px] md:px-8"
+                className="mx-1.5 flex min-h-[4.25rem] min-w-[9rem] shrink-0 items-center justify-center px-3 py-2 sm:mx-2 sm:min-h-[6.25rem] sm:min-w-[200px] sm:px-5 sm:py-3 md:min-h-[7rem] md:min-w-[220px]"
                 whileHover={{ scale: 1.02, y: -2 }}
                 transition={{ type: "spring", stiffness: 420, damping: 24 }}
               >
@@ -67,7 +67,7 @@ const ClientLogosSection = () => {
                     src={client.src}
                     alt={client.alt}
                     loading="lazy"
-                    className="client-logo-img max-h-12 sm:max-h-none"
+                    className="client-logo-img max-h-10 sm:max-h-14"
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                       const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;

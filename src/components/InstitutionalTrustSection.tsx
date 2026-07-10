@@ -75,6 +75,7 @@ const InstitutionalTrustSection = () => {
                 viewport={{ once: true }}
                 variants={index === 0 ? (reduceMotion ? fadeOnly : slideLeft) : reduceMotion ? fadeOnly : slideRight}
                 transition={{ duration: 0.7, delay: index * 0.1 }}
+                whileHover={reduceMotion ? undefined : { scale: 1.08, y: -8, zIndex: 20 }}
               >
                 <div className="relative bg-[hsl(var(--surface-light-50))] p-4 sm:p-5">
                   <img

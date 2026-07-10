@@ -1,28 +1,13 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Sparkles, MessageCircle, Languages } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Sparkles } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { fadeOnly, slideLeft, slideRight } from "@/lib/animationVariants";
-
-const defaultRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
-
-const defaultContactPillars = [
-  "Market Entry & Operations",
-  "Language & Localization",
-  "Boardroom Interpretation",
-  "Cross-Border Compliance",
-];
+import { fadeOnly, slideLeft } from "@/lib/animationVariants";
 
 const ContactSection = () => {
   const { t } = useTranslation();
   const reduceMotion = useReducedMotion() ?? false;
   const sectionRef = useRef<HTMLElement>(null);
-  const regions = t("home.contact.regions", { returnObjects: true, defaultValue: defaultRegions }) as string[];
-  const contactPillars = t("home.contact.pillars", {
-    returnObjects: true,
-    defaultValue: defaultContactPillars,
-  }) as string[];
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -36,7 +21,6 @@ const ContactSection = () => {
   );
 
   const copyVariant = reduceMotion ? fadeOnly : slideLeft;
-  const cardVariant = reduceMotion ? fadeOnly : slideRight;
 
   return (
     <section
@@ -70,9 +54,9 @@ const ContactSection = () => {
       />
 
       <div className="container relative z-10 mx-auto px-5 sm:px-6">
-        <div className="mx-auto grid max-w-6xl items-start gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
+        <div className="mx-auto max-w-5xl">
           <motion.div
-            className="space-y-5 lg:space-y-8"
+            className="space-y-5 text-center lg:space-y-7"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -90,7 +74,7 @@ const ContactSection = () => {
               </motion.span>
 
               <motion.h2
-                className="font-serif text-[1.75rem] font-bold leading-[1.08] text-on-light sm:text-5xl lg:text-6xl lg:leading-[1.06]"
+                className="mx-auto max-w-4xl font-serif text-[1.75rem] font-bold leading-[1.08] text-on-light sm:text-5xl lg:text-6xl lg:leading-[1.06]"
                 initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -101,114 +85,17 @@ const ContactSection = () => {
                   {t("home.contact.titleHighlight")}
                 </span>
               </motion.h2>
-            </div>
-
-            <motion.div
-              className="flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:flex-wrap lg:gap-2.5 lg:overflow-visible [&::-webkit-scrollbar]:hidden"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              {regions.map((region) => (
-                <span
-                  key={region}
-                  className="shrink-0 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.92)] px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.16em]"
-                >
-                  {region}
-                </span>
-              ))}
-            </motion.div>
-
-            <motion.div
-              className="grid grid-cols-2 gap-2 sm:gap-3"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              {contactPillars.map((pillar) => (
-                <div
-                  key={pillar}
-                  className="rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.94)] px-3 py-2.5 text-xs font-medium leading-snug text-on-light-secondary shadow-[0_8px_24px_hsl(var(--brand-navy-950)/0.05)] sm:px-4 sm:py-3 sm:text-sm"
-                >
-                  {pillar}
-                </div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="theme-card-light relative overflow-hidden rounded-2xl p-5 sm:rounded-3xl sm:p-7"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={cardVariant}
-            whileHover={reduceMotion ? undefined : { scale: 1.02 }}
-          >
-            <img
-              src="/doodles/Sent Message-pana.svg"
-              alt=""
-              aria-hidden="true"
-              className="pointer-events-none absolute -bottom-6 -right-8 h-32 w-32 opacity-[0.08] sm:-bottom-8 sm:-right-10 sm:h-52 sm:w-52 sm:opacity-[0.1]"
-            />
-            <h3 className="relative mb-2 font-serif text-xl font-bold text-on-light sm:text-2xl">{t("home.contact.cardTitle")}</h3>
-            <p className="mb-5 text-sm text-on-light-secondary sm:mb-6 sm:text-base">
-              {t("home.contact.cardSubtitle")}
-            </p>
-
-            <div className="space-y-2.5 sm:space-y-3">
-              <motion.a
-                href="mailto:info@ewan.co.in?subject=Market%20Entry%20Conversation"
-                whileHover={{ scale: 1.02, boxShadow: "0 0 24px hsl(var(--brand-purple-700) / 0.22)" }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex w-full min-h-12 items-center justify-between gap-3 rounded-xl border border-[hsl(var(--brand-purple-500)/0.3)] bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.08em] text-white sm:px-5 sm:py-4 sm:text-sm"
+              <motion.p
+                className="mx-auto max-w-3xl text-base leading-relaxed text-on-light-secondary sm:text-lg"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.08 }}
               >
-                <span className="inline-flex items-center gap-2">
-                  <Sparkles className="h-4 w-4" />
-                  {t("home.contact.marketEntryCta")}
-                </span>
-                <ArrowRight className="h-4 w-4" />
-              </motion.a>
-
-              <motion.a
-                href="mailto:info@ewan.co.in?subject=Language%20Services%20Quote"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex w-full min-h-12 items-center justify-between gap-3 rounded-xl border-2 border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-card))] px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.08em] text-on-light transition-colors hover:bg-[hsl(var(--surface-light-200)/0.65)] sm:px-5 sm:py-4 sm:text-sm"
-              >
-                <span className="inline-flex items-center gap-2">
-                  <Languages className="h-4 w-4" />
-                  {t("home.contact.languageQuoteCta")}
-                </span>
-                <ArrowRight className="h-4 w-4" />
-              </motion.a>
-
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                <Link
-                  to="/ask-soham"
-                  className="inline-flex w-full min-h-12 items-center justify-between gap-3 rounded-xl border border-[hsl(var(--brand-purple-500)/0.4)] bg-[hsl(var(--brand-purple-700)/0.08)] px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.08em] text-[hsl(var(--brand-purple-700))] transition-colors hover:bg-[hsl(var(--brand-purple-700)/0.12)] sm:px-5 sm:py-4 sm:text-sm"
-                >
-                  <span className="inline-flex items-center gap-2">
-                    <MessageCircle className="h-4 w-4" />
-                    {t("home.contact.askSohamCta")}
-                  </span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </motion.div>
+                Whether you're entering India for the first time or taking your Indian business into new markets, let's
+                talk about what that looks like.
+              </motion.p>
             </div>
-
-            <motion.div
-              className="mt-6 border-t border-[hsl(var(--border-light))] pt-5"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.35 }}
-            >
-              <p className="text-[11px] uppercase tracking-[0.24em] text-on-light-muted">
-                {t("home.contact.regionsFooter")}
-              </p>
-            </motion.div>
           </motion.div>
         </div>
       </div>

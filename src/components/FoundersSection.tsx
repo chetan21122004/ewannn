@@ -43,7 +43,7 @@ const defaultFounders: FounderItem[] = [
     img: "/Sukhada-maam.jpg",
     intro: [
       "Sukhada Kakade Bhalerao is a Pune-based Certified Management Accountant (CMA), finance educator, and entrepreneur with over 15 years of experience in finance, auditing, and professional training.",
-      "As Co-Founder and Director of UVAN and Bhashik Skill Development, she brings the financial rigour and operational backbone that underpins everything UVAN delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
+      "As Co-Founder and Director of UVAN and Vaani Skills, she brings the financial rigour and operational backbone that underpins everything UVAN delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
       "She also runs her own cost accounting practice (est. 2010) and is passionate about bridging industry and academia.",
     ],
     badges: [

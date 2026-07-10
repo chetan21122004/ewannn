@@ -48,7 +48,7 @@ const enCommon = {
       languageGazette: "The Language Gazette",
       blogInsights: "Blog & Insights",
       videos: "Videos",
-      press: "Press",
+      newsletter: "Newsletter",
     },
   },
   footer: {
@@ -60,8 +60,8 @@ const enCommon = {
     emailLabel: "Email us",
     ctaHeadline: "Ready to expand across borders with one trusted partner?",
     certificationsLabel: "Certifications & Ecosystem",
-    bhashikGroup: "Part of the UVAN Group · Bhashik Skill Development",
-    bhashikSkill: "Bhashik Skill Development",
+    bhashikGroup: "Part of the UVAN Group · Vaani Skills",
+    bhashikSkill: "Vaani Skills",
     blogInsights: "Blog & Insights",
     aboutUs: "About Us",
     joinUs: "Join Us",
@@ -145,9 +145,9 @@ const enCommon = {
         "Start a conversation with UVAN for market entry, language services, and cross-border execution support.",
     },
     media: {
-      title: "Media, Insights & Press | UVAN",
+      title: "Media, Insights & Newsletter | UVAN",
       description:
-        "Read The Language Gazette, explore blog insights on cross-border business, watch event videos, and access press coverage of UVAN.",
+        "Read The Language Gazette, explore blog insights on cross-border business, watch event videos, and subscribe to UVAN's newsletter.",
       keywords:
         "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India, Ewan Business Solutions media",
     },
@@ -315,8 +315,8 @@ const enCommon = {
     },
     testimonials: {
       badge: "Testimonials",
-      titlePrefix: "Voices from",
-      titleHighlight: "Across Borders",
+      titlePrefix: "Testimonials",
+      titleHighlight: "",
       prev: "Previous testimonial",
       next: "Next testimonial",
       goTo: "Go to testimonial",
@@ -392,7 +392,7 @@ const enCommon = {
           img: "/Sukhada-maam.jpg",
           intro: [
             "Sukhada Kakade Bhalerao is a Pune-based Certified Management Accountant (CMA), finance educator, and entrepreneur with over 15 years of experience in finance, auditing, and professional training.",
-            "As Co-Founder and Director of UVAN and Bhashik Skill Development, she brings the financial rigour and operational backbone that underpins everything UVAN delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
+            "As Co-Founder and Director of UVAN and Vaani Skills, she brings the financial rigour and operational backbone that underpins everything UVAN delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
             "She also runs her own cost accounting practice (est. 2010) and is passionate about bridging industry and academia.",
           ],
           badges: ["CMA Certified", "15+ Years Experience", "Finance & Compliance Expert", "RBI & FEMA Advisory", "Internal Controls Specialist", "Entity Setup & Structuring", "Entrepreneur Since 2010"],

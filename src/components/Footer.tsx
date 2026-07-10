@@ -1,4 +1,4 @@
-import { ArrowUpRight, ChevronDown, Instagram, Linkedin, Mail, Twitter, Youtube, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Linkedin, Mail, Twitter, Youtube, type LucideIcon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
@@ -26,7 +26,7 @@ const navColumns: FooterColumn[] = [
     links: [
       { label: "About Us", href: "/about-us" },
       { label: "Join Us", href: "/join-us" },
-      { label: "Case Studies", href: "/media#case-study" },
+      { label: "Case Studies", href: "/case-study" },
       { label: "SANO", href: "https://www.arogyayatri.com/", external: true },
       { label: "Privacy Policy", href: "/privacy-policy" },
     ],
@@ -37,6 +37,7 @@ const navColumns: FooterColumn[] = [
       { label: "Media Hub", href: "/media" },
       { label: "The Language Gazette", href: "/language-gazette" },
       { label: "Blog & Insights", href: "/insights" },
+      { label: "Newsletter", href: "/newsletter" },
     ],
   },
   {
@@ -45,7 +46,7 @@ const navColumns: FooterColumn[] = [
       { label: "Ask Soham - 15 Min Free", href: "/ask-soham" },
       { label: "Download the 2026 Market Entry Audit", href: "/market-entry-audit" },
       { label: "Contact Us", href: "/contact" },
-      { label: "Bhashik Skill Development", href: "https://bhashikskill.co.in", external: true },
+      { label: "Vaani Skills", href: "https://bhashikskill.co.in", external: true },
     ],
   },
 ];
@@ -54,12 +55,12 @@ const certifications = [
   { name: "ISO 9001:2015", src: "/allLogos/ISO-9001.png", alt: "ISO 9001:2015 certification logo" },
   { name: "CITLoB", src: "/allLogos/CITLoB-logo-2023.jpg", alt: "CITLoB logo" },
   { name: "Bhashini", src: "/allLogos/Bhashini-Logo.png", alt: "Bhashini initiative logo" },
+  { name: "SANO", src: "/placeholder.svg", alt: "SANO partner" },
 ];
 
 const socialLinks: Array<{ label: string; href: string; Icon: LucideIcon }> = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/ewan-business-solutions/", Icon: Linkedin },
   { label: "YouTube", href: "https://www.youtube.com/@EWAN-SSK", Icon: Youtube },
-  { label: "Instagram", href: "https://www.instagram.com/ewanbizsolution/", Icon: Instagram },
   { label: "X", href: "https://x.com/ewanbusiness", Icon: Twitter },
 ];
 
@@ -80,7 +81,42 @@ const FooterNavLink = ({ link }: { link: FooterLink }) =>
     </Link>
   );
 
-const FooterLinkColumn = ({ title, links }: { title: string; links: FooterLink[] }) => (
+const CertificationBadges = () => (
+  <div className="mt-5 border-t border-white/10 pt-4">
+    <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white/45">
+      Certifications &amp; partners
+    </p>
+    <div className="flex flex-wrap gap-2">
+      {certifications.map((cert) => (
+        <div
+          key={cert.name}
+          className="flex h-10 min-w-[74px] items-center justify-center rounded-lg border border-white/10 bg-white/90 px-2.5"
+        >
+          {cert.src === "/placeholder.svg" ? (
+            <span className="text-xs font-bold text-[hsl(var(--brand-navy-950))]">{cert.name}</span>
+          ) : (
+            <img src={cert.src} alt={cert.alt} loading="lazy" className="max-h-7 w-auto max-w-[68px] object-contain" />
+          )}
+        </div>
+      ))}
+    </div>
+    <div className="mt-3 flex flex-wrap gap-2">
+      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-semibold text-white/75">
+        MSAMB Empanelled
+      </span>
+      <a
+        href="https://bhashikskill.co.in"
+        target="_blank"
+        rel="noreferrer"
+        className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-semibold text-white/60 transition-colors hover:text-[hsl(var(--brand-gold-500))]"
+      >
+        Vaani Skills
+      </a>
+    </div>
+  </div>
+);
+
+const FooterLinkColumn = ({ title, links, showBadges = false }: { title: string; links: FooterLink[]; showBadges?: boolean }) => (
   <>
     <details className="group border-b border-white/10 lg:hidden">
       <summary className="flex cursor-pointer list-none items-center justify-between py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] [&::-webkit-details-marker]:hidden">
@@ -94,6 +130,7 @@ const FooterLinkColumn = ({ title, links }: { title: string; links: FooterLink[]
           </li>
         ))}
       </ul>
+      {showBadges ? <CertificationBadges /> : null}
     </details>
 
     <div className="hidden lg:block">
@@ -105,6 +142,7 @@ const FooterLinkColumn = ({ title, links }: { title: string; links: FooterLink[]
           </li>
         ))}
       </ul>
+      {showBadges ? <CertificationBadges /> : null}
     </div>
   </>
 );
@@ -128,13 +166,14 @@ const Footer = () => {
     if (label === "Media Hub") return t("footer.mediaHub");
     if (label === "The Language Gazette") return t("footer.languageGazette");
     if (label === "Blog & Insights") return t("footer.blogInsights");
+    if (label === "Newsletter") return "Newsletter";
     if (label === "Contact Us") return t("footer.contactUs");
     if (label === "Case Studies") return t("footer.caseStudies");
     if (label === "SANO") return t("footer.sano");
     if (label === "Privacy Policy") return t("footer.privacyPolicy");
     if (label === "Ask Soham - 15 Min Free") return t("footer.askSohamCta");
     if (label === "Download the 2026 Market Entry Audit") return t("footer.marketEntryAudit");
-    if (label === "Bhashik Skill Development") return t("footer.bhashikSkill");
+    if (label === "Vaani Skills") return t("footer.bhashikSkill");
     return label;
   };
 
@@ -224,39 +263,15 @@ const Footer = () => {
             <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] px-3 sm:px-4 lg:border-0 lg:bg-transparent lg:p-0">
               <div className="lg:grid lg:grid-cols-4 lg:gap-6 xl:gap-8">
                 {columnsWithLabels.map((col) => (
-                  <FooterLinkColumn key={col.title} title={col.translatedTitle} links={col.translatedLinks} />
+                  <FooterLinkColumn
+                    key={col.title}
+                    title={col.translatedTitle}
+                    links={col.translatedLinks}
+                    showBadges={col.title === "Media"}
+                  />
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-5 sm:p-6">
-          <p className="mb-4 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-white/45 sm:text-[11px]">
-            {t("footer.certificationsLabel")}
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            {certifications.map((cert) => (
-              <div
-                key={cert.name}
-                className="flex h-11 min-w-[88px] items-center justify-center rounded-lg border border-white/10 bg-white/90 px-3 sm:h-12 sm:min-w-[96px]"
-              >
-                <img src={cert.src} alt={cert.alt} loading="lazy" className="max-h-7 w-auto max-w-[76px] object-contain sm:max-h-8 sm:max-w-[84px]" />
-              </div>
-            ))}
-          </div>
-          <div className="mt-4 flex flex-col items-center gap-2 border-t border-white/10 pt-4 sm:flex-row sm:justify-center sm:gap-5">
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-semibold text-white/75">
-              MSAMB Empanelled
-            </span>
-            <a
-              href="https://bhashikskill.co.in"
-              target="_blank"
-              rel="noreferrer"
-              className="text-center text-[11px] font-medium text-white/60 transition-colors hover:text-[hsl(var(--brand-gold-500))]"
-            >
-              {t("footer.bhashikGroup")}
-            </a>
           </div>
         </div>
 

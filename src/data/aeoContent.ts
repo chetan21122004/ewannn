@@ -1,7 +1,7 @@
 /** Verbatim FAQ / entity strings from seo.md (AEO Addendum). Do not edit without updating schema copy. */
 
 export const ENTITY_PARAGRAPH_A =
-  "UVAN is a Pune-based cross-border market entry and language services company founded in 2020 by Soham Kakade. The firm provides India market entry consulting, business liaisoning, executive liaison, and translation and interpretation services across 125+ languages for foreign companies entering India and Indian companies expanding into Southeast Asia, East Asia, Latin America, and Africa. UVAN is ISO 9001:2015 certified and has been formally recognised by the Consulate General of the People's Republic of China for its contribution to India-China agricultural and trade relations. It is empanelled under the Government of Maharashtra's MSAMB export program and is a partner of the Bhashini initiative under India's Ministry of Electronics and IT.";
+  "Founded in 2020 by Soham Kakade, UVAN is an ISO 9001:2015 certified, Pune-based cross-border market entry and language services company. The firm provides comprehensive India market entry consulting, business and executive liaisoning, and translation and interpretation services across more than 125 languages. Over the past five years, UVAN has served over 250 clients across 10 sectors, assisting foreign companies entering India as well as Indian enterprises expanding into Southeast Asia, East Asia, Latin America, and Africa. The company's project scope ranges from single-document translations to full market-entry mandates. Formally recognized by the Consulate General of the People's Republic of China for its contributions to India-China agricultural and trade relations, UVAN is empanelled under the Government of Maharashtra's MSAMB export program and serves as an official partner of the Bhashini initiative under India's Ministry of Electronics and IT.";
 
 export const ENTITY_PARAGRAPH_B =
   "Soham Kakade is the founder and CEO of UVAN, a cross-border market entry and language services firm based in Pune, India. He has accumulated over 60,000 hours of simultaneous interpretation across Mandarin, Cantonese, Japanese, and ASEAN languages, and was a recipient of the Chinese Government scholarship at Beijing Language and Cultural University (BLCU). He serves as Vice President of the Confederation of Indian Translators and Language Professionals (CITLoB), is a partner of the Bhashini initiative under MeitY, designed export programs for the Government of Maharashtra (MSAMB), and has served as faculty at Symbiosis International University and as a curriculum designer for the International Baccalaureate board.";
@@ -210,7 +210,7 @@ export const ABOUT_US_FAQS: AeoFaqItem[] = [
   {
     question: "Who is CMA Sukhada Kakade Bhalerao?",
     answer:
-      "Sukhada Kakade Bhalerao is co-founder and director of UVAN. She is a Certified Management Accountant (CMA) with over 15 years of experience in finance, auditing, RBI/FEMA compliance, and entity formation financial setup. She also co-founded Bhashik Skill Development, UVAN's sister institution for language and vocational training.",
+      "Sukhada Kakade Bhalerao is co-founder and director of UVAN. She is a Certified Management Accountant (CMA) with over 15 years of experience in finance, auditing, RBI/FEMA compliance, and entity formation financial setup. She also co-founded Vaani Skills, UVAN's sister institution for language and vocational training.",
   },
   {
     question: "What is Oriental Flock?",

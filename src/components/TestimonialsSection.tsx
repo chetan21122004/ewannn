@@ -73,10 +73,15 @@ const TestimonialsSection = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-on-light">
-            {t("home.testimonials.titlePrefix")}{" "}
-            <span className="text-[hsl(var(--brand-purple-700))] italic">
-              {t("home.testimonials.titleHighlight")}
-            </span>
+            {t("home.testimonials.titlePrefix")}
+            {t("home.testimonials.titleHighlight") ? (
+              <>
+                {" "}
+                <span className="text-[hsl(var(--brand-purple-700))] italic">
+                  {t("home.testimonials.titleHighlight")}
+                </span>
+              </>
+            ) : null}
           </h2>
         </motion.div>
 

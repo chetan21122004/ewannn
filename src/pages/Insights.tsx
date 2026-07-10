@@ -483,7 +483,7 @@ const Insights = () => {
               </p>
             </div>
             <a
-              href="https://www.youtube.com/"
+              href="https://www.youtube.com/@EWAN-SSK"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 self-start rounded-full border border-[hsl(var(--border-light))] bg-white px-5 py-2.5 text-sm font-semibold text-[hsl(var(--brand-purple-700))] shadow-sm transition hover:-translate-y-0.5 lg:self-auto"
@@ -610,7 +610,7 @@ const Insights = () => {
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <a
-                  href="mailto:info@ewan.co.in?subject=Book%20a%20Call"
+                href="/ask-soham"
                   className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-8 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
                 >
                   Book a Call

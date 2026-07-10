@@ -25,7 +25,7 @@ import { useTranslation } from "react-i18next";
 const BOOKING_SECTION_ID = "book-call";
 const calendlyEmbedUrl = getCalendlyEmbedUrl();
 const BOOKING_EMAIL =
-  "mailto:info@ewan.co.in?subject=Ask%20Soham%20-%2015%20Min%20Free%20Call&body=Please%20include%3A%0A1.%20Your%20name%20and%20company%20%2F%20institution%0A2.%20Which%20track%20applies%20(Market%20Entry%20%2F%20Language%20Strategy%20%2F%20Career%20Guidance)%0A3.%20What%20corridor%20or%20region%20are%20you%20focused%20on%3F%0A4.%20What%27s%20your%20biggest%20challenge%20or%20question%20right%20now%3F";
+  "mailto:soham.kakade@ewan.co.in?subject=Ask%20Soham%20-%2015%20Min%20Free%20Call&body=Please%20include%3A%0A1.%20Your%20name%20and%20company%20%2F%20institution%0A2.%20Which%20track%20applies%20(Market%20Entry%20%2F%20Language%20Strategy%20%2F%20Career%20Guidance)%0A3.%20What%20corridor%20or%20region%20are%20you%20focused%20on%3F%0A4.%20What%27s%20your%20biggest%20challenge%20or%20question%20right%20now%3F";
 
 const ASK_SOHAM_KEYWORDS =
   "talk to language expert, India market entry consultation free, Soham Kakade UVAN";
@@ -76,14 +76,7 @@ const preBookingQuestions = [
   "What's your biggest challenge or question right now?",
 ];
 
-const trustBarItems = [
-  "60,000+ Hours Interpretation",
-  "250+ Clients",
-  "125+ Languages",
-  "ISO 9001:2015",
-  "Market Entry Mandates Delivered",
-  "Recognised by Consulate General of the PRC",
-];
+const trustBarItems: string[] = [];
 
 const callPrinciples = [
   { icon: ShieldCheck, text: "No pitch unless you ask" },
@@ -615,6 +608,7 @@ const AskSoham = () => {
           </motion.div>
 
           {/* Trust bar */}
+          {false && (
           <motion.div
             initial={hidden}
             whileInView={show}
@@ -634,6 +628,7 @@ const AskSoham = () => {
               ))}
             </div>
           </motion.div>
+          )}
         </div>
       </section>
 
