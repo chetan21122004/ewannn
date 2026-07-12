@@ -584,12 +584,12 @@ const AboutUs = () => {
 
                   <div className="flex flex-col gap-3 border-t border-[hsl(var(--border-light))] pt-6 sm:flex-row sm:flex-wrap">
                     <a
-                      href="https://www.linkedin.com/company/ewan-business-solutions/"
+                      href={SUKHADA_LINKEDIN}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
                     >
-                      Connect on LinkedIn
+                      Connect with Sukhada on LinkedIn
                       <ArrowRight className="h-4 w-4 shrink-0 text-[hsl(var(--brand-gold-600))]" />
                     </a>
                     <a
