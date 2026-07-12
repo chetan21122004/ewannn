@@ -79,27 +79,24 @@ const LanguageGazetteArticleShell = ({
 
   return (
     <PageLayout title={metaTitle} description={description} canonicalPath={canonicalPath} jsonLd={jsonLd}>
-      <header className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))]">
-        <div className="absolute inset-0">
-          <GazetteCoverImage src={image} alt={featuredAlt} className="h-full w-full object-cover opacity-35" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950))] via-[hsl(var(--brand-navy-950)/0.85)] to-[hsl(var(--brand-navy-950)/0.6)]" />
-        </div>
+      <header className="relative overflow-hidden theme-section-soft">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
-        <div className="container relative mx-auto px-6 pb-16 pt-8 md:pb-20 md:pt-10">
-          <nav aria-label="Breadcrumb" className="mb-10 flex flex-wrap items-center gap-1.5 text-sm text-white/60">
-            <Link to="/" className="transition hover:text-white">
+        <div className="container relative z-10 mx-auto px-6 pb-16 pt-8 md:pb-20 md:pt-10">
+          <nav aria-label="Breadcrumb" className="mb-10 flex flex-wrap items-center gap-1.5 text-sm text-on-light-muted">
+            <Link to="/" className="transition hover:text-[hsl(var(--brand-purple-700))]">
               Home
             </Link>
             <ChevronRight className="h-3.5 w-3.5 shrink-0" />
-            <Link to="/language-gazette" className="transition hover:text-white">
+            <Link to="/language-gazette" className="transition hover:text-[hsl(var(--brand-purple-700))]">
               The Language Gazette
             </Link>
             <ChevronRight className="h-3.5 w-3.5 shrink-0" />
-            <Link to={issuePath} className="transition hover:text-white">
+            <Link to={issuePath} className="transition hover:text-[hsl(var(--brand-purple-700))]">
               {issueLabel}
             </Link>
             <ChevronRight className="h-3.5 w-3.5 shrink-0" />
-            <span className="text-white/90">{title}</span>
+            <span className="text-on-light">{title}</span>
           </nav>
 
           <div className="max-w-4xl">
@@ -107,38 +104,38 @@ const LanguageGazetteArticleShell = ({
               <span className="rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-navy-950))]">
                 {category}
               </span>
-              <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white/80">
+              <span className="rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
                 {issueLabel}
               </span>
             </div>
 
-            <h1 className="mt-6 font-serif text-4xl font-extrabold leading-[1.08] text-white md:text-6xl lg:text-[4.25rem]">{title}</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75 md:text-xl">{description}</p>
+            <h1 className="mt-6 font-serif text-4xl font-extrabold leading-[1.08] text-on-light md:text-6xl lg:text-[4.25rem]">{title}</h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-on-light-secondary md:text-xl">{description}</p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-5 border-t border-white/15 pt-8">
+            <div className="mt-8 flex flex-wrap items-center gap-5 border-t border-[hsl(var(--border-light))] pt-8">
               <div className="flex items-center gap-3">
                 <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[hsl(var(--brand-purple-700))] font-serif text-lg font-bold text-white">
                   {authorInitial}
                 </span>
                 <div>
                   {aboutHref ? (
-                    <Link to={aboutHref} className="text-sm font-semibold text-white hover:text-[hsl(var(--brand-gold-500))]">
+                    <Link to={aboutHref} className="text-sm font-semibold text-on-light hover:text-[hsl(var(--brand-purple-700))]">
                       {author}
                     </Link>
                   ) : (
-                    <p className="text-sm font-semibold text-white">{author}</p>
+                    <p className="text-sm font-semibold text-on-light">{author}</p>
                   )}
-                  <p className="text-xs text-white/55">
+                  <p className="text-xs text-on-light-muted">
                     {author === "Soham Kakade" ? "Founder & CEO, UVAN" : "Contributing Writer"}
                   </p>
                 </div>
               </div>
-              <span className="hidden h-8 w-px bg-white/15 sm:block" />
-              <time dateTime={datePublished} className="flex items-center gap-1.5 text-sm text-white/65">
+              <span className="hidden h-8 w-px bg-[hsl(var(--border-light))] sm:block" />
+              <time dateTime={datePublished} className="flex items-center gap-1.5 text-sm text-on-light-muted">
                 <BookOpen className="h-4 w-4" aria-hidden />
                 {formattedDate}
               </time>
-              <span className="flex items-center gap-1.5 text-sm text-white/65">
+              <span className="flex items-center gap-1.5 text-sm text-on-light-muted">
                 <Clock className="h-4 w-4" aria-hidden />
                 {readTime}
               </span>
@@ -156,8 +153,8 @@ const LanguageGazetteArticleShell = ({
             <ArticleServiceLinks />
           </div>
 
-          <aside className="mt-10 flex gap-5 rounded-2xl border border-[hsl(var(--brand-navy-950)/0.08)] bg-white p-6 shadow-sm md:p-8">
-            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-navy-950))] font-serif text-xl font-bold text-white">
+          <aside className="mt-10 flex gap-5 rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 shadow-sm md:p-8">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-purple-700))] font-serif text-xl font-bold text-white">
               {authorInitial}
             </span>
             <div>
@@ -217,9 +214,9 @@ const LanguageGazetteArticleShell = ({
             ))}
           </div>
 
-          <footer className="mt-12 rounded-2xl bg-[hsl(var(--brand-navy-950))] px-8 py-10 text-center md:px-12">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">The Language Gazette</p>
-            <p className="mt-3 font-serif text-2xl font-bold text-white">
+          <footer className="mt-12 rounded-2xl border border-[hsl(var(--border-light))] bg-white px-8 py-10 text-center shadow-sm md:px-12">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">The Language Gazette</p>
+            <p className="mt-3 font-serif text-2xl font-bold text-on-light">
               This article first appeared in The Language Gazette Issue {issue.label}.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
@@ -232,13 +229,13 @@ const LanguageGazetteArticleShell = ({
               </Link>
               <Link
                 to="/market-entry/"
-                className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-sm font-semibold text-white/90"
+                className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
               >
                 Market Entry
               </Link>
               <Link
                 to="/language-localization/"
-                className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-sm font-semibold text-white/90"
+                className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
               >
                 Language &amp; Localization
               </Link>

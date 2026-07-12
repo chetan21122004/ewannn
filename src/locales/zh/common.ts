@@ -41,7 +41,7 @@ const zhCommon = {
       orientalFlock: "Oriental Flock",
       partners: "我们的伙伴",
       joinUs: "加入我们",
-      caseStudies: "案例研究",
+      caseStudy: "案例研究",
       testimonials: "客户评价",
     },
     media: {
@@ -73,7 +73,7 @@ const zhCommon = {
     rights: "© 2026 UVAN. 版权所有。",
     privacy: "隐私",
     privacyPolicy: "隐私政策",
-    caseStudies: "案例研究",
+    caseStudy: "案例研究",
     sano: "SANO",
     terms: "条款",
     cookies: "Cookies",
@@ -321,6 +321,8 @@ const zhCommon = {
           name: "Sukhada Kakade",
           role: "联合创始人兼董事",
           img: "/Sukhada-maam.jpg",
+          linkedinUrl: "https://www.linkedin.com/in/cma-sukhada-kakade-bhalerao-5b3789401/",
+          linkedinCta: "Connect with Sukhada on LinkedIn →",
           intro: [
             "Sukhada 是来自浦那的注册管理会计师（CMA）、财务教育者与创业者，拥有 15+ 年经验。",
             "作为联合创始人，她为 UVAN 提供财务纪律与运营底盘，支撑实体设立到合规执行的全链路。",

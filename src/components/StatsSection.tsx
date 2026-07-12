@@ -45,7 +45,6 @@ const StatsSection = () => {
   return (
     <section className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] py-8 theme-section-soft stitch-line stitch-line-bottom lg:py-16">
       <div className="absolute inset-0 theme-grid-overlay-light opacity-20 pointer-events-none" />
-      <div className="glow-orb glow-orb-purple w-[360px] h-[360px] -top-40 left-1/4 opacity-8" />
       <div className="glow-orb glow-orb-gold w-[320px] h-[320px] -bottom-24 right-1/4 opacity-8" />
 
       <div className="container relative z-10 mx-auto px-5 sm:px-6" ref={ref}>

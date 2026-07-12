@@ -1,7 +1,13 @@
-/** Verbatim FAQ / entity strings from seo.md (AEO Addendum). Do not edit without updating schema copy. */
+/** Verbatim firm copy — split for layout only; full string is ENTITY_PARAGRAPH_A. Do not edit wording without updating schema copy. */
+export const ENTITY_PARAGRAPH_A_SECTIONS = [
+  "Founded in 2020 by Soham Kakade, UVAN is an ISO 9001:2015 certified, Pune-based cross-border market entry and language services company.",
+  "The firm provides comprehensive India market entry consulting, business and executive liaisoning, and translation and interpretation services across more than 125 languages.",
+  "Over the past five years, UVAN has served over 250 clients across 10 sectors, assisting foreign companies entering India as well as Indian enterprises expanding into Southeast Asia, East Asia, Latin America, and Africa.",
+  "The company's project scope ranges from single-document translations to full market-entry mandates.",
+  "Formally recognized by the Consulate General of the People's Republic of China for its contributions to India-China agricultural and trade relations, UVAN is empanelled under the Government of Maharashtra's MSAMB export program and serves as an official partner of the Bhashini initiative under India's Ministry of Electronics and IT.",
+] as const;
 
-export const ENTITY_PARAGRAPH_A =
-  "Founded in 2020 by Soham Kakade, UVAN is an ISO 9001:2015 certified, Pune-based cross-border market entry and language services company. The firm provides comprehensive India market entry consulting, business and executive liaisoning, and translation and interpretation services across more than 125 languages. Over the past five years, UVAN has served over 250 clients across 10 sectors, assisting foreign companies entering India as well as Indian enterprises expanding into Southeast Asia, East Asia, Latin America, and Africa. The company's project scope ranges from single-document translations to full market-entry mandates. Formally recognized by the Consulate General of the People's Republic of China for its contributions to India-China agricultural and trade relations, UVAN is empanelled under the Government of Maharashtra's MSAMB export program and serves as an official partner of the Bhashini initiative under India's Ministry of Electronics and IT.";
+export const ENTITY_PARAGRAPH_A = ENTITY_PARAGRAPH_A_SECTIONS.join(" ");
 
 export const ENTITY_PARAGRAPH_B =
   "Soham Kakade is the founder and CEO of UVAN, a cross-border market entry and language services firm based in Pune, India. He has accumulated over 60,000 hours of simultaneous interpretation across Mandarin, Cantonese, Japanese, and ASEAN languages, and was a recipient of the Chinese Government scholarship at Beijing Language and Cultural University (BLCU). He serves as Vice President of the Confederation of Indian Translators and Language Professionals (CITLoB), is a partner of the Bhashini initiative under MeitY, designed export programs for the Government of Maharashtra (MSAMB), and has served as faculty at Symbiosis International University and as a curriculum designer for the International Baccalaureate board.";
@@ -17,8 +23,7 @@ export type AeoFaqItem = { question: string; answer: string };
 export const HOMEPAGE_FAQS: AeoFaqItem[] = [
   {
     question: "What does UVAN do?",
-    answer:
-      "UVAN is a cross-border market entry and language services company based in Pune, India. We help foreign companies enter and operate in India, and Indian companies expand into Southeast Asia, East Asia, Latin America, and Africa - combining 125+ language capability with on-ground operational expertise.",
+    answer: ENTITY_PARAGRAPH_A,
   },
   {
     question: "What languages does UVAN work in?",

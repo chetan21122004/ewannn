@@ -33,12 +33,11 @@ const ContactSection = () => {
         className="pointer-events-none absolute inset-0 opacity-[0.35]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 30%, hsl(var(--brand-purple-700) / 0.14), transparent 42%), radial-gradient(circle at 80% 70%, hsl(var(--brand-gold-500) / 0.12), transparent 38%)",
+            "radial-gradient(circle at 80% 70%, hsl(var(--brand-gold-500) / 0.12), transparent 38%)",
           backgroundSize: "200% 200%",
           backgroundPosition: gradientPosition,
         }}
       />
-      <div className="glow-orb glow-orb-purple pointer-events-none -left-20 -top-24 h-[280px] w-[280px] opacity-[0.08] lg:-left-28 lg:-top-36 lg:h-[460px] lg:w-[460px] lg:opacity-[0.11]" />
       <div className="glow-orb glow-orb-gold pointer-events-none -bottom-20 right-[-18%] h-[240px] w-[240px] opacity-[0.07] lg:-bottom-32 lg:right-[-12%] lg:h-[380px] lg:w-[380px] lg:opacity-[0.09]" />
       <div className="pointer-events-none absolute inset-0 opacity-[0.12] theme-grid-overlay-light lg:opacity-[0.18]" />
 

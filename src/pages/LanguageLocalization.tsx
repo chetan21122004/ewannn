@@ -206,33 +206,8 @@ const LanguageLocalization = () => {
       jsonLd={languageLd}
     >
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 pb-14 pt-8 text-white sm:px-6 lg:pb-24 lg:pt-12">
-        <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-40 mix-blend-color-dodge"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/abstract-background-purple-dark-blue-gradient-wave-modern-background-combination-curve-free-vector.jpg')",
-          }}
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-[position:70%_20%] opacity-30 mix-blend-soft-light"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg')",
-          }}
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(circle at 75% 20%, hsl(var(--brand-purple-500)/0.28) 0%, transparent 34%), radial-gradient(circle at 15% 80%, hsl(var(--brand-cyan-500)/0.16) 0%, transparent 40%)",
-          }}
-          aria-hidden
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.15)] via-transparent to-[hsl(var(--brand-navy-950))]" />
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay opacity-[0.1]" />
+      <section className="relative isolate overflow-hidden theme-section-soft px-5 pb-14 pt-8 sm:px-6 lg:pb-24 lg:pt-12">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
           <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
@@ -242,14 +217,14 @@ const LanguageLocalization = () => {
               animate={show}
               transition={transition(0)}
             >
-              <p className="mb-4 inline-flex max-w-full rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85 backdrop-blur-sm sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]">
+              <p className="mb-4 inline-flex max-w-full rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]">
                 125+ Languages. Every Sector. ISO 9001:2015 Certified.
               </p>
-              <h1 className="font-serif text-[1.85rem] font-bold leading-[1.08] sm:text-4xl lg:text-5xl xl:text-7xl xl:leading-tight">
+              <h1 className="font-serif text-[1.85rem] font-bold leading-[1.08] text-on-light sm:text-4xl lg:text-5xl xl:text-7xl xl:leading-tight">
                 Language That{" "}
-                <span className="text-[hsl(var(--brand-gold-500))]">Goes Beyond Words.</span>
+                <span className="text-[hsl(var(--brand-purple-700))]">Goes Beyond Words.</span>
               </h1>
-              <p className="language-speakable mt-4 max-w-2xl text-sm leading-relaxed text-white/78 sm:mt-6 sm:text-base lg:text-lg">
+              <p className="language-speakable mt-4 max-w-2xl text-sm leading-relaxed text-on-light-secondary sm:mt-6 sm:text-base lg:text-lg">
                 {SPEAKABLE_LANGUAGE}
               </p>
               <div className="mt-6 sm:mt-8">
@@ -384,9 +359,8 @@ const LanguageLocalization = () => {
       </section>
 
       {/* Sector expertise */}
-      <section id="sectors" className="relative scroll-mt-24 overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 py-10 text-white sm:px-6 lg:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,hsl(var(--brand-purple-500)/0.3),transparent_40%)]" />
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay opacity-[0.06] lg:opacity-[0.08]" />
+      <section id="sectors" className="relative scroll-mt-24 overflow-hidden theme-section-soft px-5 py-10 sm:px-6 lg:py-24">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
@@ -396,34 +370,34 @@ const LanguageLocalization = () => {
             transition={transition(0)}
             className="mb-6 max-w-3xl lg:mb-12"
           >
-            <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.24em]">
+            <span className="inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.24em]">
               Sector Expertise
             </span>
-            <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
               Language Services Across Every Major Industry
             </h2>
-            <p className="mt-2 text-xs text-white/55 md:hidden">Tap a sector to read how we support it.</p>
+            <p className="mt-2 text-xs text-on-light-muted md:hidden">Tap a sector to read how we support it.</p>
           </motion.div>
 
           {/* Mobile: accordion */}
           <Accordion
             type="single"
             collapsible
-            className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] md:hidden"
+            className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white md:hidden"
           >
             {industryFocus.map((item, index) => (
               <AccordionItem
                 key={item.title}
                 value={item.title}
-                className="border-white/10 px-4 last:border-b-0 data-[state=open]:bg-white/[0.06]"
+                className="border-[hsl(var(--border-light))] px-4 last:border-b-0 data-[state=open]:bg-[hsl(var(--surface-light-50))]"
               >
-                <AccordionTrigger className="gap-3 py-3.5 text-white hover:no-underline [&[data-state=open]>svg]:text-[hsl(var(--brand-gold-500))]">
+                <AccordionTrigger className="gap-3 py-3.5 text-on-light hover:no-underline [&[data-state=open]>svg]:text-[hsl(var(--brand-purple-700))]">
                   <span className="flex min-w-0 flex-1 items-center gap-3 text-left">
-                    <span className="shrink-0 font-serif text-sm font-bold text-white/25">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="shrink-0 font-serif text-sm font-bold text-on-light-muted">{String(index + 1).padStart(2, "0")}</span>
                     <span className="font-serif text-base font-bold leading-snug">{item.title}</span>
                   </span>
                 </AccordionTrigger>
-                <AccordionContent className="pb-3.5 pl-9 text-xs leading-relaxed text-white/70">
+                <AccordionContent className="pb-3.5 pl-9 text-xs leading-relaxed text-on-light-secondary">
                   {item.description}
                 </AccordionContent>
               </AccordionItem>
@@ -440,15 +414,15 @@ const LanguageLocalization = () => {
                 viewport={{ once: true }}
                 transition={transition((index % 3) * 0.06)}
                 whileHover={reduceMotion ? undefined : { y: -4 }}
-                className="group rounded-xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-sm transition hover:border-[hsl(var(--brand-gold-500)/0.35)] hover:bg-white/10 sm:rounded-2xl sm:p-5 lg:p-6"
+                className="group rounded-xl border border-[hsl(var(--border-light))] bg-white p-3.5 transition hover:border-[hsl(var(--brand-purple-700)/0.35)] hover:shadow-sm sm:rounded-2xl sm:p-5 lg:p-6"
               >
-                <span className="font-serif text-lg font-bold text-white/15 transition group-hover:text-[hsl(var(--brand-gold-500)/0.35)] sm:text-2xl lg:text-3xl">
+                <span className="font-serif text-lg font-bold text-on-light-muted transition group-hover:text-[hsl(var(--brand-purple-700)/0.4)] sm:text-2xl lg:text-3xl">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-1.5 font-serif text-sm font-bold text-white transition group-hover:text-[hsl(var(--brand-gold-500))] sm:mt-2 sm:text-lg lg:text-xl">
+                <h3 className="mt-1.5 font-serif text-sm font-bold text-on-light transition group-hover:text-[hsl(var(--brand-purple-700))] sm:mt-2 sm:text-lg lg:text-xl">
                   {item.title}
                 </h3>
-                <p className="mt-1 text-[11px] leading-relaxed text-white/68 sm:mt-2 sm:text-sm">{item.description}</p>
+                <p className="mt-1 text-[11px] leading-relaxed text-on-light-secondary sm:mt-2 sm:text-sm">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -527,16 +501,6 @@ const LanguageLocalization = () => {
 
       {/* Global Talkies */}
       <section id="global-talkies" className="relative scroll-mt-24 overflow-hidden px-5 py-8 theme-section-soft sm:px-6 lg:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-multiply lg:opacity-[0.1]"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/banner-background-colorful-bright-purple-gradient-geometric-effect-eps-10-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
             initial={hidden}
@@ -599,18 +563,7 @@ const LanguageLocalization = () => {
       />
 
       {/* Final CTA */}
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 py-10 text-white sm:px-6 lg:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-30 mix-blend-color-dodge"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,hsl(var(--brand-purple-500)/0.35),transparent_45%)]" />
+      <section className="relative overflow-hidden theme-section-soft px-5 py-10 sm:px-6 lg:py-20">
 
         <div className="container relative z-10 mx-auto max-w-4xl">
           <motion.div
@@ -618,9 +571,9 @@ const LanguageLocalization = () => {
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0)}
-            className="rounded-2xl border border-white/15 bg-white/5 p-5 text-center backdrop-blur-sm sm:rounded-3xl sm:p-8 lg:p-10"
+            className="rounded-2xl border border-[hsl(var(--border-light))] bg-white p-5 text-center shadow-sm sm:rounded-3xl sm:p-8 lg:p-10"
           >
-            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] sm:text-[11px] sm:tracking-[0.24em]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] sm:text-[11px] sm:tracking-[0.24em]">
               Next Step
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
@@ -635,7 +588,7 @@ const LanguageLocalization = () => {
               </motion.a>
               <Link
                 to="/ask-soham"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/18 sm:w-auto sm:px-6"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto sm:px-6"
               >
                 Ask Soham - 15 Min Free
                 <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />

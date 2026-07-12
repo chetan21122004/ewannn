@@ -38,7 +38,6 @@ const ClientLogosSection = () => {
       aria-label="Client logos"
     >
       <div className="pointer-events-none absolute inset-0 opacity-[0.12] theme-grid-overlay-light lg:opacity-15" />
-      <div className="glow-orb glow-orb-purple -top-20 left-6 h-[220px] w-[220px] opacity-8 lg:-top-28 lg:left-10 lg:h-[320px] lg:w-[320px]" />
       <div className="glow-orb glow-orb-gold -bottom-16 right-6 h-[200px] w-[200px] opacity-8 lg:-bottom-20 lg:right-10 lg:h-[280px] lg:w-[280px]" />
 
       <div className="container relative z-10 mx-auto px-2 sm:px-6">

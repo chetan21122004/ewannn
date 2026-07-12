@@ -43,7 +43,6 @@ const ClientNetworkSection = () => {
         />
       </svg>
 
-      <div className="glow-orb glow-orb-purple w-[350px] h-[350px] top-1/2 -right-40 opacity-10" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Client logos with animated reveal */}

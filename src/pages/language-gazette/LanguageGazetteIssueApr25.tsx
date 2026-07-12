@@ -25,21 +25,22 @@ const LanguageGazetteIssueApr25 = () => {
 
   return (
     <PageLayout title={`${TITLE} | UVAN`} description={DESCRIPTION} canonicalPath={CANONICAL} jsonLd={jsonLd}>
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 py-14 text-white md:py-20">
-        <div className="container mx-auto max-w-6xl">
-          <nav className="mb-8 text-sm text-white/60">
-            <Link to="/language-gazette" className="hover:text-white">
+      <section className="relative overflow-hidden theme-section-soft px-6 py-14 md:py-20">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <nav className="mb-8 text-sm text-on-light-muted">
+            <Link to="/language-gazette" className="hover:text-[hsl(var(--brand-purple-700))]">
               The Language Gazette
             </Link>
             <span className="mx-2">/</span>
-            <span className="text-white/90">{issue.label}</span>
+            <span className="text-on-light">{issue.label}</span>
           </nav>
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[hsl(var(--brand-gold-500))]">Issue index</p>
-              <h1 className="mt-4 font-serif text-4xl font-extrabold leading-tight md:text-6xl">{issue.label} Issue</h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">{issue.description}</p>
-              <p className="mt-4 text-sm text-white/60">
+              <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[hsl(var(--brand-purple-700))]">Issue index</p>
+              <h1 className="mt-4 font-serif text-4xl font-extrabold leading-tight text-on-light md:text-6xl">{issue.label} Issue</h1>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-on-light-secondary">{issue.description}</p>
+              <p className="mt-4 text-sm text-on-light-muted">
                 Published {issueDate} · {issue.articles.length} articles · also available as a digital issue
               </p>
               <a
@@ -51,7 +52,7 @@ const LanguageGazetteIssueApr25 = () => {
               </a>
             </div>
             <div className="lg:col-span-5">
-              <div className="gazette-cover-shadow overflow-hidden rounded-[1.5rem] border border-white/15">
+              <div className="gazette-cover-shadow overflow-hidden rounded-[1.5rem] border border-[hsl(var(--border-light))]">
                 <GazetteCoverImage src={issue.coverImage} alt={`${issue.label} cover`} className="aspect-[4/5] w-full object-cover" />
               </div>
             </div>

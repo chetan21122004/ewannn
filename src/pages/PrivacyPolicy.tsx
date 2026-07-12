@@ -130,7 +130,6 @@ const PrivacyPolicy = () => (
     canonicalPath="/privacy-policy"
   >
     <section className="relative overflow-hidden border-b border-[hsl(var(--border-light))] theme-section-soft">
-      <div className="glow-orb glow-orb-purple -right-16 top-0 h-[280px] w-[280px] opacity-10 lg:-right-8 lg:h-[360px] lg:w-[360px]" />
       <div className="pointer-events-none absolute inset-0 opacity-[0.1] theme-grid-overlay-light" />
 
       <div className="container relative z-10 mx-auto max-w-5xl px-5 py-10 sm:px-6 sm:py-14 lg:py-16">

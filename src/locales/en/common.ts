@@ -41,7 +41,7 @@ const enCommon = {
       orientalFlock: "Oriental Flock",
       partners: "Our Partners",
       joinUs: "Join Us",
-      caseStudies: "Case Studies",
+      caseStudy: "Case Study",
       testimonials: "Testimonials",
     },
     media: {
@@ -72,7 +72,7 @@ const enCommon = {
     marketEntryAudit: "Download the 2026 Market Entry Audit",
     rights: "© 2026 UVAN. All rights reserved.",
     privacyPolicy: "Privacy Policy",
-    caseStudies: "Case Studies",
+    caseStudy: "Case Study",
     sano: "SANO",
   },
   whatsapp: {
@@ -199,7 +199,7 @@ const enCommon = {
       headlineSuffix: "",
       cardLabel: "Company profile",
       cardBlurb:
-        "Founded in Pune in 2020, UVAN brings together India-Asia market entry execution and 125+ languages under one roof - ISO certified, recognised for India-China trade ties, and partnered with MSAMB and Bhashini.",
+        "Founded in 2020 by Soham Kakade, UVAN is an ISO 9001:2015 certified, Pune-based cross-border market entry and language services company. The firm provides comprehensive India market entry consulting, business and executive liaisoning, and translation and interpretation services across more than 125 languages. Over the past five years, UVAN has served over 250 clients across 10 sectors, assisting foreign companies entering India as well as Indian enterprises expanding into Southeast Asia, East Asia, Latin America, and Africa. The company's project scope ranges from single-document translations to full market-entry mandates. Formally recognized by the Consulate General of the People's Republic of China for its contributions to India-China agricultural and trade relations, UVAN is empanelled under the Government of Maharashtra's MSAMB export program and serves as an official partner of the Bhashini initiative under India's Ministry of Electronics and IT.",
       pills: ["Pune, India · Founded 2020", "125+ languages", "ISO 9001:2015", "MSAMB · Bhashini"],
     },
     stats: {
@@ -390,6 +390,8 @@ const enCommon = {
           name: "CMA Sukhada Kakade Bhalerao",
           role: "Co-Founder & Director",
           img: "/Sukhada-maam.jpg",
+          linkedinUrl: "https://www.linkedin.com/in/cma-sukhada-kakade-bhalerao-5b3789401/",
+          linkedinCta: "Connect with Sukhada on LinkedIn →",
           intro: [
             "Sukhada Kakade Bhalerao is a Pune-based Certified Management Accountant (CMA), finance educator, and entrepreneur with over 15 years of experience in finance, auditing, and professional training.",
             "As Co-Founder and Director of UVAN and Vaani Skills, she brings the financial rigour and operational backbone that underpins everything UVAN delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
@@ -642,7 +644,7 @@ const enCommon = {
     },
     hq: {
       title: "Global Headquarters",
-      location: "Pune, India",
+      location: "Flat no 14, Fourth Floor, Asmant Apartment, near Quantum Works, Erandwane, Karve Road, Pune - 411004",
       desc: "Operating across India, Asia, and global markets.",
     },
     form: {

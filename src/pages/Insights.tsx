@@ -116,6 +116,20 @@ const videoCards = [
 
 const recognitionPartners = ["FICCI", "CII", "MSAMB", "Consulate General", "Times of India"];
 
+const UVAN_YOUTUBE_URL = "https://www.youtube.com/@EWAN-SSK";
+
+const blogMarqueeItems = [
+  "Market Entry",
+  "Translation Strategy",
+  "Simultaneous Interpretation",
+  "India-Vietnam Corridor",
+  "Cross-Border Operations",
+  "Language Careers",
+  "Cultural Intelligence",
+  "Asia Corridors",
+  "125+ Languages",
+];
+
 const insightsLd = [
   breadcrumbSchema(absoluteUrl("/insights/"), [
     { name: "Home", path: "/" },
@@ -147,7 +161,6 @@ const Insights = () => {
       jsonLd={insightsLd}
     >
       <section className="relative overflow-hidden bg-[hsl(var(--surface-light-50))] px-6 py-16 md:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,hsl(var(--brand-purple-700)/0.08),transparent_42%)]" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_84%_78%,hsl(var(--brand-gold-500)/0.06),transparent_38%)]" />
         <div className="pointer-events-none absolute left-8 top-16 hidden select-none text-5xl font-extrabold text-[hsl(var(--brand-purple-700)/0.16)] lg:block">
           {`{"insights":true}`}
@@ -171,16 +184,22 @@ const Insights = () => {
             </p>
             <div className="mt-6 flex flex-wrap gap-2.5">
               <a
-                href="mailto:info@ewan.co.in?subject=Insights%20Subscription"
+                href="#articles"
                 className="rounded-full bg-[hsl(var(--brand-navy-950))] px-5 py-2 text-xs font-bold text-white md:text-sm"
               >
-                Subscribe to Insights
+                Articles
+              </a>
+              <a
+                href="#language-gazette"
+                className="rounded-full border border-[hsl(var(--border-light))] px-5 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] md:text-sm"
+              >
+                The Language Gazette
               </a>
               <Link
                 to="/media"
                 className="rounded-full border border-[hsl(var(--border-light))] px-5 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] md:text-sm"
               >
-                Back to Media Hub
+                Media Hub
               </Link>
             </div>
           </div>
@@ -193,27 +212,139 @@ const Insights = () => {
                   className="h-full w-full rounded-full object-cover grayscale"
                 />
               </div>
-              <div className="absolute -bottom-4 -left-4 rounded-xl bg-white p-4 shadow-lg">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-600))]">Live Metrics</p>
-                <p className="mt-2 text-xl font-black text-[hsl(var(--brand-navy-950))]">60,000+ Hours</p>
-                <p className="mt-1 max-w-[180px] text-xs text-on-light-secondary">Of cross-cultural interpretation expertise applied.</p>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Language Gazette */}
-      <section className="relative overflow-hidden theme-section-soft px-6 py-16 md:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.14] mix-blend-multiply"
-          style={{
-            backgroundImage: "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
+      {/* Articles */}
+      <section id="articles" className="relative scroll-mt-36 overflow-hidden theme-section-light px-6 py-16 md:py-20">
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <motion.div
+            initial={hidden}
+            whileInView={show}
+            viewport={{ once: true }}
+            transition={transition(0)}
+            className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
+          >
+            <div className="max-w-xl">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
+                <BookOpen className="h-3.5 w-3.5" aria-hidden />
+                Articles
+              </span>
+              <h2 className="mt-4 font-serif text-3xl font-extrabold text-[hsl(var(--brand-navy-950))] sm:text-4xl">
+                Articles for operators and leaders
+              </h2>
+              <p className="mt-3 text-base text-on-light-secondary">
+                Filter by topic - market entry, language strategy, career paths, and corridor intelligence.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {filterOptions.map((filter) => (
+                <button
+                  key={filter}
+                  type="button"
+                  onClick={() => setActiveFilter(filter)}
+                  className={`rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-[0.12em] transition ${
+                    activeFilter === filter
+                      ? "bg-[hsl(var(--brand-navy-950))] text-white shadow-sm"
+                      : "border border-[hsl(var(--border-light))] bg-white text-[hsl(var(--brand-navy-950))] hover:border-[hsl(var(--brand-purple-700)/0.3)]"
+                  }`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+
+          <div className="client-logos-fade mb-10 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white/70 py-3">
+            <div className="blogs-marquee flex w-max items-center gap-3">
+              {[...blogMarqueeItems, ...blogMarqueeItems].map((item, index) => (
+                <span
+                  key={`${item}-${index}`}
+                  className="rounded-full border border-[hsl(var(--brand-purple-700)/0.12)] bg-[hsl(var(--brand-purple-700)/0.06)] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+            {filteredRepoCards.map((card, index) => (
+              <motion.div
+                key={card.title}
+                initial={hidden}
+                whileInView={show}
+                viewport={{ once: true }}
+                transition={transition(0.06 + index * 0.05)}
+                layout
+              >
+                <Link to={card.to} className="group flex h-full flex-col">
+                  <article className="theme-card-light card-shine flex h-full flex-col overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] transition hover:-translate-y-1">
+                    <div className="overflow-hidden">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col p-6">
+                      <div className="mb-3 flex items-center justify-between gap-3">
+                        <span className="rounded-full bg-[hsl(var(--brand-gold-500)/0.14)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-gold-600))]">
+                          {card.tag}
+                        </span>
+                        <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-on-light-muted">{card.date}</span>
+                      </div>
+                      <h3 className="text-lg font-bold leading-snug text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))]">
+                        {card.title}
+                      </h3>
+                      <p className="mt-3 flex-grow text-sm leading-relaxed text-on-light-secondary">{card.copy}</p>
+                      <div className="mt-5 flex items-center gap-3 border-t border-[hsl(var(--border-light))] pt-4">
+                        <img src={card.authorImage} alt="Author Soham" className="h-9 w-9 rounded-full object-cover ring-2 ring-[hsl(var(--border-light))]" />
+                        <div>
+                          <p className="text-sm font-semibold text-[hsl(var(--brand-navy-950))]">Soham</p>
+                          <p className="text-[11px] text-on-light-muted">UVAN Editorial</p>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              </motion.div>
+            ))}
+
+            <motion.article
+              initial={hidden}
+              whileInView={show}
+              viewport={{ once: true }}
+              transition={transition(0.2)}
+              className="relative overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] bg-white p-7 md:col-span-2 lg:col-span-1"
+            >
+              <img
+                src="/doodles/Mail-amico.svg"
+                alt=""
+                aria-hidden
+                className="pointer-events-none absolute -bottom-4 -right-2 h-28 w-28 opacity-10"
+              />
+              <Sparkles className="h-6 w-6 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+              <h3 className="relative mt-4 font-serif text-2xl font-bold leading-snug text-on-light">Subscribe to the Executive Briefing</h3>
+              <p className="relative mt-3 text-sm leading-relaxed text-on-light-secondary">
+                Weekly deep-dives into Asian market dynamics delivered to your inbox.
+              </p>
+              <a
+                href="mailto:info@ewan.co.in?subject=Executive%20Briefing%20Subscription"
+                className="relative mt-7 inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-2.5 text-sm font-bold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+              >
+                <Mail className="h-4 w-4" aria-hidden />
+                Subscribe via Email
+              </a>
+            </motion.article>
+          </div>
+        </div>
+      </section>
+
+      {/* The Language Gazette */}
+      <section id="language-gazette" className="relative scroll-mt-36 overflow-hidden theme-section-soft px-6 py-16 md:py-20">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -227,13 +358,13 @@ const Insights = () => {
             <div className="max-w-2xl">
               <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
                 <Newspaper className="h-3.5 w-3.5" aria-hidden />
-                Quarterly Publication
+                The Language Gazette
               </span>
               <h2 className="mt-4 font-serif text-3xl font-extrabold text-[hsl(var(--brand-navy-950))] sm:text-4xl">
                 The Language <span className="italic text-[hsl(var(--brand-purple-700))]">Gazette</span>
               </h2>
               <p className="mt-3 text-base leading-relaxed text-on-light-secondary">
-                Our quarterly publication on global strategy and cultural intelligence - a masterclass in cross-border operations.
+                UVAN&apos;s quarterly publication on global strategy and cultural intelligence - a masterclass in cross-border operations.
               </p>
             </div>
             <motion.img
@@ -250,7 +381,7 @@ const Insights = () => {
               to="/language-gazette"
               className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-navy-950))] px-5 py-2.5 text-sm font-bold text-white transition hover:brightness-110"
             >
-              Browse All Articles
+              Browse Gazette
               <ArrowRight className="h-4 w-4" />
             </Link>
             <a
@@ -333,134 +464,8 @@ const Insights = () => {
         </div>
       </section>
 
-      {/* Repository of Insights */}
-      <section className="relative overflow-hidden theme-section-light px-6 py-16 md:py-20">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_90%_10%,hsl(var(--brand-purple-700)/0.06),transparent_40%)]" />
-
-        <div className="container relative z-10 mx-auto max-w-6xl">
-          <motion.div
-            initial={hidden}
-            whileInView={show}
-            viewport={{ once: true }}
-            transition={transition(0)}
-            className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
-          >
-            <div className="max-w-xl">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
-                <BookOpen className="h-3.5 w-3.5" aria-hidden />
-                Repository of Insights
-              </span>
-              <h2 className="mt-4 font-serif text-3xl font-extrabold text-[hsl(var(--brand-navy-950))] sm:text-4xl">
-                Articles for operators and leaders
-              </h2>
-              <p className="mt-3 text-base text-on-light-secondary">
-                Filter by topic - market entry, language strategy, career paths, and corridor intelligence.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {filterOptions.map((filter) => (
-                <button
-                  key={filter}
-                  type="button"
-                  onClick={() => setActiveFilter(filter)}
-                  className={`rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-[0.12em] transition ${
-                    activeFilter === filter
-                      ? "bg-[hsl(var(--brand-navy-950))] text-white shadow-sm"
-                      : "border border-[hsl(var(--border-light))] bg-white text-[hsl(var(--brand-navy-950))] hover:border-[hsl(var(--brand-purple-700)/0.3)]"
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-
-          <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-            {filteredRepoCards.map((card, index) => (
-              <motion.div
-                key={card.title}
-                initial={hidden}
-                whileInView={show}
-                viewport={{ once: true }}
-                transition={transition(0.06 + index * 0.05)}
-                layout
-              >
-                <Link to={card.to} className="group flex h-full flex-col">
-                  <article className="theme-card-light card-shine flex h-full flex-col overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] transition hover:-translate-y-1">
-                    <div className="overflow-hidden">
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col p-6">
-                      <div className="mb-3 flex items-center justify-between gap-3">
-                        <span className="rounded-full bg-[hsl(var(--brand-gold-500)/0.14)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-gold-600))]">
-                          {card.tag}
-                        </span>
-                        <span className="text-[10px] font-medium uppercase tracking-[0.12em] text-on-light-muted">{card.date}</span>
-                      </div>
-                      <h3 className="text-lg font-bold leading-snug text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))]">
-                        {card.title}
-                      </h3>
-                      <p className="mt-3 flex-grow text-sm leading-relaxed text-on-light-secondary">{card.copy}</p>
-                      <div className="mt-5 flex items-center gap-3 border-t border-[hsl(var(--border-light))] pt-4">
-                        <img src={card.authorImage} alt="Author Soham" className="h-9 w-9 rounded-full object-cover ring-2 ring-[hsl(var(--border-light))]" />
-                        <div>
-                          <p className="text-sm font-semibold text-[hsl(var(--brand-navy-950))]">Soham</p>
-                          <p className="text-[11px] text-on-light-muted">UVAN Editorial</p>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </Link>
-              </motion.div>
-            ))}
-
-            <motion.article
-              initial={hidden}
-              whileInView={show}
-              viewport={{ once: true }}
-              transition={transition(0.2)}
-              className="relative overflow-hidden rounded-3xl bg-[hsl(var(--brand-navy-950))] p-7 text-white md:col-span-2 lg:col-span-1"
-            >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,hsl(var(--brand-purple-500)/0.35),transparent_50%)]" />
-              <img
-                src="/doodles/Mail-amico.svg"
-                alt=""
-                aria-hidden
-                className="pointer-events-none absolute -bottom-4 -right-2 h-28 w-28 opacity-20"
-              />
-              <Sparkles className="h-6 w-6 text-[hsl(var(--brand-gold-500))]" aria-hidden />
-              <h3 className="relative mt-4 font-serif text-2xl font-bold leading-snug">Subscribe to the Executive Briefing</h3>
-              <p className="relative mt-3 text-sm leading-relaxed text-white/75">
-                Weekly deep-dives into Asian market dynamics delivered to your inbox.
-              </p>
-              <a
-                href="mailto:info@ewan.co.in?subject=Executive%20Briefing%20Subscription"
-                className="relative mt-7 inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-2.5 text-sm font-bold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-              >
-                <Mail className="h-4 w-4" aria-hidden />
-                Subscribe via Email
-              </a>
-            </motion.article>
-          </div>
-        </div>
-      </section>
-
       {/* Visual Insights */}
       <section className="relative overflow-hidden theme-section-soft px-6 py-16 md:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.12] mix-blend-multiply"
-          style={{
-            backgroundImage: "url('/bg-blobs/beautiful-purple-color-gradient-background-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
-        <div className="glow-orb glow-orb-purple pointer-events-none -right-20 top-16 h-[320px] w-[320px] opacity-[0.07]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
@@ -471,10 +476,15 @@ const Insights = () => {
             className="mb-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(200px,240px)] lg:items-end"
           >
             <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
+              <a
+                href={UVAN_YOUTUBE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))] transition hover:border-[hsl(var(--brand-purple-700)/0.35)] hover:bg-[hsl(var(--surface-light-50))]"
+              >
                 <Youtube className="h-3.5 w-3.5" aria-hidden />
                 Visual Insights
-              </span>
+              </a>
               <h2 className="mt-4 font-serif text-3xl font-extrabold text-[hsl(var(--brand-navy-950))] sm:text-4xl">
                 Talks, sessions, and event highlights
               </h2>
@@ -483,23 +493,27 @@ const Insights = () => {
               </p>
             </div>
             <a
-              href="https://www.youtube.com/@EWAN-SSK"
+              href={UVAN_YOUTUBE_URL}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 self-start rounded-full border border-[hsl(var(--border-light))] bg-white px-5 py-2.5 text-sm font-semibold text-[hsl(var(--brand-purple-700))] shadow-sm transition hover:-translate-y-0.5 lg:self-auto"
             >
-              View YouTube Channel
+              <Youtube className="h-4 w-4" aria-hidden />
+              View UVAN on YouTube
               <ArrowRight className="h-4 w-4" />
             </a>
           </motion.div>
 
           <div className="grid gap-6 lg:grid-cols-12">
-            <motion.article
+            <motion.a
+              href={UVAN_YOUTUBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={hidden}
               whileInView={show}
               viewport={{ once: true }}
               transition={transition(0.1)}
-              className="group relative overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] lg:col-span-8"
+              className="group relative block overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] lg:col-span-8"
             >
               <img
                 src={videoCards[0].image}
@@ -518,17 +532,20 @@ const Insights = () => {
                 </span>
                 <h3 className="mt-3 max-w-xl font-serif text-2xl font-bold text-white sm:text-3xl">{videoCards[0].title}</h3>
               </div>
-            </motion.article>
+            </motion.a>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1">
               {videoCards.slice(1).map((video, index) => (
-                <motion.article
+                <motion.a
                   key={video.title}
+                  href={UVAN_YOUTUBE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={hidden}
                   whileInView={show}
                   viewport={{ once: true }}
                   transition={transition(0.16 + index * 0.08)}
-                  className="group relative overflow-hidden rounded-3xl border border-[hsl(var(--border-light))]"
+                  className="group relative block overflow-hidden rounded-3xl border border-[hsl(var(--border-light))]"
                 >
                   <img
                     src={video.image}
@@ -542,7 +559,7 @@ const Insights = () => {
                   <div className="absolute inset-x-0 bottom-0 p-5">
                     <h3 className="font-serif text-lg font-bold leading-snug text-white">{video.title}</h3>
                   </div>
-                </motion.article>
+                </motion.a>
               ))}
             </div>
           </div>
@@ -585,27 +602,19 @@ const Insights = () => {
       <section className="px-6 pb-20 pt-8 theme-section-soft">
         <div className="container mx-auto max-w-6xl">
           <motion.div
-            className="relative overflow-hidden rounded-3xl bg-[hsl(var(--brand-navy-950))] px-8 py-12 text-center text-white sm:px-12 sm:py-14"
+            className="relative overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] bg-white px-8 py-12 text-center shadow-sm sm:px-12 sm:py-14"
             initial={hidden}
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0)}
           >
-            <div
-              className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-20 mix-blend-soft-light"
-              style={{
-                backgroundImage: "url('/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg')",
-              }}
-              aria-hidden
-            />
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(var(--brand-purple-500)/0.35),transparent_55%)]" />
             <div className="relative z-10 mx-auto max-w-3xl">
-              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-gold-500))]">Next Step</p>
-              <h2 className="mt-4 font-serif text-3xl font-extrabold leading-tight sm:text-4xl md:text-5xl">
+              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-purple-700))]">Next Step</p>
+              <h2 className="mt-4 font-serif text-3xl font-extrabold leading-tight text-on-light sm:text-4xl md:text-5xl">
                 Ready to Apply This to Your{" "}
-                <span className="italic text-[hsl(var(--brand-gold-500))]">Business</span>?
+                <span className="italic text-[hsl(var(--brand-purple-700))]">Business</span>?
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/75">
+              <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-on-light-secondary">
                 Turn insight into execution - book a strategy call or explore UVAN services for your next market move.
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -618,7 +627,7 @@ const Insights = () => {
                 </a>
                 <Link
                   to="/ask-soham"
-                  className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/25 bg-white/10 px-8 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-8 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
                 >
                   Ask Soham - 15 Min Free
                 </Link>
@@ -633,6 +642,21 @@ const Insights = () => {
           </motion.div>
         </div>
       </section>
+
+      <style>{`
+        @keyframes blogsMarquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .blogs-marquee {
+          animation: blogsMarquee 30s linear infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .blogs-marquee {
+            animation: none;
+          }
+        }
+      `}</style>
     </PageLayout>
   );
 };

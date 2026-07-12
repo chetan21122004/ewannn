@@ -17,7 +17,6 @@ const AboutSection = () => {
       <div className="absolute inset-0 dots-pattern pointer-events-none" />
 
       {/* Glow */}
-      <div className="glow-orb glow-orb-purple w-[300px] h-[300px] top-20 -right-20" />
       <div className="glow-orb glow-orb-gold w-[200px] h-[200px] bottom-10 left-10" />
 
       {/* Corner brackets */}

@@ -43,7 +43,8 @@ const bottomNavItems: BottomNavItem[] = [
       pathname === "/media" ||
       pathname.startsWith("/media/") ||
       pathname.startsWith("/language-gazette") ||
-      pathname.startsWith("/insights"),
+      pathname.startsWith("/insights") ||
+      pathname === "/newsletter",
   },
   {
     href: "/contact",

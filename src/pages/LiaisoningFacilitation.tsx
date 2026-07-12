@@ -147,30 +147,20 @@ const LiaisoningFacilitation = () => {
       jsonLd={liaisonLd}
     >
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 pb-14 pt-8 text-white sm:px-6 lg:pb-24 lg:pt-12">
-        <div
-          className="pointer-events-none absolute inset-0 z-0 opacity-20 mix-blend-color-dodge lg:opacity-25"
-          style={{
-            backgroundImage: "url('/stitch/liaisoning-facilitation/hero-bg.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center top",
-          }}
-          aria-hidden
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.2)] via-[hsl(var(--brand-navy-950)/0.88)] to-[hsl(var(--brand-navy-950))]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_80%_10%,hsl(var(--brand-purple-700)/0.35),transparent_55%)]" />
+      <section className="relative overflow-hidden theme-section-soft px-5 pb-14 pt-8 sm:px-6 lg:pb-24 lg:pt-12">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
           <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
             <motion.div initial={hidden} animate={show} transition={transition(0)} className="max-w-3xl">
-              <p className="mb-4 inline-flex max-w-full rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/80 sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]">
+              <p className="mb-4 inline-flex max-w-full rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]">
                 India. Japan. Southeast Asia. One Point of Contact.
               </p>
-              <h1 className="font-serif text-[1.75rem] font-bold leading-[1.08] sm:text-4xl lg:text-5xl xl:text-[3.25rem]">
+              <h1 className="font-serif text-[1.75rem] font-bold leading-[1.08] text-on-light sm:text-4xl lg:text-5xl xl:text-[3.25rem]">
                 When the Room Matters, You Need Someone Who Knows How to{" "}
-                <span className="text-[hsl(var(--brand-gold-500))]">Read It.</span>
+                <span className="text-[hsl(var(--brand-purple-700))]">Read It.</span>
               </h1>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/80 sm:mt-6 sm:text-base lg:text-lg">
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-on-light-secondary sm:mt-6 sm:text-base lg:text-lg">
                 UVAN&apos;s liaisoning and facilitation services provide a single, trusted point of coordination between
                 your organisation and its counterparts in India and across Asia - managing the communication, cultural
                 interface, and operational connections that determine whether agreements get made or opportunities get
@@ -189,7 +179,7 @@ const LiaisoningFacilitation = () => {
                 <motion.div whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
                   <Link
                     to="/ask-soham"
-                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/12 sm:w-auto sm:px-6"
+                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto sm:px-6"
                   >
                     Ask Soham - 15 Min Free
                     <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
@@ -374,16 +364,15 @@ const LiaisoningFacilitation = () => {
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0)}
-            className="overflow-hidden rounded-2xl bg-[hsl(var(--brand-navy-950))] p-5 text-white sm:rounded-3xl sm:p-8 lg:p-10"
+            className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white p-5 shadow-sm sm:rounded-3xl sm:p-8 lg:p-10"
           >
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_85%_15%,hsl(var(--brand-purple-500)/0.35),transparent_45%)]" />
             <div className="relative z-10">
-              <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/80 sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs">
-                <Handshake className="h-3.5 w-3.5 text-[hsl(var(--brand-gold-500))]" aria-hidden />
+              <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs">
+                <Handshake className="h-3.5 w-3.5 text-[hsl(var(--brand-purple-700))]" aria-hidden />
                 Why UVAN
               </span>
-              <h2 className="font-serif text-[1.65rem] font-bold leading-tight sm:text-3xl lg:text-4xl">Why UVAN</h2>
-              <div className="mt-4 space-y-4 text-sm leading-[1.85] text-white/78 sm:mt-6 sm:text-base">
+              <h2 className="font-serif text-[1.65rem] font-bold leading-tight text-on-light sm:text-3xl lg:text-4xl">Why UVAN</h2>
+              <div className="mt-4 space-y-4 text-sm leading-[1.85] text-on-light-secondary sm:mt-6 sm:text-base">
                 {whyUvanParagraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -398,7 +387,7 @@ const LiaisoningFacilitation = () => {
                 </a>
                 <Link
                   to="/ask-soham"
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/18 sm:w-auto sm:px-6"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto sm:px-6"
                 >
                   Ask Soham - 15 Min Free
                   <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />

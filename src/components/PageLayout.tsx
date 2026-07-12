@@ -19,12 +19,12 @@ type PageLayoutProps = {
 
 const PageLayout = ({ title, description, canonicalPath, keywords, jsonLd, children }: PageLayoutProps) => {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative bg-[hsl(var(--surface-light-50))]">
       <Seo title={title} description={description} canonicalPath={canonicalPath} keywords={keywords} jsonLd={jsonLd} />
       <ScrollProgress />
       <CursorGlow />
       <Navbar />
-      <main className="pt-14 pb-[calc(4rem+env(safe-area-inset-bottom,0px))] lg:pt-24 lg:pb-0">{children}</main>
+      <main className="bg-[hsl(var(--surface-light-50))] pt-14 pb-[calc(4rem+env(safe-area-inset-bottom,0px))] lg:pt-24 lg:pb-0">{children}</main>
       <Footer />
     </div>
   );

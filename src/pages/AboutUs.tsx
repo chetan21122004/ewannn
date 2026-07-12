@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
-import HomeAboutSection from "@/components/HomeAboutSection";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
-import { ABOUT_US_FAQS, ENTITY_PARAGRAPH_A, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
+import { ABOUT_US_FAQS, ENTITY_PARAGRAPH_A_SECTIONS, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, personSoham, personSukhada } from "@/lib/schemaHelpers";
+import { SUKHADA_LINKEDIN } from "@/lib/site";
 
 const languageGroups = [
   {
@@ -218,21 +218,20 @@ const BrandLogo = ({
   />
 );
 
-const doodleCorner = "/stitch/about-us/doodle-arc-corner.svg";
 const doodleSquiggle = "/stitch/about-us/doodle-squiggle-right.svg";
 const doodleBridge = "/stitch/about-us/doodle-bridge-wave.svg";
 const doodleDots = "/stitch/about-us/doodle-dot-field.svg";
+const heroBlobBackground =
+  "/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg";
+const heroBlobAccent =
+  "/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg";
+const heroDoodleVisual = "/doodles/International trade-rafiki.svg";
 
 const aboutLd = [
   personSoham(),
   personSukhada(),
   faqPageSchema(absoluteUrl("/about-us/"), ABOUT_US_FAQS),
 ];
-
-const revealUp = {
-  hidden: { opacity: 0, y: 34, filter: "blur(10px)" },
-  visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-};
 
 const revealLeft = {
   hidden: { opacity: 0, x: -34, filter: "blur(10px)" },
@@ -249,16 +248,9 @@ const springReveal = { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const };
 const AboutUs = () => {
   const { t } = useTranslation();
   const pageRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLElement>(null);
-  const foundationRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: pageRef, offset: ["start start", "end end"] });
-  const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const corridorScale = useTransform(scrollYProgress, [0, 1], [0.06, 1]);
   const corridorGlowY = useTransform(scrollYProgress, [0, 1], ["0%", "82%"]);
-  const heroImageY = useTransform(heroScroll, [0, 1], ["0%", "18%"]);
-  const heroOverlayY = useTransform(heroScroll, [0, 1], ["0%", "10%"]);
-  const heroCopyY = useTransform(heroScroll, [0, 1], ["0%", "-12%"]);
-  const heroFade = useTransform(heroScroll, [0, 0.72, 1], [1, 0.92, 0.68]);
 
   return (
     <PageLayout
@@ -282,137 +274,97 @@ const AboutUs = () => {
 
       {/* Hero Section */}
       <section
-        ref={heroRef}
         id="about-ewan"
-        className="relative overflow-hidden stitch-line stitch-line-bottom bg-[hsl(var(--brand-navy-950))] px-6 pb-28 pt-10 md:pb-36 md:pt-16"
+        className="relative scroll-mt-24 overflow-hidden px-5 pb-16 pt-8 sm:px-6 lg:pb-24 lg:pt-12"
       >
-        {/* Luxury wave background overlay */}
-        <motion.div
-          className="absolute inset-0 z-0 opacity-40 mix-blend-color-dodge bg-cover bg-center"
-          style={{ y: heroOverlayY, scale: 1.05 }}
-        >
-          <div
-            className="h-full w-full bg-cover bg-center"
-            style={{ backgroundImage: "url('/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg')" }}
-          />
-        </motion.div>
-        <motion.div
-          className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(ellipse_90%_60%_at_18%_18%,hsl(var(--brand-purple-700)/0.25),transparent_55%)]"
-          animate={{ scale: [1, 1.08, 1], opacity: [0.75, 1, 0.75] }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-[hsl(var(--surface-light-50))] to-[hsl(var(--surface-light-100))]" />
+        <div
+          className="pointer-events-none absolute -right-[12%] -top-[22%] h-[min(92vw,780px)] w-[min(78vw,680px)] opacity-[0.2] grayscale-[55%] contrast-[0.9] [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_72%)]"
+          style={{
+            backgroundImage: `url('${heroBlobBackground}')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          aria-hidden
         />
-        <motion.div
-          className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_88%_72%,hsl(var(--brand-gold-500)/0.12),transparent_42%)]"
-          animate={{ scale: [1, 1.12, 1], x: [0, -18, 0] }}
-          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+        <div
+          className="pointer-events-none absolute -bottom-[28%] -left-[10%] h-[min(70vw,520px)] w-[min(62vw,460px)] opacity-[0.1] grayscale-[70%] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]"
+          style={{
+            backgroundImage: `url('${heroBlobAccent}')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          aria-hidden
         />
-        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.2)] via-[hsl(var(--brand-navy-950)/0.7)] to-[hsl(var(--brand-navy-950))]" />
-
-        <motion.img
-          src={doodleCorner}
-          alt=""
-          className="pointer-events-none absolute -left-4 top-16 z-[1] h-40 w-40 select-none opacity-50 sm:h-48 sm:w-48 md:left-2 md:top-24 animate-float"
-          animate={{ rotate: [0, -4, 0], y: [0, -10, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.img
-          src={doodleSquiggle}
-          alt=""
-          className="pointer-events-none absolute -right-8 bottom-24 z-[1] hidden h-64 w-52 select-none opacity-60 md:block lg:bottom-32 lg:h-80 lg:w-64"
-          animate={{ rotate: [0, 3, 0], x: [0, -8, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.img
-          src={doodleDots}
-          alt=""
-          className="pointer-events-none absolute left-1/2 top-1/2 z-[1] h-56 w-72 -translate-x-1/2 -translate-y-[30%] select-none opacity-[0.1] sm:opacity-15 animate-pulse-glow"
-          animate={{ scale: [1, 1.08, 1], rotate: [0, 1, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        <div className="pointer-events-none absolute bottom-40 right-8 hidden select-none text-[10px] font-semibold uppercase tracking-[0.28em] text-[hsl(var(--brand-gold-500)/0.18)] xl:block">
-          good · bridge · two corridors
-        </div>
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,white_0%,hsl(var(--surface-light-50)/0.88)_42%,hsl(var(--surface-light-100)/0.96)_100%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_42%_at_82%_12%,hsl(var(--brand-cyan-500)/0.07),transparent_58%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_38%_32%_at_8%_92%,hsl(var(--brand-gold-500)/0.06),transparent_52%)]" />
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.07]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[hsl(var(--surface-light-100))] to-transparent sm:h-24" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <div className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={springReveal}
+            className="max-w-3xl"
+          >
+            <p className="mb-4 inline-flex max-w-full items-center rounded-full border border-[hsl(var(--border-light))] bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.22em]">
+              About the Firm
+            </p>
+            <h1 className="font-serif text-[1.85rem] font-bold leading-[1.08] text-on-light sm:text-4xl lg:text-[3.15rem] lg:leading-[1.06] xl:text-[3.35rem]">
+              Built for the Corridors{" "}
+              <span className="text-[hsl(var(--brand-purple-700))]">Others Don&apos;t Know.</span>
+            </h1>
+          </motion.div>
+
+          <div className="mt-8 grid items-start gap-8 sm:mt-10 lg:mt-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] lg:gap-12 xl:gap-14">
             <motion.div
-              style={{ y: heroCopyY, opacity: heroFade }}
-              initial="hidden"
-              animate="visible"
-              variants={revealLeft}
-              transition={springReveal}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...springReveal, delay: 0.06 }}
+              className="order-2 lg:order-1"
             >
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-gold-500))] flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--brand-gold-500))] animate-pulse" />
-                About the Firm
-              </p>
-              <h1 className="mt-6 font-serif text-4xl font-bold leading-[1.05] text-white sm:text-5xl lg:text-[3.35rem] xl:text-6xl xl:leading-[1.02]">
-                Built for the Corridors{" "}
-                <span className="text-[hsl(var(--brand-gold-500))]">Others Don&apos;t Know.</span>
-              </h1>
-              <div className="relative mt-8 max-w-xl space-y-4">
-                <p className="text-base leading-relaxed text-white/85 sm:text-lg">
-                  UVAN was founded in 2020 on a single conviction: that the companies who win in cross-border expansion
-                  are the ones with a partner who has already been on both sides of the table.
-                </p>
-                <p className="text-sm leading-relaxed text-white/78 sm:text-base">
-                  We sit at a rare intersection - 125+ language capability and on-ground operational expertise - that makes
-                  us genuinely different from both traditional language agencies and conventional market entry consultants.
-                  We don&apos;t separate language from operations. In our experience, they are the same problem.
-                </p>
-                <p className="text-sm leading-relaxed text-white/78 sm:text-base">
-                  We work with foreign companies entering India and Indian companies expanding across Southeast Asia, East
-                  Asia, Latin America and Africa. In five years, we have served 250+ clients across 10+ sectors,
-                  delivering everything from single document translations to full market entry mandates.
-                </p>
+              <div className="max-w-2xl space-y-4 rounded-[1.25rem] border border-[hsl(var(--border-light))] bg-white/90 p-5 shadow-[0_14px_40px_rgba(26,22,51,0.06)] sm:space-y-5 sm:p-6 lg:max-w-none">
+                {ENTITY_PARAGRAPH_A_SECTIONS.map((paragraph, index) => (
+                  <p
+                    key={paragraph}
+                    className={
+                      index === 0
+                        ? "text-base font-medium leading-[1.72] text-on-light sm:text-lg"
+                        : index === ENTITY_PARAGRAPH_A_SECTIONS.length - 1
+                          ? "border-t border-[hsl(var(--border-light))] pt-4 text-sm leading-[1.78] text-on-light-secondary sm:text-[0.9375rem]"
+                          : "text-sm leading-[1.78] text-on-light-secondary sm:text-[0.9375rem]"
+                    }
+                  >
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             </motion.div>
+
+            <motion.figure
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...springReveal, delay: 0.12 }}
+              className="order-1 lg:order-2 lg:sticky lg:top-28 lg:self-start"
+            >
+              <img
+                src={heroDoodleVisual}
+                alt="Cross-border trade and market corridors"
+                className="mx-auto h-auto w-full max-w-[min(100%,340px)] lg:mx-0 lg:max-w-[min(100%,400px)] xl:max-w-[440px]"
+                loading="eager"
+              />
+            </motion.figure>
           </div>
         </div>
       </section>
-
-      <HomeAboutSection />
-
-      <SectionDivider variant="wave" fromDark />
-
-      {/* About the Firm */}
-      <section
-        ref={foundationRef}
-        className="theme-section-soft relative overflow-hidden px-6 py-20 md:py-24 stitch-line stitch-line-bottom"
-      >
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.16]" />
-        <div className="pointer-events-none absolute left-[-8rem] top-10 h-[28rem] w-[28rem] rounded-full bg-[hsl(var(--brand-purple-500)/0.13)] blur-3xl" />
-        <div className="pointer-events-none absolute bottom-[-10rem] right-[-8rem] h-[30rem] w-[30rem] rounded-full bg-[hsl(var(--brand-gold-500)/0.12)] blur-3xl" />
-
-        <div className="container relative z-10 mx-auto max-w-6xl">
-          <motion.aside
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={revealUp}
-            transition={springReveal}
-            className="rounded-[1.75rem] border border-[hsl(var(--brand-purple-700)/0.14)] bg-white/82 p-6 text-sm leading-[1.85] text-on-light-secondary shadow-[0_18px_46px_rgba(26,22,51,0.06)] backdrop-blur sm:p-8"
-          >
-            <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
-              About the Firm
-            </span>
-            <h2 className="font-serif text-3xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] sm:text-4xl">
-              What is UVAN?
-            </h2>
-            <p className="mt-5">{ENTITY_PARAGRAPH_A}</p>
-          </motion.aside>
-        </div>
-      </section>
-
-      <SectionDivider variant="slant" />
 
       {/* Founders Section */}
       <section
         id="the-founders"
         className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] px-6 py-24 theme-section-soft md:py-28 stitch-line stitch-line-bottom"
       >
-        <div className="glow-orb glow-orb-purple pointer-events-none h-[460px] w-[460px] -top-36 -left-28 opacity-[0.11]" />
         <div className="glow-orb glow-orb-gold pointer-events-none h-[380px] w-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.18]" />
         <img
@@ -451,18 +403,13 @@ const AboutUs = () => {
 
           <div className="mx-auto flex max-w-6xl flex-col gap-8 lg:gap-10">
             <motion.article
-              className="relative overflow-hidden rounded-[2rem] border border-[hsl(var(--brand-navy-950)/0.14)] bg-[hsl(var(--brand-navy-950))] p-5 text-white shadow-[0_22px_60px_rgba(20,18,47,0.2)] sm:p-7 lg:p-8"
+              className="relative overflow-hidden rounded-[2rem] border border-[hsl(var(--border-light))] bg-white p-5 shadow-[0_22px_60px_rgba(20,18,47,0.08)] sm:p-7 lg:p-8"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={revealLeft}
               transition={springReveal}
             >
-              <motion.div
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_95%_0%,hsl(var(--brand-purple-500)/0.34),transparent_42%)]"
-                animate={{ opacity: [0.72, 1, 0.72], scale: [1, 1.04, 1] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              />
               <div className="relative z-10 grid gap-8 lg:grid-cols-[minmax(240px,280px)_minmax(0,1fr)] lg:items-start">
                 <figure className="relative mx-auto w-full max-w-[280px] overflow-hidden rounded-2xl border border-white/10 bg-white/8 lg:mx-0 lg:max-w-none lg:sticky lg:top-28">
                   <motion.img
@@ -474,7 +421,7 @@ const AboutUs = () => {
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.95)] to-transparent p-4">
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.85)] to-transparent p-4">
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">
                       Founder &amp; CEO
                     </p>
@@ -482,21 +429,21 @@ const AboutUs = () => {
                 </figure>
 
                 <div className="flex min-w-0 flex-col gap-6">
-                  <header className="space-y-3 border-b border-white/10 pb-6">
-                    <span className="inline-flex rounded-full border border-[hsl(var(--brand-gold-500)/0.35)] bg-[hsl(var(--brand-gold-500)/0.12)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))]">
+                  <header className="space-y-3 border-b border-[hsl(var(--border-light))] pb-6">
+                    <span className="inline-flex rounded-full border border-[hsl(var(--brand-gold-500)/0.35)] bg-[hsl(var(--brand-gold-500)/0.1)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-600))]">
                       01 · Founder
                     </span>
-                    <h3 className="font-serif text-3xl font-bold leading-tight text-white sm:text-4xl">Soham Kakade</h3>
-                    <p className="max-w-2xl font-serif text-lg font-semibold leading-snug text-white/92 sm:text-xl">
+                    <h3 className="font-serif text-3xl font-bold leading-tight text-on-light sm:text-4xl">Soham Kakade</h3>
+                    <p className="max-w-2xl font-serif text-lg font-semibold leading-snug text-on-light-secondary sm:text-xl">
                       10 Years in the Room Before Building the Firm.
                     </p>
                   </header>
 
-                  <div className="rounded-2xl border border-[hsl(var(--brand-gold-500)/0.22)] bg-white/[0.06] p-5 sm:p-6">
-                    <p className="text-sm leading-[1.85] text-white/85 sm:text-[0.9375rem]">{ENTITY_PARAGRAPH_B}</p>
+                  <div className="rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-5 sm:p-6">
+                    <p className="text-sm leading-[1.85] text-on-light-secondary sm:text-[0.9375rem]">{ENTITY_PARAGRAPH_B}</p>
                   </div>
 
-                  <p className="max-w-3xl rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4 text-sm leading-relaxed text-white/75">
+                  <p className="max-w-3xl rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-5 py-4 text-sm leading-relaxed text-on-light-secondary">
                     UVAN exists because Soham saw, repeatedly, what happens when companies enter new markets without someone
                     who truly understands both sides of the conversation. He built the firm he wished had existed.
                   </p>
@@ -514,22 +461,22 @@ const AboutUs = () => {
                     ].map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-white/12 bg-white/[0.07] px-3 py-1.5 text-[10px] font-semibold tracking-wide text-white/78"
+                        className="rounded-full border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-100))] px-3 py-1.5 text-[10px] font-semibold tracking-wide text-on-light-secondary"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:flex-wrap">
+                  <div className="flex flex-col gap-3 border-t border-[hsl(var(--border-light))] pt-6 sm:flex-row sm:flex-wrap">
                     <a
                       href="https://www.linkedin.com/in/soham-kakade-77b2819b/"
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/8 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-white transition hover:bg-white/12"
+                      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.1em] text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
                     >
                       Connect with Soham on LinkedIn
-                      <ArrowRight className="h-4 w-4 shrink-0 text-[hsl(var(--brand-gold-500))]" />
+                      <ArrowRight className="h-4 w-4 shrink-0 text-[hsl(var(--brand-gold-600))]" />
                     </a>
                     <Link
                       to="/ask-soham"
@@ -581,7 +528,7 @@ const AboutUs = () => {
                     </span>
                     <h3 className="font-serif text-3xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] sm:text-4xl">
                       <a
-                        href="https://www.linkedin.com/in/cma-sukhada-kakade-bhalerao-5b3789401/"
+                        href={SUKHADA_LINKEDIN}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="transition hover:text-[hsl(var(--brand-purple-700))] hover:underline"
@@ -662,11 +609,10 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <SectionDivider variant="slant" flip fromDark />
+      <SectionDivider variant="slant" flip />
 
       {/* Institutional Recognition */}
       <section className="relative overflow-hidden px-6 py-20 theme-section-light md:py-24 stitch-line stitch-line-bottom">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_0%,hsl(var(--brand-purple-700)/0.07),transparent_38%)]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -810,33 +756,6 @@ const AboutUs = () => {
 
       {/* Partners */}
       <section id="our-partners" className="relative overflow-hidden px-6 py-16 theme-section-soft md:py-24">
-        <div
-          className="pointer-events-none absolute -right-[12%] -top-[18%] h-[min(680px,85vw)] w-[min(680px,85vw)] opacity-[0.16]"
-          style={{
-            backgroundImage: "url('/bg-blobs/magic-background-with-purple-light-rays-effect-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute -bottom-[22%] -left-[14%] h-[min(560px,72vw)] w-[min(560px,72vw)] opacity-[0.14]"
-          style={{
-            backgroundImage: "url('/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, hsl(var(--surface-light-50) / 0.72) 0%, hsl(var(--surface-light-100) / 0.88) 48%, hsl(var(--surface-light-50) / 0.94) 100%), radial-gradient(circle at 78% 18%, hsl(var(--brand-purple-700) / 0.11) 0%, transparent 42%), radial-gradient(circle at 12% 82%, hsl(var(--brand-gold-500) / 0.1) 0%, transparent 38%)",
-          }}
-          aria-hidden
-        />
-        <div className="glow-orb glow-orb-purple pointer-events-none -right-16 top-12 h-[320px] w-[320px] opacity-[0.09]" />
         <div className="glow-orb glow-orb-gold pointer-events-none -bottom-10 -left-16 h-[280px] w-[280px] opacity-[0.08]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.08]" />
         <img
@@ -877,20 +796,10 @@ const AboutUs = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.55, delay: i * 0.08 }}
-                  className="group relative overflow-hidden rounded-[2rem] border border-[hsl(var(--brand-navy-950)/0.12)] bg-[hsl(var(--brand-navy-950))] text-white shadow-[0_24px_70px_rgba(20,18,47,0.18)]"
+                  className="group relative overflow-hidden rounded-[2rem] border border-[hsl(var(--border-light))] bg-white shadow-[0_24px_70px_rgba(20,18,47,0.08)]"
                 >
-                  <div
-                    className="pointer-events-none absolute inset-0 opacity-30"
-                    style={{
-                      backgroundImage: "url('/bg-blobs/abstract-background-purple-dark-blue-gradient-wave-modern-background-combination-curve-free-vector.jpg')",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                    aria-hidden
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_88%_0%,hsl(var(--brand-purple-500)/0.35),transparent_45%)]" aria-hidden />
                   <div className="relative z-10 grid gap-0 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)]">
-                    <div className="flex min-h-[160px] items-center justify-center border-b border-white/10 bg-white/95 px-8 py-8 lg:min-h-0 lg:border-b-0 lg:border-r">
+                    <div className="flex min-h-[160px] items-center justify-center border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-8 py-8 lg:min-h-0 lg:border-b-0 lg:border-r">
                       <BrandLogo
                         src={partner.logo}
                         alt={partner.logoAlt}
@@ -898,11 +807,11 @@ const AboutUs = () => {
                       />
                     </div>
                     <div className="flex flex-col justify-center p-7 sm:p-8 lg:p-10">
-                      <span className="inline-flex w-fit rounded-full border border-[hsl(var(--brand-gold-500)/0.35)] bg-[hsl(var(--brand-gold-500)/0.12)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))]">
+                      <span className="inline-flex w-fit rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))]">
                         {partner.type}
                       </span>
-                      <h3 className="mt-4 font-serif text-2xl font-bold leading-snug sm:text-3xl">{partner.name}</h3>
-                      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/80 sm:text-[0.9375rem]">
+                      <h3 className="mt-4 font-serif text-2xl font-bold leading-snug text-on-light sm:text-3xl">{partner.name}</h3>
+                      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-on-light-secondary sm:text-[0.9375rem]">
                         {partner.description}
                       </p>
                     </div>

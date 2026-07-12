@@ -26,31 +26,31 @@ const accentStyles = [
     number: "text-[hsl(var(--brand-purple-700)/0.32)]",
     iconWrap: "bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-purple-500))_100%)]",
     iconColor: "text-white",
-    overlay: "bg-[hsl(var(--brand-navy-950))]",
-    overlayAccent: "from-[hsl(var(--brand-purple-700)/0.55)] to-transparent",
+    overlay: "bg-white",
+    overlayAccent: "from-[hsl(var(--brand-purple-700)/0.06)] to-transparent",
     accentLine: "bg-[hsl(var(--brand-purple-500))]",
     ring: "ring-[hsl(var(--brand-purple-500)/0.35)]",
-    bullet: "bg-[hsl(var(--brand-purple-400))]",
+    bullet: "bg-[hsl(var(--brand-purple-600))]",
   },
   {
     number: "text-[hsl(var(--brand-cyan-500)/0.32)]",
     iconWrap: "bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)]",
     iconColor: "text-white",
-    overlay: "bg-[hsl(var(--brand-navy-950))]",
-    overlayAccent: "from-[hsl(var(--brand-cyan-500)/0.35)] to-transparent",
+    overlay: "bg-white",
+    overlayAccent: "from-[hsl(var(--brand-cyan-500)/0.06)] to-transparent",
     accentLine: "bg-[hsl(var(--brand-cyan-500))]",
     ring: "ring-[hsl(var(--brand-cyan-500)/0.35)]",
-    bullet: "bg-[hsl(var(--brand-cyan-400))]",
+    bullet: "bg-[hsl(var(--brand-cyan-500))]",
   },
   {
     number: "text-[hsl(var(--brand-gold-600)/0.34)]",
     iconWrap: "bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-gold-600))_100%)]",
     iconColor: "text-white",
-    overlay: "bg-[hsl(var(--brand-navy-950))]",
-    overlayAccent: "from-[hsl(var(--brand-gold-600)/0.38)] to-transparent",
+    overlay: "bg-white",
+    overlayAccent: "from-[hsl(var(--brand-gold-500)/0.08)] to-transparent",
     accentLine: "bg-[hsl(var(--brand-gold-500))]",
     ring: "ring-[hsl(var(--brand-gold-500)/0.35)]",
-    bullet: "bg-[hsl(var(--brand-gold-500))]",
+    bullet: "bg-[hsl(var(--brand-gold-600))]",
   },
 ] as const;
 
@@ -61,7 +61,7 @@ const renderCardDetail = (desc: string, bulletClass: string) => {
     return (
       <ul className="space-y-2">
         {lines.map((line) => (
-          <li key={line} className="flex gap-2.5 text-[13px] leading-snug text-white sm:text-sm sm:leading-snug">
+          <li key={line} className="flex gap-2.5 text-[13px] leading-snug text-on-light-secondary sm:text-sm sm:leading-snug">
             <span className={cn("mt-[7px] h-1 w-1 shrink-0 rounded-full", bulletClass)} aria-hidden />
             <span>{line}</span>
           </li>
@@ -71,7 +71,7 @@ const renderCardDetail = (desc: string, bulletClass: string) => {
   }
 
   return (
-    <p className="text-[13px] leading-[1.65] text-white sm:text-sm sm:leading-[1.7]">
+    <p className="text-[13px] leading-[1.65] text-on-light-secondary sm:text-sm sm:leading-[1.7]">
       {desc}
     </p>
   );
@@ -131,11 +131,6 @@ const WhyEwanSection = () => {
 
   return (
     <section id="why-ewan" className="relative overflow-hidden py-5 theme-section-soft lg:py-10">
-      <div
-        className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center opacity-[0.1] mix-blend-multiply lg:opacity-15"
-        style={{ backgroundImage: "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')" }}
-      />
-      <div className="glow-orb glow-orb-purple -right-8 top-10 h-[240px] w-[240px] opacity-8 lg:right-10 lg:h-[360px] lg:w-[360px]" />
       <div className="glow-orb glow-orb-gold -bottom-12 left-4 h-[200px] w-[200px] opacity-8 lg:-bottom-16 lg:left-10 lg:h-[300px] lg:w-[300px]" />
       <div className="pointer-events-none absolute inset-0 opacity-[0.12] theme-grid-overlay-light lg:opacity-[0.18]" />
 
@@ -251,7 +246,7 @@ const WhyEwanSection = () => {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
-                      className={cn("absolute inset-0 flex flex-col p-5 text-white", accent.overlay)}
+                      className={cn("absolute inset-0 flex flex-col p-5", accent.overlay)}
                     >
                       <div
                         className={cn(
@@ -262,7 +257,7 @@ const WhyEwanSection = () => {
                       />
 
                       <div className="relative z-10 mb-3 flex items-center justify-between gap-3">
-                        <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-white/70">
+                        <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-on-light-muted">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <div className={cn("h-px flex-1", accent.accentLine, "opacity-40")} aria-hidden />

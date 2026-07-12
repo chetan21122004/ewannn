@@ -7,7 +7,6 @@ import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import ClientLogosSection from "@/components/ClientLogosSection";
 import CaseStudySection from "@/components/CaseStudySection";
-import WhyEwanSection from "@/components/WhyEwanSection";
 import InstitutionalTrustSection from "@/components/InstitutionalTrustSection";
 import PartnersSection from "@/components/PartnersSection";
 import SectorsSection from "@/components/SectorsSection";
@@ -26,7 +25,6 @@ const Index = () => {
     { key: "services", component: <ServicesSection />, intensity: 0.95 },
     { key: "clients", component: <ClientLogosSection />, intensity: 0.65 },
     { key: "case-study", component: <CaseStudySection />, intensity: 1 },
-    { key: "why-ewan", component: <WhyEwanSection />, intensity: 0.9 },
     { key: "trust", component: <InstitutionalTrustSection />, intensity: 0.8 },
     { key: "partners", component: <PartnersSection />, intensity: 0.9 },
     { key: "sectors", component: <SectorsSection />, intensity: 0.75 },

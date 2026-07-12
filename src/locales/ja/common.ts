@@ -41,7 +41,7 @@ const jaCommon = {
       orientalFlock: "Oriental Flock",
       partners: "パートナー",
       joinUs: "採用情報",
-      caseStudies: "ケーススタディ",
+      caseStudy: "ケーススタディ",
       testimonials: "お客様の声",
     },
     media: {
@@ -73,7 +73,7 @@ const jaCommon = {
     rights: "© 2026 UVAN. All rights reserved.",
     privacy: "プライバシー",
     privacyPolicy: "プライバシーポリシー",
-    caseStudies: "ケーススタディ",
+    caseStudy: "ケーススタディ",
     sano: "SANO",
     terms: "利用規約",
     cookies: "Cookies",
@@ -324,6 +324,8 @@ const jaCommon = {
           name: "Sukhada Kakade",
           role: "Co-Founder & Director",
           img: "/Sukhada-maam.jpg",
+          linkedinUrl: "https://www.linkedin.com/in/cma-sukhada-kakade-bhalerao-5b3789401/",
+          linkedinCta: "Connect with Sukhada on LinkedIn →",
           intro: [
             "Sukhada はプネ拠点のCMA（管理会計士）で、15年以上の財務・監査・教育経験を有します。",
             "共同創業者として、UVAN の財務規律と運用基盤を設計し、実行品質を支えています。",

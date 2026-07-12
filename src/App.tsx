@@ -56,6 +56,7 @@ const App = () => (
             <Route path="/media" element={<Media />} />
             <Route path="/case-study" element={<CaseStudy />} />
             <Route path="/newsletter" element={<Newsletter />} />
+            <Route path="/press" element={<Navigate to="/newsletter" replace />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/global-talkies" element={<GlobalTalkies />} />
             <Route path="/import-export" element={<ImportExport />} />

@@ -3,10 +3,12 @@ import {
   COMPANY_EMAIL,
   COMPANY_LINKEDIN,
   COMPANY_PHONE,
+  COMPANY_ADDRESS,
   ORGANIZATION_SAME_AS,
   SITE_LOGO,
   SITE_URL,
   SOHAM_LINKEDIN,
+  SUKHADA_LINKEDIN,
 } from "@/lib/site";
 
 export type JsonLdObject = Record<string, unknown>;
@@ -28,7 +30,7 @@ export const organizationNode: JsonLdObject = {
     addressRegion: "Maharashtra",
     postalCode: "411004",
     addressCountry: "IN",
-    streetAddress: "Erandwane",
+    streetAddress: COMPANY_ADDRESS,
   },
   sameAs: [...ORGANIZATION_SAME_AS],
 };
@@ -134,7 +136,7 @@ export function personSukhada(): JsonLdObject {
     name: "CMA Sukhada Kakade Bhalerao",
     jobTitle: "Co-Founder & Director",
     worksFor: { "@id": `${SITE_URL}/#organization` },
-    sameAs: [COMPANY_LINKEDIN],
+    sameAs: [SUKHADA_LINKEDIN],
   };
 }
 

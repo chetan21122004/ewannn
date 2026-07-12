@@ -47,23 +47,22 @@ const Industries = () => {
       keywords={t("seo.industries.keywords")}
       jsonLd={industriesLd}
     >
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 py-24 text-white lg:py-32">
+      <section className="relative overflow-hidden theme-section-soft px-6 py-24 lg:py-32">
         <div
-          className="pointer-events-none absolute inset-0 opacity-15"
+          className="pointer-events-none absolute inset-0 opacity-20"
           style={{
-            backgroundImage: "radial-gradient(hsl(var(--brand-purple-500)) 0.5px, transparent 0.5px)",
+            backgroundImage: "radial-gradient(hsl(var(--brand-gold-500) / 0.4) 0.5px, transparent 0.5px)",
             backgroundSize: "24px 24px",
           }}
         />
-        <div className="pointer-events-none absolute bottom-16 right-20 h-80 w-80 rounded-full bg-[hsl(var(--brand-gold-500)/0.15)] blur-3xl" />
 
         <div className="container relative mx-auto">
           <div className="max-w-3xl">
-            <h1 className="font-serif text-5xl font-extrabold leading-tight tracking-tight md:text-7xl xl:text-8xl">
-              <span className="text-white">{t("industries.hero.titleBefore")} </span>
-              <span className="text-[hsl(var(--brand-gold-500))]">{t("industries.hero.titleHighlight")}</span>
+            <h1 className="font-serif text-5xl font-extrabold leading-tight tracking-tight text-on-light md:text-7xl xl:text-8xl">
+              <span>{t("industries.hero.titleBefore")} </span>
+              <span className="text-[hsl(var(--brand-purple-700))]">{t("industries.hero.titleHighlight")}</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-on-light-secondary md:text-xl">
               {t("industries.hero.subtitle")}
             </p>
             <a
@@ -86,17 +85,6 @@ const Industries = () => {
             <p className="text-on-light-secondary mt-8 text-lg leading-relaxed">
               {t("industries.overview.copy")}
             </p>
-
-            <div className="mt-10 grid grid-cols-2 gap-8">
-              <div>
-                <p className="text-3xl font-extrabold text-[hsl(var(--brand-gold-600))]">{t("industries.overview.stats.clientsValue")}</p>
-                <p className="text-on-light-muted mt-1 text-xs font-semibold uppercase tracking-wider">{t("industries.overview.stats.clientsLabel")}</p>
-              </div>
-              <div>
-                <p className="text-3xl font-extrabold text-[hsl(var(--brand-gold-600))]">{t("industries.overview.stats.sectorsValue")}</p>
-                <p className="text-on-light-muted mt-1 text-xs font-semibold uppercase tracking-wider">{t("industries.overview.stats.sectorsLabel")}</p>
-              </div>
-            </div>
           </div>
 
           <div className="relative">

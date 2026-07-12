@@ -3,6 +3,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { Linkedin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
+import { SUKHADA_LINKEDIN } from "@/lib/site";
 
 const linkedinUrl = "https://www.linkedin.com/in/soham-kakade-77b2819b/";
 
@@ -41,6 +42,8 @@ const defaultFounders: FounderItem[] = [
     name: "CMA Sukhada Kakade Bhalerao",
     role: "Co-Founder & Director",
     img: "/Sukhada-maam.jpg",
+    linkedinUrl: SUKHADA_LINKEDIN,
+    linkedinCta: "Connect with Sukhada on LinkedIn →",
     intro: [
       "Sukhada Kakade Bhalerao is a Pune-based Certified Management Accountant (CMA), finance educator, and entrepreneur with over 15 years of experience in finance, auditing, and professional training.",
       "As Co-Founder and Director of UVAN and Vaani Skills, she brings the financial rigour and operational backbone that underpins everything UVAN delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
@@ -129,7 +132,20 @@ const FounderCard = ({
 
       <div className={cn("space-y-5", isReversed && stackIndex === undefined ? "md:order-1" : "")}>
         <div className="space-y-2 pr-12 lg:pr-0">
-          <h3 className="font-serif text-2xl font-bold text-on-light md:text-[1.7rem]">{founder.name}</h3>
+          {founder.linkedinUrl ? (
+            <h3 className="font-serif text-2xl font-bold text-on-light md:text-[1.7rem]">
+              <a
+                href={founder.linkedinUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="transition hover:text-[hsl(var(--brand-purple-700))] hover:underline"
+              >
+                {founder.name}
+              </a>
+            </h3>
+          ) : (
+            <h3 className="font-serif text-2xl font-bold text-on-light md:text-[1.7rem]">{founder.name}</h3>
+          )}
           <p className={cn("text-xs font-semibold uppercase tracking-[0.18em] sm:text-sm", accent.role)}>{founder.role}</p>
         </div>
 
@@ -227,18 +243,7 @@ const FoundersSection = () => {
 
   return (
     <section id="about" className="relative overflow-visible py-16 theme-section-soft lg:py-24">
-      <div className="glow-orb glow-orb-purple h-[400px] w-[400px] -left-40 top-10 opacity-8" />
       <div className="glow-orb glow-orb-gold h-[360px] w-[360px] -right-40 bottom-10 opacity-8" />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: `
-            radial-gradient(circle at 16% 20%, hsl(var(--brand-purple-500) / 0.08) 0%, transparent 34%),
-            radial-gradient(circle at 84% 74%, hsl(var(--brand-cyan-500) / 0.07) 0%, transparent 36%),
-            radial-gradient(circle at 50% 52%, hsl(var(--surface-glass) / 0.26) 0%, transparent 56%)
-          `,
-        }}
-      />
 
       <div className="container relative z-10 mx-auto px-5 sm:px-6">
         <motion.div

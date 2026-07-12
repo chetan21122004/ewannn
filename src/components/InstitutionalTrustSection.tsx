@@ -27,7 +27,6 @@ const InstitutionalTrustSection = () => {
 
   return (
     <section className="relative overflow-hidden py-5 lg:py-10 theme-section-soft">
-      <div className="glow-orb glow-orb-purple w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-8" />
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8">

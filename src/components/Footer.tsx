@@ -26,7 +26,7 @@ const navColumns: FooterColumn[] = [
     links: [
       { label: "About Us", href: "/about-us" },
       { label: "Join Us", href: "/join-us" },
-      { label: "Case Studies", href: "/case-study" },
+      { label: "Case Study", href: "/case-study" },
       { label: "SANO", href: "https://www.arogyayatri.com/", external: true },
       { label: "Privacy Policy", href: "/privacy-policy" },
     ],
@@ -51,13 +51,6 @@ const navColumns: FooterColumn[] = [
   },
 ];
 
-const certifications = [
-  { name: "ISO 9001:2015", src: "/allLogos/ISO-9001.png", alt: "ISO 9001:2015 certification logo" },
-  { name: "CITLoB", src: "/allLogos/CITLoB-logo-2023.jpg", alt: "CITLoB logo" },
-  { name: "Bhashini", src: "/allLogos/Bhashini-Logo.png", alt: "Bhashini initiative logo" },
-  { name: "SANO", src: "/placeholder.svg", alt: "SANO partner" },
-];
-
 const socialLinks: Array<{ label: string; href: string; Icon: LucideIcon }> = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/ewan-business-solutions/", Icon: Linkedin },
   { label: "YouTube", href: "https://www.youtube.com/@EWAN-SSK", Icon: Youtube },
@@ -67,13 +60,13 @@ const socialLinks: Array<{ label: string; href: string; Icon: LucideIcon }> = [
 const coverageRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
 
 const linkClass =
-  "group inline-flex min-h-[44px] w-full items-center gap-1 text-sm text-white/80 transition-colors hover:text-[hsl(var(--brand-gold-500))] lg:min-h-0 lg:w-auto";
+  "group inline-flex min-h-[44px] w-full items-start gap-1 text-sm leading-snug text-white/80 transition-colors hover:text-[hsl(var(--brand-gold-500))] lg:min-h-0 lg:py-0.5";
 
 const FooterNavLink = ({ link }: { link: FooterLink }) =>
   link.external ? (
     <a href={link.href} target="_blank" rel="noreferrer" className={linkClass}>
       <span className="flex-1">{link.label}</span>
-      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-45 group-hover:opacity-100" aria-hidden />
+      <ArrowUpRight className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-45 group-hover:opacity-100" aria-hidden />
     </a>
   ) : (
     <Link to={link.href} className={linkClass}>
@@ -81,42 +74,7 @@ const FooterNavLink = ({ link }: { link: FooterLink }) =>
     </Link>
   );
 
-const CertificationBadges = () => (
-  <div className="mt-5 border-t border-white/10 pt-4">
-    <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-white/45">
-      Certifications &amp; partners
-    </p>
-    <div className="flex flex-wrap gap-2">
-      {certifications.map((cert) => (
-        <div
-          key={cert.name}
-          className="flex h-10 min-w-[74px] items-center justify-center rounded-lg border border-white/10 bg-white/90 px-2.5"
-        >
-          {cert.src === "/placeholder.svg" ? (
-            <span className="text-xs font-bold text-[hsl(var(--brand-navy-950))]">{cert.name}</span>
-          ) : (
-            <img src={cert.src} alt={cert.alt} loading="lazy" className="max-h-7 w-auto max-w-[68px] object-contain" />
-          )}
-        </div>
-      ))}
-    </div>
-    <div className="mt-3 flex flex-wrap gap-2">
-      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-semibold text-white/75">
-        MSAMB Empanelled
-      </span>
-      <a
-        href="https://bhashikskill.co.in"
-        target="_blank"
-        rel="noreferrer"
-        className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-semibold text-white/60 transition-colors hover:text-[hsl(var(--brand-gold-500))]"
-      >
-        Vaani Skills
-      </a>
-    </div>
-  </div>
-);
-
-const FooterLinkColumn = ({ title, links, showBadges = false }: { title: string; links: FooterLink[]; showBadges?: boolean }) => (
+const FooterLinkColumn = ({ title, links }: { title: string; links: FooterLink[] }) => (
   <>
     <details className="group border-b border-white/10 lg:hidden">
       <summary className="flex cursor-pointer list-none items-center justify-between py-3.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] [&::-webkit-details-marker]:hidden">
@@ -130,19 +88,17 @@ const FooterLinkColumn = ({ title, links, showBadges = false }: { title: string;
           </li>
         ))}
       </ul>
-      {showBadges ? <CertificationBadges /> : null}
     </details>
 
-    <div className="hidden lg:block">
-      <h4 className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">{title}</h4>
-      <ul className="space-y-2">
+    <div className="hidden min-w-0 lg:block">
+      <h4 className="mb-3.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">{title}</h4>
+      <ul className="space-y-2.5">
         {links.map((link) => (
           <li key={link.label}>
             <FooterNavLink link={link} />
           </li>
         ))}
       </ul>
-      {showBadges ? <CertificationBadges /> : null}
     </div>
   </>
 );
@@ -168,7 +124,7 @@ const Footer = () => {
     if (label === "Blog & Insights") return t("footer.blogInsights");
     if (label === "Newsletter") return "Newsletter";
     if (label === "Contact Us") return t("footer.contactUs");
-    if (label === "Case Studies") return t("footer.caseStudies");
+    if (label === "Case Study") return t("footer.caseStudy");
     if (label === "SANO") return t("footer.sano");
     if (label === "Privacy Policy") return t("footer.privacyPolicy");
     if (label === "Ask Soham - 15 Min Free") return t("footer.askSohamCta");
@@ -208,7 +164,7 @@ const Footer = () => {
       />
 
       <div className="container relative z-10 mx-auto px-4 py-8 sm:px-6 sm:py-10 lg:py-12">
-        <div className="lg:grid lg:grid-cols-12 lg:gap-8 xl:gap-10">
+        <div className="lg:grid lg:grid-cols-12 lg:items-start lg:gap-8 xl:gap-10">
           <div className="lg:col-span-4">
             <Link
               to="/"
@@ -261,13 +217,12 @@ const Footer = () => {
 
           <div className="mt-6 lg:col-span-8 lg:mt-0">
             <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] px-3 sm:px-4 lg:border-0 lg:bg-transparent lg:p-0">
-              <div className="lg:grid lg:grid-cols-4 lg:gap-6 xl:gap-8">
+              <div className="lg:grid lg:grid-cols-4 lg:items-start lg:gap-5 xl:gap-7">
                 {columnsWithLabels.map((col) => (
                   <FooterLinkColumn
                     key={col.title}
                     title={col.translatedTitle}
                     links={col.translatedLinks}
-                    showBadges={col.title === "Media"}
                   />
                 ))}
               </div>

@@ -8,24 +8,23 @@ import {
   Globe2,
   GraduationCap,
   Languages,
-  MessageCircle,
   Quote,
   SearchCheck,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { ASK_SOHAM_FAQS, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, personSoham, serviceSchema } from "@/lib/schemaHelpers";
-import { CALENDLY_SCHEDULING_URL, getCalendlyEmbedUrl } from "@/lib/site";
+import { submitFormViaMailto } from "@/lib/formSubmit";
+import { CALENDLY_SCHEDULING_URL, getCalendlyEmbedUrl, SOHAM_EMAIL } from "@/lib/site";
 import { useTranslation } from "react-i18next";
 
 const BOOKING_SECTION_ID = "book-call";
 const calendlyEmbedUrl = getCalendlyEmbedUrl();
-const BOOKING_EMAIL =
-  "mailto:soham.kakade@ewan.co.in?subject=Ask%20Soham%20-%2015%20Min%20Free%20Call&body=Please%20include%3A%0A1.%20Your%20name%20and%20company%20%2F%20institution%0A2.%20Which%20track%20applies%20(Market%20Entry%20%2F%20Language%20Strategy%20%2F%20Career%20Guidance)%0A3.%20What%20corridor%20or%20region%20are%20you%20focused%20on%3F%0A4.%20What%27s%20your%20biggest%20challenge%20or%20question%20right%20now%3F";
 
 const ASK_SOHAM_KEYWORDS =
   "talk to language expert, India market entry consultation free, Soham Kakade UVAN";
@@ -100,11 +99,19 @@ const askSohamLd = [
 const AskSoham = () => {
   const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
+  const [inquirySubmitted, setInquirySubmitted] = useState(false);
 
   const ease = [0.22, 1, 0.36, 1] as const;
   const hidden = reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 };
   const show = reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 };
   const transition = (delay = 0) => ({ duration: reduceMotion ? 0.35 : 0.72, delay, ease });
+
+  const handleInquirySubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    submitFormViaMailto(event.currentTarget, SOHAM_EMAIL, "Ask Soham — Website Inquiry");
+    event.currentTarget.reset();
+    setInquirySubmitted(true);
+  };
 
   return (
     <PageLayout
@@ -115,20 +122,8 @@ const AskSoham = () => {
       jsonLd={askSohamLd}
     >
       {/* ── HERO ── */}
-      <section className="relative isolate overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-20 pt-12 text-white lg:pb-28">
-        {/* bg blob */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-30 mix-blend-color-dodge"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/beautiful-purple-color-gradient-background-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.2)] via-[hsl(var(--brand-navy-950)/0.55)] to-[hsl(var(--brand-navy-950))]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_72%_0%,hsl(var(--brand-purple-700)/0.38),transparent_55%)]" />
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay opacity-[0.1]" />
+      <section className="relative isolate overflow-hidden theme-section-soft px-6 pb-20 pt-12 lg:pb-28">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         {/* decorative doodle */}
         <motion.img
@@ -152,18 +147,18 @@ const AskSoham = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.55 }}
-                className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.24em] text-white/90 backdrop-blur-sm"
+                className="mb-6 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-purple-700))]"
               >
                 <Sparkles className="h-3.5 w-3.5 text-[hsl(var(--brand-gold-500))]" aria-hidden />
                 Free. 15 Minutes. No Pitch.
               </motion.div>
 
-              <h1 className="font-serif text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-[4.25rem]">
+              <h1 className="font-serif text-5xl font-bold leading-[0.95] tracking-tight text-on-light sm:text-6xl lg:text-[4.25rem]">
                 Ask{" "}
-                <span className="relative inline-block italic text-[hsl(var(--brand-gold-500))]">
+                <span className="relative inline-block italic text-[hsl(var(--brand-purple-700))]">
                   Soham
                   <motion.span
-                    className="absolute -bottom-2 left-1 h-[5px] w-[92%] rounded-full bg-[hsl(var(--brand-gold-500)/0.38)]"
+                    className="absolute -bottom-2 left-1 h-[5px] w-[92%] rounded-full bg-[hsl(var(--brand-purple-700)/0.28)]"
                     initial={{ scaleX: 0, originX: 0 }}
                     animate={{ scaleX: 1 }}
                     transition={{ delay: 0.5, duration: 0.6, ease }}
@@ -173,22 +168,36 @@ const AskSoham = () => {
                 .
               </h1>
 
-              <p className="mt-6 max-w-2xl text-base leading-[1.78] text-white/75 sm:text-lg">
+              <p className="mt-6 max-w-2xl text-base leading-[1.78] text-on-light-secondary sm:text-lg">
                 Whether you&apos;re a company entering India, a business expanding abroad, a professional navigating
                 language services, or a student wondering whether a career in languages is right for you - book 15
                 minutes with Soham Kakade for focused, honest, experience-based guidance.
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
-                <motion.a
-                  href={`#${BOOKING_SECTION_ID}`}
-                  whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))] shadow-[0_16px_40px_hsl(var(--brand-gold-500)/0.32)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-gold-500))]"
-                >
-                  Book Your Free 15-Minute Call
-                  <ArrowUpRight className="h-4 w-4" aria-hidden />
-                </motion.a>
+                {CALENDLY_SCHEDULING_URL ? (
+                  <motion.a
+                    href={CALENDLY_SCHEDULING_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))] shadow-[0_16px_40px_hsl(var(--brand-gold-500)/0.32)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-gold-500))]"
+                  >
+                    Book Your Free 15-Minute Call
+                    <ArrowUpRight className="h-4 w-4" aria-hidden />
+                  </motion.a>
+                ) : (
+                  <motion.a
+                    href={`#${BOOKING_SECTION_ID}`}
+                    whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))] shadow-[0_16px_40px_hsl(var(--brand-gold-500)/0.32)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-gold-500))]"
+                  >
+                    Book Your Free 15-Minute Call
+                    <ArrowUpRight className="h-4 w-4" aria-hidden />
+                  </motion.a>
+                )}
               </div>
             </motion.div>
 
@@ -202,16 +211,16 @@ const AskSoham = () => {
               <motion.div
                 animate={reduceMotion ? undefined : { rotate: 360 }}
                 transition={{ duration: 34, repeat: Infinity, ease: "linear" }}
-                className="pointer-events-none absolute -inset-6 rounded-[3rem] border border-white/12"
+                className="pointer-events-none absolute -inset-6 rounded-[3rem] border border-[hsl(var(--border-light))]"
                 aria-hidden
               />
               <motion.div
                 animate={reduceMotion ? undefined : { rotate: -360 }}
                 transition={{ duration: 54, repeat: Infinity, ease: "linear" }}
-                className="pointer-events-none absolute -inset-12 rounded-[4rem] border border-[hsl(var(--brand-gold-500)/0.1)]"
+                className="pointer-events-none absolute -inset-12 rounded-[4rem] border border-[hsl(var(--brand-gold-500)/0.15)]"
                 aria-hidden
               />
-              <div className="relative overflow-hidden rounded-[2.25rem] border border-white/12 bg-[hsl(var(--brand-navy-950))] p-3 shadow-[0_32px_90px_hsl(var(--brand-navy-950)/0.55)]">
+              <div className="relative overflow-hidden rounded-[2.25rem] border border-[hsl(var(--border-light))] bg-white p-3 shadow-[0_32px_90px_rgba(20,18,47,0.12)]">
                 <img
                   src="/Soham-Sir.jpg"
                   alt="Soham Kakade, Founder and CEO of UVAN"
@@ -238,7 +247,6 @@ const AskSoham = () => {
         id="who-this-is-for"
         className="relative overflow-hidden px-6 py-20 theme-section-soft"
       >
-        <div className="glow-orb glow-orb-purple pointer-events-none h-[460px] w-[460px] -left-40 -top-20 opacity-[0.11]" />
         <div className="glow-orb glow-orb-gold pointer-events-none h-[360px] w-[360px] -right-32 bottom-0 opacity-[0.09]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.14]" />
 
@@ -329,15 +337,6 @@ const AskSoham = () => {
 
       {/* ── WHAT THIS CALL IS NOT ── */}
       <section className="relative overflow-hidden px-6 py-20 theme-section-light">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.07] mix-blend-multiply"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -348,23 +347,22 @@ const AskSoham = () => {
               whileInView={show}
               viewport={{ once: true }}
               transition={transition(0)}
-              className="relative overflow-hidden rounded-3xl bg-[hsl(var(--brand-navy-950))] p-8 text-white sm:p-10"
+              className="relative overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] bg-white p-8 shadow-sm sm:p-10"
             >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,hsl(var(--brand-purple-500)/0.34),transparent_40%),radial-gradient(circle_at_85%_85%,hsl(var(--brand-gold-500)/0.2),transparent_36%)]" />
               <motion.img
                 src="/doodles/Light bulb-bro (1).svg"
                 alt=""
                 aria-hidden="true"
-                className="pointer-events-none absolute -bottom-6 -right-6 h-36 w-36 opacity-[0.14]"
+                className="pointer-events-none absolute -bottom-6 -right-6 h-36 w-36 opacity-[0.08]"
                 animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               />
               <div className="relative z-10">
-                <Quote className="mb-6 h-9 w-9 text-[hsl(var(--brand-gold-500))]" aria-hidden />
-                <h2 className="font-serif text-3xl font-bold leading-tight sm:text-4xl">
+                <Quote className="mb-6 h-9 w-9 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+                <h2 className="font-serif text-3xl font-bold leading-tight text-on-light sm:text-4xl">
                   What This Call Is Not
                 </h2>
-                <p className="mt-5 text-sm leading-[1.85] text-white/72 sm:text-base">
+                <p className="mt-5 text-sm leading-[1.85] text-on-light-secondary sm:text-base">
                   This is not a sales call. Soham will not pitch UVAN services unless asked. This call is designed to
                   give you 15 minutes of focused, honest guidance from someone who has actually spent 10 years inside
                   the corridors you&apos;re trying to navigate. If UVAN is not the right fit, Soham will tell you.
@@ -452,7 +450,6 @@ const AskSoham = () => {
         id={BOOKING_SECTION_ID}
         className="relative scroll-mt-28 overflow-hidden px-6 pb-16 pt-16 theme-section-soft lg:pb-20 lg:pt-20"
       >
-        <div className="glow-orb glow-orb-purple pointer-events-none h-[440px] w-[440px] -right-40 top-10 opacity-[0.1]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.15]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -490,9 +487,7 @@ const AskSoham = () => {
                 Before You Book
               </p>
               <p className="mt-2 text-sm text-on-light-secondary">
-                {calendlyEmbedUrl
-                  ? "Calendly will ask for the details below so Soham can prepare for a focused 15-minute call."
-                  : "Include these details in your email so the 15 minutes can stay focused."}
+                Calendly will ask for the details below so Soham can prepare for a focused 15-minute call.
               </p>
               <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                 {preBookingQuestions.map((question) => (
@@ -530,55 +525,30 @@ const AskSoham = () => {
                 />
               </div>
             ) : (
-              <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
-                <div className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] p-7 text-white sm:p-8">
-                  <motion.img
-                    src="/doodles/Schedule-amico.svg"
-                    alt=""
-                    aria-hidden="true"
-                    className="pointer-events-none absolute -bottom-6 -right-6 h-32 w-32 opacity-[0.16]"
-                    animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
-                    transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                  <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[hsl(var(--brand-gold-500))]">
-                    Email to Book
-                  </p>
-                  <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/70">
-                    Email us with the details above and we&apos;ll confirm a slot within one business day.
-                  </p>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <a
-                      href={BOOKING_EMAIL}
-                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-                    >
-                      Email to Book
-                      <ArrowUpRight className="h-4 w-4" aria-hidden />
-                    </a>
-                    <a
-                      href="tel:+918275744740"
-                      className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/18"
-                    >
-                      Call (+91) 82757 44740
-                    </a>
-                  </div>
-                </div>
-                <div className="flex flex-col items-center justify-center gap-4 p-8 text-center">
-                  <MessageCircle className="h-10 w-10 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-                  <p className="max-w-sm text-sm leading-relaxed text-on-light-secondary">
-                    Prefer the contact form? We&apos;ll route your request to Soham&apos;s calendar team.
-                  </p>
-                  <Link
-                    to="/contact"
-                    className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-bold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
+              <div className="flex flex-col items-center justify-center gap-4 bg-[hsl(var(--surface-light-50))] px-6 py-16 text-center">
+                <p className="max-w-md text-sm leading-relaxed text-on-light-secondary">
+                  Pick a time on Calendly for your free 15-minute call with Soham.
+                </p>
+                {CALENDLY_SCHEDULING_URL ? (
+                  <a
+                    href={CALENDLY_SCHEDULING_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
                   >
-                    Use the contact form
-                  </Link>
-                </div>
+                    Book on Calendly
+                    <ArrowUpRight className="h-4 w-4" aria-hidden />
+                  </a>
+                ) : (
+                  <p className="text-xs text-on-light-muted">
+                    Calendly link will be added here shortly.
+                  </p>
+                )}
               </div>
             )}
 
-            <div className="flex flex-wrap items-center justify-center gap-3 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-100)/0.72)] px-6 py-5">
-              {calendlyEmbedUrl && CALENDLY_SCHEDULING_URL ? (
+            {CALENDLY_SCHEDULING_URL ? (
+              <div className="flex flex-wrap items-center justify-center gap-3 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-100)/0.72)] px-6 py-5">
                 <a
                   href={CALENDLY_SCHEDULING_URL}
                   target="_blank"
@@ -588,23 +558,8 @@ const AskSoham = () => {
                   Open Calendly in a New Tab
                   <ArrowUpRight className="h-4 w-4" aria-hidden />
                 </a>
-              ) : (
-                <a
-                  href={BOOKING_EMAIL}
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-                >
-                  info@ewan.co.in
-                  <ArrowUpRight className="h-4 w-4" aria-hidden />
-                </a>
-              )}
-              <Link
-                to="/contact"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-bold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
-              >
-                <MessageCircle className="h-4 w-4" aria-hidden />
-                Use the contact form
-              </Link>
-            </div>
+              </div>
+            ) : null}
           </motion.div>
 
           {/* Trust bar */}
@@ -629,6 +584,92 @@ const AskSoham = () => {
             </div>
           </motion.div>
           )}
+        </div>
+      </section>
+
+      <section className="theme-section-light px-6 py-16 md:py-20">
+        <div className="container mx-auto max-w-3xl">
+          <motion.div
+            initial={hidden}
+            whileInView={show}
+            viewport={{ once: true }}
+            transition={transition(0)}
+            className="theme-card-light rounded-[2rem] border border-[hsl(var(--border-light))] p-6 sm:p-8"
+          >
+            <h2 className="font-serif text-2xl font-bold text-on-light sm:text-3xl">Send a message to Soham</h2>
+            <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">
+              Prefer to write first? Share the same details Calendly would ask for and Soham&apos;s team will follow up.
+            </p>
+
+            {inquirySubmitted ? (
+              <p className="mt-6 rounded-xl border border-[hsl(var(--brand-gold-500)/0.3)] bg-[hsl(var(--brand-gold-500)/0.12)] px-4 py-3 text-sm font-medium text-on-light">
+                Thank you — your email client should open with the message addressed to Soham. Send it to complete your
+                inquiry.
+              </p>
+            ) : (
+              <form className="mt-6 space-y-4" onSubmit={handleInquirySubmit}>
+                <label className="block text-sm font-medium text-on-light">
+                  Name and company / institution
+                  <input
+                    required
+                    name="nameAndCompany"
+                    type="text"
+                    className="mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]"
+                  />
+                </label>
+                <label className="block text-sm font-medium text-on-light">
+                  Your email
+                  <input
+                    required
+                    name="email"
+                    type="email"
+                    className="mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]"
+                  />
+                </label>
+                <label className="block text-sm font-medium text-on-light">
+                  Which track applies?
+                  <select
+                    required
+                    name="track"
+                    defaultValue=""
+                    className="mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]"
+                  >
+                    <option value="" disabled>
+                      Select a track
+                    </option>
+                    <option value="Market Entry">Market Entry</option>
+                    <option value="Language Strategy">Language Strategy</option>
+                    <option value="Career Guidance">Career Guidance</option>
+                  </select>
+                </label>
+                <label className="block text-sm font-medium text-on-light">
+                  Corridor or region
+                  <input
+                    required
+                    name="corridor"
+                    type="text"
+                    className="mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]"
+                  />
+                </label>
+                <label className="block text-sm font-medium text-on-light">
+                  Biggest challenge or question
+                  <textarea
+                    required
+                    name="question"
+                    rows={4}
+                    className="mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-3 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]"
+                  />
+                </label>
+                <button
+                  type="submit"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-purple-700))] px-6 py-3 text-sm font-bold text-white transition hover:brightness-110"
+                >
+                  Send to Soham
+                  <ArrowUpRight className="h-4 w-4" aria-hidden />
+                </button>
+              </form>
+            )}
+          </motion.div>
         </div>
       </section>
 

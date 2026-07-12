@@ -45,7 +45,7 @@ const ArticleCard = ({
           }`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.55)] via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-        <span className="absolute left-4 top-4 rounded-full bg-[hsl(var(--brand-navy-950))] px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))]">
+        <span className="absolute left-4 top-4 rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))]">
           {article.category}
         </span>
         {typeof index === "number" ? (
@@ -109,22 +109,22 @@ const LanguageGazetteMagazineLayout = ({
   return (
     <div className="gazette-paper">
       {showHero && issue ? (
-        <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-16 pt-12 text-white md:pb-20 md:pt-16">
-          <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "repeating-linear-gradient(90deg, transparent, transparent 2px, white 2px, white 3px)" }} />
-          <div className="container relative mx-auto max-w-6xl">
+        <section className="relative overflow-hidden theme-section-soft px-6 pb-16 pt-12 md:pb-20 md:pt-16">
+          <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
+          <div className="container relative z-10 mx-auto max-w-6xl">
             <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
               <div className="lg:col-span-7">
-                <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[hsl(var(--brand-gold-500))]">Quarterly Publication</p>
-                <h1 className="mt-4 font-serif text-4xl font-extrabold leading-[1.05] md:text-6xl lg:text-7xl">
+                <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[hsl(var(--brand-purple-700))]">Quarterly Publication</p>
+                <h1 className="mt-4 font-serif text-4xl font-extrabold leading-[1.05] text-on-light md:text-6xl lg:text-7xl">
                   {heroTitle ?? (
                     <>
                       The Language
                       <br />
-                      <span className="italic text-[hsl(var(--brand-gold-500))]">Gazette</span>
+                      <span className="italic text-[hsl(var(--brand-purple-700))]">Gazette</span>
                     </>
                   )}
                 </h1>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
+                <p className="mt-6 max-w-xl text-lg leading-relaxed text-on-light-secondary">
                   {heroSubtitle ??
                     "UVAN's quarterly publication exploring the intersection of language, cultural intelligence and international business. Available as a full digital issue and as individual articles."}
                 </p>
@@ -138,7 +138,7 @@ const LanguageGazetteMagazineLayout = ({
                   </a>
                   <Link
                     to={issuePath}
-                    className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/25 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10"
+                    className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
                   >
                     Download the Latest Issue
                     <ArrowRight className="h-4 w-4" aria-hidden />
@@ -146,15 +146,15 @@ const LanguageGazetteMagazineLayout = ({
                 </div>
               </div>
               <div className="lg:col-span-5">
-                <div className="gazette-cover-shadow relative mx-auto max-w-sm overflow-hidden rounded-[1.5rem] border border-white/15 lg:max-w-none">
+                <div className="gazette-cover-shadow relative mx-auto max-w-sm overflow-hidden rounded-[1.5rem] border border-[hsl(var(--border-light))] lg:max-w-none">
                   <GazetteCoverImage
                     src={issue.coverImage}
                     alt={`${issue.label} cover`}
                     className="aspect-[4/5] w-full object-cover"
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950))] to-transparent px-6 pb-6 pt-16">
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.9)] to-transparent px-6 pb-6 pt-16">
                     <p className="text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">Latest issue</p>
-                    <p className="mt-1 font-serif text-2xl font-bold">{issue.label}</p>
+                    <p className="mt-1 font-serif text-2xl font-bold text-white">{issue.label}</p>
                     <p className="mt-1 text-sm text-white/70">{displayArticles.length} articles</p>
                   </div>
                 </div>
@@ -168,7 +168,6 @@ const LanguageGazetteMagazineLayout = ({
 
       {displayArticles.length > 0 ? (
         <section id={showHero ? "latest-issue" : undefined} className="gazette-paper-section relative overflow-hidden px-6 py-16 md:py-20">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_0%,hsl(var(--brand-purple-700)/0.08),transparent_38%)]" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_88%_100%,hsl(var(--brand-gold-500)/0.07),transparent_34%)]" />
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--brand-gold-500)/0.45)] to-transparent" />
 

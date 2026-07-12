@@ -1,21 +1,19 @@
 import { useRef } from "react";
-import { ArrowRight, Sparkles, MessageCircle, Globe } from "lucide-react";
+import { ArrowRight, Sparkles, MessageCircle } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { blurReveal, fadeOnly, staggerContainer } from "@/lib/animationVariants";
 
-const defaultRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
-
 const heroParticleColors = [
-  "hsl(var(--brand-purple-700) / 0.2)",
-  "hsl(var(--brand-purple-500) / 0.18)",
+  "hsl(var(--brand-gold-500) / 0.2)",
+  "hsl(var(--brand-cyan-500) / 0.18)",
   "hsl(var(--brand-cyan-500) / 0.14)",
   "hsl(var(--brand-navy-950) / 0.08)",
-  "hsl(var(--brand-purple-700) / 0.16)",
+  "hsl(var(--brand-gold-500) / 0.16)",
   "hsl(var(--brand-gold-500) / 0.12)",
   "hsl(var(--brand-cyan-500) / 0.1)",
-  "hsl(var(--brand-purple-500) / 0.15)",
+  "hsl(var(--brand-gold-500) / 0.15)",
 ];
 
 const heroParticles = [
@@ -102,7 +100,6 @@ const HeroSection = () => {
   const { t } = useTranslation();
   const reduceMotion = useReducedMotion() ?? false;
   const sectionRef = useRef<HTMLElement>(null);
-  const regions = t("home.hero.regions", { returnObjects: true, defaultValue: defaultRegions }) as string[];
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -132,7 +129,6 @@ const HeroSection = () => {
       id="home"
       className="relative flex min-h-0 items-start overflow-hidden theme-section-soft lg:min-h-screen lg:items-center"
     >
-      <div className="glow-orb glow-orb-purple -left-20 -top-24 h-[280px] w-[280px] opacity-[0.08] lg:-left-28 lg:-top-36 lg:h-[460px] lg:w-[460px] lg:opacity-[0.11]" />
       <div className="glow-orb glow-orb-gold -bottom-20 right-[-18%] h-[240px] w-[240px] opacity-[0.07] lg:-bottom-32 lg:right-[-12%] lg:h-[380px] lg:w-[380px] lg:opacity-[0.09]" />
 
       {heroParticles.map((particle, i) => (
@@ -161,34 +157,6 @@ const HeroSection = () => {
       <div className="container relative z-10 mx-auto px-5 pb-8 pt-14 sm:px-6 lg:pb-12 lg:pt-24">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <motion.div variants={containerVariants} initial="hidden" animate="visible">
-            <motion.div variants={itemVariant} className="mb-4 lg:mb-6">
-              <div className="flex items-center gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
-                <Globe className="h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-                {regions.map((r) => (
-                  <span
-                    key={r}
-                    className="shrink-0 rounded-full border border-[hsl(var(--border-light))] bg-white/85 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[hsl(var(--brand-purple-700))] shadow-sm"
-                  >
-                    {r}
-                  </span>
-                ))}
-              </div>
-              <div className="hidden flex-wrap items-center gap-2 lg:flex">
-                <Globe className="h-4 w-4 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-                {regions.map((r, i) => (
-                  <span
-                    key={r}
-                    className="text-xs font-medium uppercase tracking-wider text-[hsl(var(--brand-purple-700))] sm:text-sm"
-                  >
-                    {r}
-                    {i < regions.length - 1 && (
-                      <span className="mx-1 text-[hsl(var(--brand-purple-700)/0.35)]">.</span>
-                    )}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
             <h1 className="mb-4 text-[2rem] font-serif font-bold leading-[1.08] text-balance sm:text-5xl sm:leading-[1.05] sm:mb-6 lg:text-6xl xl:text-7xl">
               <span className="block text-on-light">
                 <WordSplitLine text={t("home.hero.headingLine1")} reduceMotion={reduceMotion} />

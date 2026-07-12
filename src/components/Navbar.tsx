@@ -89,7 +89,7 @@ const mobileNavGroups: NavGroup[] = [
       { labelKey: "navMenu.about.orientalFlock", href: "/about-us#oriental-flock" },
       { labelKey: "navMenu.about.partners", href: "/about-us#our-partners" },
       { labelKey: "navMenu.about.joinUs", href: "/join-us" },
-      { labelKey: "navMenu.about.caseStudies", href: "/case-study" },
+      { labelKey: "navMenu.about.caseStudy", href: "/case-study" },
       { labelKey: "navMenu.about.testimonials", href: "/#testimonials" },
     ],
   },
@@ -153,7 +153,7 @@ const desktopNavGroups: DesktopNavGroup[] = [
       { labelKey: "navMenu.about.orientalFlock", href: "/about-us#oriental-flock" },
       { labelKey: "navMenu.about.partners", href: "/about-us#our-partners" },
       { labelKey: "navMenu.about.joinUs", href: "/join-us" },
-      { labelKey: "navMenu.about.caseStudies", href: "/case-study" },
+      { labelKey: "navMenu.about.caseStudy", href: "/case-study" },
       { labelKey: "navMenu.about.testimonials", href: "/#testimonials" },
     ],
   },
@@ -290,14 +290,14 @@ const Navbar = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 nav-glass">
-        <div className="container mx-auto flex h-14 items-center justify-between gap-3 px-4 lg:h-auto lg:gap-4 lg:px-6 lg:py-3">
+        <div className="container mx-auto flex h-14 items-center justify-between gap-4 px-4 lg:h-[4.25rem] lg:gap-6 lg:px-6">
           <Link to="/" className="shrink-0" onClick={handleLogoClick}>
-            <img src={SITE_LOGO} alt={SITE_LOGO_ALT} className="h-9 w-auto object-contain lg:h-12" />
+            <img src={SITE_LOGO} alt={SITE_LOGO_ALT} className="h-9 w-auto object-contain lg:h-11" />
           </Link>
 
           {/* Desktop nav */}
           <div
-            className="relative hidden overflow-visible lg:flex items-stretch rounded-2xl border border-[hsl(var(--border-light-strong))] bg-white px-2 py-1.5 shadow-[0_14px_34px_-10px_rgba(15,23,42,0.2)] ring-1 ring-[hsl(var(--brand-navy-950)/0.08)]"
+            className="relative hidden overflow-visible lg:flex items-stretch rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-1 shadow-sm"
             role="navigation"
             aria-label="Primary"
           >
@@ -307,22 +307,28 @@ const Navbar = () => {
                 <div
                   key={group.labelKey}
                   className={cn(
-                    "group relative flex items-stretch first:pl-0.5 last:pr-0.5",
-                    index > 0 && "border-l border-[hsl(var(--brand-navy-950)/0.07)]",
+                    "group relative flex items-stretch",
+                    index > 0 && "before:absolute before:left-0 before:top-1/2 before:h-4 before:w-px before:-translate-y-1/2 before:bg-[hsl(var(--border-light))]",
                   )}
                 >
                   <Link
                     to={group.href}
                     className={cn(
-                      "inline-flex min-h-[2.75rem] items-center gap-1 rounded-xl px-4 py-2 text-[14px] font-semibold whitespace-nowrap tracking-[0.01em] text-[hsl(var(--brand-navy-950)/0.92)] outline-none transition",
-                      "hover:bg-[hsl(var(--surface-light-100))] hover:text-[hsl(var(--brand-navy-950))]",
-                      "focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.45)] focus-visible:ring-offset-2 focus-visible:ring-offset-white",
-                      active && "bg-[hsl(var(--brand-navy-950))] text-white shadow-[0_8px_20px_-12px_rgba(15,23,42,0.85)]",
+                      "inline-flex min-h-[2.5rem] items-center gap-1 rounded-full px-3.5 py-2 text-[13px] font-semibold whitespace-nowrap text-[hsl(var(--brand-navy-950)/0.78)] outline-none transition",
+                      "hover:bg-white hover:text-[hsl(var(--brand-navy-950))] hover:shadow-sm",
+                      "focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.4)] focus-visible:ring-offset-1 focus-visible:ring-offset-[hsl(var(--surface-light-50))]",
+                      active &&
+                        "bg-white text-[hsl(var(--brand-purple-700))] shadow-sm ring-1 ring-[hsl(var(--brand-purple-700)/0.12)]",
                     )}
                   >
                     <span>{t(group.labelKey)}</span>
                     {group.links ? (
-                      <ChevronDown className="h-[0.95rem] w-[0.95rem] shrink-0 text-[hsl(var(--brand-navy-950)/0.55)] opacity-85 transition-transform duration-200 group-hover:rotate-180 group-hover:opacity-100 group-hover:text-[hsl(var(--brand-navy-950))] group-focus-within:rotate-180 group-focus-within:opacity-100" />
+                      <ChevronDown
+                        className={cn(
+                          "h-3.5 w-3.5 shrink-0 opacity-60 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180",
+                          active ? "text-[hsl(var(--brand-purple-700))]" : "text-[hsl(var(--brand-navy-950)/0.5)]",
+                        )}
+                      />
                     ) : null}
                   </Link>
 
@@ -365,18 +371,18 @@ const Navbar = () => {
             })}
           </div>
 
-          <div className="hidden lg:flex items-center gap-3">
-            <div className="flex items-center gap-1 rounded-full border border-white/15 p-1">
+          <div className="hidden lg:flex items-center gap-2.5">
+            <div className="flex items-center gap-0.5 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-0.5">
               {languageOptions.map(({ code, label }) => (
                 <button
                   key={code}
                   type="button"
                   onClick={() => void i18n.changeLanguage(code)}
                   className={cn(
-                    "rounded-full px-2.5 py-1 text-xs transition",
+                    "rounded-full px-2.5 py-1 text-[11px] font-semibold transition",
                     i18n.resolvedLanguage?.startsWith(code)
-                      ? "bg-white/20 text-white"
-                      : "text-foreground/70 hover:text-white",
+                      ? "bg-white text-[hsl(var(--brand-purple-700))] shadow-sm ring-1 ring-[hsl(var(--brand-purple-700)/0.1)]"
+                      : "text-[hsl(var(--brand-navy-950)/0.55)] hover:text-[hsl(var(--brand-navy-950))]",
                   )}
                 >
                   {label}
@@ -385,7 +391,7 @@ const Navbar = () => {
             </div>
             <Link
               to="/ask-soham"
-              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+              className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2 text-[13px] font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_4px_14px_-4px_hsl(var(--brand-gold-500)/0.55)] transition hover:brightness-105"
             >
               <MessageCircle className="h-4 w-4" />
               {t("nav.askSoham")}
@@ -403,7 +409,7 @@ const Navbar = () => {
                   className={cn(
                     "rounded-full px-2 py-1 text-[10px] font-semibold transition",
                     i18n.resolvedLanguage?.startsWith(code)
-                      ? "bg-[hsl(var(--brand-navy-950))] text-white"
+                      ? "bg-[hsl(var(--brand-purple-700))] text-white"
                       : "text-[hsl(var(--brand-navy-950)/0.65)]",
                   )}
                 >
@@ -416,7 +422,7 @@ const Navbar = () => {
               className={cn(
                 "inline-flex h-9 w-9 items-center justify-center rounded-full border shadow-sm transition",
                 mobileOpen
-                  ? "border-[hsl(var(--brand-navy-950))] bg-[hsl(var(--brand-navy-950))] text-white"
+                  ? "border-[hsl(var(--brand-purple-700))] bg-[hsl(var(--brand-purple-700))] text-white"
                   : "border-[hsl(var(--border-light))] bg-white text-[hsl(var(--brand-navy-950))]",
               )}
               onClick={() => setMobileOpen((prev) => !prev)}
@@ -580,7 +586,7 @@ const Navbar = () => {
                   className={cn(
                     "flex-1 rounded-full px-2 py-1.5 text-[11px] font-semibold transition",
                     i18n.resolvedLanguage?.startsWith(code)
-                      ? "bg-[hsl(var(--brand-navy-950))] text-white"
+                      ? "bg-[hsl(var(--brand-purple-700))] text-white"
                       : "text-[hsl(var(--brand-navy-950)/0.65)] hover:text-[hsl(var(--brand-navy-950))]",
                   )}
                 >

@@ -146,18 +146,8 @@ const ImportExport = () => {
       jsonLd={importExportLd}
     >
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 pb-14 pt-8 text-white sm:px-6 sm:pb-20 sm:pt-10 md:pb-28 md:pt-14 stitch-line stitch-line-bottom">
-        <div
-          className="pointer-events-none absolute inset-0 z-0 opacity-25 mix-blend-color-dodge"
-          style={{
-            backgroundImage: "url('/bg-blobs/beautiful-purple-color-gradient-background-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_-10%,hsl(var(--brand-purple-700)/0.35),transparent_55%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_70%,hsl(var(--brand-cyan-500)/0.12),transparent_45%)]" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.2)] via-transparent to-[hsl(var(--brand-navy-950))]" />
+      <section className="relative overflow-hidden theme-section-soft px-5 pb-14 pt-8 sm:px-6 sm:pb-20 sm:pt-10 md:pb-28 md:pt-14 stitch-line stitch-line-bottom">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <motion.img
           src="/doodles/International trade-bro.svg"
@@ -176,14 +166,14 @@ const ImportExport = () => {
               animate={show}
               transition={transition(0)}
             >
-              <p className="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/90 backdrop-blur-sm sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]">
+              <p className="mb-4 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]">
                 India to Asia. Asia to India. End-to-End.
               </p>
-              <h1 className="font-serif text-[1.85rem] font-bold leading-[1.08] sm:text-4xl sm:leading-[1.05] lg:text-6xl xl:text-[3.35rem] xl:leading-[1.02]">
+              <h1 className="font-serif text-[1.85rem] font-bold leading-[1.08] text-on-light sm:text-4xl sm:leading-[1.05] lg:text-6xl xl:text-[3.35rem] xl:leading-[1.02]">
                 Cross-Border Trade Is Complex.{" "}
-                <span className="text-[hsl(var(--brand-gold-500))]">The Language Around It Even More So.</span>
+                <span className="text-[hsl(var(--brand-purple-700))]">The Language Around It Even More So.</span>
               </h1>
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/78 sm:mt-6 sm:text-base lg:text-lg">
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-on-light-secondary sm:mt-6 sm:text-base lg:text-lg">
                 Whether you are sourcing products from India for Asian markets, or importing goods and components into India
                 from abroad, UVAN provides the language, liaison, and operational support that makes cross-border trade flow
                 - from vendor identification and negotiation to documentation, customs coordination and delivery.
@@ -201,7 +191,7 @@ const ImportExport = () => {
                 <motion.div whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={reduceMotion ? undefined : { scale: 0.97 }} className="w-full sm:w-auto">
                   <Link
                     to="/ask-soham"
-                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/12 sm:w-auto sm:px-6"
+                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto sm:px-6"
                   >
                     Ask Soham - 15 Min Free
                     <ArrowRight className="h-4 w-4 shrink-0" />
@@ -217,8 +207,8 @@ const ImportExport = () => {
               transition={transition(0.12)}
             >
               <div className="pointer-events-none absolute -left-6 top-1/4 hidden h-32 w-32 rounded-full border border-dashed border-[hsl(var(--brand-gold-500)/0.25)] opacity-60 sm:block" />
-              <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-[hsl(var(--brand-navy-900))] shadow-[0_28px_70px_-20px_rgba(0,0,0,0.55)] ring-1 ring-white/10 sm:rounded-[2rem]">
-                <div className="absolute inset-0 z-[1] bg-gradient-to-tr from-[hsl(var(--brand-navy-950)/0.75)] via-transparent to-[hsl(var(--brand-purple-700)/0.2)]" />
+              <div className="relative overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-100))] shadow-[0_28px_70px_-20px_rgba(0,0,0,0.1)] sm:rounded-[2rem]">
+                <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.55)] via-transparent to-transparent" />
                 <img
                   src={stitch.heroCircle}
                   alt="Cross-border import and export trade"
@@ -243,7 +233,6 @@ const ImportExport = () => {
       {/* Where UVAN Adds Value */}
       <section className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20 stitch-line stitch-line-bottom">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.12]" />
-        <div className="pointer-events-none absolute -right-24 top-0 h-96 w-96 rounded-full bg-[radial-gradient(circle,hsl(var(--brand-purple-500)/0.12),transparent_70%)]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
           <div className="grid items-start gap-6 lg:grid-cols-2 lg:gap-14">
@@ -516,18 +505,18 @@ const ImportExport = () => {
       <SectionDivider variant="slant" />
 
       {/* CTA */}
-      <section className="bg-[hsl(var(--brand-navy-950))] px-5 py-10 text-white sm:px-6 sm:py-16 lg:py-20">
+      <section className="theme-section-soft px-5 py-10 sm:px-6 sm:py-16 lg:py-20">
         <motion.div
-          className="container mx-auto max-w-4xl rounded-2xl border border-white/15 bg-gradient-to-br from-white/[0.08] to-white/[0.02] p-6 text-center shadow-[0_24px_60px_rgba(0,0,0,0.35)] backdrop-blur-md sm:rounded-[2rem] sm:p-10 lg:p-12"
+          className="container mx-auto max-w-4xl rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 text-center shadow-[0_24px_60px_rgba(26,22,51,0.06)] sm:rounded-[2rem] sm:p-10 lg:p-12"
           initial={hidden}
           whileInView={show}
           viewport={{ once: true }}
           transition={transition(0)}
         >
-          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 sm:text-xs sm:tracking-[0.2em]">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.2em]">
             Next Step
           </p>
-          <h3 className="mt-3 font-serif text-[1.55rem] font-bold sm:text-3xl lg:text-4xl">
+          <h3 className="mt-3 font-serif text-[1.55rem] font-bold text-on-light sm:text-3xl lg:text-4xl">
             Discuss Your Import / Export Requirements
           </h3>
           <div className="mt-6 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
@@ -543,7 +532,7 @@ const ImportExport = () => {
             <motion.div whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={reduceMotion ? undefined : { scale: 0.97 }} className="w-full sm:w-auto">
               <Link
                 to="/ask-soham"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto sm:px-6"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto sm:px-6"
               >
                 Ask Soham - 15 Min Free
                 <ArrowRight className="h-4 w-4 shrink-0" />

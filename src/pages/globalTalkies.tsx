@@ -154,27 +154,20 @@ const GlobalTalkies = () => {
       jsonLd={globalTalkiesLd}
     >
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-24 pt-12 text-white">
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(circle at 20% 30%, hsl(var(--brand-purple-500)/0.32) 0%, transparent 52%), radial-gradient(circle at 80% 70%, hsl(var(--brand-navy-950)) 0%, transparent 52%)",
-          }}
-        />
-        <div className="pointer-events-none absolute bottom-20 right-0 h-32 w-[44rem] rotate-12 bg-gradient-to-r from-transparent via-[hsl(var(--brand-gold-500)/0.16)] to-transparent blur-3xl" />
+      <section className="relative overflow-hidden theme-section-soft px-6 pb-24 pt-12">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative mx-auto">
           <div className="grid items-center gap-14 lg:grid-cols-[3fr_2fr]">
             <div>
-              <p className="mb-5 inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
+              <p className="mb-5 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">
                 Stories Without Borders.
               </p>
-              <h1 className="font-serif text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+              <h1 className="font-serif text-5xl font-bold leading-[0.95] tracking-tight text-on-light sm:text-6xl lg:text-7xl">
                 Great Content Deserves an Audience in{" "}
-                <span className="text-[hsl(var(--brand-gold-500))]">Every Language.</span>
+                <span className="text-[hsl(var(--brand-purple-700))]">Every Language.</span>
               </h1>
-              <p className="mt-8 max-w-3xl text-lg leading-relaxed text-white/78">
+              <p className="mt-8 max-w-3xl text-lg leading-relaxed text-on-light-secondary">
                 Global Talkies is UVAN's media and film services vertical - built for content creators, distributors,
                 OTT platforms, and production companies that want to move stories across language barriers without losing
                 what makes them powerful.
@@ -189,7 +182,7 @@ const GlobalTalkies = () => {
                 </a>
                 <a
                   href="mailto:info@ewan.co.in?subject=Global%20Talkies%20Content%20Brief"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3 text-sm font-semibold text-white/92 transition hover:bg-white/10"
+                  className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-7 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
                 >
                   info@ewan.co.in
                 </a>
@@ -216,14 +209,6 @@ const GlobalTalkies = () => {
 
       {/* What Global Talkies Does */}
       <section className="relative overflow-hidden px-6 py-16 theme-section-soft lg:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.18] mix-blend-multiply"
-          style={{
-            backgroundImage: "url('/bg-blobs/magic-background-with-purple-light-rays-effect-free-vector.jpg')",
-          }}
-          aria-hidden
-        />
-        <div className="glow-orb glow-orb-purple pointer-events-none -right-24 top-0 h-[380px] w-[380px] opacity-[0.08]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -355,16 +340,16 @@ const GlobalTalkies = () => {
       </section>
 
       {/* Language Corridors - Media */}
-      <section className="overflow-hidden bg-[hsl(var(--brand-navy-950))] px-8 py-24 text-white">
+      <section className="overflow-hidden theme-section-soft px-8 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
             <div className="space-y-4">
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[hsl(var(--brand-purple-500))]">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[hsl(var(--brand-purple-700))]">
                 Network
               </span>
-              <h2 className="font-serif text-5xl font-bold tracking-tight">Language Corridors - Media</h2>
+              <h2 className="font-serif text-5xl font-bold tracking-tight text-on-light">Language Corridors - Media</h2>
             </div>
-            <p className="max-w-md font-light leading-relaxed text-white/70">
+            <p className="max-w-md font-light leading-relaxed text-on-light-secondary">
               Our deepest media localisation experience sits in the corridors that mirror UVAN's broader expertise.
             </p>
           </div>
@@ -372,16 +357,16 @@ const GlobalTalkies = () => {
             {mediaCorridors.map((item, index) => (
               <div
                 key={item.corridor}
-                className="group flex cursor-pointer items-center justify-between border-b border-white/10 py-10 transition-all duration-500 hover:bg-white/5 hover:px-6"
+                className="group flex cursor-pointer items-center justify-between border-b border-[hsl(var(--border-light))] py-10 transition-all duration-500 hover:bg-[hsl(var(--surface-light-100))] hover:px-6"
               >
                 <div className="flex items-center space-x-10">
-                  <span className="font-serif text-4xl font-light text-white/30 transition-colors group-hover:text-[hsl(var(--brand-gold-500))]">
+                  <span className="font-serif text-4xl font-light text-on-light-muted transition-colors group-hover:text-[hsl(var(--brand-purple-700))]">
                     {(index + 1).toString().padStart(2, "0")}
                   </span>
-                  <h3 className="font-serif text-2xl font-bold text-white md:text-3xl">{item.corridor}</h3>
+                  <h3 className="font-serif text-2xl font-bold text-on-light md:text-3xl">{item.corridor}</h3>
                 </div>
                 <div className="hidden text-right md:block">
-                  <p className="text-sm font-light text-white/60">{item.note}</p>
+                  <p className="text-sm font-light text-on-light-secondary">{item.note}</p>
                 </div>
               </div>
             ))}
@@ -391,15 +376,6 @@ const GlobalTalkies = () => {
 
       {/* Who This Is For */}
       <section className="relative overflow-hidden px-6 py-16 theme-section-soft lg:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.14] mix-blend-multiply"
-          style={{
-            backgroundImage: "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -457,7 +433,6 @@ const GlobalTalkies = () => {
 
       {/* Why Global Talkies */}
       <section className="relative overflow-hidden px-6 py-16 theme-section-light lg:py-20">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_50%,hsl(var(--brand-purple-700)/0.07),transparent_42%)]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
@@ -491,13 +466,13 @@ const GlobalTalkies = () => {
               whileInView={show}
               viewport={{ once: true }}
               transition={transition(0.12)}
-              className="rounded-3xl border border-[hsl(var(--border-light))] bg-[hsl(var(--brand-navy-950))] p-8 text-white lg:col-span-4"
+              className="rounded-3xl border border-[hsl(var(--border-light))] bg-white p-8 lg:col-span-4"
             >
-              <Quote className="h-8 w-8 text-[hsl(var(--brand-gold-500))]" aria-hidden />
-              <blockquote className="mt-5 font-serif text-xl font-bold leading-snug sm:text-2xl">
+              <Quote className="h-8 w-8 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+              <blockquote className="mt-5 font-serif text-xl font-bold leading-snug text-on-light sm:text-2xl">
                 "Localisation that serves the story, not just the script."
               </blockquote>
-              <p className="mt-4 text-sm leading-relaxed text-white/70">
+              <p className="mt-4 text-sm leading-relaxed text-on-light-secondary">
                 The same cultural intelligence UVAN applies in boardrooms - applied to every subtitle, dub, and script we deliver.
               </p>
             </motion.aside>
@@ -508,10 +483,10 @@ const GlobalTalkies = () => {
       <AeoFrequentlyAskedQuestions items={GLOBAL_TALKIES_FAQS} className="bg-[#f8f7fc] px-6 py-16" />
 
       {/* CTA */}
-      <section className="bg-[hsl(var(--brand-navy-950))] px-6 py-16 text-white">
-        <div className="container mx-auto rounded-3xl border border-white/15 bg-white/5 p-8 text-center backdrop-blur-sm">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">Next Step</p>
-          <h3 className="mt-2 font-serif text-4xl font-bold">Send Your Content Brief</h3>
+      <section className="theme-section-soft px-6 py-16">
+        <div className="container mx-auto rounded-3xl border border-[hsl(var(--border-light))] bg-white p-8 text-center shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">Next Step</p>
+          <h3 className="mt-2 font-serif text-4xl font-bold text-on-light">Send Your Content Brief</h3>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
             <a
               href="mailto:info@ewan.co.in?subject=Global%20Talkies%20Content%20Brief"
@@ -522,7 +497,7 @@ const GlobalTalkies = () => {
             </a>
             <Link
               to="/ask-soham"
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
             >
               Ask Soham - 15 Min Free
               <ArrowRight className="h-4 w-4" />

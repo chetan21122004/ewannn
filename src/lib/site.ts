@@ -5,10 +5,14 @@ export const SITE_LOGO = "/uvanLogo.png";
 export const SITE_LOGO_ALT = "UVAN - Asia Market Entry";
 
 export const SOHAM_LINKEDIN = "https://www.linkedin.com/in/soham-kakade-77b2819b/";
+export const SUKHADA_LINKEDIN = "https://www.linkedin.com/in/cma-sukhada-kakade-bhalerao-5b3789401/";
 export const COMPANY_LINKEDIN = "https://www.linkedin.com/company/ewan-business-solutions/";
 
 export const COMPANY_EMAIL = "info@ewan.co.in";
+export const SOHAM_EMAIL = "soham.kakade@ewan.co.in";
 export const COMPANY_PHONE = "+91-8275744740";
+export const COMPANY_ADDRESS =
+  "Flat no 14, Fourth Floor, Asmant Apartment, near Quantum Works, Erandwane, Karve Road, Pune - 411004";
 
 export const ORGANIZATION_SAME_AS = [
   "https://www.facebook.com/EwanBusinessSolutions?mibextid=ZbWKwL",

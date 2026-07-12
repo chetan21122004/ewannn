@@ -55,7 +55,7 @@ const ScrollScene = ({ children, index, intensity = 1, preserveLayout = false }:
         <motion.div
           aria-hidden="true"
           className={`pointer-events-none absolute top-1/2 z-0 hidden h-56 w-56 rounded-full blur-3xl lg:block ${
-            index % 2 === 0 ? "left-[-7rem] bg-[hsl(var(--brand-purple-500)/0.1)]" : "right-[-7rem] bg-[hsl(var(--brand-gold-500)/0.11)]"
+            index % 2 === 0 ? "left-[-7rem] bg-[hsl(var(--brand-gold-500)/0.09)]" : "right-[-7rem] bg-[hsl(var(--brand-gold-500)/0.11)]"
           }`}
           style={{ x: haloX, y: haloY }}
         />
@@ -69,7 +69,7 @@ const ScrollScene = ({ children, index, intensity = 1, preserveLayout = false }:
       <motion.div
         aria-hidden="true"
         className={`pointer-events-none absolute top-1/2 z-0 hidden h-56 w-56 rounded-full blur-3xl lg:block ${
-          index % 2 === 0 ? "left-[-7rem] bg-[hsl(var(--brand-purple-500)/0.1)]" : "right-[-7rem] bg-[hsl(var(--brand-gold-500)/0.11)]"
+          index % 2 === 0 ? "left-[-7rem] bg-[hsl(var(--brand-gold-500)/0.09)]" : "right-[-7rem] bg-[hsl(var(--brand-gold-500)/0.11)]"
         }`}
         style={{ x: haloX, y: haloY }}
       />

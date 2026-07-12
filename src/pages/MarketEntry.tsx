@@ -163,19 +163,8 @@ const MarketEntry = () => {
       keywords={MARKET_ENTRY_KEYWORDS}
       jsonLd={marketEntryLd}
     >
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 pb-14 pt-8 text-white sm:px-6 lg:px-6 lg:pb-24 lg:pt-12">
-        {/* Section Background Blob */}
-        <div 
-          className="absolute inset-0 z-0 opacity-20 mix-blend-color-dodge bg-cover bg-center pointer-events-none lg:opacity-25"
-          style={{ backgroundImage: "url('/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg')" }}
-        />
-        <div
-          className="pointer-events-none absolute inset-0 z-0"
-          style={{
-            background:
-              "radial-gradient(circle at 78% 20%, hsl(var(--brand-purple-500)/0.2) 0%, transparent 34%), radial-gradient(circle at 20% 82%, hsl(var(--brand-cyan-500)/0.12) 0%, transparent 40%), radial-gradient(circle at 50% 50%, hsl(var(--surface-glass)/0.05) 0%, transparent 55%)",
-          }}
-        />
+      <section className="relative overflow-hidden theme-section-soft px-5 pb-14 pt-8 sm:px-6 lg:px-6 lg:pb-24 lg:pt-12">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
         <img
           src="/doodles/International trade-rafiki.svg"
           alt=""
@@ -190,14 +179,14 @@ const MarketEntry = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="mb-4 inline-flex max-w-full rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/80 sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]">
+              <p className="mb-4 inline-flex max-w-full rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]">
                 India Entry. ASEAN Expansion. One Partner.
               </p>
-              <h1 className="font-serif text-[1.85rem] font-bold leading-[1.08] sm:text-4xl lg:text-5xl xl:text-6xl xl:leading-tight">
+              <h1 className="font-serif text-[1.85rem] font-bold leading-[1.08] text-on-light sm:text-4xl lg:text-5xl xl:text-6xl xl:leading-tight">
                 We've Already Been in the Room.{" "}
-                <span className="text-[hsl(var(--brand-gold-500))]">Now We'll Be in It With You.</span>
+                <span className="text-[hsl(var(--brand-purple-700))]">Now We'll Be in It With You.</span>
               </h1>
-              <p className="market-entry-speakable mt-4 max-w-3xl text-sm leading-relaxed text-white/85 sm:mt-6 sm:text-base lg:text-lg">
+              <p className="market-entry-speakable mt-4 max-w-3xl text-sm leading-relaxed text-on-light-secondary sm:mt-6 sm:text-base lg:text-lg">
                 {SPEAKABLE_MARKET_ENTRY}
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap lg:gap-4">
@@ -213,7 +202,7 @@ const MarketEntry = () => {
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
                   <Link
                     to="/market-entry-audit"
-                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10 sm:w-auto sm:px-6"
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto sm:px-6"
                   >
                     Download the 2026 Market Entry Audit
                     <ArrowRight className="h-4 w-4 shrink-0" />
@@ -240,10 +229,9 @@ const MarketEntry = () => {
         </div>
       </section>
 
-      <SectionDivider variant="wave" fromDark />
+      <SectionDivider variant="wave" />
 
       <section id="who-we-serve" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
-        <div className="glow-orb glow-orb-purple pointer-events-none h-[240px] w-[240px] -left-20 top-0 opacity-[0.08] lg:h-[420px] lg:w-[420px] lg:-left-32 lg:opacity-[0.1]" />
         <div className="glow-orb glow-orb-gold pointer-events-none h-[200px] w-[200px] -right-16 bottom-0 opacity-[0.06] lg:h-[360px] lg:w-[360px] lg:-right-24 lg:opacity-[0.08]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.16]" />
 
@@ -399,7 +387,6 @@ const MarketEntry = () => {
       <SectionDivider variant="slant" flip />
 
       <section id="proof" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
-        <div className="glow-orb glow-orb-purple pointer-events-none h-[240px] w-[240px] -right-16 top-8 opacity-[0.07] lg:h-[380px] lg:w-[380px] lg:-right-24 lg:opacity-[0.09]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
 
         <motion.div
@@ -530,17 +517,7 @@ const MarketEntry = () => {
 
       <SectionDivider variant="wave" />
 
-      <section id="how-it-works" className="relative scroll-mt-24 overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 py-10 text-white sm:px-6 lg:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-25 mix-blend-color-dodge"
-          style={{
-            backgroundImage: "url('/bg-blobs/abstract-background-purple-dark-blue-gradient-wave-modern-background-combination-curve-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          aria-hidden
-        />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,hsl(var(--brand-purple-500)/0.28),transparent_42%)]" aria-hidden />
+      <section id="how-it-works" className="relative scroll-mt-24 overflow-hidden theme-section-soft px-5 py-10 sm:px-6 lg:py-20">
 
         <div className="container relative z-10 mx-auto">
           <motion.div
@@ -551,10 +528,10 @@ const MarketEntry = () => {
           >
             <div className="mb-8 lg:mb-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(220px,260px)] lg:items-center lg:gap-8">
               <div>
-                <span className="mb-3 inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em]">
+                <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em]">
                   Process
                 </span>
-                <h2 className="font-serif text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">How It Works</h2>
+                <h2 className="font-serif text-3xl font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">How It Works</h2>
               </div>
               <motion.figure
                 className="mx-auto hidden w-full max-w-[240px] lg:block lg:max-w-none lg:justify-self-end"
@@ -588,14 +565,14 @@ const MarketEntry = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.45, delay: index * 0.08 }}
                   >
-                    <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-gold-500))] text-xs font-bold text-[hsl(var(--brand-navy-950))] ring-4 ring-[hsl(var(--brand-navy-950))]">
+                    <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-gold-500))] text-xs font-bold text-[hsl(var(--brand-navy-950))] ring-4 ring-[hsl(var(--surface-light-100))]">
                       {index + 1}
                     </span>
-                    <div className="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.06] px-3.5 py-3">
-                      <h3 className="mt-1 font-serif text-sm font-bold leading-snug text-white sm:text-base">
+                    <div className="min-w-0 flex-1 rounded-xl border border-[hsl(var(--border-light))] bg-white px-3.5 py-3">
+                      <h3 className="mt-1 font-serif text-sm font-bold leading-snug text-on-light sm:text-base">
                         Step {index + 1} - {step.title}
                       </h3>
-                      <p className="mt-1.5 text-xs leading-relaxed text-white/75">{step.detail}</p>
+                      <p className="mt-1.5 text-xs leading-relaxed text-on-light-secondary">{step.detail}</p>
                     </div>
                   </motion.li>
                 ))}
@@ -611,7 +588,7 @@ const MarketEntry = () => {
               {howItWorks.map((step, index) => (
                 <motion.article
                   key={step.title}
-                  className="relative rounded-2xl border border-white/10 bg-white/[0.06] p-4 sm:p-5 lg:p-6"
+                  className="relative rounded-2xl border border-[hsl(var(--border-light))] bg-white p-4 sm:p-5 lg:p-6"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -643,13 +620,13 @@ const MarketEntry = () => {
                     />
                   </motion.figure>
 
-                  <h3 className="font-serif text-sm font-bold text-white sm:text-base lg:text-lg">{step.title}</h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-white/75 sm:mt-2 sm:text-sm">{step.detail}</p>
+                  <h3 className="font-serif text-sm font-bold text-on-light sm:text-base lg:text-lg">{step.title}</h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-on-light-secondary sm:mt-2 sm:text-sm">{step.detail}</p>
                 </motion.article>
               ))}
             </div>
 
-            <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-8 sm:flex-row sm:flex-wrap">
+            <div className="mt-8 flex flex-col gap-3 border-t border-[hsl(var(--border-light))] pt-8 sm:flex-row sm:flex-wrap">
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
                 <Link
                   to="/ask-soham"
@@ -662,7 +639,7 @@ const MarketEntry = () => {
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
                 <Link
                   to="/market-entry-audit"
-                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto"
                 >
                   Download the 2026 Market Entry Audit
                   <ArrowRight className="h-4 w-4 shrink-0" />
@@ -673,12 +650,12 @@ const MarketEntry = () => {
         </div>
       </section>
 
-      <SectionDivider variant="slant" fromDark />
+      <SectionDivider variant="slant" />
 
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-5 py-12 text-white sm:px-6 lg:py-16">
+      <section className="relative overflow-hidden theme-section-soft px-5 py-12 sm:px-6 lg:py-16">
         <div className="container relative z-10 mx-auto max-w-4xl text-center">
-          <h2 className="font-serif text-3xl font-bold leading-tight sm:text-4xl">Ready to Stress-Test Your Market Entry Plan?</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-white/78 sm:text-base">
+          <h2 className="font-serif text-3xl font-bold leading-tight text-on-light sm:text-4xl">Ready to Stress-Test Your Market Entry Plan?</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-on-light-secondary sm:text-base">
             Start with a free 15-minute readiness call with founder Soham Kakade, or download the 2026 Market Entry Audit
             to identify gaps before you commit capital.
           </p>
@@ -692,7 +669,7 @@ const MarketEntry = () => {
             </Link>
             <a
               href="mailto:info@ewan.co.in?subject=Market%20Entry%20Enquiry"
-              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto"
+              className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto"
             >
               Email info@ewan.co.in
               <ArrowRight className="h-4 w-4 shrink-0" />

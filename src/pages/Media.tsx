@@ -8,6 +8,7 @@ import {
   MailPlus,
   Newspaper,
   Play,
+  Sparkles,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -20,10 +21,10 @@ const NEWSLETTER_URL =
   "https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7211685542705467393";
 
 const hubSections = [
-  { id: "blog-insights", label: "Articles" },
-  { id: "language-gazette", label: "The Language Gazette" },
-  { id: "video-insights", label: "Videos" },
-  { id: "newsletter", label: "Newsletter" },
+  { id: "blog-insights", label: "Articles", icon: BookOpen },
+  { id: "language-gazette", label: "The Language Gazette", icon: Newspaper },
+  { id: "video-insights", label: "Videos", icon: Play },
+  { id: "newsletter", label: "Newsletter", icon: MailPlus },
 ] as const;
 
 const recommendedTopics = [
@@ -68,6 +69,11 @@ const Media = () => {
   const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
 
+  const ease = [0.22, 1, 0.36, 1] as const;
+  const hidden = reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 };
+  const show = reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 };
+  const transition = (delay = 0) => ({ duration: reduceMotion ? 0.35 : 0.72, delay, ease });
+
   const motionProps = reduceMotion
     ? {}
     : {
@@ -93,67 +99,131 @@ const Media = () => {
       keywords={t("seo.media.keywords")}
       jsonLd={mediaLd}
     >
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-20 pt-14 text-white lg:pb-28 lg:pt-20">
+      <section className="relative isolate overflow-hidden px-5 pb-12 pt-8 sm:px-6 lg:pb-20 lg:pt-14">
         <div
-          className="pointer-events-none absolute inset-0 z-0 opacity-20"
+          className="pointer-events-none absolute inset-0"
           style={{
-            backgroundImage: "url('/stitch/insights/gazette-cover.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            background:
+              "radial-gradient(ellipse 52% 44% at 92% 8%, hsl(var(--brand-gold-500) / 0.13) 0%, transparent 50%), radial-gradient(ellipse 58% 48% at 8% 88%, hsl(var(--brand-purple-500) / 0.08) 0%, transparent 52%), radial-gradient(ellipse 40% 36% at 50% 100%, hsl(var(--brand-cyan-500) / 0.09) 0%, transparent 55%)",
           }}
+          aria-hidden
         />
-        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.55)] via-[hsl(var(--brand-navy-950)/0.9)] to-[hsl(var(--brand-navy-950))]" />
-        <div className="pointer-events-none absolute -right-16 top-16 h-80 w-80 rounded-full bg-[hsl(var(--brand-gold-500)/0.14)] blur-3xl" />
-        <div className="pointer-events-none absolute -left-10 bottom-0 h-72 w-72 rounded-full bg-[hsl(var(--brand-purple-500)/0.18)] blur-3xl" />
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.16]" />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[hsl(var(--surface-light-50))] to-transparent"
+          aria-hidden
+        />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-3xl"
-          >
-            <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-gold-500))]">
-              Media Hub
-            </p>
-            <h1 className="mt-5 font-serif text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
-              Articles, Gazette issues and{" "}
-              <span className="text-[hsl(var(--brand-gold-500))]">corridor intelligence.</span>
-            </h1>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/82 sm:text-lg">
-              Published by UVAN for practitioners navigating India entry, language services, and cross-border execution.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#blog-insights"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-              >
-                Articles
-                <ArrowRight className="h-4 w-4" aria-hidden />
-              </a>
-              <a
-                href="#language-gazette"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                The Language Gazette
-                <Newspaper className="h-4 w-4" aria-hidden />
-              </a>
-            </div>
-          </motion.div>
-        </div>
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(260px,0.95fr)] lg:gap-14 xl:gap-16">
+            <motion.div initial={hidden} animate={show} transition={transition(0)}>
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] shadow-sm sm:mb-5 sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em]">
+                <Sparkles className="h-3 w-3 text-[hsl(var(--brand-gold-600))] sm:h-3.5 sm:w-3.5" aria-hidden />
+                Media Hub
+              </span>
+              <h1 className="max-w-2xl font-serif text-[1.85rem] font-bold leading-[1.06] text-on-light sm:text-4xl lg:text-5xl xl:text-[3.25rem] xl:leading-[1.04]">
+                Articles, Gazette issues and{" "}
+                <span className="italic text-[hsl(var(--brand-purple-700))]">corridor intelligence.</span>
+              </h1>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-on-light-secondary sm:mt-5 sm:text-base lg:text-lg">
+                Published by UVAN for practitioners navigating India entry, language services, and cross-border
+                execution.
+              </p>
+              <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
+                <a
+                  href="#blog-insights"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))] shadow-[0_16px_36px_hsl(var(--brand-gold-500)/0.22)] transition hover:-translate-y-0.5 hover:brightness-105 sm:w-auto sm:px-6"
+                >
+                  Browse Articles
+                  <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
+                </a>
+                <Link
+                  to="/language-gazette"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-bold uppercase tracking-[0.08em] text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto sm:px-6"
+                >
+                  The Language Gazette
+                  <Newspaper className="h-4 w-4 shrink-0" aria-hidden />
+                </Link>
+              </div>
+            </motion.div>
 
-        <div className="container relative z-10 mx-auto mt-12 max-w-6xl border-t border-white/10 pt-4">
-          <div className="flex flex-wrap gap-x-8 gap-y-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/55">
-            {hubSections.map((item) => (
-              <a key={item.id} href={`#${item.id}`} className="transition hover:text-[hsl(var(--brand-gold-500))]">
-                {item.label}
-              </a>
-            ))}
+            <motion.div
+              initial={hidden}
+              animate={show}
+              transition={transition(0.1)}
+              className="relative mx-auto w-full max-w-[min(100%,380px)] lg:mx-0 lg:max-w-none lg:justify-self-end"
+            >
+              <motion.img
+                src="/doodles/Bookmarks-pana.svg"
+                alt="Media and publications illustration"
+                className="relative z-10 mx-auto h-44 w-full max-w-[280px] object-contain sm:h-52 lg:mx-0 lg:h-56 lg:max-w-[320px]"
+                animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
+                transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                initial={hidden}
+                animate={show}
+                transition={transition(0.18)}
+                className="absolute -bottom-2 left-0 right-0 z-20 mx-auto max-w-[240px] overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white/95 p-3 shadow-[0_18px_44px_rgba(26,22,51,0.12)] backdrop-blur-sm sm:-left-4 sm:max-w-[260px] lg:-bottom-4 lg:-left-6"
+              >
+                <div className="flex gap-3">
+                  <img
+                    src={latestGazetteIssue.coverImage}
+                    alt=""
+                    aria-hidden
+                    className="h-16 w-14 shrink-0 rounded-lg object-cover"
+                  />
+                  <div className="min-w-0">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">
+                      Latest from TLG
+                    </p>
+                    <p className="mt-1 line-clamp-2 text-xs font-semibold leading-snug text-on-light">
+                      {latestGazetteIssue.label}
+                    </p>
+                    <Link
+                      to={latestGazetteIssue.path}
+                      className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-bold text-[hsl(var(--brand-gold-600))] hover:underline"
+                    >
+                      Read issue
+                      <ArrowUpRight className="h-3 w-3" aria-hidden />
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
+
+          <motion.nav
+            aria-label="Media hub sections"
+            initial={hidden}
+            animate={show}
+            transition={transition(0.14)}
+            className="mt-10 grid gap-3 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4 lg:gap-4"
+          >
+            {hubSections.map((item) => {
+              const Icon = item.icon;
+              return (
+                <motion.a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  whileHover={reduceMotion ? undefined : { y: -3 }}
+                  transition={{ duration: 0.2 }}
+                  className="group theme-card-light flex min-h-[72px] items-center gap-3 rounded-2xl border border-[hsl(var(--border-light))] p-4 transition hover:border-[hsl(var(--brand-purple-700)/0.28)] hover:shadow-[0_14px_36px_rgba(26,22,51,0.08)] sm:min-h-[80px] sm:p-5"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[hsl(var(--brand-purple-700)/0.08)] text-[hsl(var(--brand-purple-700))] transition group-hover:bg-[hsl(var(--brand-purple-700))] group-hover:text-white">
+                    <Icon className="h-4 w-4" aria-hidden />
+                  </span>
+                  <span className="text-sm font-bold text-on-light transition group-hover:text-[hsl(var(--brand-purple-700))]">
+                    {item.label}
+                  </span>
+                </motion.a>
+              );
+            })}
+          </motion.nav>
         </div>
       </section>
 
-      <SectionDivider variant="wave" fromDark />
+      <SectionDivider variant="wave" />
 
       <section id="blog-insights" className="theme-section-soft scroll-mt-36 px-6 py-16 md:py-20">
         <div className="container mx-auto max-w-6xl">

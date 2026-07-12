@@ -72,7 +72,6 @@ const ServicesSection = () => {
 
   return (
     <section id="services" className="relative overflow-hidden py-5 theme-section-soft lg:py-10">
-      <div className="glow-orb glow-orb-purple -left-32 top-6 h-[260px] w-[260px] opacity-8 lg:-left-40 lg:top-10 lg:h-[400px] lg:w-[400px]" />
       <div className="glow-orb glow-orb-gold -bottom-16 -right-32 h-[240px] w-[240px] opacity-8 lg:-right-40 lg:bottom-10 lg:h-[380px] lg:w-[380px]" />
       <div className="pointer-events-none absolute inset-0 opacity-[0.14] theme-grid-overlay-light lg:opacity-20" />
 

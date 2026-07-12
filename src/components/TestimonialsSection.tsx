@@ -61,7 +61,6 @@ const TestimonialsSection = () => {
 
   return (
     <section id="testimonials" className="relative overflow-hidden py-6 theme-section-soft lg:py-10 scroll-mt-28">
-      <div className="glow-orb glow-orb-purple w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-8" />
       <div className="glow-orb glow-orb-gold w-[300px] h-[300px] -top-16 right-10 opacity-8" />
       <div className="absolute inset-0 theme-grid-overlay-light opacity-14 pointer-events-none" />
 

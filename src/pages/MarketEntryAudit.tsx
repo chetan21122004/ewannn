@@ -7,6 +7,8 @@ import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { MARKET_ENTRY_AUDIT_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, webPageWithLeadAction } from "@/lib/schemaHelpers";
+import { COMPANY_EMAIL } from "@/lib/site";
+import { buildFormMailtoUrl } from "@/lib/formSubmit";
 
 const MARKET_ENTRY_AUDIT_KEYWORDS =
   "India market entry checklist free, international expansion audit, cross-border business readiness, India entry risk assessment, 2026 global market entry audit";
@@ -56,6 +58,9 @@ const MarketEntryAudit = () => {
     if (!email.trim()) {
       return;
     }
+    window.location.href = buildFormMailtoUrl(COMPANY_EMAIL, "2026 Market Entry Audit Download Request", {
+      email: email.trim(),
+    });
     setSubmitted(true);
   };
 
@@ -67,36 +72,28 @@ const MarketEntryAudit = () => {
       keywords={MARKET_ENTRY_AUDIT_KEYWORDS}
       jsonLd={marketEntryAuditLd}
     >
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-20 pt-14 text-white lg:pb-28 lg:pt-20">
-        <div
-          className="pointer-events-none absolute inset-0 z-0 opacity-20"
-          style={{
-            backgroundImage: "url('/page-assets/bsnssltn-4-min.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.55)] via-[hsl(var(--brand-navy-950)/0.92)] to-[hsl(var(--brand-navy-950))]" />
+      <section className="relative overflow-hidden theme-section-soft px-6 pb-20 pt-14 lg:pb-28 lg:pt-20">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-4xl">
-          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-gold-500))]">
+          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-purple-700))]">
             {t("marketEntryAudit.hero.badge")}
           </p>
-          <h1 className="mt-5 font-serif text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 font-serif text-4xl font-bold leading-[1.05] text-on-light sm:text-5xl lg:text-6xl">
             {t("marketEntryAudit.hero.title")}
           </h1>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/82 sm:text-lg">
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-on-light-secondary sm:text-lg">
             {t("marketEntryAudit.hero.subtitle")}
           </p>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/72 sm:text-base">
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-on-light-secondary sm:text-base">
             {t("marketEntryAudit.hero.whatItIs")}
           </p>
 
           <div className="mt-10 max-w-xl">
             {submitted ? (
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-                <h2 className="font-serif text-xl font-bold text-white">{t("marketEntryAudit.hero.confirmationTitle")}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-white/75">{t("marketEntryAudit.hero.confirmationCopy")}</p>
+              <div className="rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 shadow-sm">
+                <h2 className="font-serif text-xl font-bold text-on-light">{t("marketEntryAudit.hero.confirmationTitle")}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">{t("marketEntryAudit.hero.confirmationCopy")}</p>
                 <a
                   href={AUDIT_PDF_URL}
                   target="_blank"
@@ -106,10 +103,10 @@ const MarketEntryAudit = () => {
                   {t("marketEntryAudit.hero.downloadLink")}
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </a>
-                <p className="mt-5 text-xs leading-relaxed text-white/60">{t("marketEntryAudit.hero.readinessNote")}</p>
+                <p className="mt-5 text-xs leading-relaxed text-on-light-muted">{t("marketEntryAudit.hero.readinessNote")}</p>
                 <Link
                   to="/ask-soham"
-                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-gold-500))] hover:underline"
+                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline"
                 >
                   {t("marketEntryAudit.readiness.readinessCta")}
                   <ArrowRight className="h-4 w-4" aria-hidden />
@@ -118,15 +115,15 @@ const MarketEntryAudit = () => {
             ) : (
               <form
                 onSubmit={handleDownload}
-                className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl sm:p-5"
+                className="rounded-2xl border border-[hsl(var(--border-light))] bg-white p-4 shadow-sm sm:p-5"
               >
-                <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-white">
-                  <FileText className="h-4 w-4 text-[hsl(var(--brand-gold-500))]" aria-hidden />
+                <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-on-light">
+                  <FileText className="h-4 w-4 text-[hsl(var(--brand-purple-700))]" aria-hidden />
                   {t("marketEntryAudit.hero.formLabel")}
                 </p>
                 <div className="flex flex-col gap-3 sm:flex-row">
                   <input
-                    className="min-h-11 w-full rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/50 focus:border-[hsl(var(--brand-gold-500)/0.5)] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-gold-500)/0.2)]"
+                    className="min-h-11 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-3 text-sm text-on-light placeholder:text-on-light-muted focus:border-[hsl(var(--brand-purple-700)/0.5)] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-purple-700)/0.15)]"
                     placeholder={t("marketEntryAudit.hero.emailPlaceholder")}
                     type="email"
                     required

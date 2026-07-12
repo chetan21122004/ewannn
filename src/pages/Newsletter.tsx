@@ -31,10 +31,8 @@ const Newsletter = () => {
       keywords="UVAN newsletter, market entry newsletter, language services newsletter"
       jsonLd={jsonLd}
     >
-      <section className="relative overflow-hidden bg-[hsl(var(--brand-navy-950))] px-6 pb-20 pt-20 text-white lg:pb-28 lg:pt-28">
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-dark opacity-20" />
-        <div className="pointer-events-none absolute -right-24 top-20 h-80 w-80 rounded-full bg-[hsl(var(--brand-gold-500)/0.18)] blur-3xl" />
-        <div className="pointer-events-none absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-[hsl(var(--brand-purple-500)/0.22)] blur-3xl" />
+      <section className="relative overflow-hidden theme-section-soft px-6 pb-20 pt-20 lg:pb-28 lg:pt-28">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <motion.div
           className="container relative z-10 mx-auto max-w-4xl text-center"
@@ -42,14 +40,14 @@ const Newsletter = () => {
           animate={show}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-gold-500))]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-purple-700))]">
             <MailPlus className="h-3.5 w-3.5" aria-hidden />
             Newsletter
           </span>
-          <h1 className="mt-6 font-serif text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 font-serif text-4xl font-extrabold leading-tight text-on-light sm:text-5xl lg:text-6xl">
             Market entry and language intelligence, straight from UVAN.
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/78 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-on-light-secondary sm:text-lg">
             Follow the UVAN newsletter on LinkedIn for practical notes on India entry, executive liaisoning,
             translation, interpretation, and cross-border corridors.
           </p>
@@ -63,7 +61,7 @@ const Newsletter = () => {
               Subscribe on LinkedIn
               <ArrowUpRight className="h-4 w-4" aria-hidden />
             </a>
-            <span className="rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white/85">
+            <span className="rounded-full border border-[hsl(var(--border-light))] bg-white px-5 py-3 text-sm font-semibold text-on-light-secondary">
               2000+ subscribers
             </span>
           </div>

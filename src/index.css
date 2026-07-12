@@ -51,8 +51,8 @@
     --cta-bg-hover: 262 42% 30%;
     --focus-ring: 268 46% 72%;
 
-    --background: var(--surface-1);
-    --foreground: 0 0% 100%;
+    --background: var(--surface-light-50);
+    --foreground: var(--text-on-light);
 
     --card: var(--surface-2);
     --card-foreground: 0 0% 100%;
@@ -188,20 +188,18 @@
     box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.03);
   }
 
-  /* Navigation Glass */
+  /* Navigation Glass — white frosted; navy/purple are accent only, not fill */
   .nav-glass {
-    background: hsl(var(--brand-navy-900) / 0.92);
-    backdrop-filter: blur(24px) saturate(1.4);
-    -webkit-backdrop-filter: blur(24px) saturate(1.4);
-    border-bottom: 1px solid hsl(var(--surface-glass) / 0.05);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    background: hsl(var(--surface-light-card) / 0.88);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border-bottom: 1px solid hsl(var(--border-light) / 0.8);
+    box-shadow: 0 1px 0 hsl(var(--surface-light-card)), 0 4px 20px hsl(var(--brand-navy-950) / 0.04);
   }
 
-  /* Hero gradient */
+  /* Hero gradient — light neutral */
   .hero-gradient {
-    background:
-      radial-gradient(circle at 30% 28%, hsl(var(--brand-purple-800) / 0.16) 0%, transparent 45%),
-      linear-gradient(135deg, hsl(var(--brand-navy-900)) 0%, hsl(var(--brand-navy-850)) 40%, hsl(var(--brand-purple-700)) 100%);
+    background: linear-gradient(180deg, hsl(var(--surface-light-100)) 0%, hsl(var(--surface-light-200)) 100%);
   }
 
   /* Gold gradient */
@@ -214,21 +212,22 @@
     background: linear-gradient(135deg, hsl(var(--surface-elevated)), hsl(var(--brand-navy-850)), hsl(var(--brand-purple-800)));
   }
 
-  /* Section variants */
+  /* Section variants — navy/dark tokens retargeted to light surfaces.
+     Navy tokens are for text/icons/buttons/borders only — never section or card fills except Footer. */
   .section-navy {
-    background: hsl(var(--brand-navy-900));
+    background: linear-gradient(180deg, hsl(var(--surface-light-100)) 0%, hsl(var(--surface-light-200)) 100%);
   }
 
   .section-navy-purple {
-    background: hsl(var(--brand-purple-700));
+    background: linear-gradient(180deg, hsl(var(--surface-light-100)) 0%, hsl(var(--surface-light-200)) 100%);
   }
 
   .section-navy-deep {
-    background: linear-gradient(160deg, hsl(var(--brand-navy-900)) 0%, hsl(var(--brand-purple-700)) 100%);
+    background: linear-gradient(180deg, hsl(var(--surface-light-50)) 0%, hsl(var(--surface-light-100)) 100%);
   }
 
   .theme-section-dark {
-    background: linear-gradient(160deg, hsl(var(--brand-navy-900)) 0%, hsl(var(--brand-purple-700)) 100%);
+    background: linear-gradient(180deg, hsl(var(--surface-light-100)) 0%, hsl(var(--surface-light-200)) 100%);
   }
 
   .theme-section-light {
@@ -281,10 +280,11 @@
     background-size: 60px 60px;
   }
 
+  /* Grid overlay — neutral gray, no purple tint */
   .theme-grid-overlay-light {
     background-image:
-      linear-gradient(hsl(var(--brand-purple-700) / 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--brand-purple-700) / 0.04) 1px, transparent 1px);
+      linear-gradient(hsl(var(--border-light) / 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border-light) / 0.35) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
@@ -477,14 +477,13 @@
       linear-gradient(180deg, hsl(var(--surface-light-50)) 0%, hsl(var(--surface-light-100)) 42%, hsl(var(--surface-light-200)) 100%);
   }
 
+  /* homepage-ambient__veil — neutral, no purple wash */
   .homepage-ambient__veil {
     position: fixed;
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    background:
-      linear-gradient(115deg, transparent 0%, hsl(var(--brand-purple-700) / 0.015) 36%, transparent 68%),
-      linear-gradient(180deg, hsl(var(--surface-light-50) / 0.92), hsl(var(--surface-light-100) / 0.42));
+    background: linear-gradient(180deg, hsl(var(--surface-light-50) / 0.92), hsl(var(--surface-light-100) / 0.42));
     mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
   }
 
@@ -492,6 +491,7 @@
     position: relative;
   }
 
+  /* Section separator — gold only, no purple stops */
   .homepage-scroll-scene + .homepage-scroll-scene::before {
     content: "";
     position: absolute;
@@ -503,9 +503,9 @@
     background: linear-gradient(
       90deg,
       transparent,
-      hsl(var(--brand-purple-700) / 0.1),
+      hsl(var(--border-light) / 0.6),
       hsl(var(--brand-gold-500) / 0.22),
-      hsl(var(--brand-purple-700) / 0.1),
+      hsl(var(--border-light) / 0.6),
       transparent
     );
   }

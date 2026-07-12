@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import { COMPANY_EMAIL, COMPANY_ADDRESS } from "@/lib/site";
+import { submitFormViaMailto } from "@/lib/formSubmit";
 
 const serviceOptions = [
   "Market Entry",
@@ -36,13 +38,6 @@ const regionOptions = [
   "India <-> Middle East",
   "India <-> Europe",
   "Other Corridor",
-];
-
-const trustStats = [
-  { value: "60k+", label: "Interpretation Hours" },
-  { value: "250+", label: "Enterprise Clients" },
-  { value: "125+", label: "Languages Handled" },
-  { value: "ISO", label: "9001:2015 Certified" },
 ];
 
 const audience = [
@@ -90,6 +85,7 @@ const Contact = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    submitFormViaMailto(event.currentTarget, COMPANY_EMAIL, "UVAN Website Inquiry");
     event.currentTarget.reset();
     setSubmitted(true);
   };
@@ -97,43 +93,19 @@ const Contact = () => {
   return (
     <PageLayout
       title="Contact Us | UVAN"
-      description="Let's team up to make your business better. Reach UVAN at info@ewan.co.in or (+91) 82757 44740. Visit us in Pune, India."
+      description={`Let's team up to make your business better. Reach UVAN at info@ewan.co.in or (+91) 82757 44740. Visit us at ${COMPANY_ADDRESS}.`}
       canonicalPath="/contact/"
     >
       {/* Hero */}
       <section className="relative isolate overflow-hidden px-5 pb-10 pt-8 sm:px-6 lg:pb-20 lg:pt-12">
-        {/* Primary full-bleed blob */}
-        <div
-          className="pointer-events-none absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/magic-background-with-purple-light-rays-effect-free-vector.jpg')",
-          }}
-          aria-hidden
-        />
-        {/* Secondary wave accent */}
-        <div
-          className="pointer-events-none absolute inset-0 bg-[length:130%] bg-[position:85%_15%] bg-no-repeat opacity-50 mix-blend-soft-light"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/purple-luxury-wave-background-design-free-vector.jpg')",
-          }}
-          aria-hidden
-        />
-        {/* Light scrim - keeps copy readable on light theme */}
-        <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[hsl(var(--surface-light-50)/0.88)] via-[hsl(var(--surface-light-50)/0.72)] to-[hsl(var(--surface-light-100)/0.85)]"
-          aria-hidden
-        />
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 55% at 12% 18%, hsl(var(--brand-purple-500) / 0.18) 0%, transparent 52%), radial-gradient(ellipse 55% 45% at 88% 12%, hsl(var(--brand-gold-500) / 0.14) 0%, transparent 48%), radial-gradient(ellipse 60% 50% at 50% 100%, hsl(var(--brand-cyan-500) / 0.1) 0%, transparent 55%)",
+              "radial-gradient(ellipse 55% 45% at 88% 12%, hsl(var(--brand-gold-500) / 0.14) 0%, transparent 48%), radial-gradient(ellipse 60% 50% at 50% 100%, hsl(var(--brand-cyan-500) / 0.1) 0%, transparent 55%)",
           }}
           aria-hidden
         />
-        <div className="glow-orb glow-orb-purple pointer-events-none h-[280px] w-[280px] -left-24 top-0 opacity-[0.1] lg:h-[520px] lg:w-[520px] lg:-left-44 lg:opacity-[0.14]" />
         <div className="glow-orb glow-orb-gold pointer-events-none h-[220px] w-[220px] -right-20 bottom-0 opacity-[0.08] lg:h-[400px] lg:w-[400px] lg:-right-36 lg:opacity-[0.11]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.14] lg:opacity-[0.2]" />
         {/* Bottom fade into next section */}
@@ -249,7 +221,7 @@ const Contact = () => {
               </p>
               <p className="mt-2 inline-flex items-start gap-2 text-xs leading-relaxed text-on-light-secondary sm:mt-3 sm:gap-2.5 sm:text-sm">
                 <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-gold-600))] sm:h-4 sm:w-4" aria-hidden />
-                Flat no 14, Fourth Floor, Asmant Apartment, near Quantum Works, Erandwane, Karve Road, Pune - 411004
+                {COMPANY_ADDRESS}
               </p>
             </div>
 
@@ -294,16 +266,6 @@ const Contact = () => {
 
       {/* Form + audience */}
       <section id="contact-form" className="relative scroll-mt-24 overflow-hidden px-5 py-8 theme-section-soft sm:px-6 lg:py-20">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-multiply lg:opacity-[0.08]"
-          style={{
-            backgroundImage:
-              "url('/bg-blobs/abstract-purple-fluid-wave-background-free-vector.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="glow-orb glow-orb-purple pointer-events-none h-[240px] w-[240px] -right-24 top-10 opacity-[0.07] lg:h-[420px] lg:w-[420px] lg:-right-40 lg:opacity-[0.09]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -492,7 +454,7 @@ const Contact = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-4 rounded-xl border border-[hsl(var(--brand-gold-500)/0.3)] bg-[hsl(var(--brand-gold-500)/0.12)] px-4 py-3 text-sm font-medium text-on-light"
                 >
-                  Thank you! We&apos;ve received your message and will be in touch soon.
+                  Thank you! Your email client should open with your message addressed to info@ewan.co.in — send it to complete your inquiry.
                 </motion.p>
               )}
             </motion.article>
@@ -500,72 +462,30 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Trust stats */}
-      {false && (
-      <section className="relative px-5 py-8 theme-section-light sm:px-6 lg:py-14">
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={hidden}
-            whileInView={show}
-            viewport={{ once: true }}
-            transition={transition(0)}
-            className="mb-5 text-center sm:mb-8"
-          >
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:text-[11px] sm:tracking-[0.22em]">
-              Why teams reach out
-            </p>
-            <h2 className="mt-2 font-serif text-xl font-bold text-on-light sm:mt-3 sm:text-3xl lg:text-4xl">
-              Trusted across corridors.
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4">
-            {trustStats.map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={hidden}
-                whileInView={show}
-                viewport={{ once: true }}
-                transition={transition(i * 0.08)}
-                whileHover={reduceMotion ? undefined : { y: -4 }}
-                className="theme-card-light rounded-xl border border-[hsl(var(--border-light))] p-3.5 text-center sm:rounded-2xl sm:p-6"
-              >
-                <p className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-3xl">{item.value}</p>
-                <p className="mt-1 text-[9px] font-bold uppercase leading-snug tracking-[0.12em] text-on-light-muted sm:mt-2 sm:text-[10px] sm:tracking-[0.14em]">
-                  {item.label}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-      )}
-
       {/* Bottom CTA */}
       <section className="px-5 pb-14 pt-2 theme-section-soft sm:px-6 lg:pb-20 lg:pt-4">
         <div className="container mx-auto max-w-6xl">
           <motion.div
-            className="relative overflow-hidden rounded-2xl bg-[hsl(var(--brand-navy-950))] px-5 py-8 text-white sm:rounded-3xl sm:px-8 sm:py-10 lg:flex lg:items-center lg:justify-between lg:gap-10"
+            className="relative overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white px-5 py-8 shadow-sm sm:rounded-3xl sm:px-8 sm:py-10 lg:flex lg:items-center lg:justify-between lg:gap-10"
             initial={hidden}
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0)}
           >
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,hsl(var(--brand-purple-500)/0.35),transparent_45%)]" />
             <motion.img
               src="/doodles/Address-cuate.svg"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute -bottom-8 -right-4 hidden h-40 w-40 opacity-[0.15] lg:block"
+              className="pointer-events-none absolute -bottom-8 -right-4 hidden h-40 w-40 opacity-[0.1] lg:block"
               animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />
             <div className="relative z-10">
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] sm:text-[10px] sm:tracking-[0.24em]">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] sm:text-[10px] sm:tracking-[0.24em]">
                 Free Strategy Session
               </p>
-              <h3 className="mt-2 font-serif text-xl font-bold sm:mt-3 sm:text-3xl lg:text-4xl">Prefer a Live Conversation?</h3>
-              <p className="mt-2 max-w-xl text-xs leading-relaxed text-white/75 sm:mt-3 sm:text-sm lg:text-base">
+              <h3 className="mt-2 font-serif text-xl font-bold text-on-light sm:mt-3 sm:text-3xl lg:text-4xl">Prefer a Live Conversation?</h3>
+              <p className="mt-2 max-w-xl text-xs leading-relaxed text-on-light-secondary sm:mt-3 sm:text-sm lg:text-base">
                 Book 15 minutes with Soham - free, no commitment, and completely focused on your business goals.
               </p>
             </div>
