@@ -729,6 +729,15 @@ html {
   border-radius: 1.25rem 1.25rem 0 0;
 }
 
+.tlg-flipbook {
+  max-width: 100%;
+}
+
+.tlg-flipbook .stf__wrapper,
+.tlg-flipbook .stf__block {
+  max-width: 100%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

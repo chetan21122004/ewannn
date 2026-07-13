@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { MotionConfig } from "framer-motion";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -29,6 +30,8 @@ import LanguageGazetteIssueApr25 from "./pages/language-gazette/LanguageGazetteI
 import LanguageGazetteWhenSadnessGaveMeJoy from "./pages/language-gazette/LanguageGazetteWhenSadnessGaveMeJoy.tsx";
 import LanguageGazetteMotherTongueComfort from "./pages/language-gazette/LanguageGazetteMotherTongueComfort.tsx";
 import LanguageGazetteBeBraveYouWomen from "./pages/language-gazette/LanguageGazetteBeBraveYouWomen.tsx";
+
+const LanguageGazettePdfIssue = lazy(() => import("./pages/language-gazette/LanguageGazettePdfIssue.tsx"));
 import InsightsArticleHowToEnterIndia from "./pages/insights/InsightsArticleHowToEnterIndia.tsx";
 import InsightsArticleChooseTranslationPartner from "./pages/insights/InsightsArticleChooseTranslationPartner.tsx";
 import InsightsArticleSimultaneousInterpretation from "./pages/insights/InsightsArticleSimultaneousInterpretation.tsx";
@@ -68,6 +71,20 @@ const App = () => (
             <Route path="/join-us" element={<JoinUs />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/language-gazette" element={<LanguageGazette />} />
+            <Route
+              path="/language-gazette/read/:slug"
+              element={
+                <Suspense
+                  fallback={
+                    <div className="flex min-h-[50vh] items-center justify-center text-sm text-on-light-secondary">
+                      Loading flipbook…
+                    </div>
+                  }
+                >
+                  <LanguageGazettePdfIssue />
+                </Suspense>
+              }
+            />
             <Route path="/language-gazette/apr-25" element={<LanguageGazetteIssueApr25 />} />
             <Route path="/language-gazette/aug-25" element={<Navigate to="/language-gazette/apr-25" replace />} />
             <Route path="/language-gazette/when-sadness-gave-me-joy" element={<LanguageGazetteWhenSadnessGaveMeJoy />} />

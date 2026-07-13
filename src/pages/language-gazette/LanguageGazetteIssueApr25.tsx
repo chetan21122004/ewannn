@@ -4,6 +4,7 @@ import PageLayout from "@/components/PageLayout";
 import { GazetteMasthead, formatIssueDate } from "@/components/language-gazette/LanguageGazetteMagazineLayout";
 import GazetteCoverImage from "@/components/language-gazette/GazetteCoverImage";
 import { latestGazetteIssue, gazetteArticlePath } from "@/data/languageGazetteIssues";
+import { tlgPdfReaderPath } from "@/data/tlgPdfCatalog";
 import { absoluteUrl, breadcrumbSchema } from "@/lib/schemaHelpers";
 
 const issue = latestGazetteIssue;
@@ -43,13 +44,22 @@ const LanguageGazetteIssueApr25 = () => {
               <p className="mt-4 text-sm text-on-light-muted">
                 Published {issueDate} · {issue.articles.length} articles · also available as a digital issue
               </p>
-              <a
-                href="#issue-articles"
-                className="mt-8 inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))]"
-              >
-                Read the full issue online
-                <ArrowRight className="h-4 w-4" aria-hidden />
-              </a>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="#issue-articles"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))]"
+                >
+                  Read the full issue online
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </a>
+                <Link
+                  to={tlgPdfReaderPath("apr-25-pdf")}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
+                >
+                  Open PDF flipbook
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
+              </div>
             </div>
             <div className="lg:col-span-5">
               <div className="gazette-cover-shadow overflow-hidden rounded-[1.5rem] border border-[hsl(var(--border-light))]">

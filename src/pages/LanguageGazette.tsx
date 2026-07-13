@@ -5,9 +5,12 @@ import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import LanguageGazetteMagazineLayout from "@/components/language-gazette/LanguageGazetteMagazineLayout";
 import { gazetteKeywordCatalog, latestGazetteIssue } from "@/data/languageGazetteIssues";
+import TlgPdfCoverThumbnail from "@/components/language-gazette/TlgPdfCoverThumbnail";
+import { latestTlgPdfIssue, tlgPdfIssuesByYear, tlgPdfReaderPath } from "@/data/tlgPdfCatalog";
 import { absoluteUrl, breadcrumbSchema } from "@/lib/schemaHelpers";
 
 const issue = latestGazetteIssue;
+const pdfArchive = tlgPdfIssuesByYear();
 
 const monthly2026Articles = [
   {
@@ -30,21 +33,6 @@ const monthly2026Articles = [
     title: item.title,
     href: item.href,
   })),
-];
-
-const pdfBackCatalogue = [
-  {
-    year: "2025",
-    title: "April 2025 Web Edition",
-    href: issue.path,
-    note: "Current issue is available as a readable digital edition. Add the PDF file to public/ to enable direct PDF flipbook download.",
-  },
-  {
-    year: "2024",
-    title: "2024 PDF Archive",
-    href: "",
-    note: "PDF files are not present in public/ yet. This slot is ready for the old-site flipbook PDF once uploaded.",
-  },
 ];
 
 const LanguageGazette = () => {
@@ -129,55 +117,74 @@ const LanguageGazette = () => {
             className="sticky top-28 rounded-[1.75rem] border border-[hsl(var(--border-light))] bg-white p-6 shadow-[0_18px_44px_rgba(26,22,51,0.08)]"
           >
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">
-              About the Author
+              Latest PDF Edition
             </span>
-            <h3 className="mt-3 font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">UVAN Editorial Desk</h3>
+            <h3 className="mt-3 font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">
+              {latestTlgPdfIssue.label}
+            </h3>
             <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">
-              The 2026 Gazette articles are curated by UVAN&apos;s market entry and language services team, drawing from
-              live corridor work across India, Asia, Latin America and Africa.
+              Open the newest issue with interactive page flipping — drag corners or use the navigation controls.
             </p>
+            <Link
+              to={tlgPdfReaderPath(latestTlgPdfIssue.slug)}
+              className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-2.5 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+            >
+              Read flipbook
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
           </motion.aside>
         </div>
       </section>
 
-      <section className="theme-section-soft px-6 py-16 md:py-20">
+      <section id="pdf-archive" className="theme-section-soft px-4 py-12 sm:px-6 sm:py-16 md:py-20">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid gap-8 md:grid-cols-2">
-            {pdfBackCatalogue.map((item, index) => (
-              <motion.article
-                key={item.year}
+          <motion.div initial={hidden} whileInView={show} viewport={{ once: true }} transition={transition(0)} className="mb-10 max-w-2xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
+              <FileText className="h-3.5 w-3.5" aria-hidden />
+              PDF Archive
+            </span>
+            <h2 className="mt-4 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-4xl">
+              All TLG editions
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-on-light-secondary">
+              Every published PDF from 2024 and 2025 — open any issue in the flipbook reader or download the file.
+            </p>
+          </motion.div>
+
+          <div className="space-y-12">
+            {pdfArchive.map(({ year, issues }, yearIndex) => (
+              <motion.div
+                key={year}
                 initial={hidden}
                 whileInView={show}
                 viewport={{ once: true }}
-                transition={transition(index * 0.08)}
-                className="group relative overflow-hidden rounded-[2rem] border border-[hsl(var(--border-light))] bg-white p-6 shadow-[0_18px_44px_rgba(26,22,51,0.08)]"
+                transition={transition(yearIndex * 0.06)}
               >
-                <div className="absolute inset-y-6 left-6 w-1 rounded-full bg-[hsl(var(--brand-gold-500))]" />
-                <div className="ml-5">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-purple-700)/0.08)] px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
-                    <FileText className="h-3.5 w-3.5" aria-hidden />
-                    {item.year}
-                  </span>
-                  <h2 className="mt-5 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))]">{item.year}</h2>
-                  <div className="mt-5 rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-5 shadow-[inset_12px_0_22px_rgba(26,22,51,0.06)] transition group-hover:-rotate-1 group-hover:shadow-[inset_18px_0_26px_rgba(26,22,51,0.08)]">
-                    <h3 className="font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))]">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">{item.note}</p>
-                    {item.href ? (
+                <h3 className="mb-5 font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">{year}</h3>
+                <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+                  {issues.map((pdfIssue) => (
+                    <li key={pdfIssue.slug}>
                       <Link
-                        to={item.href}
-                        className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-navy-950))] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+                        to={tlgPdfReaderPath(pdfIssue.slug)}
+                        className="group flex h-full flex-col overflow-hidden rounded-xl border border-[hsl(var(--border-light))] bg-white transition hover:-translate-y-0.5 hover:border-[hsl(var(--brand-purple-500)/0.35)] hover:shadow-[0_14px_36px_rgba(26,22,51,0.08)] sm:rounded-2xl"
                       >
-                        Open edition
-                        <ArrowRight className="h-4 w-4" aria-hidden />
+                        <div className="relative aspect-[3/4] overflow-hidden border-b border-[hsl(var(--border-light))]">
+                          <TlgPdfCoverThumbnail pdfUrl={pdfIssue.pdfUrl} title={pdfIssue.label} />
+                        </div>
+                        <div className="flex items-center justify-between gap-2 px-3 py-2.5 sm:gap-3 sm:px-4 sm:py-3.5">
+                          <span className="min-w-0">
+                            <span className="block truncate font-serif text-sm font-bold text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))] sm:text-lg">
+                              {pdfIssue.label}
+                            </span>
+                            <span className="mt-0.5 block text-[10px] text-on-light-muted sm:text-xs">Interactive flipbook</span>
+                          </span>
+                          <ArrowRight className="h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-700))] transition group-hover:translate-x-0.5 sm:h-4 sm:w-4" aria-hidden />
+                        </div>
                       </Link>
-                    ) : (
-                      <span className="mt-5 inline-flex min-h-11 items-center rounded-full border border-[hsl(var(--border-light-strong))] px-5 py-2.5 text-sm font-semibold text-on-light-muted">
-                        PDF upload pending
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </motion.article>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             ))}
           </div>
         </div>

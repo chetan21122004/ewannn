@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import type { GazetteArticle, GazetteIssue } from "@/data/languageGazetteIssues";
 import { gazetteArticlePath } from "@/data/languageGazetteIssues";
+import { latestTlgPdfIssue, tlgPdfReaderPath } from "@/data/tlgPdfCatalog";
 import GazetteCoverImage from "@/components/language-gazette/GazetteCoverImage";
 
 type LanguageGazetteMagazineLayoutProps = {
@@ -137,10 +138,10 @@ const LanguageGazetteMagazineLayout = ({
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </a>
                   <Link
-                    to={issuePath}
+                    to={tlgPdfReaderPath(latestTlgPdfIssue.slug)}
                     className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
                   >
-                    Download the Latest Issue
+                    Read Latest PDF Flipbook
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
                 </div>
