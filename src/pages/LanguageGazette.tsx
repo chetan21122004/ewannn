@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import LanguageGazetteMagazineLayout from "@/components/language-gazette/LanguageGazetteMagazineLayout";
+import GazetteArticlesSlider from "@/components/language-gazette/GazetteArticlesSlider";
+import TlgPdfYearSlider from "@/components/language-gazette/TlgPdfYearSlider";
 import { gazetteKeywordCatalog, latestGazetteIssue } from "@/data/languageGazetteIssues";
-import TlgPdfCoverThumbnail from "@/components/language-gazette/TlgPdfCoverThumbnail";
 import { latestTlgPdfIssue, tlgPdfIssuesByYear, tlgPdfReaderPath } from "@/data/tlgPdfCatalog";
 import { absoluteUrl, breadcrumbSchema } from "@/lib/schemaHelpers";
 
@@ -80,32 +81,8 @@ const LanguageGazette = () => {
               </p>
             </motion.div>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {monthly2026Articles.map((article, index) => (
-                <motion.div
-                  key={`${article.month}-${article.title}`}
-                  initial={hidden}
-                  whileInView={show}
-                  viewport={{ once: true }}
-                  transition={transition(index * 0.05)}
-                >
-                  <Link
-                    to={article.href}
-                    className="group flex h-full flex-col rounded-2xl border border-[hsl(var(--border-light))] bg-white p-5 transition hover:-translate-y-1 hover:border-[hsl(var(--brand-purple-500)/0.35)] hover:shadow-[0_18px_42px_rgba(26,22,51,0.08)]"
-                  >
-                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-600))]">
-                      {article.month}
-                    </p>
-                    <h3 className="mt-3 font-serif text-xl font-bold leading-snug text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))]">
-                      {article.title}
-                    </h3>
-                    <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-[hsl(var(--brand-purple-700))]">
-                      Read article
-                      <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden />
-                    </span>
-                  </Link>
-                </motion.div>
-              ))}
+            <div className="mt-8">
+              <GazetteArticlesSlider year="2026" articles={monthly2026Articles} />
             </div>
           </div>
 
@@ -151,7 +128,7 @@ const LanguageGazette = () => {
             </p>
           </motion.div>
 
-          <div className="space-y-12">
+          <div className="space-y-10 sm:space-y-12">
             {pdfArchive.map(({ year, issues }, yearIndex) => (
               <motion.div
                 key={year}
@@ -160,30 +137,11 @@ const LanguageGazette = () => {
                 viewport={{ once: true }}
                 transition={transition(yearIndex * 0.06)}
               >
-                <h3 className="mb-5 font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">{year}</h3>
-                <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
-                  {issues.map((pdfIssue) => (
-                    <li key={pdfIssue.slug}>
-                      <Link
-                        to={tlgPdfReaderPath(pdfIssue.slug)}
-                        className="group flex h-full flex-col overflow-hidden rounded-xl border border-[hsl(var(--border-light))] bg-white transition hover:-translate-y-0.5 hover:border-[hsl(var(--brand-purple-500)/0.35)] hover:shadow-[0_14px_36px_rgba(26,22,51,0.08)] sm:rounded-2xl"
-                      >
-                        <div className="relative aspect-[3/4] overflow-hidden border-b border-[hsl(var(--border-light))]">
-                          <TlgPdfCoverThumbnail pdfUrl={pdfIssue.pdfUrl} title={pdfIssue.label} />
-                        </div>
-                        <div className="flex items-center justify-between gap-2 px-3 py-2.5 sm:gap-3 sm:px-4 sm:py-3.5">
-                          <span className="min-w-0">
-                            <span className="block truncate font-serif text-sm font-bold text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))] sm:text-lg">
-                              {pdfIssue.label}
-                            </span>
-                            <span className="mt-0.5 block text-[10px] text-on-light-muted sm:text-xs">Interactive flipbook</span>
-                          </span>
-                          <ArrowRight className="h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-700))] transition group-hover:translate-x-0.5 sm:h-4 sm:w-4" aria-hidden />
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <div className="mb-4 flex items-end justify-between gap-3 sm:mb-5">
+                  <h3 className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))]">{year}</h3>
+                  <p className="text-xs text-on-light-muted sm:text-sm">{issues.length} editions</p>
+                </div>
+                <TlgPdfYearSlider year={year} issues={issues} />
               </motion.div>
             ))}
           </div>
