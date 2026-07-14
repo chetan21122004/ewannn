@@ -6,35 +6,12 @@ import PageLayout from "@/components/PageLayout";
 import LanguageGazetteMagazineLayout from "@/components/language-gazette/LanguageGazetteMagazineLayout";
 import GazetteArticlesSlider from "@/components/language-gazette/GazetteArticlesSlider";
 import TlgPdfYearSlider from "@/components/language-gazette/TlgPdfYearSlider";
-import { gazetteKeywordCatalog, latestGazetteIssue } from "@/data/languageGazetteIssues";
+import { gazette2026Articles, gazetteKeywordCatalog, latestGazetteIssue } from "@/data/languageGazetteIssues";
 import { latestTlgPdfIssue, tlgPdfIssuesByYear, tlgPdfReaderPath } from "@/data/tlgPdfCatalog";
 import { absoluteUrl, breadcrumbSchema } from "@/lib/schemaHelpers";
 
 const issue = latestGazetteIssue;
 const pdfArchive = tlgPdfIssuesByYear();
-
-const monthly2026Articles = [
-  {
-    month: "January 2026",
-    title: "How to Enter the Indian Market as a Foreign Company",
-    href: "/insights/how-to-enter-indian-market",
-  },
-  {
-    month: "February 2026",
-    title: "How to Choose a Translation Partner in India",
-    href: "/insights/how-to-choose-translation-partner-india",
-  },
-  {
-    month: "March 2026",
-    title: "What Is Simultaneous Interpretation?",
-    href: "/insights/what-is-simultaneous-interpretation",
-  },
-  ...gazetteKeywordCatalog.slice(0, 3).map((item, index) => ({
-    month: ["April 2026", "May 2026", "June 2026"][index],
-    title: item.title,
-    href: item.href,
-  })),
-];
 
 const LanguageGazette = () => {
   const { t } = useTranslation();
@@ -82,7 +59,7 @@ const LanguageGazette = () => {
             </motion.div>
 
             <div className="mt-8">
-              <GazetteArticlesSlider year="2026" articles={monthly2026Articles} />
+              <GazetteArticlesSlider year="2026" articles={gazette2026Articles} />
             </div>
           </div>
 

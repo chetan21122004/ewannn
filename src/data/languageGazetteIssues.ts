@@ -117,6 +117,74 @@ export const gazetteKeywordCatalog = [
   },
 ] as const;
 
+export type GazetteWebArticle = {
+  month: string;
+  title: string;
+  href: string;
+  category: string;
+  excerpt: string;
+  image: string;
+  readTime: string;
+};
+
+/** Monthly 2026 web articles for the Language Gazette landing slider. */
+export const gazette2026Articles: GazetteWebArticle[] = [
+  {
+    month: "January 2026",
+    title: "How to Enter the Indian Market as a Foreign Company",
+    href: "/insights/how-to-enter-indian-market",
+    category: "Market Entry",
+    excerpt: "Structured India market entry — readiness, roadmap, execution, and ongoing on-ground support.",
+    image: "/stitch/insights/article-asian-market.jpg",
+    readTime: "8 min read",
+  },
+  {
+    month: "February 2026",
+    title: "How to Choose a Translation Partner in India",
+    href: "/insights/how-to-choose-translation-partner-india",
+    category: "Language",
+    excerpt: "Five practical steps for buyers evaluating translation, localization, and interpretation partners.",
+    image: "/stitch/insights/article-strategy.jpg",
+    readTime: "7 min read",
+  },
+  {
+    month: "March 2026",
+    title: "What Is Simultaneous Interpretation?",
+    href: "/insights/what-is-simultaneous-interpretation",
+    category: "Language",
+    excerpt: "When live interpretation matters, how it works, and what to specify before high-stakes meetings.",
+    image: "/stitch/insights/article-interpretation.jpg",
+    readTime: "6 min read",
+  },
+  {
+    month: "April 2026",
+    title: "Why Japanese companies struggle entering India — and what to do differently",
+    href: "/insights/how-to-enter-indian-market",
+    category: "Market Entry",
+    excerpt: "Common gaps in distributor integrity, regulatory sequencing, and on-ground coordination.",
+    image: "/stitch/insights/gazette-market-insight.jpg",
+    readTime: "9 min read",
+  },
+  {
+    month: "May 2026",
+    title: "Simultaneous interpretation vs consecutive — which does your event need?",
+    href: "/insights/what-is-simultaneous-interpretation",
+    category: "Language",
+    excerpt: "A technical breakdown of interpretation modes for board meetings, conferences, and factory visits.",
+    image: "/stitch/insights/article-interpretation-type.jpg",
+    readTime: "5 min read",
+  },
+  {
+    month: "June 2026",
+    title: "India-Vietnam trade corridor: what businesses need to know in 2026",
+    href: "/insights/how-to-enter-indian-market",
+    category: "Trade",
+    excerpt: "Logistics, language, and operational intelligence for the India–Southeast Asia expansion corridor.",
+    image: "/stitch/insights/insight-asset-01.jpg",
+    readTime: "7 min read",
+  },
+];
+
 export const GAZETTE_LANDING_KEYWORDS =
   "language gazette India, language industry publication, cross-border business insights India";
 
