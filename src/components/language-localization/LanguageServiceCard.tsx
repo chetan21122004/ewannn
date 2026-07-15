@@ -1,6 +1,6 @@
 import { useState, type KeyboardEvent } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Plus, type LucideIcon } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export type LanguageServiceItem = {
@@ -87,32 +87,28 @@ const LanguageServiceCard = ({
         />
 
         <h3 className="font-serif text-lg font-bold leading-snug text-on-light sm:text-xl">{service.title}</h3>
-
-        <p className="mt-auto flex items-center gap-1.5 pt-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-[hsl(var(--brand-purple-700))] [@media(hover:hover)]:hidden">
-          <Plus className="h-3.5 w-3.5" aria-hidden />
-          Tap for details
-        </p>
-        <p className="mt-auto hidden items-center gap-1.5 pt-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-on-light-muted [@media(hover:hover)]:flex">
-          Hover for details
-        </p>
       </div>
 
       <div
         className={cn(
-          "absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-[hsl(var(--brand-navy-950))] via-[hsl(var(--brand-navy-950)/0.97)] to-[hsl(var(--brand-navy-950)/0.9)] p-4 text-white transition duration-300 sm:p-6",
+          "absolute inset-0 flex flex-col bg-white p-4 transition duration-300 sm:p-6",
           revealed ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0",
         )}
       >
-        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">
-          {String(index + 1).padStart(2, "0")} · {service.title}
-        </span>
-        <p className="mt-3 max-h-[min(42vh,220px)] overflow-y-auto text-sm leading-relaxed text-white/88 sm:text-[0.9375rem]">
+        <div className="flex items-start gap-2.5">
+          <span className="inline-flex h-7 min-w-[1.75rem] shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-purple-700)/0.1)] px-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
+            <Icon className="h-4 w-4" aria-hidden />
+          </div>
+          <h3 className="min-w-0 flex-1 font-serif text-base font-bold leading-snug text-on-light sm:text-lg">
+            {service.title}
+          </h3>
+        </div>
+        <p className="mt-3 min-h-0 flex-1 overflow-y-auto overscroll-contain text-sm leading-relaxed text-on-light-secondary sm:text-[0.9375rem]">
           {service.description}
         </p>
-        <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] text-[hsl(var(--brand-gold-500))]">
-          Learn more
-          <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
-        </span>
       </div>
     </motion.article>
   );

@@ -321,8 +321,6 @@ const LanguageLocalization = () => {
               <h2 className="font-serif text-2xl font-bold leading-tight text-on-light sm:text-3xl lg:text-4xl">
                 Language disciplines, one integrated partner.
               </h2>
-              <p className="mt-2 text-xs text-on-light-secondary md:hidden">Tap a service to expand details.</p>
-              <p className="mt-2 hidden text-sm text-on-light-muted md:block">Hover or click a card to read the full service scope.</p>
             </div>
             <motion.img
               src="/doodles/Advantages-bro.svg"
@@ -403,8 +401,6 @@ const LanguageLocalization = () => {
               <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-on-light sm:text-4xl lg:text-5xl">
                 Language Services Across Every Major Industry
               </h2>
-              <p className="mt-2 text-xs text-on-light-secondary md:hidden">Tap a sector to read how we support it.</p>
-              <p className="mt-2 hidden text-sm text-on-light-muted md:block">Hover or click a sector card to explore how UVAN supports that industry.</p>
             </div>
             <motion.img
               src="/doodles/International trade-bro.svg"

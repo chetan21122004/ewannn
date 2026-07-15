@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, Plus, type LucideIcon } from "lucide-react";
+import { CheckCircle2, type LucideIcon } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -93,11 +93,6 @@ const GlobalTalkiesServiceCard = ({
 
         <span className="font-serif text-lg font-bold leading-snug text-on-light sm:text-xl">{service.title}</span>
         <span className="mt-2 line-clamp-2 text-xs leading-relaxed text-on-light-secondary sm:text-sm">{teaser}</span>
-
-        <span className="mt-auto flex items-center gap-1.5 pt-4 text-[10px] font-semibold uppercase tracking-[0.12em] text-[hsl(var(--brand-purple-700))]">
-          <Plus className="h-3 w-3" aria-hidden />
-          View scope
-        </span>
       </motion.button>
 
       <Dialog open={open} onOpenChange={setOpen}>

@@ -334,8 +334,6 @@ const Industries = () => {
             <h2 className="mt-4 font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-4xl">
               {t("industries.specializations.subtitle")}
             </h2>
-            <p className="mt-2 text-xs text-on-light-secondary md:hidden">Tap a sector to read UVAN&apos;s depth in that industry.</p>
-            <p className="mt-2 hidden text-sm text-on-light-muted md:block">Hover or click a sector card to explore how UVAN supports that industry.</p>
           </motion.div>
 
           <Accordion type="single" collapsible className="flex flex-col gap-2.5 md:hidden">

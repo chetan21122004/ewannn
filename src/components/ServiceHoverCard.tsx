@@ -81,10 +81,6 @@ const ServiceHoverCard = ({
             {expanded ? "Hide details" : "View details"}
             <ChevronDown className={cn("h-3.5 w-3.5 transition", expanded && "rotate-180")} aria-hidden />
           </button>
-
-          <span className="mt-3 hidden text-[10px] font-semibold uppercase tracking-[0.16em] text-on-light-muted lg:inline-flex">
-            Hover for details
-          </span>
         </div>
 
         <div className={revealPanel} aria-hidden={!expanded}>

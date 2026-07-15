@@ -285,8 +285,6 @@ const GlobalTalkies = () => {
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-on-light-secondary">
                 From subtitling and dubbing to OTT pipelines — end-to-end media localisation with cultural fidelity built in.
               </p>
-              <p className="mt-2 text-xs text-on-light-secondary md:hidden">Tap a service to view scope in a popup.</p>
-              <p className="mt-2 hidden text-sm text-on-light-muted md:block">Click a card to open the full scope and deliverables.</p>
             </div>
             <motion.img
               src="/doodles/Advantages-bro.svg"

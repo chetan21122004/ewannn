@@ -284,9 +284,6 @@ const MarketResearchPage = () => {
                 <Sparkles className="h-3 w-3 text-[hsl(var(--brand-gold-600))] sm:h-3.5 sm:w-3.5" aria-hidden />
                 Our Market Research Services
               </span>
-              <p className="mt-2 text-xs text-on-light-secondary sm:text-sm">
-                Tap or hover a service card to explore scope and deliverables.
-              </p>
             </div>
             <motion.img
               src="/doodles/Charts-cuate.svg"

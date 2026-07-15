@@ -1,5 +1,5 @@
 import { useState, type KeyboardEvent, type ReactNode } from "react";
-import { ArrowRight, Plus, type LucideIcon } from "lucide-react";
+import { ArrowRight, type LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -60,8 +60,9 @@ const ImageRevealOverlayCard = ({
       onMouseEnter={open}
       onMouseLeave={close}
       className={cn(
-        "group relative cursor-pointer overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--brand-navy-950))] shadow-[0_10px_28px_hsl(var(--brand-navy-950)/0.08)] transition duration-300 hover:-translate-y-0.5 hover:border-[hsl(var(--brand-purple-500)/0.3)] hover:shadow-[0_18px_40px_hsl(var(--brand-navy-950)/0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-700))] focus-visible:ring-offset-2",
+        "group relative cursor-pointer overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white shadow-[0_10px_28px_hsl(var(--brand-navy-950)/0.06)] transition duration-300 hover:-translate-y-0.5 hover:border-[hsl(var(--brand-purple-500)/0.28)] hover:shadow-[0_18px_40px_hsl(var(--brand-navy-950)/0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-700))] focus-visible:ring-offset-2",
         compact ? "h-[228px] sm:h-[240px] lg:h-[252px]" : "h-[240px] sm:h-[256px] lg:h-[272px]",
+        revealed && "border-[hsl(var(--brand-purple-500)/0.35)]",
         className,
       )}
     >
@@ -70,8 +71,8 @@ const ImageRevealOverlayCard = ({
         alt={imageAlt}
         loading="lazy"
         className={cn(
-          "absolute inset-0 h-full w-full object-cover transition duration-700",
-          revealed ? "scale-105 opacity-0" : "scale-100 opacity-85 group-hover:scale-105",
+          "absolute inset-0 h-full w-full object-cover transition duration-500",
+          revealed ? "scale-105 opacity-[0.12]" : "scale-100 opacity-100 group-hover:scale-[1.03]",
         )}
       />
 
@@ -79,26 +80,9 @@ const ImageRevealOverlayCard = ({
         className={cn(
           "absolute inset-0 transition duration-300",
           revealed
-            ? "bg-[hsl(var(--brand-navy-950))]"
-            : "bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.94)] via-[hsl(var(--brand-navy-950)/0.55)] to-[hsl(var(--brand-navy-950)/0.18)]",
+            ? "bg-white"
+            : "bg-gradient-to-t from-white from-35% via-white/75 via-55% to-white/10",
         )}
-        aria-hidden
-      />
-
-      <span
-        className="pointer-events-none absolute top-2.5 left-2.5 h-2.5 w-2.5 border-t border-l border-white/30 transition-colors duration-300 group-hover:border-[hsl(var(--brand-gold-500)/0.65)]"
-        aria-hidden
-      />
-      <span
-        className="pointer-events-none absolute top-2.5 right-2.5 h-2.5 w-2.5 border-t border-r border-white/30 transition-colors duration-300 group-hover:border-[hsl(var(--brand-gold-500)/0.65)]"
-        aria-hidden
-      />
-      <span
-        className="pointer-events-none absolute bottom-2.5 left-2.5 h-2.5 w-2.5 border-b border-l border-white/30 transition-colors duration-300 group-hover:border-[hsl(var(--brand-gold-500)/0.65)]"
-        aria-hidden
-      />
-      <span
-        className="pointer-events-none absolute right-2.5 bottom-2.5 h-2.5 w-2.5 border-r border-b border-white/30 transition-colors duration-300 group-hover:border-[hsl(var(--brand-gold-500)/0.65)]"
         aria-hidden
       />
 
@@ -109,47 +93,41 @@ const ImageRevealOverlayCard = ({
         )}
       >
         <div className="flex items-start justify-between gap-2">
-          <span className="font-mono text-[10px] font-bold tracking-[0.18em] text-[hsl(var(--brand-gold-500))]">
+          <span className="inline-flex h-7 min-w-[1.75rem] items-center justify-center rounded-full bg-[hsl(var(--brand-gold-500))] px-2 font-mono text-[10px] font-bold tracking-[0.16em] text-[hsl(var(--brand-navy-950))]">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-white backdrop-blur-sm">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
             <Icon className="h-3.5 w-3.5" aria-hidden />
           </div>
         </div>
 
-        <div>
-          <h3
-            className={cn(
-              "line-clamp-2 font-serif font-bold leading-snug text-white",
-              compact ? "text-sm sm:text-[0.9375rem]" : "text-base sm:text-lg",
-            )}
-          >
-            {title}
-          </h3>
-          <p className="mt-2 flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-white/55 [@media(hover:hover)]:hidden">
-            <Plus className="h-2.5 w-2.5" aria-hidden />
-            Tap for details
-          </p>
-          <p className="mt-2 hidden items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-white/55 [@media(hover:hover)]:flex">
-            Hover for details
-          </p>
-        </div>
+        <h3
+          className={cn(
+            "font-serif font-bold leading-snug text-[hsl(var(--brand-navy-950))]",
+            compact ? "line-clamp-2 text-sm sm:text-[0.9375rem]" : "line-clamp-3 text-base sm:text-lg",
+          )}
+        >
+          {title}
+        </h3>
       </div>
 
       <div
         className={cn(
-          "absolute inset-0 z-20 flex flex-col bg-[hsl(var(--brand-navy-950))] p-4 text-white transition duration-300 sm:p-4",
+          "absolute inset-0 z-20 flex flex-col border border-transparent bg-white p-4 transition duration-300 sm:p-5",
           revealed ? "visible translate-y-0 opacity-100" : "pointer-events-none invisible translate-y-1 opacity-0",
         )}
       >
         <div className="flex items-start gap-2.5">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--brand-gold-500)/0.18)] text-[hsl(var(--brand-gold-500))]">
+          <span className="inline-flex h-7 min-w-[1.75rem] shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-purple-700)/0.1)] px-2 font-mono text-[10px] font-bold tracking-[0.16em] text-[hsl(var(--brand-purple-700))]">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
             <Icon className="h-3.5 w-3.5" aria-hidden />
           </div>
           <h3
             className={cn(
-              "min-w-0 font-serif font-bold leading-snug text-white",
-              compact ? "line-clamp-2 text-sm" : "text-base sm:text-[1.05rem]",
+              "min-w-0 flex-1 font-serif font-bold leading-snug text-[hsl(var(--brand-navy-950))]",
+              compact ? "text-sm sm:text-[0.9375rem]" : "text-base sm:text-[1.05rem]",
             )}
           >
             {title}
@@ -158,7 +136,7 @@ const ImageRevealOverlayCard = ({
 
         <p
           className={cn(
-            "mt-2.5 min-h-0 flex-1 overflow-y-auto overscroll-contain leading-relaxed text-[hsl(0_0%_96%)]",
+            "mt-3 min-h-0 flex-1 overflow-y-auto overscroll-contain leading-relaxed text-on-light-secondary",
             compact ? "text-xs sm:text-[0.8125rem] sm:leading-relaxed" : "text-sm sm:leading-relaxed",
           )}
         >
@@ -168,7 +146,7 @@ const ImageRevealOverlayCard = ({
         {href ? (
           <Link
             to={href}
-            className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[hsl(var(--brand-gold-500)] hover:underline sm:text-[11px]"
+            className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[hsl(var(--brand-purple-700))] hover:underline sm:text-[11px]"
             onClick={(event) => event.stopPropagation()}
           >
             {linkLabel}
