@@ -211,7 +211,7 @@ const FounderStackItem = ({ founder, index, total, accent, linkedinFallback }: F
   return (
     <div ref={stepRef} className={cn("relative", isLast ? "pb-4" : "h-[115vh] xl:h-[105vh]")}>
       <motion.div
-        className="sticky top-24 z-10 lg:top-28"
+        className="sticky top-24 z-10 lg:top-8"
         style={{
           zIndex: index + 1,
           scale,

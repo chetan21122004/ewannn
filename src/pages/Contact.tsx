@@ -1,10 +1,7 @@
-import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   Building2,
-  CheckCircle2,
-  Clock3,
   Facebook,
   Globe2,
   Instagram,
@@ -13,32 +10,14 @@ import {
   MapPin,
   MessageCircle,
   Phone,
-  ShieldCheck,
   Sparkles,
   Twitter,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
-import { COMPANY_EMAIL, COMPANY_ADDRESS } from "@/lib/site";
-import { submitFormViaMailto } from "@/lib/formSubmit";
-
-const serviceOptions = [
-  "Market Entry",
-  "Language Services",
-  "Market Research",
-  "Import/Export",
-  "Global Talkies",
-  "Other",
-];
-
-const regionOptions = [
-  "India <-> Japan",
-  "India <-> China",
-  "India <-> ASEAN",
-  "India <-> Middle East",
-  "India <-> Europe",
-  "Other Corridor",
-];
+import ContactInquiryForm from "@/components/ContactInquiryForm";
+import { useContactInquiry } from "@/components/ContactInquiryProvider";
+import { COMPANY_ADDRESS } from "@/lib/site";
 
 const audience = [
   "Foreign companies entering India",
@@ -75,20 +54,13 @@ const contactChannels = [
 ];
 
 const Contact = () => {
-  const [submitted, setSubmitted] = useState(false);
   const reduceMotion = useReducedMotion();
+  const { open: openContactInquiry } = useContactInquiry();
 
   const ease = [0.22, 1, 0.36, 1] as const;
   const hidden = reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 };
   const show = reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 };
   const transition = (delay = 0) => ({ duration: reduceMotion ? 0.35 : 0.72, delay, ease });
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    submitFormViaMailto(event.currentTarget, COMPANY_EMAIL, "UVAN Website Inquiry");
-    event.currentTarget.reset();
-    setSubmitted(true);
-  };
 
   return (
     <PageLayout
@@ -137,12 +109,13 @@ const Contact = () => {
                   Email Us
                   <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
                 </a>
-                <a
-                  href="#contact-form"
+                <button
+                  type="button"
+                  onClick={openContactInquiry}
                   className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-bold uppercase tracking-[0.08em] text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto sm:px-6"
                 >
                   Send a Message
-                </a>
+                </button>
               </div>
             </motion.div>
 
@@ -332,131 +305,9 @@ const Contact = () => {
                 Fill out the form below and we&apos;ll get back to you as soon as possible.
               </p>
 
-              <form className="mt-5 space-y-3.5 sm:mt-7 sm:space-y-4" onSubmit={handleSubmit}>
-                <div className="grid gap-3.5 sm:grid-cols-2 sm:gap-4">
-                  <label className="text-sm font-medium text-on-light">
-                    Name (Required)
-                    <input
-                      required
-                      name="fullName"
-                      type="text"
-                      placeholder="Your Name"
-                      className="mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]"
-                    />
-                  </label>
-                  <label className="text-sm font-medium text-on-light">
-                    Company
-                    <input
-                      name="company"
-                      type="text"
-                      placeholder="Company Name"
-                      className="mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]"
-                    />
-                  </label>
-                </div>
-
-                <div className="grid gap-3.5 sm:grid-cols-2 sm:gap-4">
-                  <label className="text-sm font-medium text-on-light">
-                    Your Email (required)
-                    <input
-                      required
-                      name="email"
-                      type="email"
-                      placeholder="you@company.com"
-                      className="mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]"
-                    />
-                  </label>
-                  <label className="text-sm font-medium text-on-light">
-                    Phone
-                    <input
-                      name="phone"
-                      type="tel"
-                      placeholder="+91 00000 00000"
-                      className="mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]"
-                    />
-                  </label>
-                </div>
-
-                <label className="block text-sm font-medium text-on-light">
-                  Choose Subject
-                  <select
-                    required
-                    name="service"
-                    defaultValue=""
-                    className="mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]"
-                  >
-                    <option value="" disabled>
-                      Select a service area
-                    </option>
-                    {serviceOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <label className="block text-sm font-medium text-on-light">
-                  Trade Corridor
-                  <select
-                    name="region"
-                    defaultValue=""
-                    className="mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]"
-                  >
-                    <option value="" disabled>
-                      Select your trade corridor
-                    </option>
-                    {regionOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <label className="block text-sm font-medium text-on-light">
-                  Your Message (required)
-                  <textarea
-                    required
-                    name="message"
-                    placeholder="Tell us about your project or question..."
-                    rows={4}
-                    className="mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-3 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]"
-                  />
-                </label>
-
-                <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-                  <motion.button
-                    type="submit"
-                    whileHover={reduceMotion ? undefined : { scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-purple-700))] px-7 py-3 text-sm font-semibold text-white transition hover:brightness-110 sm:w-auto"
-                  >
-                    Send Message
-                    <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
-                  </motion.button>
-                  <div className="flex flex-wrap gap-x-4 gap-y-1">
-                    <span className="inline-flex items-center gap-1.5 text-[11px] text-on-light-secondary sm:text-xs">
-                      <Clock3 className="h-3.5 w-3.5 text-[hsl(var(--brand-gold-600))]" aria-hidden />
-                      Response within 24 hrs
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-[11px] text-on-light-secondary sm:text-xs">
-                      <ShieldCheck className="h-3.5 w-3.5 text-[hsl(var(--brand-gold-600))]" aria-hidden />
-                      Confidential
-                    </span>
-                  </div>
-                </div>
-              </form>
-
-              {submitted && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 rounded-xl border border-[hsl(var(--brand-gold-500)/0.3)] bg-[hsl(var(--brand-gold-500)/0.12)] px-4 py-3 text-sm font-medium text-on-light"
-                >
-                  Thank you! Your email client should open with your message addressed to info@ewan.co.in — send it to complete your inquiry.
-                </motion.p>
-              )}
+              <div className="mt-5 sm:mt-7">
+                <ContactInquiryForm />
+              </div>
             </motion.article>
           </div>
         </div>

@@ -1,9 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2, FileText } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowRight,
+  Building2,
+  ClipboardCheck,
+  FileText,
+  Handshake,
+  MessageCircle,
+  Network,
+  ShieldCheck,
+  Sparkles,
+  Users,
+} from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
-import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { MARKET_ENTRY_AUDIT_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, webPageWithLeadAction } from "@/lib/schemaHelpers";
@@ -35,7 +47,7 @@ const defaultInsideItems = [
   },
   {
     title: "Human Capital Strategy",
-    copy: "Readiness checks for staffing, visas, and local talent — and what slips when this gap is left open.",
+    copy: "Readiness checks for staffing, visas, and local talent - and what slips when this gap is left open.",
   },
   {
     title: "Executive Liaison & Negotiation",
@@ -43,8 +55,35 @@ const defaultInsideItems = [
   },
 ];
 
+const gapIcons = [Building2, ShieldCheck, Network, Users, Handshake];
+
+const heroStats = [
+  { value: "5", label: "Operational gaps" },
+  { value: "3", label: "Page framework" },
+  { value: "10+", label: "Years on-ground" },
+];
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Download the audit",
+    copy: "Enter your work email and receive the 3-page diagnostic framework instantly.",
+  },
+  {
+    step: "02",
+    title: "Run the self-assessment",
+    copy: "Work through each gap with checklist prompts designed for expansion leaders.",
+  },
+  {
+    step: "03",
+    title: "Interpret the results",
+    copy: "Book a focused call with Soham to pressure-test findings against your corridor.",
+  },
+];
+
 const MarketEntryAudit = () => {
   const { t } = useTranslation();
+  const reduceMotion = useReducedMotion();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -52,6 +91,14 @@ const MarketEntryAudit = () => {
     returnObjects: true,
     defaultValue: defaultInsideItems,
   }) as Array<{ title: string; copy: string }>;
+
+  const hidden = reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 };
+  const show = { opacity: 1, y: 0 };
+  const transition = (delay = 0) => ({
+    duration: reduceMotion ? 0.35 : 0.72,
+    delay,
+    ease: [0.22, 1, 0.36, 1] as const,
+  });
 
   const handleDownload = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -64,6 +111,63 @@ const MarketEntryAudit = () => {
     setSubmitted(true);
   };
 
+  const downloadCard = submitted ? (
+    <div className="rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 shadow-[0_20px_60px_hsl(var(--brand-navy-950)/0.08)] sm:p-7">
+      <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[hsl(var(--brand-purple-700)/0.08)]">
+        <ClipboardCheck className="h-5 w-5 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+      </div>
+      <h2 className="font-serif text-xl font-bold text-on-light sm:text-2xl">{t("marketEntryAudit.hero.confirmationTitle")}</h2>
+      <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">{t("marketEntryAudit.hero.confirmationCopy")}</p>
+      <a
+        href={AUDIT_PDF_URL}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_12px_32px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105 sm:w-auto"
+      >
+        {t("marketEntryAudit.hero.downloadLink")}
+        <ArrowRight className="h-4 w-4" aria-hidden />
+      </a>
+      <p className="mt-5 text-xs leading-relaxed text-on-light-muted">{t("marketEntryAudit.hero.readinessNote")}</p>
+      <Link
+        to="/ask-soham"
+        className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline"
+      >
+        {t("marketEntryAudit.readiness.readinessCta")}
+        <ArrowRight className="h-4 w-4" aria-hidden />
+      </Link>
+    </div>
+  ) : (
+    <form
+      onSubmit={handleDownload}
+      className="rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 shadow-[0_20px_60px_hsl(var(--brand-navy-950)/0.08)] sm:p-7"
+    >
+      <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[hsl(var(--brand-gold-500)/0.12)]">
+        <FileText className="h-5 w-5 text-[hsl(var(--brand-gold-600))]" aria-hidden />
+      </div>
+      <p className="font-serif text-xl font-bold text-on-light sm:text-2xl">{t("marketEntryAudit.hero.formLabel")}</p>
+      <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">
+        Free 3-page diagnostic · No commitment · Built from on-ground cross-border work
+      </p>
+      <div className="mt-5 space-y-3">
+        <input
+          className="min-h-11 w-full rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-4 py-3 text-sm text-on-light placeholder:text-on-light-muted focus:border-[hsl(var(--brand-purple-700)/0.5)] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-purple-700)/0.15)]"
+          placeholder={t("marketEntryAudit.hero.emailPlaceholder")}
+          type="email"
+          required
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          aria-label={t("marketEntryAudit.hero.emailPlaceholder")}
+        />
+        <button
+          type="submit"
+          className="min-h-11 w-full rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_12px_32px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105"
+        >
+          {t("marketEntryAudit.hero.downloadCta")}
+        </button>
+      </div>
+    </form>
+  );
+
   return (
     <PageLayout
       title={t("seo.marketEntryAudit.title")}
@@ -72,125 +176,264 @@ const MarketEntryAudit = () => {
       keywords={MARKET_ENTRY_AUDIT_KEYWORDS}
       jsonLd={marketEntryAuditLd}
     >
-      <section className="relative overflow-hidden theme-section-soft px-6 pb-20 pt-14 lg:pb-28 lg:pt-20">
+      <section className="relative isolate overflow-hidden theme-section-soft px-5 pb-14 pt-8 sm:px-6 lg:pb-24 lg:pt-12">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
+        <div className="glow-orb glow-orb-gold pointer-events-none -right-20 top-1/4 h-[240px] w-[240px] opacity-[0.06] lg:h-[360px] lg:w-[360px] lg:opacity-[0.08]" />
 
-        <div className="container relative z-10 mx-auto max-w-4xl">
-          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[hsl(var(--brand-purple-700))]">
-            {t("marketEntryAudit.hero.badge")}
-          </p>
-          <h1 className="mt-5 font-serif text-4xl font-bold leading-[1.05] text-on-light sm:text-5xl lg:text-6xl">
-            {t("marketEntryAudit.hero.title")}
-          </h1>
-          <p className="mt-6 max-w-3xl text-base leading-relaxed text-on-light-secondary sm:text-lg">
-            {t("marketEntryAudit.hero.subtitle")}
-          </p>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-on-light-secondary sm:text-base">
-            {t("marketEntryAudit.hero.whatItIs")}
-          </p>
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+            <motion.div className="lg:col-span-7" initial={hidden} animate={show} transition={transition(0)}>
+              <p className="mb-4 inline-flex max-w-full items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:mb-5 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.2em]">
+                <Sparkles className="h-3 w-3 text-[hsl(var(--brand-gold-600))]" aria-hidden />
+                {t("marketEntryAudit.hero.badge")}
+              </p>
 
-          <div className="mt-10 max-w-xl">
-            {submitted ? (
-              <div className="rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 shadow-sm">
-                <h2 className="font-serif text-xl font-bold text-on-light">{t("marketEntryAudit.hero.confirmationTitle")}</h2>
-                <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">{t("marketEntryAudit.hero.confirmationCopy")}</p>
-                <a
-                  href={AUDIT_PDF_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+              <h1 className="font-serif text-[1.85rem] font-bold leading-[1.08] text-on-light sm:text-4xl lg:text-5xl xl:text-[3.25rem] xl:leading-tight">
+                The 5 Operational Gaps That{" "}
+                <span className="text-[hsl(var(--brand-purple-700))]">Quietly Kill International Expansion.</span>
+              </h1>
+
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-on-light-secondary sm:mt-6 sm:text-base lg:text-lg">
+                {t("marketEntryAudit.hero.subtitle")}
+              </p>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-on-light-muted sm:text-[0.9375rem]">
+                {t("marketEntryAudit.hero.whatItIs")}
+              </p>
+
+              <div className="mt-6 grid grid-cols-3 gap-2 sm:mt-8 sm:gap-3">
+                {heroStats.map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={hidden}
+                    animate={show}
+                    transition={transition(0.08 + index * 0.06)}
+                    className="rounded-xl border border-[hsl(var(--border-light))] bg-white/80 px-3 py-3 text-center shadow-[0_8px_24px_hsl(var(--brand-navy-950)/0.04)] backdrop-blur-sm sm:rounded-2xl sm:px-4 sm:py-4"
+                  >
+                    <p className="font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-2xl">{stat.value}</p>
+                    <p className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-on-light-muted sm:text-[10px]">
+                      {stat.label}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-3 sm:mt-8">
+                <motion.a
+                  href="#inside"
+                  whileHover={reduceMotion ? undefined : { scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_16px_40px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105 sm:px-6"
                 >
-                  {t("marketEntryAudit.hero.downloadLink")}
-                  <ArrowRight className="h-4 w-4" aria-hidden />
-                </a>
-                <p className="mt-5 text-xs leading-relaxed text-on-light-muted">{t("marketEntryAudit.hero.readinessNote")}</p>
+                  See what&apos;s inside
+                  <ArrowDown className="h-4 w-4 shrink-0" aria-hidden />
+                </motion.a>
                 <Link
                   to="/ask-soham"
-                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline"
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:px-6"
                 >
-                  {t("marketEntryAudit.readiness.readinessCta")}
-                  <ArrowRight className="h-4 w-4" aria-hidden />
+                  {t("marketEntryAudit.readiness.askSohamCta")}
+                  <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
                 </Link>
               </div>
-            ) : (
-              <form
-                onSubmit={handleDownload}
-                className="rounded-2xl border border-[hsl(var(--border-light))] bg-white p-4 shadow-sm sm:p-5"
-              >
-                <p className="mb-3 flex items-center gap-2 text-sm font-semibold text-on-light">
-                  <FileText className="h-4 w-4 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-                  {t("marketEntryAudit.hero.formLabel")}
-                </p>
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <input
-                    className="min-h-11 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-3 text-sm text-on-light placeholder:text-on-light-muted focus:border-[hsl(var(--brand-purple-700)/0.5)] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-purple-700)/0.15)]"
-                    placeholder={t("marketEntryAudit.hero.emailPlaceholder")}
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    aria-label={t("marketEntryAudit.hero.emailPlaceholder")}
-                  />
-                  <button
-                    type="submit"
-                    className="min-h-11 shrink-0 rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+            </motion.div>
+
+            <motion.div
+              className="relative mx-auto w-full max-w-[440px] lg:col-span-5 lg:max-w-none"
+              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 32 }}
+              animate={reduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+              transition={transition(0.12)}
+            >
+              <div className="overflow-hidden rounded-[1.75rem] border border-[hsl(var(--border-light))] bg-white shadow-[0_20px_60px_hsl(var(--brand-navy-950)/0.08)] sm:rounded-[2rem]">
+                <img
+                  src="/stitch/language-gazette/article-market-entry.jpg"
+                  alt="Market entry planning and cross-border expansion"
+                  className="aspect-[16/10] w-full object-cover"
+                />
+              </div>
+              <div className="mt-5 lg:mt-6">{downloadCard}</div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section id="inside" className="relative scroll-mt-28 overflow-hidden theme-section-light px-5 py-14 sm:px-6 lg:py-20">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.08]" />
+
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <motion.div
+            initial={hidden}
+            whileInView={show}
+            viewport={{ once: true }}
+            transition={transition(0)}
+            className="max-w-3xl"
+          >
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">
+              Diagnostic framework
+            </p>
+            <h2 className="mt-3 font-serif text-3xl font-bold text-on-light sm:text-4xl">{t("marketEntryAudit.inside.title")}</h2>
+            <p className="mt-4 text-base leading-relaxed text-on-light-secondary sm:text-[1.0625rem]">
+              {t("marketEntryAudit.inside.intro")}
+            </p>
+          </motion.div>
+
+          <div className="mt-10 grid gap-4 sm:mt-12 md:grid-cols-2 lg:gap-5">
+            {insideItems.map((item, index) => {
+              const Icon = gapIcons[index] ?? ClipboardCheck;
+              const isFeatured = index === 0;
+
+              return (
+                <motion.article
+                  key={item.title}
+                  initial={hidden}
+                  whileInView={show}
+                  viewport={{ once: true }}
+                  transition={transition(0.04 + index * 0.05)}
+                  className={`group relative overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 shadow-[0_12px_40px_hsl(var(--brand-navy-950)/0.05)] transition hover:border-[hsl(var(--brand-purple-500)/0.22)] hover:shadow-[0_16px_48px_hsl(var(--brand-navy-950)/0.08)] sm:p-7 ${
+                    isFeatured ? "md:col-span-2" : ""
+                  }`}
+                >
+                  <div className="pointer-events-none absolute -right-4 -top-4 font-serif text-7xl font-bold leading-none text-[hsl(var(--brand-navy-950)/0.04)] transition group-hover:text-[hsl(var(--brand-purple-700)/0.08)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </div>
+                  <div className="relative">
+                    <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-purple-700)/0.08)]">
+                      <Icon className="h-5 w-5 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+                    </div>
+                    <h3 className="font-serif text-lg font-bold text-on-light sm:text-xl">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">{item.copy}</p>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden theme-section-soft px-5 py-14 sm:px-6 lg:py-20">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
+
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <motion.div
+            initial={hidden}
+            whileInView={show}
+            viewport={{ once: true }}
+            transition={transition(0)}
+            className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white shadow-[0_20px_60px_hsl(var(--brand-navy-950)/0.06)] sm:rounded-[1.75rem] lg:grid lg:grid-cols-3 lg:items-stretch"
+          >
+            <div className="border-b border-[hsl(var(--border-light))] p-6 sm:p-8 lg:col-span-1 lg:border-b-0 lg:border-r lg:p-10">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">How to use it</p>
+              <h2 className="mt-3 font-serif text-2xl font-bold text-on-light sm:text-3xl">
+                From download to decision in three steps
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">
+                The audit is designed to surface gaps before capital is committed - then connect findings to corridor-specific advice.
+              </p>
+            </div>
+
+            <div className="grid divide-y divide-[hsl(var(--border-light))] lg:col-span-2 lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+              {processSteps.map((step, index) => (
+                <motion.div
+                  key={step.step}
+                  initial={hidden}
+                  whileInView={show}
+                  viewport={{ once: true }}
+                  transition={transition(0.06 + index * 0.06)}
+                  className="flex gap-4 p-6 sm:p-8 lg:flex-col lg:gap-3"
+                >
+                  <span className="shrink-0 font-serif text-2xl font-bold text-[hsl(var(--brand-gold-600))]">{step.step}</span>
+                  <div>
+                    <h3 className="font-serif text-lg font-bold text-on-light">{step.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-on-light-secondary">{step.copy}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden theme-section-light px-5 pb-20 pt-8 sm:px-6 lg:pb-24 lg:pt-10">
+        <div className="glow-orb glow-orb-gold pointer-events-none -left-16 -bottom-16 h-[220px] w-[220px] opacity-[0.06] lg:-left-8 lg:-bottom-24 lg:h-[320px] lg:w-[320px] lg:opacity-[0.08]" />
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.08]" />
+
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <motion.div
+            initial={hidden}
+            whileInView={show}
+            viewport={{ once: true }}
+            transition={transition(0)}
+            className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white shadow-[0_20px_60px_hsl(var(--brand-navy-950)/0.07)] sm:rounded-[1.75rem] lg:grid lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,380px)] lg:items-stretch"
+          >
+            <div className="relative overflow-hidden bg-[linear-gradient(135deg,hsl(var(--brand-navy-950))_0%,hsl(var(--brand-purple-800))_52%,hsl(var(--brand-purple-700))_100%)] px-5 py-7 text-white sm:px-8 sm:py-9 lg:px-10 lg:py-10">
+              <div className="pointer-events-none absolute inset-0 opacity-[0.14] theme-grid-overlay-light" aria-hidden />
+              <motion.img
+                src="/doodles/International trade-bro.svg"
+                alt=""
+                aria-hidden
+                className="pointer-events-none absolute -right-6 -bottom-8 hidden h-40 w-40 opacity-[0.11] sm:block lg:h-44 lg:w-44"
+                animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              <span className="relative inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))] backdrop-blur-sm sm:text-[11px] sm:tracking-[0.2em]">
+                <Sparkles className="h-3 w-3" aria-hidden />
+                Next Step
+              </span>
+
+              <h2 className="relative mt-4 max-w-xl font-serif text-[1.65rem] font-bold leading-tight sm:text-3xl lg:text-4xl">
+                {t("marketEntryAudit.readiness.title")}
+              </h2>
+              <p className="relative mt-3 max-w-xl text-sm leading-relaxed text-white/78 sm:text-[0.9375rem]">
+                {t("marketEntryAudit.readiness.copy")}
+              </p>
+
+              <ul className="relative mt-5 flex flex-wrap gap-2 sm:mt-6">
+                {[
+                  { icon: ClipboardCheck, label: "Self-assessment ready" },
+                  { icon: ShieldCheck, label: "Corridor-specific" },
+                  { icon: Handshake, label: "Executive liaison" },
+                ].map(({ icon: ItemIcon, label }) => (
+                  <li
+                    key={label}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/8 px-3 py-1.5 text-[10px] font-semibold text-white/88 backdrop-blur-sm sm:text-[11px]"
                   >
-                    {t("marketEntryAudit.hero.downloadCta")}
-                  </button>
-                </div>
-              </form>
-            )}
-          </div>
-        </div>
-      </section>
+                    <ItemIcon className="h-3 w-3 shrink-0 text-[hsl(var(--brand-gold-500))]" aria-hidden />
+                    {label}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-      <SectionDivider variant="wave" fromDark />
-
-      <section className="theme-section-light px-6 py-16 md:py-20">
-        <div className="container mx-auto max-w-5xl">
-          <h2 className="font-serif text-3xl font-bold text-on-light sm:text-4xl">{t("marketEntryAudit.inside.title")}</h2>
-          <p className="mt-4 max-w-4xl text-base leading-relaxed text-on-light-secondary">{t("marketEntryAudit.inside.intro")}</p>
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
-            {insideItems.map((item) => (
-              <article
-                key={item.title}
-                className="rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 shadow-sm"
+            <div className="flex flex-col justify-center gap-3 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-5 sm:p-6 lg:border-t-0 lg:border-l lg:p-8">
+              <Link
+                to="/ask-soham"
+                className="group inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-2xl bg-[hsl(var(--brand-gold-500))] px-5 py-3.5 text-sm font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_12px_32px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105"
               >
-                <div className="mb-3 flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-                  <h3 className="text-lg font-bold text-on-light">{item.title}</h3>
-                </div>
-                <p className="text-sm leading-relaxed text-on-light-secondary">{item.copy}</p>
-              </article>
-            ))}
-          </div>
+                <MessageCircle className="h-4 w-4 shrink-0 opacity-80" aria-hidden />
+                {t("marketEntryAudit.readiness.readinessCta")}
+                <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden />
+              </Link>
+
+              <Link
+                to="/market-entry"
+                className="group inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-2xl border border-[hsl(var(--brand-purple-500)/0.22)] bg-white px-5 py-3.5 text-sm font-semibold text-[hsl(var(--brand-purple-700))] transition hover:border-[hsl(var(--brand-purple-500)/0.35)] hover:bg-[hsl(var(--brand-purple-700)/0.04)]"
+              >
+                Explore Market Entry Services
+                <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden />
+              </Link>
+
+              <a
+                href="#inside"
+                className="inline-flex min-h-11 w-full items-center justify-center text-sm font-semibold text-on-light-muted transition hover:text-[hsl(var(--brand-purple-700))]"
+              >
+                Review the 5 gaps again
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="theme-section-dark px-6 py-16 text-center md:py-20">
-        <div className="container mx-auto max-w-3xl">
-          <h2 className="font-serif text-3xl font-bold text-foreground sm:text-4xl">{t("marketEntryAudit.readiness.title")}</h2>
-          <p className="mt-4 text-sm leading-relaxed text-foreground/80 sm:text-base">{t("marketEntryAudit.readiness.copy")}</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              to="/ask-soham"
-              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-            >
-              {t("marketEntryAudit.readiness.readinessCta")}
-              <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
-            <Link
-              to="/market-entry"
-              className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[hsl(var(--surface-glass)/0.24)] px-6 py-3 text-sm font-semibold text-foreground/90 transition hover:bg-[hsl(var(--surface-glass)/0.08)]"
-            >
-              Explore Market Entry Services
-              <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <AeoFrequentlyAskedQuestions items={MARKET_ENTRY_AUDIT_FAQS} className="theme-section-light px-6 py-16 md:py-20" />
+      <AeoFrequentlyAskedQuestions items={MARKET_ENTRY_AUDIT_FAQS} className="theme-section-soft px-5 py-14 sm:px-6 lg:py-20" />
     </PageLayout>
   );
 };

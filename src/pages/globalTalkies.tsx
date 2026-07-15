@@ -174,14 +174,14 @@ const GlobalTalkies = () => {
               </p>
               <div className="mt-9 flex flex-wrap gap-4">
                 <a
-                  href="mailto:info@ewan.co.in?subject=Global%20Talkies%20Content%20Brief"
+                  href="/contact"
                   className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-7 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
                 >
                   Discuss Your Content
                   <ArrowRight className="h-4 w-4" />
                 </a>
                 <a
-                  href="mailto:info@ewan.co.in?subject=Global%20Talkies%20Content%20Brief"
+                  href="/contact"
                   className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-7 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
                 >
                   info@ewan.co.in
@@ -489,7 +489,7 @@ const GlobalTalkies = () => {
           <h3 className="mt-2 font-serif text-4xl font-bold text-on-light">Send Your Content Brief</h3>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
             <a
-              href="mailto:info@ewan.co.in?subject=Global%20Talkies%20Content%20Brief"
+              href="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
             >
               Send Your Content Brief

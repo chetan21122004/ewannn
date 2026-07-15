@@ -23,7 +23,7 @@ const AutoHorizontalSlider = ({
   items,
   slideClassName = DEFAULT_SLIDE,
   autoplayMs = 4500,
-  edgeFadeFromClass = "from-[hsl(var(--surface-light-100))]",
+  edgeFadeFromClass = "from-white",
   className,
 }: AutoHorizontalSliderProps) => {
   const reduceMotion = useReducedMotion();

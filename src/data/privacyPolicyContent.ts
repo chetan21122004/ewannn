@@ -3,7 +3,7 @@ import { COMPANY_EMAIL, SITE_URL } from "@/lib/site";
 export const privacyPolicyMeta = {
   title: "Privacy Policy | UVAN",
   description:
-    "Privacy policy and disclaimer for UVAN — how we collect, use, and protect personal information on our website.",
+    "Privacy policy and disclaimer for UVAN - how we collect, use, and protect personal information on our website.",
   companyLegalName: "UVAN Business Solutions Private Limited",
   effectiveDate: "July 2026",
   jurisdiction: "Pune, India",

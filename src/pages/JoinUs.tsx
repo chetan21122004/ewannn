@@ -3,8 +3,13 @@ import {
   ArrowRight,
   ArrowUpRight,
   Briefcase,
+  Building2,
   CheckCircle2,
+  Cpu,
+  Film,
+  Globe2,
   Handshake,
+  Scale,
   ShieldCheck,
   Users,
   UserPlus,
@@ -58,7 +63,7 @@ const teamLookFor = [
 
 const vendorOffer = [
   "Ongoing project assignments across 125+ language pairs",
-  "Sector-specific briefs — automotive, pharma, legal, media",
+  "Sector-specific briefs - automotive, pharma, legal, media",
   "Transparent rates and reliable payment cycles",
   "Long-term relationships built on quality and trust",
 ];
@@ -71,15 +76,35 @@ const vendorNeed = [
 ];
 
 const collaborationTypes = [
-  "Language schools and academies — talent pipeline, curriculum, and training partnerships",
-  "Market entry and legal firms — referral and co-delivery arrangements for cross-border clients",
-  "Technology platforms — language AI, localisation tools, and content management integrations",
-  "Government and trade bodies — export promotion, bilateral trade facilitation",
-  "Content and media agencies — multilingual production, OTT localisation, corporate media",
+  {
+    title: "Language schools & academies",
+    desc: "Talent pipeline, curriculum design, and training partnerships.",
+    icon: Building2,
+  },
+  {
+    title: "Market entry & legal firms",
+    desc: "Referral and co-delivery for cross-border India-Asia mandates.",
+    icon: Scale,
+  },
+  {
+    title: "Technology platforms",
+    desc: "Language AI, localisation tools, and content management integrations.",
+    icon: Cpu,
+  },
+  {
+    title: "Government & trade bodies",
+    desc: "Export promotion and bilateral trade facilitation programmes.",
+    icon: Globe2,
+  },
+  {
+    title: "Content & media agencies",
+    desc: "Multilingual production, OTT localisation, and corporate media.",
+    icon: Film,
+  },
 ];
 
 const collaborators = [
-  { name: "Bhashini — MeitY", logo: "/allLogos/Bhashini-Logo.png" },
+  { name: "Bhashini - MeitY", logo: "/allLogos/Bhashini-Logo.png" },
   { name: "Tattava CX", logo: "/allLogos/tattava-cx.svg" },
   { name: "CITLoB", logo: "/allLogos/CITLoB-logo-2023.jpg" },
 ];
@@ -199,9 +224,10 @@ const JoinUs = () => {
       canonicalPath="/join-us/"
       keywords={JOIN_US_KEYWORDS}
       jsonLd={joinUsJsonLd}
+      mainClassName="bg-white"
     >
       {/* Hero */}
-      <section className="relative overflow-hidden theme-section-soft px-6 pb-20 pt-14 lg:pb-28 lg:pt-20">
+      <section className="relative overflow-hidden bg-white px-6 pb-20 pt-14 lg:pb-28 lg:pt-20">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -220,10 +246,10 @@ const JoinUs = () => {
                 <span className="text-[hsl(var(--brand-purple-700))]">What We&apos;re Building.</span>
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-on-light-secondary sm:text-lg">
-                UVAN is growing — and we&apos;re looking for people and organisations who want to be part of a
+                UVAN is growing - and we&apos;re looking for people and organisations who want to be part of a
                 cross-border market partner that operates at the intersection of language, culture, and on-ground
                 business operations. Whether you&apos;re a language professional, a specialist vendor, or an institution
-                that shares our vision — there&apos;s a place for you here.
+                that shares our vision - there&apos;s a place for you here.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
@@ -287,38 +313,13 @@ const JoinUs = () => {
         </div>
       </section>
 
-      <SectionDivider variant="wave" />
-
-      {/* Sticky track nav */}
-      <nav
-        aria-label="Join UVAN tracks"
-        className="sticky top-14 z-30 border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50)/0.92)] px-4 py-3 backdrop-blur-md lg:top-28"
-      >
-        <div className="container mx-auto flex max-w-6xl gap-2 overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {tracks.map((track) => (
-            <a
-              key={track.id}
-              href={`#${track.id}`}
-              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:border-[hsl(var(--brand-purple-500)/0.35)] hover:text-[hsl(var(--brand-purple-700))]"
-            >
-              <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
-                {track.step}
-              </span>
-              {track.label}
-            </a>
-          ))}
-        </div>
-      </nav>
-
-      <SectionDivider variant="slant" />
-
       {/* Join Our Team */}
       <section id="join-team" className="theme-section-light scroll-mt-36 px-6 py-16 md:py-20">
         <div className="container mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
             <motion.div {...motionProps} className="order-1">
               <SectionHeader
-                step="01 — Join Our Team"
+                step="01 - Join Our Team"
                 title="Join Our Team"
                 intro="Language professionals, interpreters, translators, operations specialists, business development professionals, and account managers who want a full-time or contract role at UVAN."
               />
@@ -396,7 +397,7 @@ const JoinUs = () => {
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
             <motion.div {...motionProps}>
               <SectionHeader
-                step="02 — Join Our Vendor Network"
+                step="02 - Join Our Vendor Network"
                 title="Join Our Vendor Network"
                 intro="Specialist translators, interpreters, subtitlers, voiceover artists, proofreaders, transcriptionists, and localisation engineers who work as freelancers or independent professionals."
               />
@@ -473,12 +474,22 @@ const JoinUs = () => {
       <SectionDivider variant="slant" flip />
 
       {/* Collaborate */}
-      <section id="collaborate" className="theme-section-light scroll-mt-36 px-6 py-16 md:py-20">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+      <section id="collaborate" className="relative scroll-mt-36 overflow-hidden px-6 py-16 md:py-20">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 48% 42% at 100% 0%, hsl(var(--brand-gold-500) / 0.1) 0%, transparent 55%), radial-gradient(ellipse 44% 40% at 0% 100%, hsl(var(--brand-purple-500) / 0.07) 0%, transparent 52%)",
+          }}
+          aria-hidden
+        />
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
+
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
             <motion.div {...motionProps} className="lg:col-span-7">
               <SectionHeader
-                step="03 — Collaborate With Us"
+                step="03 - Collaborate With Us"
                 title="Collaborate With Us"
                 intro="Institutions, agencies, technology platforms, and businesses whose work intersects with cross-border language, market entry, or the India-Asia corridor."
               />
@@ -486,24 +497,40 @@ const JoinUs = () => {
               <p className="mt-8 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">
                 Types of collaboration we welcome
               </p>
-              <div className="mt-4">
-                <BulletList items={collaborationTypes} />
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {collaborationTypes.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={item.title}
+                      className="group rounded-2xl border border-[hsl(var(--border-light))] bg-white/90 p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-[hsl(var(--brand-purple-500)/0.28)] hover:shadow-[0_14px_36px_rgba(26,22,51,0.08)] sm:p-5"
+                    >
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-purple-700)/0.08)] text-[hsl(var(--brand-purple-700))] transition group-hover:bg-[hsl(var(--brand-purple-700))] group-hover:text-white">
+                        <Icon className="h-4 w-4" aria-hidden />
+                      </span>
+                      <h3 className="mt-3 font-serif text-base font-bold leading-snug text-[hsl(var(--brand-navy-950))] sm:text-lg">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-on-light-secondary">{item.desc}</p>
+                    </div>
+                  );
+                })}
               </div>
 
               <p className="mt-8 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">
                 Current collaborators
               </p>
-              <div className="mt-4 flex flex-wrap gap-3">
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
                 {collaborators.map((item) => (
                   <div
                     key={item.name}
-                    className="inline-flex items-center gap-3 rounded-2xl border border-[hsl(var(--border-light))] bg-white px-4 py-3"
+                    className="flex min-h-[88px] flex-col items-center justify-center rounded-2xl border border-[hsl(var(--border-light))] bg-white px-4 py-5 text-center shadow-sm transition hover:border-[hsl(var(--brand-purple-500)/0.25)]"
                   >
                     <img
                       src={item.logo}
-                      alt=""
+                      alt={item.name}
                       loading="lazy"
-                      className="h-8 w-auto max-w-[72px] object-contain"
+                      className="h-9 w-auto max-w-[100px] object-contain"
                       onError={(event) => {
                         if (!event.currentTarget.dataset.fallbackApplied) {
                           event.currentTarget.dataset.fallbackApplied = "true";
@@ -511,25 +538,69 @@ const JoinUs = () => {
                         }
                       }}
                     />
-                    <span className="text-sm font-medium text-on-light-secondary">{item.name}</span>
+                    <span className="mt-3 text-[11px] font-semibold leading-snug text-on-light-secondary">{item.name}</span>
                   </div>
                 ))}
               </div>
-
             </motion.div>
 
             <motion.div {...motionProps} className="lg:col-span-5">
-              <div className="theme-card-light rounded-[2rem] border border-[hsl(var(--border-light))] p-7 sm:p-8">
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[hsl(var(--surface-light-100))]">
-                  <Handshake className="h-7 w-7 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+              <div className="lg:sticky lg:top-40">
+                <div className="overflow-hidden rounded-[2rem] border border-[hsl(var(--border-light))] bg-white shadow-[0_24px_60px_-28px_rgba(26,22,51,0.18)]">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=80"
+                      alt="Partners collaborating on cross-border business"
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.72)] via-[hsl(var(--brand-navy-950)/0.15)] to-transparent" />
+                    <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))] backdrop-blur-sm">
+                      <Handshake className="h-3.5 w-3.5" aria-hidden />
+                      Partnerships
+                    </span>
+                  </div>
+
+                  <div className="p-6 sm:p-7">
+                    <h3 className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-[1.75rem]">
+                      Institutional partnerships
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-on-light-secondary sm:text-base">
+                      We work with schools, agencies, platforms, and trade bodies that share our focus on cross-border
+                      language, market entry, and India-Asia execution.
+                    </p>
+
+                    <ul className="mt-5 space-y-2.5 border-t border-[hsl(var(--border-light))] pt-5">
+                      {[
+                        "Co-branded programmes and referral arrangements",
+                        "Joint go-to-market for corridor clients",
+                        "Talent, training, and technology integrations",
+                      ].map((point) => (
+                        <li key={point} className="flex items-start gap-2 text-sm text-on-light-secondary">
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-gold-600))]" aria-hidden />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-6 flex flex-col gap-3">
+                      <a
+                        href="/contact"
+                        className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-[hsl(var(--brand-navy-950))] shadow-[0_12px_28px_hsl(var(--brand-gold-500)/0.22)] transition hover:-translate-y-0.5 hover:brightness-105"
+                      >
+                        Discuss a partnership
+                        <ArrowUpRight className="h-4 w-4" aria-hidden />
+                      </a>
+                      <Link
+                        to="/contact/"
+                        className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
+                      >
+                        Contact UVAN
+                        <ArrowRight className="h-4 w-4" aria-hidden />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-3xl">
-                  Institutional partnerships
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-on-light-secondary sm:text-base">
-                  We work with schools, agencies, platforms, and trade bodies that share our focus on cross-border
-                  language, market entry, and India-Asia execution.
-                </p>
               </div>
             </motion.div>
           </div>

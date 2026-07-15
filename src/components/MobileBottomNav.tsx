@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Building2, Home, Languages, Mail, Newspaper } from "lucide-react";
+import { Building2, Home, Languages, Newspaper, Users } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 
@@ -47,10 +47,13 @@ const bottomNavItems: BottomNavItem[] = [
       pathname === "/newsletter",
   },
   {
-    href: "/contact",
-    labelKey: "nav.bottomContact",
-    icon: Mail,
-    isActive: (pathname) => pathname === "/contact" || pathname === "/ask-soham",
+    href: "/about-us",
+    labelKey: "nav.bottomAbout",
+    icon: Users,
+    isActive: (pathname) =>
+      ["/about-us", "/join-us", "/case-study", "/contact"].some(
+        (p) => pathname === p || pathname.startsWith(`${p}/`),
+      ),
   },
 ];
 

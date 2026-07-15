@@ -12,6 +12,7 @@ const jaCommon = {
     bottomMarket: "市場参入",
     bottomLanguage: "言語",
     bottomMedia: "メディア",
+    bottomAbout: "会社",
     bottomContact: "連絡",
   },
   navMenu: {
@@ -347,7 +348,7 @@ const jaCommon = {
         {
           id: "bhashini",
           name: "Bhashini",
-          desc: "Bhashini - インド電子情報技術省（MeitY）· 言語テクノロジー・イニシアチブ。",
+          desc: "インド電子情報技術省（MeitY）· 言語テクノロジー・イニシアチブ。",
           alt: "Bhashini ロゴ",
         },
         {

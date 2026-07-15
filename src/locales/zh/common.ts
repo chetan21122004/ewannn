@@ -12,6 +12,7 @@ const zhCommon = {
     bottomMarket: "市场",
     bottomLanguage: "语言",
     bottomMedia: "媒体",
+    bottomAbout: "关于",
     bottomContact: "联系",
   },
   navMenu: {
@@ -343,7 +344,7 @@ const zhCommon = {
         {
           id: "bhashini",
           name: "Bhashini",
-          desc: "Bhashini - 印度电子与信息技术部（MeitY）· 语言技术倡议。",
+          desc: "印度电子与信息技术部（MeitY）· 语言技术倡议。",
           alt: "Bhashini 标志",
         },
         {

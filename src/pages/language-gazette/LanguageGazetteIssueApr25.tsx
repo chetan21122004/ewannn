@@ -56,7 +56,7 @@ const LanguageGazetteIssueApr25 = () => {
                   to={tlgPdfReaderPath("apr-25-pdf")}
                   className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
                 >
-                  Open PDF flipbook
+                  Open PDF
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </Link>
               </div>

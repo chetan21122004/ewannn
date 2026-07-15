@@ -24,7 +24,6 @@ const TlgPdfYearSlider = ({ year, issues }: TlgPdfYearSliderProps) => {
           <span className="block truncate font-serif text-sm font-bold text-[hsl(var(--brand-navy-950))] group-hover:text-[hsl(var(--brand-purple-700))] sm:text-lg">
             {pdfIssue.label}
           </span>
-          <span className="mt-0.5 block text-[10px] text-on-light-muted sm:text-xs">Interactive flipbook</span>
         </span>
         <ArrowRight className="h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-700))] transition group-hover:translate-x-0.5 sm:h-4 sm:w-4" aria-hidden />
       </div>
@@ -36,6 +35,7 @@ const TlgPdfYearSlider = ({ year, issues }: TlgPdfYearSliderProps) => {
       ariaLabel={`${year} TLG PDF editions`}
       items={slides}
       autoplayMs={4800}
+      edgeFadeFromClass="from-white"
     />
   );
 };

@@ -46,7 +46,7 @@ const TlgPdfCoverThumbnail = ({ pdfUrl, title, className }: TlgPdfCoverThumbnail
   return (
     <div
       ref={containerRef}
-      className={cn("relative h-full w-full overflow-hidden bg-[hsl(var(--surface-light-100))]", className)}
+      className={cn("relative h-full w-full overflow-hidden bg-white", className)}
       aria-hidden
     >
       {failed ? (
@@ -57,7 +57,7 @@ const TlgPdfCoverThumbnail = ({ pdfUrl, title, className }: TlgPdfCoverThumbnail
         <Document
           file={pdfUrl}
           onLoadError={() => setFailed(true)}
-          loading={<div className="absolute inset-0 animate-pulse bg-[hsl(var(--surface-light-100))]" />}
+          loading={<div className="absolute inset-0 animate-pulse bg-white" />}
           className="absolute inset-0 h-full w-full"
         >
           <Page
@@ -66,12 +66,12 @@ const TlgPdfCoverThumbnail = ({ pdfUrl, title, className }: TlgPdfCoverThumbnail
             renderTextLayer={false}
             renderAnnotationLayer={false}
             onRenderError={() => setFailed(true)}
-            loading={<div className="absolute inset-0 animate-pulse bg-[hsl(var(--surface-light-100))]" />}
+            loading={<div className="absolute inset-0 animate-pulse bg-white" />}
             className="!absolute !inset-0 !m-0 !h-full !w-full !min-h-0 !min-w-0 !bg-transparent [&_.react-pdf__Page__canvas]:!absolute [&_.react-pdf__Page__canvas]:!inset-0 [&_.react-pdf__Page__canvas]:!h-full [&_.react-pdf__Page__canvas]:!w-full [&_.react-pdf__Page__canvas]:object-cover [&_.react-pdf__Page__canvas]:object-top"
           />
         </Document>
       ) : (
-        <div className="absolute inset-0 animate-pulse bg-[hsl(var(--surface-light-100))]" />
+        <div className="absolute inset-0 animate-pulse bg-white" />
       )}
       <span className="sr-only">{title} cover</span>
     </div>

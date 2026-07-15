@@ -12,6 +12,7 @@ const enCommon = {
     bottomMarket: "Market",
     bottomLanguage: "Language",
     bottomMedia: "Media",
+    bottomAbout: "About",
     bottomContact: "Contact",
   },
   navMenu: {
@@ -154,7 +155,7 @@ const enCommon = {
     languageGazette: {
       title: "The Language Gazette | UVAN",
       description:
-        "Insights on language, culture and cross-border business — for practitioners and professionals navigating the India-Asia corridor. Published by UVAN.",
+        "Insights on language, culture and cross-border business - for practitioners and professionals navigating the India-Asia corridor. Published by UVAN.",
       keywords:
         "language gazette India, language industry publication, cross-border business insights India",
     },
@@ -166,7 +167,7 @@ const enCommon = {
     marketEntryAudit: {
       title: "2026 Global Market Entry Audit | Free India Entry Checklist | UVAN",
       description:
-        "The 2026 Global Market Entry Audit — a free diagnostic framework built from 10 years of on-ground cross-border experience. Assess your expansion readiness before you commit.",
+        "The 2026 Global Market Entry Audit - a free diagnostic framework built from 10 years of on-ground cross-border experience. Assess your expansion readiness before you commit.",
       keywords:
         "India market entry checklist free, international expansion audit, cross-border business readiness, India entry risk assessment",
     },
@@ -350,6 +351,8 @@ const enCommon = {
     },
     institutionalTrust: {
       badge: "CONSULATE RECOGNITION",
+      featuredBadge: "Government Recognition",
+      viewLetter: "View full letter",
       titlePrefix: "Recognised by the",
       titleHighlight: "Consulate General of the People's Republic of China",
       subtitle:
@@ -413,7 +416,7 @@ const enCommon = {
         {
           id: "bhashini",
           name: "Bhashini",
-          desc: "Bhashini - Ministry of Electronics & IT (MeitY), Government of India · Language technology initiative.",
+          desc: "Ministry of Electronics & IT (MeitY), Government of India · Language technology initiative.",
           alt: "Bhashini logo",
         },
         {
@@ -445,9 +448,9 @@ const enCommon = {
       badge: "The 2026 Global Market Entry Audit",
       title: "The 5 Operational Gaps That Quietly Kill International Expansion.",
       subtitle:
-        "The 2026 Global Market Entry Audit — a free diagnostic framework built from 10 years of on-ground cross-border experience. Assess your expansion readiness before you commit.",
+        "The 2026 Global Market Entry Audit - a free diagnostic framework built from 10 years of on-ground cross-border experience. Assess your expansion readiness before you commit.",
       whatItIs:
-        "UVAN's proprietary 3-page diagnostic framework presents five operational gaps that commonly derail international expansion — framed as a self-assessment checklist. Written in Soham Kakade's voice, it closes with a CTA to book an India Entry Readiness Call.",
+        "UVAN's proprietary 3-page diagnostic framework presents five operational gaps that commonly derail international expansion - framed as a self-assessment checklist. Written in Soham Kakade's voice, it closes with a CTA to book an India Entry Readiness Call.",
       formLabel: "Download the Free Audit",
       emailPlaceholder: "Enter your work email",
       downloadCta: "Download the Free Audit",
@@ -460,7 +463,7 @@ const enCommon = {
     inside: {
       title: "What's inside",
       intro:
-        "The audit reveals 5 gaps — Regulatory & Entity Infrastructure · Partner Integrity Verification · The Coordination Tax · Human Capital Strategy · Executive Liaison & Negotiation. Each gap includes a self-assessment checklist and an explanation of what it costs companies that leave it unaddressed.",
+        "The audit reveals 5 gaps - Regulatory & Entity Infrastructure · Partner Integrity Verification · The Coordination Tax · Human Capital Strategy · Executive Liaison & Negotiation. Each gap includes a self-assessment checklist and an explanation of what it costs companies that leave it unaddressed.",
       items: [
         {
           title: "Regulatory & Entity Infrastructure",
@@ -476,7 +479,7 @@ const enCommon = {
         },
         {
           title: "Human Capital Strategy",
-          copy: "Readiness checks for staffing, visas, and local talent — and what slips when this gap is left open.",
+          copy: "Readiness checks for staffing, visas, and local talent - and what slips when this gap is left open.",
         },
         {
           title: "Executive Liaison & Negotiation",
@@ -489,7 +492,7 @@ const enCommon = {
       copy:
         "Use the audit to surface hidden gaps, then book a focused conversation with Soham to interpret the results against your corridor and sector.",
       readinessCta: "Book Your India Entry Readiness Call",
-      askSohamCta: "Ask Soham — 15 Min Free",
+      askSohamCta: "Ask Soham - 15 Min Free",
     },
   },
   industries: {

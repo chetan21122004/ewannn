@@ -1,20 +1,19 @@
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowDownToLine,
   ArrowRight,
-  CheckCircle2,
   FileText,
   Globe2,
-  PackageSearch,
+  MessageCircle,
+  ShieldCheck,
   Sparkles,
-  Sprout,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { absoluteUrl, serviceSchema } from "@/lib/schemaHelpers";
+import ServiceHoverCard from "@/components/ServiceHoverCard";
+import AutoHorizontalSlider from "@/components/language-gazette/AutoHorizontalSlider";
+import { serviceSchema } from "@/lib/schemaHelpers";
 
 /** Stitch-aligned imagery (hosted under `public/stitch/import-export/`) */
 const stitch = {
@@ -37,9 +36,8 @@ const services = [
       "Sampling and quality pre-assessment coordination",
       "Supplier agreement facilitation",
     ],
-    icon: PackageSearch,
-    doodle: "/doodles/House searching-cuate.svg",
-    doodleAlt: "Local vendor sourcing illustration",
+    image: stitch.philosophy,
+    imageAlt: "Local vendor sourcing and procurement in India",
   },
   {
     id: "export-support",
@@ -53,9 +51,8 @@ const services = [
       "Overseas buyer introduction and relationship management",
       "APEDA and government export program liaison",
     ],
-    icon: Globe2,
-    doodle: "/doodles/International trade-bro.svg",
-    doodleAlt: "Export support illustration",
+    image: stitch.corridorsMap,
+    imageAlt: "Export support across international trade corridors",
   },
   {
     id: "import-facilitation",
@@ -68,9 +65,8 @@ const services = [
       "Local supplier and logistics coordination",
       "Quality inspection and delivery follow-up",
     ],
-    icon: ArrowDownToLine,
-    doodle: "/doodles/Download-amico.svg",
-    doodleAlt: "Import facilitation illustration",
+    image: stitch.heroOverlay,
+    imageAlt: "Import facilitation and logistics coordination",
   },
   {
     id: "agricultural-export",
@@ -84,9 +80,8 @@ const services = [
       "Importer and distributor introduction",
       "Trade fair and buyer-seller meeting facilitation",
     ],
-    icon: Sprout,
-    doodle: "/doodles/International trade-rafiki.svg",
-    doodleAlt: "Agricultural export illustration",
+    image: "https://images.unsplash.com/photo-1625246333193-b7836c833f94?auto=format&fit=crop&w=1200&q=80",
+    imageAlt: "Agricultural and food export from India",
   },
   {
     id: "trade-documentation",
@@ -99,9 +94,8 @@ const services = [
       "Letters of credit and banking document support",
       "Customs and regulatory filing review",
     ],
-    icon: FileText,
-    doodle: "/doodles/Mail-amico.svg",
-    doodleAlt: "Trade documentation illustration",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    imageAlt: "Trade documentation and compliance review",
   },
 ];
 
@@ -119,6 +113,24 @@ const whoThisIsFor = [
   "Indian SMEs expanding exports to Japan, China, or ASEAN",
   "Foreign companies needing local procurement managed by a single partner",
 ];
+
+const tradeFrictionPoints = [
+  {
+    icon: MessageCircle,
+    title: "Communication gaps",
+    copy: "Misread specifications and cultural nuance lost in negotiation.",
+  },
+  {
+    icon: FileText,
+    title: "Documentation errors",
+    copy: "Paperwork mistakes that delay clearance and erode trust.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Vendor risk",
+    copy: "Suppliers who present well but fail on delivery or quality.",
+  },
+] as const;
 
 const importExportLd = [
   serviceSchema({
@@ -180,7 +192,7 @@ const ImportExport = () => {
               </p>
               <div className="mt-6 flex flex-col gap-2.5 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4">
                 <motion.a
-                  href="mailto:info@ewan.co.in?subject=Trade%20Requirements"
+                  href="/contact"
                   className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
                   whileHover={reduceMotion ? undefined : { scale: 1.03 }}
                   whileTap={reduceMotion ? undefined : { scale: 0.97 }}
@@ -231,53 +243,91 @@ const ImportExport = () => {
       <SectionDivider variant="wave" fromDark />
 
       {/* Where UVAN Adds Value */}
-      <section className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20 stitch-line stitch-line-bottom">
+      <section className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-14 sm:px-6 lg:py-20 stitch-line stitch-line-bottom">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.12]" />
+        <div className="glow-orb glow-orb-gold pointer-events-none -left-20 top-1/3 h-[240px] w-[240px] opacity-[0.06] lg:h-[320px] lg:w-[320px] lg:opacity-[0.08]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <div className="grid items-start gap-6 lg:grid-cols-2 lg:gap-14">
-            <motion.div
-              className="order-2 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white shadow-[0_18px_50px_rgba(26,22,51,0.08)] sm:rounded-[1.75rem] lg:order-1"
-              initial={hidden}
-              whileInView={show}
-              viewport={{ once: true }}
-              transition={transition(0.1)}
-            >
+          <motion.div
+            initial={hidden}
+            whileInView={show}
+            viewport={{ once: true }}
+            transition={transition(0)}
+            className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white shadow-[0_20px_60px_hsl(var(--brand-navy-950)/0.07)] sm:rounded-[1.75rem] lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-stretch"
+          >
+            <div className="relative min-h-[240px] overflow-hidden sm:min-h-[280px] lg:min-h-full">
               <img
                 src={stitch.philosophy}
                 alt="Cross-border trade liaison and cultural intelligence"
-                className="aspect-[4/3] w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
                 loading="lazy"
               />
-            </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.92)] via-[hsl(var(--brand-navy-950)/0.45)] to-[hsl(var(--brand-navy-950)/0.15)]" aria-hidden />
 
-            <motion.article
-              className="order-1 rounded-2xl border border-[hsl(var(--border-light))] bg-white p-5 shadow-[0_14px_40px_rgba(26,22,51,0.06)] sm:rounded-[1.75rem] sm:p-8 lg:order-2 lg:p-10"
-              initial={hidden}
-              whileInView={show}
-              viewport={{ once: true }}
-              transition={transition(0)}
-            >
-              <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.2em]">
+              <div className="relative flex h-full flex-col justify-between p-5 text-white sm:p-7 lg:p-8">
+                <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-500))] backdrop-blur-sm">
+                  <Globe2 className="h-3 w-3" aria-hidden />
+                  Trade intelligence
+                </span>
+
+                <div>
+                  <p className="max-w-sm font-serif text-xl font-bold leading-snug sm:text-2xl">
+                    Where communication makes or breaks cross-border trade.
+                  </p>
+                  <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/78">
+                    UVAN sits at the friction points — language, culture, documentation, and vendor verification — so
+                    deals keep moving.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-[hsl(var(--border-light))] p-5 sm:p-7 lg:border-t-0 lg:border-l lg:p-8 xl:p-10">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:text-[11px] sm:tracking-[0.2em]">
                 <Sparkles className="h-3 w-3 text-[hsl(var(--brand-gold-600))] sm:h-3.5 sm:w-3.5" aria-hidden />
                 Where UVAN Adds Value in Trade
               </span>
-              <div className="mt-4 space-y-4 text-xs leading-relaxed text-on-light-secondary sm:mt-6 sm:space-y-5 sm:text-sm lg:text-base">
-                <p>
-                  Most cross-border trade breakdowns happen not in logistics but in communication - a misunderstood
-                  specification, a cultural misread in a negotiation, a documentation error that delays clearance, a vendor
-                  who presented well but delivered poorly. UVAN sits at every one of these points, providing the language
-                  and cultural intelligence that keeps trade moving cleanly.
+
+              <p className="mt-4 text-sm leading-relaxed text-on-light-secondary sm:text-[0.9375rem]">
+                Most cross-border trade breakdowns happen not in logistics but in communication — a misunderstood
+                specification, a cultural misread in a negotiation, a documentation error that delays clearance, or a
+                vendor who presented well but delivered poorly.
+              </p>
+
+              <ul className="mt-5 grid gap-2.5 sm:grid-cols-3 sm:gap-3">
+                {tradeFrictionPoints.map((point, index) => {
+                  const Icon = point.icon;
+                  return (
+                    <motion.li
+                      key={point.title}
+                      initial={hidden}
+                      whileInView={show}
+                      viewport={{ once: true }}
+                      transition={transition(0.06 + index * 0.05)}
+                      className="rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-3.5 sm:rounded-2xl sm:p-4"
+                    >
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[hsl(var(--brand-purple-700)/0.08)] text-[hsl(var(--brand-purple-700))]">
+                        <Icon className="h-4 w-4" aria-hidden />
+                      </div>
+                      <h3 className="mt-2.5 font-serif text-sm font-bold text-[hsl(var(--brand-navy-950))]">{point.title}</h3>
+                      <p className="mt-1 text-xs leading-relaxed text-on-light-secondary">{point.copy}</p>
+                    </motion.li>
+                  );
+                })}
+              </ul>
+
+              <div className="mt-5 rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-4 sm:mt-6 sm:rounded-2xl sm:p-5">
+                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
+                  Track record
                 </p>
-                <p>
-                  Our track record includes supporting agricultural export from India to China and Taiwan (the Seasonz
-                  International grape export - recognised in our client testimonials), industrial procurement across the
-                  India-Japan corridor, and supply chain establishment for foreign manufacturers entering India. We have
-                  been in the room when these deals were made.
+                <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">
+                  Agricultural export from India to China and Taiwan (Seasonz International grape export), industrial
+                  procurement across the India–Japan corridor, and supply chain establishment for foreign manufacturers
+                  entering India. We have been in the room when these deals were made.
                 </p>
               </div>
-            </motion.article>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -303,7 +353,9 @@ const ImportExport = () => {
                 <Sparkles className="h-3 w-3 text-[hsl(var(--brand-gold-600))] sm:h-3.5 sm:w-3.5" aria-hidden />
                 Our Import, Procurement & Export Services
               </span>
-              <p className="mt-2 text-xs text-on-light-secondary md:hidden">Tap a service to expand details.</p>
+              <p className="mt-2 text-xs text-on-light-secondary sm:text-sm">
+                Tap or hover a service card to explore scope and deliverables.
+              </p>
             </div>
             <motion.img
               src="/doodles/International trade-rafiki.svg"
@@ -314,93 +366,15 @@ const ImportExport = () => {
             />
           </motion.div>
 
-          <Accordion type="single" collapsible className="flex flex-col gap-2 md:hidden">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <AccordionItem
-                  key={service.id}
-                  id={service.id}
-                  value={service.id}
-                  className="scroll-mt-28 overflow-hidden rounded-xl border border-[hsl(var(--border-light))] border-b-0 bg-white px-3.5 shadow-sm data-[state=open]:border-[hsl(var(--brand-purple-500)/0.35)] data-[state=open]:ring-1 data-[state=open]:ring-[hsl(var(--brand-purple-500)/0.15)]"
-                >
-                  <AccordionTrigger className="gap-3 py-3.5 hover:no-underline [&[data-state=open]>svg]:text-[hsl(var(--brand-purple-700))]">
-                    <span className="flex min-w-0 flex-1 items-center gap-3 text-left">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
-                        <Icon className="h-4 w-4" aria-hidden />
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700)/0.75)]">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <span className="block font-serif text-base font-bold leading-snug text-on-light">
-                          {service.title}
-                        </span>
-                      </span>
-                    </span>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-3.5 text-xs leading-relaxed text-on-light-secondary">
-                    <p>{service.description}</p>
-                    <ul className="mt-3 space-y-2 border-t border-[hsl(var(--border-light))] pt-3">
-                      {service.points.map((point) => (
-                        <li key={point} className="flex items-start gap-2">
-                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-500))]" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </AccordionContent>
-                </AccordionItem>
-              );
-            })}
-          </Accordion>
-
-          <div className="hidden gap-5 md:grid md:grid-cols-2">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.article
-                  key={service.id}
-                  id={service.id}
-                  initial={hidden}
-                  whileInView={show}
-                  viewport={{ once: true }}
-                  transition={transition((index % 2) * 0.08)}
-                  whileHover={reduceMotion ? undefined : { y: -5 }}
-                  className="group theme-card-light card-shine scroll-mt-28 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-5 sm:rounded-3xl sm:p-7 lg:p-8"
-                >
-                  <div className="mb-3 flex items-center justify-between gap-3 sm:mb-4">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700)/0.75)] sm:text-[11px] sm:tracking-[0.18em]">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm sm:h-11 sm:w-11">
-                      <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden />
-                    </div>
-                  </div>
-
-                  <motion.img
-                    src={service.doodle}
-                    alt={service.doodleAlt}
-                    className="mx-auto mb-4 h-24 w-full max-w-[150px] object-contain sm:h-28 sm:max-w-[170px]"
-                    animate={reduceMotion ? undefined : { y: [0, -5, 0] }}
-                    transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.25 }}
-                  />
-
-                  <div className="mb-3 h-1 w-12 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-gold-500))] opacity-80 transition group-hover:w-16" />
-                  <h3 className="font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-2xl">{service.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">{service.description}</p>
-                  <div className="mt-5 space-y-2 border-t border-[hsl(var(--border-light))] pt-5">
-                    {service.points.map((point) => (
-                      <p key={point} className="flex items-start gap-2 text-sm text-on-light-secondary">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-500))]" />
-                        <span>{point}</span>
-                      </p>
-                    ))}
-                  </div>
-                </motion.article>
-              );
-            })}
-          </div>
+          <AutoHorizontalSlider
+            ariaLabel="Import, procurement and export services"
+            slideClassName="basis-[88%] sm:basis-[62%] md:basis-[46%] lg:basis-[38%] xl:basis-[32%]"
+            autoplayMs={5200}
+            edgeFadeFromClass="from-[hsl(var(--surface-light-50))]"
+            items={services.map((service, index) => (
+              <ServiceHoverCard key={service.id} {...service} index={index} />
+            ))}
+          />
         </div>
       </section>
 
@@ -467,37 +441,41 @@ const ImportExport = () => {
       </section>
 
       {/* Who This Is For */}
-      <section className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.12]" />
-
+      <section className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-6 sm:px-6 lg:py-10">
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
-            className="theme-card-light card-shine overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-5 sm:rounded-[1.75rem] sm:p-8 lg:p-10"
+            className="theme-card-light card-shine overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-4 sm:rounded-[1.5rem] sm:p-5 lg:p-6"
             initial={hidden}
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0)}
           >
-            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.2em]">
-              Who This Is For
-            </p>
-            <h2 className="mt-3 font-serif text-2xl font-bold text-on-light sm:text-3xl lg:text-4xl">Who This Is For</h2>
+            <div className="flex flex-col gap-3 border-b border-[hsl(var(--border-light))] pb-3 sm:flex-row sm:items-end sm:justify-between sm:gap-6 sm:pb-4">
+              <h2 className="font-serif text-xl font-bold leading-tight text-on-light sm:text-2xl lg:text-[1.75rem]">
+                Who This Is For
+              </h2>
+              <p className="max-w-md text-xs leading-relaxed text-on-light-secondary sm:text-right sm:text-sm">
+                Importers, exporters, and procurement teams moving goods across India and Asia.
+              </p>
+            </div>
 
-            <div className="mt-5 grid gap-3 sm:mt-6 sm:grid-cols-2 sm:gap-4">
+            <ul className="mt-3 grid gap-2 sm:mt-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
               {whoThisIsFor.map((item, index) => (
-                <motion.p
+                <motion.li
                   key={item}
-                  className="flex items-start gap-3 rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-4 text-xs leading-relaxed text-on-light-secondary sm:gap-4 sm:p-5 sm:text-sm"
-                  initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                  className="flex items-start gap-2.5 rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-3 sm:gap-3 sm:p-3.5"
+                  initial={reduceMotion ? false : { opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 + 0.1 }}
+                  transition={{ delay: index * 0.06 + 0.08 }}
                 >
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-500))]" />
-                  <span>{item}</span>
-                </motion.p>
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-navy-950))] font-mono text-[10px] font-bold text-[hsl(var(--brand-gold-500))]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <p className="text-xs leading-snug text-on-light-secondary sm:text-sm sm:leading-relaxed">{item}</p>
+                </motion.li>
               ))}
-            </div>
+            </ul>
           </motion.div>
         </div>
       </section>
@@ -505,39 +483,43 @@ const ImportExport = () => {
       <SectionDivider variant="slant" />
 
       {/* CTA */}
-      <section className="theme-section-soft px-5 py-10 sm:px-6 sm:py-16 lg:py-20">
+      <section className="theme-section-soft px-5 py-8 sm:px-6 lg:py-12">
         <motion.div
-          className="container mx-auto max-w-4xl rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 text-center shadow-[0_24px_60px_rgba(26,22,51,0.06)] sm:rounded-[2rem] sm:p-10 lg:p-12"
+          className="container mx-auto max-w-4xl rounded-2xl border border-[hsl(var(--border-light))] bg-white p-5 shadow-[0_20px_50px_rgba(26,22,51,0.06)] sm:rounded-[1.75rem] sm:p-7 lg:p-8"
           initial={hidden}
           whileInView={show}
           viewport={{ once: true }}
           transition={transition(0)}
         >
-          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.2em]">
-            Next Step
-          </p>
-          <h3 className="mt-3 font-serif text-[1.55rem] font-bold text-on-light sm:text-3xl lg:text-4xl">
-            Discuss Your Import / Export Requirements
-          </h3>
-          <div className="mt-6 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
-            <motion.a
-              href="mailto:info@ewan.co.in?subject=Import%20Export%20Requirements"
-              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
-              whileHover={reduceMotion ? undefined : { scale: 1.03 }}
-              whileTap={reduceMotion ? undefined : { scale: 0.97 }}
-            >
-              Discuss Your Requirements
-              <ArrowRight className="h-4 w-4 shrink-0" />
-            </motion.a>
-            <motion.div whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={reduceMotion ? undefined : { scale: 0.97 }} className="w-full sm:w-auto">
-              <Link
-                to="/ask-soham"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto sm:px-6"
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+            <div className="text-center lg:max-w-xl lg:text-left">
+              <h3 className="font-serif text-2xl font-bold leading-tight text-on-light sm:text-3xl">
+                Discuss Your Import / Export Requirements
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">
+                Share your corridor, product, and timeline - we&apos;ll advise on the right next step.
+              </p>
+            </div>
+            <div className="flex flex-col gap-2.5 sm:flex-row sm:justify-center lg:shrink-0">
+              <motion.div whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={reduceMotion ? undefined : { scale: 0.97 }} className="w-full sm:w-auto">
+                <Link
+                  to="/ask-soham"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-2.5 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto"
+                >
+                  Ask Soham - 15 Min Free
+                  <ArrowRight className="h-4 w-4 shrink-0" />
+                </Link>
+              </motion.div>
+              <motion.a
+                href="/contact"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-2.5 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto"
+                whileHover={reduceMotion ? undefined : { scale: 1.03 }}
+                whileTap={reduceMotion ? undefined : { scale: 0.97 }}
               >
-                Ask Soham - 15 Min Free
+                Email UVAN
                 <ArrowRight className="h-4 w-4 shrink-0" />
-              </Link>
-            </motion.div>
+              </motion.a>
+            </div>
           </div>
         </motion.div>
       </section>

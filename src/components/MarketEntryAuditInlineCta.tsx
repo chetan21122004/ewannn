@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 /** Mid-article inline CTA for market entry blog posts */
 const MarketEntryAuditInlineCta = () => (
-  <aside className="my-8 rounded-xl border border-[hsl(var(--brand-purple-500)/0.2)] bg-[hsl(var(--surface-light-100))] p-4 not-prose sm:my-10 sm:rounded-2xl sm:p-6">
+  <aside className="my-8 rounded-xl border border-[hsl(var(--brand-purple-500)/0.25)] bg-white p-4 not-prose shadow-[0_8px_32px_-16px_rgba(26,22,51,0.12)] sm:my-10 sm:rounded-2xl sm:p-6">
     <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">
       Free Resource
     </p>
@@ -12,7 +12,7 @@ const MarketEntryAuditInlineCta = () => (
     </h2>
     <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">
       The 2026 Global Market Entry Audit is UVAN&apos;s proprietary 3-page diagnostic framework. It presents five
-      operational gaps that commonly derail international expansion — framed as a self-assessment checklist. Use it to
+      operational gaps that commonly derail international expansion - framed as a self-assessment checklist. Use it to
       assess your expansion readiness before you commit.
     </p>
     <Link

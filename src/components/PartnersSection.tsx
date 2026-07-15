@@ -1,13 +1,24 @@
-import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Handshake } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import PartnerRevealCard from "@/components/PartnerRevealCard";
 import { blurReveal, fadeOnly, scaleUp } from "@/lib/animationVariants";
 
-const partnerImages: Record<string, string> = {
-  bhashini: "/allLogos/Bhashini-Logo.png",
-  tattava: "/allLogos/tattava-cx.svg",
+const partnerMeta: Record<
+  string,
+  { logo: string; type: string; accent: "purple" | "gold" }
+> = {
+  bhashini: {
+    logo: "/allLogos/Bhashini-Logo.png",
+    type: "Institutional Partner",
+    accent: "purple",
+  },
+  tattava: {
+    logo: "/allLogos/tattava-cx.svg",
+    type: "Strategic Partner",
+    accent: "gold",
+  },
 };
 
 type PartnerItem = { id: string; name: string; desc: string; alt: string };
@@ -16,42 +27,16 @@ const defaultPartnerItems: PartnerItem[] = [
   {
     id: "bhashini",
     name: "Bhashini",
-    desc: "Bhashini - Ministry of Electronics & IT (MeitY), Government of India · Language technology initiative.",
+    desc: "Ministry of Electronics & IT (MeitY), Government of India · Language technology initiative.",
     alt: "Bhashini logo",
   },
   {
     id: "tattava",
     name: "Tattava CX",
-    desc: "Strategic communications partner.",
+    desc: "Strategic communications and customer experience partner.",
     alt: "Tattava CX logo",
   },
 ];
-
-const PartnerLogo = ({
-  src,
-  alt,
-  name,
-  className = "max-h-11 w-auto max-w-[170px] object-contain lg:max-h-14 lg:max-w-[210px]",
-}: {
-  src?: string;
-  alt: string;
-  name: string;
-  className?: string;
-}) => {
-  const [failed, setFailed] = useState(false);
-
-  if (!src || failed) {
-    return (
-      <span className="font-serif text-base font-bold tracking-tight text-[hsl(var(--brand-navy-950))] sm:text-lg">
-        {name}
-      </span>
-    );
-  }
-
-  return (
-    <img src={src} alt={alt} loading="lazy" className={className} onError={() => setFailed(true)} />
-  );
-};
 
 const PartnersSection = () => {
   const { t } = useTranslation();
@@ -85,29 +70,31 @@ const PartnersSection = () => {
         </motion.div>
 
         <div className="mx-auto grid max-w-5xl gap-3 sm:gap-4 lg:grid-cols-2 lg:gap-6">
-          {items.map((p, i) => {
-            const src = partnerImages[p.id];
+          {items.map((partner, i) => {
+            const meta = partnerMeta[partner.id] ?? {
+              logo: "/placeholder.svg",
+              type: "Partner",
+              accent: i === 0 ? ("purple" as const) : ("gold" as const),
+            };
+
             return (
-              <motion.article
-                key={p.id}
+              <motion.div
+                key={partner.id}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={cardVariant}
                 transition={{ delay: i * 0.12 }}
-                whileHover={reduceMotion ? undefined : { y: -6 }}
-                className="theme-card-light card-shine group overflow-hidden rounded-2xl border border-[hsl(var(--border-light)/0.9)]"
               >
-                <div className="flex min-h-[84px] items-center justify-center border-b border-[hsl(var(--border-light))] bg-white px-5 py-4 sm:min-h-[96px] lg:min-h-[112px] lg:px-8">
-                  <PartnerLogo src={src} alt={p.alt} name={p.name} />
-                </div>
-                <div className="p-4 text-left sm:p-5 lg:p-6 lg:text-center">
-                  <h3 className="mb-1.5 font-serif text-base font-bold text-[hsl(var(--brand-purple-700))] sm:mb-2 sm:text-lg">
-                    {p.name}
-                  </h3>
-                  <p className="text-xs leading-relaxed text-on-light-secondary sm:text-sm">{p.desc}</p>
-                </div>
-              </motion.article>
+                <PartnerRevealCard
+                  type={meta.type}
+                  name={partner.name}
+                  description={partner.desc}
+                  logo={meta.logo}
+                  logoAlt={partner.alt}
+                  accent={meta.accent}
+                />
+              </motion.div>
             );
           })}
         </div>

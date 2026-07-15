@@ -4,7 +4,6 @@ import {
   ArrowUpRight,
   BookOpen,
   CheckCircle2,
-  Download,
   MailPlus,
   Newspaper,
   Play,
@@ -14,6 +13,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
+import GazetteMediaShowcase from "@/components/language-gazette/GazetteMediaShowcase";
 import { latestGazetteIssue } from "@/data/languageGazetteIssues";
 import { absoluteUrl, collectionPageSchema } from "@/lib/schemaHelpers";
 
@@ -289,63 +289,7 @@ const Media = () => {
 
       <SectionDivider variant="slant" />
 
-      <section id="language-gazette" className="theme-section-light scroll-mt-36 px-6 py-16 md:py-20">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
-            <motion.div {...motionProps} className="lg:col-span-7">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
-                <Newspaper className="h-3.5 w-3.5" aria-hidden />
-                The Language Gazette
-              </span>
-              <h2 className="mt-4 font-serif text-3xl font-bold leading-tight text-[hsl(var(--brand-navy-950))] sm:text-4xl lg:text-5xl">
-                The Language Gazette
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-on-light-secondary sm:text-lg">
-                UVAN&apos;s publication exploring the intersection of language, cultural intelligence and international
-                business. Read 2026 web articles or browse earlier issue-style editions.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  to="/language-gazette"
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[hsl(var(--brand-navy-950))] px-6 py-3 text-sm font-semibold text-white transition hover:brightness-110"
-                >
-                  Browse Gazette
-                  <ArrowRight className="h-4 w-4" aria-hidden />
-                </Link>
-                <Link
-                  to={latestGazetteIssue.path}
-                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-purple-700))] transition hover:bg-[hsl(var(--surface-light-100))]"
-                >
-                  Latest Issue
-                  <Download className="h-4 w-4" aria-hidden />
-                </Link>
-              </div>
-            </motion.div>
-
-            <motion.div {...motionProps} className="lg:col-span-5">
-              <Link
-                to={latestGazetteIssue.path}
-                className="group block overflow-hidden rounded-[2rem] border border-[hsl(var(--border-light))] bg-white shadow-[0_18px_44px_rgba(26,22,51,0.08)]"
-              >
-                <img
-                  src={latestGazetteIssue.coverImage}
-                  alt={`The Language Gazette ${latestGazetteIssue.label} cover`}
-                  loading="lazy"
-                  className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                />
-                <div className="border-t border-[hsl(var(--border-light))] p-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-600))]">
-                    {latestGazetteIssue.label} Issue
-                  </p>
-                  <p className="mt-2 font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))]">
-                    Read the latest digital issue
-                  </p>
-                </div>
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <GazetteMediaShowcase />
 
       <SectionDivider variant="wave" />
 

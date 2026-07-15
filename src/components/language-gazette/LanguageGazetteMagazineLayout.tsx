@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import type { GazetteArticle, GazetteIssue } from "@/data/languageGazetteIssues";
-import { gazetteArticlePath } from "@/data/languageGazetteIssues";
+import { gazette2026Articles, gazetteArticlePath } from "@/data/languageGazetteIssues";
 import { latestTlgPdfIssue, tlgPdfReaderPath } from "@/data/tlgPdfCatalog";
 import GazetteCoverImage from "@/components/language-gazette/GazetteCoverImage";
 
@@ -100,6 +100,8 @@ const LanguageGazetteMagazineLayout = ({
 }: LanguageGazetteMagazineLayoutProps) => {
   const reduceMotion = useReducedMotion();
   const displayArticles = articles ?? issue?.articles ?? [];
+  const readableArticleCount =
+    displayArticles.length > 0 ? displayArticles.length : gazette2026Articles.length;
   const issuePath = issue ? issue.path.replace(/\/$/, "") : "/language-gazette/apr-25";
   const [featuredArticle, ...restArticles] = displayArticles;
 
@@ -110,56 +112,103 @@ const LanguageGazetteMagazineLayout = ({
   return (
     <div className="gazette-paper">
       {showHero && issue ? (
-        <section className="relative overflow-hidden theme-section-soft px-6 pb-16 pt-12 md:pb-20 md:pt-16">
-          <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
+        <section className="relative isolate overflow-hidden px-5 pb-12 pt-8 sm:px-6 lg:pb-20 lg:pt-14">
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 52% 44% at 92% 8%, hsl(var(--brand-gold-500) / 0.13) 0%, transparent 50%), radial-gradient(ellipse 58% 48% at 8% 88%, hsl(var(--brand-purple-500) / 0.08) 0%, transparent 52%), radial-gradient(ellipse 40% 36% at 50% 100%, hsl(var(--brand-cyan-500) / 0.09) 0%, transparent 55%)",
+            }}
+            aria-hidden
+          />
+          <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.16]" />
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white to-transparent"
+            aria-hidden
+          />
+
           <div className="container relative z-10 mx-auto max-w-6xl">
-            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
-              <div className="lg:col-span-7">
-                <p className="text-[0.65rem] font-bold uppercase tracking-[0.28em] text-[hsl(var(--brand-purple-700))]">Quarterly Publication</p>
-                <h1 className="mt-4 font-serif text-4xl font-extrabold leading-[1.05] text-on-light md:text-6xl lg:text-7xl">
+            <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(260px,0.95fr)] lg:gap-14 xl:gap-16">
+              <motion.div initial={hidden} animate={show} transition={transition(0)}>
+                <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] shadow-sm sm:mb-5 sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em]">
+                  <BookOpen className="h-3 w-3 text-[hsl(var(--brand-gold-600))] sm:h-3.5 sm:w-3.5" aria-hidden />
+                  Quarterly Publication
+                </span>
+                <h1 className="max-w-2xl font-serif text-[1.85rem] font-bold leading-[1.06] text-on-light sm:text-4xl lg:text-5xl xl:text-[3.25rem] xl:leading-[1.04]">
                   {heroTitle ?? (
                     <>
-                      The Language
-                      <br />
+                      The Language{" "}
                       <span className="italic text-[hsl(var(--brand-purple-700))]">Gazette</span>
                     </>
                   )}
                 </h1>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-on-light-secondary">
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-on-light-secondary sm:mt-5 sm:text-base lg:text-lg">
                   {heroSubtitle ??
-                    "UVAN's quarterly publication exploring the intersection of language, cultural intelligence and international business. Available as a full digital issue and as individual articles."}
+                    "UVAN's quarterly publication exploring language, cultural intelligence, and international business - available as web articles and full PDF editions."}
                 </p>
-                <div className="mt-8 flex flex-wrap gap-3">
+                <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
                   <a
                     href="#latest-issue"
-                    className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))]"
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))] shadow-[0_16px_36px_hsl(var(--brand-gold-500)/0.22)] transition hover:-translate-y-0.5 hover:brightness-105 sm:w-auto sm:px-6"
                   >
                     Browse All Articles
-                    <ArrowRight className="h-4 w-4" aria-hidden />
+                    <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
                   </a>
                   <Link
                     to={tlgPdfReaderPath(latestTlgPdfIssue.slug)}
-                    className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
+                    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-bold uppercase tracking-[0.08em] text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto sm:px-6"
                   >
-                    Read Latest PDF Flipbook
-                    <ArrowRight className="h-4 w-4" aria-hidden />
+                    Read Latest PDF
+                    <BookOpen className="h-4 w-4 shrink-0" aria-hidden />
                   </Link>
                 </div>
-              </div>
-              <div className="lg:col-span-5">
-                <div className="gazette-cover-shadow relative mx-auto max-w-sm overflow-hidden rounded-[1.5rem] border border-[hsl(var(--border-light))] lg:max-w-none">
+              </motion.div>
+
+              <motion.div
+                initial={hidden}
+                animate={show}
+                transition={transition(0.1)}
+                className="relative mx-auto w-full max-w-[min(100%,380px)] lg:mx-0 lg:max-w-none lg:justify-self-end"
+              >
+                <div className="gazette-cover-shadow relative z-10 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] shadow-[0_24px_60px_rgba(26,22,51,0.12)]">
                   <GazetteCoverImage
                     src={issue.coverImage}
                     alt={`${issue.label} cover`}
                     className="aspect-[4/5] w-full object-cover"
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.9)] to-transparent px-6 pb-6 pt-16">
-                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--brand-gold-500))]">Latest issue</p>
-                    <p className="mt-1 font-serif text-2xl font-bold text-white">{issue.label}</p>
-                    <p className="mt-1 text-sm text-white/70">{displayArticles.length} articles</p>
-                  </div>
                 </div>
-              </div>
+                <motion.div
+                  initial={hidden}
+                  animate={show}
+                  transition={transition(0.18)}
+                  className="absolute -bottom-2 left-0 right-0 z-20 mx-auto max-w-[240px] overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white/95 p-3 shadow-[0_18px_44px_rgba(26,22,51,0.12)] backdrop-blur-sm sm:-left-4 sm:max-w-[260px] lg:-bottom-4 lg:-left-6"
+                >
+                  <div className="flex gap-3">
+                    <img
+                      src={issue.coverImage}
+                      alt=""
+                      aria-hidden
+                      className="h-16 w-14 shrink-0 rounded-lg object-cover"
+                    />
+                    <div className="min-w-0">
+                      <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">
+                        Latest issue
+                      </p>
+                      <p className="mt-1 line-clamp-2 text-xs font-semibold leading-snug text-on-light">{issue.label}</p>
+                      <p className="mt-0.5 text-[11px] text-on-light-muted">
+                        {readableArticleCount} readable articles
+                      </p>
+                      <Link
+                        to={tlgPdfReaderPath(latestTlgPdfIssue.slug)}
+                        className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-bold text-[hsl(var(--brand-gold-600))] hover:underline"
+                      >
+                        Open PDF edition
+                        <ArrowUpRight className="h-3 w-3" aria-hidden />
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -168,10 +217,7 @@ const LanguageGazetteMagazineLayout = ({
       {children}
 
       {displayArticles.length > 0 ? (
-        <section id={showHero ? "latest-issue" : undefined} className="gazette-paper-section relative overflow-hidden px-6 py-16 md:py-20">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_88%_100%,hsl(var(--brand-gold-500)/0.07),transparent_34%)]" />
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--brand-gold-500)/0.45)] to-transparent" />
-
+        <section id={showHero ? "latest-issue" : undefined} className="relative overflow-hidden bg-white px-6 py-16 md:py-20">
           <div className="container relative z-10 mx-auto max-w-6xl">
             <motion.div
               initial={hidden}

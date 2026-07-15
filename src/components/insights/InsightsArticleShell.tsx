@@ -26,6 +26,7 @@ type InsightsArticleShellProps = {
   heroImageAlt?: string;
   additionalJsonLd?: object[];
   children: ReactNode;
+  afterArticle?: ReactNode;
   relatedArticles?: RelatedInsight[];
 };
 
@@ -43,6 +44,7 @@ const InsightsArticleShell = ({
   heroImageAlt,
   additionalJsonLd = [],
   children,
+  afterArticle,
   relatedArticles = [],
 }: InsightsArticleShellProps) => {
   const pageUrl = absoluteUrl(canonicalPath);
@@ -73,10 +75,14 @@ const InsightsArticleShell = ({
   ];
 
   return (
-    <PageLayout title={`${title} | UVAN`} description={description} canonicalPath={canonicalPath} jsonLd={jsonLd}>
-      <header className="relative overflow-hidden theme-section-soft">
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
-
+    <PageLayout
+      title={`${title} | UVAN`}
+      description={description}
+      canonicalPath={canonicalPath}
+      jsonLd={jsonLd}
+      mainClassName="bg-white"
+    >
+      <header className="relative overflow-hidden bg-white">
         <div className="container relative z-10 mx-auto px-4 pb-10 pt-6 sm:px-6 sm:pb-14 sm:pt-8 md:pb-16 md:pt-10">
           <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-1 text-xs text-on-light-muted sm:mb-10 sm:gap-1.5 sm:text-sm">
             <Link to="/" className="transition hover:text-[hsl(var(--brand-purple-700))]">
@@ -130,7 +136,7 @@ const InsightsArticleShell = ({
       </header>
 
       {heroImage ? (
-        <div className="border-y border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-100))]">
+        <div className="border-y border-[hsl(var(--border-light))] bg-white">
           <div className="container mx-auto max-w-5xl px-4 py-5 sm:px-6 sm:py-8 md:py-10">
             <div className="overflow-hidden rounded-xl border border-[hsl(var(--border-light))] shadow-[0_20px_50px_-24px_rgba(26,22,51,0.25)] sm:rounded-[1.25rem]">
               <img
@@ -144,7 +150,7 @@ const InsightsArticleShell = ({
         </div>
       ) : null}
 
-      <article className="gazette-paper px-4 py-10 sm:px-6 sm:py-14 md:py-20">
+      <article className="bg-white px-4 py-10 sm:px-6 sm:py-14 md:py-20">
         <div className="container mx-auto max-w-3xl">
           <div className="gazette-article-page rounded-xl border border-[hsl(var(--brand-navy-950)/0.08)] bg-white px-5 py-8 shadow-[0_12px_48px_-20px_rgba(15,23,42,0.18)] sm:rounded-[1.25rem] sm:px-8 sm:py-10 md:px-12 md:py-14">
             <div className="gazette-article-body max-sm:[&_.gazette-lead:first-child]:first-letter:float-none max-sm:[&_.gazette-lead:first-child]:first-letter:mr-0 max-sm:[&_.gazette-lead:first-child]:first-letter:text-4xl sm:[&_.gazette-lead:first-child]:first-letter:float-left sm:[&_.gazette-lead:first-child]:first-letter:mr-3 sm:[&_.gazette-lead:first-child]:first-letter:mt-1 sm:[&_.gazette-lead:first-child]:first-letter:font-serif sm:[&_.gazette-lead:first-child]:first-letter:text-6xl sm:[&_.gazette-lead:first-child]:first-letter:font-bold sm:[&_.gazette-lead:first-child]:first-letter:text-[hsl(var(--brand-gold-600))] sm:[&_.gazette-lead:first-child]:first-letter:leading-none">
@@ -166,7 +172,7 @@ const InsightsArticleShell = ({
                 {author}
               </Link>
               <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">
-                {author} leads UVAN&apos;s market entry and language mandates across India and Asia — helping foreign companies
+                {author} leads UVAN&apos;s market entry and language mandates across India and Asia - helping foreign companies
                 navigate regulatory, operational, and cultural complexity with one accountable partner on the ground.
               </p>
             </div>
@@ -174,8 +180,10 @@ const InsightsArticleShell = ({
         </div>
       </article>
 
+      {afterArticle}
+
       {relatedArticles.length > 0 ? (
-        <section className="theme-section-soft px-4 py-12 sm:px-6 sm:py-16 md:py-20">
+        <section className="border-t border-[hsl(var(--border-light))] bg-white px-4 py-12 sm:px-6 sm:py-16 md:py-20">
           <div className="container mx-auto max-w-5xl">
             <div className="mb-8 flex flex-col gap-3 sm:mb-10 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-4">
               <div>

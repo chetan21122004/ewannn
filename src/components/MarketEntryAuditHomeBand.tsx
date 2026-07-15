@@ -2,13 +2,13 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, FileCheck2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
-/** Secondary homepage placement — Free Resource: Download the 2026 Market Entry Audit */
+/** Secondary homepage placement - Free Resource: Download the 2026 Market Entry Audit */
 const MarketEntryAuditHomeBand = () => {
   const reduceMotion = useReducedMotion() ?? false;
 
   return (
     <section
-      aria-label="Free resource — 2026 Global Market Entry Audit"
+      aria-label="Free resource - 2026 Global Market Entry Audit"
       className="theme-section-soft relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] px-5 py-6 sm:px-6 md:py-8"
     >
       <div className="pointer-events-none absolute inset-0 opacity-[0.1] theme-grid-overlay-light" aria-hidden />
@@ -38,7 +38,7 @@ const MarketEntryAuditHomeBand = () => {
                 Download the 2026 Market Entry Audit
               </h2>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-on-light-secondary">
-                A free 3-page diagnostic — five operational gaps that commonly derail international expansion, with
+                A free 3-page diagnostic - five operational gaps that commonly derail international expansion, with
                 self-assessment checklists for each.
               </p>
             </div>

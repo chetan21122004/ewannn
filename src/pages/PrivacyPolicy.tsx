@@ -119,7 +119,7 @@ const metaItems = [
     icon: Mail,
     label: "Privacy contact",
     value: COMPANY_EMAIL,
-    href: `mailto:${COMPANY_EMAIL}?subject=Privacy%20Policy%20Inquiry`,
+    href: "/contact",
   },
 ] as const;
 
@@ -187,7 +187,7 @@ const PrivacyPolicy = () => (
     <section className="theme-section-soft">
       <div className="container mx-auto max-w-5xl px-5 py-10 sm:px-6 sm:py-14 lg:py-16">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:gap-14">
-          <aside className="lg:sticky lg:top-28 lg:max-h-[calc(100dvh-8rem)] lg:self-start">
+          <aside className="lg:sticky lg:top-8 lg:max-h-[calc(100dvh-8rem)] lg:self-start">
             <nav
               aria-label="Privacy policy sections"
               className="flex max-h-[min(24rem,calc(100dvh-8rem))] flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card))] p-5 lg:max-h-[calc(100dvh-8rem)]"
@@ -264,7 +264,7 @@ const PrivacyPolicy = () => (
 
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
               <a
-                href={`mailto:${COMPANY_EMAIL}?subject=Privacy%20Policy%20Inquiry`}
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition-opacity hover:opacity-90"
               >
                 <Mail className="h-4 w-4" aria-hidden />

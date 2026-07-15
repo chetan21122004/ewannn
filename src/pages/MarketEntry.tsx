@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import {
   ArrowRight,
   Banknote,
   Building2,
   CheckCircle2,
+  ChevronDown,
   FileCheck,
   Globe2,
   Languages,
@@ -23,6 +25,7 @@ import {
   serviceSchema,
   speakableWebPage,
 } from "@/lib/schemaHelpers";
+import { cn } from "@/lib/utils";
 
 const MARKET_ENTRY_KEYWORDS =
   "India market entry consultant, foreign company India setup, entity formation India, Japan India business expansion, Southeast Asia India trade";
@@ -99,40 +102,115 @@ const workstreams = [
   },
 ];
 
-const auditGaps = [
-  "Regulatory & Entity Infrastructure",
-  "Partner Integrity Verification",
-  "The Coordination Tax",
-  "Human Capital Strategy",
-  "Executive Liaison & Negotiation",
-];
+type WorkstreamItem = (typeof workstreams)[number];
+
+const WorkstreamCard = ({ item, index }: { item: WorkstreamItem; index: number }) => {
+  const [expanded, setExpanded] = useState(false);
+  const Icon = item.icon;
+  const href = "href" in item ? item.href : undefined;
+  const showDetails = expanded;
+
+  return (
+    <div
+      className={cn(
+        "theme-card-light card-shine group/card relative flex h-full min-h-[10.75rem] flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white transition-all duration-300 sm:min-h-[11.5rem] sm:rounded-3xl",
+        showDetails &&
+          "border-[hsl(var(--brand-purple-500)/0.28)] shadow-[0_16px_36px_rgba(26,22,51,0.08)]",
+        "lg:hover:border-[hsl(var(--brand-purple-500)/0.28)] lg:hover:shadow-[0_16px_36px_rgba(26,22,51,0.08)]",
+      )}
+      onMouseLeave={() => setExpanded(false)}
+    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--brand-gold-500)/0.55)] to-transparent" />
+      <span
+        className="pointer-events-none absolute -right-1 bottom-2 font-serif text-[4.5rem] font-bold leading-none text-[hsl(var(--brand-navy-950)/0.04)] sm:text-[5rem]"
+        aria-hidden
+      >
+        {String(index + 1).padStart(2, "0")}
+      </span>
+
+      <div
+        role="button"
+        tabIndex={0}
+        className="relative z-10 flex h-full flex-col p-5 text-left sm:p-6 lg:cursor-default"
+        onClick={() => setExpanded((prev) => !prev)}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setExpanded((prev) => !prev);
+          }
+        }}
+        aria-expanded={showDetails}
+        aria-label={`${showDetails ? "Hide" : "Show"} details for ${item.title}`}
+      >
+        <div className="flex items-start justify-between gap-4">
+          <span className="inline-flex h-9 min-w-[2.25rem] items-center justify-center rounded-full bg-[hsl(var(--brand-navy-950))] px-2.5 font-mono text-[11px] font-bold tracking-[0.16em] text-[hsl(var(--brand-gold-500))]">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] text-[hsl(var(--brand-purple-700))] transition duration-300 group-hover/card:scale-[1.04] group-hover/card:border-[hsl(var(--brand-purple-500)/0.22)]">
+            <Icon className="h-[1.15rem] w-[1.15rem]" aria-hidden />
+          </span>
+        </div>
+
+        <h3 className="mt-5 max-w-[16rem] font-serif text-lg font-bold leading-snug text-on-light sm:text-xl">{item.title}</h3>
+
+        <div
+          className={cn(
+            "grid transition-all duration-300 ease-out",
+            showDetails ? "mt-4 grid-rows-[1fr] opacity-100" : "mt-0 grid-rows-[0fr] opacity-0",
+            "lg:mt-0 lg:grid-rows-[0fr] lg:opacity-0 lg:group-hover/card:mt-4 lg:group-hover/card:grid-rows-[1fr] lg:group-hover/card:opacity-100",
+          )}
+        >
+          <div className="overflow-hidden">
+            <p className="max-w-[18rem] text-sm leading-relaxed text-on-light-secondary">{item.description}</p>
+            {href ? (
+              <Link
+                to={href}
+                className="mt-3 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] hover:underline"
+                onClick={(event) => event.stopPropagation()}
+              >
+                Explore this service
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+              </Link>
+            ) : null}
+          </div>
+        </div>
+
+        <span
+          className={cn(
+            "mt-auto inline-flex items-center gap-1.5 pt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-on-light-muted transition-opacity duration-200 lg:hidden",
+            showDetails && "opacity-0",
+          )}
+        >
+          View details
+          <ChevronDown className="h-3.5 w-3.5" aria-hidden />
+        </span>
+
+        <span className="mt-auto hidden pt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-on-light-muted opacity-60 transition-opacity duration-200 lg:inline-flex lg:group-hover/card:opacity-0">
+          Hover for details
+        </span>
+      </div>
+    </div>
+  );
+};
 
 const howItWorks = [
   {
     title: "India Entry Readiness Call",
     detail:
       "30 minutes. We assess your expansion goals, identify highest-risk gaps and give you a clear picture of what needs to be in place before you move.",
-    illustration: "/doodles/Calling-amico.svg",
-    illustrationAlt: "India entry readiness call illustration",
   },
   {
     title: "Custom Entry Roadmap",
     detail:
       "A structured, sequenced plan covering regulatory, operational, language and cultural requirements specific to your sector and corridor.",
-    illustration: "/doodles/Business Plan-pana.svg",
-    illustrationAlt: "Custom market entry roadmap illustration",
   },
   {
     title: "Execution",
     detail: "UVAN manages the full mandate on the ground. Regular updates. We handle the complexity.",
-    illustration: "/doodles/Business merger-amico.svg",
-    illustrationAlt: "On-ground market entry execution illustration",
   },
   {
     title: "Ongoing Operations Support",
     detail: "Once established, UVAN continues as your on-ground liaison, operations manager and language partner.",
-    illustration: "/doodles/Schedule-amico.svg",
-    illustrationAlt: "Ongoing operations support illustration",
   },
 ];
 
@@ -163,8 +241,7 @@ const MarketEntry = () => {
       keywords={MARKET_ENTRY_KEYWORDS}
       jsonLd={marketEntryLd}
     >
-      <section className="relative overflow-hidden theme-section-soft px-5 pb-14 pt-8 sm:px-6 lg:px-6 lg:pb-24 lg:pt-12">
-        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
+      <section className="relative overflow-hidden bg-white px-5 pb-14 pt-8 sm:px-6 lg:px-6 lg:pb-24 lg:pt-12">
         <img
           src="/doodles/International trade-rafiki.svg"
           alt=""
@@ -243,9 +320,6 @@ const MarketEntry = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.18em]">
-              Who We Serve
-            </span>
             <h2 className="font-serif text-[1.65rem] font-bold text-on-light sm:text-4xl lg:text-5xl">Who We Serve</h2>
           </motion.div>
 
@@ -337,30 +411,9 @@ const MarketEntry = () => {
             </p>
           </motion.div>
 
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
-            {workstreams.map((item, i) => {
-              const Icon = item.icon;
-              const cardInner = (
-                <div className="theme-card-light card-shine flex h-full flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] border-l-4 border-l-[hsl(var(--brand-gold-500))] p-5 sm:rounded-3xl sm:p-6">
-                  <div className="mb-4 flex items-start justify-between gap-3">
-                    <span className="inline-flex h-8 min-w-[2rem] items-center justify-center rounded-lg bg-[hsl(var(--brand-navy-950))] px-2 font-mono text-xs font-bold text-[hsl(var(--brand-gold-500))]">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
-                      <Icon className="h-4 w-4" aria-hidden />
-                    </span>
-                  </div>
-                  <h3 className="font-serif text-xl font-bold leading-snug text-on-light sm:text-2xl">{item.title}</h3>
-                  <p className="mt-3 flex-grow text-sm leading-relaxed text-on-light-secondary">{item.description}</p>
-                  {"href" in item && item.href ? (
-                    <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[hsl(var(--brand-purple-700))] group-hover:underline">
-                      Explore this service →
-                    </p>
-                  ) : null}
-                </div>
-              );
-
-              return (
+          <div className="space-y-5 sm:space-y-6">
+            <div className="grid auto-rows-fr gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+              {workstreams.slice(0, 6).map((item, i) => (
                 <motion.article
                   key={item.title}
                   initial={{ opacity: 0, y: 24 }}
@@ -370,16 +423,61 @@ const MarketEntry = () => {
                   whileHover={{ y: -4 }}
                   className="h-full"
                 >
-                  {"href" in item && item.href ? (
-                    <Link to={item.href} className="group block h-full">
-                      {cardInner}
-                    </Link>
-                  ) : (
-                    <div className="group h-full">{cardInner}</div>
-                  )}
+                  <WorkstreamCard item={item} index={i} />
+                </motion.article>
+              ))}
+            </div>
+
+            {(() => {
+              const item = workstreams[6];
+              const Icon = item.icon;
+              const capstoneInner = (
+                <div className="theme-card-light card-shine group/capstone relative overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[linear-gradient(135deg,hsl(var(--surface-light-50))_0%,hsl(var(--surface-light-100))_52%,hsl(var(--brand-purple-700)/0.06)_100%)] p-5 sm:rounded-3xl sm:p-6 lg:p-8">
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--brand-purple-700)/0.35)] to-transparent" />
+                  <div className="grid items-center gap-5 lg:grid-cols-[auto_minmax(0,1fr)_minmax(12rem,16rem)] lg:gap-8">
+                    <div className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-3">
+                      <span className="inline-flex h-10 min-w-[2.5rem] items-center justify-center rounded-full bg-[hsl(var(--brand-navy-950))] px-3 font-mono text-xs font-bold tracking-[0.18em] text-[hsl(var(--brand-gold-500))]">
+                        07
+                      </span>
+                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
+                        <Icon className="h-5 w-5" aria-hidden />
+                      </span>
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] sm:text-[11px] sm:tracking-[0.22em]">
+                        Threaded through every workstream
+                      </p>
+                      <h3 className="mt-2 font-serif text-2xl font-bold leading-snug text-on-light sm:text-[1.65rem] lg:text-3xl">
+                        {item.title}
+                      </h3>
+                      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-on-light-secondary sm:text-base">
+                        {item.description}
+                      </p>
+                    </div>
+                    <div className="hidden border-l border-[hsl(var(--border-light))] pl-6 lg:block">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-on-light-muted">
+                        Cross-cutting capability
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">
+                        Applied across regulatory, financial, operational and executive workstreams.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+
+              return (
+                <motion.article
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.18 }}
+                  whileHover={{ y: -3 }}
+                >
+                  {capstoneInner}
                 </motion.article>
               );
-            })}
+            })()}
           </div>
         </div>
       </section>
@@ -464,48 +562,29 @@ const MarketEntry = () => {
       </section>
 
       <section id="audit" className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-16">
-        <img
-          src="/doodles/Light bulb-bro (1).svg"
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-6 -top-6 hidden h-40 w-40 opacity-[0.14] lg:block"
-        />
         <motion.div
-          className="theme-card-light container relative z-10 mx-auto rounded-2xl p-5 sm:rounded-3xl sm:p-8"
+          className="theme-card-light container relative z-10 mx-auto rounded-2xl border border-[hsl(var(--border-light))] p-5 sm:rounded-3xl sm:p-8 lg:p-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] sm:text-xs sm:tracking-[0.18em]">Free Resource</p>
-          <h2 className="mt-2 font-serif text-[1.55rem] font-bold leading-tight text-on-light sm:text-3xl lg:text-4xl">
-            The 5 Operational Gaps That Quietly Kill International Expansion.
-          </h2>
-          <p className="mt-3 max-w-4xl text-xs leading-relaxed text-on-light-secondary sm:text-sm">
-            The 2026 Global Market Entry Audit is UVAN&apos;s proprietary 3-page diagnostic framework. It presents five
-            operational gaps that commonly derail international expansion — framed as a self-assessment checklist. Assess
-            your expansion readiness before you commit.
-          </p>
-          <div className="mt-4 grid gap-2 sm:mt-6 md:grid-cols-2">
-            {auditGaps.map((gap, i) => (
-              <motion.p
-                key={gap}
-                className="flex items-start gap-2 text-xs text-on-light-secondary sm:text-sm"
-                initial={{ opacity: 0, x: -12 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-              >
-                <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-500))] sm:h-4 sm:w-4" />
-                <span>{gap}</span>
-              </motion.p>
-            ))}
-          </div>
-          <div className="mt-5 sm:mt-7">
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+            <div className="max-w-2xl">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] sm:text-xs">
+                Free Resource
+              </p>
+              <h2 className="mt-2 font-serif text-2xl font-bold leading-tight text-on-light sm:text-3xl lg:text-4xl">
+                The 5 Operational Gaps That Quietly Kill International Expansion.
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">
+                Assess your expansion readiness before you commit.
+              </p>
+            </div>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full shrink-0 lg:w-auto">
               <Link
                 to="/market-entry-audit"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 lg:w-auto"
               >
                 Download the 2026 Market Entry Audit
                 <ArrowRight className="h-4 w-4 shrink-0" />
@@ -560,18 +639,20 @@ const MarketEntry = () => {
                   <motion.li
                     key={step.title}
                     className="relative flex gap-3"
-                    initial={{ opacity: 0, x: -12 }}
+                    initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45, delay: index * 0.08 }}
+                    viewport={{ once: true, amount: 0.45 }}
+                    transition={{ duration: 0.55, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-gold-500))] text-xs font-bold text-[hsl(var(--brand-navy-950))] ring-4 ring-[hsl(var(--surface-light-100))]">
                       {index + 1}
                     </span>
-                    <div className="min-w-0 flex-1 rounded-xl border border-[hsl(var(--border-light))] bg-white px-3.5 py-3">
-                      <h3 className="mt-1 font-serif text-sm font-bold leading-snug text-on-light sm:text-base">
-                        Step {index + 1} - {step.title}
-                      </h3>
+                    <div className="relative min-w-0 flex-1 overflow-hidden rounded-xl border border-[hsl(var(--border-light))] bg-white px-3.5 py-3">
+                      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--brand-gold-500)/0.45)] to-transparent" />
+                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))]">
+                        Step {index + 1}
+                      </p>
+                      <h3 className="mt-1 font-serif text-sm font-bold leading-snug text-on-light sm:text-base">{step.title}</h3>
                       <p className="mt-1.5 text-xs leading-relaxed text-on-light-secondary">{step.detail}</p>
                     </div>
                   </motion.li>
@@ -579,49 +660,43 @@ const MarketEntry = () => {
               </ol>
             </div>
 
-            <div className="relative hidden gap-3 sm:gap-4 md:grid md:grid-cols-2 xl:grid-cols-4 xl:gap-5">
+            <div className="relative hidden auto-rows-fr gap-4 md:grid md:grid-cols-2 xl:grid-cols-4 xl:gap-5">
               <div
-                className="pointer-events-none absolute left-[12.5%] right-[12.5%] top-10 hidden h-px bg-gradient-to-r from-transparent via-[hsl(var(--brand-purple-500)/0.35)] to-transparent xl:block"
+                className="pointer-events-none absolute left-[12.5%] right-[12.5%] top-12 hidden h-px bg-gradient-to-r from-transparent via-[hsl(var(--brand-purple-500)/0.35)] to-transparent xl:block"
                 aria-hidden
               />
 
               {howItWorks.map((step, index) => (
                 <motion.article
                   key={step.title}
-                  className="relative rounded-2xl border border-[hsl(var(--border-light))] bg-white p-4 sm:p-5 lg:p-6"
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: index * 0.12 }}
-                  whileHover={{ y: -4 }}
+                  className="theme-card-light card-shine relative flex h-full min-h-[14rem] flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white p-4 sm:min-h-[15rem] sm:p-5 lg:p-6"
+                  initial={{ opacity: 0, y: 40, scale: 0.96 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.65, delay: index * 0.14, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -5 }}
                 >
-                  <div className="mb-3 flex items-center justify-between gap-3 sm:mb-4">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-gold-500))] sm:text-xs sm:tracking-[0.16em]">
-                      Step {index + 1}
-                    </p>
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[hsl(var(--brand-gold-500))] text-[11px] font-bold text-[hsl(var(--brand-navy-950))] sm:h-8 sm:w-8 sm:text-xs">
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--brand-gold-500)/0.55)] to-transparent" />
+                  <span
+                    className="pointer-events-none absolute -right-1 top-2 font-serif text-6xl font-bold leading-none text-[hsl(var(--brand-navy-950)/0.05)] sm:text-7xl"
+                    aria-hidden
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <div className="relative z-10 mb-4 flex items-center gap-3">
+                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-gold-500))] text-xs font-bold text-[hsl(var(--brand-navy-950))]">
                       {index + 1}
                     </span>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] sm:text-[11px]">
+                      Step {index + 1}
+                    </p>
                   </div>
 
-                  <motion.figure
-                    className="mb-3 sm:mb-4"
-                    initial={{ opacity: 0, scale: 0.94 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.12 + 0.1 }}
-                  >
-                    <motion.img
-                      src={step.illustration}
-                      alt={step.illustrationAlt}
-                      className="mx-auto h-24 w-full max-w-[160px] object-contain sm:h-28 sm:max-w-[180px] lg:h-32"
-                      animate={{ y: [0, -5, 0] }}
-                      transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.3 }}
-                    />
-                  </motion.figure>
-
-                  <h3 className="font-serif text-sm font-bold text-on-light sm:text-base lg:text-lg">{step.title}</h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-on-light-secondary sm:mt-2 sm:text-sm">{step.detail}</p>
+                  <h3 className="relative z-10 font-serif text-base font-bold leading-snug text-on-light sm:text-lg">{step.title}</h3>
+                  <p className="relative z-10 mt-2 flex-1 text-xs leading-relaxed text-on-light-secondary sm:mt-3 sm:text-sm">
+                    {step.detail}
+                  </p>
                 </motion.article>
               ))}
             </div>
@@ -668,7 +743,7 @@ const MarketEntry = () => {
               <ArrowRight className="h-4 w-4 shrink-0" />
             </Link>
             <a
-              href="mailto:info@ewan.co.in?subject=Market%20Entry%20Enquiry"
+              href="/contact"
               className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto"
             >
               Email info@ewan.co.in

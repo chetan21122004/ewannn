@@ -2,19 +2,15 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle2,
-  Landmark,
-  MessageSquare,
-  Search,
   Sparkles,
-  TrendingUp,
-  Users,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import ServiceHoverCard from "@/components/ServiceHoverCard";
+import AutoHorizontalSlider from "@/components/language-gazette/AutoHorizontalSlider";
 import { MARKET_RESEARCH_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, serviceSchema } from "@/lib/schemaHelpers";
 
@@ -39,9 +35,8 @@ const services = [
       "Credit and financial standing (where available)",
       "Existing client and supplier relationship mapping",
     ],
-    icon: Users,
-    doodle: "/doodles/House searching-cuate.svg",
-    doodleAlt: "Distributor and partner verification illustration",
+    image: stitch.intelData,
+    imageAlt: "On-ground distributor and partner verification research",
   },
   {
     id: "competitor-analysis",
@@ -54,9 +49,8 @@ const services = [
       "Buyer and trade channel interviews",
       "Positioning and perception research",
     ],
-    icon: TrendingUp,
-    doodle: "/doodles/Charts-cuate.svg",
-    doodleAlt: "Competitive landscape analysis illustration",
+    image: stitch.benchmarking,
+    imageAlt: "Competitive benchmarking and market intelligence analysis",
   },
   {
     id: "consumer-buyer-research",
@@ -69,9 +63,8 @@ const services = [
       "Quantitative surveys with native-language questionnaire design",
       "Buyer persona development for Indian and Asian markets",
     ],
-    icon: MessageSquare,
-    doodle: "/doodles/Group discussion-bro.svg",
-    doodleAlt: "Consumer and buyer research illustration",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+    imageAlt: "Consumer and buyer research focus group session",
   },
   {
     id: "sector-assessment",
@@ -84,19 +77,17 @@ const services = [
       "Market sizing and growth assessment",
       "Entry opportunity and risk analysis",
     ],
-    icon: Search,
-    doodle: "/doodles/Business Plan-pana.svg",
-    doodleAlt: "Sector and industry assessment illustration",
+    image: stitch.worldMap,
+    imageAlt: "Global sector and industry market assessment",
   },
   {
     id: "government-programs",
     title: "Primary Market Research for Government Programs",
     description:
       "UVAN has designed and conducted primary market research for export promotion programs under MSAMB (Government of Maharashtra) - giving us direct experience with government-commissioned research methodology and reporting standards. This background gives UVAN credibility with institutional clients and government-linked research requirements.",
-    points: [],
-    icon: Landmark,
-    doodle: "/doodles/Generating new leads-amico.svg",
-    doodleAlt: "Government program market research illustration",
+    points: [] as string[],
+    image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a78e?auto=format&fit=crop&w=1200&q=80",
+    imageAlt: "Government and institutional market research program",
   },
 ];
 
@@ -167,7 +158,7 @@ const MarketResearchPage = () => {
               </p>
               <div className="mt-6 flex flex-col gap-2.5 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4">
                 <motion.a
-                  href="mailto:info@ewan.co.in?subject=Market%20Research%20Brief"
+                  href="/contact"
                   className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
                   whileHover={reduceMotion ? undefined : { scale: 1.03 }}
                   whileTap={reduceMotion ? undefined : { scale: 0.97 }}
@@ -293,7 +284,9 @@ const MarketResearchPage = () => {
                 <Sparkles className="h-3 w-3 text-[hsl(var(--brand-gold-600))] sm:h-3.5 sm:w-3.5" aria-hidden />
                 Our Market Research Services
               </span>
-              <p className="mt-2 text-xs text-on-light-secondary md:hidden">Tap a service to expand details.</p>
+              <p className="mt-2 text-xs text-on-light-secondary sm:text-sm">
+                Tap or hover a service card to explore scope and deliverables.
+              </p>
             </div>
             <motion.img
               src="/doodles/Charts-cuate.svg"
@@ -304,97 +297,15 @@ const MarketResearchPage = () => {
             />
           </motion.div>
 
-          <Accordion type="single" collapsible className="flex flex-col gap-2 md:hidden">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <AccordionItem
-                  key={service.id}
-                  id={service.id}
-                  value={service.id}
-                  className="scroll-mt-28 overflow-hidden rounded-xl border border-[hsl(var(--border-light))] border-b-0 bg-white px-3.5 shadow-sm data-[state=open]:border-[hsl(var(--brand-purple-500)/0.35)] data-[state=open]:ring-1 data-[state=open]:ring-[hsl(var(--brand-purple-500)/0.15)]"
-                >
-                  <AccordionTrigger className="gap-3 py-3.5 hover:no-underline [&[data-state=open]>svg]:text-[hsl(var(--brand-purple-700))]">
-                    <span className="flex min-w-0 flex-1 items-center gap-3 text-left">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
-                        <Icon className="h-4 w-4" aria-hidden />
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700)/0.75)]">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <span className="block font-serif text-base font-bold leading-snug text-on-light">
-                          {service.title}
-                        </span>
-                      </span>
-                    </span>
-                  </AccordionTrigger>
-                  <AccordionContent className="pb-3.5 text-xs leading-relaxed text-on-light-secondary">
-                    <p>{service.description}</p>
-                    {service.points.length > 0 ? (
-                      <ul className="mt-3 space-y-2 border-t border-[hsl(var(--border-light))] pt-3">
-                        {service.points.map((point) => (
-                          <li key={point} className="flex items-start gap-2">
-                            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-500))]" />
-                            <span>{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    ) : null}
-                  </AccordionContent>
-                </AccordionItem>
-              );
-            })}
-          </Accordion>
-
-          <div className="hidden gap-5 md:grid md:grid-cols-2">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.article
-                  key={service.id}
-                  id={service.id}
-                  initial={hidden}
-                  whileInView={show}
-                  viewport={{ once: true }}
-                  transition={transition((index % 2) * 0.08)}
-                  whileHover={reduceMotion ? undefined : { y: -5 }}
-                  className="group theme-card-light card-shine scroll-mt-28 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-5 sm:rounded-3xl sm:p-7 lg:p-8"
-                >
-                  <div className="mb-3 flex items-center justify-between gap-3 sm:mb-4">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700)/0.75)] sm:text-[11px] sm:tracking-[0.18em]">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm sm:h-11 sm:w-11">
-                      <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden />
-                    </div>
-                  </div>
-
-                  <motion.img
-                    src={service.doodle}
-                    alt={service.doodleAlt}
-                    className="mx-auto mb-4 h-24 w-full max-w-[150px] object-contain sm:h-28 sm:max-w-[170px]"
-                    animate={reduceMotion ? undefined : { y: [0, -5, 0] }}
-                    transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.25 }}
-                  />
-
-                  <div className="mb-3 h-1 w-12 rounded-full bg-gradient-to-r from-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-gold-500))] opacity-80 transition group-hover:w-16" />
-                  <h3 className="font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-2xl">{service.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">{service.description}</p>
-                  {service.points.length > 0 ? (
-                    <div className="mt-5 space-y-2 border-t border-[hsl(var(--border-light))] pt-5">
-                      {service.points.map((point) => (
-                        <p key={point} className="flex items-start gap-2 text-sm text-on-light-secondary">
-                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-500))]" />
-                          <span>{point}</span>
-                        </p>
-                      ))}
-                    </div>
-                  ) : null}
-                </motion.article>
-              );
-            })}
-          </div>
+          <AutoHorizontalSlider
+            ariaLabel="Market research services"
+            slideClassName="basis-[88%] sm:basis-[62%] md:basis-[46%] lg:basis-[38%] xl:basis-[32%]"
+            autoplayMs={5200}
+            edgeFadeFromClass="from-[hsl(var(--surface-light-50))]"
+            items={services.map((service, index) => (
+              <ServiceHoverCard key={service.id} {...service} index={index} />
+            ))}
+          />
         </div>
       </section>
 
@@ -562,7 +473,7 @@ const MarketResearchPage = () => {
           </p>
           <div className="mt-6 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
             <motion.a
-              href="mailto:info@ewan.co.in?subject=Market%20Research%20Brief"
+              href="/contact"
               className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
               whileHover={reduceMotion ? undefined : { scale: 1.03 }}
               whileTap={reduceMotion ? undefined : { scale: 0.97 }}

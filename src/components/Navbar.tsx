@@ -5,8 +5,9 @@ import {
   Building2,
   ChevronDown,
   ChevronRight,
+  Factory,
+  FileText,
   Languages,
-  Mail,
   Menu,
   MessageCircle,
   Newspaper,
@@ -18,6 +19,7 @@ import { SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
 import { scrollToPageTop } from "@/lib/scrollToTop";
 import { useTranslation } from "react-i18next";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import NavbarLanguageSwitcher from "@/components/NavbarLanguageSwitcher";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import type { LucideIcon } from "lucide-react";
 
@@ -91,7 +93,12 @@ const mobileNavGroups: NavGroup[] = [
       { labelKey: "navMenu.about.joinUs", href: "/join-us" },
       { labelKey: "navMenu.about.caseStudy", href: "/case-study" },
       { labelKey: "navMenu.about.testimonials", href: "/#testimonials" },
+      { labelKey: "nav.contactUs", href: "/contact" },
     ],
+  },
+  {
+    labelKey: "nav.industries",
+    href: "/industries",
   },
   {
     labelKey: "nav.media",
@@ -102,10 +109,6 @@ const mobileNavGroups: NavGroup[] = [
       { labelKey: "navMenu.media.videos", href: "/media#video-insights" },
       { labelKey: "navMenu.media.newsletter", href: "/newsletter" },
     ],
-  },
-  {
-    labelKey: "nav.contactUs",
-    href: "/contact",
   },
 ];
 
@@ -155,7 +158,12 @@ const desktopNavGroups: DesktopNavGroup[] = [
       { labelKey: "navMenu.about.joinUs", href: "/join-us" },
       { labelKey: "navMenu.about.caseStudy", href: "/case-study" },
       { labelKey: "navMenu.about.testimonials", href: "/#testimonials" },
+      { labelKey: "nav.contactUs", href: "/contact" },
     ],
+  },
+  {
+    labelKey: "nav.industries",
+    href: "/industries",
   },
   {
     labelKey: "nav.media",
@@ -167,24 +175,22 @@ const desktopNavGroups: DesktopNavGroup[] = [
       { labelKey: "navMenu.media.newsletter", href: "/newsletter" },
     ],
   },
-  {
-    labelKey: "nav.contactUs",
-    href: "/contact",
-  },
-];
-
-const languageOptions = [
-  { code: "en", label: "EN" },
-  { code: "zh", label: "中文" },
-  { code: "ja", label: "日本語" },
 ];
 
 const mobileGroupMeta: Record<string, { icon: LucideIcon; tint: string }> = {
   "nav.marketEntry": { icon: Building2, tint: "bg-[hsl(var(--brand-purple-700)/0.1)] text-[hsl(var(--brand-purple-700))]" },
   "nav.languageLocalization": { icon: Languages, tint: "bg-[hsl(var(--brand-cyan-500)/0.12)] text-[hsl(var(--brand-cyan-500))]" },
   "nav.aboutUs": { icon: Users, tint: "bg-[hsl(var(--brand-gold-500)/0.15)] text-[hsl(var(--brand-gold-500))]" },
+  "nav.industries": { icon: Factory, tint: "bg-[hsl(var(--brand-navy-950)/0.08)] text-[hsl(var(--brand-navy-950))]" },
   "nav.media": { icon: Newspaper, tint: "bg-[hsl(var(--brand-purple-500)/0.1)] text-[hsl(var(--brand-purple-700))]" },
-  "nav.contactUs": { icon: Mail, tint: "bg-[hsl(var(--brand-navy-950)/0.08)] text-[hsl(var(--brand-navy-950))]" },
+};
+
+const isNavSectionLink = (href: string) => href.includes("#");
+
+const getNavLinkIcon = (item: NavItem): LucideIcon | null => {
+  if (item.external) return ArrowUpRight;
+  if (isNavSectionLink(item.href)) return null;
+  return FileText;
 };
 
 const isPathActive = (href: string, pathname: string) => {
@@ -205,7 +211,7 @@ const MobileNavSubLink = ({
   t: (key: string) => string;
 }) => {
   const className = cn(
-    "flex min-h-10 items-center justify-between gap-3 rounded-lg border-l-2 py-2 pl-3 pr-2 text-[13px] font-medium transition",
+    "flex min-h-10 items-center gap-3 rounded-lg border-l-2 py-2 pl-3 pr-2 text-[13px] font-medium transition",
     active
       ? "border-[hsl(var(--brand-purple-700))] bg-[hsl(var(--brand-purple-700)/0.06)] text-[hsl(var(--brand-purple-700))]"
       : "border-transparent text-[hsl(var(--brand-navy-950)/0.82)] hover:border-[hsl(var(--brand-purple-500)/0.35)] hover:bg-[hsl(var(--surface-light-50))]",
@@ -213,8 +219,13 @@ const MobileNavSubLink = ({
 
   const content = (
     <>
-      <span className="min-w-0 leading-snug">{t(item.labelKey)}</span>
-      {item.external ? <ArrowUpRight className="h-3.5 w-3.5 shrink-0 opacity-45" aria-hidden /> : null}
+      <span className="flex min-w-0 items-center gap-2.5 leading-snug">
+        {(() => {
+          const Icon = getNavLinkIcon(item);
+          return Icon ? <Icon className="h-3.5 w-3.5 shrink-0 opacity-45" aria-hidden /> : null;
+        })()}
+        <span>{t(item.labelKey)}</span>
+      </span>
     </>
   );
 
@@ -229,6 +240,35 @@ const MobileNavSubLink = ({
   );
 };
 
+const DesktopNavDropdownLink = ({
+  item,
+  t,
+}: {
+  item: DesktopNavItem;
+  t: (key: string) => string;
+}) => {
+  const Icon = getNavLinkIcon(item);
+  const className =
+    "flex items-center gap-2.5 rounded-lg px-3 py-2 text-[14px] font-medium leading-snug text-[hsl(var(--brand-navy-950)/0.92)] outline-none transition hover:bg-[hsl(var(--surface-light-50))] hover:text-[hsl(var(--brand-navy-950))] focus-visible:bg-[hsl(var(--surface-light-50))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.35)] focus-visible:ring-inset";
+
+  const label = (
+    <>
+      {Icon ? <Icon className="h-3.5 w-3.5 shrink-0 opacity-45" aria-hidden /> : null}
+      <span className="min-w-0">{t(item.labelKey)}</span>
+    </>
+  );
+
+  return item.external ? (
+    <a href={item.href} target="_blank" rel="noreferrer" className={className}>
+      {label}
+    </a>
+  ) : (
+    <Link to={item.href} className={className}>
+      {label}
+    </Link>
+  );
+};
+
 const getActiveMobileGroup = (pathname: string) =>
   mobileNavGroups.find(
     (group) =>
@@ -239,11 +279,13 @@ const getActiveMobileGroup = (pathname: string) =>
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [expandedGroup, setExpandedGroup] = useState<string>("");
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const closeMobile = () => setMobileOpen(false);
 
-  const isDesktopGroupActive = (href: string) => isPathActive(href, pathname);
+  const isDesktopGroupActive = (group: DesktopNavGroup) =>
+    isPathActive(group.href, pathname) ||
+    (group.links?.some((link) => isPathActive(link.href, pathname)) ?? false);
 
   const mobileGroupsWithLinks = useMemo(
     () => mobileNavGroups.filter((group) => group.links?.length),
@@ -302,7 +344,7 @@ const Navbar = () => {
             aria-label="Primary"
           >
             {desktopNavGroups.map((group, index) => {
-              const active = isDesktopGroupActive(group.href);
+              const active = isDesktopGroupActive(group);
               return (
                 <div
                   key={group.labelKey}
@@ -341,27 +383,9 @@ const Navbar = () => {
                             group.links.length <= 4 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-2",
                           )}
                         >
-                          {group.links.map((item) =>
-                            item.external ? (
-                              <a
-                                key={`${group.labelKey}-${item.labelKey}`}
-                                href={item.href}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="block rounded-lg px-3 py-2 text-[14px] font-medium leading-snug text-[hsl(var(--brand-navy-950)/0.92)] outline-none transition hover:bg-[hsl(var(--surface-light-50))] hover:text-[hsl(var(--brand-navy-950))] focus-visible:bg-[hsl(var(--surface-light-50))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.35)] focus-visible:ring-inset"
-                              >
-                                {t(item.labelKey)}
-                              </a>
-                            ) : (
-                              <Link
-                                key={`${group.labelKey}-${item.labelKey}`}
-                                to={item.href}
-                                className="block rounded-lg px-3 py-2 text-[14px] font-medium leading-snug text-[hsl(var(--brand-navy-950)/0.92)] outline-none transition hover:bg-[hsl(var(--surface-light-50))] hover:text-[hsl(var(--brand-navy-950))] focus-visible:bg-[hsl(var(--surface-light-50))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.35)] focus-visible:ring-inset"
-                              >
-                                {t(item.labelKey)}
-                              </Link>
-                            ),
-                          )}
+                          {group.links.map((item) => (
+                            <DesktopNavDropdownLink key={`${group.labelKey}-${item.labelKey}`} item={item} t={t} />
+                          ))}
                         </div>
                       </div>
                     </div>
@@ -372,23 +396,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-2.5">
-            <div className="flex items-center gap-0.5 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-0.5">
-              {languageOptions.map(({ code, label }) => (
-                <button
-                  key={code}
-                  type="button"
-                  onClick={() => void i18n.changeLanguage(code)}
-                  className={cn(
-                    "rounded-full px-2.5 py-1 text-[11px] font-semibold transition",
-                    i18n.resolvedLanguage?.startsWith(code)
-                      ? "bg-white text-[hsl(var(--brand-purple-700))] shadow-sm ring-1 ring-[hsl(var(--brand-purple-700)/0.1)]"
-                      : "text-[hsl(var(--brand-navy-950)/0.55)] hover:text-[hsl(var(--brand-navy-950))]",
-                  )}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
+            <NavbarLanguageSwitcher variant="desktop" />
             <Link
               to="/ask-soham"
               className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2 text-[13px] font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_4px_14px_-4px_hsl(var(--brand-gold-500)/0.55)] transition hover:brightness-105"
@@ -400,23 +408,7 @@ const Navbar = () => {
 
           {/* Mobile top actions */}
           <div className="flex items-center gap-2 lg:hidden">
-            <div className="flex items-center gap-0.5 rounded-full border border-[hsl(var(--border-light))] bg-white/90 p-0.5 shadow-sm">
-              {languageOptions.map(({ code, label }) => (
-                <button
-                  key={code}
-                  type="button"
-                  onClick={() => void i18n.changeLanguage(code)}
-                  className={cn(
-                    "rounded-full px-2 py-1 text-[10px] font-semibold transition",
-                    i18n.resolvedLanguage?.startsWith(code)
-                      ? "bg-[hsl(var(--brand-purple-700))] text-white"
-                      : "text-[hsl(var(--brand-navy-950)/0.65)]",
-                  )}
-                >
-                  {code === "en" ? "EN" : label}
-                </button>
-              ))}
-            </div>
+            <NavbarLanguageSwitcher variant="mobile" />
             <button
               type="button"
               className={cn(
@@ -550,7 +542,7 @@ const Navbar = () => {
 
             {mobileStandaloneLinks.map((group) => {
               const meta = mobileGroupMeta[group.labelKey];
-              const Icon = meta?.icon ?? Mail;
+              const Icon = meta?.icon ?? ChevronRight;
               const active = isPathActive(group.href, pathname);
 
               return (
@@ -577,23 +569,7 @@ const Navbar = () => {
 
           <div className="shrink-0 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-4 py-3.5">
             <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-navy-950)/0.45)]">Language</p>
-            <div className="flex gap-1 rounded-full border border-[hsl(var(--border-light))] bg-white p-0.5">
-              {languageOptions.map(({ code, label }) => (
-                <button
-                  key={code}
-                  type="button"
-                  onClick={() => void i18n.changeLanguage(code)}
-                  className={cn(
-                    "flex-1 rounded-full px-2 py-1.5 text-[11px] font-semibold transition",
-                    i18n.resolvedLanguage?.startsWith(code)
-                      ? "bg-[hsl(var(--brand-purple-700))] text-white"
-                      : "text-[hsl(var(--brand-navy-950)/0.65)] hover:text-[hsl(var(--brand-navy-950))]",
-                  )}
-                >
-                  {code === "en" ? "EN" : label}
-                </button>
-              ))}
-            </div>
+            <NavbarLanguageSwitcher variant="drawer" onSelect={closeMobile} />
           </div>
         </aside>
       </div>

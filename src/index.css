@@ -188,7 +188,7 @@
     box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.03);
   }
 
-  /* Navigation Glass — white frosted; navy/purple are accent only, not fill */
+  /* Navigation Glass - white frosted; navy/purple are accent only, not fill */
   .nav-glass {
     background: hsl(var(--surface-light-card) / 0.88);
     backdrop-filter: blur(20px) saturate(1.2);
@@ -197,7 +197,7 @@
     box-shadow: 0 1px 0 hsl(var(--surface-light-card)), 0 4px 20px hsl(var(--brand-navy-950) / 0.04);
   }
 
-  /* Hero gradient — light neutral */
+  /* Hero gradient - light neutral */
   .hero-gradient {
     background: linear-gradient(180deg, hsl(var(--surface-light-100)) 0%, hsl(var(--surface-light-200)) 100%);
   }
@@ -212,8 +212,8 @@
     background: linear-gradient(135deg, hsl(var(--surface-elevated)), hsl(var(--brand-navy-850)), hsl(var(--brand-purple-800)));
   }
 
-  /* Section variants — navy/dark tokens retargeted to light surfaces.
-     Navy tokens are for text/icons/buttons/borders only — never section or card fills except Footer. */
+  /* Section variants - navy/dark tokens retargeted to light surfaces.
+     Navy tokens are for text/icons/buttons/borders only - never section or card fills except Footer. */
   .section-navy {
     background: linear-gradient(180deg, hsl(var(--surface-light-100)) 0%, hsl(var(--surface-light-200)) 100%);
   }
@@ -280,7 +280,7 @@
     background-size: 60px 60px;
   }
 
-  /* Grid overlay — neutral gray, no purple tint */
+  /* Grid overlay - neutral gray, no purple tint */
   .theme-grid-overlay-light {
     background-image:
       linear-gradient(hsl(var(--border-light) / 0.35) 1px, transparent 1px),
@@ -477,7 +477,7 @@
       linear-gradient(180deg, hsl(var(--surface-light-50)) 0%, hsl(var(--surface-light-100)) 42%, hsl(var(--surface-light-200)) 100%);
   }
 
-  /* homepage-ambient__veil — neutral, no purple wash */
+  /* homepage-ambient__veil - neutral, no purple wash */
   .homepage-ambient__veil {
     position: fixed;
     inset: 0;
@@ -491,7 +491,7 @@
     position: relative;
   }
 
-  /* Section separator — gold only, no purple stops */
+  /* Section separator - gold only, no purple stops */
   .homepage-scroll-scene + .homepage-scroll-scene::before {
     content: "";
     position: absolute;
@@ -672,26 +672,12 @@ html {
    LANGUAGE GAZETTE (magazine)
    ======================== */
 .gazette-paper {
-  background-color: hsl(40 30% 97%);
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      hsl(40 20% 92% / 0.35) 2px,
-      hsl(40 20% 92% / 0.35) 3px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 2px,
-      hsl(40 20% 92% / 0.2) 2px,
-      hsl(40 20% 92% / 0.2) 3px
-    );
+  background-color: hsl(0 0% 100%);
+  background-image: none;
 }
 
 .gazette-paper-section {
-  background-color: hsl(40 30% 97%);
+  background-color: hsl(0 0% 100%);
 }
 
 .gazette-masthead .gazette-rule,

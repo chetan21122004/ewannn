@@ -14,12 +14,12 @@ import { howToSchema } from "@/lib/schemaHelpers";
 const CANONICAL = "/insights/how-to-enter-indian-market/";
 const TITLE = "How to Enter the Indian Market as a Foreign Company - A Step-by-Step Guide";
 const DESCRIPTION =
-  "Structured India market entry: readiness call, roadmap, execution, and ongoing support — aligned with UVAN's proven four-step mandate.";
+  "Structured India market entry: readiness call, roadmap, execution, and ongoing support - aligned with UVAN's proven four-step mandate.";
 
 const steps = [
   {
     title: "India Entry Readiness Call",
-    body: "A focused 30-minute session to assess expansion goals, identify risk gaps, and define what must be in place before you move. No generic pitch — we map your sector, corridor, and timeline against what India actually requires.",
+    body: "A focused 30-minute session to assess expansion goals, identify risk gaps, and define what must be in place before you move. No generic pitch - we map your sector, corridor, and timeline against what India actually requires.",
   },
   {
     title: "Custom Entry Roadmap",
@@ -27,11 +27,11 @@ const steps = [
   },
   {
     title: "Execution",
-    body: "UVAN manages the full mandate on the ground — liaison, coordination, language, and operational follow-through. Regular updates. We handle the complexity so your team is not running India from a distance.",
+    body: "UVAN manages the full mandate on the ground - liaison, coordination, language, and operational follow-through. Regular updates. We handle the complexity so your team is not running India from a distance.",
   },
   {
     title: "Ongoing Operations Support",
-    body: "Once established, UVAN continues as your on-ground liaison, operations manager, and language partner — so expansion does not stall after the launch phase.",
+    body: "Once established, UVAN continues as your on-ground liaison, operations manager, and language partner - so expansion does not stall after the launch phase.",
   },
 ];
 
@@ -67,21 +67,21 @@ const InsightsArticleHowToEnterIndia = () => (
         name: TITLE,
         description:
           "How foreign companies establish and operate in India using a single accountable partner covering regulatory navigation, execution, language, and culture.",
-        steps: steps.map((step) => `${step.title} — ${step.body}`),
+        steps: steps.map((step) => `${step.title} - ${step.body}`),
       }),
     ]}
   >
     <ArticleLead>
       Foreign companies approaching India routinely underestimate regulatory sequencing, distributor integrity, coordination
       overhead across workstreams, on-ground liaison for government and negotiation settings, and the language layer threaded
-      through each step. Treating India as translation plus legal misses how decisions are negotiated in practice — which is
+      through each step. Treating India as translation plus legal misses how decisions are negotiated in practice - which is
       precisely why UVAN runs market entry, language, and operational execution together.
     </ArticleLead>
 
     <ArticleSection title="Why India catches foreign companies off guard">
       <p>
         India rewards preparation and punishes assumption. Entity structure, sector-specific approvals, state-level variation,
-        distributor relationships, and the informal norms inside meetings all interact — often in ways that do not appear in a
+        distributor relationships, and the informal norms inside meetings all interact - often in ways that do not appear in a
         standard market report.
       </p>
       <p>
@@ -92,13 +92,13 @@ const InsightsArticleHowToEnterIndia = () => (
     </ArticleSection>
 
     <ArticleHighlight>
-      Market entry in India is not a project with a finish line. It is an operating model — and the companies that succeed
+      Market entry in India is not a project with a finish line. It is an operating model - and the companies that succeed
       treat language, culture, and on-ground execution as part of the mandate, not an afterthought.
     </ArticleHighlight>
 
     <ArticleSection title="The four-step process">
       <p>
-        UVAN&apos;s India entry framework is designed for foreign companies that need one accountable partner — not a stack of
+        UVAN&apos;s India entry framework is designed for foreign companies that need one accountable partner - not a stack of
         disconnected vendors. Each step builds on the last, with clear outputs before you commit further.
       </p>
       <ArticleSteps steps={steps} />
@@ -114,7 +114,7 @@ const InsightsArticleHowToEnterIndia = () => (
     <ArticleSection title="What good execution looks like on the ground">
       <p>
         Strong execution means fewer surprises in licensing timelines, cleaner handoffs between legal and commercial teams, and
-        language support that matches the setting — board materials, factory walkthroughs, government meetings, and partner
+        language support that matches the setting - board materials, factory walkthroughs, government meetings, and partner
         negotiations each demand different registers.
       </p>
       <ul className="mt-4 space-y-3">
@@ -136,14 +136,14 @@ const InsightsArticleHowToEnterIndia = () => (
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
             <strong className="text-[hsl(var(--brand-navy-950))]">Language where decisions happen:</strong> interpretation,
-            localization, and cultural briefing embedded in the mandate — not bolted on after delays appear.
+            localization, and cultural briefing embedded in the mandate - not bolted on after delays appear.
           </span>
         </li>
       </ul>
     </ArticleSection>
 
     <ArticleClosing>
-      If you are evaluating India, start with clarity on readiness — not enthusiasm. A structured entry call and roadmap
+      If you are evaluating India, start with clarity on readiness - not enthusiasm. A structured entry call and roadmap
       cost far less than reversing a half-built operating model six months in.
     </ArticleClosing>
 

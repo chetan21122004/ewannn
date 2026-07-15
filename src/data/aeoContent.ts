@@ -1,4 +1,4 @@
-/** Verbatim firm copy — split for layout only; full string is ENTITY_PARAGRAPH_A. Do not edit wording without updating schema copy. */
+/** Verbatim firm copy - split for layout only; full string is ENTITY_PARAGRAPH_A. Do not edit wording without updating schema copy. */
 export const ENTITY_PARAGRAPH_A_SECTIONS = [
   "Founded in 2020 by Soham Kakade, UVAN is an ISO 9001:2015 certified, Pune-based cross-border market entry and language services company.",
   "The firm provides comprehensive India market entry consulting, business and executive liaisoning, and translation and interpretation services across more than 125 languages.",
@@ -85,7 +85,7 @@ export const MARKET_ENTRY_AUDIT_FAQS: AeoFaqItem[] = [
   {
     question: "What is the 2026 Global Market Entry Audit for?",
     answer:
-      "It is UVAN's proprietary diagnostic framework — a free self-assessment PDF that walks you through five operational gaps teams often miss before or during cross-border expansion, so you can stress-test readiness before committing capital and headcount.",
+      "It is UVAN's proprietary diagnostic framework - a free self-assessment PDF that walks you through five operational gaps teams often miss before or during cross-border expansion, so you can stress-test readiness before committing capital and headcount.",
   },
   {
     question: "How do I download the audit?",

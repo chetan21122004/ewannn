@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
+import AutoHorizontalSlider from "@/components/language-gazette/AutoHorizontalSlider";
+import PartnerRevealCard from "@/components/PartnerRevealCard";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { ABOUT_US_FAQS, ENTITY_PARAGRAPH_A_SECTIONS, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, personSoham, personSukhada } from "@/lib/schemaHelpers";
@@ -261,7 +263,7 @@ const AboutUs = () => {
       jsonLd={aboutLd}
     >
       <div ref={pageRef} className="relative">
-        <div className="pointer-events-none fixed right-4 top-28 z-40 hidden h-[52vh] w-px overflow-hidden rounded-full bg-[hsl(var(--brand-navy-950)/0.08)] xl:block">
+        <div className="pointer-events-none fixed right-4 top-8 z-40 hidden h-[52vh] w-px overflow-hidden rounded-full bg-[hsl(var(--brand-navy-950)/0.08)] xl:block">
           <motion.div
             className="absolute left-0 top-0 h-full w-full origin-top rounded-full bg-gradient-to-b from-[hsl(var(--brand-gold-500))] via-[hsl(var(--brand-purple-500))] to-[hsl(var(--brand-cyan-500))]"
             style={{ scaleY: corridorScale }}
@@ -347,7 +349,7 @@ const AboutUs = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ...springReveal, delay: 0.12 }}
-              className="order-1 lg:order-2 lg:sticky lg:top-28 lg:self-start"
+              className="order-1 lg:order-2 lg:sticky lg:top-8 lg:self-start"
             >
               <img
                 src={heroDoodleVisual}
@@ -411,7 +413,7 @@ const AboutUs = () => {
               transition={springReveal}
             >
               <div className="relative z-10 grid gap-8 lg:grid-cols-[minmax(240px,280px)_minmax(0,1fr)] lg:items-start">
-                <figure className="relative mx-auto w-full max-w-[280px] overflow-hidden rounded-2xl border border-white/10 bg-white/8 lg:mx-0 lg:max-w-none lg:sticky lg:top-28">
+                <figure className="relative mx-auto w-full max-w-[280px] overflow-hidden rounded-2xl border border-white/10 bg-white/8 lg:mx-0 lg:max-w-none lg:sticky lg:top-8">
                   <motion.img
                     src="/Soham-Sir.jpg"
                     alt="Soham Kakade, Founder and CEO of UVAN"
@@ -504,7 +506,7 @@ const AboutUs = () => {
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
               />
               <div className="relative z-10 grid gap-8 lg:grid-cols-[minmax(240px,280px)_minmax(0,1fr)] lg:items-start">
-                <figure className="relative mx-auto w-full max-w-[280px] overflow-hidden rounded-2xl border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-100))] lg:mx-0 lg:max-w-none lg:sticky lg:top-28">
+                <figure className="relative mx-auto w-full max-w-[280px] overflow-hidden rounded-2xl border border-[hsl(var(--border-light-strong))] bg-[hsl(var(--surface-light-100))] lg:mx-0 lg:max-w-none lg:sticky lg:top-8">
                   <motion.img
                     src="/Sukhada-maam.jpg"
                     alt="CMA Sukhada Kakade Bhalerao, Co-Founder and Director of UVAN"
@@ -715,42 +717,48 @@ const AboutUs = () => {
               </motion.div>
             ))}
 
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            {recognitions
-              .filter((item) => !item.featured)
-              .map((item, i) => (
-                <motion.article
-                  key={item.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: i * 0.06 }}
-                  whileHover={{ y: -6 }}
-                  className="theme-card-light card-shine flex h-full flex-col overflow-hidden rounded-3xl border border-[hsl(var(--border-light))]"
-                >
-                  <div className="flex min-h-[108px] items-center justify-center border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-6 py-5">
-                    <BrandLogo
-                      src={item.logo}
-                      alt={item.logoAlt}
-                      className="max-h-16 w-full max-w-[200px] object-contain"
-                    />
-                  </div>
-                  <div className="flex flex-1 flex-col p-6 sm:p-7">
-                    <span className="inline-flex w-fit rounded-full bg-[hsl(var(--brand-purple-700)/0.1)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
-                      {item.badge}
-                    </span>
-                    <h4 className="mt-4 font-serif text-xl font-bold leading-snug text-[hsl(var(--brand-navy-950))]">
-                      {item.title}
-                    </h4>
-                    <p className="mt-3 flex-grow text-sm leading-relaxed text-on-light-secondary">{item.desc}</p>
-                    <div className="mt-5 flex items-center gap-2 border-t border-[hsl(var(--border-light))] pt-4 text-[11px] font-semibold text-on-light-muted">
-                      <CheckCircle2 className="h-4 w-4 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-                      Verified credential
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, delay: 0.12 }}
+          >
+            <AutoHorizontalSlider
+              ariaLabel="Institutional credentials"
+              autoplayMs={5000}
+              edgeFadeFromClass="from-[hsl(var(--surface-light-50))]"
+              slideClassName="basis-[88%] sm:basis-[55%] md:basis-[42%] lg:basis-[32%]"
+              items={recognitions
+                .filter((item) => !item.featured)
+                .map((item) => (
+                  <article
+                    key={item.title}
+                    className="theme-card-light card-shine flex h-full flex-col overflow-hidden rounded-3xl border border-[hsl(var(--border-light))]"
+                  >
+                    <div className="flex min-h-[108px] items-center justify-center border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-6 py-5">
+                      <BrandLogo
+                        src={item.logo}
+                        alt={item.logoAlt}
+                        className="max-h-16 w-full max-w-[200px] object-contain"
+                      />
                     </div>
-                  </div>
-                </motion.article>
-              ))}
-          </div>
+                    <div className="flex flex-1 flex-col p-6 sm:p-7">
+                      <span className="inline-flex w-fit rounded-full bg-[hsl(var(--brand-purple-700)/0.1)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
+                        {item.badge}
+                      </span>
+                      <h4 className="mt-4 font-serif text-xl font-bold leading-snug text-[hsl(var(--brand-navy-950))]">
+                        {item.title}
+                      </h4>
+                      <p className="mt-3 flex-grow text-sm leading-relaxed text-on-light-secondary">{item.desc}</p>
+                      <div className="mt-5 flex items-center gap-2 border-t border-[hsl(var(--border-light))] pt-4 text-[11px] font-semibold text-on-light-muted">
+                        <CheckCircle2 className="h-4 w-4 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+                        Verified credential
+                      </div>
+                    </div>
+                  </article>
+                ))}
+            />
+          </motion.div>
         </div>
       </section>
 
@@ -788,88 +796,48 @@ const AboutUs = () => {
 
           <div className="flex flex-col gap-6 lg:gap-8">
             {partners
-              .filter((partner) => partner.featured)
+              .filter((partner) => "featured" in partner && partner.featured)
               .map((partner, i) => (
-                <motion.article
+                <motion.div
                   key={partner.name}
                   initial={{ opacity: 0, y: 28 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.55, delay: i * 0.08 }}
-                  className="group relative overflow-hidden rounded-[2rem] border border-[hsl(var(--border-light))] bg-white shadow-[0_24px_70px_rgba(20,18,47,0.08)]"
                 >
-                  <div className="relative z-10 grid gap-0 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)]">
-                    <div className="flex min-h-[160px] items-center justify-center border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-8 py-8 lg:min-h-0 lg:border-b-0 lg:border-r">
-                      <BrandLogo
-                        src={partner.logo}
-                        alt={partner.logoAlt}
-                        className="max-h-20 w-full max-w-[220px] object-contain transition duration-300 group-hover:scale-[1.03]"
-                      />
-                    </div>
-                    <div className="flex flex-col justify-center p-7 sm:p-8 lg:p-10">
-                      <span className="inline-flex w-fit rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))]">
-                        {partner.type}
-                      </span>
-                      <h3 className="mt-4 font-serif text-2xl font-bold leading-snug text-on-light sm:text-3xl">{partner.name}</h3>
-                      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-on-light-secondary sm:text-[0.9375rem]">
-                        {partner.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.article>
+                  <PartnerRevealCard
+                    type={partner.type}
+                    name={partner.name}
+                    description={partner.description}
+                    logo={partner.logo}
+                    logoAlt={partner.logoAlt}
+                    featured
+                    accent="none"
+                  />
+                </motion.div>
               ))}
 
             <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
               {partners
-                .filter((partner) => !partner.featured)
+                .filter((partner) => !("featured" in partner && partner.featured))
                 .map((partner, i) => (
-                  <motion.article
+                  <motion.div
                     key={partner.name}
                     initial={{ opacity: 0, y: 28 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.55, delay: 0.12 + i * 0.1 }}
-                    whileHover={{ y: -6 }}
-                    className="theme-card-light card-shine group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-[hsl(var(--border-light))] bg-white/90 backdrop-blur-sm"
                   >
-                    <div
-                      className={`h-1.5 w-full ${
-                        i === 0
-                          ? "bg-gradient-to-r from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))]"
-                          : "bg-gradient-to-r from-[hsl(var(--brand-gold-500))] to-[hsl(var(--brand-gold-600))]"
-                      }`}
-                      aria-hidden
+                    <PartnerRevealCard
+                      type={partner.type}
+                      name={partner.name}
+                      description={partner.description}
+                      logo={partner.logo}
+                      logoAlt={partner.logoAlt}
+                      link={"link" in partner ? partner.link : undefined}
+                      accent={i === 0 ? "purple" : "gold"}
                     />
-                    <div className="flex min-h-[120px] items-center justify-center border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50)/0.7)] px-8 py-6">
-                      <BrandLogo
-                        src={partner.logo}
-                        alt={partner.logoAlt}
-                        className="max-h-14 w-full max-w-[200px] object-contain transition duration-300 group-hover:scale-[1.03]"
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col p-6 sm:p-7">
-                      <span className="inline-flex w-fit rounded-full bg-[hsl(var(--brand-purple-700)/0.08)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
-                        {partner.type}
-                      </span>
-                      <h3 className="mt-4 font-serif text-xl font-bold leading-snug text-[hsl(var(--brand-navy-950))] transition group-hover:text-[hsl(var(--brand-purple-700))] sm:text-2xl">
-                        {partner.name}
-                      </h3>
-                      <p className="mt-3 flex-grow text-sm leading-relaxed text-on-light-secondary">{partner.description}</p>
-                      {"link" in partner && partner.link ? (
-                        <div className="mt-6 border-t border-[hsl(var(--border-light))] pt-4">
-                          <a
-                            href={partner.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-2 text-sm font-bold text-[hsl(var(--brand-purple-700))] transition group-hover:translate-x-0.5"
-                          >
-                            Visit Website
-                            <ArrowRight className="h-4 w-4" />
-                          </a>
-                        </div>
-                      ) : null}
-                    </div>
-                  </motion.article>
+                  </motion.div>
                 ))}
             </div>
           </div>
@@ -883,7 +851,7 @@ const AboutUs = () => {
           >
             Interested in Partnering With UVAN?{" "}
             <a
-              href="mailto:info@ewan.co.in?subject=Partnership"
+              href="/contact"
               className="font-bold text-[hsl(var(--brand-purple-700))] hover:underline"
             >
               Get in Touch About a Partnership →
@@ -935,7 +903,7 @@ const AboutUs = () => {
                   {[
                     "Regular gatherings",
                     "91Springboard, Baner, Pune",
-                    "4:00 PM – 6:00 PM",
+                    "4:00 PM - 6:00 PM",
                     "Open to language professionals, learners and companies",
                   ].map((item) => (
                     <span

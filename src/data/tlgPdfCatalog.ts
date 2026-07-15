@@ -2,7 +2,7 @@ export type TlgPdfIssue = {
   slug: string;
   label: string;
   year: number;
-  /** 1–12 for chronological sorting within a year */
+  /** 1-12 for chronological sorting within a year */
   month: number;
   pdfUrl: string;
   published: string;

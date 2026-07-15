@@ -10,10 +10,10 @@ type ClientLogo = {
 
 const clients: ClientLogo[] = [
   { name: "Tata Autocomp", src: "/allLogos/Tata-Autocomp.jpeg", alt: "Tata Autocomp logo" },
-  { name: "Bajaj", isTextOnly: true, alt: "Bajaj logo" },
+  { name: "Bajaj", src: "/allLogos/Bajaj-Logo.png", alt: "Bajaj logo" },
   { name: "Japanese Manufacturing Client", isTextOnly: true, alt: "Confidential client - logo withheld" },
   { name: "Markets & Markets", src: "/allLogos/Marketsandmarkets.jpeg", alt: "Markets and Markets logo" },
-  { name: "Groupo Antolin", isTextOnly: true, alt: "Groupo Antolin logo" },
+  { name: "Groupo Antolin", src: "/allLogos/Groupo-Antolin.jpeg", alt: "Groupo Antolin logo" },
   { name: "Mittal Group", src: "/allLogos/Mittal-Group.jpeg", alt: "Mittal Group logo" },
   { name: "Seasonz International", src: "/allLogos/Seasonz-Group.jpeg", alt: "Seasonz International logo" },
   { name: "Balbharati", src: "/allLogos/Balbharti.jpeg", alt: "Balbharati logo" },
@@ -57,7 +57,7 @@ const ClientLogosSection = () => {
             {[...clients, ...clients].map((client, i) => (
               <motion.div
                 key={`${client.name}-${i}`}
-                className="mx-1.5 flex min-h-[4.25rem] min-w-[9rem] shrink-0 items-center justify-center px-3 py-2 sm:mx-2 sm:min-h-[6.25rem] sm:min-w-[200px] sm:px-5 sm:py-3 md:min-h-[7rem] md:min-w-[220px]"
+                className="mx-1.5 flex min-h-[4.25rem] min-w-[9rem] shrink-0 items-center justify-center overflow-hidden px-3 py-2 sm:mx-2 sm:min-h-[6.25rem] sm:min-w-[200px] sm:px-5 sm:py-3 md:min-h-[7rem] md:min-w-[220px]"
                 whileHover={{ scale: 1.02, y: -2 }}
                 transition={{ type: "spring", stiffness: 420, damping: 24 }}
               >
@@ -66,7 +66,7 @@ const ClientLogosSection = () => {
                     src={client.src}
                     alt={client.alt}
                     loading="lazy"
-                    className="client-logo-img max-h-10 sm:max-h-14"
+                    className="client-logo-img max-h-20 w-auto max-w-full object-contain sm:max-h-28"
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                       const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;

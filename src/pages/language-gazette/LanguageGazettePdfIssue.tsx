@@ -14,8 +14,8 @@ const LanguageGazettePdfIssue = () => {
   }
 
   const canonicalPath = `/language-gazette/read/${issue.slug}/`;
-  const title = `The Language Gazette — ${issue.label}`;
-  const description = `Read the ${issue.label} issue of The Language Gazette with an interactive page-flip PDF edition.`;
+  const title = `The Language Gazette - ${issue.label}`;
+  const description = `Read the ${issue.label} issue of The Language Gazette.`;
 
   const jsonLd = [
     breadcrumbSchema(absoluteUrl(canonicalPath), [
@@ -42,9 +42,6 @@ const LanguageGazettePdfIssue = () => {
             <h1 className="font-serif text-2xl font-bold leading-tight text-on-light sm:text-3xl md:text-4xl lg:text-5xl">
               {issue.label}
             </h1>
-            <p className="mt-2 text-sm leading-relaxed text-on-light-secondary sm:mt-3 sm:text-base">
-              Interactive edition — flip through the full magazine as published.
-            </p>
           </div>
 
           <PdfFlipbookViewer pdfUrl={issue.pdfUrl} title={issue.label} />

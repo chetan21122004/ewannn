@@ -1,9 +1,22 @@
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Landmark } from "lucide-react";
+import { ZoomIn } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { blurReveal, fadeOnly, slideLeft, slideRight } from "@/lib/animationVariants";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { blurReveal, fadeOnly } from "@/lib/animationVariants";
 
-const defaultConsulateLetters = [
+type ConsulateLetter = {
+  src: string;
+  alt: string;
+  label: string;
+};
+
+const defaultConsulateLetters: ConsulateLetter[] = [
   {
     src: "/Ewan-Consulate-experience-letter-page-001-min.jpg",
     alt: "Chinese Consulate appreciation letter page 1",
@@ -19,79 +32,121 @@ const defaultConsulateLetters = [
 const InstitutionalTrustSection = () => {
   const { t } = useTranslation();
   const reduceMotion = useReducedMotion() ?? false;
+  const [activeLetter, setActiveLetter] = useState<ConsulateLetter | null>(null);
+
   const consulateLetters = t("home.institutionalTrust.letters", {
     returnObjects: true,
     defaultValue: defaultConsulateLetters,
-  }) as Array<{ src: string; alt: string; label: string }>;
+  }) as ConsulateLetter[];
+
   const headerVariant = reduceMotion ? fadeOnly : blurReveal;
 
   return (
-    <section className="relative overflow-hidden py-5 lg:py-10 theme-section-soft">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8">
-            <motion.div
-              initial={reduceMotion ? { opacity: 0 } : { scale: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-              className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-[hsl(var(--brand-purple-700))] to-[hsl(var(--brand-purple-500))] mb-4 shadow-gold-md"
-            >
-              <Landmark className="w-8 h-8 text-white" />
-            </motion.div>
+    <section className="relative overflow-hidden px-6 py-5 theme-section-soft lg:py-10">
+      <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.08]" />
 
-            <motion.h2
-              className="text-3xl sm:text-4xl font-serif font-bold text-on-light mb-4"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={headerVariant}
-            >
-              {t("home.institutionalTrust.titlePrefix")}{" "}
-              <span className="text-[hsl(var(--brand-purple-700))] italic">
-                {t("home.institutionalTrust.titleHighlight")}
+      <div className="container relative z-10 mx-auto max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          className="theme-card-light card-shine overflow-hidden rounded-3xl border border-[hsl(var(--border-light))]"
+        >
+          <div className="grid lg:grid-cols-12">
+            <div className="border-b border-[hsl(var(--border-light))] p-8 lg:col-span-5 lg:border-b-0 lg:border-r lg:p-10">
+              <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl border border-[hsl(var(--border-light))] bg-white p-3 shadow-sm">
+                <img
+                  src="/page-assets/cn-flag.png"
+                  alt="Flag of the People's Republic of China"
+                  loading="lazy"
+                  className="max-h-12 w-full object-contain"
+                />
+              </div>
+
+              <span className="inline-flex rounded-full bg-[hsl(var(--brand-gold-500)/0.14)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-gold-600))]">
+                {t("home.institutionalTrust.featuredBadge", { defaultValue: "Government Recognition" })}
               </span>
-            </motion.h2>
 
-            <motion.p
-              className="text-base text-on-light-muted leading-relaxed max-w-2xl mx-auto"
-              initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              {t("home.institutionalTrust.subtitle")}
-            </motion.p>
-          </div>
-
-          <div className="grid items-start gap-6 xl:grid-cols-2">
-            {consulateLetters.map((letter, index) => (
-              <motion.figure
-                key={letter.src}
-                className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.96)] shadow-[0_8px_24px_hsl(var(--brand-navy-950)/0.08)]"
+              <motion.h2
+                className="mt-4 font-serif text-2xl font-bold leading-snug text-[hsl(var(--brand-navy-950))] sm:text-3xl"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                variants={index === 0 ? (reduceMotion ? fadeOnly : slideLeft) : reduceMotion ? fadeOnly : slideRight}
-                transition={{ duration: 0.7, delay: index * 0.1 }}
-                whileHover={reduceMotion ? undefined : { scale: 1.08, y: -8, zIndex: 20 }}
+                variants={headerVariant}
               >
-                <div className="relative bg-[hsl(var(--surface-light-50))] p-4 sm:p-5">
-                  <img
-                    src={letter.src}
-                    alt={letter.alt}
-                    className="w-full rounded-xl border border-[hsl(var(--border-light-strong))] object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <figcaption className="border-t border-[hsl(var(--border-light))] px-5 py-3 text-center text-xs font-semibold uppercase tracking-[0.16em] text-[hsl(var(--text-on-light-secondary))]">
-                  {letter.label}
-                </figcaption>
-              </motion.figure>
-            ))}
+                {t("home.institutionalTrust.titleHighlight")}
+              </motion.h2>
+
+              <motion.p
+                className="mt-4 text-sm leading-relaxed text-on-light-secondary sm:text-base"
+                initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.12 }}
+              >
+                {t("home.institutionalTrust.subtitle")}
+              </motion.p>
+            </div>
+
+            <div className="grid gap-4 p-6 sm:grid-cols-2 lg:col-span-7 lg:p-8">
+              {consulateLetters.map((letter, index) => (
+                <motion.figure
+                  key={letter.src}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))]"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setActiveLetter(letter)}
+                    className="group relative block w-full cursor-zoom-in text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-700))] focus-visible:ring-offset-2"
+                    aria-label={`${t("home.institutionalTrust.viewLetter", { defaultValue: "View full letter" })} - ${letter.label}`}
+                  >
+                    <div className="p-3 sm:p-4">
+                      <img
+                        src={letter.src}
+                        alt={letter.alt}
+                        loading="lazy"
+                        className="w-full rounded-xl border border-[hsl(var(--border-light-strong))] object-cover transition duration-300 group-hover:brightness-[0.97]"
+                      />
+                      <span className="pointer-events-none absolute inset-3 flex items-center justify-center rounded-xl bg-[hsl(var(--brand-navy-950)/0.45)] opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:inset-4">
+                        <span className="inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-navy-950))]">
+                          <ZoomIn className="h-3.5 w-3.5" aria-hidden />
+                          {t("home.institutionalTrust.viewLetter", { defaultValue: "View full letter" })}
+                        </span>
+                      </span>
+                    </div>
+                  </button>
+                  <figcaption className="border-t border-[hsl(var(--border-light))] px-4 py-3 text-center text-[10px] font-bold uppercase tracking-[0.14em] text-on-light-muted">
+                    {letter.label}
+                  </figcaption>
+                </motion.figure>
+              ))}
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
+
+      <Dialog open={activeLetter !== null} onOpenChange={(open) => !open && setActiveLetter(null)}>
+        <DialogContent className="max-h-[92vh] max-w-4xl overflow-y-auto border-[hsl(var(--border-light))] bg-white p-3 sm:p-5">
+          {activeLetter ? (
+            <>
+              <DialogTitle className="font-serif text-lg font-bold text-[hsl(var(--brand-navy-950))] sm:text-xl">
+                {activeLetter.label}
+              </DialogTitle>
+              <DialogDescription className="sr-only">{activeLetter.alt}</DialogDescription>
+              <img
+                src={activeLetter.src}
+                alt={activeLetter.alt}
+                className="mt-2 w-full rounded-xl border border-[hsl(var(--border-light))] object-contain"
+              />
+            </>
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

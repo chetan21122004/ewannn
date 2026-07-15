@@ -1,3 +1,9 @@
+import {
+  gazette2026AprilArticles,
+  gazette2026Catalog,
+  type Gazette2026Article,
+} from "@/data/gazette2026Catalog";
+
 export type GazetteArticle = {
   slug: string;
   category: string;
@@ -77,45 +83,80 @@ export const gazetteIssueCanonical = (slug: string) => `/language-gazette/${slug
 export const gazetteArticlePath = (slug: string) => `/language-gazette/${slug}` as const;
 export const gazetteArticleCanonical = (slug: string) => `/language-gazette/${slug}/` as const;
 
-/** Step 2 / Step 4 — keyword-mapped articles published as web pages (insights + gazette). */
-export const gazetteKeywordCatalog = [
+/** Step 2 / Step 4 - keyword-mapped articles published as web pages (insights + gazette). */
+export type GazetteKeywordArticle = {
+  title: string;
+  targetKeyword: string;
+  href: string;
+  source: string;
+  category: string;
+  excerpt: string;
+  image: string;
+  readTime: string;
+};
+
+export const gazetteKeywordCatalog: GazetteKeywordArticle[] = [
   {
-    title: "Why Japanese companies struggle entering India — and what to do differently",
+    title: "Why Japanese companies struggle entering India - and what to do differently",
     targetKeyword: "Japanese company India market entry",
     href: "/insights/how-to-enter-indian-market",
     source: "Insights",
+    category: "Market Entry",
+    excerpt: "Distributor integrity, regulatory sequencing, and coordination gaps that stall Japan-India expansion.",
+    image: "/stitch/insights/gazette-market-insight.jpg",
+    readTime: "9 min read",
   },
   {
-    title: "Simultaneous interpretation vs consecutive — which does your event need?",
+    title: "Simultaneous interpretation vs consecutive - which does your event need?",
     targetKeyword: "simultaneous interpretation India",
     href: "/insights/what-is-simultaneous-interpretation",
     source: "Insights",
+    category: "Language",
+    excerpt: "Compare interpretation modes for board meetings, conferences, factory visits, and investor roadshows.",
+    image: "/stitch/insights/article-interpretation-type.jpg",
+    readTime: "5 min read",
   },
   {
     title: "India-Vietnam trade corridor: what businesses need to know in 2026",
     targetKeyword: "India Vietnam trade expansion",
     href: "/insights/how-to-enter-indian-market",
     source: "Insights",
+    category: "Trade",
+    excerpt: "Logistics infrastructure, language layers, and operational intelligence for the India-ASEAN corridor.",
+    image: "/stitch/insights/insight-asset-01.jpg",
+    readTime: "7 min read",
   },
   {
     title: "Is a career in Asian languages worth it in India? An honest guide",
     targetKeyword: "Mandarin career opportunities India",
     href: "/insights",
     source: "Insights",
+    category: "Career",
+    excerpt: "Beyond translation desks - building a strategic language consultancy career in cross-border business.",
+    image: "/stitch/insights/article-career-guide.jpg",
+    readTime: "8 min read",
   },
   {
-    title: "How to choose a translation partner — what most buyers get wrong",
+    title: "How to choose a translation partner - what most buyers get wrong",
     targetKeyword: "translation partner India",
     href: "/insights/how-to-choose-translation-partner-india",
     source: "Insights",
+    category: "Language",
+    excerpt: "Scope, quality governance, sector terminology, and SLAs - before you outsource critical content.",
+    image: "/stitch/insights/article-strategy.jpg",
+    readTime: "7 min read",
   },
   {
     title: "The Language of the Heart: Why Our Mother Tongue is Our Greatest Comfort",
     targetKeyword: "mother tongue language India business",
     href: "/language-gazette/mother-tongue-greatest-comfort",
     source: "The Language Gazette",
+    category: "Culture",
+    excerpt: "Why mother-tongue depth unlocks trust in business, healthcare, and cross-border work.",
+    image: "/stitch/language-gazette/article-cultural-iq.jpg",
+    readTime: "6 min read",
   },
-] as const;
+];
 
 export type GazetteWebArticle = {
   month: string;
@@ -127,63 +168,40 @@ export type GazetteWebArticle = {
   readTime: string;
 };
 
-/** Monthly 2026 web articles for the Language Gazette landing slider. */
-export const gazette2026Articles: GazetteWebArticle[] = [
-  {
-    month: "January 2026",
-    title: "How to Enter the Indian Market as a Foreign Company",
-    href: "/insights/how-to-enter-indian-market",
-    category: "Market Entry",
-    excerpt: "Structured India market entry — readiness, roadmap, execution, and ongoing on-ground support.",
-    image: "/stitch/insights/article-asian-market.jpg",
-    readTime: "8 min read",
-  },
-  {
-    month: "February 2026",
-    title: "How to Choose a Translation Partner in India",
-    href: "/insights/how-to-choose-translation-partner-india",
-    category: "Language",
-    excerpt: "Five practical steps for buyers evaluating translation, localization, and interpretation partners.",
-    image: "/stitch/insights/article-strategy.jpg",
-    readTime: "7 min read",
-  },
-  {
-    month: "March 2026",
-    title: "What Is Simultaneous Interpretation?",
-    href: "/insights/what-is-simultaneous-interpretation",
-    category: "Language",
-    excerpt: "When live interpretation matters, how it works, and what to specify before high-stakes meetings.",
-    image: "/stitch/insights/article-interpretation.jpg",
-    readTime: "6 min read",
-  },
-  {
-    month: "April 2026",
-    title: "Why Japanese companies struggle entering India — and what to do differently",
-    href: "/insights/how-to-enter-indian-market",
-    category: "Market Entry",
-    excerpt: "Common gaps in distributor integrity, regulatory sequencing, and on-ground coordination.",
-    image: "/stitch/insights/gazette-market-insight.jpg",
-    readTime: "9 min read",
-  },
-  {
-    month: "May 2026",
-    title: "Simultaneous interpretation vs consecutive — which does your event need?",
-    href: "/insights/what-is-simultaneous-interpretation",
-    category: "Language",
-    excerpt: "A technical breakdown of interpretation modes for board meetings, conferences, and factory visits.",
-    image: "/stitch/insights/article-interpretation-type.jpg",
-    readTime: "5 min read",
-  },
-  {
-    month: "June 2026",
-    title: "India-Vietnam trade corridor: what businesses need to know in 2026",
-    href: "/insights/how-to-enter-indian-market",
-    category: "Trade",
-    excerpt: "Logistics, language, and operational intelligence for the India–Southeast Asia expansion corridor.",
-    image: "/stitch/insights/insight-asset-01.jpg",
-    readTime: "7 min read",
-  },
-];
+const toGazetteArticle = (article: Gazette2026Article): GazetteArticle => ({
+  slug: article.slug,
+  category: article.category,
+  readTime: article.readTime,
+  title: article.title,
+  excerpt: article.excerpt,
+  author: article.author,
+  image: article.image,
+  datePublished: article.datePublished,
+});
+
+/** Hero + issue index for the current Language Gazette edition. */
+export const april2026Issue: GazetteIssue = {
+  slug: "apr-26",
+  label: "April 2026",
+  shortLabel: "Apr 2026",
+  path: "/language-gazette/",
+  coverImage: "/stitch/language-gazette/hero-cover.jpg",
+  published: "2026-04-15",
+  description:
+    "Poetry, essays, and bilingual reflections from UVAN contributors - published as fully readable web articles from January through April 2026.",
+  articles: gazette2026AprilArticles.map(toGazetteArticle),
+};
+
+/** 2026 web articles - each card links to its own page (no duplicate hrefs). */
+export const gazette2026Articles: GazetteWebArticle[] = gazette2026Catalog.map((article) => ({
+  month: article.month,
+  title: article.title,
+  href: gazetteArticlePath(article.slug),
+  category: article.category,
+  excerpt: article.excerpt,
+  image: article.image,
+  readTime: article.readTime,
+}));
 
 export const GAZETTE_LANDING_KEYWORDS =
   "language gazette India, language industry publication, cross-border business insights India";

@@ -60,17 +60,17 @@ export const ArticleServiceLinks = () => (
     <ul className="mt-4 space-y-3">
       <li>
         <Link to="/market-entry/" className="text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
-          Market Entry — India &amp; Asia corridor mandates
+          Market Entry - India &amp; Asia corridor mandates
         </Link>
       </li>
       <li>
         <Link to="/language-localization/" className="text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
-          Language &amp; Localization — translation, interpretation, localization
+          Language &amp; Localization - translation, interpretation, localization
         </Link>
       </li>
       <li>
         <Link to="/ask-soham/" className="text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
-          Ask Soham — free 15-minute call
+          Ask Soham - free 15-minute call
         </Link>
       </li>
     </ul>

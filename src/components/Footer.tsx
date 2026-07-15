@@ -59,6 +59,11 @@ const socialLinks: Array<{ label: string; href: string; Icon: LucideIcon }> = [
 
 const coverageRegions = ["India", "Southeast Asia", "East Asia", "Latin America", "Africa"];
 
+const footerPartners = [
+  { name: "Bhashini", logo: "/allLogos/Bhashini-Logo.png" },
+  { name: "Tattava CX", logo: "/allLogos/tattava-cx.svg" },
+] as const;
+
 const linkClass =
   "group inline-flex min-h-[44px] w-full items-start gap-1 text-sm leading-snug text-white/80 transition-colors hover:text-[hsl(var(--brand-gold-500))] lg:min-h-0 lg:py-0.5";
 
@@ -150,7 +155,7 @@ const Footer = () => {
   }));
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[hsl(var(--brand-navy-950))] pb-[calc(4.5rem+env(safe-area-inset-bottom,0px))] text-white lg:pb-0">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[hsl(var(--brand-navy-950))] pb-[calc(4rem+env(safe-area-inset-bottom,0px))] text-white lg:pb-0">
       <div className="h-1 w-full bg-gradient-to-r from-[hsl(var(--brand-purple-700))] via-[hsl(var(--brand-gold-500))] to-[hsl(var(--brand-cyan-500))]" />
 
       <div
@@ -163,7 +168,7 @@ const Footer = () => {
         aria-hidden
       />
 
-      <div className="container relative z-10 mx-auto px-4 py-8 sm:px-6 sm:py-10 lg:py-12">
+      <div className="container relative z-10 mx-auto px-4 pt-8 pb-4 sm:px-6 sm:pt-9 sm:pb-5 lg:pt-10 lg:pb-6">
         <div className="lg:grid lg:grid-cols-12 lg:items-start lg:gap-8 xl:gap-10">
           <div className="lg:col-span-4">
             <Link
@@ -230,15 +235,43 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-5 flex flex-col gap-2 border-t border-white/10 pt-5 text-center text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between sm:text-left sm:text-sm">
-          <p>{t("footer.rights")}</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:justify-end">
-            <Link to="/privacy-policy" className="font-semibold text-white/70 hover:text-[hsl(var(--brand-gold-500))]">
-              {t("footer.privacyPolicy")}
-            </Link>
-            <a href="mailto:info@ewan.co.in" className="font-semibold text-white/70 hover:text-[hsl(var(--brand-gold-500))]">
-              info@ewan.co.in
-            </a>
+        <div className="mt-4 border-t border-white/10 pt-3.5">
+          <div className="flex flex-col items-center gap-2.5 sm:grid sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-center sm:gap-4">
+            <p className="order-1 w-full text-center text-xs text-white/50 sm:order-none sm:text-left sm:text-sm">
+              {t("footer.rights")}
+            </p>
+
+            <div
+              className="order-2 flex shrink-0 items-center gap-2.5 rounded-lg border border-white/12 bg-white/[0.06] px-3 py-1.5 sm:order-none sm:gap-3 sm:px-4 sm:py-2"
+              role="group"
+              aria-label="Official partners"
+            >
+              {footerPartners.map((partner, index) => (
+                <span key={partner.name} className="inline-flex items-center gap-2.5">
+                  {index > 0 ? <span className="hidden h-5 w-px bg-white/15 sm:block" aria-hidden /> : null}
+                  <span
+                    title={partner.name}
+                    className="inline-flex h-7 min-w-[72px] items-center justify-center rounded-md bg-white px-2.5 sm:h-8 sm:min-w-[80px] sm:px-3"
+                  >
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      loading="lazy"
+                      className="h-4 w-auto max-w-[76px] object-contain sm:h-5 sm:max-w-[88px]"
+                    />
+                  </span>
+                </span>
+              ))}
+            </div>
+
+            <div className="order-3 flex w-full flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-white/50 sm:order-none sm:justify-end sm:text-sm">
+              <Link to="/privacy-policy" className="font-semibold text-white/70 hover:text-[hsl(var(--brand-gold-500))]">
+                {t("footer.privacyPolicy")}
+              </Link>
+              <a href="mailto:info@ewan.co.in" className="font-semibold text-white/70 hover:text-[hsl(var(--brand-gold-500))]">
+                info@ewan.co.in
+              </a>
+            </div>
           </div>
         </div>
       </div>

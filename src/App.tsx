@@ -7,6 +7,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import HashScrollHandler from "@/components/HashScrollHandler";
 import AskSohamFloatingButton from "@/components/AskSohamFloatingButton";
+import AskSohamInquiryProvider from "@/components/AskSohamInquiryProvider";
+import ContactInquiryProvider from "@/components/ContactInquiryProvider";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import Index from "./pages/Index.tsx";
 import AskSoham from "./pages/AskSoham.tsx";
@@ -30,6 +32,7 @@ import LanguageGazetteIssueApr25 from "./pages/language-gazette/LanguageGazetteI
 import LanguageGazetteWhenSadnessGaveMeJoy from "./pages/language-gazette/LanguageGazetteWhenSadnessGaveMeJoy.tsx";
 import LanguageGazetteMotherTongueComfort from "./pages/language-gazette/LanguageGazetteMotherTongueComfort.tsx";
 import LanguageGazetteBeBraveYouWomen from "./pages/language-gazette/LanguageGazetteBeBraveYouWomen.tsx";
+import LanguageGazetteArticleRoute from "./pages/language-gazette/LanguageGazetteArticleRoute.tsx";
 
 const LanguageGazettePdfIssue = lazy(() => import("./pages/language-gazette/LanguageGazettePdfIssue.tsx"));
 import InsightsArticleHowToEnterIndia from "./pages/insights/InsightsArticleHowToEnterIndia.tsx";
@@ -47,10 +50,12 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <HashScrollHandler />
-          <AskSohamFloatingButton />
-          <WhatsAppFloatingButton />
-          <Routes>
+          <AskSohamInquiryProvider>
+            <ContactInquiryProvider>
+            <HashScrollHandler />
+            <AskSohamFloatingButton />
+            <WhatsAppFloatingButton />
+            <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/ask-soham" element={<AskSoham />} />
             <Route path="/market-entry" element={<MarketEntry />} />
@@ -77,7 +82,7 @@ const App = () => (
                 <Suspense
                   fallback={
                     <div className="flex min-h-[50vh] items-center justify-center text-sm text-on-light-secondary">
-                      Loading flipbook…
+                      Loading PDF…
                     </div>
                   }
                 >
@@ -90,6 +95,7 @@ const App = () => (
             <Route path="/language-gazette/when-sadness-gave-me-joy" element={<LanguageGazetteWhenSadnessGaveMeJoy />} />
             <Route path="/language-gazette/mother-tongue-greatest-comfort" element={<LanguageGazetteMotherTongueComfort />} />
             <Route path="/language-gazette/be-brave-you-women" element={<LanguageGazetteBeBraveYouWomen />} />
+            <Route path="/language-gazette/:slug" element={<LanguageGazetteArticleRoute />} />
             <Route path="/insights" element={<Insights />} />
             <Route path="/insights/how-to-enter-indian-market" element={<InsightsArticleHowToEnterIndia />} />
             <Route path="/insights/how-to-choose-translation-partner-india" element={<InsightsArticleChooseTranslationPartner />} />
@@ -97,6 +103,8 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+            </ContactInquiryProvider>
+          </AskSohamInquiryProvider>
         </BrowserRouter>
       </TooltipProvider>
     </MotionConfig>

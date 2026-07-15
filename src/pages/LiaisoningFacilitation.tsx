@@ -17,8 +17,7 @@ import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestion
 import { LIAISONING_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, serviceSchema } from "@/lib/schemaHelpers";
 
-const LIAISONING_EMAIL =
-  "mailto:info@ewan.co.in?subject=Liaisoning%20%26%20Facilitation%20Enquiry&body=Please%20share%3A%0A-%20Your%20organisation%20and%20corridor%0A-%20The%20liaison%20support%20you%20need%0A-%20Your%20biggest%20challenge%20right%20now";
+const LIAISONING_CONTACT = "/contact";
 
 const whatLiaisoningParagraphs = [
   "Liaisoning is not translation. It is not project management. It is the human infrastructure that sits between two organisations operating across cultural, linguistic, and institutional boundaries - and makes sure that what one party intends is what the other party receives.",
@@ -168,7 +167,7 @@ const LiaisoningFacilitation = () => {
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
                 <motion.a
-                  href={LIAISONING_EMAIL}
+                  href={LIAISONING_CONTACT}
                   whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
                   whileTap={{ scale: 0.97 }}
                   className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] shadow-[0_14px_36px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105 sm:w-auto sm:px-6"
@@ -379,7 +378,7 @@ const LiaisoningFacilitation = () => {
               </div>
               <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
                 <a
-                  href={LIAISONING_EMAIL}
+                  href={LIAISONING_CONTACT}
                   className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
                 >
                   Start a Conversation
