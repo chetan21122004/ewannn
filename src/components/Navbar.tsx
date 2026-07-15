@@ -247,13 +247,20 @@ const MobileNavSubLink = ({
 const DesktopNavDropdownLink = ({
   item,
   t,
+  onNavigate,
 }: {
   item: DesktopNavItem;
   t: (key: string) => string;
+  onNavigate?: () => void;
 }) => {
   const Icon = getNavLinkIcon(item);
   const className =
     "flex items-center gap-2.5 rounded-lg px-3 py-2 text-[14px] font-medium leading-snug text-[hsl(var(--brand-navy-950)/0.92)] outline-none transition hover:bg-[hsl(var(--surface-light-50))] hover:text-[hsl(var(--brand-navy-950))] focus-visible:bg-[hsl(var(--surface-light-50))] focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.35)] focus-visible:ring-inset";
+
+  const handleNavigate = () => {
+    onNavigate?.();
+    (document.activeElement as HTMLElement | null)?.blur();
+  };
 
   const label = (
     <>
@@ -263,11 +270,11 @@ const DesktopNavDropdownLink = ({
   );
 
   return item.external ? (
-    <a href={item.href} target="_blank" rel="noreferrer" className={className}>
+    <a href={item.href} target="_blank" rel="noreferrer" className={className} onClick={handleNavigate}>
       {label}
     </a>
   ) : (
-    <Link to={item.href} className={className}>
+    <Link to={item.href} className={className} onClick={handleNavigate}>
       {label}
     </Link>
   );
@@ -288,9 +295,11 @@ const desktopNavTriggerClass = (active: boolean) =>
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [expandedGroup, setExpandedGroup] = useState<string>("");
+  const [openDesktopGroup, setOpenDesktopGroup] = useState<string | null>(null);
   const { t } = useTranslation();
   const { pathname } = useLocation();
   const closeMobile = () => setMobileOpen(false);
+  const closeDesktopDropdown = () => setOpenDesktopGroup(null);
 
   const isDesktopGroupActive = (group: DesktopNavGroup) => isGroupActive(group, pathname);
 
@@ -313,6 +322,7 @@ const Navbar = () => {
 
   useEffect(() => {
     setMobileOpen(false);
+    closeDesktopDropdown();
   }, [pathname]);
 
   useEffect(() => {
@@ -359,6 +369,15 @@ const Navbar = () => {
                     "group relative flex items-stretch",
                     index > 0 && "before:absolute before:left-0 before:top-1/2 before:h-4 before:w-px before:-translate-y-1/2 before:bg-[hsl(var(--border-light))]",
                   )}
+                  onMouseEnter={() => group.links && setOpenDesktopGroup(group.labelKey)}
+                  onMouseLeave={() => setOpenDesktopGroup((current) => (current === group.labelKey ? null : current))}
+                  onFocusCapture={() => group.links && setOpenDesktopGroup(group.labelKey)}
+                  onBlurCapture={(event) => {
+                    if (!group.links) return;
+                    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                      setOpenDesktopGroup((current) => (current === group.labelKey ? null : current));
+                    }
+                  }}
                 >
                   {group.links && !group.href ? (
                     <button
@@ -390,7 +409,12 @@ const Navbar = () => {
                   )}
 
                   {group.links ? (
-                    <div className="absolute left-0 top-full z-[80] hidden w-max min-w-[320px] max-w-[min(720px,calc(100vw-3rem))] pt-2 group-hover:block group-focus-within:block">
+                    <div
+                      className={cn(
+                        "absolute left-0 top-full z-[80] w-max min-w-[320px] max-w-[min(720px,calc(100vw-3rem))] pt-2",
+                        openDesktopGroup === group.labelKey ? "block" : "hidden",
+                      )}
+                    >
                       <div className="rounded-xl border border-[hsl(var(--border-light))] bg-white p-3 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.22)] ring-1 ring-[hsl(233_55%_12%/0.04)]">
                         <div
                           className={cn(
@@ -399,7 +423,12 @@ const Navbar = () => {
                           )}
                         >
                           {group.links.map((item) => (
-                            <DesktopNavDropdownLink key={`${group.labelKey}-${item.labelKey}`} item={item} t={t} />
+                            <DesktopNavDropdownLink
+                              key={`${group.labelKey}-${item.labelKey}`}
+                              item={item}
+                              t={t}
+                              onNavigate={closeDesktopDropdown}
+                            />
                           ))}
                         </div>
                       </div>

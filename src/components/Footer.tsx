@@ -241,9 +241,9 @@ const Footer = () => {
               {t("footer.rights")}
             </p>
 
-            <div className="order-2 -my-3 flex shrink-0 items-center justify-center overflow-visible sm:order-none sm:relative sm:my-0 sm:h-0 sm:min-h-0 sm:overflow-visible">
+            <div className="order-2 mb-2 flex shrink-0 items-center justify-center overflow-visible sm:order-none sm:relative sm:mb-0 sm:h-0 sm:min-h-0 sm:overflow-visible">
               <div
-                className="flex flex-col items-center gap-1.5 rounded-xl border border-white/12 bg-white/[0.06] px-4 py-2 sm:absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:gap-2 sm:px-5 sm:py-2.5"
+                className="flex flex-col items-center gap-1.5 sm:absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:gap-2"
                 role="group"
                 aria-label={t("footer.partners")}
               >

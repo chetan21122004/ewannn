@@ -1,4 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import {
   ArrowRight,
   Calendar,
@@ -23,11 +25,13 @@ import {
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
+import { cn } from "@/lib/utils";
 import LanguageServiceCard from "@/components/language-localization/LanguageServiceCard";
 import LanguageSectorCard from "@/components/language-localization/LanguageSectorCard";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { LANGUAGE_LOCALIZATION_FAQS, SPEAKABLE_LANGUAGE } from "@/data/aeoContent";
+import { getHashId, HASH_TARGET_EVENT } from "@/lib/hashNavigation";
 import {
   absoluteUrl,
   breadcrumbSchema,
@@ -235,6 +239,42 @@ const languageLd = [
 const LanguageLocalization = () => {
   const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
+  const { hash } = useLocation();
+  const hashId = getHashId(hash);
+  const serviceHashId = services.some((service) => service.id === hashId) ? hashId : "";
+  const [openServiceId, setOpenServiceId] = useState("");
+  const [hashPulseId, setHashPulseId] = useState("");
+  const hashPulseTimerRef = useRef<number | null>(null);
+
+  const triggerHashPulse = (id: string) => {
+    if (hashPulseTimerRef.current !== null) {
+      window.clearTimeout(hashPulseTimerRef.current);
+    }
+    setHashPulseId(id);
+    hashPulseTimerRef.current = window.setTimeout(() => setHashPulseId(""), 2400);
+  };
+
+  useEffect(() => {
+    if (!serviceHashId) return;
+    triggerHashPulse(serviceHashId);
+    return () => {
+      if (hashPulseTimerRef.current !== null) {
+        window.clearTimeout(hashPulseTimerRef.current);
+      }
+    };
+  }, [serviceHashId]);
+
+  useEffect(() => {
+    const handler = (event: Event) => {
+      const detail = (event as CustomEvent<{ id: string }>).detail;
+      if (detail?.id && services.some((service) => service.id === detail.id)) {
+        triggerHashPulse(detail.id);
+      }
+    };
+
+    window.addEventListener(HASH_TARGET_EVENT, handler);
+    return () => window.removeEventListener(HASH_TARGET_EVENT, handler);
+  }, []);
 
   const ease = [0.22, 1, 0.36, 1] as const;
   const hidden = reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 };
@@ -332,16 +372,35 @@ const LanguageLocalization = () => {
           </motion.div>
 
           {/* Mobile: tap to expand */}
-          <Accordion type="single" collapsible className="flex flex-col gap-2 md:hidden">
+          <Accordion
+            type="single"
+            collapsible
+            value={openServiceId}
+            onValueChange={setOpenServiceId}
+            className="flex flex-col gap-2 md:hidden"
+          >
             {services.map((service, index) => {
               const Icon = service.icon;
+              const isHashPulse = hashPulseId === service.id;
               return (
-                <AccordionItem
+                <motion.div
                   key={service.id}
-                  id={service.id}
-                  value={service.id}
-                  className="scroll-mt-28 overflow-hidden rounded-xl border border-[hsl(var(--border-light))] border-b-0 bg-white px-3.5 shadow-sm data-[state=open]:border-[hsl(var(--brand-purple-500)/0.35)] data-[state=open]:ring-1 data-[state=open]:ring-[hsl(var(--brand-purple-500)/0.15)]"
+                  data-section-anchor={service.id}
+                  animate={
+                    isHashPulse && !reduceMotion
+                      ? { scale: [1, 1.02, 0.995, 1.01, 1], y: [0, -4, 2, 0, 0] }
+                      : { scale: 1, y: 0 }
+                  }
+                  transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+                  className="scroll-mt-28"
                 >
+                  <AccordionItem
+                    value={service.id}
+                    className={cn(
+                      "overflow-hidden rounded-xl border border-[hsl(var(--border-light))] border-b-0 bg-white px-3.5 shadow-sm data-[state=open]:border-[hsl(var(--brand-purple-500)/0.35)] data-[state=open]:ring-1 data-[state=open]:ring-[hsl(var(--brand-purple-500)/0.15)]",
+                      isHashPulse && "hash-target-highlight border-[hsl(var(--brand-purple-500)/0.55)]",
+                    )}
+                  >
                   <AccordionTrigger className="gap-3 py-3.5 hover:no-underline [&[data-state=open]>svg]:text-[hsl(var(--brand-purple-700))]">
                     <span className="flex min-w-0 flex-1 items-center gap-3 text-left">
                       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
@@ -361,6 +420,7 @@ const LanguageLocalization = () => {
                     {service.description}
                   </AccordionContent>
                 </AccordionItem>
+                </motion.div>
               );
             })}
           </Accordion>

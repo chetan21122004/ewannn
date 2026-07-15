@@ -745,6 +745,30 @@ html {
   max-width: 100%;
 }
 
+@keyframes hash-target-ring {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 hsl(var(--brand-purple-500) / 0.42),
+      0 10px 28px hsl(var(--brand-navy-950) / 0.08);
+  }
+  40% {
+    box-shadow:
+      0 0 0 5px hsl(var(--brand-purple-500) / 0.24),
+      0 22px 44px hsl(var(--brand-purple-700) / 0.14);
+  }
+  70% {
+    box-shadow:
+      0 0 0 2px hsl(var(--brand-gold-500) / 0.2),
+      0 16px 36px hsl(var(--brand-navy-950) / 0.1);
+  }
+}
+
+.hash-target-highlight {
+  animation: hash-target-ring 0.95s ease-in-out 2;
+  border-color: hsl(var(--brand-purple-500) / 0.55) !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
