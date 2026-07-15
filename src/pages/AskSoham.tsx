@@ -335,7 +335,7 @@ const AskSoham = () => {
       </section>
 
       {/* ── WHAT THIS CALL IS NOT ── */}
-      <section className="relative overflow-hidden px-6 py-16 theme-section-light lg:py-20">
+      <section className="relative overflow-hidden section-pad theme-section-light px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-4xl">
@@ -377,7 +377,7 @@ const AskSoham = () => {
       </section>
 
       {/* ── ABOUT SOHAM ── */}
-      <section className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] bg-white px-6 py-16 lg:py-20">
+      <section className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] bg-white section-pad px-6">
         <div className="glow-orb glow-orb-gold pointer-events-none -right-24 top-8 h-[280px] w-[280px] opacity-[0.05]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.08]" />
 
@@ -513,7 +513,7 @@ const AskSoham = () => {
 
       <AeoFrequentlyAskedQuestions
         items={ASK_SOHAM_FAQS}
-        className="theme-section-light px-6 py-16"
+        className="theme-section-light section-pad px-6"
       />
     </PageLayout>
   );

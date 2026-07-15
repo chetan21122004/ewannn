@@ -14,6 +14,7 @@ import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
 import GazetteMediaShowcase from "@/components/language-gazette/GazetteMediaShowcase";
+import GazetteHeroAside from "@/components/language-gazette/GazetteHeroAside";
 import { latestGazetteIssue } from "@/data/languageGazetteIssues";
 import { absoluteUrl, collectionPageSchema } from "@/lib/schemaHelpers";
 
@@ -99,7 +100,7 @@ const Media = () => {
       keywords={t("seo.media.keywords")}
       jsonLd={mediaLd}
     >
-      <section className="relative isolate overflow-hidden px-5 pb-12 pt-8 sm:px-6 lg:pb-20 lg:pt-14">
+      <section className="relative isolate overflow-hidden section-pad-hero sm:px-6">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -147,50 +148,25 @@ const Media = () => {
               </div>
             </motion.div>
 
-            <motion.div
-              initial={hidden}
-              animate={show}
-              transition={transition(0.1)}
-              className="relative mx-auto w-full max-w-[min(100%,380px)] lg:mx-0 lg:max-w-none lg:justify-self-end"
-            >
-              <motion.img
-                src="/doodles/Bookmarks-pana.svg"
-                alt="Media and publications illustration"
-                className="relative z-10 mx-auto h-44 w-full max-w-[280px] object-contain sm:h-52 lg:mx-0 lg:h-56 lg:max-w-[320px]"
-                animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
-                transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.div
-                initial={hidden}
-                animate={show}
-                transition={transition(0.18)}
-                className="absolute -bottom-2 left-0 right-0 z-20 mx-auto max-w-[240px] overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white/95 p-3 shadow-[0_18px_44px_rgba(26,22,51,0.12)] backdrop-blur-sm sm:-left-4 sm:max-w-[260px] lg:-bottom-4 lg:-left-6"
-              >
-                <div className="flex gap-3">
-                  <img
-                    src={latestGazetteIssue.coverImage}
-                    alt=""
-                    aria-hidden
-                    className="h-16 w-14 shrink-0 rounded-lg object-cover"
-                  />
-                  <div className="min-w-0">
-                    <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">
-                      Latest from TLG
-                    </p>
-                    <p className="mt-1 line-clamp-2 text-xs font-semibold leading-snug text-on-light">
-                      {latestGazetteIssue.label}
-                    </p>
-                    <Link
-                      to={latestGazetteIssue.path}
-                      className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-bold text-[hsl(var(--brand-gold-600))] hover:underline"
-                    >
-                      Read issue
-                      <ArrowUpRight className="h-3 w-3" aria-hidden />
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
+            <GazetteHeroAside
+              reduceMotion={reduceMotion}
+              hidden={hidden}
+              show={show}
+              transition={transition}
+              eyebrow="Latest from TLG"
+              title={latestGazetteIssue.label}
+              linkTo={latestGazetteIssue.path}
+              linkLabel="Read issue"
+              thumb={
+                <img
+                  src={latestGazetteIssue.coverImage}
+                  alt=""
+                  aria-hidden
+                  className="h-16 w-14 shrink-0 rounded-lg object-cover"
+                />
+              }
+              doodleAlt="Media and publications illustration"
+            />
           </div>
 
           <motion.nav
@@ -225,7 +201,7 @@ const Media = () => {
 
       <SectionDivider variant="wave" />
 
-      <section id="blog-insights" className="theme-section-soft scroll-mt-36 px-6 py-16 md:py-20">
+      <section id="blog-insights" className="theme-section-soft scroll-mt-36 px-6 py-10 md:py-14">
         <div className="container mx-auto max-w-6xl">
           <motion.div {...motionProps} className="max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
@@ -293,7 +269,7 @@ const Media = () => {
 
       <SectionDivider variant="wave" />
 
-      <section id="video-insights" className="theme-section-light scroll-mt-36 px-6 py-16 md:py-20">
+      <section id="video-insights" className="theme-section-light scroll-mt-36 px-6 py-10 md:py-14">
         <div className="container mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
             <motion.div {...motionProps} className="order-2 lg:order-1 lg:col-span-5">
@@ -346,7 +322,7 @@ const Media = () => {
 
       <SectionDivider variant="slant" flip />
 
-      <section id="newsletter" className="theme-section-soft scroll-mt-36 px-6 py-16 md:py-20">
+      <section id="newsletter" className="theme-section-soft scroll-mt-36 px-6 py-10 md:py-14">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             {...motionProps}

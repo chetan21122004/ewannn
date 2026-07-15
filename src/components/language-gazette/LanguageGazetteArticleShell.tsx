@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import { ArticleServiceLinks } from "@/components/language-gazette/GazetteArticleBlocks";
 import GazetteCoverImage from "@/components/language-gazette/GazetteCoverImage";
+import GazetteHeroAside from "@/components/language-gazette/GazetteHeroAside";
 import type { GazetteArticle } from "@/data/languageGazetteIssues";
 import { latestGazetteIssue, gazetteArticlePath } from "@/data/languageGazetteIssues";
 import { gazette2026BySlug } from "@/data/gazette2026Catalog";
@@ -303,9 +304,9 @@ const LanguageGazetteArticleShell = ({
       description={description}
       canonicalPath={canonicalPath}
       jsonLd={jsonLd}
-      mainClassName="bg-white"
+      mainClassName="bg-[hsl(var(--surface-light-50))]"
     >
-      <header className="relative isolate overflow-hidden px-5 pb-12 pt-8 sm:px-6 lg:pb-16 lg:pt-10">
+      <header className="relative isolate overflow-hidden section-pad-hero sm:px-6">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -412,55 +413,23 @@ const LanguageGazetteArticleShell = ({
               </div>
             </motion.div>
 
-            <motion.div
-              initial={hidden}
-              animate={show}
-              transition={transition(0.1)}
-              className="relative mx-auto w-full max-w-[min(100%,380px)] lg:mx-0 lg:max-w-none lg:justify-self-end"
-            >
-              <div className="gazette-cover-shadow relative z-10 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] shadow-[0_24px_60px_rgba(26,22,51,0.12)]">
-                <GazetteCoverImage
-                  src={image}
-                  alt={featuredAlt}
-                  className="aspect-[4/5] w-full object-cover sm:aspect-[5/6]"
-                />
-              </div>
-              <motion.div
-                initial={hidden}
-                animate={show}
-                transition={transition(0.18)}
-                className="absolute -bottom-2 left-0 right-0 z-20 mx-auto max-w-[240px] overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white/95 p-3 shadow-[0_18px_44px_rgba(26,22,51,0.12)] backdrop-blur-sm sm:-left-4 sm:max-w-[260px] lg:-bottom-4 lg:-left-6"
-              >
-                <div className="flex gap-3">
-                  <span className="flex h-16 w-14 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--brand-purple-700))] font-serif text-xl font-bold text-white">
-                    {authorInitial}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">
-                      {category}
-                    </p>
-                    {aboutHref ? (
-                      <Link
-                        to={aboutHref}
-                        className="mt-1 line-clamp-1 text-xs font-semibold leading-snug text-on-light hover:text-[hsl(var(--brand-purple-700))]"
-                      >
-                        {author}
-                      </Link>
-                    ) : (
-                      <p className="mt-1 line-clamp-1 text-xs font-semibold leading-snug text-on-light">{author}</p>
-                    )}
-                    <p className="mt-0.5 text-[11px] text-on-light-muted">{readTime}</p>
-                    <Link
-                      to="/language-gazette/"
-                      className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-bold text-[hsl(var(--brand-gold-600))] hover:underline"
-                    >
-                      The Language Gazette
-                      <ArrowUpRight className="h-3 w-3" aria-hidden />
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
+            <GazetteHeroAside
+              reduceMotion={reduceMotion}
+              hidden={hidden}
+              show={show}
+              transition={transition}
+              eyebrow={category}
+              title={author}
+              meta={readTime}
+              linkTo="/language-gazette/"
+              linkLabel="The Language Gazette"
+              thumb={
+                <span className="flex h-16 w-14 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--brand-purple-700))] font-serif text-xl font-bold text-white">
+                  {authorInitial}
+                </span>
+              }
+              doodleAlt="Language and culture publication illustration"
+            />
           </div>
         </div>
       </header>
@@ -508,7 +477,7 @@ const LanguageGazetteArticleShell = ({
         </div>
       </article>
 
-      <section className="border-t border-[hsl(var(--border-light))] bg-white px-4 py-12 sm:px-6 sm:py-16 md:py-20">
+      <section className="border-t border-[hsl(var(--border-light))] bg-white px-4 py-12 sm:px-6 sm:py-10 md:py-14">
         <div className="container mx-auto max-w-5xl">
           <div className="mb-8 flex flex-wrap items-end justify-between gap-4 sm:mb-10">
             <div>

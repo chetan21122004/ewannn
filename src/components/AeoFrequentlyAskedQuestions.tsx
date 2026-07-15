@@ -41,7 +41,7 @@ const AeoFrequentlyAskedQuestions = ({ items, className }: Props) => {
           Frequently Asked Questions
         </h2>
 
-        <div className="mt-6 space-y-6 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:space-y-0 xl:gap-x-10">
+        <div className="mt-5 space-y-4 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:space-y-0 xl:gap-x-10">
           <FaqAccordion items={leftItems} idPrefix="left" />
           {rightItems.length > 0 ? <FaqAccordion items={rightItems} idPrefix="right" /> : null}
         </div>

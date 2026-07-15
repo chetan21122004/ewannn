@@ -227,7 +227,7 @@ const JoinUs = () => {
       mainClassName="bg-white"
     >
       {/* Hero */}
-      <section className="relative overflow-hidden bg-white px-6 pb-20 pt-14 lg:pb-28 lg:pt-20">
+      <section className="relative overflow-hidden bg-white section-pad-hero px-6 pt-10 lg:pt-14">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -314,7 +314,7 @@ const JoinUs = () => {
       </section>
 
       {/* Join Our Team */}
-      <section id="join-team" className="theme-section-light scroll-mt-36 px-6 py-16 md:py-20">
+      <section id="join-team" className="theme-section-light scroll-mt-36 px-6 py-10 md:py-14">
         <div className="container mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
             <motion.div {...motionProps} className="order-1">
@@ -392,7 +392,7 @@ const JoinUs = () => {
       <SectionDivider variant="wave" />
 
       {/* Vendor Network */}
-      <section id="register-vendor" className="theme-section-soft scroll-mt-36 px-6 py-16 md:py-20">
+      <section id="register-vendor" className="theme-section-soft scroll-mt-36 px-6 py-10 md:py-14">
         <div className="container mx-auto max-w-6xl">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
             <motion.div {...motionProps}>
@@ -474,7 +474,7 @@ const JoinUs = () => {
       <SectionDivider variant="slant" flip />
 
       {/* Collaborate */}
-      <section id="collaborate" className="relative scroll-mt-36 overflow-hidden px-6 py-16 md:py-20">
+      <section id="collaborate" className="relative scroll-mt-36 overflow-hidden px-6 py-10 md:py-14">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -607,7 +607,7 @@ const JoinUs = () => {
         </div>
       </section>
 
-      <AeoFrequentlyAskedQuestions items={JOIN_US_FAQS} className="theme-section-soft px-6 py-16 md:py-20" />
+      <AeoFrequentlyAskedQuestions items={JOIN_US_FAQS} className="theme-section-soft px-6 py-10 md:py-14" />
     </PageLayout>
   );
 };

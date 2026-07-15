@@ -238,6 +238,27 @@
     background: linear-gradient(180deg, hsl(var(--surface-light-100)) 0%, hsl(var(--surface-light-200)) 100%);
   }
 
+  /* Sitewide section rhythm — tighter vertical spacing */
+  .section-pad {
+    @apply px-5 py-10 sm:px-6 lg:py-14;
+  }
+
+  .section-pad-hero {
+    @apply px-5 pb-10 pt-6 sm:px-6 lg:pb-14 lg:pt-9;
+  }
+
+  .section-pad-cta {
+    @apply px-5 py-8 sm:px-6 lg:py-12;
+  }
+
+  .cta-panel-navy {
+    @apply px-5 py-5 sm:px-6 sm:py-6 lg:px-8 lg:py-7;
+  }
+
+  .cta-panel-actions {
+    @apply flex flex-col justify-center gap-2.5 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-4 sm:gap-3 sm:p-5 lg:border-t-0 lg:border-l lg:p-6;
+  }
+
   .theme-card {
     background: hsl(var(--surface-elevated) / 0.85);
     backdrop-filter: blur(12px);
@@ -671,10 +692,10 @@ html {
 /* ========================
    LANGUAGE GAZETTE (magazine)
    ======================== */
-.gazette-paper {
-  background-color: hsl(0 0% 100%);
-  background-image: none;
-}
+  .gazette-paper {
+    background-color: hsl(var(--surface-light-50));
+    background-image: none;
+  }
 
 .gazette-paper-section {
   background-color: hsl(0 0% 100%);

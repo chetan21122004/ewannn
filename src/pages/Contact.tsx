@@ -69,7 +69,7 @@ const Contact = () => {
       canonicalPath="/contact/"
     >
       {/* Hero */}
-      <section className="relative isolate overflow-hidden px-5 pb-10 pt-8 sm:px-6 lg:pb-20 lg:pt-12">
+      <section className="relative isolate overflow-hidden section-pad-hero sm:px-6">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -238,7 +238,7 @@ const Contact = () => {
       </section>
 
       {/* Form + audience */}
-      <section id="contact-form" className="relative scroll-mt-24 overflow-hidden px-5 py-8 theme-section-soft sm:px-6 lg:py-20">
+      <section id="contact-form" className="relative scroll-mt-24 overflow-hidden section-pad theme-section-soft sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -314,7 +314,7 @@ const Contact = () => {
       </section>
 
       {/* Bottom CTA */}
-      <section className="px-5 pb-14 pt-2 theme-section-soft sm:px-6 lg:pb-20 lg:pt-4">
+      <section className="section-pad-cta theme-section-soft sm:px-6 pt-2">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             className="relative overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white px-5 py-8 shadow-sm sm:rounded-3xl sm:px-8 sm:py-10 lg:flex lg:items-center lg:justify-between lg:gap-10"

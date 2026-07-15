@@ -241,7 +241,7 @@ const MarketEntry = () => {
       keywords={MARKET_ENTRY_KEYWORDS}
       jsonLd={marketEntryLd}
     >
-      <section className="relative overflow-hidden bg-white px-5 pb-14 pt-8 sm:px-6 lg:px-6 lg:pb-24 lg:pt-12">
+      <section className="relative overflow-hidden bg-white section-pad-hero sm:px-6 lg:px-6">
         <img
           src="/doodles/International trade-rafiki.svg"
           alt=""
@@ -308,7 +308,7 @@ const MarketEntry = () => {
 
       <SectionDivider variant="wave" />
 
-      <section id="who-we-serve" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+      <section id="who-we-serve" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6">
         <div className="glow-orb glow-orb-gold pointer-events-none h-[200px] w-[200px] -right-16 bottom-0 opacity-[0.06] lg:h-[360px] lg:w-[360px] lg:-right-24 lg:opacity-[0.08]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.16]" />
 
@@ -387,7 +387,7 @@ const MarketEntry = () => {
 
       <SectionDivider variant="slant" />
 
-      <section id="what-we-deliver" className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+      <section id="what-we-deliver" className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
 
         <div className="container relative z-10 mx-auto">
@@ -484,7 +484,7 @@ const MarketEntry = () => {
 
       <SectionDivider variant="slant" flip />
 
-      <section id="proof" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+      <section id="proof" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
 
         <motion.div
@@ -596,7 +596,7 @@ const MarketEntry = () => {
 
       <SectionDivider variant="wave" />
 
-      <section id="how-it-works" className="relative scroll-mt-24 overflow-hidden theme-section-soft px-5 py-10 sm:px-6 lg:py-20">
+      <section id="how-it-works" className="relative scroll-mt-24 overflow-hidden theme-section-soft px-5 section-pad-cta sm:px-6">
 
         <div className="container relative z-10 mx-auto">
           <motion.div
@@ -605,7 +605,7 @@ const MarketEntry = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="mb-8 lg:mb-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(220px,260px)] lg:items-center lg:gap-8">
+            <div className="mb-8 lg:mb-8 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(220px,260px)] lg:items-center lg:gap-8">
               <div>
                 <span className="mb-3 inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em]">
                   Process
@@ -753,7 +753,7 @@ const MarketEntry = () => {
         </div>
       </section>
 
-      <AeoFrequentlyAskedQuestions items={MARKET_ENTRY_FAQS} className="theme-section-light px-5 py-10 sm:px-6 sm:py-16" />
+      <AeoFrequentlyAskedQuestions items={MARKET_ENTRY_FAQS} className="theme-section-light px-5 section-pad sm:px-6" />
     </PageLayout>
   );
 };

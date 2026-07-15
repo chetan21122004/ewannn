@@ -146,7 +146,7 @@ const LiaisoningFacilitation = () => {
       jsonLd={liaisonLd}
     >
       {/* Hero */}
-      <section className="relative overflow-hidden theme-section-soft px-5 pb-14 pt-8 sm:px-6 lg:pb-24 lg:pt-12">
+      <section className="relative overflow-hidden theme-section-soft section-pad-hero sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -207,7 +207,7 @@ const LiaisoningFacilitation = () => {
       </section>
 
       {/* What liaisoning means */}
-      <section id="what-liaisoning-means" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+      <section id="what-liaisoning-means" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
@@ -242,7 +242,7 @@ const LiaisoningFacilitation = () => {
       </section>
 
       {/* Services */}
-      <section id="services" className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+      <section id="services" className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
@@ -322,7 +322,7 @@ const LiaisoningFacilitation = () => {
       </section>
 
       {/* Who this is for */}
-      <section id="who-this-is-for" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+      <section id="who-this-is-for" className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6">
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
             initial={hidden}
@@ -356,7 +356,7 @@ const LiaisoningFacilitation = () => {
       </section>
 
       {/* Why UVAN */}
-      <section className="theme-section-light relative overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+      <section className="theme-section-light relative overflow-hidden px-5 section-pad sm:px-6">
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
             initial={hidden}
@@ -397,7 +397,7 @@ const LiaisoningFacilitation = () => {
         </div>
       </section>
 
-      <AeoFrequentlyAskedQuestions items={LIAISONING_FAQS} className="theme-section-soft px-5 py-10 sm:px-6 sm:py-16" />
+      <AeoFrequentlyAskedQuestions items={LIAISONING_FAQS} className="theme-section-soft px-5 section-pad sm:px-6" />
     </PageLayout>
   );
 };

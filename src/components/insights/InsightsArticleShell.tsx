@@ -183,7 +183,7 @@ const InsightsArticleShell = ({
       {afterArticle}
 
       {relatedArticles.length > 0 ? (
-        <section className="border-t border-[hsl(var(--border-light))] bg-white px-4 py-12 sm:px-6 sm:py-16 md:py-20">
+        <section className="border-t border-[hsl(var(--border-light))] bg-white px-4 py-12 sm:px-6 sm:py-10 md:py-14">
           <div className="container mx-auto max-w-5xl">
             <div className="mb-8 flex flex-col gap-3 sm:mb-10 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-4">
               <div>

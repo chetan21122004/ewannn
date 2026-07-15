@@ -1,16 +1,17 @@
 import type { ReactNode } from "react";
-import { ArrowRight, ArrowUpRight, BookOpen } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import type { GazetteArticle, GazetteIssue } from "@/data/languageGazetteIssues";
 import { gazette2026Articles, gazetteArticlePath } from "@/data/languageGazetteIssues";
 import { latestTlgPdfIssue, tlgPdfReaderPath } from "@/data/tlgPdfCatalog";
 import GazetteCoverImage from "@/components/language-gazette/GazetteCoverImage";
+import GazetteHeroAside from "@/components/language-gazette/GazetteHeroAside";
 
 type LanguageGazetteMagazineLayoutProps = {
   issue?: GazetteIssue;
   showHero?: boolean;
-  heroTitle?: string;
+  heroTitle?: ReactNode;
   heroSubtitle?: string;
   children?: ReactNode;
   articles?: GazetteArticle[];
@@ -112,7 +113,7 @@ const LanguageGazetteMagazineLayout = ({
   return (
     <div className="gazette-paper">
       {showHero && issue ? (
-        <section className="relative isolate overflow-hidden px-5 pb-12 pt-8 sm:px-6 lg:pb-20 lg:pt-14">
+        <section className="relative isolate overflow-hidden section-pad-hero sm:px-6">
           <div
             className="pointer-events-none absolute inset-0"
             style={{
@@ -123,7 +124,7 @@ const LanguageGazetteMagazineLayout = ({
           />
           <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.16]" />
           <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white to-transparent"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[hsl(var(--surface-light-50))] to-transparent"
             aria-hidden
           />
 
@@ -144,7 +145,7 @@ const LanguageGazetteMagazineLayout = ({
                 </h1>
                 <p className="mt-4 max-w-xl text-sm leading-relaxed text-on-light-secondary sm:mt-5 sm:text-base lg:text-lg">
                   {heroSubtitle ??
-                    "UVAN's quarterly publication exploring language, cultural intelligence, and international business - available as web articles and full PDF editions."}
+                    "Published by UVAN for readers exploring language, cultural intelligence, and international business — as web articles and full PDF editions."}
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
                   <a
@@ -164,51 +165,26 @@ const LanguageGazetteMagazineLayout = ({
                 </div>
               </motion.div>
 
-              <motion.div
-                initial={hidden}
-                animate={show}
-                transition={transition(0.1)}
-                className="relative mx-auto w-full max-w-[min(100%,380px)] lg:mx-0 lg:max-w-none lg:justify-self-end"
-              >
-                <div className="gazette-cover-shadow relative z-10 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] shadow-[0_24px_60px_rgba(26,22,51,0.12)]">
-                  <GazetteCoverImage
+              <GazetteHeroAside
+                reduceMotion={reduceMotion}
+                hidden={hidden}
+                show={show}
+                transition={transition}
+                eyebrow="Latest from TLG"
+                title={issue.label}
+                meta={`${readableArticleCount} web articles`}
+                linkTo="#latest-issue"
+                linkLabel="Read issue"
+                thumb={
+                  <img
                     src={issue.coverImage}
-                    alt={`${issue.label} cover`}
-                    className="aspect-[4/5] w-full object-cover"
+                    alt=""
+                    aria-hidden
+                    className="h-16 w-14 shrink-0 rounded-lg object-cover"
                   />
-                </div>
-                <motion.div
-                  initial={hidden}
-                  animate={show}
-                  transition={transition(0.18)}
-                  className="absolute -bottom-2 left-0 right-0 z-20 mx-auto max-w-[240px] overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white/95 p-3 shadow-[0_18px_44px_rgba(26,22,51,0.12)] backdrop-blur-sm sm:-left-4 sm:max-w-[260px] lg:-bottom-4 lg:-left-6"
-                >
-                  <div className="flex gap-3">
-                    <img
-                      src={issue.coverImage}
-                      alt=""
-                      aria-hidden
-                      className="h-16 w-14 shrink-0 rounded-lg object-cover"
-                    />
-                    <div className="min-w-0">
-                      <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">
-                        Latest issue
-                      </p>
-                      <p className="mt-1 line-clamp-2 text-xs font-semibold leading-snug text-on-light">{issue.label}</p>
-                      <p className="mt-0.5 text-[11px] text-on-light-muted">
-                        {readableArticleCount} readable articles
-                      </p>
-                      <Link
-                        to={tlgPdfReaderPath(latestTlgPdfIssue.slug)}
-                        className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-bold text-[hsl(var(--brand-gold-600))] hover:underline"
-                      >
-                        Open PDF edition
-                        <ArrowUpRight className="h-3 w-3" aria-hidden />
-                      </Link>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
+                }
+                doodleAlt="The Language Gazette publication illustration"
+              />
             </div>
           </div>
         </section>
@@ -217,7 +193,7 @@ const LanguageGazetteMagazineLayout = ({
       {children}
 
       {displayArticles.length > 0 ? (
-        <section id={showHero ? "latest-issue" : undefined} className="relative overflow-hidden bg-white px-6 py-16 md:py-20">
+        <section id={showHero ? "latest-issue" : undefined} className="relative overflow-hidden bg-white px-6 py-10 md:py-14">
           <div className="container relative z-10 mx-auto max-w-6xl">
             <motion.div
               initial={hidden}

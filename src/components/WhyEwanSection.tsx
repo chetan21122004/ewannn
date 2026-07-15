@@ -135,7 +135,7 @@ const WhyEwanSection = () => {
       <div className="pointer-events-none absolute inset-0 opacity-[0.12] theme-grid-overlay-light lg:opacity-[0.18]" />
 
       <div className="container relative z-10 mx-auto px-5 sm:px-6">
-        <div className="mb-8 grid items-center gap-6 lg:mb-10 lg:grid-cols-[minmax(0,1fr)_minmax(220px,300px)] lg:gap-10">
+        <div className="mb-8 grid items-center gap-6 lg:mb-8 lg:grid-cols-[minmax(0,1fr)_minmax(220px,300px)] lg:gap-10">
           <motion.div
             className="max-w-3xl"
             initial="hidden"

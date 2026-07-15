@@ -11,7 +11,7 @@ type HeroProps = {
 
 export const Hero = ({ label, title, description, primaryCta, secondaryCta }: HeroProps) => {
   return (
-    <section className="container mx-auto px-6 py-14 lg:py-20">
+    <section className="container mx-auto px-6 py-10 lg:py-14">
       {label ? <p className="text-xs uppercase tracking-[0.22em] text-[hsl(var(--brand-gold-500))]">{label}</p> : null}
       <h1 className="mt-3 text-4xl font-bold leading-tight sm:text-5xl">{title}</h1>
       <p className="mt-4 max-w-3xl text-base text-foreground/80 sm:text-lg">{description}</p>

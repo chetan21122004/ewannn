@@ -277,7 +277,7 @@ const AboutUs = () => {
       {/* Hero Section */}
       <section
         id="about-ewan"
-        className="relative scroll-mt-24 overflow-hidden px-5 pb-16 pt-8 sm:px-6 lg:pb-24 lg:pt-12"
+        className="relative scroll-mt-24 overflow-hidden section-pad-hero sm:px-6"
       >
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-[hsl(var(--surface-light-50))] to-[hsl(var(--surface-light-100))]" />
         <div
@@ -763,7 +763,7 @@ const AboutUs = () => {
       </section>
 
       {/* Partners */}
-      <section id="our-partners" className="relative overflow-hidden px-6 py-16 theme-section-soft md:py-24">
+      <section id="our-partners" className="relative overflow-hidden section-pad px-6 theme-section-soft md:py-24">
         <div className="glow-orb glow-orb-gold pointer-events-none -bottom-10 -left-16 h-[280px] w-[280px] opacity-[0.08]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.08]" />
         <img
@@ -861,7 +861,7 @@ const AboutUs = () => {
       </section>
 
       {/* Oriental Flock */}
-      <section id="oriental-flock" className="theme-section-light relative overflow-hidden px-6 py-16 md:py-20">
+      <section id="oriental-flock" className="theme-section-light relative overflow-hidden section-pad px-6">
         <motion.img
           src={doodleSquiggle}
           alt=""
@@ -940,7 +940,7 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <AeoFrequentlyAskedQuestions items={ABOUT_US_FAQS} className="theme-section-light px-6 py-16 md:py-20" />
+      <AeoFrequentlyAskedQuestions items={ABOUT_US_FAQS} className="theme-section-light section-pad px-6" />
 
       </div>
     </PageLayout>

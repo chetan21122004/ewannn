@@ -158,7 +158,7 @@ const ImportExport = () => {
       jsonLd={importExportLd}
     >
       {/* Hero */}
-      <section className="relative overflow-hidden theme-section-soft px-5 pb-14 pt-8 sm:px-6 sm:pb-20 sm:pt-10 md:pb-28 md:pt-14 stitch-line stitch-line-bottom">
+      <section className="relative overflow-hidden theme-section-soft section-pad-hero sm:px-6 sm:pb-12 sm:pt-8 md:pb-16 md:pt-10 stitch-line stitch-line-bottom">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <motion.img
@@ -243,7 +243,7 @@ const ImportExport = () => {
       <SectionDivider variant="wave" fromDark />
 
       {/* Where UVAN Adds Value */}
-      <section className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-14 sm:px-6 lg:py-20 stitch-line stitch-line-bottom">
+      <section className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6 stitch-line stitch-line-bottom">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.12]" />
         <div className="glow-orb glow-orb-gold pointer-events-none -left-20 top-1/3 h-[240px] w-[240px] opacity-[0.06] lg:h-[320px] lg:w-[320px] lg:opacity-[0.08]" />
 
@@ -336,13 +336,13 @@ const ImportExport = () => {
       {/* Services */}
       <section
         id="services"
-        className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20"
+        className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6"
       >
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
-            className="mb-6 grid items-center gap-5 lg:mb-12 lg:grid-cols-[minmax(0,1fr)_minmax(200px,260px)] lg:gap-8"
+            className="mb-6 grid items-center gap-5 lg:mb-8 lg:grid-cols-[minmax(0,1fr)_minmax(200px,260px)] lg:gap-8"
             initial={hidden}
             whileInView={show}
             viewport={{ once: true }}
@@ -381,14 +381,14 @@ const ImportExport = () => {
       <SectionDivider variant="slant" />
 
       {/* Corridors We Know Best */}
-      <section id="corridors" className="relative scroll-mt-24 overflow-hidden bg-[hsl(var(--surface-light-50))] px-5 py-8 sm:px-6 lg:py-20">
+      <section id="corridors" className="relative scroll-mt-24 overflow-hidden bg-[hsl(var(--surface-light-50))] px-5 section-pad sm:px-6">
         <div className="pointer-events-none absolute right-0 top-1/2 max-w-[min(48%,520px)] -translate-y-1/2 opacity-[0.08] lg:opacity-20">
           <img src={stitch.corridorsMap} alt="" aria-hidden className="h-auto w-full object-contain" loading="lazy" />
         </div>
 
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
-            className="mb-6 flex flex-col gap-4 lg:mb-10 lg:flex-row lg:items-end lg:justify-between lg:gap-8"
+            className="mb-6 flex flex-col gap-4 lg:mb-8 lg:flex-row lg:items-end lg:justify-between lg:gap-8"
             initial={hidden}
             whileInView={show}
             viewport={{ once: true }}

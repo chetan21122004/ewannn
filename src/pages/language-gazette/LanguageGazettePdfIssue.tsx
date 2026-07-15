@@ -27,7 +27,7 @@ const LanguageGazettePdfIssue = () => {
 
   return (
     <PageLayout title={`${title} | UVAN`} description={description} canonicalPath={canonicalPath} jsonLd={jsonLd}>
-      <section className="theme-section-soft px-4 pb-12 pt-8 sm:px-5 sm:pb-16 sm:pt-10 lg:pb-24 lg:pt-14">
+      <section className="theme-section-soft section-pad-hero px-4 sm:px-5 sm:pb-12 sm:pt-8">
         <div className="container mx-auto max-w-6xl">
           <nav className="mb-5 text-xs text-on-light-muted sm:mb-6 sm:text-sm">
             <Link to="/language-gazette" className="inline-flex items-center gap-1.5 hover:text-[hsl(var(--brand-purple-700))]">

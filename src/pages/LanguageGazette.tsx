@@ -39,16 +39,22 @@ const LanguageGazette = () => {
       canonicalPath="/language-gazette/"
       keywords={t("seo.languageGazette.keywords")}
       jsonLd={jsonLd}
-      mainClassName="bg-white"
+      mainClassName="bg-[hsl(var(--surface-light-50))]"
     >
       <LanguageGazetteMagazineLayout
         issue={april2026Issue}
         showHero
         articles={[]}
-        heroSubtitle="UVAN's quarterly publication on language, culture, and cross-border business - 18 readable web articles from January-April 2026."
+        heroTitle={
+          <>
+            The Language{" "}
+            <span className="italic text-[hsl(var(--brand-purple-700))]">Gazette</span>
+          </>
+        }
+        heroSubtitle="UVAN's quarterly publication on language, culture, and cross-border business — 18 readable web articles from January–April 2026."
       />
 
-      <section id="latest-issue" className="border-t border-[hsl(var(--brand-navy-950)/0.06)] bg-white px-6 py-14 md:py-16">
+      <section id="latest-issue" className="border-t border-[hsl(var(--brand-navy-950)/0.06)] bg-white px-6 py-10 md:py-12">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <motion.div initial={hidden} whileInView={show} viewport={{ once: true }} transition={transition(0)}>
@@ -94,7 +100,7 @@ const LanguageGazette = () => {
 
       <GazetteContributeDialog open={contributeOpen} onOpenChange={setContributeOpen} />
 
-      <section id="pdf-archive" className="border-t border-[hsl(var(--border-light))] bg-white px-4 py-12 sm:px-6 sm:py-16 md:py-20">
+      <section id="pdf-archive" className="border-t border-[hsl(var(--border-light))] bg-white px-4 py-12 sm:px-6 sm:py-10 md:py-14">
         <div className="container mx-auto max-w-6xl">
           <motion.div initial={hidden} whileInView={show} viewport={{ once: true }} transition={transition(0)} className="mb-10 max-w-2xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">

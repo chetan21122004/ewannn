@@ -103,7 +103,7 @@ const Insights = () => {
       canonicalPath="/insights/"
       jsonLd={insightsLd}
     >
-      <section className="relative overflow-hidden bg-[hsl(var(--surface-light-50))] px-6 py-16 md:py-24">
+      <section className="relative overflow-hidden bg-[hsl(var(--surface-light-50))] section-pad px-6">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_84%_78%,hsl(var(--brand-gold-500)/0.06),transparent_38%)]" />
         <div className="pointer-events-none absolute left-8 top-16 hidden select-none text-5xl font-extrabold text-[hsl(var(--brand-purple-700)/0.16)] lg:block">
           {`{"insights":true}`}
@@ -161,7 +161,7 @@ const Insights = () => {
       </section>
 
       {/* Articles */}
-      <section id="articles" className="relative scroll-mt-36 overflow-hidden theme-section-light px-6 py-16 md:py-20">
+      <section id="articles" className="relative scroll-mt-36 overflow-hidden theme-section-light px-6 py-10 md:py-14">
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
             initial={hidden}
@@ -287,8 +287,8 @@ const Insights = () => {
       </section>
 
       {/* Bottom CTA */}
-      <section className="relative overflow-hidden px-6 pb-20 pt-8 theme-section-soft sm:pt-10 lg:pb-24">
-        <div className="glow-orb glow-orb-gold pointer-events-none -right-16 -bottom-16 h-[220px] w-[220px] opacity-[0.07] lg:-right-8 lg:-bottom-24 lg:h-[360px] lg:w-[360px] lg:opacity-[0.09]" />
+      <section className="relative overflow-hidden section-pad-cta theme-section-soft px-6 sm:pt-8">
+        <div className="glow-orb glow-orb-gold pointer-events-none -right-12 -bottom-12 h-[180px] w-[180px] opacity-[0.06] lg:-right-6 lg:-bottom-16 lg:h-[240px] lg:w-[240px] lg:opacity-[0.07]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.14]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -299,7 +299,7 @@ const Insights = () => {
             transition={transition(0)}
             className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white shadow-[0_20px_60px_hsl(var(--brand-navy-950)/0.07)] sm:rounded-[1.75rem] lg:grid lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,380px)] lg:items-stretch"
           >
-            <div className="relative overflow-hidden bg-[linear-gradient(135deg,hsl(var(--brand-navy-950))_0%,hsl(var(--brand-purple-800))_52%,hsl(var(--brand-purple-700))_100%)] px-5 py-7 text-white sm:px-8 sm:py-9 lg:px-10 lg:py-10">
+            <div className="relative overflow-hidden bg-[linear-gradient(135deg,hsl(var(--brand-navy-950))_0%,hsl(var(--brand-purple-800))_52%,hsl(var(--brand-purple-700))_100%)] cta-panel-navy text-white">
               <div className="pointer-events-none absolute inset-0 opacity-[0.14] theme-grid-overlay-light" aria-hidden />
               <motion.img
                 src="/doodles/Advantages-bro.svg"
@@ -315,16 +315,16 @@ const Insights = () => {
                 Next Step
               </span>
 
-              <h2 className="relative mt-4 max-w-xl font-serif text-[1.65rem] font-bold leading-tight sm:text-3xl lg:text-4xl">
+              <h2 className="relative mt-3 max-w-xl font-serif text-[1.65rem] font-bold leading-tight sm:text-2xl lg:text-3xl">
                 Ready to apply this to your{" "}
                 <span className="italic text-[hsl(var(--brand-gold-500))]">business</span>?
               </h2>
-              <p className="relative mt-3 max-w-xl text-sm leading-relaxed text-white/78 sm:text-[0.9375rem]">
+              <p className="relative mt-2 max-w-xl text-sm leading-relaxed text-white/78 sm:text-[0.9375rem]">
                 Turn insight into execution - book a focused strategy conversation with Soham or explore how UVAN supports
                 your next market move across language and operations.
               </p>
 
-              <ul className="relative mt-5 flex flex-wrap gap-2 sm:mt-6">
+              <ul className="relative mt-4 flex flex-wrap gap-2">
                 {[
                   { icon: Globe2, label: "Corridor intelligence" },
                   { icon: BookOpen, label: "Market entry & language" },
@@ -341,7 +341,7 @@ const Insights = () => {
               </ul>
             </div>
 
-            <div className="flex flex-col justify-center gap-3 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-5 sm:p-6 lg:border-t-0 lg:border-l lg:p-8">
+            <div className="cta-panel-actions">
               <Link
                 to="/ask-soham"
                 className="group inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-2xl bg-[hsl(var(--brand-gold-500))] px-5 py-3.5 text-sm font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_12px_32px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105"

@@ -154,7 +154,7 @@ const GlobalTalkies = () => {
       jsonLd={globalTalkiesLd}
     >
       {/* Hero */}
-      <section className="relative overflow-hidden theme-section-soft px-6 pb-24 pt-12">
+      <section className="relative overflow-hidden theme-section-soft section-pad-hero px-6 pt-10">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative mx-auto">
@@ -208,7 +208,7 @@ const GlobalTalkies = () => {
       </section>
 
       {/* What Global Talkies Does */}
-      <section className="relative overflow-hidden px-6 py-16 theme-section-soft lg:py-20">
+      <section className="relative overflow-hidden section-pad theme-section-soft px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -261,7 +261,7 @@ const GlobalTalkies = () => {
       </section>
 
       {/* Services */}
-      <section id="services" className="relative scroll-mt-28 overflow-hidden px-6 py-16 theme-section-light lg:py-20">
+      <section id="services" className="relative scroll-mt-28 overflow-hidden section-pad theme-section-light px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -270,7 +270,7 @@ const GlobalTalkies = () => {
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0)}
-            className="mb-10 grid items-center gap-8 lg:mb-12 lg:grid-cols-[minmax(0,1fr)_minmax(200px,260px)]"
+            className="mb-10 grid items-center gap-8 lg:mb-8 lg:grid-cols-[minmax(0,1fr)_minmax(200px,260px)]"
           >
             <div>
               <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
@@ -375,7 +375,7 @@ const GlobalTalkies = () => {
       </section>
 
       {/* Who This Is For */}
-      <section className="relative overflow-hidden px-6 py-16 theme-section-soft lg:py-20">
+      <section className="relative overflow-hidden section-pad theme-section-soft px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -432,7 +432,7 @@ const GlobalTalkies = () => {
       </section>
 
       {/* Why Global Talkies */}
-      <section className="relative overflow-hidden px-6 py-16 theme-section-light lg:py-20">
+      <section className="relative overflow-hidden section-pad theme-section-light px-6">
 
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
@@ -480,10 +480,10 @@ const GlobalTalkies = () => {
         </div>
       </section>
 
-      <AeoFrequentlyAskedQuestions items={GLOBAL_TALKIES_FAQS} className="bg-[#f8f7fc] px-6 py-16" />
+      <AeoFrequentlyAskedQuestions items={GLOBAL_TALKIES_FAQS} className="bg-[#f8f7fc] section-pad px-6" />
 
       {/* CTA */}
-      <section className="theme-section-soft px-6 py-16">
+      <section className="theme-section-soft section-pad px-6">
         <div className="container mx-auto rounded-3xl border border-[hsl(var(--border-light))] bg-white p-8 text-center shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">Next Step</p>
           <h3 className="mt-2 font-serif text-4xl font-bold text-on-light">Send Your Content Brief</h3>

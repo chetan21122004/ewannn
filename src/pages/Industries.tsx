@@ -148,7 +148,7 @@ const Industries = () => {
       keywords={t("seo.industries.keywords")}
       jsonLd={industriesLd}
     >
-      <section className="relative isolate overflow-hidden theme-section-soft px-5 pb-14 pt-8 sm:px-6 lg:pb-24 lg:pt-12">
+      <section className="relative isolate overflow-hidden theme-section-soft section-pad-hero sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
         <div className="glow-orb glow-orb-gold pointer-events-none -right-20 top-1/4 h-[240px] w-[240px] opacity-[0.06] lg:h-[360px] lg:w-[360px] lg:opacity-[0.08]" />
 
@@ -235,7 +235,7 @@ const Industries = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden theme-section-light px-5 py-14 sm:px-6 lg:py-20">
+      <section className="relative overflow-hidden theme-section-light px-5 section-pad sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.08]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -317,7 +317,7 @@ const Industries = () => {
         </div>
       </section>
 
-      <section id="specializations" className="relative scroll-mt-28 overflow-hidden theme-section-soft px-5 py-14 sm:px-6 lg:py-20">
+      <section id="specializations" className="relative scroll-mt-28 overflow-hidden theme-section-soft px-5 section-pad sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -385,8 +385,8 @@ const Industries = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden theme-section-light px-5 pb-20 pt-8 sm:px-6 lg:pb-24 lg:pt-10">
-        <div className="glow-orb glow-orb-gold pointer-events-none -left-16 -bottom-16 h-[220px] w-[220px] opacity-[0.06] lg:-left-8 lg:-bottom-24 lg:h-[320px] lg:w-[320px] lg:opacity-[0.08]" />
+      <section className="relative overflow-hidden theme-section-light px-5 section-pad-cta sm:px-6">
+        <div className="glow-orb glow-orb-gold pointer-events-none -left-12 -bottom-12 h-[180px] w-[180px] opacity-[0.05] lg:-left-6 lg:-bottom-16 lg:h-[240px] lg:w-[240px] lg:opacity-[0.07]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.08]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -397,7 +397,7 @@ const Industries = () => {
             transition={transition(0)}
             className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white shadow-[0_20px_60px_hsl(var(--brand-navy-950)/0.07)] sm:rounded-[1.75rem] lg:grid lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,380px)] lg:items-stretch"
           >
-            <div className="relative overflow-hidden bg-[linear-gradient(135deg,hsl(var(--brand-navy-950))_0%,hsl(var(--brand-purple-800))_52%,hsl(var(--brand-purple-700))_100%)] px-5 py-7 text-white sm:px-8 sm:py-9 lg:px-10 lg:py-10">
+            <div className="relative overflow-hidden bg-[linear-gradient(135deg,hsl(var(--brand-navy-950))_0%,hsl(var(--brand-purple-800))_52%,hsl(var(--brand-purple-700))_100%)] cta-panel-navy text-white">
               <div className="pointer-events-none absolute inset-0 opacity-[0.14] theme-grid-overlay-light" aria-hidden />
               <motion.img
                 src="/doodles/Group discussion-bro.svg"
@@ -413,14 +413,14 @@ const Industries = () => {
                 Next Step
               </span>
 
-              <h2 className="relative mt-4 max-w-xl font-serif text-[1.65rem] font-bold leading-tight sm:text-3xl lg:text-4xl">
+              <h2 className="relative mt-3 max-w-xl font-serif text-[1.65rem] font-bold leading-tight sm:text-2xl lg:text-3xl">
                 {t("industries.cta.title")}
               </h2>
-              <p className="relative mt-3 max-w-xl text-sm leading-relaxed text-white/78 sm:text-[0.9375rem]">
+              <p className="relative mt-2 max-w-xl text-sm leading-relaxed text-white/78 sm:text-[0.9375rem]">
                 {t("industries.cta.copy")}
               </p>
 
-              <ul className="relative mt-5 flex flex-wrap gap-2 sm:mt-6">
+              <ul className="relative mt-4 flex flex-wrap gap-2">
                 {[
                   { icon: Network, label: "Sector-specific depth" },
                   { icon: Globe2, label: "Corridor intelligence" },
@@ -437,7 +437,7 @@ const Industries = () => {
               </ul>
             </div>
 
-            <div className="flex flex-col justify-center gap-3 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-5 sm:p-6 lg:border-t-0 lg:border-l lg:p-8">
+            <div className="cta-panel-actions">
               <Link
                 to="/ask-soham"
                 className="group inline-flex min-h-12 w-full items-center justify-center gap-2.5 rounded-2xl bg-[hsl(var(--brand-gold-500))] px-5 py-3.5 text-sm font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_12px_32px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105"

@@ -159,7 +159,7 @@ const GazetteMediaShowcase = ({
         className={
           compactHeader
             ? "mb-8 max-w-2xl"
-            : "mb-10 flex flex-col gap-6 lg:mb-12 lg:flex-row lg:items-end lg:justify-between"
+            : "mb-6 flex flex-col gap-5 lg:mb-8 lg:flex-row lg:items-end lg:justify-between"
         }
       >
         <div className={compactHeader ? undefined : "max-w-2xl"}>
@@ -228,7 +228,7 @@ const GazetteMediaShowcase = ({
   }
 
   return (
-    <section id={sectionId} className="relative scroll-mt-36 overflow-hidden px-6 py-16 md:py-20">
+    <section id={sectionId} className="relative scroll-mt-36 overflow-hidden px-6 py-10 md:py-14">
       <div
         className="pointer-events-none absolute inset-0"
         style={{

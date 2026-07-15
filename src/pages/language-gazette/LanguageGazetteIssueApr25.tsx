@@ -70,7 +70,7 @@ const LanguageGazetteIssueApr25 = () => {
         </div>
       </section>
 
-      <section className="gazette-paper gazette-paper-section px-6 py-16 md:py-24">
+      <section className="gazette-paper gazette-paper-section section-pad px-6">
         <div className="container mx-auto max-w-6xl">
           <GazetteMasthead issueLabel={`Table of contents · ${issue.shortLabel}`} />
           <p className="mx-auto mt-6 max-w-2xl text-center text-on-light-secondary">

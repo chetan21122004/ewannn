@@ -250,7 +250,7 @@ const LanguageLocalization = () => {
       jsonLd={languageLd}
     >
       {/* Hero */}
-      <section className="relative isolate overflow-hidden theme-section-soft px-5 pb-14 pt-8 sm:px-6 lg:pb-24 lg:pt-12">
+      <section className="relative isolate overflow-hidden theme-section-soft section-pad-hero sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -303,7 +303,7 @@ const LanguageLocalization = () => {
       </section>
 
       {/* Six disciplines */}
-      <section id="services" className="relative scroll-mt-24 overflow-hidden px-5 py-8 theme-section-light sm:px-6 lg:py-20">
+      <section id="services" className="relative scroll-mt-24 overflow-hidden section-pad theme-section-light sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.12]" />
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
@@ -311,7 +311,7 @@ const LanguageLocalization = () => {
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0)}
-            className="mb-6 grid items-center gap-5 lg:mb-12 lg:grid-cols-[minmax(0,1fr)_minmax(200px,260px)] lg:gap-8"
+            className="mb-6 grid items-center gap-5 lg:mb-8 lg:grid-cols-[minmax(0,1fr)_minmax(200px,260px)] lg:gap-8"
           >
             <div>
               <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em]">
@@ -394,7 +394,7 @@ const LanguageLocalization = () => {
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0)}
-            className="mb-6 grid items-end gap-5 lg:mb-12 lg:grid-cols-[minmax(0,1fr)_minmax(200px,260px)] lg:gap-8"
+            className="mb-6 grid items-end gap-5 lg:mb-8 lg:grid-cols-[minmax(0,1fr)_minmax(200px,260px)] lg:gap-8"
           >
             <div className="max-w-3xl">
               <span className="inline-flex rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.24em]">
@@ -465,12 +465,12 @@ const LanguageLocalization = () => {
       </section>
 
       {/* Language corridors */}
-      <section id="corridors" className="relative scroll-mt-24 overflow-hidden px-5 py-8 theme-section-light sm:px-6 lg:py-20">
+      <section id="corridors" className="relative scroll-mt-24 overflow-hidden section-pad theme-section-light sm:px-6">
         <div className="glow-orb glow-orb-gold pointer-events-none h-[220px] w-[220px] -left-20 bottom-0 opacity-[0.06] lg:h-[360px] lg:w-[360px] lg:-left-32 lg:opacity-[0.08]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <div className="mb-6 grid items-end gap-5 lg:mb-10 lg:grid-cols-[minmax(0,1fr)_minmax(220px,280px)] lg:gap-8">
+          <div className="mb-6 grid items-end gap-5 lg:mb-8 lg:grid-cols-[minmax(0,1fr)_minmax(220px,280px)] lg:gap-8">
             <motion.div
               initial={hidden}
               whileInView={show}
@@ -536,12 +536,12 @@ const LanguageLocalization = () => {
 
       <AeoFrequentlyAskedQuestions
         items={LANGUAGE_LOCALIZATION_FAQS}
-        className="theme-section-light px-5 py-10 sm:px-6 sm:py-16"
+        className="theme-section-light px-5 section-pad sm:px-6"
       />
 
       {/* Final CTA */}
-      <section className="relative overflow-hidden theme-section-soft px-5 py-10 sm:px-6 lg:py-20">
-        <div className="glow-orb glow-orb-gold pointer-events-none -right-16 -bottom-16 h-[220px] w-[220px] opacity-[0.07] lg:-right-8 lg:-bottom-24 lg:h-[360px] lg:w-[360px] lg:opacity-[0.09]" />
+      <section className="relative overflow-hidden theme-section-soft px-5 section-pad-cta sm:px-6">
+        <div className="glow-orb glow-orb-gold pointer-events-none -right-12 -bottom-12 h-[180px] w-[180px] opacity-[0.06] lg:-right-6 lg:-bottom-16 lg:h-[240px] lg:w-[240px] lg:opacity-[0.07]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.14]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -552,7 +552,7 @@ const LanguageLocalization = () => {
             transition={transition(0)}
             className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white shadow-[0_20px_60px_hsl(var(--brand-navy-950)/0.07)] sm:rounded-[1.75rem] lg:grid lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,380px)] lg:items-stretch"
           >
-            <div className="relative overflow-hidden bg-[linear-gradient(135deg,hsl(var(--brand-navy-950))_0%,hsl(var(--brand-purple-800))_52%,hsl(var(--brand-purple-700))_100%)] px-5 py-7 text-white sm:px-8 sm:py-9 lg:px-10 lg:py-10">
+            <div className="relative overflow-hidden bg-[linear-gradient(135deg,hsl(var(--brand-navy-950))_0%,hsl(var(--brand-purple-800))_52%,hsl(var(--brand-purple-700))_100%)] cta-panel-navy text-white">
               <div className="pointer-events-none absolute inset-0 opacity-[0.14] theme-grid-overlay-light" aria-hidden />
               <motion.img
                 src="/doodles/Group discussion-bro.svg"
@@ -568,15 +568,15 @@ const LanguageLocalization = () => {
                 Next Step
               </span>
 
-              <h2 className="relative mt-4 max-w-xl font-serif text-[1.65rem] font-bold leading-tight sm:text-3xl lg:text-4xl">
+              <h2 className="relative mt-3 max-w-xl font-serif text-[1.65rem] font-bold leading-tight sm:text-2xl lg:text-3xl">
                 Ready to scope your language project?
               </h2>
-              <p className="relative mt-3 max-w-xl text-sm leading-relaxed text-white/78 sm:text-[0.9375rem]">
+              <p className="relative mt-2 max-w-xl text-sm leading-relaxed text-white/78 sm:text-[0.9375rem]">
                 Share your files, languages, and timeline - UVAN returns a grounded quote within 24 hours, or book a
                 free 15-minute call with Soham to align scope first.
               </p>
 
-              <ul className="relative mt-5 flex flex-wrap gap-2 sm:mt-6">
+              <ul className="relative mt-4 flex flex-wrap gap-2">
                 {[
                   { icon: ShieldCheck, label: "ISO 9001:2015 certified" },
                   { icon: Languages, label: "125+ languages" },
@@ -593,7 +593,7 @@ const LanguageLocalization = () => {
               </ul>
             </div>
 
-            <div className="flex flex-col justify-center gap-3 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-5 sm:p-6 lg:border-t-0 lg:border-l lg:p-8">
+            <div className="cta-panel-actions">
               <motion.a
                 href="/contact"
                 whileHover={reduceMotion ? undefined : { scale: 1.02 }}

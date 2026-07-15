@@ -133,7 +133,7 @@ const MarketResearchPage = () => {
       jsonLd={marketResearchLd}
     >
       {/* Hero */}
-      <section className="relative overflow-hidden theme-section-soft px-5 pb-14 pt-8 sm:px-6 sm:pb-20 sm:pt-10 md:pb-28 md:pt-14 stitch-line stitch-line-bottom">
+      <section className="relative overflow-hidden theme-section-soft section-pad-hero sm:px-6 sm:pb-12 sm:pt-8 md:pb-16 md:pt-10 stitch-line stitch-line-bottom">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -203,7 +203,7 @@ const MarketResearchPage = () => {
       <SectionDivider variant="wave" />
 
       {/* The UVAN Difference */}
-      <section className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20 stitch-line stitch-line-bottom">
+      <section className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6 stitch-line stitch-line-bottom">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -267,13 +267,13 @@ const MarketResearchPage = () => {
       {/* Services */}
       <section
         id="services"
-        className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20 stitch-line stitch-line-bottom"
+        className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6 stitch-line stitch-line-bottom"
       >
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
-            className="mb-6 grid items-center gap-5 lg:mb-12 lg:grid-cols-[minmax(0,1fr)_minmax(200px,260px)] lg:gap-8"
+            className="mb-6 grid items-center gap-5 lg:mb-8 lg:grid-cols-[minmax(0,1fr)_minmax(200px,260px)] lg:gap-8"
             initial={hidden}
             whileInView={show}
             viewport={{ once: true }}
@@ -314,7 +314,7 @@ const MarketResearchPage = () => {
       {/* How We Deliver */}
       <section
         id="process"
-        className="relative scroll-mt-24 overflow-hidden theme-section-soft px-5 py-8 sm:px-6 lg:py-20"
+        className="relative scroll-mt-24 overflow-hidden theme-section-soft px-5 section-pad sm:px-6"
       >
         <div className="pointer-events-none absolute right-[-8%] top-1/2 max-h-[520px] w-[min(55%,620px)] -translate-y-1/2 opacity-[0.1] lg:opacity-20">
           <img src={stitch.worldMap} alt="" aria-hidden="true" className="h-full w-full object-contain object-center" loading="lazy" />
@@ -404,7 +404,7 @@ const MarketResearchPage = () => {
       </section>
 
       {/* Who This Is For */}
-      <section className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 py-8 sm:px-6 lg:py-20">
+      <section className="theme-section-soft relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1] lg:opacity-[0.12]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -450,12 +450,12 @@ const MarketResearchPage = () => {
         </div>
       </section>
 
-      <AeoFrequentlyAskedQuestions items={MARKET_RESEARCH_FAQS} className="theme-section-soft px-5 py-10 sm:px-6 sm:py-16" />
+      <AeoFrequentlyAskedQuestions items={MARKET_RESEARCH_FAQS} className="theme-section-soft px-5 section-pad sm:px-6" />
 
       <SectionDivider variant="slant" />
 
       {/* CTA */}
-      <section className="theme-section-soft px-5 py-10 sm:px-6 sm:py-16 lg:py-20">
+      <section className="theme-section-soft px-5 section-pad sm:px-6">
         <motion.div
           className="container mx-auto max-w-4xl rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 text-center shadow-[0_24px_60px_rgba(26,22,51,0.06)] sm:rounded-[2rem] sm:p-10 lg:p-12"
           initial={hidden}
