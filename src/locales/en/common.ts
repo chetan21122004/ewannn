@@ -75,6 +75,7 @@ const enCommon = {
     privacyPolicy: "Privacy Policy",
     caseStudy: "Case Study",
     sano: "SANO",
+    partners: "Partners",
   },
   whatsapp: {
     ariaLabel: "Chat with UVAN on WhatsApp",
@@ -151,6 +152,13 @@ const enCommon = {
         "Read The Language Gazette, explore blog insights on cross-border business, watch event videos, and subscribe to UVAN's newsletter.",
       keywords:
         "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India, Ewan Business Solutions media",
+    },
+    videos: {
+      title: "Videos | UVAN on YouTube",
+      description:
+        "Watch UVAN event highlights, industry talks, and Oriental Flock session recaps on language, market entry, and cross-border execution.",
+      keywords:
+        "UVAN videos, Soham Kakade talks, India market entry videos, language services YouTube, cross-border business sessions",
     },
     languageGazette: {
       title: "The Language Gazette | UVAN",

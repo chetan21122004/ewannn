@@ -14,7 +14,9 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import GlobalTalkiesServiceCard from "@/components/global-talkies/GlobalTalkiesServiceCard";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { GLOBAL_TALKIES_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, serviceSchema } from "@/lib/schemaHelpers";
 
@@ -281,8 +283,10 @@ const GlobalTalkies = () => {
                 Six Media <span className="italic text-[hsl(var(--brand-purple-700))]">Localisation</span> Capabilities
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-on-light-secondary">
-                From subtitling and dubbing to OTT pipelines - end-to-end media localisation with cultural fidelity built in.
+                From subtitling and dubbing to OTT pipelines — end-to-end media localisation with cultural fidelity built in.
               </p>
+              <p className="mt-2 text-xs text-on-light-secondary md:hidden">Tap a service to view scope in a popup.</p>
+              <p className="mt-2 hidden text-sm text-on-light-muted md:block">Click a card to open the full scope and deliverables.</p>
             </div>
             <motion.img
               src="/doodles/Advantages-bro.svg"
@@ -293,48 +297,57 @@ const GlobalTalkies = () => {
             />
           </motion.div>
 
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <Accordion type="single" collapsible className="flex flex-col gap-2.5 md:hidden">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <motion.article
+                <AccordionItem
                   key={service.id}
                   id={service.id}
-                  initial={hidden}
-                  whileInView={show}
-                  viewport={{ once: true }}
-                  transition={transition((index % 3) * 0.08)}
-                  whileHover={reduceMotion ? undefined : { y: -5 }}
-                  className="group theme-card-light card-shine scroll-mt-28 overflow-hidden rounded-3xl border border-[hsl(var(--border-light))] p-6 sm:p-7"
+                  value={service.id}
+                  className="scroll-mt-28 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] border-b-0 bg-white shadow-sm data-[state=open]:border-[hsl(var(--brand-purple-500)/0.35)] data-[state=open]:ring-1 data-[state=open]:ring-[hsl(var(--brand-purple-500)/0.15)]"
                 >
-                  <div className="mb-4 flex items-start justify-between gap-3">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700)/0.75)]">
-                      {String(index + 1).padStart(2, "0")}
+                  <AccordionTrigger className="gap-3 px-4 py-4 hover:no-underline [&[data-state=open]>svg]:text-[hsl(var(--brand-purple-700))]">
+                    <span className="flex min-w-0 flex-1 items-center gap-3 text-left">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
+                        <Icon className="h-4 w-4" aria-hidden />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block font-mono text-[10px] font-bold tracking-[0.14em] text-[hsl(var(--brand-purple-700)/0.75)]">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span className="block font-serif text-base font-bold leading-snug text-on-light">{service.title}</span>
+                      </span>
                     </span>
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
-                      <Icon className="h-5 w-5" aria-hidden />
-                    </div>
-                  </div>
-                  <motion.img
-                    src={service.doodle}
-                    alt={service.doodleAlt}
-                    className="mx-auto mb-4 h-24 w-full max-w-[140px] object-contain"
-                    animate={reduceMotion ? undefined : { y: [0, -5, 0] }}
-                    transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.2 }}
-                  />
-                  <h3 className="font-serif text-xl font-bold text-on-light sm:text-2xl">{service.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-on-light-secondary">{service.description}</p>
-                  <ul className="mt-5 space-y-2 border-t border-[hsl(var(--border-light))] pt-4">
-                    {service.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2 text-sm text-on-light-secondary">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.article>
+                  </AccordionTrigger>
+                  <AccordionContent className="space-y-4 px-4 pb-4">
+                    <p className="text-xs leading-relaxed text-on-light-secondary">{service.description}</p>
+                    <ul className="space-y-2 border-t border-[hsl(var(--border-light))] pt-3">
+                      {service.points.map((point) => (
+                        <li key={point} className="flex items-start gap-2 text-xs text-on-light-secondary">
+                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
               );
             })}
+          </Accordion>
+
+          <div className="hidden gap-4 md:grid md:grid-cols-2 md:gap-5 xl:grid-cols-3">
+            {services.map((service, index) => (
+              <GlobalTalkiesServiceCard
+                key={service.id}
+                service={service}
+                index={index}
+                reduceMotion={!!reduceMotion}
+                hidden={hidden}
+                show={show}
+                transition={transition}
+              />
+            ))}
           </div>
         </div>
       </section>

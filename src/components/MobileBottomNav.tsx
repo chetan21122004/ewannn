@@ -36,14 +36,15 @@ const bottomNavItems: BottomNavItem[] = [
       pathname === "/global-talkies",
   },
   {
-    href: "/media",
+    href: "/insights",
     labelKey: "nav.bottomMedia",
     icon: Newspaper,
     isActive: (pathname) =>
-      pathname === "/media" ||
-      pathname.startsWith("/media/") ||
+      pathname === "/insights" ||
+      pathname.startsWith("/insights/") ||
+      pathname === "/videos" ||
+      pathname.startsWith("/videos/") ||
       pathname.startsWith("/language-gazette") ||
-      pathname.startsWith("/insights") ||
       pathname === "/newsletter",
   },
   {

@@ -78,6 +78,7 @@ const jaCommon = {
     sano: "SANO",
     terms: "利用規約",
     cookies: "Cookies",
+    partners: "パートナー",
   },
   whatsapp: {
     ariaLabel: "WhatsAppでUVANに連絡",
@@ -129,6 +130,13 @@ const jaCommon = {
         "Language Gazette の記事、越境ビジネスに関するブログ洞察、イベント動画、UVAN のプレス情報をご覧ください。",
       keywords:
         "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India",
+    },
+    videos: {
+      title: "動画 | UVAN YouTube",
+      description:
+        "UVAN のイベントハイライト、業界トーク、Oriental Flock セッションの振り返りをご覧ください。",
+      keywords:
+        "UVAN videos, Soham Kakade talks, India market entry videos, language services YouTube",
     },
     askSoham: {
       title: "Ask Soham - 15分無料相談 | UVAN",

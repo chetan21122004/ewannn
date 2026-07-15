@@ -78,6 +78,7 @@ const zhCommon = {
     sano: "SANO",
     terms: "条款",
     cookies: "Cookies",
+    partners: "合作伙伴",
   },
   whatsapp: {
     ariaLabel: "通过 WhatsApp 联系 UVAN",
@@ -127,6 +128,13 @@ const zhCommon = {
         "阅读《语言公报》探索跨境商业博客文章，观看活动视频，并了解 UVAN 的新闻报道。",
       keywords:
         "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India",
+    },
+    videos: {
+      title: "视频 | UVAN YouTube",
+      description:
+        "观看 UVAN 活动集锦、行业演讲和 Oriental Flock 会话回顾。",
+      keywords:
+        "UVAN videos, Soham Kakade talks, India market entry videos, language services YouTube",
     },
     askSoham: {
       title: "Ask Soham - 免费 15 分钟通话 | UVAN",

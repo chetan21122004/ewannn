@@ -158,30 +158,6 @@ export const AskSohamInquiryProvider = ({ children }: { children: ReactNode }) =
   const openInquiry = useCallback(() => setOpen(true), []);
   const closeInquiry = useCallback(() => setOpen(false), []);
 
-  useEffect(() => {
-    const handleClick = (event: MouseEvent) => {
-      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
-        return;
-      }
-
-      const target = event.target;
-      if (!(target instanceof Element)) return;
-
-      const anchor = target.closest("a[href]");
-      if (!anchor) return;
-
-      const href = anchor.getAttribute("href");
-      if (!href || !isAskSohamInquiryHref(href)) return;
-
-      event.preventDefault();
-      event.stopPropagation();
-      openInquiry();
-    };
-
-    document.addEventListener("click", handleClick, true);
-    return () => document.removeEventListener("click", handleClick, true);
-  }, [openInquiry]);
-
   const value = useMemo(
     () => ({
       open: openInquiry,

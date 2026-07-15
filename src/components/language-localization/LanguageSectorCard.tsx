@@ -42,7 +42,7 @@ const LanguageSectorCard = ({
       imageAlt={sector.imageAlt}
       icon={sector.icon}
       compact
-      className="h-full min-h-[212px] sm:min-h-[224px] lg:min-h-[236px]"
+      className="h-full min-h-[228px] sm:min-h-[240px] lg:min-h-[252px]"
     />
   </motion.div>
 );

@@ -18,7 +18,7 @@ const Newsletter = () => {
     ),
     breadcrumbSchema(absoluteUrl("/newsletter/"), [
       { name: "Home", path: "/" },
-      { name: "Media", path: "/media/" },
+      { name: "Insights", path: "/insights/" },
       { name: "Newsletter", path: "/newsletter/" },
     ]),
   ];

@@ -34,9 +34,9 @@ const navColumns: FooterColumn[] = [
   {
     title: "Media",
     links: [
-      { label: "Media Hub", href: "/media" },
-      { label: "The Language Gazette", href: "/language-gazette" },
       { label: "Blog & Insights", href: "/insights" },
+      { label: "Videos", href: "/videos" },
+      { label: "The Language Gazette", href: "/language-gazette" },
       { label: "Newsletter", href: "/newsletter" },
     ],
   },
@@ -236,32 +236,39 @@ const Footer = () => {
         </div>
 
         <div className="mt-4 border-t border-white/10 pt-3.5">
-          <div className="flex flex-col items-center gap-2.5 sm:grid sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-center sm:gap-4">
+          <div className="relative flex flex-col items-center gap-2.5 sm:grid sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-center sm:gap-4">
             <p className="order-1 w-full text-center text-xs text-white/50 sm:order-none sm:text-left sm:text-sm">
               {t("footer.rights")}
             </p>
 
-            <div
-              className="order-2 flex shrink-0 items-center gap-2.5 rounded-lg border border-white/12 bg-white/[0.06] px-3 py-1.5 sm:order-none sm:gap-3 sm:px-4 sm:py-2"
-              role="group"
-              aria-label="Official partners"
-            >
-              {footerPartners.map((partner, index) => (
-                <span key={partner.name} className="inline-flex items-center gap-2.5">
-                  {index > 0 ? <span className="hidden h-5 w-px bg-white/15 sm:block" aria-hidden /> : null}
-                  <span
-                    title={partner.name}
-                    className="inline-flex h-7 min-w-[72px] items-center justify-center rounded-md bg-white px-2.5 sm:h-8 sm:min-w-[80px] sm:px-3"
-                  >
-                    <img
-                      src={partner.logo}
-                      alt={partner.name}
-                      loading="lazy"
-                      className="h-4 w-auto max-w-[76px] object-contain sm:h-5 sm:max-w-[88px]"
-                    />
-                  </span>
+            <div className="order-2 -my-3 flex shrink-0 items-center justify-center overflow-visible sm:order-none sm:relative sm:my-0 sm:h-0 sm:min-h-0 sm:overflow-visible">
+              <div
+                className="flex flex-col items-center gap-1.5 rounded-xl border border-white/12 bg-white/[0.06] px-4 py-2 sm:absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:gap-2 sm:px-5 sm:py-2.5"
+                role="group"
+                aria-label={t("footer.partners")}
+              >
+                <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] sm:text-[10px] sm:tracking-[0.2em]">
+                  {t("footer.partners")}
                 </span>
-              ))}
+                <div className="flex items-center gap-4 sm:gap-[18px]">
+                  {footerPartners.map((partner, index) => (
+                    <span key={partner.name} className="inline-flex items-center gap-4 sm:gap-[18px]">
+                      {index > 0 ? <span className="hidden h-8 w-px bg-white/15 sm:block" aria-hidden /> : null}
+                      <span
+                        title={partner.name}
+                        className="inline-flex h-[42px] min-w-[108px] items-center justify-center rounded-md bg-white px-4 sm:h-12 sm:min-w-[120px] sm:rounded-lg sm:px-[18px]"
+                      >
+                        <img
+                          src={partner.logo}
+                          alt={partner.name}
+                          loading="lazy"
+                          className="h-6 w-auto max-w-[114px] object-contain sm:h-[30px] sm:max-w-[132px]"
+                        />
+                      </span>
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="order-3 flex w-full flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-white/50 sm:order-none sm:justify-end sm:text-sm">

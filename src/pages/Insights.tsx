@@ -4,7 +4,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import InsightsArticlesSlider from "@/components/insights/InsightsArticlesSlider";
-import GazetteMediaShowcase from "@/components/language-gazette/GazetteMediaShowcase";
 import { absoluteUrl, breadcrumbSchema } from "@/lib/schemaHelpers";
 
 const repoCards = [
@@ -132,17 +131,17 @@ const Insights = () => {
               >
                 Articles
               </a>
-              <a
-                href="#language-gazette"
+              <Link
+                to="/language-gazette"
                 className="rounded-full border border-[hsl(var(--border-light))] px-5 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] md:text-sm"
               >
                 The Language Gazette
-              </a>
+              </Link>
               <Link
-                to="/media"
+                to="/videos"
                 className="rounded-full border border-[hsl(var(--border-light))] px-5 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] md:text-sm"
               >
-                Media Hub
+                Videos
               </Link>
             </div>
           </div>
@@ -249,8 +248,6 @@ const Insights = () => {
           </motion.article>
         </div>
       </section>
-
-      <GazetteMediaShowcase />
 
       {/* YouTube strip */}
       <section className="border-y border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-6 py-4 md:py-5">

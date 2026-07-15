@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { MotionConfig } from "framer-motion";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -15,7 +15,7 @@ import AskSoham from "./pages/AskSoham.tsx";
 import MarketEntry from "./pages/MarketEntry.tsx";
 import LanguageLocalization from "./pages/LanguageLocalization.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
-import Media from "./pages/Media.tsx";
+import Videos from "./pages/Videos.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
 import Newsletter from "./pages/Newsletter.tsx";
 import Contact from "./pages/Contact.tsx";
@@ -43,6 +43,14 @@ import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 
 const queryClient = new QueryClient();
 
+const MediaLegacyRedirect = () => {
+  const { hash } = useLocation();
+  if (hash === "#video-insights") {
+    return <Navigate to="/videos" replace />;
+  }
+  return <Navigate to="/insights" replace />;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <MotionConfig reducedMotion="user">
@@ -61,7 +69,8 @@ const App = () => (
             <Route path="/market-entry" element={<MarketEntry />} />
             <Route path="/language-localization" element={<LanguageLocalization />} />
             <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/media" element={<Media />} />
+            <Route path="/videos" element={<Videos />} />
+            <Route path="/media" element={<MediaLegacyRedirect />} />
             <Route path="/case-study" element={<CaseStudy />} />
             <Route path="/newsletter" element={<Newsletter />} />
             <Route path="/press" element={<Navigate to="/newsletter" replace />} />

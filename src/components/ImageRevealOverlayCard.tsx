@@ -61,7 +61,7 @@ const ImageRevealOverlayCard = ({
       onMouseLeave={close}
       className={cn(
         "group relative cursor-pointer overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--brand-navy-950))] shadow-[0_10px_28px_hsl(var(--brand-navy-950)/0.08)] transition duration-300 hover:-translate-y-0.5 hover:border-[hsl(var(--brand-purple-500)/0.3)] hover:shadow-[0_18px_40px_hsl(var(--brand-navy-950)/0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-700))] focus-visible:ring-offset-2",
-        compact ? "h-[212px] sm:h-[224px] lg:h-[236px]" : "h-[240px] sm:h-[256px] lg:h-[272px]",
+        compact ? "h-[228px] sm:h-[240px] lg:h-[252px]" : "h-[240px] sm:h-[256px] lg:h-[272px]",
         className,
       )}
     >
@@ -71,7 +71,7 @@ const ImageRevealOverlayCard = ({
         loading="lazy"
         className={cn(
           "absolute inset-0 h-full w-full object-cover transition duration-700",
-          revealed ? "scale-105 opacity-30" : "scale-100 opacity-85 group-hover:scale-105",
+          revealed ? "scale-105 opacity-0" : "scale-100 opacity-85 group-hover:scale-105",
         )}
       />
 
@@ -79,7 +79,7 @@ const ImageRevealOverlayCard = ({
         className={cn(
           "absolute inset-0 transition duration-300",
           revealed
-            ? "bg-[hsl(var(--brand-navy-950)/0.08)]"
+            ? "bg-[hsl(var(--brand-navy-950))]"
             : "bg-gradient-to-t from-[hsl(var(--brand-navy-950)/0.94)] via-[hsl(var(--brand-navy-950)/0.55)] to-[hsl(var(--brand-navy-950)/0.18)]",
         )}
         aria-hidden
@@ -138,18 +138,18 @@ const ImageRevealOverlayCard = ({
 
       <div
         className={cn(
-          "absolute inset-0 z-20 flex flex-col bg-[hsl(var(--brand-navy-950)/0.94)] p-4 backdrop-blur-[2px] transition duration-300 sm:p-4",
+          "absolute inset-0 z-20 flex flex-col bg-[hsl(var(--brand-navy-950))] p-4 text-white transition duration-300 sm:p-4",
           revealed ? "visible translate-y-0 opacity-100" : "pointer-events-none invisible translate-y-1 opacity-0",
         )}
       >
         <div className="flex items-start gap-2.5">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--brand-gold-500)/0.15)] text-[hsl(var(--brand-gold-500))]">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--brand-gold-500)/0.18)] text-[hsl(var(--brand-gold-500))]">
             <Icon className="h-3.5 w-3.5" aria-hidden />
           </div>
           <h3
             className={cn(
               "min-w-0 font-serif font-bold leading-snug text-white",
-              compact ? "text-sm" : "text-base sm:text-[1.05rem]",
+              compact ? "line-clamp-2 text-sm" : "text-base sm:text-[1.05rem]",
             )}
           >
             {title}
@@ -158,8 +158,8 @@ const ImageRevealOverlayCard = ({
 
         <p
           className={cn(
-            "mt-2.5 min-h-0 flex-1 overflow-y-auto overscroll-contain leading-relaxed text-white/88",
-            compact ? "text-[11px] sm:text-xs" : "text-xs sm:text-sm",
+            "mt-2.5 min-h-0 flex-1 overflow-y-auto overscroll-contain leading-relaxed text-[hsl(0_0%_96%)]",
+            compact ? "text-xs sm:text-[0.8125rem] sm:leading-relaxed" : "text-sm sm:leading-relaxed",
           )}
         >
           {description}

@@ -7,6 +7,7 @@ import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
 import AutoHorizontalSlider from "@/components/language-gazette/AutoHorizontalSlider";
 import PartnerRevealCard from "@/components/PartnerRevealCard";
+import ConsulateLetterGallery from "@/components/ConsulateLetterGallery";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { ABOUT_US_FAQS, ENTITY_PARAGRAPH_A_SECTIONS, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, personSoham, personSukhada } from "@/lib/schemaHelpers";
@@ -693,26 +694,9 @@ const AboutUs = () => {
                     </h4>
                     <p className="mt-4 text-sm leading-relaxed text-on-light-secondary sm:text-base">{item.desc}</p>
                   </div>
-                  <div className="grid gap-4 p-6 sm:grid-cols-2 lg:col-span-7 lg:p-8">
-                    {item.proofImages?.map((letter) => (
-                      <figure
-                        key={letter.src}
-                        className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))]"
-                      >
-                        <div className="p-3 sm:p-4">
-                          <img
-                            src={letter.src}
-                            alt={letter.alt}
-                            loading="lazy"
-                            className="w-full rounded-xl border border-[hsl(var(--border-light-strong))] object-cover"
-                          />
-                        </div>
-                        <figcaption className="border-t border-[hsl(var(--border-light))] px-4 py-3 text-center text-[10px] font-bold uppercase tracking-[0.14em] text-on-light-muted">
-                          {letter.label}
-                        </figcaption>
-                      </figure>
-                    ))}
-                  </div>
+                  {item.proofImages ? (
+                    <ConsulateLetterGallery letters={item.proofImages} viewLabel="View full letter" />
+                  ) : null}
                 </div>
               </motion.div>
             ))}

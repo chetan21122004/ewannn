@@ -16,7 +16,6 @@ import {
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import ContactInquiryForm from "@/components/ContactInquiryForm";
-import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import { COMPANY_ADDRESS } from "@/lib/site";
 
 const audience = [
@@ -55,7 +54,6 @@ const contactChannels = [
 
 const Contact = () => {
   const reduceMotion = useReducedMotion();
-  const { open: openContactInquiry } = useContactInquiry();
 
   const ease = [0.22, 1, 0.36, 1] as const;
   const hidden = reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 };
@@ -109,13 +107,12 @@ const Contact = () => {
                   Email Us
                   <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
                 </a>
-                <button
-                  type="button"
-                  onClick={openContactInquiry}
+                <a
+                  href="#contact-form"
                   className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-bold uppercase tracking-[0.08em] text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto sm:px-6"
                 >
                   Send a Message
-                </button>
+                </a>
               </div>
             </motion.div>
 

@@ -11,6 +11,7 @@ import {
   Menu,
   MessageCircle,
   Newspaper,
+  Play,
   Users,
   X,
 } from "lucide-react";
@@ -31,7 +32,7 @@ type NavItem = {
 
 type NavGroup = {
   labelKey: string;
-  href: string;
+  href?: string;
   links?: NavItem[];
 };
 
@@ -43,7 +44,7 @@ type DesktopNavItem = {
 
 type DesktopNavGroup = {
   labelKey: string;
-  href: string;
+  href?: string;
   links?: DesktopNavItem[];
 };
 
@@ -102,11 +103,10 @@ const mobileNavGroups: NavGroup[] = [
   },
   {
     labelKey: "nav.media",
-    href: "/media",
     links: [
       { labelKey: "navMenu.media.languageGazette", href: "/language-gazette" },
       { labelKey: "navMenu.media.blogInsights", href: "/insights" },
-      { labelKey: "navMenu.media.videos", href: "/media#video-insights" },
+      { labelKey: "navMenu.media.videos", href: "/videos" },
       { labelKey: "navMenu.media.newsletter", href: "/newsletter" },
     ],
   },
@@ -167,11 +167,10 @@ const desktopNavGroups: DesktopNavGroup[] = [
   },
   {
     labelKey: "nav.media",
-    href: "/media",
     links: [
       { labelKey: "navMenu.media.languageGazette", href: "/language-gazette" },
       { labelKey: "navMenu.media.blogInsights", href: "/insights" },
-      { labelKey: "navMenu.media.videos", href: "/media#video-insights" },
+      { labelKey: "navMenu.media.videos", href: "/videos" },
       { labelKey: "navMenu.media.newsletter", href: "/newsletter" },
     ],
   },
@@ -189,9 +188,14 @@ const isNavSectionLink = (href: string) => href.includes("#");
 
 const getNavLinkIcon = (item: NavItem): LucideIcon | null => {
   if (item.external) return ArrowUpRight;
+  if (item.href === "/videos") return Play;
   if (isNavSectionLink(item.href)) return null;
   return FileText;
 };
+
+const isGroupActive = (group: NavGroup | DesktopNavGroup, pathname: string) =>
+  (group.href ? isPathActive(group.href, pathname) : false) ||
+  (group.links?.some((link) => isPathActive(link.href, pathname)) ?? false);
 
 const isPathActive = (href: string, pathname: string) => {
   const base = href.split("#")[0] ?? href;
@@ -270,11 +274,16 @@ const DesktopNavDropdownLink = ({
 };
 
 const getActiveMobileGroup = (pathname: string) =>
-  mobileNavGroups.find(
-    (group) =>
-      isPathActive(group.href, pathname) ||
-      group.links?.some((link) => isPathActive(link.href, pathname)),
-  )?.labelKey;
+  mobileNavGroups.find((group) => isGroupActive(group, pathname))?.labelKey;
+
+const desktopNavTriggerClass = (active: boolean) =>
+  cn(
+    "inline-flex min-h-[2.5rem] items-center gap-1 rounded-full px-3.5 py-2 text-[13px] font-semibold whitespace-nowrap text-[hsl(var(--brand-navy-950)/0.78)] outline-none transition",
+    "hover:bg-white hover:text-[hsl(var(--brand-navy-950))] hover:shadow-sm",
+    "focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.4)] focus-visible:ring-offset-1 focus-visible:ring-offset-[hsl(var(--surface-light-50))]",
+    active &&
+      "bg-white text-[hsl(var(--brand-purple-700))] shadow-sm ring-1 ring-[hsl(var(--brand-purple-700)/0.12)]",
+  );
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -283,9 +292,7 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const closeMobile = () => setMobileOpen(false);
 
-  const isDesktopGroupActive = (group: DesktopNavGroup) =>
-    isPathActive(group.href, pathname) ||
-    (group.links?.some((link) => isPathActive(link.href, pathname)) ?? false);
+  const isDesktopGroupActive = (group: DesktopNavGroup) => isGroupActive(group, pathname);
 
   const mobileGroupsWithLinks = useMemo(
     () => mobileNavGroups.filter((group) => group.links?.length),
@@ -353,26 +360,34 @@ const Navbar = () => {
                     index > 0 && "before:absolute before:left-0 before:top-1/2 before:h-4 before:w-px before:-translate-y-1/2 before:bg-[hsl(var(--border-light))]",
                   )}
                 >
-                  <Link
-                    to={group.href}
-                    className={cn(
-                      "inline-flex min-h-[2.5rem] items-center gap-1 rounded-full px-3.5 py-2 text-[13px] font-semibold whitespace-nowrap text-[hsl(var(--brand-navy-950)/0.78)] outline-none transition",
-                      "hover:bg-white hover:text-[hsl(var(--brand-navy-950))] hover:shadow-sm",
-                      "focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.4)] focus-visible:ring-offset-1 focus-visible:ring-offset-[hsl(var(--surface-light-50))]",
-                      active &&
-                        "bg-white text-[hsl(var(--brand-purple-700))] shadow-sm ring-1 ring-[hsl(var(--brand-purple-700)/0.12)]",
-                    )}
-                  >
-                    <span>{t(group.labelKey)}</span>
-                    {group.links ? (
+                  {group.links && !group.href ? (
+                    <button
+                      type="button"
+                      className={desktopNavTriggerClass(active)}
+                      aria-haspopup="true"
+                      aria-label={`${t(group.labelKey)} menu`}
+                    >
+                      <span>{t(group.labelKey)}</span>
                       <ChevronDown
                         className={cn(
                           "h-3.5 w-3.5 shrink-0 opacity-60 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180",
                           active ? "text-[hsl(var(--brand-purple-700))]" : "text-[hsl(var(--brand-navy-950)/0.5)]",
                         )}
                       />
-                    ) : null}
-                  </Link>
+                    </button>
+                  ) : (
+                    <Link to={group.href!} className={desktopNavTriggerClass(active)}>
+                      <span>{t(group.labelKey)}</span>
+                      {group.links ? (
+                        <ChevronDown
+                          className={cn(
+                            "h-3.5 w-3.5 shrink-0 opacity-60 transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180",
+                            active ? "text-[hsl(var(--brand-purple-700))]" : "text-[hsl(var(--brand-navy-950)/0.5)]",
+                          )}
+                        />
+                      ) : null}
+                    </Link>
+                  )}
 
                   {group.links ? (
                     <div className="absolute left-0 top-full z-[80] hidden w-max min-w-[320px] max-w-[min(720px,calc(100vw-3rem))] pt-2 group-hover:block group-focus-within:block">
@@ -490,9 +505,7 @@ const Navbar = () => {
               {mobileGroupsWithLinks.map((group) => {
                 const meta = mobileGroupMeta[group.labelKey];
                 const Icon = meta?.icon ?? ChevronRight;
-                const sectionActive =
-                  isPathActive(group.href, pathname) ||
-                  group.links?.some((link) => isPathActive(link.href, pathname));
+                const sectionActive = isGroupActive(group, pathname);
 
                 return (
                   <AccordionItem key={group.labelKey} value={group.labelKey} className="border-[hsl(var(--border-light))] px-1 last:border-b-0">
@@ -526,14 +539,16 @@ const Navbar = () => {
                           />
                         ))}
                       </div>
-                      <Link
-                        to={group.href}
-                        onClick={closeMobile}
-                        className="mt-2 flex min-h-9 items-center justify-center gap-1.5 rounded-lg text-xs font-semibold text-[hsl(var(--brand-purple-700))] transition hover:bg-[hsl(var(--brand-purple-700)/0.06)]"
-                      >
-                        View all {t(group.labelKey)}
-                        <ChevronRight className="h-3.5 w-3.5" aria-hidden />
-                      </Link>
+                      {group.href ? (
+                        <Link
+                          to={group.href}
+                          onClick={closeMobile}
+                          className="mt-2 flex min-h-9 items-center justify-center gap-1.5 rounded-lg text-xs font-semibold text-[hsl(var(--brand-purple-700))] transition hover:bg-[hsl(var(--brand-purple-700)/0.06)]"
+                        >
+                          View all {t(group.labelKey)}
+                          <ChevronRight className="h-3.5 w-3.5" aria-hidden />
+                        </Link>
+                      ) : null}
                     </AccordionContent>
                   </AccordionItem>
                 );
@@ -543,7 +558,9 @@ const Navbar = () => {
             {mobileStandaloneLinks.map((group) => {
               const meta = mobileGroupMeta[group.labelKey];
               const Icon = meta?.icon ?? ChevronRight;
-              const active = isPathActive(group.href, pathname);
+              const active = group.href ? isPathActive(group.href, pathname) : false;
+
+              if (!group.href) return null;
 
               return (
                 <Link
