@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import {
   ArrowRight,
   Banknote,
   Building2,
   CheckCircle2,
-  ChevronDown,
   FileCheck,
   Globe2,
   Languages,
@@ -17,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
+import ImageRevealOverlayCard from "@/components/ImageRevealOverlayCard";
 import { MARKET_ENTRY_FAQS, SPEAKABLE_MARKET_ENTRY } from "@/data/aeoContent";
 import {
   absoluteUrl,
@@ -25,7 +24,6 @@ import {
   serviceSchema,
   speakableWebPage,
 } from "@/lib/schemaHelpers";
-import { cn } from "@/lib/utils";
 
 const MARKET_ENTRY_KEYWORDS =
   "India market entry consultant, foreign company India setup, entity formation India, Japan India business expansion, Southeast Asia India trade";
@@ -67,131 +65,47 @@ const workstreams = [
     title: "Regulatory & Entity Formation",
     description: "Local entity setup, RBI/FEMA compliance, industry licensing, sectoral approvals",
     icon: Building2,
+    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "Bank Onboarding & Financial Setup",
     description: "Business account establishment, financial infrastructure, payment pathways",
     icon: Banknote,
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "Executive Liaison & Negotiation Support",
     description: "Native-language liaison for government relations and senior business negotiations",
     icon: Users,
     href: "/liaisoning-facilitation/",
+    image: "https://images.unsplash.com/photo-1521737711862-e34187234116?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "Local Procurement & Supply Chain",
     description: "Vetted vendor identification, physical site verification, supply chain establishment",
     icon: Package,
     href: "/import-export/",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "Payroll & HR Facilitation",
     description: "Local talent pipeline, labour law compliance, staffing support",
     icon: FileCheck,
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "On-Ground Operations Management",
     description: "Day-to-day operational oversight, vendor coordination, reporting",
     icon: Globe2,
+    image: "https://images.unsplash.com/photo-1454165804606-ca3cbafea128?auto=format&fit=crop&w=900&q=80",
   },
   {
     title: "Language & Cultural Intelligence",
     description: "Interpretation, translation and cultural advisory throughout every workstream",
     icon: Languages,
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80",
   },
 ];
-
-type WorkstreamItem = (typeof workstreams)[number];
-
-const WorkstreamCard = ({ item, index }: { item: WorkstreamItem; index: number }) => {
-  const [expanded, setExpanded] = useState(false);
-  const Icon = item.icon;
-  const href = "href" in item ? item.href : undefined;
-  const showDetails = expanded;
-
-  return (
-    <div
-      className={cn(
-        "theme-card-light card-shine group/card relative flex h-full min-h-[10.75rem] flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white transition-all duration-300 sm:min-h-[11.5rem] sm:rounded-3xl",
-        showDetails &&
-          "border-[hsl(var(--brand-purple-500)/0.28)] shadow-[0_16px_36px_rgba(26,22,51,0.08)]",
-        "lg:hover:border-[hsl(var(--brand-purple-500)/0.28)] lg:hover:shadow-[0_16px_36px_rgba(26,22,51,0.08)]",
-      )}
-      onMouseLeave={() => setExpanded(false)}
-    >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--brand-gold-500)/0.55)] to-transparent" />
-      <span
-        className="pointer-events-none absolute -right-1 bottom-2 font-serif text-[4.5rem] font-bold leading-none text-[hsl(var(--brand-navy-950)/0.04)] sm:text-[5rem]"
-        aria-hidden
-      >
-        {String(index + 1).padStart(2, "0")}
-      </span>
-
-      <div
-        role="button"
-        tabIndex={0}
-        className="relative z-10 flex h-full flex-col p-5 text-left sm:p-6 lg:cursor-default"
-        onClick={() => setExpanded((prev) => !prev)}
-        onKeyDown={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            setExpanded((prev) => !prev);
-          }
-        }}
-        aria-expanded={showDetails}
-        aria-label={`${showDetails ? "Hide" : "Show"} details for ${item.title}`}
-      >
-        <div className="flex items-start justify-between gap-4">
-          <span className="inline-flex h-9 min-w-[2.25rem] items-center justify-center rounded-full bg-[hsl(var(--brand-navy-950))] px-2.5 font-mono text-[11px] font-bold tracking-[0.16em] text-[hsl(var(--brand-gold-500))]">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] text-[hsl(var(--brand-purple-700))] transition duration-300 group-hover/card:scale-[1.04] group-hover/card:border-[hsl(var(--brand-purple-500)/0.22)]">
-            <Icon className="h-[1.15rem] w-[1.15rem]" aria-hidden />
-          </span>
-        </div>
-
-        <h3 className="mt-5 max-w-[16rem] font-serif text-lg font-bold leading-snug text-on-light sm:text-xl">{item.title}</h3>
-
-        <div
-          className={cn(
-            "grid transition-all duration-300 ease-out",
-            showDetails ? "mt-4 grid-rows-[1fr] opacity-100" : "mt-0 grid-rows-[0fr] opacity-0",
-            "lg:mt-0 lg:grid-rows-[0fr] lg:opacity-0 lg:group-hover/card:mt-4 lg:group-hover/card:grid-rows-[1fr] lg:group-hover/card:opacity-100",
-          )}
-        >
-          <div className="overflow-hidden">
-            <p className="max-w-[18rem] text-sm leading-relaxed text-on-light-secondary">{item.description}</p>
-            {href ? (
-              <Link
-                to={href}
-                className="mt-3 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] hover:underline"
-                onClick={(event) => event.stopPropagation()}
-              >
-                Explore this service
-                <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-              </Link>
-            ) : null}
-          </div>
-        </div>
-
-        <span
-          className={cn(
-            "mt-auto inline-flex items-center gap-1.5 pt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-on-light-muted transition-opacity duration-200 lg:hidden",
-            showDetails && "opacity-0",
-          )}
-        >
-          View details
-          <ChevronDown className="h-3.5 w-3.5" aria-hidden />
-        </span>
-
-        <span className="mt-auto hidden pt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-on-light-muted opacity-60 transition-opacity duration-200 lg:inline-flex lg:group-hover/card:opacity-0">
-          Hover for details
-        </span>
-      </div>
-    </div>
-  );
-};
 
 const howItWorks = [
   {
@@ -412,19 +326,28 @@ const MarketEntry = () => {
           </motion.div>
 
           <div className="space-y-5 sm:space-y-6">
-            <div className="grid auto-rows-fr gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+            <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-5">
               {workstreams.slice(0, 6).map((item, i) => (
-                <motion.article
+                <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.55, delay: (i % 3) * 0.08 }}
-                  whileHover={{ y: -4 }}
                   className="h-full"
                 >
-                  <WorkstreamCard item={item} index={i} />
-                </motion.article>
+                  <ImageRevealOverlayCard
+                    index={i}
+                    title={item.title}
+                    description={item.description}
+                    image={item.image}
+                    imageAlt={item.title}
+                    icon={item.icon}
+                    href={"href" in item ? item.href : undefined}
+                    linkLabel="Explore this service"
+                    className="h-full"
+                  />
+                </motion.div>
               ))}
             </div>
 

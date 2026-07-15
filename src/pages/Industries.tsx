@@ -370,7 +370,7 @@ const Industries = () => {
             })}
           </Accordion>
 
-          <div className="hidden gap-2.5 md:grid md:grid-cols-3 md:gap-3 lg:grid-cols-5">
+          <div className="hidden gap-3.5 md:grid md:grid-cols-3 md:gap-4 lg:grid-cols-5 lg:gap-3">
             {sectorCards.map((sector, index) => (
               <LanguageSectorCard
                 key={sector.id}
