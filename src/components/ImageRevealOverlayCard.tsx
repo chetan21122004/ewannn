@@ -81,7 +81,9 @@ const ImageRevealOverlayCard = ({
           "absolute inset-0 transition duration-300",
           revealed
             ? "bg-white"
-            : "bg-gradient-to-t from-white from-35% via-white/75 via-55% to-white/10",
+            : compact
+              ? "bg-gradient-to-t from-black/80 from-0% via-black/35 via-[30%] to-transparent"
+              : "bg-gradient-to-t from-white from-35% via-white/75 via-55% to-white/10",
         )}
         aria-hidden
       />
@@ -103,8 +105,10 @@ const ImageRevealOverlayCard = ({
 
         <h3
           className={cn(
-            "font-serif font-bold leading-snug text-[hsl(var(--brand-navy-950))]",
-            compact ? "line-clamp-2 text-sm sm:text-[0.9375rem]" : "line-clamp-3 text-base sm:text-lg",
+            "font-serif font-bold leading-snug",
+            compact
+              ? "line-clamp-2 text-sm text-white drop-shadow-sm sm:text-[0.9375rem]"
+              : "line-clamp-3 text-base text-[hsl(var(--brand-navy-950))] sm:text-lg",
           )}
         >
           {title}

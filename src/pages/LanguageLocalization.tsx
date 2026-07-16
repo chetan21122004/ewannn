@@ -113,7 +113,7 @@ const industryFocus = [
     description:
       "Regulatory documents, clinical trial materials, product literature and labelling localization with full compliance awareness.",
     icon: Pill,
-    image: "https://images.unsplash.com/photo-1584308666744-24f5ef4743af?auto=format&fit=crop&w=900&q=80",
+    image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=900&q=80",
     imageAlt: "Pharmaceutical research and medicine production",
   },
   {
@@ -176,7 +176,7 @@ const industryFocus = [
     description:
       "Curriculum translation, IB and international board materials, institutional communication and multilingual e-learning content.",
     icon: GraduationCap,
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80",
+    image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=900&q=80",
     imageAlt: "University campus and international education",
   },
   {
