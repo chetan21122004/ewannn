@@ -1,4 +1,4 @@
-import { useState, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -10,7 +10,7 @@ export type PartnerRevealCardProps = {
   logoAlt: string;
   link?: string;
   accent?: "purple" | "gold" | "none";
-  featured?: boolean;
+  logoClassName?: string;
   className?: string;
 };
 
@@ -65,14 +65,42 @@ const PartnerRevealCard = ({
   logoAlt,
   link,
   accent = "purple",
-  featured = false,
+  logoClassName,
   className,
 }: PartnerRevealCardProps) => {
   const [revealed, setRevealed] = useState(false);
+  const cardRef = useRef<HTMLElement>(null);
 
   const open = () => setRevealed(true);
   const close = () => setRevealed(false);
   const toggle = () => setRevealed((value) => !value);
+
+  useEffect(() => {
+    if (!revealed) return;
+
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node) || !cardRef.current?.contains(target)) {
+        close();
+      }
+    };
+
+    const handleKeyDown = (event: Event) => {
+      if (event instanceof KeyboardEvent && event.key === "Escape") {
+        close();
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [revealed]);
 
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" || event.key === " ") {
@@ -86,9 +114,10 @@ const PartnerRevealCard = ({
 
   return (
     <article
+      ref={cardRef}
       className={cn(
-        "group relative overflow-hidden rounded-[1.75rem] border border-[hsl(var(--border-light))] bg-white shadow-[0_12px_40px_rgba(20,18,47,0.06)] transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(20,18,47,0.1)]",
-        featured && "rounded-[2rem] shadow-[0_24px_70px_rgba(20,18,47,0.08)]",
+        "group relative overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white shadow-[0_10px_28px_hsl(var(--brand-navy-950)/0.05)] transition duration-300 hover:-translate-y-0.5 hover:border-[hsl(var(--brand-purple-500)/0.28)] hover:shadow-[0_18px_40px_hsl(var(--brand-navy-950)/0.1)] sm:rounded-[1.35rem]",
+        revealed && "border-[hsl(var(--brand-purple-500)/0.35)]",
         className,
       )}
     >
@@ -98,75 +127,62 @@ const PartnerRevealCard = ({
         role="button"
         tabIndex={0}
         aria-expanded={revealed}
-        aria-label={`${logoAlt} - ${revealed ? "hide details" : "show details"}`}
-        className={cn(
-          "relative block w-full cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-700))] focus-visible:ring-offset-2",
-          featured ? "min-h-[240px] lg:min-h-[220px]" : "min-h-[220px] sm:min-h-[240px]",
-        )}
+        aria-label={`${logoAlt} — ${revealed ? "hide" : "show"} partnership details`}
         onClick={toggle}
         onKeyDown={onKeyDown}
         onMouseEnter={open}
         onMouseLeave={close}
+        className="relative flex min-h-[200px] w-full cursor-pointer flex-col items-center justify-center px-5 py-6 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-700))] focus-visible:ring-offset-2 sm:min-h-[220px] sm:px-6 sm:py-7"
       >
         <div
           className={cn(
-            "flex h-full transition duration-300",
-            featured ? "min-h-[220px] flex-col lg:min-h-[220px] lg:flex-row lg:items-stretch" : "flex-col items-center justify-center",
-            revealed ? "opacity-0" : "opacity-100",
+            "flex w-full flex-col items-center transition duration-300",
+            revealed ? "pointer-events-none invisible opacity-0" : "visible opacity-100",
           )}
         >
-          <div
-            className={cn(
-              "flex flex-1 items-center justify-center",
-              featured
-                ? "min-h-[140px] w-full border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-8 py-8 lg:min-h-0 lg:w-[280px] lg:shrink-0 lg:border-b-0 lg:border-r"
-                : "min-h-[120px] w-full px-8 py-7",
-            )}
-          >
+          <div className="flex h-[88px] w-full max-w-[300px] items-center justify-center sm:h-[96px]">
             <PartnerLogo
               src={logo}
               alt={logoAlt}
               name={name}
               className={cn(
-                "w-full object-contain transition duration-300 group-hover:scale-[1.03]",
-                featured ? "max-h-20 max-w-[220px]" : "max-h-16 max-w-[220px]",
+                "max-h-full max-w-full object-contain transition duration-300 group-hover:scale-[1.03]",
+                logoClassName ?? "max-h-14 w-auto sm:max-h-16",
               )}
             />
           </div>
 
-          <div
-            className={cn(
-              "flex flex-col justify-center",
-              featured ? "px-6 py-6 lg:flex-1 lg:px-10 lg:py-8" : "w-full px-6 pb-7 pt-1 text-center",
-            )}
-          >
-            <TypeBadge type={type} className={featured ? undefined : "mx-auto"} />
-          </div>
+          <TypeBadge type={type} className="mt-4" />
         </div>
 
         <div
           className={cn(
-            "absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-[hsl(var(--brand-navy-950))] via-[hsl(var(--brand-navy-950)/0.96)] to-[hsl(var(--brand-navy-950)/0.88)] p-6 text-white transition duration-300 sm:p-7",
-            featured && "lg:justify-center lg:p-10",
-            revealed ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0",
+            "absolute inset-0 z-20 flex flex-col overflow-hidden border border-transparent bg-white p-4 text-left transition duration-300 sm:p-5",
+            revealed ? "visible translate-y-0 opacity-100" : "pointer-events-none invisible translate-y-1 opacity-0",
           )}
         >
-          <span className="inline-flex w-fit rounded-full bg-[hsl(var(--brand-gold-500)/0.18)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-gold-500))]">
-            {type}
-          </span>
-          <p className="mt-4 max-h-[40vh] overflow-y-auto text-sm leading-relaxed text-white/88 sm:text-[0.9375rem]">
-            {description}
-          </p>
+          <div className="flex min-h-0 flex-1 flex-col">
+            <TypeBadge type={type} />
+
+            <h3 className="mt-3 font-serif text-base font-bold leading-snug text-[hsl(var(--brand-navy-950))] sm:text-lg">
+              {name}
+            </h3>
+
+            <p className="mt-3 min-h-0 flex-1 overflow-y-auto overscroll-contain text-xs leading-relaxed text-on-light-secondary sm:text-sm">
+              {description}
+            </p>
+          </div>
+
           {link ? (
             <a
               href={link}
               target="_blank"
               rel="noreferrer"
               onClick={(event) => event.stopPropagation()}
-              className="mt-5 inline-flex w-fit items-center gap-2 text-sm font-bold text-[hsl(var(--brand-gold-500))] transition hover:text-white"
+              className="mt-4 inline-flex w-fit items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.1em] text-[hsl(var(--brand-purple-700))] hover:underline sm:text-xs"
             >
               Visit Website
-              <ArrowRight className="h-4 w-4" aria-hidden />
+              <ArrowRight className="h-3.5 w-3.5" aria-hidden />
             </a>
           ) : null}
         </div>

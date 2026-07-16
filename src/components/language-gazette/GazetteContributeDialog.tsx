@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowUpRight, PenLine } from "lucide-react";
+import { ArrowUpRight, PenLine, Sparkles } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { submitFormViaMailto } from "@/lib/formSubmit";
 import { COMPANY_EMAIL } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 const inputClassName =
   "mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]";
@@ -138,7 +139,7 @@ const GazetteContributeDialog = ({ open, onOpenChange }: GazetteContributeDialog
 
 export const GazetteContributeButton = ({
   onClick,
-  className = "",
+  className,
 }: {
   onClick: () => void;
   className?: string;
@@ -146,10 +147,42 @@ export const GazetteContributeButton = ({
   <button
     type="button"
     onClick={onClick}
-    className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-2.5 text-sm font-bold uppercase tracking-[0.06em] text-on-light shadow-sm transition hover:-translate-y-0.5 hover:bg-[hsl(var(--surface-light-100))] ${className}`}
+    aria-label="Contribute an article to The Language Gazette"
+    className={cn(
+      "group relative inline-flex w-full min-h-[3.25rem] items-center gap-3 overflow-hidden rounded-full bg-[linear-gradient(135deg,hsl(var(--brand-purple-800))_0%,hsl(var(--brand-purple-700))_52%,hsl(var(--brand-purple-500))_100%)] px-4 py-2.5 text-left shadow-[0_14px_36px_hsl(var(--brand-purple-700)/0.34)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_hsl(var(--brand-purple-700)/0.42)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-gold-500))] focus-visible:ring-offset-2 sm:w-auto sm:min-h-12 sm:gap-3.5 sm:px-5 sm:py-3",
+      className,
+    )}
   >
-    <PenLine className="h-4 w-4 shrink-0 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-    Contribute an Article
+    <span
+      className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+      aria-hidden
+      style={{
+        background:
+          "radial-gradient(circle at 18% 50%, hsl(var(--brand-gold-500) / 0.22) 0%, transparent 42%), radial-gradient(circle at 88% 18%, hsl(var(--brand-cyan-500) / 0.16) 0%, transparent 38%)",
+      }}
+    />
+
+    <span
+      className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[hsl(var(--brand-gold-500)/0.45)] bg-[hsl(var(--brand-gold-500)/0.16)] text-[hsl(var(--brand-gold-500))] shadow-[inset_0_1px_0_hsl(var(--brand-gold-500)/0.25)] transition duration-300 group-hover:scale-105 group-hover:border-[hsl(var(--brand-gold-500)/0.65)] sm:h-10 sm:w-10"
+      aria-hidden
+    >
+      <PenLine className="h-4 w-4 sm:h-[1.125rem] sm:w-[1.125rem]" />
+    </span>
+
+    <span className="relative min-w-0 flex-1">
+      <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-gold-500))] sm:text-[11px]">
+        <Sparkles className="h-3 w-3 shrink-0 opacity-90" aria-hidden />
+        Open call for writers
+      </span>
+      <span className="mt-0.5 block font-serif text-base font-bold leading-tight text-white sm:text-[1.05rem]">
+        Contribute an Article
+      </span>
+    </span>
+
+    <ArrowUpRight
+      className="relative h-4 w-4 shrink-0 text-white/85 transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[hsl(var(--brand-gold-500))] sm:h-[1.125rem] sm:w-[1.125rem]"
+      aria-hidden
+    />
   </button>
 );
 

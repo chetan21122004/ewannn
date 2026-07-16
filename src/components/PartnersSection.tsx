@@ -7,17 +7,19 @@ import { blurReveal, fadeOnly, scaleUp } from "@/lib/animationVariants";
 
 const partnerMeta: Record<
   string,
-  { logo: string; type: string; accent: "purple" | "gold" }
+  { logo: string; type: string; accent: "purple" | "gold"; logoClassName?: string }
 > = {
   bhashini: {
     logo: "/allLogos/Bhashini-Logo.png",
     type: "Institutional Partner",
     accent: "purple",
+    logoClassName: "max-h-11 w-auto max-w-[220px] sm:max-h-12",
   },
   tattava: {
     logo: "/allLogos/tattava-cx.svg",
     type: "Strategic Partner",
     accent: "gold",
+    logoClassName: "max-h-14 max-w-[160px] sm:max-h-16",
   },
 };
 
@@ -92,6 +94,7 @@ const PartnersSection = () => {
                   description={partner.desc}
                   logo={meta.logo}
                   logoAlt={partner.alt}
+                  logoClassName={meta.logoClassName}
                   accent={meta.accent}
                 />
               </motion.div>

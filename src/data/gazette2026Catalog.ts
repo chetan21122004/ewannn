@@ -518,7 +518,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "This was 2012, when I conducted the field survey for my research work on primary education in North Bengal. My field site was none other than the thick and peaceful Gorumara National Park, home to tall trees, distant hil",
     readTime: "3 min read",
     datePublished: "2026-04-15",
-    image: "/stitch/insights/article-strategy.jpg",
+    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80",
     hasStaticPage: false,
     paragraphs: [
       "From Strangers to Stories: A Journey Through Language",

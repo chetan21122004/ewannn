@@ -177,7 +177,8 @@ const partners = [
       "India's national language technology initiative. Our partnership with Bhashini aligns UVAN with the country's most significant investment in multilingual AI - strengthening our language technology capabilities and our institutional standing.",
     logo: "/allLogos/Bhashini-Logo.png",
     logoAlt: "Bhashini logo",
-    featured: true,
+    logoClassName: "max-h-11 w-auto max-w-[240px] sm:max-h-12",
+    accent: "purple" as const,
   },
   {
     type: "Strategic Partner",
@@ -186,6 +187,8 @@ const partners = [
       "Strategic communications and customer experience partner. Tattava CX brings expertise in brand communication, client experience design, and strategic messaging - complementing UVAN's cross-border language and market entry work.",
     logo: "/allLogos/tattava-cx.svg",
     logoAlt: "Tattava CX logo",
+    logoClassName: "max-h-14 max-w-[180px] sm:max-h-16",
+    accent: "gold" as const,
   },
   {
     type: "Sister Institution",
@@ -194,7 +197,9 @@ const partners = [
       "Vaani Skills is UVAN's sister institution - a skill development organisation focused on language training, commerce education, and vocational upskilling. Vaani trains language professionals across 125+ languages including Japanese, Mandarin, Korean, German, French, Spanish, Arabic, and all major Indian regional languages. This institutional link ensures UVAN has access to a trained, job-ready talent pipeline - and gives our clients confidence in the quality of professionals behind every engagement.",
     logo: "/allLogos/bhashik-logo.png",
     logoAlt: "Vaani Skills logo",
+    logoClassName: "max-h-[4.5rem] max-w-[140px] sm:max-h-20",
     link: "https://bhashikskill.co.in",
+    accent: "purple" as const,
   },
 ] as const;
 
@@ -778,52 +783,29 @@ const AboutUs = () => {
             </p>
           </motion.div>
 
-          <div className="flex flex-col gap-6 lg:gap-8">
-            {partners
-              .filter((partner) => "featured" in partner && partner.featured)
-              .map((partner, i) => (
-                <motion.div
-                  key={partner.name}
-                  initial={{ opacity: 0, y: 28 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: i * 0.08 }}
-                >
-                  <PartnerRevealCard
-                    type={partner.type}
-                    name={partner.name}
-                    description={partner.description}
-                    logo={partner.logo}
-                    logoAlt={partner.logoAlt}
-                    featured
-                    accent="none"
-                  />
-                </motion.div>
-              ))}
-
-            <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
-              {partners
-                .filter((partner) => !("featured" in partner && partner.featured))
-                .map((partner, i) => (
-                  <motion.div
-                    key={partner.name}
-                    initial={{ opacity: 0, y: 28 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.55, delay: 0.12 + i * 0.1 }}
-                  >
-                    <PartnerRevealCard
-                      type={partner.type}
-                      name={partner.name}
-                      description={partner.description}
-                      logo={partner.logo}
-                      logoAlt={partner.logoAlt}
-                      link={"link" in partner ? partner.link : undefined}
-                      accent={i === 0 ? "purple" : "gold"}
-                    />
-                  </motion.div>
-                ))}
-            </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+            {partners.map((partner, i) => (
+              <motion.div
+                key={partner.name}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: i * 0.08 }}
+                className="h-full"
+              >
+                <PartnerRevealCard
+                  type={partner.type}
+                  name={partner.name}
+                  description={partner.description}
+                  logo={partner.logo}
+                  logoAlt={partner.logoAlt}
+                  logoClassName={partner.logoClassName}
+                  link={"link" in partner ? partner.link : undefined}
+                  accent={partner.accent}
+                  className="h-full"
+                />
+              </motion.div>
+            ))}
           </div>
 
           <motion.p

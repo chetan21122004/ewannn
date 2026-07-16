@@ -102,17 +102,28 @@ const Insights = () => {
       canonicalPath="/insights/"
       jsonLd={insightsLd}
     >
-      <section className="relative overflow-hidden bg-[hsl(var(--surface-light-50))] section-pad px-6">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_84%_78%,hsl(var(--brand-gold-500)/0.06),transparent_38%)]" />
-        <div className="pointer-events-none absolute left-8 top-16 hidden select-none text-5xl font-extrabold text-[hsl(var(--brand-purple-700)/0.16)] lg:block">
-          {`{"insights":true}`}
-        </div>
-        <div className="pointer-events-none absolute bottom-32 right-10 hidden select-none text-base font-semibold tracking-[0.18em] text-[hsl(var(--brand-navy-900)/0.12)] xl:block">
-          ARCHITECTURE_OF_DATA
-        </div>
-        <div className="container relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <span className="inline-flex rounded-full bg-[hsl(var(--surface-2))] px-3.5 py-1 text-[9px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))]">
+      <section className="relative isolate overflow-hidden theme-section-soft section-pad-hero sm:px-6">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 55% 50% at 88% 12%, hsl(var(--brand-gold-500) / 0.14) 0%, transparent 52%), radial-gradient(ellipse 60% 55% at 6% 92%, hsl(var(--brand-purple-500) / 0.1) 0%, transparent 54%), radial-gradient(ellipse 40% 36% at 50% 50%, hsl(var(--brand-purple-700) / 0.04) 0%, transparent 70%)",
+          }}
+          aria-hidden
+        />
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.16]" />
+        <div className="glow-orb glow-orb-gold pointer-events-none -right-16 top-1/4 h-[220px] w-[220px] opacity-[0.07] lg:-right-20 lg:h-[320px] lg:w-[320px] lg:opacity-[0.09]" />
+        <div className="glow-orb pointer-events-none -left-20 bottom-0 h-[200px] w-[200px] bg-[hsl(var(--brand-purple-500)/0.12)] opacity-[0.5] blur-3xl lg:h-[280px] lg:w-[280px]" />
+
+        <div className="container relative z-10 mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-12 lg:gap-14">
+          <motion.div
+            initial={hidden}
+            animate={show}
+            transition={transition(0)}
+            className="lg:col-span-7"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-3.5 py-1 text-[9px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] shadow-sm sm:px-4 sm:py-1.5 sm:text-[10px] sm:tracking-[0.22em]">
+              <Sparkles className="h-3 w-3 text-[hsl(var(--brand-gold-600))]" aria-hidden />
               Intelligence Report 2024
             </span>
             <h1 className="mt-6 font-serif text-3xl font-extrabold leading-[0.98] text-[hsl(var(--brand-navy-950))] md:text-5xl xl:text-6xl">
@@ -124,38 +135,52 @@ const Insights = () => {
             <p className="mt-5 max-w-xl text-sm font-light leading-relaxed text-on-light-secondary md:text-lg">
               Published by UVAN for business leaders, language professionals, and cross-border operators seeking tectonic shifts in global expansion.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2.5">
+            <div className="mt-6 flex flex-wrap gap-2.5 sm:mt-8">
               <a
                 href="#articles"
-                className="rounded-full bg-[hsl(var(--brand-navy-950))] px-5 py-2 text-xs font-bold text-white md:text-sm"
+                className="inline-flex min-h-11 items-center rounded-full bg-[hsl(var(--brand-navy-950))] px-5 py-2.5 text-xs font-bold text-white shadow-[0_12px_32px_hsl(var(--brand-navy-950)/0.18)] transition hover:brightness-110 md:text-sm"
               >
                 Articles
               </a>
               <Link
                 to="/language-gazette"
-                className="rounded-full border border-[hsl(var(--border-light))] px-5 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] md:text-sm"
+                className="inline-flex min-h-11 items-center rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-2.5 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:bg-[hsl(var(--surface-light-100))] md:text-sm"
               >
                 The Language Gazette
               </Link>
               <Link
                 to="/videos"
-                className="rounded-full border border-[hsl(var(--border-light))] px-5 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] md:text-sm"
+                className="inline-flex min-h-11 items-center rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-2.5 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:bg-[hsl(var(--surface-light-100))] md:text-sm"
               >
                 Videos
               </Link>
             </div>
-          </div>
-          <div className="lg:col-span-5">
-            <div className="relative mx-auto max-w-[360px]">
-              <div className="aspect-square overflow-hidden rounded-full bg-[hsl(var(--brand-purple-100))] p-1">
+          </motion.div>
+
+          <motion.div
+            initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: 32 }}
+            animate={reduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+            transition={transition(0.12)}
+            className="lg:col-span-5"
+          >
+            <div className="relative mx-auto max-w-[360px] lg:max-w-none">
+              <div
+                className="pointer-events-none absolute -inset-6 rounded-full opacity-60 blur-2xl"
+                style={{
+                  background:
+                    "radial-gradient(circle, hsl(var(--brand-purple-500) / 0.22) 0%, hsl(var(--brand-gold-500) / 0.12) 45%, transparent 72%)",
+                }}
+                aria-hidden
+              />
+              <div className="relative aspect-square overflow-hidden rounded-full border border-[hsl(var(--border-light))] bg-white p-1.5 shadow-[0_24px_64px_hsl(var(--brand-navy-950)/0.12)]">
                 <img
                   src="/stitch/insights/hero-orb.jpg"
                   alt="Futuristic data visualization"
-                  className="h-full w-full rounded-full object-cover grayscale"
+                  className="h-full w-full rounded-full object-cover"
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

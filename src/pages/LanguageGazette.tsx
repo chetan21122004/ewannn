@@ -55,11 +55,14 @@ const LanguageGazette = () => {
 
       <section id="latest-issue" className="border-t border-[hsl(var(--brand-navy-950)/0.06)] bg-white px-6 py-10 md:py-12">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
             <motion.div initial={hidden} whileInView={show} viewport={{ once: true }} transition={transition(0)}>
               <h2 className="font-serif text-3xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-4xl">
                 2026 Articles
               </h2>
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-on-light-secondary sm:text-base">
+                Read this year&apos;s web editions — or submit your own poem, essay, or bilingual piece for a future issue.
+              </p>
             </motion.div>
 
             <motion.div
@@ -67,7 +70,7 @@ const LanguageGazette = () => {
               whileInView={show}
               viewport={{ once: true }}
               transition={transition(0.04)}
-              className="shrink-0"
+              className="w-full shrink-0 sm:w-auto sm:max-w-[20rem]"
             >
               <GazetteContributeButton onClick={() => setContributeOpen(true)} />
             </motion.div>
