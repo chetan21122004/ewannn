@@ -186,21 +186,49 @@ const mobileGroupMeta: Record<string, { icon: LucideIcon; tint: string }> = {
 
 const isNavSectionLink = (href: string) => href.includes("#");
 
+const isPathActive = (href: string, pathname: string, hash = "") => {
+  const hashIndex = href.indexOf("#");
+  const base = hashIndex === -1 ? href : href.slice(0, hashIndex);
+  const fragment = hashIndex === -1 ? undefined : href.slice(hashIndex + 1);
+  const normalizedBase = base || "/";
+
+  const pathMatches =
+    normalizedBase === "/"
+      ? pathname === "/"
+      : pathname === normalizedBase || pathname.startsWith(`${normalizedBase}/`);
+
+  if (!pathMatches) return false;
+
+  if (fragment) {
+    const currentHash = hash.startsWith("#") ? hash.slice(1) : hash;
+    return currentHash === fragment;
+  }
+
+  return true;
+};
+
+/** Whether a dropdown link belongs to the current page for parent nav highlighting. */
+const isGroupPageMatch = (href: string, pathname: string) => {
+  const hashIndex = href.indexOf("#");
+  const base = hashIndex === -1 ? href : href.slice(0, hashIndex);
+  const normalizedBase = base || "/";
+
+  // Homepage section anchors (e.g. /#testimonials) must not activate nav groups on "/".
+  if (normalizedBase === "/" && hashIndex !== -1) return false;
+
+  if (normalizedBase === "/") return pathname === "/";
+  return pathname === normalizedBase || pathname.startsWith(`${normalizedBase}/`);
+};
+
+const isGroupActive = (group: NavGroup | DesktopNavGroup, pathname: string, hash = "") =>
+  (group.href ? isPathActive(group.href, pathname, hash) : false) ||
+  (group.links?.some((link) => isGroupPageMatch(link.href, pathname)) ?? false);
+
 const getNavLinkIcon = (item: NavItem): LucideIcon | null => {
   if (item.external) return ArrowUpRight;
   if (item.href === "/videos") return Play;
   if (isNavSectionLink(item.href)) return null;
   return FileText;
-};
-
-const isGroupActive = (group: NavGroup | DesktopNavGroup, pathname: string) =>
-  (group.href ? isPathActive(group.href, pathname) : false) ||
-  (group.links?.some((link) => isPathActive(link.href, pathname)) ?? false);
-
-const isPathActive = (href: string, pathname: string) => {
-  const base = href.split("#")[0] ?? href;
-  if (base === "/") return pathname === "/";
-  return pathname === base || pathname.startsWith(`${base}/`);
 };
 
 const MobileNavSubLink = ({
@@ -280,8 +308,8 @@ const DesktopNavDropdownLink = ({
   );
 };
 
-const getActiveMobileGroup = (pathname: string) =>
-  mobileNavGroups.find((group) => isGroupActive(group, pathname))?.labelKey;
+const getActiveMobileGroup = (pathname: string, hash = "") =>
+  mobileNavGroups.find((group) => isGroupActive(group, pathname, hash))?.labelKey;
 
 const desktopNavTriggerClass = (active: boolean) =>
   cn(
@@ -297,11 +325,11 @@ const Navbar = () => {
   const [expandedGroup, setExpandedGroup] = useState<string>("");
   const [openDesktopGroup, setOpenDesktopGroup] = useState<string | null>(null);
   const { t } = useTranslation();
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const closeMobile = () => setMobileOpen(false);
   const closeDesktopDropdown = () => setOpenDesktopGroup(null);
 
-  const isDesktopGroupActive = (group: DesktopNavGroup) => isGroupActive(group, pathname);
+  const isDesktopGroupActive = (group: DesktopNavGroup) => isGroupActive(group, pathname, hash);
 
   const mobileGroupsWithLinks = useMemo(
     () => mobileNavGroups.filter((group) => group.links?.length),
@@ -334,8 +362,8 @@ const Navbar = () => {
 
   useEffect(() => {
     if (!mobileOpen) return;
-    setExpandedGroup(getActiveMobileGroup(pathname) ?? "");
-  }, [mobileOpen, pathname]);
+    setExpandedGroup(getActiveMobileGroup(pathname, hash) ?? "");
+  }, [mobileOpen, pathname, hash]);
 
   useEffect(() => {
     if (!mobileOpen) return;
@@ -534,7 +562,7 @@ const Navbar = () => {
               {mobileGroupsWithLinks.map((group) => {
                 const meta = mobileGroupMeta[group.labelKey];
                 const Icon = meta?.icon ?? ChevronRight;
-                const sectionActive = isGroupActive(group, pathname);
+                const sectionActive = isGroupActive(group, pathname, hash);
 
                 return (
                   <AccordionItem key={group.labelKey} value={group.labelKey} className="border-[hsl(var(--border-light))] px-1 last:border-b-0">
@@ -562,7 +590,7 @@ const Navbar = () => {
                           <MobileNavSubLink
                             key={`mobile-${group.labelKey}-${item.labelKey}`}
                             item={item}
-                            active={isPathActive(item.href, pathname)}
+                            active={isPathActive(item.href, pathname, hash)}
                             onClick={closeMobile}
                             t={t}
                           />
@@ -587,7 +615,7 @@ const Navbar = () => {
             {mobileStandaloneLinks.map((group) => {
               const meta = mobileGroupMeta[group.labelKey];
               const Icon = meta?.icon ?? ChevronRight;
-              const active = group.href ? isPathActive(group.href, pathname) : false;
+              const active = group.href ? isPathActive(group.href, pathname, hash) : false;
 
               if (!group.href) return null;
 

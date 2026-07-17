@@ -12,7 +12,9 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { cn } from "@/lib/utils";
 import PageLayout from "@/components/PageLayout";
+import LiaisonServiceCard from "@/components/LiaisonServiceCard";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { LIAISONING_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, serviceSchema } from "@/lib/schemaHelpers";
@@ -242,7 +244,7 @@ const LiaisoningFacilitation = () => {
       </section>
 
       {/* Services */}
-      <section id="services" className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6">
+      <section id="services" className="theme-section-light relative scroll-mt-24 overflow-visible px-5 section-pad sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
         <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
@@ -261,62 +263,19 @@ const LiaisoningFacilitation = () => {
             </h2>
           </motion.div>
 
-          <div className="flex flex-col gap-4 sm:gap-5">
-            {liaisonServices.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.article
-                  key={service.id}
-                  id={service.id}
-                  initial={hidden}
-                  whileInView={show}
-                  viewport={{ once: true }}
-                  transition={transition(index * 0.06)}
-                  whileHover={reduceMotion ? undefined : { y: -3 }}
-                  className="theme-card-light card-shine scroll-mt-28 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] p-4 sm:rounded-3xl sm:p-6 lg:p-8"
-                >
-                  <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_200px] lg:items-start lg:gap-8">
-                    <div className="min-w-0">
-                      <div className="mb-3 flex items-start justify-between gap-3 sm:mb-4">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm sm:h-11 sm:w-11">
-                          <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden />
-                        </div>
-                        <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700)/0.7)] sm:text-[11px]">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                      </div>
-                      <h3 className="font-serif text-xl font-bold text-on-light sm:text-2xl">{service.title}</h3>
-                      <p className="mt-3 text-xs leading-relaxed text-on-light-secondary sm:text-sm">{service.description}</p>
-                      <ul className="mt-4 space-y-2 border-t border-[hsl(var(--border-light))] pt-4 sm:mt-5">
-                        {service.points.map((point) => (
-                          <li key={point} className="flex items-start gap-2 text-xs text-on-light-secondary sm:text-sm">
-                            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-700))] sm:h-4 sm:w-4" aria-hidden />
-                            <span>{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      {"crossRef" in service && service.crossRef ? (
-                        <a
-                          href={service.crossRef.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="mt-4 inline-flex text-xs font-semibold text-[hsl(var(--brand-purple-700))] underline-offset-4 hover:underline sm:text-sm"
-                        >
-                          {service.crossRef.label}
-                        </a>
-                      ) : null}
-                    </div>
-                    <motion.img
-                      src={service.doodle}
-                      alt={service.doodleAlt}
-                      className="mx-auto hidden h-28 w-full max-w-[180px] object-contain lg:block lg:h-36"
-                      animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
-                      transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.25 }}
-                    />
-                  </div>
-                </motion.article>
-              );
-            })}
+          <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-6 lg:gap-5">
+            {liaisonServices.map((service, index) => (
+              <LiaisonServiceCard
+                key={service.id}
+                {...service}
+                index={index}
+                className={cn(
+                  "lg:col-span-2",
+                  index === 3 && "lg:col-start-2",
+                  index === 4 && "lg:col-start-4 sm:col-span-2 sm:max-w-md sm:justify-self-center lg:max-w-none lg:justify-self-stretch",
+                )}
+              />
+            ))}
           </div>
         </div>
       </section>
