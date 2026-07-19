@@ -9,7 +9,8 @@ import {
   type ReactNode,
 } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { getHashId, isNonScrollHash } from "@/lib/hashNavigation";
 import {
   Dialog,
   DialogContent,
@@ -27,6 +28,28 @@ type AskSohamInquiryContextValue = {
 };
 
 const AskSohamInquiryContext = createContext<AskSohamInquiryContextValue | null>(null);
+
+export const ASK_SOHAM_MESSAGE_HASH = "send-message";
+
+export type AskSohamLocationState = {
+  openInquiry?: boolean;
+};
+
+export const isAskSohamPage = (pathname: string) => pathname.replace(/\/$/, "") === "/ask-soham";
+
+export const askSohamMessageLink = {
+  pathname: "/ask-soham",
+  state: { openInquiry: true } satisfies AskSohamLocationState,
+};
+
+export const handleAskSohamNavClick = (
+  event: { preventDefault: () => void },
+  pathname: string,
+) => {
+  if (isAskSohamPage(pathname)) {
+    event.preventDefault();
+  }
+};
 
 export const isAskSohamInquiryHref = (href: string) => {
   const [path, hash = ""] = href.split("#");
@@ -154,9 +177,28 @@ const AskSohamInquiryDialog = ({
 
 export const AskSohamInquiryProvider = ({ children }: { children: ReactNode }) => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const openInquiry = useCallback(() => setOpen(true), []);
   const closeInquiry = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    if (location.pathname.replace(/\/$/, "") !== "/ask-soham") return;
+
+    const state = location.state as AskSohamLocationState | null;
+    if (state?.openInquiry) {
+      openInquiry();
+      navigate({ pathname: location.pathname, search: location.search, hash: "" }, { replace: true, state: null });
+      return;
+    }
+
+    const hashId = getHashId(location.hash);
+    if (!isNonScrollHash(hashId) || hashId !== ASK_SOHAM_MESSAGE_HASH) return;
+
+    openInquiry();
+    navigate({ pathname: location.pathname, search: location.search, hash: "" }, { replace: true, state: null });
+  }, [location.pathname, location.hash, location.search, location.state, navigate, openInquiry]);
 
   const value = useMemo(
     () => ({

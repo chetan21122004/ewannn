@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AutoHorizontalSlider from "@/components/language-gazette/AutoHorizontalSlider";
 import GazetteArticleBannerCard from "@/components/language-gazette/GazetteArticleBannerCard";
-import type { GazetteWebArticle } from "@/data/languageGazetteIssues";
+import { resolveGazetteMonthFromHash, gazetteMonthHash, type GazetteWebArticle } from "@/data/languageGazetteIssues";
 import { cn } from "@/lib/utils";
 
 type GazetteYearArticlesSliderProps = {
@@ -13,7 +13,23 @@ type GazetteYearArticlesSliderProps = {
 const monthBadgeLabel = (month: string) => month.replace(/\s+\d{4}$/, "");
 
 const GazetteYearArticlesSlider = ({ year, months, articles }: GazetteYearArticlesSliderProps) => {
-  const [activeMonth, setActiveMonth] = useState(months[0] ?? "");
+  const [activeMonth, setActiveMonth] = useState(
+    () => resolveGazetteMonthFromHash(window.location.hash, months) ?? months[0] ?? "",
+  );
+
+  useEffect(() => {
+    const applyHash = () => {
+      const month = resolveGazetteMonthFromHash(window.location.hash, months);
+      if (!month) return;
+
+      setActiveMonth(month);
+      document.getElementById("latest-issue")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, [months]);
 
   const filteredArticles = articles.filter((article) => article.month === activeMonth);
 
@@ -51,7 +67,10 @@ const GazetteYearArticlesSlider = ({ year, months, articles }: GazetteYearArticl
               role="tab"
               aria-selected={isActive}
               aria-controls={`gazette-${year}-${monthBadgeLabel(month).toLowerCase()}-panel`}
-              onClick={() => setActiveMonth(month)}
+              onClick={() => {
+                setActiveMonth(month);
+                window.history.replaceState(null, "", `#${gazetteMonthHash(month)}`);
+              }}
               className={cn(
                 "inline-flex min-h-9 items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] transition",
                 isActive

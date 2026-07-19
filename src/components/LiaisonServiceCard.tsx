@@ -11,8 +11,6 @@ export type LiaisonServiceCardProps = {
   description: string;
   points: string[];
   icon: LucideIcon;
-  doodle: string;
-  doodleAlt: string;
   crossRef?: { label: string; href: string };
   className?: string;
 };
@@ -24,7 +22,6 @@ const LiaisonServiceCard = ({
   description,
   points,
   icon: Icon,
-  doodle,
   crossRef,
   className,
 }: LiaisonServiceCardProps) => {
@@ -66,14 +63,6 @@ const LiaisonServiceCard = ({
             >
               {serial}
             </div>
-
-            <img
-              src={doodle}
-              alt=""
-              aria-hidden
-              className="pointer-events-none absolute bottom-4 right-2 h-20 w-20 object-contain opacity-[0.14] sm:h-24 sm:w-24"
-              loading="lazy"
-            />
 
             <div className="relative z-[1] flex items-center gap-3">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-[0_8px_20px_hsl(var(--brand-purple-700)/0.25)]">

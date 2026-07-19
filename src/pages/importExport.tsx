@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import SectionDivider from "@/components/SectionDivider";
 import ServiceHoverCard from "@/components/ServiceHoverCard";
+import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import AutoHorizontalSlider from "@/components/language-gazette/AutoHorizontalSlider";
 import { serviceSchema } from "@/lib/schemaHelpers";
 
@@ -21,6 +22,7 @@ const stitch = {
   heroOverlay: "/stitch/import-export/hero-overlay.jpg",
   philosophy: "/stitch/import-export/philosophy.jpg",
   corridorsMap: "/stitch/import-export/corridors-map.jpg",
+  agriculturalExport: "/stitch/industries/empowering-sector.jpg",
 } as const;
 
 const services = [
@@ -80,7 +82,7 @@ const services = [
       "Importer and distributor introduction",
       "Trade fair and buyer-seller meeting facilitation",
     ],
-    image: "https://images.unsplash.com/photo-1625246333193-b7836c833f94?auto=format&fit=crop&w=1200&q=80",
+    image: stitch.agriculturalExport,
     imageAlt: "Agricultural and food export from India",
   },
   {
@@ -144,6 +146,7 @@ const importExportLd = [
 
 const ImportExport = () => {
   const { t } = useTranslation();
+  const { open: openContactForm } = useContactInquiry();
   const reduceMotion = useReducedMotion();
   const hidden = reduceMotion ? false : { opacity: 0, y: 24 };
   const show = { opacity: 1, y: 0 };
@@ -191,15 +194,16 @@ const ImportExport = () => {
                 - from vendor identification and negotiation to documentation, customs coordination and delivery.
               </p>
               <div className="mt-6 flex flex-col gap-2.5 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4">
-                <motion.a
-                  href="/contact"
+                <motion.button
+                  type="button"
+                  onClick={openContactForm}
                   className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
                   whileHover={reduceMotion ? undefined : { scale: 1.03 }}
                   whileTap={reduceMotion ? undefined : { scale: 0.97 }}
                 >
                   Discuss Your Trade Requirements
                   <ArrowRight className="h-4 w-4 shrink-0" />
-                </motion.a>
+                </motion.button>
                 <motion.div whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={reduceMotion ? undefined : { scale: 0.97 }} className="w-full sm:w-auto">
                   <Link
                     to="/ask-soham"
@@ -507,15 +511,16 @@ const ImportExport = () => {
                   <ArrowRight className="h-4 w-4 shrink-0" />
                 </Link>
               </motion.div>
-              <motion.a
-                href="/contact"
+              <motion.button
+                type="button"
+                onClick={openContactForm}
                 className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-2.5 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto"
                 whileHover={reduceMotion ? undefined : { scale: 1.03 }}
                 whileTap={reduceMotion ? undefined : { scale: 0.97 }}
               >
                 Email UVAN
                 <ArrowRight className="h-4 w-4 shrink-0" />
-              </motion.a>
+              </motion.button>
             </div>
           </div>
         </motion.div>

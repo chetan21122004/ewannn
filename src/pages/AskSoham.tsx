@@ -151,29 +151,25 @@ const AskSoham = () => {
               </motion.p>
 
               <motion.div variants={reveal} className="mt-9 flex flex-wrap gap-3">
-                {CALENDLY_SCHEDULING_URL ? (
-                  <motion.a
-                    href={CALENDLY_SCHEDULING_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))] shadow-[0_16px_40px_hsl(var(--brand-gold-500)/0.32)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-gold-500))]"
-                  >
-                    Book Your Free 15-Minute Call
-                    <ArrowUpRight className="h-4 w-4" aria-hidden />
-                  </motion.a>
-                ) : (
-                  <motion.a
-                    href={`#${BOOKING_SECTION_ID}`}
-                    whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))] shadow-[0_16px_40px_hsl(var(--brand-gold-500)/0.32)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-gold-500))]"
-                  >
-                    Book Your Free 15-Minute Call
-                    <ArrowUpRight className="h-4 w-4" aria-hidden />
-                  </motion.a>
-                )}
+                <motion.a
+                  href={`#${BOOKING_SECTION_ID}`}
+                  whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))] shadow-[0_16px_40px_hsl(var(--brand-gold-500)/0.32)] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-gold-500))]"
+                >
+                  Book Your Free 15-Minute Call
+                  <ArrowUpRight className="h-4 w-4" aria-hidden />
+                </motion.a>
+                <motion.button
+                  type="button"
+                  onClick={openInquiry}
+                  whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex min-h-12 items-center gap-2 rounded-full border border-[hsl(var(--brand-purple-500)/0.35)] bg-white px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-purple-700))] transition hover:bg-[hsl(var(--brand-purple-700)/0.06)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500))]"
+                >
+                  <MessageCircle className="h-4 w-4" aria-hidden />
+                  Send a Message to Soham
+                </motion.button>
               </motion.div>
             </motion.div>
 
@@ -216,6 +212,23 @@ const AskSoham = () => {
                   <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/72">
                     60,000+ hours. Mandarin, Cantonese, Japanese, ASEAN corridors.
                   </p>
+                  <div className="mt-4 flex flex-col gap-2">
+                    <a
+                      href={`#${BOOKING_SECTION_ID}`}
+                      className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))] shadow-[0_12px_28px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105"
+                    >
+                      Book Your Free 15-Minute Call
+                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                    </a>
+                    <button
+                      type="button"
+                      onClick={openInquiry}
+                      className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.08em] text-white backdrop-blur-sm transition hover:bg-white/16"
+                    >
+                      <MessageCircle className="h-3.5 w-3.5" aria-hidden />
+                      Send a Message to Soham
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>

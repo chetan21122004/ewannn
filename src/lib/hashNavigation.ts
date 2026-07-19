@@ -1,7 +1,12 @@
 export const HASH_TARGET_ATTR = "data-section-anchor";
 export const HASH_TARGET_EVENT = "app:hash-target";
 
+/** Hashes that trigger UI (dialogs, etc.) but must not scroll the page. */
+export const NON_SCROLL_HASHES = new Set(["send-message"]);
+
 export const getHashId = (hash: string) => (hash ? decodeURIComponent(hash.slice(1)) : "");
+
+export const isNonScrollHash = (hashId: string) => NON_SCROLL_HASHES.has(hashId);
 
 export const findHashTarget = (hashId: string): HTMLElement | null => {
   if (!hashId) return null;

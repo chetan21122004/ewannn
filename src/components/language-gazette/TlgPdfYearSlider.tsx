@@ -34,7 +34,7 @@ const TlgPdfYearSlider = ({ year, issues }: TlgPdfYearSliderProps) => {
     <AutoHorizontalSlider
       ariaLabel={`${year} TLG PDF editions`}
       items={slides}
-      autoplayMs={4800}
+      autoplayMs={3200}
       edgeFadeFromClass="from-white"
     />
   );

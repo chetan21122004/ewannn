@@ -12,14 +12,12 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { cn } from "@/lib/utils";
 import PageLayout from "@/components/PageLayout";
+import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import LiaisonServiceCard from "@/components/LiaisonServiceCard";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { LIAISONING_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, serviceSchema } from "@/lib/schemaHelpers";
-
-const LIAISONING_CONTACT = "/contact";
 
 const whatLiaisoningParagraphs = [
   "Liaisoning is not translation. It is not project management. It is the human infrastructure that sits between two organisations operating across cultural, linguistic, and institutional boundaries - and makes sure that what one party intends is what the other party receives.",
@@ -40,8 +38,6 @@ const liaisonServices = [
       "Government project coordination",
     ],
     icon: Landmark,
-    doodle: "/doodles/Call center-amico.svg",
-    doodleAlt: "Government liaison illustration",
   },
   {
     id: "corporate-business",
@@ -55,8 +51,6 @@ const liaisonServices = [
       "Joint venture and MOU facilitation",
     ],
     icon: Briefcase,
-    doodle: "/doodles/Group discussion-bro.svg",
-    doodleAlt: "Corporate liaison illustration",
   },
   {
     id: "single-point-coordination",
@@ -70,8 +64,6 @@ const liaisonServices = [
       "Issue escalation and resolution",
     ],
     icon: Users,
-    doodle: "/doodles/Schedule-amico.svg",
-    doodleAlt: "Coordination illustration",
   },
   {
     id: "cultural-intelligence",
@@ -85,8 +77,6 @@ const liaisonServices = [
       "Communication strategy advisory for Asian market engagement",
     ],
     icon: Globe2,
-    doodle: "/doodles/Light bulb-bro (1).svg",
-    doodleAlt: "Cultural intelligence illustration",
     crossRef: {
       label: "Structured language training via Vaani Skills ↗",
       href: "https://bhashikskill.co.in",
@@ -104,8 +94,6 @@ const liaisonServices = [
       "Post-event follow-up coordination",
     ],
     icon: Store,
-    doodle: "/doodles/International trade-bro.svg",
-    doodleAlt: "Exhibition facilitation illustration",
   },
 ];
 
@@ -134,6 +122,7 @@ const liaisonLd = [
 
 const LiaisoningFacilitation = () => {
   const { t } = useTranslation();
+  const { open: openContactForm } = useContactInquiry();
   const reduceMotion = useReducedMotion();
   const hidden = reduceMotion ? false : { opacity: 0, y: 24 };
   const show = { opacity: 1, y: 0 };
@@ -168,15 +157,16 @@ const LiaisoningFacilitation = () => {
                 missed.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
-                <motion.a
-                  href={LIAISONING_CONTACT}
+                <motion.button
+                  type="button"
+                  onClick={openContactForm}
                   whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }}
                   whileTap={{ scale: 0.97 }}
                   className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] shadow-[0_14px_36px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105 sm:w-auto sm:px-6"
                 >
                   Discuss Your Liaisoning Needs
                   <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
-                </motion.a>
+                </motion.button>
                 <motion.div whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
                   <Link
                     to="/ask-soham"
@@ -252,29 +242,29 @@ const LiaisoningFacilitation = () => {
             whileInView={show}
             viewport={{ once: true }}
             transition={transition(0)}
-            className="mb-6 max-w-3xl lg:mb-10"
+            className="mb-6 grid items-end gap-5 lg:mb-10 lg:grid-cols-[minmax(0,1fr)_minmax(220px,280px)] lg:gap-8"
           >
-            <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.18em]">
-              <Sparkles className="h-3.5 w-3.5 text-[hsl(var(--brand-gold-600))]" aria-hidden />
-              Our Services
-            </span>
-            <h2 className="font-serif text-[1.65rem] font-bold text-on-light sm:text-4xl lg:text-5xl">
-              Our Liaisoning &amp; Facilitation Services
-            </h2>
+            <div className="max-w-3xl">
+              <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:mb-4 sm:px-4 sm:py-1.5 sm:text-xs sm:tracking-[0.18em]">
+                <Sparkles className="h-3.5 w-3.5 text-[hsl(var(--brand-gold-600))]" aria-hidden />
+                Our Services
+              </span>
+              <h2 className="font-serif text-[1.65rem] font-bold text-on-light sm:text-4xl lg:text-5xl">
+                Our Liaisoning &amp; Facilitation Services
+              </h2>
+            </div>
+            <motion.img
+              src="/doodles/International trade-bro.svg"
+              alt="Liaisoning and facilitation illustration"
+              className="mx-auto hidden h-36 w-full max-w-[240px] object-contain lg:block lg:max-w-none"
+              animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            />
           </motion.div>
 
-          <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-6 lg:gap-5">
+          <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-5 lg:gap-5">
             {liaisonServices.map((service, index) => (
-              <LiaisonServiceCard
-                key={service.id}
-                {...service}
-                index={index}
-                className={cn(
-                  "lg:col-span-2",
-                  index === 3 && "lg:col-start-2",
-                  index === 4 && "lg:col-start-4 sm:col-span-2 sm:max-w-md sm:justify-self-center lg:max-w-none lg:justify-self-stretch",
-                )}
-              />
+              <LiaisonServiceCard key={service.id} {...service} index={index} />
             ))}
           </div>
         </div>
@@ -336,13 +326,14 @@ const LiaisoningFacilitation = () => {
                 ))}
               </div>
               <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
-                <a
-                  href={LIAISONING_CONTACT}
+                <button
+                  type="button"
+                  onClick={openContactForm}
                   className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
                 >
                   Start a Conversation
                   <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
-                </a>
+                </button>
                 <Link
                   to="/ask-soham"
                   className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto sm:px-6"

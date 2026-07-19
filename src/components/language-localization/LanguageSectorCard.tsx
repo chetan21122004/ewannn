@@ -9,6 +9,8 @@ export type LanguageSectorItem = {
   icon: LucideIcon;
   image: string;
   imageAlt: string;
+  href?: string;
+  linkLabel?: string;
 };
 
 type LanguageSectorCardProps = {
@@ -41,6 +43,8 @@ const LanguageSectorCard = ({
       image={sector.image}
       imageAlt={sector.imageAlt}
       icon={sector.icon}
+      href={sector.href}
+      linkLabel={sector.linkLabel}
       compact
       className="h-full min-h-[228px] sm:min-h-[240px] lg:min-h-[252px]"
     />

@@ -17,6 +17,7 @@ import LanguageLocalization from "./pages/LanguageLocalization.tsx";
 import AboutUs from "./pages/AboutUs.tsx";
 import Videos from "./pages/Videos.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
+import CaseStudyDetailPage from "./pages/CaseStudyDetailPage.tsx";
 import Newsletter from "./pages/Newsletter.tsx";
 import Contact from "./pages/Contact.tsx";
 import GlobalTalkies from "./pages/globalTalkies.tsx";
@@ -72,6 +73,7 @@ const App = () => (
             <Route path="/videos" element={<Videos />} />
             <Route path="/media" element={<MediaLegacyRedirect />} />
             <Route path="/case-study" element={<CaseStudy />} />
+            <Route path="/case-study/:studyId" element={<CaseStudyDetailPage />} />
             <Route path="/newsletter" element={<Newsletter />} />
             <Route path="/press" element={<Navigate to="/newsletter" replace />} />
             <Route path="/contact" element={<Contact />} />

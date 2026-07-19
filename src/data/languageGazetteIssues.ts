@@ -203,6 +203,14 @@ export const gazette2026Articles: GazetteWebArticle[] = gazette2026Catalog.map((
   readTime: article.readTime,
 }));
 
+export const gazetteMonthHash = (month: string) => month.toLowerCase().replace(/\s+/g, "-");
+
+export const resolveGazetteMonthFromHash = (hash: string, months: string[]) => {
+  const key = hash.replace(/^#/, "").toLowerCase();
+  if (!key) return null;
+  return months.find((month) => gazetteMonthHash(month) === key) ?? null;
+};
+
 export const GAZETTE_LANDING_KEYWORDS =
   "language gazette India, language industry publication, cross-border business insights India";
 

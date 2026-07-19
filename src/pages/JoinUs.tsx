@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
+import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { JOIN_US_FAQS } from "@/data/aeoContent";
@@ -193,6 +194,7 @@ const SectionHeader = ({
 const JoinUs = () => {
   const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
+  const { open: openContactForm } = useContactInquiry();
   const [submittedTeam, setSubmittedTeam] = useState(false);
   const [submittedVendor, setSubmittedVendor] = useState(false);
 
@@ -584,20 +586,22 @@ const JoinUs = () => {
                     </ul>
 
                     <div className="mt-6 flex flex-col gap-3">
-                      <a
-                        href="/contact"
+                      <button
+                        type="button"
+                        onClick={openContactForm}
                         className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-[hsl(var(--brand-navy-950))] shadow-[0_12px_28px_hsl(var(--brand-gold-500)/0.22)] transition hover:-translate-y-0.5 hover:brightness-105"
                       >
                         Discuss a partnership
                         <ArrowUpRight className="h-4 w-4" aria-hidden />
-                      </a>
-                      <Link
-                        to="/contact/"
+                      </button>
+                      <button
+                        type="button"
+                        onClick={openContactForm}
                         className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
                       >
                         Contact UVAN
                         <ArrowRight className="h-4 w-4" aria-hidden />
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>

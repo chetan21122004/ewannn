@@ -110,12 +110,6 @@ const Industries = () => {
     ease: [0.22, 1, 0.36, 1] as const,
   });
 
-  const heroStats = [
-    { value: "10+", label: "Years experience" },
-    { value: t("industries.overview.stats.sectorsValue"), label: t("industries.overview.stats.sectorsLabel") },
-    { value: t("industries.overview.stats.clientsValue"), label: t("industries.overview.stats.clientsLabel") },
-  ];
-
   const industriesLd = useMemo(() => {
     const pageUrl = absoluteUrl("/industries/");
     const titles = specializations.map((s) => s.title);
@@ -173,23 +167,6 @@ const Industries = () => {
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-on-light-secondary sm:mt-6 sm:text-base lg:text-lg">
                 {t("industries.hero.subtitle")}
               </p>
-
-              <div className="mt-6 grid grid-cols-3 gap-2 sm:mt-8 sm:gap-3">
-                {heroStats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={hidden}
-                    animate={show}
-                    transition={transition(0.08 + index * 0.06)}
-                    className="rounded-xl border border-[hsl(var(--border-light))] bg-white/80 px-3 py-3 text-center shadow-[0_8px_24px_hsl(var(--brand-navy-950)/0.04)] backdrop-blur-sm sm:rounded-2xl sm:px-4 sm:py-4"
-                  >
-                    <p className="font-serif text-xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-2xl">{stat.value}</p>
-                    <p className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-on-light-muted sm:text-[10px]">
-                      {stat.label}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
 
               <div className="mt-6 flex flex-wrap gap-3 sm:mt-8">
                 <motion.a

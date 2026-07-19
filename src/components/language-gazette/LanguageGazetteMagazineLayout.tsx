@@ -3,7 +3,7 @@ import { ArrowRight, BookOpen } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import type { GazetteArticle, GazetteIssue } from "@/data/languageGazetteIssues";
-import { gazette2026Articles, gazetteArticlePath } from "@/data/languageGazetteIssues";
+import { gazette2026Articles, gazetteArticlePath, gazetteMonthHash } from "@/data/languageGazetteIssues";
 import { latestTlgPdfIssue, tlgPdfReaderPath } from "@/data/tlgPdfCatalog";
 import GazetteCoverImage from "@/components/language-gazette/GazetteCoverImage";
 import GazetteHeroAside from "@/components/language-gazette/GazetteHeroAside";
@@ -173,8 +173,8 @@ const LanguageGazetteMagazineLayout = ({
                 eyebrow="Latest from TLG"
                 title={issue.label}
                 meta={`${readableArticleCount} web articles`}
-                linkTo="#latest-issue"
-                linkLabel="Read issue"
+                linkTo={`#${gazetteMonthHash(issue.label)}`}
+                linkLabel="Read the issue"
                 thumb={
                   <img
                     src={issue.coverImage}

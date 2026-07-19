@@ -1,12 +1,13 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Building2, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import { fadeOnly, slideLeft } from "@/lib/animationVariants";
 
 const ContactSection = () => {
   const { t } = useTranslation();
+  const { open: openContactForm } = useContactInquiry();
   const reduceMotion = useReducedMotion() ?? false;
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -106,14 +107,15 @@ const ContactSection = () => {
             >
               <div className="rounded-[1.75rem] border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-card)/0.92)] p-2 shadow-[0_16px_48px_hsl(var(--brand-navy-950)/0.06)] sm:p-2.5">
                 <motion.div whileHover={reduceMotion ? undefined : { scale: 1.01 }} whileTap={reduceMotion ? undefined : { scale: 0.99 }}>
-                  <Link
-                    to="/contact"
+                  <button
+                    type="button"
+                    onClick={openContactForm}
                     className="group inline-flex min-h-[3.25rem] w-full items-center justify-center gap-2.5 rounded-[1.35rem] bg-[hsl(var(--brand-gold-500))] px-5 py-3.5 text-sm font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_10px_28px_-12px_hsl(var(--brand-gold-500)/0.75)] transition hover:brightness-105 sm:min-h-[3.5rem] sm:px-6 sm:text-[0.9375rem]"
                   >
                     <Building2 className="h-4 w-4 shrink-0 opacity-80" aria-hidden />
                     <span>{t("home.contact.marketEntryCta")}</span>
                     <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden />
-                  </Link>
+                  </button>
                 </motion.div>
               </div>
 

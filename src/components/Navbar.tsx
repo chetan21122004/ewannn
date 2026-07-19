@@ -10,6 +10,7 @@ import {
   Languages,
   Menu,
   MessageCircle,
+  Mail,
   Newspaper,
   Play,
   Users,
@@ -18,6 +19,7 @@ import {
 import { cn } from "@/lib/utils";
 import { SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
 import { scrollToPageTop } from "@/lib/scrollToTop";
+import { handleAskSohamNavClick } from "@/components/AskSohamInquiryProvider";
 import { useTranslation } from "react-i18next";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import NavbarLanguageSwitcher from "@/components/NavbarLanguageSwitcher";
@@ -94,7 +96,6 @@ const mobileNavGroups: NavGroup[] = [
       { labelKey: "navMenu.about.joinUs", href: "/join-us" },
       { labelKey: "navMenu.about.caseStudy", href: "/case-study" },
       { labelKey: "navMenu.about.testimonials", href: "/#testimonials" },
-      { labelKey: "nav.contactUs", href: "/contact" },
     ],
   },
   {
@@ -158,7 +159,6 @@ const desktopNavGroups: DesktopNavGroup[] = [
       { labelKey: "navMenu.about.joinUs", href: "/join-us" },
       { labelKey: "navMenu.about.caseStudy", href: "/case-study" },
       { labelKey: "navMenu.about.testimonials", href: "/#testimonials" },
-      { labelKey: "nav.contactUs", href: "/contact" },
     ],
   },
   {
@@ -320,6 +320,15 @@ const desktopNavTriggerClass = (active: boolean) =>
       "bg-white text-[hsl(var(--brand-purple-700))] shadow-sm ring-1 ring-[hsl(var(--brand-purple-700)/0.12)]",
   );
 
+const navUtilityPillClass = (active: boolean, compact = false) =>
+  cn(
+    "inline-flex items-center gap-1.5 rounded-full border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] font-semibold text-[hsl(var(--brand-navy-950))] shadow-sm transition",
+    "hover:border-[hsl(var(--brand-purple-500)/0.35)] hover:bg-white",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.4)] focus-visible:ring-offset-1",
+    active && "border-[hsl(var(--brand-purple-500)/0.35)] bg-white text-[hsl(var(--brand-purple-700))]",
+    compact ? "h-9 px-2.5 text-[10px] bg-white/90" : "h-9 px-3 text-[11px]",
+  );
+
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [expandedGroup, setExpandedGroup] = useState<string>("");
@@ -330,6 +339,7 @@ const Navbar = () => {
   const closeDesktopDropdown = () => setOpenDesktopGroup(null);
 
   const isDesktopGroupActive = (group: DesktopNavGroup) => isGroupActive(group, pathname, hash);
+  const isContactActive = isPathActive("/contact", pathname, hash);
 
   const mobileGroupsWithLinks = useMemo(
     () => mobileNavGroups.filter((group) => group.links?.length),
@@ -468,9 +478,14 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-2.5">
+            <Link to="/contact" className={navUtilityPillClass(isContactActive)}>
+              <Mail className="h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+              {t("nav.contactUs")}
+            </Link>
             <NavbarLanguageSwitcher variant="desktop" />
             <Link
               to="/ask-soham"
+              onClick={(event) => handleAskSohamNavClick(event, pathname)}
               className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2 text-[13px] font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_4px_14px_-4px_hsl(var(--brand-gold-500)/0.55)] transition hover:brightness-105"
             >
               <MessageCircle className="h-4 w-4" />
@@ -480,6 +495,10 @@ const Navbar = () => {
 
           {/* Mobile top actions */}
           <div className="flex items-center gap-2 lg:hidden">
+            <Link to="/contact" className={navUtilityPillClass(isContactActive, true)} aria-label={t("nav.contactUs")}>
+              <Mail className="h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-700))]" aria-hidden />
+              <span className="sr-only sm:not-sr-only">{t("nav.contactUs")}</span>
+            </Link>
             <NavbarLanguageSwitcher variant="mobile" />
             <button
               type="button"
@@ -541,8 +560,11 @@ const Navbar = () => {
           <div className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain px-4 py-4">
             <Link
               to="/ask-soham"
+              onClick={(event) => {
+                handleAskSohamNavClick(event, pathname);
+                closeMobile();
+              }}
               className="mb-4 flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[hsl(var(--brand-gold-500))] px-4 py-2.5 text-sm font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_8px_20px_-10px_hsl(var(--brand-gold-500)/0.7)] transition active:scale-[0.99]"
-              onClick={closeMobile}
             >
               <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
               {t("nav.askSoham")}
@@ -639,6 +661,28 @@ const Navbar = () => {
                 </Link>
               );
             })}
+          </div>
+
+          <div className="shrink-0 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-4 py-3.5">
+            <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-navy-950)/0.45)]">
+              {t("nav.contactUs")}
+            </p>
+            <Link
+              to="/contact"
+              onClick={closeMobile}
+              className={cn(
+                "flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 transition active:scale-[0.99]",
+                isContactActive
+                  ? "border-[hsl(var(--brand-purple-500)/0.35)] bg-[hsl(var(--brand-purple-700)/0.06)]"
+                  : "border-[hsl(var(--border-light))] bg-white hover:bg-[hsl(var(--surface-light-50))]",
+              )}
+            >
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--brand-purple-700)/0.1)] text-[hsl(var(--brand-purple-700))]">
+                <Mail className="h-4 w-4" aria-hidden />
+              </span>
+              <span className="min-w-0 flex-1 text-sm font-semibold text-[hsl(var(--brand-navy-950))]">{t("nav.contactUs")}</span>
+              <ChevronRight className="h-4 w-4 shrink-0 text-[hsl(var(--brand-navy-950)/0.35)]" aria-hidden />
+            </Link>
           </div>
 
           <div className="shrink-0 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-4 py-3.5">

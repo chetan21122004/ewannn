@@ -5,6 +5,7 @@ import {
   Clapperboard,
   FileText,
   Film,
+  Globe2,
   Mic2,
   Quote,
   Sparkles,
@@ -14,9 +15,11 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import { useContactInquiry } from "@/components/ContactInquiryProvider";
+import MarqueeBand from "@/components/MarqueeBand";
 import GlobalTalkiesServiceCard from "@/components/global-talkies/GlobalTalkiesServiceCard";
+import AutoHorizontalSlider from "@/components/language-gazette/AutoHorizontalSlider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { GLOBAL_TALKIES_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, serviceSchema } from "@/lib/schemaHelpers";
 
@@ -125,6 +128,15 @@ const services = [
   },
 ];
 
+const serviceMarqueeItems = [
+  ...services.map((service) => service.title),
+  "SDH Subtitles",
+  "Lip-Sync Dubbing",
+  "100+ Languages",
+  "Netflix & OTT Compliance",
+  "Cultural Adaptation",
+];
+
 const mediaCorridors = [
   { corridor: "Hindi ↔ Japanese", note: "Indian content for Japanese OTT / Japanese content for Indian audiences" },
   { corridor: "Hindi ↔ Mandarin / Cantonese", note: "Indian film distribution in China and Taiwan" },
@@ -144,6 +156,7 @@ const whoThisIsFor = [
 
 const GlobalTalkies = () => {
   const reduceMotion = useReducedMotion();
+  const { open: openContactForm } = useContactInquiry();
   const hidden = reduceMotion ? false : { opacity: 0, y: 24 };
   const show = { opacity: 1, y: 0 };
   const transition = (delay = 0) => ({ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] as const });
@@ -175,28 +188,31 @@ const GlobalTalkies = () => {
                 what makes them powerful.
               </p>
               <div className="mt-9 flex flex-wrap gap-4">
-                <a
-                  href="/contact"
+                <button
+                  type="button"
+                  onClick={openContactForm}
                   className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-7 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
                 >
                   Discuss Your Content
                   <ArrowRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="/contact"
+                </button>
+                <button
+                  type="button"
+                  onClick={openContactForm}
                   className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-7 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
                 >
                   info@ewan.co.in
-                </a>
+                </button>
               </div>
             </div>
 
             <div className="relative">
-              <div className="overflow-hidden rounded-3xl shadow-[0_22px_60px_rgba(6,3,20,0.55)]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_22px_60px_rgba(6,3,20,0.55)] sm:aspect-[5/6] lg:aspect-[4/5]">
                 <img
-                  src="/page-assets/global-talkies-img2.png"
-                  alt="Global Talkies - film distribution and localization for international audiences"
+                  src="/page-assets/global-talkies-banner.jpg"
+                  alt="Cinema auditorium with rows of seats — Global Talkies film distribution and localisation"
                   className="h-full w-full object-cover transition duration-700"
+                  loading="eager"
                 />
                 <div className="absolute inset-0 bg-[hsl(var(--brand-navy-950)/0.25)] mix-blend-multiply" />
                 <div className="absolute bottom-8 left-1/2 w-[82%] -translate-x-1/2 rounded-xl border border-white/10 bg-black/60 p-4 text-center backdrop-blur-md">
@@ -263,7 +279,7 @@ const GlobalTalkies = () => {
       </section>
 
       {/* Services */}
-      <section id="services" className="relative scroll-mt-28 overflow-hidden section-pad theme-section-light px-6">
+      <section id="services" className="relative scroll-mt-28 overflow-x-clip section-pad theme-section-light px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -295,47 +311,14 @@ const GlobalTalkies = () => {
             />
           </motion.div>
 
-          <Accordion type="single" collapsible className="flex flex-col gap-2.5 md:hidden">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <AccordionItem
-                  key={service.id}
-                  id={service.id}
-                  value={service.id}
-                  className="scroll-mt-28 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] border-b-0 bg-white shadow-sm data-[state=open]:border-[hsl(var(--brand-purple-500)/0.35)] data-[state=open]:ring-1 data-[state=open]:ring-[hsl(var(--brand-purple-500)/0.15)]"
-                >
-                  <AccordionTrigger className="gap-3 px-4 py-4 hover:no-underline [&[data-state=open]>svg]:text-[hsl(var(--brand-purple-700))]">
-                    <span className="flex min-w-0 flex-1 items-center gap-3 text-left">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
-                        <Icon className="h-4 w-4" aria-hidden />
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block font-mono text-[10px] font-bold tracking-[0.14em] text-[hsl(var(--brand-purple-700)/0.75)]">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <span className="block font-serif text-base font-bold leading-snug text-on-light">{service.title}</span>
-                      </span>
-                    </span>
-                  </AccordionTrigger>
-                  <AccordionContent className="space-y-4 px-4 pb-4">
-                    <p className="text-xs leading-relaxed text-on-light-secondary">{service.description}</p>
-                    <ul className="space-y-2 border-t border-[hsl(var(--border-light))] pt-3">
-                      {service.points.map((point) => (
-                        <li key={point} className="flex items-start gap-2 text-xs text-on-light-secondary">
-                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </AccordionContent>
-                </AccordionItem>
-              );
-            })}
-          </Accordion>
+          <MarqueeBand items={serviceMarqueeItems} ariaLabel="Our Services" icon={Sparkles} />
 
-          <div className="hidden gap-4 md:grid md:grid-cols-2 md:gap-5 xl:grid-cols-3">
-            {services.map((service, index) => (
+          <AutoHorizontalSlider
+            ariaLabel="Global Talkies media localisation services"
+            slideClassName="basis-[88%] sm:basis-[62%] md:basis-[46%] lg:basis-[38%] xl:basis-[32%]"
+            autoplayMs={5200}
+            edgeFadeFromClass="from-[hsl(var(--surface-light-50))]"
+            items={services.map((service, index) => (
               <GlobalTalkiesServiceCard
                 key={service.id}
                 service={service}
@@ -346,40 +329,78 @@ const GlobalTalkies = () => {
                 transition={transition}
               />
             ))}
-          </div>
+          />
         </div>
       </section>
 
       {/* Language Corridors - Media */}
-      <section className="overflow-hidden theme-section-soft px-8 py-24">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 flex flex-col items-end justify-between gap-8 md:flex-row">
-            <div className="space-y-4">
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[hsl(var(--brand-purple-700))]">
+      <section id="corridors" className="relative scroll-mt-28 overflow-hidden section-pad theme-section-soft px-6">
+        <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
+        <div className="glow-orb glow-orb-purple pointer-events-none -right-16 top-8 h-[180px] w-[180px] opacity-[0.07] lg:h-[260px] lg:w-[260px] lg:opacity-[0.1]" />
+
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <motion.div
+            initial={hidden}
+            whileInView={show}
+            viewport={{ once: true }}
+            transition={transition(0)}
+            className="mb-6 grid items-end gap-4 lg:mb-8 lg:grid-cols-[minmax(0,1fr)_minmax(200px,240px)] lg:gap-8"
+          >
+            <div>
+              <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[hsl(var(--brand-purple-700))] sm:px-4 sm:py-1.5 sm:text-[11px] sm:tracking-[0.22em]">
+                <Globe2 className="h-3.5 w-3.5" aria-hidden />
                 Network
               </span>
-              <h2 className="font-serif text-5xl font-bold tracking-tight text-on-light">Language Corridors - Media</h2>
+              <h2 className="font-serif text-2xl font-bold leading-tight text-on-light sm:text-3xl lg:text-4xl">
+                Language Corridors — Media
+              </h2>
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-on-light-secondary">
+                Our deepest media localisation experience sits in the corridors that mirror UVAN&apos;s broader expertise.
+              </p>
             </div>
-            <p className="max-w-md font-light leading-relaxed text-on-light-secondary">
-              Our deepest media localisation experience sits in the corridors that mirror UVAN's broader expertise.
-            </p>
-          </div>
-          <div className="flex flex-col space-y-1">
+            <motion.img
+              src="/doodles/International trade-bro.svg"
+              alt=""
+              aria-hidden
+              className="mx-auto hidden h-28 w-full max-w-[200px] object-contain opacity-90 lg:block"
+              animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
+
+          <div className="space-y-2">
             {mediaCorridors.map((item, index) => (
-              <div
+              <motion.div
                 key={item.corridor}
-                className="group flex cursor-pointer items-center justify-between border-b border-[hsl(var(--border-light))] py-10 transition-all duration-500 hover:bg-[hsl(var(--surface-light-100))] hover:px-6"
+                initial={reduceMotion ? false : { opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={reduceMotion ? undefined : { x: 4 }}
+                className="group relative overflow-hidden rounded-xl border border-[hsl(var(--border-light))] bg-white/80 px-3.5 py-3 transition-[border-color,background-color,box-shadow] duration-300 hover:border-[hsl(var(--brand-purple-700)/0.28)] hover:bg-white hover:shadow-[0_10px_28px_hsl(var(--brand-navy-950)/0.06)] sm:rounded-2xl sm:px-5 sm:py-4"
               >
-                <div className="flex items-center space-x-10">
-                  <span className="font-serif text-4xl font-light text-on-light-muted transition-colors group-hover:text-[hsl(var(--brand-purple-700))]">
-                    {(index + 1).toString().padStart(2, "0")}
-                  </span>
-                  <h3 className="font-serif text-2xl font-bold text-on-light md:text-3xl">{item.corridor}</h3>
+                <span
+                  className="pointer-events-none absolute inset-y-0 left-0 w-0.5 scale-y-0 bg-gradient-to-b from-[hsl(var(--brand-gold-500))] to-[hsl(var(--brand-purple-700))] transition-transform duration-300 group-hover:scale-y-100"
+                  aria-hidden
+                />
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                  <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+                    <span className="shrink-0 font-mono text-[10px] font-bold tracking-[0.14em] text-[hsl(var(--brand-purple-700)/0.45)] transition-colors duration-300 group-hover:text-[hsl(var(--brand-purple-700))] sm:text-xs">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="min-w-0 font-serif text-sm font-bold leading-snug text-on-light transition-colors duration-300 group-hover:text-[hsl(var(--brand-purple-700))] sm:text-base lg:text-lg">
+                      {item.corridor}
+                    </h3>
+                    <ArrowRight
+                      className="hidden h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-700))] opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100 sm:block"
+                      aria-hidden
+                    />
+                  </div>
+                  <p className="pl-7 text-xs leading-relaxed text-on-light-secondary transition-colors duration-300 group-hover:text-on-light sm:max-w-md sm:pl-0 sm:text-right sm:text-sm">
+                    {item.note}
+                  </p>
                 </div>
-                <div className="hidden text-right md:block">
-                  <p className="text-sm font-light text-on-light-secondary">{item.note}</p>
-                </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -499,13 +520,14 @@ const GlobalTalkies = () => {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[hsl(var(--brand-purple-700))]">Next Step</p>
           <h3 className="mt-2 font-serif text-4xl font-bold text-on-light">Send Your Content Brief</h3>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="/contact"
+            <button
+              type="button"
+              onClick={openContactForm}
               className="inline-flex items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
             >
               Send Your Content Brief
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </button>
             <Link
               to="/ask-soham"
               className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"

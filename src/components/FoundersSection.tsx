@@ -242,7 +242,7 @@ const FoundersSection = () => {
   const linkedinFallback = t("home.founders.linkedinCta");
 
   return (
-    <section id="about" className="relative overflow-visible py-16 theme-section-soft lg:py-24">
+    <section id="about" className="relative overflow-visible py-16 theme-section-soft lg:py-8">
       <div className="glow-orb glow-orb-gold h-[360px] w-[360px] -right-40 bottom-10 opacity-8" />
 
       <div className="container relative z-10 mx-auto px-5 sm:px-6">

@@ -4,6 +4,7 @@ import { ArrowRight, Award, CheckCircle2, Globe2, Handshake, Languages } from "l
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
+import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import SectionDivider from "@/components/SectionDivider";
 import AutoHorizontalSlider from "@/components/language-gazette/AutoHorizontalSlider";
 import PartnerRevealCard from "@/components/PartnerRevealCard";
@@ -255,6 +256,7 @@ const springReveal = { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const };
 
 const AboutUs = () => {
   const { t } = useTranslation();
+  const { open: openContactForm } = useContactInquiry();
   const pageRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: pageRef, offset: ["start start", "end end"] });
   const corridorScale = useTransform(scrollYProgress, [0, 1], [0.06, 1]);
@@ -371,7 +373,7 @@ const AboutUs = () => {
       {/* Founders Section */}
       <section
         id="the-founders"
-        className="relative overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] px-6 py-24 theme-section-soft md:py-28 stitch-line stitch-line-bottom"
+        className="relative scroll-mt-28 overflow-hidden border-y border-[hsl(var(--border-light)/0.85)] px-6 section-pad theme-section-soft stitch-line stitch-line-bottom"
       >
         <div className="glow-orb glow-orb-gold pointer-events-none h-[380px] w-[380px] -bottom-32 right-[-12%] opacity-[0.09]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.18]" />
@@ -381,9 +383,9 @@ const AboutUs = () => {
           className="pointer-events-none absolute -left-12 top-40 z-0 hidden h-72 w-56 -scale-x-100 select-none opacity-15 xl:block animate-float"
         />
         <div className="container relative z-10 mx-auto max-w-6xl">
-          <header className="mb-16 text-center">
+          <header className=" text-center ">
             <motion.h2
-              className="mx-auto max-w-3xl font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-on-light leading-tight"
+              className="mx-auto mb-2 max-w-3xl font-serif text-3xl font-bold leading-tight text-on-light sm:mb-3 sm:text-4xl lg:text-5xl"
               initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true }}
@@ -392,7 +394,7 @@ const AboutUs = () => {
               The Founders
             </motion.h2>
             <motion.p
-              className="mx-auto mt-4 max-w-2xl text-base text-on-light-muted sm:text-lg"
+              className="mx-auto max-w-2xl text-base text-on-light-muted sm:text-lg"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -403,7 +405,7 @@ const AboutUs = () => {
             <motion.img
               src={doodleBridge}
               alt=""
-              className="pointer-events-none mx-auto mt-6 h-14 w-[min(100%,480px)] max-w-none select-none opacity-[0.25]"
+              className="pointer-events-none mx-auto mt-3 h-11 w-[min(100%,480px)] max-w-none select-none opacity-[0.25] sm:mt-4"
               animate={{ scaleX: [0.96, 1.04, 0.96], opacity: [0.18, 0.34, 0.18] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
@@ -620,7 +622,7 @@ const AboutUs = () => {
       <SectionDivider variant="slant" flip />
 
       {/* Institutional Recognition */}
-      <section className="relative overflow-hidden px-6 py-20 theme-section-light md:py-24 stitch-line stitch-line-bottom">
+      <section className="relative overflow-hidden px-6 py-20 theme-section-light md:py-8 stitch-line stitch-line-bottom">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -752,7 +754,7 @@ const AboutUs = () => {
       </section>
 
       {/* Partners */}
-      <section id="our-partners" className="relative overflow-hidden section-pad px-6 theme-section-soft md:py-24">
+      <section id="our-partners" className="relative overflow-hidden section-pad px-6 theme-section-soft md:py-8">
         <div className="glow-orb glow-orb-gold pointer-events-none -bottom-10 -left-16 h-[280px] w-[280px] opacity-[0.08]" />
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.08]" />
         <img
@@ -816,12 +818,13 @@ const AboutUs = () => {
             className="mt-12 rounded-2xl border border-[hsl(var(--border-light))] bg-white/75 px-6 py-5 text-center text-sm text-on-light-secondary backdrop-blur-sm sm:text-base"
           >
             Interested in Partnering With UVAN?{" "}
-            <a
-              href="/contact"
+            <button
+              type="button"
+              onClick={openContactForm}
               className="font-bold text-[hsl(var(--brand-purple-700))] hover:underline"
             >
               Get in Touch About a Partnership →
-            </a>
+            </button>
           </motion.p>
         </div>
       </section>

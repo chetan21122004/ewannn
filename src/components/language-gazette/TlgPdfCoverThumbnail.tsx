@@ -50,14 +50,15 @@ const TlgPdfCoverThumbnail = ({ pdfUrl, title, className }: TlgPdfCoverThumbnail
       aria-hidden
     >
       {failed ? (
-        <div className="flex h-full w-full items-center justify-center">
-          <FileText className="h-10 w-10 text-on-light-muted" />
+        <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[hsl(var(--surface-light-100))] px-3 text-center">
+          <FileText className="h-8 w-8 text-on-light-muted" aria-hidden />
+          <span className="text-[10px] font-medium text-on-light-muted">Cover preview unavailable</span>
         </div>
       ) : isVisible && containerWidth > 0 ? (
         <Document
           file={pdfUrl}
           onLoadError={() => setFailed(true)}
-          loading={<div className="absolute inset-0 animate-pulse bg-white" />}
+          loading={<div className="absolute inset-0 animate-pulse bg-[hsl(var(--surface-light-100))]" />}
           className="absolute inset-0 h-full w-full"
         >
           <Page
@@ -66,12 +67,12 @@ const TlgPdfCoverThumbnail = ({ pdfUrl, title, className }: TlgPdfCoverThumbnail
             renderTextLayer={false}
             renderAnnotationLayer={false}
             onRenderError={() => setFailed(true)}
-            loading={<div className="absolute inset-0 animate-pulse bg-white" />}
+            loading={<div className="absolute inset-0 animate-pulse bg-[hsl(var(--surface-light-100))]" />}
             className="!absolute !inset-0 !m-0 !h-full !w-full !min-h-0 !min-w-0 !bg-transparent [&_.react-pdf__Page__canvas]:!absolute [&_.react-pdf__Page__canvas]:!inset-0 [&_.react-pdf__Page__canvas]:!h-full [&_.react-pdf__Page__canvas]:!w-full [&_.react-pdf__Page__canvas]:object-cover [&_.react-pdf__Page__canvas]:object-top"
           />
         </Document>
       ) : (
-        <div className="absolute inset-0 animate-pulse bg-white" />
+        <div className="absolute inset-0 animate-pulse bg-[hsl(var(--surface-light-100))]" />
       )}
       <span className="sr-only">{title} cover</span>
     </div>

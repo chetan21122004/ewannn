@@ -1,21 +1,28 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   Banknote,
   Building2,
   CheckCircle2,
+  ChevronDown,
   FileCheck,
   Globe2,
   Languages,
   Package,
+  Sparkles,
   Users,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
+import { useContactInquiry } from "@/components/ContactInquiryProvider";
+import MarqueeBand from "@/components/MarqueeBand";
 import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
-import ImageRevealOverlayCard from "@/components/ImageRevealOverlayCard";
+import LanguageSectorCard from "@/components/language-localization/LanguageSectorCard";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { cn } from "@/lib/utils";
 import { MARKET_ENTRY_FAQS, SPEAKABLE_MARKET_ENTRY } from "@/data/aeoContent";
 import {
   absoluteUrl,
@@ -62,25 +69,29 @@ const whoWeServe = [
 
 const workstreams = [
   {
+    id: "regulatory-entity-formation",
     title: "Regulatory & Entity Formation",
     description: "Local entity setup, RBI/FEMA compliance, industry licensing, sectoral approvals",
     icon: Building2,
     image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80",
   },
   {
+    id: "bank-onboarding",
     title: "Bank Onboarding & Financial Setup",
     description: "Business account establishment, financial infrastructure, payment pathways",
     icon: Banknote,
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=80",
   },
   {
+    id: "executive-liaison",
     title: "Executive Liaison & Negotiation Support",
     description: "Native-language liaison for government relations and senior business negotiations",
     icon: Users,
     href: "/liaisoning-facilitation/",
-    image: "https://images.unsplash.com/photo-1521737711862-e34187234116?auto=format&fit=crop&w=900&q=80",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80",
   },
   {
+    id: "local-procurement",
     title: "Local Procurement & Supply Chain",
     description: "Vetted vendor identification, physical site verification, supply chain establishment",
     icon: Package,
@@ -88,18 +99,21 @@ const workstreams = [
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80",
   },
   {
+    id: "payroll-hr",
     title: "Payroll & HR Facilitation",
     description: "Local talent pipeline, labour law compliance, staffing support",
     icon: FileCheck,
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80",
   },
   {
+    id: "on-ground-operations",
     title: "On-Ground Operations Management",
     description: "Day-to-day operational oversight, vendor coordination, reporting",
     icon: Globe2,
-    image: "https://images.unsplash.com/photo-1454165804606-ca3cbafea128?auto=format&fit=crop&w=900&q=80",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80",
   },
   {
+    id: "language-cultural-intelligence",
     title: "Language & Cultural Intelligence",
     description: "Interpretation, translation and cultural advisory throughout every workstream",
     icon: Languages,
@@ -146,6 +160,39 @@ const marketEntryLd = [
 
 const MarketEntry = () => {
   const { t } = useTranslation();
+  const reduceMotion = useReducedMotion();
+  const { open: openContactForm } = useContactInquiry();
+  const [expandedHowStep, setExpandedHowStep] = useState<number | null>(null);
+  const hidden = reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 };
+  const show = { opacity: 1, y: 0 };
+  const transition = (delay = 0) => ({
+    duration: reduceMotion ? 0.35 : 0.72,
+    delay,
+    ease: [0.22, 1, 0.36, 1] as const,
+  });
+
+  const deliverCards = workstreams.map((item) => ({
+    id: item.id,
+    title: item.title,
+    description: item.description,
+    icon: item.icon,
+    image: item.image,
+    imageAlt: item.title,
+    href: "href" in item ? item.href : undefined,
+    linkLabel: "Explore this service",
+  }));
+
+  const deliverCardRow = (items: typeof deliverCards, startIndex: number) =>
+    items.map((item, offset) => (
+      <LanguageSectorCard
+        key={item.id}
+        sector={item}
+        index={startIndex + offset}
+        hidden={hidden}
+        show={show}
+        transition={transition}
+      />
+    ));
 
   return (
     <PageLayout
@@ -304,7 +351,7 @@ const MarketEntry = () => {
       <section id="what-we-deliver" className="theme-section-light relative scroll-mt-24 overflow-hidden px-5 section-pad sm:px-6">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12] lg:opacity-[0.14]" />
 
-        <div className="container relative z-10 mx-auto">
+        <div className="container relative z-10 mx-auto max-w-6xl">
           <motion.div
             className="mb-8 lg:mb-12"
             initial={{ opacity: 0, y: 24 }}
@@ -325,82 +372,51 @@ const MarketEntry = () => {
             </p>
           </motion.div>
 
-          <div className="space-y-5 sm:space-y-6">
-            <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-5">
-              {workstreams.slice(0, 6).map((item, i) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: (i % 3) * 0.08 }}
-                  className="h-full"
-                >
-                  <ImageRevealOverlayCard
-                    index={i}
-                    title={item.title}
-                    description={item.description}
-                    image={item.image}
-                    imageAlt={item.title}
-                    icon={item.icon}
-                    href={"href" in item ? item.href : undefined}
-                    linkLabel="Explore this service"
-                    className="h-full"
-                  />
-                </motion.div>
-              ))}
-            </div>
+          <MarqueeBand
+            items={workstreams.map((item) => item.title)}
+            ariaLabel="Market entry workstreams"
+            icon={Sparkles}
+          />
 
-            {(() => {
-              const item = workstreams[6];
+          <Accordion type="single" collapsible className="flex flex-col gap-2.5 md:hidden">
+            {deliverCards.map((item, index) => {
               const Icon = item.icon;
-              const capstoneInner = (
-                <div className="theme-card-light card-shine group/capstone relative overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-[linear-gradient(135deg,hsl(var(--surface-light-50))_0%,hsl(var(--surface-light-100))_52%,hsl(var(--brand-purple-700)/0.06)_100%)] p-5 sm:rounded-3xl sm:p-6 lg:p-8">
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[hsl(var(--brand-purple-700)/0.35)] to-transparent" />
-                  <div className="grid items-center gap-5 lg:grid-cols-[auto_minmax(0,1fr)_minmax(12rem,16rem)] lg:gap-8">
-                    <div className="flex items-center gap-4 lg:flex-col lg:items-start lg:gap-3">
-                      <span className="inline-flex h-10 min-w-[2.5rem] items-center justify-center rounded-full bg-[hsl(var(--brand-navy-950))] px-3 font-mono text-xs font-bold tracking-[0.18em] text-[hsl(var(--brand-gold-500))]">
-                        07
-                      </span>
-                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,hsl(var(--brand-purple-700))_0%,hsl(var(--brand-cyan-500))_100%)] text-white shadow-gold-sm">
-                        <Icon className="h-5 w-5" aria-hidden />
-                      </span>
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[hsl(var(--brand-purple-700))] sm:text-[11px] sm:tracking-[0.22em]">
-                        Threaded through every workstream
-                      </p>
-                      <h3 className="mt-2 font-serif text-2xl font-bold leading-snug text-on-light sm:text-[1.65rem] lg:text-3xl">
-                        {item.title}
-                      </h3>
-                      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-on-light-secondary sm:text-base">
-                        {item.description}
-                      </p>
-                    </div>
-                    <div className="hidden border-l border-[hsl(var(--border-light))] pl-6 lg:block">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-on-light-muted">
-                        Cross-cutting capability
-                      </p>
-                      <p className="mt-2 text-sm leading-relaxed text-on-light-secondary">
-                        Applied across regulatory, financial, operational and executive workstreams.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-
               return (
-                <motion.article
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.18 }}
-                  whileHover={{ y: -3 }}
+                <AccordionItem
+                  key={item.id}
+                  value={item.id}
+                  className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] border-b-0 bg-white shadow-sm data-[state=open]:border-[hsl(var(--brand-purple-500)/0.35)] data-[state=open]:ring-1 data-[state=open]:ring-[hsl(var(--brand-purple-500)/0.15)]"
                 >
-                  {capstoneInner}
-                </motion.article>
+                  <AccordionTrigger className="relative min-h-[88px] gap-0 overflow-hidden p-0 hover:no-underline [&[data-state=open]>svg]:text-[hsl(var(--brand-gold-500))]">
+                    <img src={item.image} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--brand-navy-950)/0.88)] via-[hsl(var(--brand-navy-950)/0.72)] to-[hsl(var(--brand-navy-950)/0.45)]" aria-hidden />
+                    <span className="relative z-10 flex min-w-0 flex-1 items-center gap-3 px-4 py-4 text-left text-white">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm">
+                        <Icon className="h-4 w-4" aria-hidden />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-gold-500))]">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span className="block font-serif text-base font-bold leading-snug">{item.title}</span>
+                      </span>
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pb-4 text-xs leading-relaxed text-on-light-secondary">
+                    {item.description}
+                  </AccordionContent>
+                </AccordionItem>
               );
-            })()}
+            })}
+          </Accordion>
+
+          <div className="hidden md:flex md:flex-col md:gap-4 lg:gap-5">
+            <div className="grid grid-cols-2 gap-3.5 md:gap-4 lg:grid-cols-4">
+              {deliverCardRow(deliverCards.slice(0, 4), 0)}
+            </div>
+            <div className="mx-auto grid w-full max-w-5xl grid-cols-3 gap-3.5 md:gap-4">
+              {deliverCardRow(deliverCards.slice(4), 4)}
+            </div>
           </div>
         </div>
       </section>
@@ -589,10 +605,28 @@ const MarketEntry = () => {
                 aria-hidden
               />
 
-              {howItWorks.map((step, index) => (
+              {howItWorks.map((step, index) => {
+                const isOpen = expandedHowStep === index;
+
+                return (
                 <motion.article
                   key={step.title}
-                  className="theme-card-light card-shine relative flex h-full min-h-[14rem] flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white p-4 sm:min-h-[15rem] sm:p-5 lg:p-6"
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={isOpen}
+                  onClick={() => setExpandedHowStep((prev) => (prev === index ? null : index))}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      setExpandedHowStep((prev) => (prev === index ? null : index));
+                    }
+                  }}
+                  onMouseLeave={() => setExpandedHowStep(null)}
+                  className={cn(
+                    "theme-card-light card-shine group/step relative flex h-full min-h-[11.5rem] cursor-pointer flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white p-4 outline-none transition-[border-color,box-shadow] duration-300 focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-500)/0.35)] sm:min-h-[12rem] sm:p-5 lg:p-6",
+                    isOpen && "border-[hsl(var(--brand-purple-500)/0.28)] shadow-[0_14px_36px_rgba(26,22,51,0.08)]",
+                    "lg:hover:border-[hsl(var(--brand-purple-500)/0.28)] lg:hover:shadow-[0_14px_36px_rgba(26,22,51,0.08)]",
+                  )}
                   initial={{ opacity: 0, y: 40, scale: 0.96 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.4 }}
@@ -607,7 +641,7 @@ const MarketEntry = () => {
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <div className="relative z-10 mb-4 flex items-center gap-3">
+                  <div className="relative z-10 mb-3 flex items-center gap-3 sm:mb-4">
                     <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[hsl(var(--brand-gold-500))] text-xs font-bold text-[hsl(var(--brand-navy-950))]">
                       {index + 1}
                     </span>
@@ -617,11 +651,32 @@ const MarketEntry = () => {
                   </div>
 
                   <h3 className="relative z-10 font-serif text-base font-bold leading-snug text-on-light sm:text-lg">{step.title}</h3>
-                  <p className="relative z-10 mt-2 flex-1 text-xs leading-relaxed text-on-light-secondary sm:mt-3 sm:text-sm">
+
+                  <p
+                    className={cn(
+                      "relative z-10 mt-2 overflow-hidden text-xs leading-relaxed text-on-light-secondary transition-all duration-300 ease-out sm:mt-3 sm:text-sm",
+                      isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0",
+                      "lg:max-h-0 lg:opacity-0 lg:group-hover/step:max-h-40 lg:group-hover/step:opacity-100",
+                      isOpen && "lg:max-h-40 lg:opacity-100",
+                    )}
+                  >
                     {step.detail}
                   </p>
+
+                  <span
+                    className={cn(
+                      "relative z-10 mt-auto inline-flex items-center gap-1 pt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-on-light-muted transition-opacity duration-300",
+                      isOpen && "opacity-0",
+                      "lg:opacity-100 lg:group-hover/step:opacity-0",
+                      isOpen && "lg:opacity-0",
+                    )}
+                  >
+                    View details
+                    <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-300", isOpen && "rotate-180")} aria-hidden />
+                  </span>
                 </motion.article>
-              ))}
+                );
+              })}
             </div>
 
             <div className="mt-8 flex flex-col gap-3 border-t border-[hsl(var(--border-light))] pt-8 sm:flex-row sm:flex-wrap">
@@ -665,13 +720,14 @@ const MarketEntry = () => {
               Ask Soham - 15 Min Free
               <ArrowRight className="h-4 w-4 shrink-0" />
             </Link>
-            <a
-              href="/contact"
+            <button
+              type="button"
+              onClick={openContactForm}
               className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto"
             >
               Email info@ewan.co.in
               <ArrowRight className="h-4 w-4 shrink-0" />
-            </a>
+            </button>
           </div>
         </div>
       </section>

@@ -7,6 +7,7 @@ import {
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
+import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import ServiceHoverCard from "@/components/ServiceHoverCard";
@@ -120,6 +121,7 @@ const marketResearchLd = [
 const MarketResearchPage = () => {
   const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
+  const { open: openContactForm } = useContactInquiry();
   const hidden = reduceMotion ? false : { opacity: 0, y: 24 };
   const show = { opacity: 1, y: 0 };
   const transition = (delay = 0) => ({ duration: 0.55, delay });
@@ -157,15 +159,16 @@ const MarketResearchPage = () => {
                 intelligence.
               </p>
               <div className="mt-6 flex flex-col gap-2.5 sm:mt-9 sm:flex-row sm:flex-wrap sm:gap-4">
-                <motion.a
-                  href="/contact"
+                <motion.button
+                  type="button"
+                  onClick={openContactForm}
                   className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
                   whileHover={reduceMotion ? undefined : { scale: 1.03 }}
                   whileTap={reduceMotion ? undefined : { scale: 0.97 }}
                 >
                   Discuss Your Research Brief
                   <ArrowRight className="h-4 w-4 shrink-0" />
-                </motion.a>
+                </motion.button>
                 <motion.div whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={reduceMotion ? undefined : { scale: 0.97 }} className="w-full sm:w-auto">
                   <Link
                     to="/ask-soham"
@@ -469,15 +472,16 @@ const MarketResearchPage = () => {
             hours.
           </p>
           <div className="mt-6 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-4">
-            <motion.a
-              href="/contact"
+            <motion.button
+              type="button"
+              onClick={openContactForm}
               className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
               whileHover={reduceMotion ? undefined : { scale: 1.03 }}
               whileTap={reduceMotion ? undefined : { scale: 0.97 }}
             >
               Send Your Research Brief
               <ArrowRight className="h-4 w-4 shrink-0" />
-            </motion.a>
+            </motion.button>
             <motion.div whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={reduceMotion ? undefined : { scale: 0.97 }} className="w-full sm:w-auto">
               <Link
                 to="/ask-soham"

@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen, Globe2, Mail, MessageCircle, Sparkles, Youtube } 
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import InsightsArticlesSlider from "@/components/insights/InsightsArticlesSlider";
 import { absoluteUrl, breadcrumbSchema } from "@/lib/schemaHelpers";
 
@@ -84,6 +85,7 @@ const insightsLd = [
 
 const Insights = () => {
   const reduceMotion = useReducedMotion();
+  const { open: openContactForm } = useContactInquiry();
   const [activeFilter, setActiveFilter] = useState<(typeof filterOptions)[number]>("All Articles");
 
   const hidden = reduceMotion ? false : { opacity: 0, y: 24 };
@@ -263,13 +265,14 @@ const Insights = () => {
                 Weekly deep-dives into Asian market dynamics delivered to your inbox.
               </p>
             </div>
-            <a
-              href="/contact"
+            <button
+              type="button"
+              onClick={openContactForm}
               className="relative mt-5 inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-2.5 text-sm font-bold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 lg:mt-0"
             >
               <Mail className="h-4 w-4" aria-hidden />
               Subscribe via Email
-            </a>
+            </button>
           </motion.article>
         </div>
       </section>
