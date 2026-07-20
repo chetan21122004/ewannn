@@ -15,7 +15,6 @@ const repoCards = [
     title: "India-Vietnam trade corridor (2026 insights)",
     copy: "Exploring the emerging logistics and trade infrastructure connecting the sub-continent to Southeast Asia.",
     image: "/stitch/insights/article-asian-market.jpg",
-    authorImage: "/stitch/insights/author-1.jpg",
     to: "/insights/how-to-enter-indian-market" as const,
   },
   {
@@ -25,7 +24,6 @@ const repoCards = [
     title: "What 60,000 hours of interpretation taught me",
     copy: "The hidden nuances of high-stakes negotiation where silence is as important as the translated word.",
     image: "/stitch/insights/article-interpretation.jpg",
-    authorImage: "/stitch/insights/author-2.jpg",
     to: "/insights/what-is-simultaneous-interpretation" as const,
   },
   {
@@ -35,7 +33,6 @@ const repoCards = [
     title: "Career in Asian languages (An honest guide)",
     copy: "Moving beyond translation: How to build a strategic consultancy career using linguistic prowess.",
     image: "/stitch/insights/article-career-guide.jpg",
-    authorImage: "/stitch/insights/author-3.jpg",
     to: "/insights" as const,
   },
   {
@@ -45,7 +42,6 @@ const repoCards = [
     title: "How to choose a translation partner",
     copy: "Avoid the 'Google Translate' trap. 5 critical questions to ask your language service provider.",
     image: "/stitch/insights/article-strategy.jpg",
-    authorImage: "/stitch/insights/author-4.jpg",
     to: "/insights/how-to-choose-translation-partner-india" as const,
   },
   {
@@ -55,7 +51,6 @@ const repoCards = [
     title: "Simultaneous vs consecutive interpretation",
     copy: "When to use which? A technical breakdown of interpretation modes for corporate events.",
     image: "/stitch/insights/article-interpretation-type.jpg",
-    authorImage: "/stitch/insights/author-5.jpg",
     to: "/insights/what-is-simultaneous-interpretation" as const,
   },
 ];
@@ -137,26 +132,6 @@ const Insights = () => {
             <p className="mt-5 max-w-xl text-sm font-light leading-relaxed text-on-light-secondary md:text-lg">
               Published by UVAN for business leaders, language professionals, and cross-border operators seeking tectonic shifts in global expansion.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2.5 sm:mt-8">
-              <a
-                href="#articles"
-                className="inline-flex min-h-11 items-center rounded-full bg-[hsl(var(--brand-navy-950))] px-5 py-2.5 text-xs font-bold text-white shadow-[0_12px_32px_hsl(var(--brand-navy-950)/0.18)] transition hover:brightness-110 md:text-sm"
-              >
-                Articles
-              </a>
-              <Link
-                to="/language-gazette"
-                className="inline-flex min-h-11 items-center rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-2.5 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:bg-[hsl(var(--surface-light-100))] md:text-sm"
-              >
-                The Language Gazette
-              </Link>
-              <Link
-                to="/videos"
-                className="inline-flex min-h-11 items-center rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-2.5 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:bg-[hsl(var(--surface-light-100))] md:text-sm"
-              >
-                Videos
-              </Link>
-            </div>
           </motion.div>
 
           <motion.div

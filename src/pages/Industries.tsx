@@ -1,9 +1,10 @@
-import { ArrowDown, ArrowRight, Car, Factory, Gavel, GraduationCap, Globe2, Languages, MessageCircle, Microscope, Mic2, Network, Plane, PlayCircle, ShieldCheck, Sparkles, Tent, Terminal, Wheat } from "lucide-react";
+import { ArrowDown, ArrowRight, Globe2, Languages, MessageCircle, Mic2, Network, ShieldCheck, Sparkles } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import LanguageSectorCard from "@/components/language-localization/LanguageSectorCard";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { getSectorById, sectorCatalog } from "@/data/sectorCatalog";
 import { absoluteUrl, breadcrumbSchema, itemListFromTitles } from "@/lib/schemaHelpers";
 import { useTranslation } from "react-i18next";
 import { useMemo } from "react";
@@ -21,59 +22,18 @@ const defaultSpecializations = [
   { title: "Media & OTT", copy: "Subtitling, dubbing, voiceover and content localization for film, television and streaming platforms expanding across language markets." },
 ];
 
-const specializationIcons = [Car, Microscope, Plane, Factory, Tent, Terminal, Wheat, Gavel, GraduationCap, PlayCircle];
-
-const sectorMeta = [
-  {
-    id: "automotive",
-    image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "Automotive engineering and vehicle manufacturing",
-  },
-  {
-    id: "pharmaceuticals",
-    image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "Pharmaceutical research and medicine production",
-  },
-  {
-    id: "aerospace",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "Aircraft wing above the clouds",
-  },
-  {
-    id: "manufacturing",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "Modern manufacturing facility and industrial equipment",
-  },
-  {
-    id: "exhibitions",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "International exhibition hall and trade fair event",
-  },
-  {
-    id: "technology",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "Technology hardware and digital innovation",
-  },
-  {
-    id: "agriculture",
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "Agricultural fields and food production",
-  },
-  {
-    id: "legal",
-    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "Legal documents and compliance review",
-  },
-  {
-    id: "education",
-    image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "University campus and international education",
-  },
-  {
-    id: "media",
-    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "Cinema seating and media production",
-  },
+/** Industries page sector order (exhibitions before technology) */
+const industriesSectorIds = [
+  "automotive",
+  "pharmaceuticals",
+  "aerospace",
+  "manufacturing",
+  "exhibitions",
+  "technology",
+  "agriculture",
+  "legal",
+  "education",
+  "media",
 ] as const;
 
 const overviewPillars = [
@@ -123,12 +83,13 @@ const Industries = () => {
   }, [specializations]);
 
   const sectorCards = specializations.map((spec, index) => {
-    const meta = sectorMeta[index] ?? sectorMeta[0];
+    const sectorId = industriesSectorIds[index] ?? industriesSectorIds[0];
+    const meta = getSectorById(sectorId) ?? sectorCatalog[0];
     return {
       id: meta.id,
       title: spec.title,
       description: spec.copy,
-      icon: specializationIcons[index] ?? Network,
+      icon: meta.icon,
       image: meta.image,
       imageAlt: meta.imageAlt,
     };
