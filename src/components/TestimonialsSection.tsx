@@ -110,13 +110,9 @@ const TestimonialsSection = () => {
                 variants={quoteVariant}
                 className="text-center"
               >
-                <p className="mb-5 font-serif text-xl font-medium italic leading-relaxed text-[hsl(var(--text-on-light))] sm:mb-6 sm:text-2xl lg:text-3xl">
+                <p className="font-serif text-xl font-medium italic leading-relaxed text-[hsl(var(--text-on-light))] sm:text-2xl lg:text-3xl">
                   &ldquo;{currentTestimonial.quote}&rdquo;
                 </p>
-                <footer>
-                  <p className="text-base font-semibold text-[hsl(var(--brand-purple-700))]">{currentTestimonial.author}</p>
-                  <p className="text-sm tracking-wide text-[hsl(var(--text-on-light-muted))]">{currentTestimonial.company}</p>
-                </footer>
               </motion.blockquote>
             </AnimatePresence>
           </div>
