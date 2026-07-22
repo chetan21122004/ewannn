@@ -18,12 +18,11 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
-import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import SectionDivider from "@/components/SectionDivider";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { JOIN_US_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema } from "@/lib/schemaHelpers";
-import { COMPANY_EMAIL } from "@/lib/site";
+import { PROJECTS_EMAIL } from "@/lib/site";
 import { submitFormViaMailto } from "@/lib/formSubmit";
 
 const JOIN_US_KEYWORDS =
@@ -194,19 +193,18 @@ const SectionHeader = ({
 const JoinUs = () => {
   const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
-  const { open: openContactForm } = useContactInquiry();
   const [submittedTeam, setSubmittedTeam] = useState(false);
   const [submittedVendor, setSubmittedVendor] = useState(false);
 
   const handleTeamSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitFormViaMailto(event.currentTarget, COMPANY_EMAIL, "UVAN Join Our Team Application");
+    submitFormViaMailto(event.currentTarget, PROJECTS_EMAIL, "UVAN Join Our Team Application");
     setSubmittedTeam(true);
   };
 
   const handleVendorSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitFormViaMailto(event.currentTarget, COMPANY_EMAIL, "UVAN Vendor Network Registration");
+    submitFormViaMailto(event.currentTarget, PROJECTS_EMAIL, "UVAN Vendor Network Registration");
     setSubmittedVendor(true);
   };
 
@@ -342,10 +340,10 @@ const JoinUs = () => {
                   opening, we encourage you to send your profile.
                 </p>
                 <a
-                  href="mailto:info@ewan.co.in"
+                  href={`mailto:${PROJECTS_EMAIL}?subject=${encodeURIComponent("UVAN Join Our Team - Open Roles")}`}
                   className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline"
                 >
-                  info@ewan.co.in
+                  {PROJECTS_EMAIL}
                   <ArrowUpRight className="h-4 w-4" aria-hidden />
                 </a>
               </div>
@@ -371,8 +369,8 @@ const JoinUs = () => {
                       </h3>
                     </div>
                     <FormField id="team-name" label="Name" required />
-                    <FormField id="team-languages" label="Language pairs" required />
-                    <FormField id="team-specialisation" label="Specialisation / sector" required />
+                    <FormField id="team-languages" label="Applying For Role" required />
+                    <FormField id="team-specialisation" label="Full Time / Intern / Consultant" required />
                     <FormField id="team-cv" label="CV upload" required>
                       <input id="team-cv" name="team-cv" required type="file" className={inputClassName} />
                     </FormField>
@@ -586,22 +584,20 @@ const JoinUs = () => {
                     </ul>
 
                     <div className="mt-6 flex flex-col gap-3">
-                      <button
-                        type="button"
-                        onClick={openContactForm}
+                      <a
+                        href={`mailto:${PROJECTS_EMAIL}?subject=${encodeURIComponent("UVAN Partnership Inquiry")}`}
                         className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-[hsl(var(--brand-navy-950))] shadow-[0_12px_28px_hsl(var(--brand-gold-500)/0.22)] transition hover:-translate-y-0.5 hover:brightness-105"
                       >
                         Discuss a partnership
                         <ArrowUpRight className="h-4 w-4" aria-hidden />
-                      </button>
-                      <button
-                        type="button"
-                        onClick={openContactForm}
+                      </a>
+                      <a
+                        href={`mailto:${PROJECTS_EMAIL}?subject=${encodeURIComponent("Contact UVAN")}`}
                         className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
                       >
                         Contact UVAN
                         <ArrowRight className="h-4 w-4" aria-hidden />
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>

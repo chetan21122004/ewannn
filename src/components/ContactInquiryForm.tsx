@@ -3,7 +3,7 @@ import { ArrowRight, Clock3, ShieldCheck } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { contactRegionOptions, contactServiceOptions } from "@/data/contactFormOptions";
 import { submitFormViaMailto } from "@/lib/formSubmit";
-import { COMPANY_EMAIL } from "@/lib/site";
+import { SOHAM_EMAIL } from "@/lib/site";
 
 const inputClassName =
   "mt-1.5 w-full rounded-xl border border-[hsl(var(--border-light))] bg-white px-4 py-2.5 text-sm outline-none transition focus:border-[hsl(var(--brand-purple-500))] focus:ring-2 focus:ring-[hsl(var(--brand-purple-500)/0.15)]";
@@ -11,15 +11,20 @@ const inputClassName =
 type ContactInquiryFormProps = {
   showMeta?: boolean;
   onSubmitted?: () => void;
+  recipientEmail?: string;
 };
 
-const ContactInquiryForm = ({ showMeta = true, onSubmitted }: ContactInquiryFormProps) => {
+const ContactInquiryForm = ({
+  showMeta = true,
+  onSubmitted,
+  recipientEmail = SOHAM_EMAIL,
+}: ContactInquiryFormProps) => {
   const reduceMotion = useReducedMotion();
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitFormViaMailto(event.currentTarget, COMPANY_EMAIL, "UVAN Website Inquiry");
+    submitFormViaMailto(event.currentTarget, recipientEmail, "UVAN Website Inquiry");
     event.currentTarget.reset();
     setSubmitted(true);
     onSubmitted?.();
@@ -28,7 +33,7 @@ const ContactInquiryForm = ({ showMeta = true, onSubmitted }: ContactInquiryForm
   if (submitted) {
     return (
       <p className="rounded-xl border border-[hsl(var(--brand-gold-500)/0.3)] bg-[hsl(var(--brand-gold-500)/0.12)] px-4 py-3 text-sm font-medium leading-relaxed text-on-light">
-        Thank you! Your email client should open with your message addressed to info@ewan.co.in - send it to complete
+        Thank you! Your email client should open with your message addressed to {recipientEmail} - send it to complete
         your inquiry.
       </p>
     );

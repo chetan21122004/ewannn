@@ -19,7 +19,7 @@ import PageLayout from "@/components/PageLayout";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { MARKET_ENTRY_AUDIT_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, webPageWithLeadAction } from "@/lib/schemaHelpers";
-import { COMPANY_EMAIL } from "@/lib/site";
+import { SOHAM_EMAIL } from "@/lib/site";
 import { buildFormMailtoUrl } from "@/lib/formSubmit";
 
 const MARKET_ENTRY_AUDIT_KEYWORDS =
@@ -105,7 +105,7 @@ const MarketEntryAudit = () => {
     if (!email.trim()) {
       return;
     }
-    window.location.href = buildFormMailtoUrl(COMPANY_EMAIL, "2026 Market Entry Audit Download Request", {
+    window.location.href = buildFormMailtoUrl(SOHAM_EMAIL, "2026 Market Entry Audit Download Request", {
       email: email.trim(),
     });
     setSubmitted(true);

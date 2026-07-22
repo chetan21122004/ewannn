@@ -725,7 +725,7 @@ const MarketEntry = () => {
               onClick={openContactForm}
               className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto"
             >
-              Email info@ewan.co.in
+              Send a message to Soham
               <ArrowRight className="h-4 w-4 shrink-0" />
             </button>
           </div>

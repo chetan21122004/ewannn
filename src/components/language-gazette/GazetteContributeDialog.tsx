@@ -8,7 +8,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { submitFormViaMailto } from "@/lib/formSubmit";
-import { COMPANY_EMAIL } from "@/lib/site";
+import { SOHAM_EMAIL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const inputClassName =
@@ -30,7 +30,7 @@ const GazetteContributeDialog = ({ open, onOpenChange }: GazetteContributeDialog
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitFormViaMailto(event.currentTarget, COMPANY_EMAIL, "Language Gazette - Article Contribution");
+    submitFormViaMailto(event.currentTarget, SOHAM_EMAIL, "Language Gazette - Article Contribution");
     event.currentTarget.reset();
     setSubmitted(true);
   };
@@ -53,7 +53,7 @@ const GazetteContributeDialog = ({ open, onOpenChange }: GazetteContributeDialog
         <div className="px-6 py-5 sm:px-7">
           {submitted ? (
             <p className="rounded-xl border border-[hsl(var(--brand-gold-500)/0.3)] bg-[hsl(var(--brand-gold-500)/0.12)] px-4 py-3 text-sm font-medium leading-relaxed text-on-light">
-              Thank you - your email client should open with your submission addressed to {COMPANY_EMAIL}. Send it to
+              Thank you - your email client should open with your submission addressed to {SOHAM_EMAIL}. Send it to
               complete your contribution. You can attach your draft or manuscript in that email.
             </p>
           ) : (

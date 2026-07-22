@@ -201,7 +201,7 @@ const GlobalTalkies = () => {
                   onClick={openContactForm}
                   className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-7 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
                 >
-                  info@ewan.co.in
+                  Message Soham
                 </button>
               </div>
             </div>

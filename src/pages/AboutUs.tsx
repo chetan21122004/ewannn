@@ -1,6 +1,6 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Award, CheckCircle2, Globe2, Handshake, Languages } from "lucide-react";
+import { useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Award, CheckCircle2, ChevronDown, Globe2, Handshake, Languages } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
@@ -13,6 +13,7 @@ import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestion
 import { ABOUT_US_FAQS, ENTITY_PARAGRAPH_A_SECTIONS, ENTITY_PARAGRAPH_B } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, personSoham, personSukhada } from "@/lib/schemaHelpers";
 import { SUKHADA_LINKEDIN } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 const languageGroups = [
   {
@@ -254,6 +255,80 @@ const revealRight = {
 
 const springReveal = { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const };
 
+const entityParagraphClassName = (index: number, total: number) => {
+  if (index === 0) {
+    return "text-base font-medium leading-[1.72] text-on-light sm:text-lg";
+  }
+  if (index === total - 1) {
+    return "border-t border-[hsl(var(--border-light))] pt-4 text-sm leading-[1.78] text-on-light-secondary sm:text-[0.9375rem]";
+  }
+  return "text-sm leading-[1.78] text-on-light-secondary sm:text-[0.9375rem]";
+};
+
+const AboutEntityIntroCard = ({ paragraphs }: { paragraphs: readonly string[] }) => {
+  const [expanded, setExpanded] = useState(false);
+  const reduceMotion = useReducedMotion() ?? false;
+  const [leadParagraph, ...detailParagraphs] = paragraphs;
+
+  return (
+    <div className="relative max-w-2xl rounded-[1.25rem] border border-[hsl(var(--border-light))] bg-white/90 p-5 shadow-[0_14px_40px_rgba(26,22,51,0.06)] sm:p-6 lg:max-w-none">
+      <p className={entityParagraphClassName(0, paragraphs.length)}>{leadParagraph}</p>
+
+      <div className="mt-4 hidden space-y-4 sm:space-y-5 md:block">
+        {detailParagraphs.map((paragraph, index) => (
+          <p key={paragraph} className={entityParagraphClassName(index + 1, paragraphs.length)}>
+            {paragraph}
+          </p>
+        ))}
+      </div>
+
+      <div className="md:hidden">
+        <AnimatePresence initial={false}>
+          {expanded ? (
+            <motion.div
+              id="about-entity-details"
+              initial={reduceMotion ? false : { height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={reduceMotion ? undefined : { height: 0, opacity: 0 }}
+              transition={{ duration: reduceMotion ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="mt-4 space-y-4 border-t border-[hsl(var(--border-light))] pt-4">
+                {detailParagraphs.map((paragraph, index) => (
+                  <p key={paragraph} className={entityParagraphClassName(index + 1, paragraphs.length)}>
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+
+        {!expanded ? (
+          <div
+            className="pointer-events-none absolute inset-x-5 bottom-[3.25rem] h-16 bg-gradient-to-t from-white via-white/95 to-transparent sm:inset-x-6"
+            aria-hidden
+          />
+        ) : null}
+
+        <button
+          type="button"
+          onClick={() => setExpanded((open) => !open)}
+          aria-expanded={expanded}
+          aria-controls="about-entity-details"
+          className="relative z-10 mt-4 flex w-full min-h-11 items-center justify-center gap-2 rounded-xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-4 py-2.5 text-sm font-semibold text-[hsl(var(--brand-purple-700))] transition hover:border-[hsl(var(--brand-purple-500)/0.35)] hover:bg-white"
+        >
+          {expanded ? "Show less" : "Read full profile"}
+          <ChevronDown
+            className={cn("h-4 w-4 transition-transform duration-300", expanded && "rotate-180")}
+            aria-hidden
+          />
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const AboutUs = () => {
   const { t } = useTranslation();
   const { open: openContactForm } = useContactInquiry();
@@ -335,22 +410,7 @@ const AboutUs = () => {
               transition={{ ...springReveal, delay: 0.06 }}
               className="order-2 lg:order-1"
             >
-              <div className="max-w-2xl space-y-4 rounded-[1.25rem] border border-[hsl(var(--border-light))] bg-white/90 p-5 shadow-[0_14px_40px_rgba(26,22,51,0.06)] sm:space-y-5 sm:p-6 lg:max-w-none">
-                {ENTITY_PARAGRAPH_A_SECTIONS.map((paragraph, index) => (
-                  <p
-                    key={paragraph}
-                    className={
-                      index === 0
-                        ? "text-base font-medium leading-[1.72] text-on-light sm:text-lg"
-                        : index === ENTITY_PARAGRAPH_A_SECTIONS.length - 1
-                          ? "border-t border-[hsl(var(--border-light))] pt-4 text-sm leading-[1.78] text-on-light-secondary sm:text-[0.9375rem]"
-                          : "text-sm leading-[1.78] text-on-light-secondary sm:text-[0.9375rem]"
-                    }
-                  >
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
+              <AboutEntityIntroCard paragraphs={ENTITY_PARAGRAPH_A_SECTIONS} />
             </motion.div>
 
             <motion.figure

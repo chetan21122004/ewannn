@@ -108,7 +108,7 @@ const AskSohamInquiryDialog = ({
         <div className="px-6 py-5 sm:px-7">
           {submitted ? (
             <p className="rounded-xl border border-[hsl(var(--brand-gold-500)/0.3)] bg-[hsl(var(--brand-gold-500)/0.12)] px-4 py-3 text-sm font-medium leading-relaxed text-on-light">
-              Thank you - your email client should open with the message addressed to Soham. Send it to complete your
+              Thank you - your email client should open with the message addressed to {SOHAM_EMAIL}. Send it to complete your
               inquiry.
             </p>
           ) : (

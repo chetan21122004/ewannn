@@ -14,7 +14,7 @@ import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestion
 import { ASK_SOHAM_FAQS } from "@/data/aeoContent";
 import { blurReveal, fadeOnly, slideLeft, slideRight, staggerContainer, scaleUp } from "@/lib/animationVariants";
 import { absoluteUrl, faqPageSchema, personSoham, serviceSchema } from "@/lib/schemaHelpers";
-import { CALENDLY_SCHEDULING_URL } from "@/lib/site";
+import { CALENDLY_SCHEDULING_URL, getCalendlyEmbedUrl } from "@/lib/site";
 import { useTranslation } from "react-i18next";
 
 const BOOKING_SECTION_ID = "book-call";
@@ -78,6 +78,7 @@ const AskSoham = () => {
 
   const ease = [0.22, 1, 0.36, 1] as const;
   const reveal = reduceMotion ? fadeOnly : blurReveal;
+  const calendlyEmbedUrl = getCalendlyEmbedUrl();
   const enterLeft = reduceMotion ? fadeOnly : slideLeft;
   const enterRight = reduceMotion ? fadeOnly : slideRight;
   const enterScale = reduceMotion ? fadeOnly : scaleUp;
@@ -470,7 +471,7 @@ const AskSoham = () => {
       >
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
-        <div className="container relative z-10 mx-auto max-w-2xl">
+        <div className="container relative z-10 mx-auto max-w-4xl">
           <motion.div
             variants={listStagger}
             initial="hidden"
@@ -520,6 +521,20 @@ const AskSoham = () => {
                 Send a Message to Soham
               </motion.button>
             </motion.div>
+
+            {calendlyEmbedUrl ? (
+              <motion.div
+                variants={reveal}
+                className="mt-10 overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white shadow-[0_16px_48px_-24px_rgba(26,22,51,0.14)] sm:mt-12 sm:rounded-3xl"
+              >
+                <iframe
+                  src={calendlyEmbedUrl}
+                  title="Book a 30-minute call with Soham Kakade"
+                  className="h-[min(720px,80dvh)] w-full border-0"
+                  loading="lazy"
+                />
+              </motion.div>
+            ) : null}
           </motion.div>
         </div>
       </section>

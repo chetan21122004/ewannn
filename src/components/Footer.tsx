@@ -1,7 +1,7 @@
 import { ArrowUpRight, ChevronDown, Linkedin, Mail, Twitter, Youtube, type LucideIcon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
+import { PROJECTS_EMAIL, SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
 import { scrollToPageTop } from "@/lib/scrollToTop";
 import type { MouseEvent } from "react";
 
@@ -185,7 +185,7 @@ const Footer = () => {
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/70">{t("footer.tagline")}</p>
 
             <a
-              href="mailto:info@ewan.co.in"
+              href={`mailto:${PROJECTS_EMAIL}`}
               className="mt-4 flex w-full items-center gap-3 rounded-xl border border-white/12 bg-white/5 px-4 py-3 transition hover:border-[hsl(var(--brand-gold-500)/0.4)] hover:bg-white/8 sm:max-w-sm"
             >
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[hsl(var(--brand-gold-500)/0.15)]">
@@ -195,7 +195,7 @@ const Footer = () => {
                 <span className="block text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-gold-500))]">
                   {t("footer.emailLabel")}
                 </span>
-                <span className="block truncate text-sm font-semibold text-white">info@ewan.co.in</span>
+                <span className="block truncate text-sm font-semibold text-white">{PROJECTS_EMAIL}</span>
               </span>
             </a>
 
@@ -275,8 +275,8 @@ const Footer = () => {
               <Link to="/privacy-policy" className="font-semibold text-white/70 hover:text-[hsl(var(--brand-gold-500))]">
                 {t("footer.privacyPolicy")}
               </Link>
-              <a href="mailto:info@ewan.co.in" className="font-semibold text-white/70 hover:text-[hsl(var(--brand-gold-500))]">
-                info@ewan.co.in
+              <a href={`mailto:${PROJECTS_EMAIL}`} className="font-semibold text-white/70 hover:text-[hsl(var(--brand-gold-500))]">
+                {PROJECTS_EMAIL}
               </a>
             </div>
           </div>

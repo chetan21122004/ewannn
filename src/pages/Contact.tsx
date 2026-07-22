@@ -16,7 +16,7 @@ import {
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import ContactInquiryForm from "@/components/ContactInquiryForm";
-import { COMPANY_ADDRESS } from "@/lib/site";
+import { COMPANY_ADDRESS, PROJECTS_EMAIL, SOHAM_EMAIL } from "@/lib/site";
 
 const audience = [
   "Foreign companies entering India",
@@ -31,12 +31,12 @@ const socialLinks = [
   { href: "https://x.com/ewanbusiness", label: "X", Icon: Twitter },
 ];
 
-const contactChannels = [
+const buildContactChannels = () => [
   {
     icon: Mail,
     label: "Email Us",
-    value: "info@ewan.co.in",
-    href: "mailto:info@ewan.co.in",
+    value: PROJECTS_EMAIL,
+    href: `mailto:${PROJECTS_EMAIL}`,
     note: "We typically respond within one business day.",
     doodle: "/doodles/Mail-amico.svg",
     doodleAlt: "Email illustration",
@@ -54,6 +54,7 @@ const contactChannels = [
 
 const Contact = () => {
   const reduceMotion = useReducedMotion();
+  const contactChannels = buildContactChannels();
 
   const ease = [0.22, 1, 0.36, 1] as const;
   const hidden = reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 };
@@ -63,7 +64,7 @@ const Contact = () => {
   return (
     <PageLayout
       title="Contact Us | UVAN"
-      description={`Let's team up to make your business better. Reach UVAN at info@ewan.co.in or (+91) 82757 44740. Visit us at ${COMPANY_ADDRESS}.`}
+      description={`Let's team up to make your business better. Reach UVAN at ${PROJECTS_EMAIL} or (+91) 82757 44740. Visit us at ${COMPANY_ADDRESS}.`}
       canonicalPath="/contact/"
     >
       {/* Hero */}
@@ -101,7 +102,7 @@ const Contact = () => {
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
                 <a
-                  href="mailto:info@ewan.co.in"
+                  href={`mailto:${PROJECTS_EMAIL}`}
                   className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))] shadow-[0_16px_36px_hsl(var(--brand-gold-500)/0.22)] transition hover:-translate-y-0.5 hover:brightness-105 sm:w-auto sm:px-6"
                 >
                   Email Us
@@ -303,7 +304,7 @@ const Contact = () => {
               </p>
 
               <div className="mt-5 sm:mt-7">
-                <ContactInquiryForm />
+                <ContactInquiryForm recipientEmail={SOHAM_EMAIL} />
               </div>
             </motion.article>
           </div>

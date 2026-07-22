@@ -8,8 +8,10 @@ export const SOHAM_LINKEDIN = "https://www.linkedin.com/in/soham-kakade-77b2819b
 export const SUKHADA_LINKEDIN = "https://www.linkedin.com/in/cma-sukhada-kakade-bhalerao-5b3789401/";
 export const COMPANY_LINKEDIN = "https://www.linkedin.com/company/ewan-business-solutions/";
 
-export const COMPANY_EMAIL = "info@ewan.co.in";
-export const SOHAM_EMAIL = "soham.kakade@ewan.co.in";
+export const PROJECTS_EMAIL = "projects@uvan.co.in";
+export const SOHAM_EMAIL = "soham@uvan.co.in";
+/** Alias for org/legal/schema display and primary company inbox */
+export const COMPANY_EMAIL = PROJECTS_EMAIL;
 export const COMPANY_PHONE = "+91-8275744740";
 export const COMPANY_ADDRESS =
   "Flat no 14, Fourth Floor, Asmant Apartment, near Quantum Works, Erandwane, Karve Road, Pune - 411004";
@@ -27,9 +29,10 @@ export const WHATSAPP_NUMBER = "918275744740";
 export const buildWhatsAppUrl = (message: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-/** Set `VITE_CALENDLY_SCHEDULING_URL` to your Calendly event URL (e.g. https://calendly.com/name/15min) */
+/** Set `VITE_CALENDLY_SCHEDULING_URL` to override the default Calendly event URL */
 export const CALENDLY_SCHEDULING_URL =
-  (import.meta.env.VITE_CALENDLY_SCHEDULING_URL as string | undefined)?.trim() ?? "";
+  (import.meta.env.VITE_CALENDLY_SCHEDULING_URL as string | undefined)?.trim() ||
+  "https://calendly.com/soham-uvan/30min";
 
 export const getCalendlyEmbedUrl = () => {
   if (!CALENDLY_SCHEDULING_URL || CALENDLY_SCHEDULING_URL === "https://calendly.com") return null;

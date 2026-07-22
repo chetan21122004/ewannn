@@ -5,8 +5,8 @@ import {
   useMemo,
   type ReactNode,
 } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { COMPANY_EMAIL } from "@/lib/site";
+import { useAskSohamInquiry } from "@/components/AskSohamInquiryProvider";
+import { PROJECTS_EMAIL, SOHAM_EMAIL } from "@/lib/site";
 
 type ContactInquiryContextValue = {
   open: () => void;
@@ -15,8 +15,6 @@ type ContactInquiryContextValue = {
 };
 
 const ContactInquiryContext = createContext<ContactInquiryContextValue | null>(null);
-
-const CONTACT_FORM_PATH = "/contact#contact-form";
 
 const normalizeContactPath = (href: string) => {
   const [path, hash = ""] = href.split("#");
@@ -35,7 +33,8 @@ export const isContactInquiryMailto = (href: string) => {
   if (!lower.startsWith("mailto:")) return false;
 
   const address = lower.slice("mailto:".length).split("?")[0]?.trim();
-  if (address !== COMPANY_EMAIL.toLowerCase()) return false;
+  const inquiryEmails = [PROJECTS_EMAIL, SOHAM_EMAIL].map((email) => email.toLowerCase());
+  if (!inquiryEmails.includes(address)) return false;
 
   return lower.includes("subject=");
 };
@@ -48,32 +47,20 @@ export const useContactInquiry = () => {
   return context;
 };
 
-const scrollToContactForm = () => {
-  document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
-};
-
 export const ContactInquiryProvider = ({ children }: { children: ReactNode }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { open: openSohamInquiry, close: closeSohamInquiry, isOpen } = useAskSohamInquiry();
 
-  const goToContactForm = useCallback(() => {
-    const onContactPage = location.pathname.replace(/\/$/, "") === "/contact";
-
-    if (onContactPage) {
-      scrollToContactForm();
-      return;
-    }
-
-    navigate(CONTACT_FORM_PATH);
-  }, [location.pathname, navigate]);
+  const open = useCallback(() => {
+    openSohamInquiry();
+  }, [openSohamInquiry]);
 
   const value = useMemo(
     () => ({
-      open: goToContactForm,
-      close: () => {},
-      isOpen: false,
+      open,
+      close: closeSohamInquiry,
+      isOpen,
     }),
-    [goToContactForm],
+    [open, closeSohamInquiry, isOpen],
   );
 
   return <ContactInquiryContext.Provider value={value}>{children}</ContactInquiryContext.Provider>;

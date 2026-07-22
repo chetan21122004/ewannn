@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { SOHAM_EMAIL } from "@/lib/site";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import InsightsArticleShell from "@/components/insights/InsightsArticleShell";
 import {
@@ -114,10 +115,10 @@ const InsightsArticleChooseTranslationPartner = () => (
         most.
       </p>
       <a
-        href="/contact"
+        href={`mailto:${SOHAM_EMAIL}?subject=${encodeURIComponent("Translation quote request")}`}
         className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[hsl(var(--brand-gold-500))] px-5 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105 sm:w-auto sm:px-6"
       >
-        Email info@ewan.co.in for a quote
+        Email {SOHAM_EMAIL} for a quote
       </a>
     </ArticleSection>
 

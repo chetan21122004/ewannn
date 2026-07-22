@@ -1,4 +1,6 @@
 /** Verbatim firm copy - split for layout only; full string is ENTITY_PARAGRAPH_A. Do not edit wording without updating schema copy. */
+import { PROJECTS_EMAIL, SOHAM_EMAIL } from "@/lib/site";
+
 export const ENTITY_PARAGRAPH_A_SECTIONS = [
   "Founded in 2020 by Soham Kakade, UVAN is an ISO 9001:2015 certified, Pune-based cross-border market entry and language services company.",
   "The firm provides comprehensive India market entry consulting, business and executive liaisoning, and translation and interpretation services across more than 125 languages.",
@@ -42,7 +44,7 @@ export const HOMEPAGE_FAQS: AeoFaqItem[] = [
   {
     question: "How do I contact UVAN?",
     answer:
-      "You can reach us at info@ewan.co.in or book a free 15-minute call with founder Soham Kakade at ewan.co.in/ask-soham.",
+      `You can reach us at ${PROJECTS_EMAIL} or book a free 15-minute call with founder Soham Kakade at ewan.co.in/ask-soham.`,
   },
 ];
 
@@ -113,7 +115,7 @@ export const GLOBAL_TALKIES_FAQS: AeoFaqItem[] = [
   {
     question: "How should I brief a Global Talkies project?",
     answer:
-      "Email info@ewan.co.in with your content type (feature, series, trailer, corporate), target markets, delivery formats, platform or broadcaster specs, and timeline. A concise brief helps us propose the right subtitling, dubbing, or mixed package.",
+      `Email ${SOHAM_EMAIL} with your content type (feature, series, trailer, corporate), target markets, delivery formats, platform or broadcaster specs, and timeline. A concise brief helps us propose the right subtitling, dubbing, or mixed package.`,
   },
   {
     question: "What turnaround times are typical?",
