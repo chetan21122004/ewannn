@@ -18,7 +18,7 @@ const jaCommon = {
   navMenu: {
     marketEntry: {
       indiaEntryForForeign: "海外企業のインド進出",
-      indianGoingAbroad: "インド企業の海外展開",
+      indianGoingAbroad: "インド企業の東南アジア展開",
       liaisoning: "リエゾン・調整支援",
       marketResearch: "市場調査",
       importExport: "輸入・調達・輸出",

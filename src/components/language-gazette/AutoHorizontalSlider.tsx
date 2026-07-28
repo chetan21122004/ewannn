@@ -120,7 +120,7 @@ const AutoHorizontalSlider = ({
             type="button"
             onClick={() => api?.scrollPrev()}
             disabled={!canScrollPrev}
-            className="absolute left-0 top-[38%] z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[hsl(var(--border-light))] bg-white text-on-light shadow-md transition hover:bg-[hsl(var(--surface-light-100))] disabled:pointer-events-none disabled:opacity-35 sm:left-1 sm:h-10 sm:w-10"
+            className="absolute left-0 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[hsl(var(--border-light))] bg-white text-on-light shadow-md transition hover:bg-[hsl(var(--surface-light-100))] disabled:pointer-events-none disabled:opacity-35 sm:left-1 sm:h-10 sm:w-10"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-4 w-4" aria-hidden />
@@ -129,7 +129,7 @@ const AutoHorizontalSlider = ({
             type="button"
             onClick={() => api?.scrollNext()}
             disabled={!canScrollNext}
-            className="absolute right-0 top-[38%] z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[hsl(var(--border-light))] bg-white text-on-light shadow-md transition hover:bg-[hsl(var(--surface-light-100))] disabled:pointer-events-none disabled:opacity-35 sm:right-1 sm:h-10 sm:w-10"
+            className="absolute right-0 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[hsl(var(--border-light))] bg-white text-on-light shadow-md transition hover:bg-[hsl(var(--surface-light-100))] disabled:pointer-events-none disabled:opacity-35 sm:right-1 sm:h-10 sm:w-10"
             aria-label="Next slide"
           >
             <ChevronRight className="h-4 w-4" aria-hidden />

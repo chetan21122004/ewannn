@@ -228,6 +228,36 @@ const BrandLogo = ({
   />
 );
 
+type RecognitionItem = (typeof recognitions)[number];
+
+const RecognitionCredentialCard = ({ item }: { item: RecognitionItem }) => (
+  <article className="theme-card-light card-shine flex h-full min-h-[132px] overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] sm:min-h-0 sm:flex-col sm:rounded-3xl">
+    <div className="flex w-[5.25rem] shrink-0 items-center justify-center self-stretch border-r border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] p-3 sm:w-auto sm:min-h-[108px] sm:border-b sm:border-r-0 sm:px-6 sm:py-5">
+      <BrandLogo
+        src={item.logo}
+        alt={item.logoAlt}
+        className="max-h-11 max-w-[4.5rem] object-contain sm:max-h-16 sm:max-w-[200px] sm:w-full"
+      />
+    </div>
+
+    <div className="flex min-w-0 flex-1 flex-col justify-center p-3.5 sm:flex-1 sm:p-6 md:p-7">
+      <span className="inline-flex w-fit rounded-full bg-[hsl(var(--brand-purple-700)/0.1)] px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-[hsl(var(--brand-purple-700))] sm:px-3 sm:py-1 sm:text-[10px] sm:tracking-[0.14em]">
+        {item.badge}
+      </span>
+      <h4 className="mt-2 line-clamp-2 font-serif text-base font-bold leading-snug text-[hsl(var(--brand-navy-950))] sm:mt-4 sm:text-xl">
+        {item.title}
+      </h4>
+      <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-on-light-secondary sm:mt-3 sm:line-clamp-none sm:flex-grow sm:text-sm">
+        {item.desc}
+      </p>
+      <div className="mt-2.5 flex items-center gap-1.5 text-[10px] font-semibold text-on-light-muted sm:mt-5 sm:gap-2 sm:border-t sm:border-[hsl(var(--border-light))] sm:pt-4 sm:text-[11px]">
+        <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-[hsl(var(--brand-purple-700))] sm:h-4 sm:w-4" aria-hidden />
+        Verified credential
+      </div>
+    </div>
+  </article>
+);
+
 const doodleSquiggle = "/stitch/about-us/doodle-squiggle-right.svg";
 const doodleBridge = "/stitch/about-us/doodle-bridge-wave.svg";
 const doodleDots = "/stitch/about-us/doodle-dot-field.svg";
@@ -682,7 +712,7 @@ const AboutUs = () => {
       <SectionDivider variant="slant" flip />
 
       {/* Institutional Recognition */}
-      <section className="relative overflow-hidden px-6 py-20 theme-section-light md:py-8 stitch-line stitch-line-bottom">
+      <section className="relative overflow-hidden px-4 py-12 theme-section-light sm:px-6 sm:py-16 md:py-8 stitch-line stitch-line-bottom">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.1]" />
 
         <div className="container relative z-10 mx-auto max-w-6xl">
@@ -778,35 +808,11 @@ const AboutUs = () => {
               ariaLabel="Institutional credentials"
               autoplayMs={5000}
               edgeFadeFromClass="from-[hsl(var(--surface-light-50))]"
-              slideClassName="basis-[88%] sm:basis-[55%] md:basis-[42%] lg:basis-[32%]"
+              slideClassName="basis-[92%] sm:basis-[55%] md:basis-[42%] lg:basis-[32%]"
               items={recognitions
                 .filter((item) => !item.featured)
                 .map((item) => (
-                  <article
-                    key={item.title}
-                    className="theme-card-light card-shine flex h-full flex-col overflow-hidden rounded-3xl border border-[hsl(var(--border-light))]"
-                  >
-                    <div className="flex min-h-[108px] items-center justify-center border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-6 py-5">
-                      <BrandLogo
-                        src={item.logo}
-                        alt={item.logoAlt}
-                        className="max-h-16 w-full max-w-[200px] object-contain"
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col p-6 sm:p-7">
-                      <span className="inline-flex w-fit rounded-full bg-[hsl(var(--brand-purple-700)/0.1)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))]">
-                        {item.badge}
-                      </span>
-                      <h4 className="mt-4 font-serif text-xl font-bold leading-snug text-[hsl(var(--brand-navy-950))]">
-                        {item.title}
-                      </h4>
-                      <p className="mt-3 flex-grow text-sm leading-relaxed text-on-light-secondary">{item.desc}</p>
-                      <div className="mt-5 flex items-center gap-2 border-t border-[hsl(var(--border-light))] pt-4 text-[11px] font-semibold text-on-light-muted">
-                        <CheckCircle2 className="h-4 w-4 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-                        Verified credential
-                      </div>
-                    </div>
-                  </article>
+                  <RecognitionCredentialCard key={item.title} item={item} />
                 ))}
             />
           </motion.div>

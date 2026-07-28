@@ -18,7 +18,7 @@ const enCommon = {
   navMenu: {
     marketEntry: {
       indiaEntryForForeign: "India Entry for Foreign Companies",
-      indianGoingAbroad: "Indian Companies Going Abroad",
+      indianGoingAbroad: "Indian Companies Expanding to South-East Asia",
       liaisoning: "Liaisoning & Facilitation",
       marketResearch: "Market Research",
       importExport: "Import, Procurement & Export",

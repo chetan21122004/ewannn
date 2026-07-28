@@ -95,7 +95,7 @@ const AskSoham = () => {
       mainClassName="bg-white"
     >
       {/* ── HERO ── */}
-      <section className="relative isolate -mt-14 overflow-hidden bg-white px-6 pb-20 pt-10 lg:-mt-[4.25rem] lg:pb-28 lg:pt-14">
+      <section className="relative isolate overflow-hidden bg-white px-6 pb-20 pt-2 sm:pt-4 lg:-mt-[4.25rem] lg:pb-28 lg:pt-14">
         <div className="pointer-events-none absolute inset-0 theme-grid-overlay-light opacity-[0.12]" />
 
         {/* decorative doodle */}
@@ -213,23 +213,6 @@ const AskSoham = () => {
                   <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/72">
                     60,000+ hours. Mandarin, Cantonese, Japanese, ASEAN corridors.
                   </p>
-                  <div className="mt-4 flex flex-col gap-2">
-                    <a
-                      href={`#${BOOKING_SECTION_ID}`}
-                      className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))] shadow-[0_12px_28px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105"
-                    >
-                      Book Your Free 15-Minute Call
-                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
-                    </a>
-                    <button
-                      type="button"
-                      onClick={openInquiry}
-                      className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.08em] text-white backdrop-blur-sm transition hover:bg-white/16"
-                    >
-                      <MessageCircle className="h-3.5 w-3.5" aria-hidden />
-                      Send a Message to Soham
-                    </button>
-                  </div>
                 </div>
               </motion.div>
             </motion.div>

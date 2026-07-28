@@ -41,7 +41,7 @@ const whoWeServe = [
     title: "Foreign Companies Entering India",
     badge: "Into India",
     description:
-      "You are based in Japan, Southeast Asia, East Asia, Latin America or Africa. You see India as your next growth market. You need a partner who understands both sides - your culture and India's operational reality.",
+      "You are based in Japan, Southeast Asia, East Asia, Europe, the Americas, Latin America or Africa. You see India as your next growth market. You need a partner who understands both sides - your culture and India's operational reality.",
     illustration: "/doodles/International trade-bro.svg",
     illustrationAlt: "Foreign companies entering India illustration",
     points: [
@@ -53,12 +53,12 @@ const whoWeServe = [
   },
   {
     id: "indian-companies-going-abroad",
-    title: "Indian Companies Going Abroad",
+    title: "Indian Companies Expanding to South-East Asia",
     badge: "Out of India",
     description:
-      "You are an Indian company ready to expand into Southeast Asia, East Asia or beyond. You need on-ground support, local language capability and someone who can open doors in markets you don't yet know.",
+      "You are an Indian company ready to expand into South-East Asia, East Asia or beyond. You need on-ground support, local language capability and someone who can open doors in markets you don't yet know.",
     illustration: "/doodles/Business growth-cuate.svg",
-    illustrationAlt: "Indian companies expanding abroad illustration",
+    illustrationAlt: "Indian companies expanding to South-East Asia illustration",
     points: [
       "Indian manufacturers seeking Southeast Asian distribution",
       "Indian exporters entering Japan, China, Vietnam or Indonesia",

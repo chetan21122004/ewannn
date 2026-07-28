@@ -18,7 +18,7 @@ const zhCommon = {
   navMenu: {
     marketEntry: {
       indiaEntryForForeign: "海外企业进入印度",
-      indianGoingAbroad: "印度企业出海",
+      indianGoingAbroad: "印度企业拓展东南亚",
       liaisoning: "联络与协调",
       marketResearch: "市场研究",
       importExport: "进口、采购与出口",
