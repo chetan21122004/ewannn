@@ -11,6 +11,15 @@ const repoCards = [
   {
     tag: "Insights",
     category: "Insights",
+    date: "Jul 25, 2026",
+    title: "Ewan Business Solutions is Now Uvan International Liaisoning Private Limited",
+    copy: "After five years of building alongside our clients, we announce a new chapter — same team and standards, with a name that reflects who we have become.",
+    image: "/stitch/insights/article-uvan-rebrand.jpg",
+    to: "/insights/ewan-to-uvan-rebrand" as const,
+  },
+  {
+    tag: "Insights",
+    category: "Insights",
     date: "Oct 12, 2024",
     title: "India-Vietnam trade corridor (2026 insights)",
     copy: "Exploring the emerging logistics and trade infrastructure connecting the sub-continent to Southeast Asia.",

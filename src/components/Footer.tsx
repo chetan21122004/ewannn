@@ -182,7 +182,10 @@ const Footer = () => {
                 className="h-9 w-auto max-w-[148px] object-contain sm:h-10 sm:max-w-[160px]"
               />
             </Link>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/70">{t("footer.tagline")}</p>
+            <div className="mt-3 max-w-sm">
+              <p className="text-sm font-medium leading-relaxed text-white/80">{t("footer.tagline")}</p>
+              <p className="mt-1 text-sm leading-relaxed text-white/55">{t("footer.formerName")}</p>
+            </div>
 
             <a
               href={`mailto:${PROJECTS_EMAIL}`}

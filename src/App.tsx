@@ -39,6 +39,7 @@ const LanguageGazettePdfIssue = lazy(() => import("./pages/language-gazette/Lang
 import InsightsArticleHowToEnterIndia from "./pages/insights/InsightsArticleHowToEnterIndia.tsx";
 import InsightsArticleChooseTranslationPartner from "./pages/insights/InsightsArticleChooseTranslationPartner.tsx";
 import InsightsArticleSimultaneousInterpretation from "./pages/insights/InsightsArticleSimultaneousInterpretation.tsx";
+import InsightsArticleEwanToUvanRebrand from "./pages/insights/InsightsArticleEwanToUvanRebrand.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 
@@ -111,6 +112,7 @@ const App = () => (
             <Route path="/insights/how-to-enter-indian-market" element={<InsightsArticleHowToEnterIndia />} />
             <Route path="/insights/how-to-choose-translation-partner-india" element={<InsightsArticleChooseTranslationPartner />} />
             <Route path="/insights/what-is-simultaneous-interpretation" element={<InsightsArticleSimultaneousInterpretation />} />
+            <Route path="/insights/ewan-to-uvan-rebrand" element={<InsightsArticleEwanToUvanRebrand />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
