@@ -95,57 +95,77 @@ const enCommon = {
     tooltip: "Ask Soham - 15 Min Free",
   },
   seo: {
-    marketEntry: {
-      title: "India Market Entry Partner | Cross-Border Expansion | UVAN",
+    homepage: {
+      title: "UVAN | Market Entry & Language Services for India & Asia",
       description:
-        "UVAN manages full-cycle India market entry for foreign companies - entity formation, regulatory navigation, executive liaison, and on-ground operations. 10 years. 10+ sectors.",
+        "UVAN helps foreign companies enter India and Indian companies expand into Asia — market entry, liaisoning, and language services in 125+ languages.",
+    },
+    marketEntry: {
+      title: "India Market Entry Services for Foreign Companies | UVAN",
+      description:
+        "UVAN manages end-to-end India market entry for foreign companies — entity formation, regulatory compliance, and on-ground operations — trusted by 250+ clients.",
     },
     liaisoning: {
-      title: "Business Liaisoning & Facilitation Services India | UVAN",
+      title: "Liaisoning & Facilitation Services in India | UVAN",
       description:
-        "Expert liaisoning and business facilitation services for cross-border operations between India and Asia. Single point of coordination. Cultural intelligence. Government and corporate liaison.",
+        "UVAN's liaisoning service manages government approvals, licenses, and institutional coordination in India, recognised by the Govt. of India and PRC Consulate.",
       keywords:
         "liaisoning services India, business facilitation India, India Japan liaison services, cross-border liaison India, corporate liaison India, government liaison India, business intermediary India Asia",
     },
     marketResearch: {
-      title: "Primary Market Research Services India & Asia | UVAN",
+      title: "Market Research Services for India Entry | UVAN",
       description:
-        "On-ground primary market research for companies entering India and Asian markets. Multilingual interviews, distributor intelligence, competitor analysis, and buyer research conducted by native-language experts.",
+        "UVAN runs market research and feasibility studies for India entry — demand analysis, competitor mapping, and regulatory landscape across 10+ sectors.",
       keywords:
         "primary market research India, market research services India, India market entry research, multilingual market research India, B2B market research India, distributor research India, competitor analysis India, market assessment India Japan",
     },
     importExport: {
-      title: "Import, Procurement & Export Support India | UVAN",
+      title: "Import Export Consultancy Services India | UVAN",
       description:
-        "UVAN provides multilingual import, procurement and export support for companies operating between India, Japan, Southeast Asia and beyond - from vendor identification and negotiation to documentation and logistics liaison.",
+        "UVAN handles import, export, and procurement for foreign companies entering India — documentation, customs coordination, and on-ground logistics support.",
       keywords:
         "import export services India, procurement support India, India export assistance, Indian agricultural export, India Japan trade support, vendor sourcing India, export documentation India, cross-border procurement India Asia",
     },
     languageLocalization: {
-      title: "Translation, Interpretation & Localization Services India | UVAN",
+      title: "Language Translation & Localization Services | UVAN",
       description:
-        "Professional translation, interpretation, localization and voiceover in 125+ languages. ISO 9001:2015 certified. Sector expertise across automotive, pharma, legal, exhibitions and more.",
+        "UVAN provides business translation, interpretation, and localization in 125+ languages, built on ISO 9001:2015-certified processes, for companies across Asia.",
       keywords:
         "translation services India, interpretation services India, localization India, technical translation India, simultaneous interpretation India",
     },
-    industries: {
-      title: "Language & Market Entry Services by Industry | UVAN",
+    globalTalkies: {
+      title: "Global Talkies | Film & Media Localization | UVAN",
       description:
-        "UVAN provides language and market entry expertise across automotive, pharma, aerospace, manufacturing, exhibitions, technology, agriculture, legal, education and media sectors.",
+        "Global Talkies, UVAN's media arm, handles dubbing, subtitling, and localization for film and content distribution across Indian and Asian markets.",
+    },
+    industries: {
+      title: "Industries We Serve | UVAN Market Entry & Language",
+      description:
+        "UVAN supports market entry and language services across 10+ industries — manufacturing, healthcare, technology — for companies moving between India and Asia.",
       keywords:
         "language services automotive India, pharma translation India, exhibition interpretation India, market entry India sector",
     },
     about: {
-      title: "About UVAN | Cross-Border Market Partner India",
+      title: "About UVAN | Formerly Ewan Business Solutions",
       description:
-        "UVAN - 5 years, 250+ clients, 125+ languages. Founded by Soham Kakade. Cross-border market entry and language services for the India-Asia corridor.",
+        "UVAN (formerly Ewan Business Solutions) is a Pune-based, ISO 9001:2015-certified partner helping foreign firms enter India and Indian firms expand into Asia.",
       keywords:
         "UVAN about, Soham Kakade UVAN, India language company, cross-border market entry India, Ewan Business Solutions about",
     },
-    contact: {
-      title: "Contact UVAN | Cross-Border Market Partner",
+    caseStudy: {
+      title: "Client Case Studies | UVAN Success Stories",
       description:
-        "Start a conversation with UVAN for market entry, language services, and cross-border execution support.",
+        "Real UVAN client outcomes — including a Japanese manufacturer's India market entry — covering entity setup, liaisoning, and language localization end-to-end.",
+    },
+    contact: {
+      title: "Contact UVAN | India Market Entry Consultants, Pune",
+      description:
+        "Get in touch with UVAN's India market entry and language services team in Pune to discuss expanding your business into India or across Asia.",
+    },
+    insights: {
+      title: "Insights | UVAN Market Entry & Language Trends",
+      description:
+        "UVAN's Insights hub covers India market entry, language localization, and cross-border business trends for companies expanding across India and Asia.",
     },
     media: {
       title: "Media, Insights & Newsletter | UVAN",
@@ -155,18 +175,23 @@ const enCommon = {
         "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India, Ewan Business Solutions media",
     },
     videos: {
-      title: "Videos | UVAN on YouTube",
+      title: "Videos | UVAN Client Stories & Market Insights",
       description:
-        "Watch UVAN event highlights, industry talks, and Oriental Flock session recaps on language, market entry, and cross-border execution.",
+        "Watch UVAN's videos on India market entry, language localization, and real client case studies for companies expanding across India and Asia.",
       keywords:
         "UVAN videos, Soham Kakade talks, India market entry videos, language services YouTube, cross-border business sessions",
     },
     languageGazette: {
-      title: "The Language Gazette | UVAN",
+      title: "The Language Gazette | UVAN's Language Magazine",
       description:
-        "Insights on language, culture and cross-border business - for practitioners and professionals navigating the India-Asia corridor. Published by UVAN.",
+        "The Language Gazette is UVAN's magazine on translation, localization, and language industry trends across India, China, Japan, and Southeast Asia.",
       keywords:
         "language gazette India, language industry publication, cross-border business insights India",
+    },
+    newsletter: {
+      title: "Newsletter | UVAN Market Entry & Language Updates",
+      description:
+        "Subscribe to UVAN's newsletter for updates on India market entry, language services, and cross-border business news for companies expanding into Asia.",
     },
     askSoham: {
       title: "Ask Soham - Free 15-Min Call | UVAN",
@@ -181,9 +206,9 @@ const enCommon = {
         "India market entry checklist free, international expansion audit, cross-border business readiness, India entry risk assessment",
     },
     joinUs: {
-      title: "Join UVAN - Careers, Vendor Network & Collaborators | UVAN",
+      title: "Careers at UVAN | Join Our Growing Team",
       description:
-        "Join UVAN as an employee, freelance language professional, vendor, or institutional collaborator. We're building the cross-border partner for India and the emerging world.",
+        "Explore careers at UVAN, a Pune-based market entry and language services company helping foreign firms enter India and Indian firms expand into Asia.",
     },
   },
   home: {

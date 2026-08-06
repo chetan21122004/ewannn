@@ -95,33 +95,76 @@ const zhCommon = {
     tooltip: "Ask Soham - 15 分钟免费",
   },
   seo: {
+    homepage: {
+      title: "UVAN | 印度与亚洲市场进入及语言服务",
+      description:
+        "UVAN 帮助海外企业进入印度、印度企业拓展亚洲 — 提供市场进入、联络协调及 125+ 语言服务。",
+    },
     marketEntry: {
-      title: "印度市场进入合作伙伴 | 跨境扩张 | UVAN",
-      description: "UVAN 为海外企业提供印度市场进入全流程支持：实体设立、监管合规、高层对接与本地运营。",
+      title: "面向海外企业的印度市场进入服务 | UVAN",
+      description:
+        "UVAN 为海外企业提供印度市场进入端到端支持 — 实体设立、监管合规与本地运营 — 已服务 250+ 客户。",
+    },
+    liaisoning: {
+      title: "印度联络与协调服务 | UVAN",
+      description:
+        "UVAN 联络服务负责印度政府审批、许可证及机构协调，获印度政府与中国总领馆认可。",
+      keywords:
+        "liaisoning services India, business facilitation India, India Japan liaison services, cross-border liaison India, corporate liaison India, government liaison India, business intermediary India Asia",
+    },
+    marketResearch: {
+      title: "印度进入市场调研服务 | UVAN",
+      description:
+        "UVAN 开展印度进入市场调研与可行性研究 — 需求分析、竞争格局与 10+ 行业监管环境。",
+      keywords:
+        "primary market research India, market research services India, India market entry research, multilingual market research India, B2B market research India, distributor research India, competitor analysis India, market assessment India Japan",
+    },
+    importExport: {
+      title: "印度进出口咨询服务 | UVAN",
+      description:
+        "UVAN 为进入印度的海外企业处理进出口与采购 — 单证、海关协调及本地物流支持。",
+      keywords:
+        "import export services India, procurement support India, India export assistance, Indian agricultural export, India Japan trade support, vendor sourcing India, export documentation India, cross-border procurement India Asia",
     },
     languageLocalization: {
-      title: "印度翻译、口译与本地化服务 | UVAN",
+      title: "语言翻译与本地化服务 | UVAN",
       description:
-        "125+ 语言的专业笔译、口译、本地化与配音。ISO 9001:2015 认证。覆盖汽车、医药、法律、展会等行业专业经验。",
+        "UVAN 基于 ISO 9001:2015 认证流程，为亚洲企业提供 125+ 语言的商业翻译、口译与本地化服务。",
       keywords:
         "translation services India, interpretation services India, localization India, technical translation India, simultaneous interpretation India",
     },
-    industries: {
-      title: "按行业分类的语言与市场进入服务 | UVAN",
+    globalTalkies: {
+      title: "Global Talkies | 影视与媒体本地化 | UVAN",
       description:
-        "UVAN 在汽车、医药、航空航天、制造、展会、科技、农业、法律、教育及媒体与 OTT 等行业提供语言与市场进入专业能力。",
+        "Global Talkies 是 UVAN 的媒体业务，为印度及亚洲市场的影视与内容发行提供配音、字幕与本地化。",
+    },
+    industries: {
+      title: "服务行业 | UVAN 市场进入与语言",
+      description:
+        "UVAN 在制造、医疗、科技等 10+ 行业，为在印度与亚洲之间拓展的企业提供市场进入与语言服务。",
       keywords:
         "language services automotive India, pharma translation India, exhibition interpretation India, market entry India sector",
     },
     about: {
-      title: "关于 UVAN | 跨境市场合作伙伴（印度）",
+      title: "关于 UVAN | 原 Ewan Business Solutions",
       description:
-        "UVAN - 5 年、250+ 客户、125+ 语言。由 Soham Kakade 创立。面向印度与亚洲走廊的跨境市场进入与语言服务。",
+        "UVAN（原 Ewan Business Solutions）是浦那总部、ISO 9001:2015 认证伙伴，帮助海外企业进入印度、印度企业拓展亚洲。",
       keywords: "UVAN about, Soham Kakade UVAN, India language company, cross-border market entry India",
     },
+    caseStudy: {
+      title: "客户案例 | UVAN 成功故事",
+      description:
+        "UVAN 真实客户成果 — 含日本制造商印度市场进入 — 涵盖实体设立、联络协调与语言本地化全流程。",
+    },
     contact: {
-      title: "联系 UVAN | 跨境市场合作伙伴",
-      description: "欢迎就市场进入、语言服务与跨境执行与 UVAN 开启交流。",
+      title: "联系 UVAN | 印度市场进入顾问（浦那）",
+      description:
+        "联系 UVAN 浦那印度市场进入与语言服务团队，讨论进入印度或拓展亚洲业务。",
+    },
+    insights: {
+      title: "洞察 | UVAN 市场进入与语言趋势",
+      description:
+        "UVAN 洞察中心涵盖印度市场进入、语言本地化及面向印度与亚洲拓展企业的跨境商业趋势。",
     },
     media: {
       title: "媒体、洞察与新闻 | UVAN",
@@ -131,11 +174,23 @@ const zhCommon = {
         "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India",
     },
     videos: {
-      title: "视频 | UVAN YouTube",
+      title: "视频 | UVAN 客户故事与市场洞察",
       description:
-        "观看 UVAN 活动集锦、行业演讲和 Oriental Flock 会话回顾。",
+        "观看 UVAN 关于印度市场进入、语言本地化及印度与亚洲拓展企业真实客户案例的视频。",
       keywords:
         "UVAN videos, Soham Kakade talks, India market entry videos, language services YouTube",
+    },
+    languageGazette: {
+      title: "语言公报 | UVAN 语言杂志",
+      description:
+        "《语言公报》是 UVAN 杂志，聚焦印度、中国、日本与东南亚的翻译、本地化及语言行业趋势。",
+      keywords:
+        "language gazette India, language industry publication, cross-border business insights India",
+    },
+    newsletter: {
+      title: "通讯 | UVAN 市场进入与语言动态",
+      description:
+        "订阅 UVAN 通讯，获取印度市场进入、语言服务及面向亚洲拓展企业的跨境商业资讯。",
     },
     askSoham: {
       title: "Ask Soham - 免费 15 分钟通话 | UVAN",
@@ -144,6 +199,11 @@ const zhCommon = {
     marketEntryAudit: {
       title: "全球市场进入审计 | UVAN",
       description: "下载 UVAN 2026 全球市场进入审计框架，在投入资本前识别运营、合规与执行风险。",
+    },
+    joinUs: {
+      title: "UVAN 招聘 | 加入成长中的团队",
+      description:
+        "探索 UVAN 职业机会 — 浦那市场进入与语言服务公司，帮助海外企业进入印度、印度企业拓展亚洲。",
     },
   },
   home: {

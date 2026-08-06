@@ -11,6 +11,7 @@ import {
   Users,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import { absoluteUrl, breadcrumbSchema, collectionPageSchema } from "@/lib/schemaHelpers";
 
@@ -47,6 +48,7 @@ const previewItems = [
 ] as const;
 
 const Newsletter = () => {
+  const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
   const hidden = reduceMotion ? { opacity: 0 } : { opacity: 0, y: 28 };
   const show = reduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 };
@@ -80,8 +82,8 @@ const Newsletter = () => {
 
   return (
     <PageLayout
-      title="Newsletter | UVAN"
-      description="Subscribe to UVAN's LinkedIn newsletter for market entry, language services, and cross-border business insights."
+      title={t("seo.newsletter.title")}
+      description={t("seo.newsletter.description")}
       canonicalPath="/newsletter/"
       keywords="UVAN newsletter, market entry newsletter, language services newsletter"
       jsonLd={jsonLd}

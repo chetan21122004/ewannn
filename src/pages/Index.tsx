@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Seo from "@/components/Seo";
+import { useTranslation } from "react-i18next";
 import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestions";
 import { HOMEPAGE_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, webSiteWithSearchAction } from "@/lib/schemaHelpers";
@@ -19,6 +20,7 @@ import ScrollScene from "@/components/ScrollScene";
 import MarketEntryAuditHomeBand from "@/components/MarketEntryAuditHomeBand";
 
 const Index = () => {
+  const { t } = useTranslation();
   const homeJsonLd = [webSiteWithSearchAction(), faqPageSchema(absoluteUrl("/"), HOMEPAGE_FAQS)];
   const sections = [
     { key: "hero", component: <HeroSection />, intensity: 1.15 },
@@ -41,8 +43,8 @@ const Index = () => {
   return (
     <div className="homepage-ambient min-h-screen relative pb-[calc(4rem+env(safe-area-inset-bottom,0px))] lg:pb-0">
       <Seo
-        title="Cross-Border Market Partner for India & Asia | UVAN"
-        description="UVAN helps foreign companies enter India and Indian companies expand into Asia. Language services, market entry, and on-ground operations - one trusted partner."
+        title={t("seo.homepage.title")}
+        description={t("seo.homepage.description")}
         keywords="India market entry partner, cross-border business India, language services India, translation interpretation India"
         canonicalPath="/"
         jsonLd={homeJsonLd}

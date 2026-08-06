@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowRight, BookOpen, Globe2, Mail, MessageCircle, Sparkles, Youtube } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import InsightsArticlesSlider from "@/components/insights/InsightsArticlesSlider";
@@ -88,6 +89,7 @@ const insightsLd = [
 ];
 
 const Insights = () => {
+  const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
   const { open: openContactForm } = useContactInquiry();
   const [activeFilter, setActiveFilter] = useState<(typeof filterOptions)[number]>("All Articles");
@@ -103,8 +105,8 @@ const Insights = () => {
 
   return (
     <PageLayout
-      title="Blog & Insights | UVAN"
-      description="Strategic articles, market narratives, and execution intelligence from UVAN's cross-border language and operations teams."
+      title={t("seo.insights.title")}
+      description={t("seo.insights.description")}
       canonicalPath="/insights/"
       jsonLd={insightsLd}
     >

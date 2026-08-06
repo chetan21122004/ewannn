@@ -14,6 +14,7 @@ import {
   Twitter,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import ContactInquiryForm from "@/components/ContactInquiryForm";
 import { COMPANY_ADDRESS, PROJECTS_EMAIL, SOHAM_EMAIL } from "@/lib/site";
@@ -53,6 +54,7 @@ const buildContactChannels = () => [
 ];
 
 const Contact = () => {
+  const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
   const contactChannels = buildContactChannels();
 
@@ -63,8 +65,8 @@ const Contact = () => {
 
   return (
     <PageLayout
-      title="Contact Us | UVAN"
-      description={`Let's team up to make your business better. Reach UVAN at ${PROJECTS_EMAIL} or (+91) 82757 44740. Visit us at ${COMPANY_ADDRESS}.`}
+      title={t("seo.contact.title")}
+      description={t("seo.contact.description")}
       canonicalPath="/contact/"
     >
       {/* Hero */}

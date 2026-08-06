@@ -96,34 +96,76 @@ const jaCommon = {
     tooltip: "Ask Soham - 15分無料",
   },
   seo: {
-    marketEntry: {
-      title: "インド市場参入パートナー | 越境展開 | UVAN",
+    homepage: {
+      title: "UVAN | インド・アジア向け市場参入と言語サービス",
       description:
-        "UVAN は海外企業のインド市場参入をフルサイクルで支援します。法人設立、規制対応、エグゼクティブ折衝、現地運営まで対応。",
+        "UVAN は海外企業のインド進出とインド企業のアジア展開を支援します。市場参入、リエゾン、125以上の言語サービスを一括提供。",
+    },
+    marketEntry: {
+      title: "海外企業向けインド市場参入サービス | UVAN",
+      description:
+        "UVAN は海外企業のインド市場参入をエンドツーエンドで支援。法人設立、規制対応、現地運用まで250社以上の実績。",
+    },
+    liaisoning: {
+      title: "インドのリエゾン・ファシリテーションサービス | UVAN",
+      description:
+        "UVAN のリエゾンサービスは、インドでの行政承認、ライセンス、機関調整を代行。インド政府および中国総領事館より評価されています。",
+      keywords:
+        "liaisoning services India, business facilitation India, India Japan liaison services, cross-border liaison India, corporate liaison India, government liaison India, business intermediary India Asia",
+    },
+    marketResearch: {
+      title: "インド参入向け市場調査サービス | UVAN",
+      description:
+        "UVAN はインド参入のための市場調査と実現可能性調査を実施。需要分析、競合調査、10以上の業界の規制環境をカバー。",
+      keywords:
+        "primary market research India, market research services India, India market entry research, multilingual market research India, B2B market research India, distributor research India, competitor analysis India, market assessment India Japan",
+    },
+    importExport: {
+      title: "インドの輸出入コンサルティングサービス | UVAN",
+      description:
+        "UVAN はインド進出企業の輸入・輸出・調達を支援。書類手続き、通関調整、現地物流サポートまで対応。",
+      keywords:
+        "import export services India, procurement support India, India export assistance, Indian agricultural export, India Japan trade support, vendor sourcing India, export documentation India, cross-border procurement India Asia",
     },
     languageLocalization: {
-      title: "インドの翻訳・通訳・ローカリゼーション | UVAN",
+      title: "言語翻訳・ローカリゼーションサービス | UVAN",
       description:
-        "125以上の言語に対応するプロフェッショナルな翻訳・通訳・ローカリゼーション・吹き替え・ナレーション。ISO 9001:2015 認証。自動車、製薬、法務、展示会など業界別の専門性。",
+        "UVAN は ISO 9001:2015 認証のプロセスに基づき、125以上の言語でビジネス翻訳、通訳、ローカリゼーションをアジア全域の企業に提供。",
       keywords:
         "translation services India, interpretation services India, localization India, technical translation India, simultaneous interpretation India",
     },
-    industries: {
-      title: "業界別の言語サービスと市場参入 | UVAN",
+    globalTalkies: {
+      title: "Global Talkies | 映画・メディアのローカリゼーション | UVAN",
       description:
-        "UVAN は自動車、製薬、航空宇宙、製造、展示会、テクノロジー、農業、法務・コンプライアンス、教育、メディア・OTT など幅広い業界で言語と市場参入の専門性を提供します。",
+        "UVAN のメディア部門 Global Talkies は、インドおよびアジア市場向けの吹き替え、字幕、ローカリゼーションを映画・コンテンツ配信向けに提供。",
+    },
+    industries: {
+      title: "対応業界 | UVAN 市場参入・言語サービス",
+      description:
+        "UVAN は製造、ヘルスケア、テクノロジーなど10以上の業界で、インドとアジア間を移動する企業向けに市場参入と言語サービスを支援。",
       keywords:
         "language services automotive India, pharma translation India, exhibition interpretation India, market entry India sector",
     },
     about: {
-      title: "UVAN について | 越境マーケットパートナー（インド）",
+      title: "UVAN について | 旧 Ewan Business Solutions",
       description:
-        "UVAN - 5年、250社以上のクライアント、125以上の言語。Soham Kakade により設立。インド・アジア回廊向けの越境市場参入と言語サービス。",
+        "UVAN（旧 Ewan Business Solutions）は、プネ拠点の ISO 9001:2015 認証パートナー。海外企業のインド進出とインド企業のアジア展開を支援。",
       keywords: "UVAN about, Soham Kakade UVAN, India language company, cross-border market entry India",
     },
+    caseStudy: {
+      title: "クライアント事例 | UVAN 成功ストーリー",
+      description:
+        "UVAN の実際のクライアント成果 — 日本メーカーのインド市場参入を含む — 法人設立、リエゾン、言語ローカリゼーションまで一貫対応。",
+    },
     contact: {
-      title: "お問い合わせ | UVAN",
-      description: "市場参入、言語サービス、越境実行について UVAN にご相談ください。",
+      title: "お問い合わせ | UVAN インド市場参入コンサルタント（プネ）",
+      description:
+        "プネの UVAN インド市場参入・言語サービスチームにお問い合わせください。インドまたはアジアへの事業拡大についてご相談いただけます。",
+    },
+    insights: {
+      title: "インサイト | UVAN 市場参入・言語トレンド",
+      description:
+        "UVAN のインサイトハブでは、インド市場参入、言語ローカリゼーション、インド・アジア展開企業向けの越境ビジネストレンドを発信。",
     },
     media: {
       title: "メディア・インサイト・プレス | UVAN",
@@ -133,11 +175,23 @@ const jaCommon = {
         "language gazette India, cross-border business blog, India Asia market entry insights, translation industry news India",
     },
     videos: {
-      title: "動画 | UVAN YouTube",
+      title: "動画 | UVAN クライアントストーリー・市場インサイト",
       description:
-        "UVAN のイベントハイライト、業界トーク、Oriental Flock セッションの振り返りをご覧ください。",
+        "UVAN の動画で、インド市場参入、言語ローカリゼーション、インド・アジア展開企業の実際のクライアント事例をご覧ください。",
       keywords:
         "UVAN videos, Soham Kakade talks, India market entry videos, language services YouTube",
+    },
+    languageGazette: {
+      title: "The Language Gazette | UVAN の言語マガジン",
+      description:
+        "The Language Gazette は、インド、中国、日本、東南アジアの翻訳、ローカリゼーション、言語業界トレンドを扱う UVAN のマガジンです。",
+      keywords:
+        "language gazette India, language industry publication, cross-border business insights India",
+    },
+    newsletter: {
+      title: "ニュースレター | UVAN 市場参入・言語アップデート",
+      description:
+        "UVAN のニュースレターで、インド市場参入、言語サービス、アジア展開企業向けの越境ビジネスニュースをお届けします。",
     },
     askSoham: {
       title: "Ask Soham - 15分無料相談 | UVAN",
@@ -146,6 +200,11 @@ const jaCommon = {
     marketEntryAudit: {
       title: "グローバル市場参入監査 | UVAN",
       description: "UVAN 2026 グローバル市場参入監査をダウンロードし、投資前に運用・規制・実行リスクを可視化します。",
+    },
+    joinUs: {
+      title: "UVAN で働く | 成長チームに参加",
+      description:
+        "プネ拠点の市場参入・言語サービス企業 UVAN でキャリアを探す。海外企業のインド進出とインド企業のアジア展開を支援するチームです。",
     },
   },
   home: {

@@ -14,6 +14,7 @@ import {
   Users,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import MarqueeBand from "@/components/MarqueeBand";
@@ -155,6 +156,7 @@ const whoThisIsFor = [
 ];
 
 const GlobalTalkies = () => {
+  const { t } = useTranslation();
   const reduceMotion = useReducedMotion();
   const { open: openContactForm } = useContactInquiry();
   const hidden = reduceMotion ? false : { opacity: 0, y: 24 };
@@ -163,8 +165,8 @@ const GlobalTalkies = () => {
 
   return (
     <PageLayout
-      title="Global Talkies - Multilingual Film Distribution & Media Localisation | UVAN"
-      description="Global Talkies by UVAN - multilingual film distribution, OTT content localisation, subtitling, dubbing, and cultural adaptation for Indian and international content crossing language borders."
+      title={t("seo.globalTalkies.title")}
+      description={t("seo.globalTalkies.description")}
       canonicalPath="/global-talkies/"
       jsonLd={globalTalkiesLd}
     >
