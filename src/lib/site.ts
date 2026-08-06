@@ -1,5 +1,8 @@
-/** Canonical origin per AEO specification (Organization / JSON-LD). */
-export const SITE_URL = "https://www.ewan.co.in";
+/** Canonical origin per AEO specification (Organization / JSON-LD). Override with `VITE_SITE_URL`. */
+export const SITE_URL =
+  (import.meta.env.VITE_SITE_URL as string | undefined)?.trim() || "https://www.uvan.co.in";
+
+export const SITE_OG_IMAGE = `${SITE_URL.replace(/\/$/, "")}/uvanLogo.png`;
 
 export const SITE_LOGO = "/uvanLogo.png";
 export const SITE_LOGO_ALT = "UVAN - Asia Market Entry";

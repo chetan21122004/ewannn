@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { organizationNode } from "@/lib/schemaHelpers";
 import type { JsonLdObject } from "@/lib/schemaHelpers";
-import { SITE_URL } from "@/lib/site";
+import { SITE_OG_IMAGE, SITE_URL } from "@/lib/site";
 
 export const JSON_LD_SCRIPT_ID = "uvan-jsonld";
 
@@ -23,6 +23,16 @@ function upsertMeta(name: string, content: string) {
   if (!node) {
     node = document.createElement("meta");
     node.setAttribute("name", name);
+    document.head.appendChild(node);
+  }
+  node.setAttribute("content", content);
+}
+
+function upsertProperty(property: string, content: string) {
+  let node = document.querySelector(`meta[property="${property}"]`);
+  if (!node) {
+    node = document.createElement("meta");
+    node.setAttribute("property", property);
     document.head.appendChild(node);
   }
   node.setAttribute("content", content);
@@ -73,6 +83,14 @@ const Seo = ({ title, description, canonicalPath, keywords, jsonLd }: SeoProps) 
     upsertAlternate("en", canonicalUrl);
     upsertAlternate("zh", `${SITE_URL}/zh${pathForCanonical === "/" ? "" : pathForCanonical}`);
     upsertAlternate("ja", `${SITE_URL}/ja${pathForCanonical === "/" ? "" : pathForCanonical}`);
+    upsertProperty("og:url", canonicalUrl);
+    upsertProperty("og:title", title);
+    upsertProperty("og:description", description);
+    upsertProperty("og:image", SITE_OG_IMAGE);
+    upsertMeta("twitter:url", canonicalUrl);
+    upsertMeta("twitter:title", title);
+    upsertMeta("twitter:description", description);
+    upsertMeta("twitter:image", SITE_OG_IMAGE);
   }, [canonicalUrl, title, description, keywords, pathForCanonical, i18n.resolvedLanguage]);
 
   useEffect(() => {

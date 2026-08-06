@@ -1,5 +1,8 @@
 /** Verbatim firm copy - split for layout only; full string is ENTITY_PARAGRAPH_A. Do not edit wording without updating schema copy. */
+import { absoluteUrl } from "@/lib/schemaHelpers";
 import { PROJECTS_EMAIL, SOHAM_EMAIL } from "@/lib/site";
+
+const sitePath = (path: string) => absoluteUrl(path).replace(/^https?:\/\//, "");
 
 export const ENTITY_PARAGRAPH_A_SECTIONS = [
   "Founded in 2020 by Soham Kakade, UVAN is an ISO 9001:2015 certified, Pune-based cross-border market entry and language services company.",
@@ -44,7 +47,7 @@ export const HOMEPAGE_FAQS: AeoFaqItem[] = [
   {
     question: "How do I contact UVAN?",
     answer:
-      `You can reach us at ${PROJECTS_EMAIL} or book a free 15-minute call with founder Soham Kakade at ewan.co.in/ask-soham.`,
+      `You can reach us at ${PROJECTS_EMAIL} or book a free 15-minute call with founder Soham Kakade at ${sitePath("/ask-soham/")}.`,
   },
 ];
 
@@ -77,7 +80,7 @@ export const MARKET_ENTRY_FAQS: AeoFaqItem[] = [
   {
     question: "What does the 2026 Global Market Entry Audit cover?",
     answer:
-      "The free audit identifies five operational gaps that commonly derail cross-border expansion: regulatory and entity infrastructure, partner and distributor integrity, coordination overhead, human capital strategy, and executive liaison. Download it at ewan.co.in/market-entry-audit.",
+      `The free audit identifies five operational gaps that commonly derail cross-border expansion: regulatory and entity infrastructure, partner and distributor integrity, coordination overhead, human capital strategy, and executive liaison. Download it at ${sitePath("/market-entry-audit/")}.`,
   },
 ];
 
@@ -92,12 +95,12 @@ export const MARKET_ENTRY_AUDIT_FAQS: AeoFaqItem[] = [
   {
     question: "How do I download the audit?",
     answer:
-      "Enter your work email on ewan.co.in/market-entry-audit. After you submit, you can open the PDF immediately; use a valid address so you can retrieve the file if needed.",
+      `Enter your work email on ${sitePath("/market-entry-audit/")}. After you submit, you can open the PDF immediately; use a valid address so you can retrieve the file if needed.`,
   },
   {
     question: "What should I do after I complete the audit?",
     answer:
-      "Use the results to prioritise next steps. For India or Asia corridor execution, see ewan.co.in/market-entry for how UVAN supports end-to-end market entry, or book a free 15-minute call with founder Soham Kakade at ewan.co.in/ask-soham.",
+      `Use the results to prioritise next steps. For India or Asia corridor execution, see ${sitePath("/market-entry/")} for how UVAN supports end-to-end market entry, or book a free 15-minute call with founder Soham Kakade at ${sitePath("/ask-soham/")}.`,
   },
 ];
 
