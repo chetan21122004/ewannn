@@ -7,7 +7,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { submitFormViaMailto } from "@/lib/formSubmit";
+import FormHoneypot from "@/components/FormHoneypot";
+import { submitForm } from "@/lib/formSubmit";
 import { SOHAM_EMAIL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +22,8 @@ type GazetteContributeDialogProps = {
 
 const GazetteContributeDialog = ({ open, onOpenChange }: GazetteContributeDialogProps) => {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [usedMailtoFallback, setUsedMailtoFallback] = useState(false);
 
   useEffect(() => {
     if (!open) {
@@ -28,11 +31,14 @@ const GazetteContributeDialog = ({ open, onOpenChange }: GazetteContributeDialog
     }
   }, [open]);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitFormViaMailto(event.currentTarget, SOHAM_EMAIL, "Language Gazette - Article Contribution");
+    setSubmitting(true);
+    const result = await submitForm(event.currentTarget, SOHAM_EMAIL, "Language Gazette - Article Contribution");
     event.currentTarget.reset();
+    setUsedMailtoFallback(result === "mailto_fallback");
     setSubmitted(true);
+    setSubmitting(false);
   };
 
   return (
@@ -53,11 +59,13 @@ const GazetteContributeDialog = ({ open, onOpenChange }: GazetteContributeDialog
         <div className="px-6 py-5 sm:px-7">
           {submitted ? (
             <p className="rounded-xl border border-[hsl(var(--brand-gold-500)/0.3)] bg-[hsl(var(--brand-gold-500)/0.12)] px-4 py-3 text-sm font-medium leading-relaxed text-on-light">
-              Thank you - your email client should open with your submission addressed to {SOHAM_EMAIL}. Send it to
-              complete your contribution. You can attach your draft or manuscript in that email.
+              {usedMailtoFallback
+                ? `Thank you — your email client should open with your submission addressed to ${SOHAM_EMAIL}. Send it to complete your contribution.`
+                : "Thank you! We've received your contribution pitch and will be in touch if it fits a future edition."}
             </p>
           ) : (
-            <form className="space-y-4" onSubmit={handleSubmit}>
+            <form className="relative space-y-4" onSubmit={handleSubmit}>
+              <FormHoneypot />
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="block text-sm font-medium text-on-light">
                   Your name
@@ -118,15 +126,16 @@ const GazetteContributeDialog = ({ open, onOpenChange }: GazetteContributeDialog
                   className="mt-1.5 block w-full text-sm text-on-light-secondary file:mr-3 file:rounded-lg file:border-0 file:bg-[hsl(var(--brand-purple-700))] file:px-3 file:py-2 file:text-xs file:font-semibold file:text-white"
                 />
                 <span className="mt-1 block text-xs text-on-light-muted">
-                  If you choose a file, attach it manually when your email client opens.
+                  File name is included in your submission; we may follow up by email if we need the draft.
                 </span>
               </label>
 
               <button
                 type="submit"
-                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-purple-700))] px-6 py-3 text-sm font-bold text-white transition hover:brightness-110"
+                disabled={submitting}
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-purple-700))] px-6 py-3 text-sm font-bold text-white transition hover:brightness-110 disabled:opacity-60"
               >
-                Send contribution
+                {submitting ? "Sending…" : "Send contribution"}
                 <ArrowUpRight className="h-4 w-4" aria-hidden />
               </button>
             </form>

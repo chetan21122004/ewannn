@@ -18,7 +18,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { submitFormViaMailto } from "@/lib/formSubmit";
+import FormHoneypot from "@/components/FormHoneypot";
+import { submitForm } from "@/lib/formSubmit";
 import { CALENDLY_SCHEDULING_URL, SOHAM_EMAIL } from "@/lib/site";
 
 type AskSohamInquiryContextValue = {
@@ -77,6 +78,8 @@ const AskSohamInquiryDialog = ({
   onOpenChange: (open: boolean) => void;
 }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [usedMailtoFallback, setUsedMailtoFallback] = useState(false);
 
   useEffect(() => {
     if (!open) {
@@ -84,11 +87,14 @@ const AskSohamInquiryDialog = ({
     }
   }, [open]);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitFormViaMailto(event.currentTarget, SOHAM_EMAIL, "Ask Soham - Website Inquiry");
+    setSubmitting(true);
+    const result = await submitForm(event.currentTarget, SOHAM_EMAIL, "Ask Soham - Website Inquiry");
     event.currentTarget.reset();
+    setUsedMailtoFallback(result === "mailto_fallback");
     setSubmitted(true);
+    setSubmitting(false);
   };
 
   return (
@@ -108,11 +114,13 @@ const AskSohamInquiryDialog = ({
         <div className="px-6 py-5 sm:px-7">
           {submitted ? (
             <p className="rounded-xl border border-[hsl(var(--brand-gold-500)/0.3)] bg-[hsl(var(--brand-gold-500)/0.12)] px-4 py-3 text-sm font-medium leading-relaxed text-on-light">
-              Thank you - your email client should open with the message addressed to {SOHAM_EMAIL}. Send it to complete your
-              inquiry.
+              {usedMailtoFallback
+                ? `Thank you — your email client should open with the message addressed to ${SOHAM_EMAIL}. Send it to complete your inquiry.`
+                : "Thank you! Soham's team has received your message and will follow up soon."}
             </p>
           ) : (
-            <form className="space-y-4" onSubmit={handleSubmit}>
+            <form className="relative space-y-4" onSubmit={handleSubmit}>
+              <FormHoneypot />
               <label className="block text-sm font-medium text-on-light">
                 Name and company / institution
                 <input required name="nameAndCompany" type="text" className={inputClassName} />
@@ -142,9 +150,10 @@ const AskSohamInquiryDialog = ({
               </label>
               <button
                 type="submit"
-                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-purple-700))] px-6 py-3 text-sm font-bold text-white transition hover:brightness-110"
+                disabled={submitting}
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-purple-700))] px-6 py-3 text-sm font-bold text-white transition hover:brightness-110 disabled:opacity-60"
               >
-                Send to Soham
+                {submitting ? "Sending…" : "Send to Soham"}
                 <ArrowUpRight className="h-4 w-4" aria-hidden />
               </button>
             </form>

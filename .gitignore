@@ -25,3 +25,8 @@ vite.config.ts.timestamp-*.mjs
 *.njsproj
 *.sln
 *.sw?
+
+# Secrets — never commit real API keys
+.env
+.env.*
+!.env.example

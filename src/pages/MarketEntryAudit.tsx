@@ -20,7 +20,7 @@ import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestion
 import { MARKET_ENTRY_AUDIT_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema, webPageWithLeadAction } from "@/lib/schemaHelpers";
 import { SOHAM_EMAIL } from "@/lib/site";
-import { buildFormMailtoUrl } from "@/lib/formSubmit";
+import { submitFormFields } from "@/lib/formSubmit";
 
 const MARKET_ENTRY_AUDIT_KEYWORDS =
   "India market entry checklist free, international expansion audit, cross-border business readiness, India entry risk assessment, 2026 global market entry audit";
@@ -86,6 +86,7 @@ const MarketEntryAudit = () => {
   const reduceMotion = useReducedMotion();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const insideItems = t("marketEntryAudit.inside.items", {
     returnObjects: true,
@@ -100,15 +101,17 @@ const MarketEntryAudit = () => {
     ease: [0.22, 1, 0.36, 1] as const,
   });
 
-  const handleDownload = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleDownload = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!email.trim()) {
       return;
     }
-    window.location.href = buildFormMailtoUrl(SOHAM_EMAIL, "2026 Market Entry Audit Download Request", {
+    setSubmitting(true);
+    await submitFormFields(SOHAM_EMAIL, "2026 Market Entry Audit Download Request", {
       email: email.trim(),
     });
     setSubmitted(true);
+    setSubmitting(false);
   };
 
   const downloadCard = submitted ? (
@@ -160,9 +163,10 @@ const MarketEntryAudit = () => {
         />
         <button
           type="submit"
-          className="min-h-11 w-full rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_12px_32px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105"
+          disabled={submitting}
+          className="min-h-11 w-full rounded-xl bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-semibold text-[hsl(var(--brand-navy-950))] shadow-[0_12px_32px_hsl(var(--brand-gold-500)/0.28)] transition hover:brightness-105 disabled:opacity-60"
         >
-          {t("marketEntryAudit.hero.downloadCta")}
+          {submitting ? "Sending…" : t("marketEntryAudit.hero.downloadCta")}
         </button>
       </div>
     </form>

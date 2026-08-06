@@ -23,7 +23,8 @@ import AeoFrequentlyAskedQuestions from "@/components/AeoFrequentlyAskedQuestion
 import { JOIN_US_FAQS } from "@/data/aeoContent";
 import { absoluteUrl, faqPageSchema } from "@/lib/schemaHelpers";
 import { PROJECTS_EMAIL } from "@/lib/site";
-import { submitFormViaMailto } from "@/lib/formSubmit";
+import FormHoneypot from "@/components/FormHoneypot";
+import { submitForm } from "@/lib/formSubmit";
 
 const JOIN_US_KEYWORDS =
   "language jobs India, translator jobs India, interpreter jobs Pune, language company career India, freelance translator India";
@@ -195,17 +196,23 @@ const JoinUs = () => {
   const reduceMotion = useReducedMotion();
   const [submittedTeam, setSubmittedTeam] = useState(false);
   const [submittedVendor, setSubmittedVendor] = useState(false);
+  const [submittingTeam, setSubmittingTeam] = useState(false);
+  const [submittingVendor, setSubmittingVendor] = useState(false);
 
-  const handleTeamSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleTeamSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitFormViaMailto(event.currentTarget, PROJECTS_EMAIL, "UVAN Join Our Team Application");
+    setSubmittingTeam(true);
+    await submitForm(event.currentTarget, PROJECTS_EMAIL, "UVAN Join Our Team Application");
     setSubmittedTeam(true);
+    setSubmittingTeam(false);
   };
 
-  const handleVendorSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleVendorSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitFormViaMailto(event.currentTarget, PROJECTS_EMAIL, "UVAN Vendor Network Registration");
+    setSubmittingVendor(true);
+    await submitForm(event.currentTarget, PROJECTS_EMAIL, "UVAN Vendor Network Registration");
     setSubmittedVendor(true);
+    setSubmittingVendor(false);
   };
 
   const motionProps = reduceMotion
@@ -359,7 +366,8 @@ const JoinUs = () => {
                     resetLabel="Send another profile"
                   />
                 ) : (
-                  <form onSubmit={handleTeamSubmit} className="space-y-4">
+                  <form onSubmit={handleTeamSubmit} className="relative space-y-4">
+                    <FormHoneypot />
                     <div className="mb-2 flex items-center gap-3">
                       <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-navy-950))] text-[hsl(var(--brand-gold-500))]">
                         <UserPlus className="h-5 w-5" aria-hidden />
@@ -377,9 +385,10 @@ const JoinUs = () => {
                     <FormField id="team-referral" label="How did you hear about us?" />
                     <button
                       type="submit"
-                      className="mt-2 min-h-11 w-full rounded-full bg-[hsl(var(--brand-navy-950))] py-3.5 text-sm font-bold text-white transition hover:brightness-110"
+                      disabled={submittingTeam}
+                      className="mt-2 min-h-11 w-full rounded-full bg-[hsl(var(--brand-navy-950))] py-3.5 text-sm font-bold text-white transition hover:brightness-110 disabled:opacity-60"
                     >
-                      Send Your Profile
+                      {submittingTeam ? "Sending…" : "Send Your Profile"}
                     </button>
                   </form>
                 )}
@@ -433,7 +442,8 @@ const JoinUs = () => {
                     resetLabel="Submit another application"
                   />
                 ) : (
-                  <form onSubmit={handleVendorSubmit} className="space-y-4">
+                  <form onSubmit={handleVendorSubmit} className="relative space-y-4">
+                    <FormHoneypot />
                     <div className="mb-2 flex items-center gap-3">
                       <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-purple-700))] text-white">
                         <Briefcase className="h-5 w-5" aria-hidden />
@@ -459,9 +469,10 @@ const JoinUs = () => {
                     </FormField>
                     <button
                       type="submit"
-                      className="mt-2 min-h-11 w-full rounded-full bg-[hsl(var(--brand-purple-700))] py-3.5 text-sm font-bold text-white transition hover:brightness-110"
+                      disabled={submittingVendor}
+                      className="mt-2 min-h-11 w-full rounded-full bg-[hsl(var(--brand-purple-700))] py-3.5 text-sm font-bold text-white transition hover:brightness-110 disabled:opacity-60"
                     >
-                      Register as a Vendor
+                      {submittingVendor ? "Sending…" : "Register as a Vendor"}
                     </button>
                   </form>
                 )}

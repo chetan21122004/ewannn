@@ -2,7 +2,8 @@ import { useState, type FormEvent } from "react";
 import { ArrowRight, Clock3, ShieldCheck } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { contactRegionOptions, contactServiceOptions } from "@/data/contactFormOptions";
-import { submitFormViaMailto } from "@/lib/formSubmit";
+import FormHoneypot from "@/components/FormHoneypot";
+import { submitForm } from "@/lib/formSubmit";
 import { SOHAM_EMAIL } from "@/lib/site";
 
 const inputClassName =
@@ -21,26 +22,33 @@ const ContactInquiryForm = ({
 }: ContactInquiryFormProps) => {
   const reduceMotion = useReducedMotion();
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [usedMailtoFallback, setUsedMailtoFallback] = useState(false);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitFormViaMailto(event.currentTarget, recipientEmail, "UVAN Website Inquiry");
+    setSubmitting(true);
+    const result = await submitForm(event.currentTarget, recipientEmail, "UVAN Website Inquiry");
     event.currentTarget.reset();
+    setUsedMailtoFallback(result === "mailto_fallback");
     setSubmitted(true);
+    setSubmitting(false);
     onSubmitted?.();
   };
 
   if (submitted) {
     return (
       <p className="rounded-xl border border-[hsl(var(--brand-gold-500)/0.3)] bg-[hsl(var(--brand-gold-500)/0.12)] px-4 py-3 text-sm font-medium leading-relaxed text-on-light">
-        Thank you! Your email client should open with your message addressed to {recipientEmail} - send it to complete
-        your inquiry.
+        {usedMailtoFallback
+          ? `Thank you! Your email client should open with your message addressed to ${recipientEmail} — send it to complete your inquiry.`
+          : "Thank you! We've received your message and will get back to you within one business day."}
       </p>
     );
   }
 
   return (
-    <form className="space-y-3.5 sm:space-y-4" onSubmit={handleSubmit}>
+    <form className="relative space-y-3.5 sm:space-y-4" onSubmit={handleSubmit}>
+      <FormHoneypot />
       <div className="grid gap-3.5 sm:grid-cols-2 sm:gap-4">
         <label className="text-sm font-medium text-on-light">
           Name (Required)
@@ -105,11 +113,12 @@ const ContactInquiryForm = ({
       <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
         <motion.button
           type="submit"
+          disabled={submitting}
           whileHover={reduceMotion ? undefined : { scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
-          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-purple-700))] px-7 py-3 text-sm font-semibold text-white transition hover:brightness-110 sm:w-auto"
+          className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-purple-700))] px-7 py-3 text-sm font-semibold text-white transition hover:brightness-110 disabled:opacity-60 sm:w-auto"
         >
-          Send Message
+          {submitting ? "Sending…" : "Send Message"}
           <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
         </motion.button>
         {showMeta ? (
