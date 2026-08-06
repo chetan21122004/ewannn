@@ -79,7 +79,7 @@ const AskSohamInquiryDialog = ({
 }) => {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [usedMailtoFallback, setUsedMailtoFallback] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   useEffect(() => {
     if (!open) {
@@ -90,10 +90,14 @@ const AskSohamInquiryDialog = ({
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitting(true);
+    setSubmitError(false);
     const result = await submitForm(event.currentTarget, SOHAM_EMAIL, "Ask Soham - Website Inquiry");
-    event.currentTarget.reset();
-    setUsedMailtoFallback(result === "mailto_fallback");
-    setSubmitted(true);
+    if (result === "sent") {
+      event.currentTarget.reset();
+      setSubmitted(true);
+    } else {
+      setSubmitError(true);
+    }
     setSubmitting(false);
   };
 
@@ -114,9 +118,15 @@ const AskSohamInquiryDialog = ({
         <div className="px-6 py-5 sm:px-7">
           {submitted ? (
             <p className="rounded-xl border border-[hsl(var(--brand-gold-500)/0.3)] bg-[hsl(var(--brand-gold-500)/0.12)] px-4 py-3 text-sm font-medium leading-relaxed text-on-light">
-              {usedMailtoFallback
-                ? `Thank you — your email client should open with the message addressed to ${SOHAM_EMAIL}. Send it to complete your inquiry.`
-                : "Thank you! Soham's team has received your message and will follow up soon."}
+              Thank you! Soham&apos;s team has received your message and will follow up soon.
+            </p>
+          ) : submitError ? (
+            <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm leading-relaxed text-on-light">
+              We couldn&apos;t send your message right now. Please email{" "}
+              <a href={`mailto:${SOHAM_EMAIL}`} className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
+                {SOHAM_EMAIL}
+              </a>{" "}
+              directly.
             </p>
           ) : (
             <form className="relative space-y-4" onSubmit={handleSubmit}>

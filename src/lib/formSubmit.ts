@@ -1,6 +1,6 @@
-/** Form submission: POST to Brevo API route on Vercel, with mailto fallback for local dev. */
+/** Form submission via Brevo API route (/api/forms/submit). */
 
-export type SubmitFormResult = "sent" | "mailto_fallback";
+export type SubmitFormResult = "sent" | "error";
 
 export function buildFormMailtoUrl(
   to: string,
@@ -23,7 +23,7 @@ export function collectFormFields(form: HTMLFormElement): Record<string, string>
   for (const [key, value] of data.entries()) {
     if (value instanceof File) {
       if (value.name) {
-        fields[key] = value.name ? `${value.name} (file selected — reply to applicant for attachment if needed)` : "";
+        fields[key] = `${value.name} (file selected — reply to applicant for attachment if needed)`;
       }
       continue;
     }
@@ -56,7 +56,7 @@ async function postFormToApi(
   return response.ok;
 }
 
-/** Submit form fields to the admin inbox via Brevo (or mailto if API unavailable). */
+/** Submit form fields to the admin inbox via Brevo. */
 export async function submitFormFields(
   to: string,
   subject: string,
@@ -71,11 +71,10 @@ export async function submitFormFields(
       return "sent";
     }
   } catch {
-    // fall through to mailto
+    return "error";
   }
 
-  window.location.href = buildFormMailtoUrl(to, subject, fields);
-  return "mailto_fallback";
+  return "error";
 }
 
 export async function submitForm(
@@ -94,19 +93,11 @@ export async function submitForm(
       return "sent";
     }
   } catch {
-    // fall through to mailto
+    return "error";
   }
 
-  window.location.href = buildFormMailtoUrl(to, subject, fields);
-  return "mailto_fallback";
+  return "error";
 }
-
-/** @deprecated Use submitForm — kept for any remaining direct calls */
-export function submitFormViaMailto(form: HTMLFormElement, to: string, subject: string): void {
-  const fields = collectFormFields(form);
-  window.location.href = buildFormMailtoUrl(to, subject, fields);
-}
-
 
 function formatFieldLabel(key: string): string {
   return key

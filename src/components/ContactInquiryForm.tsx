@@ -23,25 +23,39 @@ const ContactInquiryForm = ({
   const reduceMotion = useReducedMotion();
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [usedMailtoFallback, setUsedMailtoFallback] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitting(true);
+    setSubmitError(false);
     const result = await submitForm(event.currentTarget, recipientEmail, "UVAN Website Inquiry");
-    event.currentTarget.reset();
-    setUsedMailtoFallback(result === "mailto_fallback");
-    setSubmitted(true);
+    if (result === "sent") {
+      event.currentTarget.reset();
+      setSubmitted(true);
+      onSubmitted?.();
+    } else {
+      setSubmitError(true);
+    }
     setSubmitting(false);
-    onSubmitted?.();
   };
 
   if (submitted) {
     return (
       <p className="rounded-xl border border-[hsl(var(--brand-gold-500)/0.3)] bg-[hsl(var(--brand-gold-500)/0.12)] px-4 py-3 text-sm font-medium leading-relaxed text-on-light">
-        {usedMailtoFallback
-          ? `Thank you! Your email client should open with your message addressed to ${recipientEmail} — send it to complete your inquiry.`
-          : "Thank you! We've received your message and will get back to you within one business day."}
+        Thank you! We&apos;ve received your message and will get back to you within one business day.
+      </p>
+    );
+  }
+
+  if (submitError) {
+    return (
+      <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm leading-relaxed text-on-light">
+        We couldn&apos;t send your message right now. Please email us directly at{" "}
+        <a href={`mailto:${recipientEmail}`} className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
+          {recipientEmail}
+        </a>
+        .
       </p>
     );
   }

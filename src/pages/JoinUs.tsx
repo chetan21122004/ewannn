@@ -198,20 +198,32 @@ const JoinUs = () => {
   const [submittedVendor, setSubmittedVendor] = useState(false);
   const [submittingTeam, setSubmittingTeam] = useState(false);
   const [submittingVendor, setSubmittingVendor] = useState(false);
+  const [teamError, setTeamError] = useState(false);
+  const [vendorError, setVendorError] = useState(false);
 
   const handleTeamSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmittingTeam(true);
-    await submitForm(event.currentTarget, PROJECTS_EMAIL, "UVAN Join Our Team Application");
-    setSubmittedTeam(true);
+    setTeamError(false);
+    const result = await submitForm(event.currentTarget, PROJECTS_EMAIL, "UVAN Join Our Team Application");
+    if (result === "sent") {
+      setSubmittedTeam(true);
+    } else {
+      setTeamError(true);
+    }
     setSubmittingTeam(false);
   };
 
   const handleVendorSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmittingVendor(true);
-    await submitForm(event.currentTarget, PROJECTS_EMAIL, "UVAN Vendor Network Registration");
-    setSubmittedVendor(true);
+    setVendorError(false);
+    const result = await submitForm(event.currentTarget, PROJECTS_EMAIL, "UVAN Vendor Network Registration");
+    if (result === "sent") {
+      setSubmittedVendor(true);
+    } else {
+      setVendorError(true);
+    }
     setSubmittingVendor(false);
   };
 
@@ -365,6 +377,13 @@ const JoinUs = () => {
                     onReset={() => setSubmittedTeam(false)}
                     resetLabel="Send another profile"
                   />
+                ) : teamError ? (
+                  <SuccessState
+                    title="Could not send"
+                    message={`Please email your profile directly to ${PROJECTS_EMAIL}.`}
+                    onReset={() => setTeamError(false)}
+                    resetLabel="Try again"
+                  />
                 ) : (
                   <form onSubmit={handleTeamSubmit} className="relative space-y-4">
                     <FormHoneypot />
@@ -440,6 +459,13 @@ const JoinUs = () => {
                     message="Thank you for applying. Our vendor management team will review your profile and get back to you shortly."
                     onReset={() => setSubmittedVendor(false)}
                     resetLabel="Submit another application"
+                  />
+                ) : vendorError ? (
+                  <SuccessState
+                    title="Could not send"
+                    message={`Please email your registration directly to ${PROJECTS_EMAIL}.`}
+                    onReset={() => setVendorError(false)}
+                    resetLabel="Try again"
                   />
                 ) : (
                   <form onSubmit={handleVendorSubmit} className="relative space-y-4">

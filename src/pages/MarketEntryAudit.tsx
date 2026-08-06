@@ -87,6 +87,7 @@ const MarketEntryAudit = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const insideItems = t("marketEntryAudit.inside.items", {
     returnObjects: true,
@@ -107,14 +108,36 @@ const MarketEntryAudit = () => {
       return;
     }
     setSubmitting(true);
-    await submitFormFields(SOHAM_EMAIL, "2026 Market Entry Audit Download Request", {
+    setSubmitError(false);
+    const result = await submitFormFields(SOHAM_EMAIL, "2026 Market Entry Audit Download Request", {
       email: email.trim(),
     });
-    setSubmitted(true);
+    if (result === "sent") {
+      setSubmitted(true);
+    } else {
+      setSubmitError(true);
+    }
     setSubmitting(false);
   };
 
-  const downloadCard = submitted ? (
+  const downloadCard = submitError ? (
+    <div className="rounded-2xl border border-red-200 bg-red-50 p-6 sm:p-7">
+      <p className="text-sm leading-relaxed text-on-light">
+        We couldn&apos;t process your request. Email{" "}
+        <a href={`mailto:${SOHAM_EMAIL}`} className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
+          {SOHAM_EMAIL}
+        </a>{" "}
+        for the audit PDF.
+      </p>
+      <button
+        type="button"
+        onClick={() => setSubmitError(false)}
+        className="mt-4 text-sm font-semibold text-[hsl(var(--brand-purple-700))] hover:underline"
+      >
+        Try again
+      </button>
+    </div>
+  ) : submitted ? (
     <div className="rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 shadow-[0_20px_60px_hsl(var(--brand-navy-950)/0.08)] sm:p-7">
       <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[hsl(var(--brand-purple-700)/0.08)]">
         <ClipboardCheck className="h-5 w-5 text-[hsl(var(--brand-purple-700))]" aria-hidden />
