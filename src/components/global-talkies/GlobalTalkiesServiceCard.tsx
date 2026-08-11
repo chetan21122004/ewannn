@@ -55,7 +55,7 @@ const GlobalTalkiesServiceCard = ({
         viewport={{ once: true, margin: "-48px" }}
         transition={transition((index % 3) * 0.08)}
         aria-haspopup="dialog"
-        aria-label={`${service.title} — view service scope`}
+        aria-label={`${service.title} - view service scope`}
         onClick={() => setOpen(true)}
         className="group relative scroll-mt-28 flex min-h-[248px] w-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white p-5 text-left shadow-[0_10px_28px_hsl(var(--brand-navy-950)/0.05)] transition duration-300 hover:-translate-y-0.5 hover:border-[hsl(var(--brand-purple-500)/0.28)] hover:shadow-[0_18px_40px_hsl(var(--brand-navy-950)/0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--brand-purple-700))] focus-visible:ring-offset-2 sm:min-h-[268px] sm:rounded-[1.35rem] sm:p-6"
       >

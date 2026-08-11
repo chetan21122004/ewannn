@@ -238,7 +238,7 @@
     background: linear-gradient(180deg, hsl(var(--surface-light-100)) 0%, hsl(var(--surface-light-200)) 100%);
   }
 
-  /* Sitewide section rhythm — tighter vertical spacing */
+  /* Sitewide section rhythm - tighter vertical spacing */
   .section-pad {
     @apply px-5 py-10 sm:px-6 lg:py-14;
   }

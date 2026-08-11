@@ -50,7 +50,7 @@ const LanguageGazette = () => {
             <span className="italic text-[hsl(var(--brand-purple-700))]">Gazette</span>
           </>
         }
-        heroSubtitle="UVAN's quarterly publication on language, culture, and cross-border business — 18 readable web articles from January–April 2026."
+        heroSubtitle="UVAN's quarterly publication on language, culture, and cross-border business - 18 readable web articles from January–April 2026."
       />
 
       <section id="latest-issue" className="border-t border-[hsl(var(--brand-navy-950)/0.06)] bg-white px-6 py-10 md:py-12">
@@ -61,7 +61,7 @@ const LanguageGazette = () => {
                 2026 Articles
               </h2>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-on-light-secondary sm:text-base">
-                Read this year&apos;s web editions — or submit your own poem, essay, or bilingual piece for a future issue.
+                Read this year&apos;s web editions - or submit your own poem, essay, or bilingual piece for a future issue.
               </p>
             </motion.div>
 

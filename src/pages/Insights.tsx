@@ -14,7 +14,7 @@ const repoCards = [
     category: "Insights",
     date: "Jul 25, 2026",
     title: "Ewan Business Solutions is Now Uvan International Liaisoning Private Limited",
-    copy: "After five years of building alongside our clients, we announce a new chapter — same team and standards, with a name that reflects who we have become.",
+    copy: "After five years of building alongside our clients, we announce a new chapter - same team and standards, with a name that reflects who we have become.",
     image: "/stitch/insights/article-uvan-rebrand.jpg",
     to: "/insights/ewan-to-uvan-rebrand" as const,
   },

@@ -144,7 +144,7 @@ async function main() {
     console.log(`SEO HTML: ${page.path} → dist/${segment}/index.html`);
   }
 
-  console.log(`Done — ${SEO_STATIC_PAGES.length} routes.`);
+  console.log(`Done - ${SEO_STATIC_PAGES.length} routes.`);
 }
 
 main().catch((error) => {

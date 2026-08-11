@@ -26,7 +26,7 @@ vite.config.ts.timestamp-*.mjs
 *.sln
 *.sw?
 
-# Secrets — never commit real API keys
+# Secrets - never commit real API keys
 .env
 .env.*
 !.env.example

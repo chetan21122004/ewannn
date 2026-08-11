@@ -89,7 +89,7 @@ const Videos = () => {
                 <span className="italic text-[hsl(var(--brand-purple-700))]">action.</span>
               </h1>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-on-light-secondary sm:mt-5 sm:text-base lg:text-lg">
-                Event highlights, industry talks, and Oriental Flock session recaps — Soham and the UVAN team on
+                Event highlights, industry talks, and Oriental Flock session recaps - Soham and the UVAN team on
                 language, market entry, and cross-border execution.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
@@ -148,7 +148,7 @@ const Videos = () => {
               Sessions, talks & event coverage
             </h2>
             <p className="mt-4 text-base leading-relaxed text-on-light-secondary">
-              All videos live on the UVAN YouTube channel — subscribe for new uploads from the field.
+              All videos live on the UVAN YouTube channel - subscribe for new uploads from the field.
             </p>
           </motion.div>
 

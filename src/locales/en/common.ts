@@ -98,12 +98,12 @@ const enCommon = {
     homepage: {
       title: "UVAN | Market Entry & Language Services for India & Asia",
       description:
-        "UVAN helps foreign companies enter India and Indian companies expand into Asia — market entry, liaisoning, and language services in 125+ languages.",
+        "UVAN helps foreign companies enter India and Indian companies expand into Asia - market entry, liaisoning, and language services in 125+ languages.",
     },
     marketEntry: {
       title: "India Market Entry Services for Foreign Companies | UVAN",
       description:
-        "UVAN manages end-to-end India market entry for foreign companies — entity formation, regulatory compliance, and on-ground operations — trusted by 250+ clients.",
+        "UVAN manages end-to-end India market entry for foreign companies - entity formation, regulatory compliance, and on-ground operations - trusted by 250+ clients.",
     },
     liaisoning: {
       title: "Liaisoning & Facilitation Services in India | UVAN",
@@ -115,14 +115,14 @@ const enCommon = {
     marketResearch: {
       title: "Market Research Services for India Entry | UVAN",
       description:
-        "UVAN runs market research and feasibility studies for India entry — demand analysis, competitor mapping, and regulatory landscape across 10+ sectors.",
+        "UVAN runs market research and feasibility studies for India entry - demand analysis, competitor mapping, and regulatory landscape across 10+ sectors.",
       keywords:
         "primary market research India, market research services India, India market entry research, multilingual market research India, B2B market research India, distributor research India, competitor analysis India, market assessment India Japan",
     },
     importExport: {
       title: "Import Export Consultancy Services India | UVAN",
       description:
-        "UVAN handles import, export, and procurement for foreign companies entering India — documentation, customs coordination, and on-ground logistics support.",
+        "UVAN handles import, export, and procurement for foreign companies entering India - documentation, customs coordination, and on-ground logistics support.",
       keywords:
         "import export services India, procurement support India, India export assistance, Indian agricultural export, India Japan trade support, vendor sourcing India, export documentation India, cross-border procurement India Asia",
     },
@@ -141,7 +141,7 @@ const enCommon = {
     industries: {
       title: "Industries We Serve | UVAN Market Entry & Language",
       description:
-        "UVAN supports market entry and language services across 10+ industries — manufacturing, healthcare, technology — for companies moving between India and Asia.",
+        "UVAN supports market entry and language services across 10+ industries - manufacturing, healthcare, technology - for companies moving between India and Asia.",
       keywords:
         "language services automotive India, pharma translation India, exhibition interpretation India, market entry India sector",
     },
@@ -155,7 +155,7 @@ const enCommon = {
     caseStudy: {
       title: "Client Case Studies | UVAN Success Stories",
       description:
-        "Real UVAN client outcomes — including a Japanese manufacturer's India market entry — covering entity setup, liaisoning, and language localization end-to-end.",
+        "Real UVAN client outcomes - including a Japanese manufacturer's India market entry - covering entity setup, liaisoning, and language localization end-to-end.",
     },
     contact: {
       title: "Contact UVAN | India Market Entry Consultants, Pune",

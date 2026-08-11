@@ -9,7 +9,7 @@ type CaseStudyPdfThumbnailProps = {
   title: string;
   onOpen?: () => void;
   className?: string;
-  /** Fill parent width — for card headers */
+  /** Fill parent width - for card headers */
   fullWidth?: boolean;
   /** Show prev/next controls to flip through PDF pages */
   paginated?: boolean;

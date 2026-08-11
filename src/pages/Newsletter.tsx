@@ -116,7 +116,7 @@ const Newsletter = () => {
 
               <p className="mt-4 max-w-lg text-sm leading-relaxed text-on-light-secondary sm:mt-5 sm:text-base lg:text-lg">
                 Follow the UVAN newsletter on LinkedIn for practical notes on India entry, executive liaisoning,
-                translation, interpretation, and cross-border corridors — written for business leaders and operators.
+                translation, interpretation, and cross-border corridors - written for business leaders and operators.
               </p>
 
               <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center">
@@ -270,7 +270,7 @@ const Newsletter = () => {
               Join 2,000+ operators and leaders on LinkedIn
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-on-light-secondary sm:text-base">
-              Subscribe in one click — editions arrive in your LinkedIn feed alongside UVAN&apos;s market and language
+              Subscribe in one click - editions arrive in your LinkedIn feed alongside UVAN&apos;s market and language
               updates.
             </p>
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">

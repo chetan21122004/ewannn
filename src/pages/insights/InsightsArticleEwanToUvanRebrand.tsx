@@ -13,7 +13,7 @@ import { COMPANY_PHONE, PROJECTS_EMAIL } from "@/lib/site";
 const CANONICAL = "/insights/ewan-to-uvan-rebrand/";
 const TITLE = "Ewan Business Solutions is Now Uvan International Liaisoning Private Limited";
 const DESCRIPTION =
-  "Effective 25 July 2026, Ewan Business Solutions becomes Uvan International Liaisoning Private Limited — same team and standards, with a name that reflects our Asia market entry and representation work.";
+  "Effective 25 July 2026, Ewan Business Solutions becomes Uvan International Liaisoning Private Limited - same team and standards, with a name that reflects our Asia market entry and representation work.";
 
 const serviceSteps = [
   {
@@ -43,7 +43,7 @@ const relatedArticles = [
     title: "How to Enter the Indian Market as a Foreign Company",
     href: "/insights/how-to-enter-indian-market",
     category: "Market Entry",
-    excerpt: "Structured India market entry — readiness, roadmap, execution, and ongoing on-ground support.",
+    excerpt: "Structured India market entry - readiness, roadmap, execution, and ongoing on-ground support.",
   },
   {
     title: "How to Choose a Translation Partner in India",
@@ -69,7 +69,7 @@ const InsightsArticleEwanToUvanRebrand = () => (
     <ArticleLead>
       After five years of building, learning, and growing alongside our clients, we are proud to announce a new chapter.
       Ewan Business Solutions is now Uvan International Liaisoning Private Limited, effective 25th July 2026. The name on
-      the door has changed. Everything that earned your trust — the people, the standards, and the way we work — has not.
+      the door has changed. Everything that earned your trust - the people, the standards, and the way we work - has not.
       This is not a departure from who we are. It is a clearer expression of who we have become.
     </ArticleLead>
 
@@ -98,7 +98,7 @@ const InsightsArticleEwanToUvanRebrand = () => (
     </ArticleSection>
 
     <ArticlePullQuote attribution="UVAN">
-      Language was never the destination. It was the bridge — the real value is helping companies enter and grow in new
+      Language was never the destination. It was the bridge - the real value is helping companies enter and grow in new
       markets with clarity and confidence.
     </ArticlePullQuote>
 
@@ -140,7 +140,7 @@ const InsightsArticleEwanToUvanRebrand = () => (
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
             <strong className="text-[hsl(var(--brand-navy-950))]">Our logo.</strong> We have introduced a new visual
-            identity built around the bridge — a symbol of connection across markets.
+            identity built around the bridge - a symbol of connection across markets.
           </span>
         </li>
         <li className="flex gap-3">
@@ -190,7 +190,7 @@ const InsightsArticleEwanToUvanRebrand = () => (
           <span>
             <strong className="text-[hsl(var(--brand-navy-950))]">Our commitment.</strong> Our standards, our attention to
             detail, and our dedication to your success remain exactly as they were. Uvan is ISO 9001:2015 certified and
-            recognised under the Startup India initiative — the same foundations we have always held.
+            recognised under the Startup India initiative - the same foundations we have always held.
           </span>
         </li>
       </ul>

@@ -52,7 +52,7 @@ export const sectorCatalog: SectorCatalogEntry[] = [
     imageAlt: "Modern manufacturing facility and industrial equipment",
     icon: Factory,
     description:
-      "End-to-end support for manufacturers entering India or expanding abroad — from initial market assessment and language support through to full operational setup.",
+      "End-to-end support for manufacturers entering India or expanding abroad - from initial market assessment and language support through to full operational setup.",
   },
   {
     id: "technology",
@@ -84,7 +84,7 @@ export const sectorCatalog: SectorCatalogEntry[] = [
     imageAlt: "Legal documents and compliance review",
     icon: Gavel,
     description:
-      "Certified translation of contracts, agreements, court documents and regulatory filings — accurate, validated and legally precise.",
+      "Certified translation of contracts, agreements, court documents and regulatory filings - accurate, validated and legally precise.",
   },
   {
     id: "education",

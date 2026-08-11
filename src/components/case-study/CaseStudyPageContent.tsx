@@ -39,7 +39,7 @@ const CaseStudyPageContent = () => {
               Stories From the Corridor
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-on-light-secondary sm:text-base">
-              Real mandates across market entry, investor outreach, and partner search — each with a full write-up
+              Real mandates across market entry, investor outreach, and partner search - each with a full write-up
               and optional 16:9 slide-deck PDF.
             </p>
           </motion.div>

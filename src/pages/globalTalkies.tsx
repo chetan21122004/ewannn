@@ -212,7 +212,7 @@ const GlobalTalkies = () => {
               <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_22px_60px_rgba(6,3,20,0.55)] sm:aspect-[5/6] lg:aspect-[4/5]">
                 <img
                   src="/page-assets/global-talkies-banner.jpg"
-                  alt="Cinema auditorium with rows of seats — Global Talkies film distribution and localisation"
+                  alt="Cinema auditorium with rows of seats - Global Talkies film distribution and localisation"
                   className="h-full w-full object-cover transition duration-700"
                   loading="eager"
                 />
@@ -301,7 +301,7 @@ const GlobalTalkies = () => {
                 Six Media <span className="italic text-[hsl(var(--brand-purple-700))]">Localisation</span> Capabilities
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-on-light-secondary">
-                From subtitling and dubbing to OTT pipelines — end-to-end media localisation with cultural fidelity built in.
+                From subtitling and dubbing to OTT pipelines - end-to-end media localisation with cultural fidelity built in.
               </p>
             </div>
             <motion.img
@@ -354,7 +354,7 @@ const GlobalTalkies = () => {
                 Network
               </span>
               <h2 className="font-serif text-2xl font-bold leading-tight text-on-light sm:text-3xl lg:text-4xl">
-                Language Corridors — Media
+                Language Corridors - Media
               </h2>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-on-light-secondary">
                 Our deepest media localisation experience sits in the corridors that mirror UVAN&apos;s broader expertise.

@@ -1,4 +1,4 @@
-/** Hidden field for basic bot filtering — must stay empty for real users. */
+/** Hidden field for basic bot filtering - must stay empty for real users. */
 const FormHoneypot = () => (
   <input
     type="text"

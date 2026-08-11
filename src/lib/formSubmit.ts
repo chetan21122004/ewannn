@@ -23,7 +23,7 @@ export function collectFormFields(form: HTMLFormElement): Record<string, string>
   for (const [key, value] of data.entries()) {
     if (value instanceof File) {
       if (value.name) {
-        fields[key] = `${value.name} (file selected — reply to applicant for attachment if needed)`;
+        fields[key] = `${value.name} (file selected - reply to applicant for attachment if needed)`;
       }
       continue;
     }

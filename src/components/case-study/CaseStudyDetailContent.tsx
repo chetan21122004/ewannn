@@ -223,7 +223,7 @@ const CaseStudyDetailContent = ({ study }: CaseStudyDetailContentProps) => {
                     &ldquo;{study.quote.text}&rdquo;
                   </p>
                   <footer className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-on-light-muted sm:text-sm">
-                    — {study.quote.attribution}
+                    - {study.quote.attribution}
                   </footer>
                 </blockquote>
               ) : null}

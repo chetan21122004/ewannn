@@ -145,7 +145,7 @@ const LanguageGazetteMagazineLayout = ({
                 </h1>
                 <p className="mt-4 max-w-xl text-sm leading-relaxed text-on-light-secondary sm:mt-5 sm:text-base lg:text-lg">
                   {heroSubtitle ??
-                    "Published by UVAN for readers exploring language, cultural intelligence, and international business — as web articles and full PDF editions."}
+                    "Published by UVAN for readers exploring language, cultural intelligence, and international business - as web articles and full PDF editions."}
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
                   <a

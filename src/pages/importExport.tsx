@@ -279,7 +279,7 @@ const ImportExport = () => {
                     Where communication makes or breaks cross-border trade.
                   </p>
                   <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/78">
-                    UVAN sits at the friction points — language, culture, documentation, and vendor verification — so
+                    UVAN sits at the friction points - language, culture, documentation, and vendor verification - so
                     deals keep moving.
                   </p>
                 </div>
@@ -293,7 +293,7 @@ const ImportExport = () => {
               </span>
 
               <p className="mt-4 text-sm leading-relaxed text-on-light-secondary sm:text-[0.9375rem]">
-                Most cross-border trade breakdowns happen not in logistics but in communication — a misunderstood
+                Most cross-border trade breakdowns happen not in logistics but in communication - a misunderstood
                 specification, a cultural misread in a negotiation, a documentation error that delays clearance, or a
                 vendor who presented well but delivered poorly.
               </p>

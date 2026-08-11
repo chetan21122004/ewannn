@@ -98,12 +98,12 @@ const zhCommon = {
     homepage: {
       title: "UVAN | 印度与亚洲市场进入及语言服务",
       description:
-        "UVAN 帮助海外企业进入印度、印度企业拓展亚洲 — 提供市场进入、联络协调及 125+ 语言服务。",
+        "UVAN 帮助海外企业进入印度、印度企业拓展亚洲 - 提供市场进入、联络协调及 125+ 语言服务。",
     },
     marketEntry: {
       title: "面向海外企业的印度市场进入服务 | UVAN",
       description:
-        "UVAN 为海外企业提供印度市场进入端到端支持 — 实体设立、监管合规与本地运营 — 已服务 250+ 客户。",
+        "UVAN 为海外企业提供印度市场进入端到端支持 - 实体设立、监管合规与本地运营 - 已服务 250+ 客户。",
     },
     liaisoning: {
       title: "印度联络与协调服务 | UVAN",
@@ -115,14 +115,14 @@ const zhCommon = {
     marketResearch: {
       title: "印度进入市场调研服务 | UVAN",
       description:
-        "UVAN 开展印度进入市场调研与可行性研究 — 需求分析、竞争格局与 10+ 行业监管环境。",
+        "UVAN 开展印度进入市场调研与可行性研究 - 需求分析、竞争格局与 10+ 行业监管环境。",
       keywords:
         "primary market research India, market research services India, India market entry research, multilingual market research India, B2B market research India, distributor research India, competitor analysis India, market assessment India Japan",
     },
     importExport: {
       title: "印度进出口咨询服务 | UVAN",
       description:
-        "UVAN 为进入印度的海外企业处理进出口与采购 — 单证、海关协调及本地物流支持。",
+        "UVAN 为进入印度的海外企业处理进出口与采购 - 单证、海关协调及本地物流支持。",
       keywords:
         "import export services India, procurement support India, India export assistance, Indian agricultural export, India Japan trade support, vendor sourcing India, export documentation India, cross-border procurement India Asia",
     },
@@ -154,7 +154,7 @@ const zhCommon = {
     caseStudy: {
       title: "客户案例 | UVAN 成功故事",
       description:
-        "UVAN 真实客户成果 — 含日本制造商印度市场进入 — 涵盖实体设立、联络协调与语言本地化全流程。",
+        "UVAN 真实客户成果 - 含日本制造商印度市场进入 - 涵盖实体设立、联络协调与语言本地化全流程。",
     },
     contact: {
       title: "联系 UVAN | 印度市场进入顾问（浦那）",
@@ -203,7 +203,7 @@ const zhCommon = {
     joinUs: {
       title: "UVAN 招聘 | 加入成长中的团队",
       description:
-        "探索 UVAN 职业机会 — 浦那市场进入与语言服务公司，帮助海外企业进入印度、印度企业拓展亚洲。",
+        "探索 UVAN 职业机会 - 浦那市场进入与语言服务公司，帮助海外企业进入印度、印度企业拓展亚洲。",
     },
   },
   home: {
