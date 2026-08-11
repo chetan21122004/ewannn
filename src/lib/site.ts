@@ -7,6 +7,10 @@ export const SITE_OG_IMAGE = `${SITE_URL.replace(/\/$/, "")}/uvanLogo.png`;
 export const SITE_LOGO = "/uvanLogo.png";
 export const SITE_LOGO_ALT = "UVAN - Asia Market Entry";
 
+/** Google Analytics 4 measurement ID. Override with `VITE_GA_MEASUREMENT_ID`. */
+export const GA_MEASUREMENT_ID =
+  (import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined)?.trim() || "G-QQVY5K2K48";
+
 export const SOHAM_LINKEDIN = "https://www.linkedin.com/in/soham-kakade-77b2819b/";
 export const SUKHADA_LINKEDIN = "https://www.linkedin.com/in/cma-sukhada-kakade-bhalerao-5b3789401/";
 export const COMPANY_LINKEDIN = "https://www.linkedin.com/company/ewan-business-solutions/";

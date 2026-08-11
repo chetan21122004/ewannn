@@ -10,6 +10,7 @@ import AskSohamFloatingButton from "@/components/AskSohamFloatingButton";
 import AskSohamInquiryProvider from "@/components/AskSohamInquiryProvider";
 import ContactInquiryProvider from "@/components/ContactInquiryProvider";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Index from "./pages/Index.tsx";
 import AskSoham from "./pages/AskSoham.tsx";
 import MarketEntry from "./pages/MarketEntry.tsx";
@@ -60,6 +61,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <GoogleAnalytics />
           <AskSohamInquiryProvider>
             <ContactInquiryProvider>
             <HashScrollHandler />
