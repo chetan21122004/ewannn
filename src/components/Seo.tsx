@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { organizationNode } from "@/lib/schemaHelpers";
 import type { JsonLdObject } from "@/lib/schemaHelpers";
-import { SITE_OG_IMAGE, SITE_URL } from "@/lib/site";
+import { COMPANY_X_HANDLE, SITE_OG_IMAGE, SITE_URL } from "@/lib/site";
 
 export const JSON_LD_SCRIPT_ID = "uvan-jsonld";
 
@@ -88,6 +88,7 @@ const Seo = ({ title, description, canonicalPath, keywords, jsonLd }: SeoProps) 
     upsertProperty("og:description", description);
     upsertProperty("og:image", SITE_OG_IMAGE);
     upsertMeta("twitter:url", canonicalUrl);
+    upsertMeta("twitter:site", COMPANY_X_HANDLE);
     upsertMeta("twitter:title", title);
     upsertMeta("twitter:description", description);
     upsertMeta("twitter:image", SITE_OG_IMAGE);

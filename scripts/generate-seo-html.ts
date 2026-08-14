@@ -82,6 +82,11 @@ function injectSeo(html: string, page: (typeof SEO_STATIC_PAGES)[number]): strin
     `<meta name="twitter:image" content="${escapeAttr(OG_IMAGE)}" />`,
   );
 
+  out = out.replace(
+    /<meta\s+name="twitter:site"\s+content="[^"]*"\s*\/?>/i,
+    `<meta name="twitter:site" content="@uvan__" />`,
+  );
+
   if (/<meta\s+name="twitter:url"/i.test(out)) {
     out = out.replace(
       /<meta\s+name="twitter:url"\s+content="[^"]*"\s*\/?>/i,

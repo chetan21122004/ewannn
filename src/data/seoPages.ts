@@ -23,7 +23,9 @@ type SeoKey =
   | "languageGazette"
   | "newsletter"
   | "videos"
-  | "joinUs";
+  | "joinUs"
+  | "askSoham"
+  | "marketEntryAudit";
 
 const SEO_ROUTE_KEYS: { path: string; key: SeoKey }[] = [
   { path: "/", key: "homepage" },
@@ -42,6 +44,8 @@ const SEO_ROUTE_KEYS: { path: string; key: SeoKey }[] = [
   { path: "/newsletter", key: "newsletter" },
   { path: "/videos", key: "videos" },
   { path: "/join-us", key: "joinUs" },
+  { path: "/ask-soham", key: "askSoham" },
+  { path: "/market-entry-audit", key: "marketEntryAudit" },
 ];
 
 function toSeoPageEntry({ path, key }: { path: string; key: SeoKey }): SeoPageEntry {
@@ -54,5 +58,13 @@ function toSeoPageEntry({ path, key }: { path: string; key: SeoKey }): SeoPageEn
   };
 }
 
-/** Static SEO manifest for the 16 sheet pages (English). Used at build time. */
-export const SEO_STATIC_PAGES: SeoPageEntry[] = SEO_ROUTE_KEYS.map(toSeoPageEntry);
+/** Static SEO manifest for indexed marketing pages (English). Used at build time. */
+export const SEO_STATIC_PAGES: SeoPageEntry[] = [
+  ...SEO_ROUTE_KEYS.map(toSeoPageEntry),
+  {
+    path: "/privacy-policy",
+    title: "Privacy Policy | UVAN",
+    description:
+      "Privacy policy and disclaimer for UVAN - how we collect, use, and protect personal information on our website.",
+  },
+];

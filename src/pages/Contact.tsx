@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import ContactInquiryForm from "@/components/ContactInquiryForm";
-import { COMPANY_ADDRESS, PROJECTS_EMAIL, SOHAM_EMAIL } from "@/lib/site";
+import { COMPANY_ADDRESS, COMPANY_X, PROJECTS_EMAIL, SOHAM_EMAIL } from "@/lib/site";
 
 const audience = [
   "Foreign companies entering India",
@@ -29,7 +29,7 @@ const socialLinks = [
   { href: "https://www.facebook.com/EwanBusinessSolutions?mibextid=ZbWKwL", label: "Facebook", Icon: Facebook },
   { href: "https://www.linkedin.com/company/ewan-business-solutions/", label: "LinkedIn", Icon: Linkedin },
   { href: "https://www.instagram.com/ewanbizsolution/", label: "Instagram", Icon: Instagram },
-  { href: "https://x.com/ewanbusiness", label: "X", Icon: Twitter },
+  { href: COMPANY_X, label: "X", Icon: Twitter },
 ];
 
 const buildContactChannels = () => [

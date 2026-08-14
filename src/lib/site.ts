@@ -14,6 +14,8 @@ export const GA_MEASUREMENT_ID =
 export const SOHAM_LINKEDIN = "https://www.linkedin.com/in/soham-kakade-77b2819b/";
 export const SUKHADA_LINKEDIN = "https://www.linkedin.com/in/cma-sukhada-kakade-bhalerao-5b3789401/";
 export const COMPANY_LINKEDIN = "https://www.linkedin.com/company/ewan-business-solutions/";
+export const COMPANY_X = "https://x.com/uvan__";
+export const COMPANY_X_HANDLE = "@uvan__";
 
 export const PROJECTS_EMAIL = "projects@uvan.co.in";
 export const SOHAM_EMAIL = "soham@uvan.co.in";
@@ -27,7 +29,7 @@ export const ORGANIZATION_SAME_AS = [
   "https://www.facebook.com/EwanBusinessSolutions?mibextid=ZbWKwL",
   COMPANY_LINKEDIN,
   "https://www.instagram.com/ewanbizsolution/",
-  "https://x.com/ewanbusiness",
+  COMPANY_X,
 ] as const;
 
 /** E.164 without + - used for wa.me links */

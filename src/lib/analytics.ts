@@ -8,6 +8,10 @@ declare global {
 }
 
 export function trackPageView(path: string) {
+  if (typeof navigator !== "undefined" && /HeadlessChrome/i.test(navigator.userAgent)) {
+    return;
+  }
+
   if (!GA_MEASUREMENT_ID || typeof window.gtag !== "function") {
     return;
   }
