@@ -8,10 +8,11 @@ import { createServer } from "node:net";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import puppeteer from "puppeteer";
+import type { Browser } from "puppeteer-core";
 import { PRERENDER_ROUTES } from "../src/data/prerenderRoutes";
 
 const PREVIEW_HOST = "127.0.0.1";
+const USE_SERVERLESS_CHROMIUM = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(scriptDir, "..");
@@ -88,8 +89,32 @@ async function waitForPreviewReady(
   throw new Error(`Timed out waiting for vite preview at ${previewOrigin}`);
 }
 
+async function launchBrowser(): Promise<Browser> {
+  const launchOptions = {
+    headless: true,
+    protocolTimeout: 120_000,
+  };
+
+  if (USE_SERVERLESS_CHROMIUM) {
+    const chromium = await import("@sparticuz/chromium");
+    const puppeteer = await import("puppeteer-core");
+
+    return puppeteer.default.launch({
+      ...launchOptions,
+      args: [...chromium.default.args, "--disable-dev-shm-usage"],
+      executablePath: await chromium.default.executablePath(),
+    });
+  }
+
+  const puppeteer = await import("puppeteer");
+  return puppeteer.default.launch({
+    ...launchOptions,
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+  });
+}
+
 async function prerenderRoute(
-  browser: Awaited<ReturnType<typeof puppeteer.launch>>,
+  browser: Browser,
   routePath: string,
   previewOrigin: string,
 ): Promise<void> {
@@ -150,10 +175,7 @@ async function main() {
   try {
     await waitForPreviewReady(preview, previewOrigin);
 
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
-    });
+    const browser = await launchBrowser();
 
     try {
       for (const routePath of PRERENDER_ROUTES) {

@@ -1,5 +1,10 @@
 {
   "trailingSlash": true,
+  "build": {
+    "env": {
+      "PUPPETEER_SKIP_DOWNLOAD": "1"
+    }
+  },
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
