@@ -6,64 +6,18 @@ import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import InsightsArticlesSlider from "@/components/insights/InsightsArticlesSlider";
+import { INSIGHTS_ARTICLES_CATALOG, insightsArticlePath } from "@/data/insightsArticlesCatalog";
 import { absoluteUrl, breadcrumbSchema } from "@/lib/schemaHelpers";
 
-const repoCards = [
-  {
-    tag: "Insights",
-    category: "Insights",
-    date: "Jul 25, 2026",
-    title: "Ewan Business Solutions is Now Uvan International Liaisoning Private Limited",
-    copy: "After five years of building alongside our clients, we announce a new chapter - same team and standards, with a name that reflects who we have become.",
-    image: "/stitch/insights/article-uvan-rebrand.jpg",
-    to: "/insights/ewan-to-uvan-rebrand" as const,
-  },
-  {
-    tag: "Insights",
-    category: "Insights",
-    date: "Oct 12, 2024",
-    title: "India-Vietnam trade corridor (2026 insights)",
-    copy: "Exploring the emerging logistics and trade infrastructure connecting the sub-continent to Southeast Asia.",
-    image: "/stitch/insights/article-asian-market.jpg",
-    to: "/insights/how-to-enter-indian-market" as const,
-  },
-  {
-    tag: "Language",
-    category: "Language",
-    date: "Sept 28, 2024",
-    title: "What 60,000 hours of interpretation taught me",
-    copy: "The hidden nuances of high-stakes negotiation where silence is as important as the translated word.",
-    image: "/stitch/insights/article-interpretation.jpg",
-    to: "/insights/what-is-simultaneous-interpretation" as const,
-  },
-  {
-    tag: "Career",
-    category: "Career",
-    date: "Sept 15, 2024",
-    title: "Career in Asian languages (An honest guide)",
-    copy: "Moving beyond translation: How to build a strategic consultancy career using linguistic prowess.",
-    image: "/stitch/insights/article-career-guide.jpg",
-    to: "/insights" as const,
-  },
-  {
-    tag: "Market Entry",
-    category: "Market Entry",
-    date: "Sept 02, 2024",
-    title: "How to choose a translation partner",
-    copy: "Avoid the 'Google Translate' trap. 5 critical questions to ask your language service provider.",
-    image: "/stitch/insights/article-strategy.jpg",
-    to: "/insights/how-to-choose-translation-partner-india" as const,
-  },
-  {
-    tag: "Language",
-    category: "Language",
-    date: "Aug 21, 2024",
-    title: "Simultaneous vs consecutive interpretation",
-    copy: "When to use which? A technical breakdown of interpretation modes for corporate events.",
-    image: "/stitch/insights/article-interpretation-type.jpg",
-    to: "/insights/what-is-simultaneous-interpretation" as const,
-  },
-];
+const repoCards = INSIGHTS_ARTICLES_CATALOG.map((article) => ({
+  tag: article.tag,
+  category: article.category,
+  date: article.date,
+  title: article.title,
+  copy: article.copy,
+  image: article.image,
+  to: insightsArticlePath(article.slug),
+}));
 
 const filterOptions = ["All Articles", "Market Entry", "Language", "Career", "Insights"] as const;
 

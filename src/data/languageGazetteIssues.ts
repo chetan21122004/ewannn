@@ -129,7 +129,7 @@ export const gazetteKeywordCatalog: GazetteKeywordArticle[] = [
   {
     title: "Is a career in Asian languages worth it in India? An honest guide",
     targetKeyword: "Mandarin career opportunities India",
-    href: "/insights",
+    href: "/insights/career-in-asian-languages-india",
     source: "Insights",
     category: "Career",
     excerpt: "Beyond translation desks - building a strategic language consultancy career in cross-border business.",

@@ -41,6 +41,7 @@ import InsightsArticleHowToEnterIndia from "./pages/insights/InsightsArticleHowT
 import InsightsArticleChooseTranslationPartner from "./pages/insights/InsightsArticleChooseTranslationPartner.tsx";
 import InsightsArticleSimultaneousInterpretation from "./pages/insights/InsightsArticleSimultaneousInterpretation.tsx";
 import InsightsArticleEwanToUvanRebrand from "./pages/insights/InsightsArticleEwanToUvanRebrand.tsx";
+import InsightsArticleCareerAsianLanguages from "./pages/insights/InsightsArticleCareerAsianLanguages.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 
@@ -115,6 +116,7 @@ const App = () => (
             <Route path="/insights/how-to-choose-translation-partner-india" element={<InsightsArticleChooseTranslationPartner />} />
             <Route path="/insights/what-is-simultaneous-interpretation" element={<InsightsArticleSimultaneousInterpretation />} />
             <Route path="/insights/ewan-to-uvan-rebrand" element={<InsightsArticleEwanToUvanRebrand />} />
+            <Route path="/insights/career-in-asian-languages-india" element={<InsightsArticleCareerAsianLanguages />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

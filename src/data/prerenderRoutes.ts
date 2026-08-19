@@ -7,6 +7,7 @@ const INSIGHT_ARTICLE_PATHS = [
   "/insights/how-to-choose-translation-partner-india",
   "/insights/what-is-simultaneous-interpretation",
   "/insights/ewan-to-uvan-rebrand",
+  "/insights/career-in-asian-languages-india",
 ];
 
 const GAZETTE_STATIC_PATHS = [
