@@ -95,7 +95,7 @@ const mobileNavGroups: NavGroup[] = [
       { labelKey: "navMenu.about.partners", href: "/about-us#our-partners" },
       { labelKey: "navMenu.about.joinUs", href: "/join-us" },
       { labelKey: "navMenu.about.caseStudy", href: "/case-study" },
-      { labelKey: "navMenu.about.testimonials", href: "/#testimonials" },
+      { labelKey: "navMenu.about.testimonials", href: "/testimonials" },
     ],
   },
   {
@@ -158,7 +158,7 @@ const desktopNavGroups: DesktopNavGroup[] = [
       { labelKey: "navMenu.about.partners", href: "/about-us#our-partners" },
       { labelKey: "navMenu.about.joinUs", href: "/join-us" },
       { labelKey: "navMenu.about.caseStudy", href: "/case-study" },
-      { labelKey: "navMenu.about.testimonials", href: "/#testimonials" },
+      { labelKey: "navMenu.about.testimonials", href: "/testimonials" },
     ],
   },
   {

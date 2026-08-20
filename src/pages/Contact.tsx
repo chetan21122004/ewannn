@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import ContactInquiryForm from "@/components/ContactInquiryForm";
-import { COMPANY_ADDRESS, COMPANY_X, PROJECTS_EMAIL, SOHAM_EMAIL } from "@/lib/site";
+import { COMPANY_ADDRESS, COMPANY_FACEBOOK, COMPANY_INSTAGRAM, COMPANY_LINKEDIN, COMPANY_X, PROJECTS_EMAIL, SOHAM_EMAIL } from "@/lib/site";
 
 const audience = [
   "Foreign companies entering India",
@@ -26,9 +26,9 @@ const audience = [
 ];
 
 const socialLinks = [
-  { href: "https://www.facebook.com/EwanBusinessSolutions?mibextid=ZbWKwL", label: "Facebook", Icon: Facebook },
-  { href: "https://www.linkedin.com/company/ewan-business-solutions/", label: "LinkedIn", Icon: Linkedin },
-  { href: "https://www.instagram.com/ewanbizsolution/", label: "Instagram", Icon: Instagram },
+  { href: COMPANY_FACEBOOK, label: "Facebook", Icon: Facebook },
+  { href: COMPANY_LINKEDIN, label: "LinkedIn", Icon: Linkedin },
+  { href: COMPANY_INSTAGRAM, label: "Instagram", Icon: Instagram },
   { href: COMPANY_X, label: "X", Icon: Twitter },
 ];
 

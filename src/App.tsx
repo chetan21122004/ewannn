@@ -42,6 +42,7 @@ import InsightsArticleChooseTranslationPartner from "./pages/insights/InsightsAr
 import InsightsArticleSimultaneousInterpretation from "./pages/insights/InsightsArticleSimultaneousInterpretation.tsx";
 import InsightsArticleEwanToUvanRebrand from "./pages/insights/InsightsArticleEwanToUvanRebrand.tsx";
 import InsightsArticleCareerAsianLanguages from "./pages/insights/InsightsArticleCareerAsianLanguages.tsx";
+import Testimonials from "./pages/Testimonials.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 
@@ -117,6 +118,7 @@ const App = () => (
             <Route path="/insights/what-is-simultaneous-interpretation" element={<InsightsArticleSimultaneousInterpretation />} />
             <Route path="/insights/ewan-to-uvan-rebrand" element={<InsightsArticleEwanToUvanRebrand />} />
             <Route path="/insights/career-in-asian-languages-india" element={<InsightsArticleCareerAsianLanguages />} />
+            <Route path="/testimonials" element={<Testimonials />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

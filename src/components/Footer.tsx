@@ -1,7 +1,7 @@
-import { ArrowUpRight, ChevronDown, Linkedin, Mail, Twitter, Youtube, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Facebook, Instagram, Linkedin, Mail, Twitter, Youtube, type LucideIcon } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { COMPANY_X, PROJECTS_EMAIL, SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
+import { COMPANY_FACEBOOK, COMPANY_INSTAGRAM, COMPANY_LINKEDIN, COMPANY_X, PROJECTS_EMAIL, SITE_LOGO, SITE_LOGO_ALT } from "@/lib/site";
 import { scrollToPageTop } from "@/lib/scrollToTop";
 import type { MouseEvent } from "react";
 
@@ -25,6 +25,7 @@ const navColumns: FooterColumn[] = [
     title: "Company",
     links: [
       { label: "About Us", href: "/about-us" },
+      { label: "Testimonials", href: "/testimonials" },
       { label: "Join Us", href: "/join-us" },
       { label: "Case Study", href: "/case-study" },
       { label: "SANO", href: "https://www.arogyayatri.com/", external: true },
@@ -52,7 +53,9 @@ const navColumns: FooterColumn[] = [
 ];
 
 const socialLinks: Array<{ label: string; href: string; Icon: LucideIcon }> = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/ewan-business-solutions/", Icon: Linkedin },
+  { label: "Facebook", href: COMPANY_FACEBOOK, Icon: Facebook },
+  { label: "Instagram", href: COMPANY_INSTAGRAM, Icon: Instagram },
+  { label: "LinkedIn", href: COMPANY_LINKEDIN, Icon: Linkedin },
   { label: "YouTube", href: "https://www.youtube.com/@EWAN-SSK", Icon: Youtube },
   { label: "X", href: COMPANY_X, Icon: Twitter },
 ];

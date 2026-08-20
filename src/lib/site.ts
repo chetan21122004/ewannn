@@ -14,6 +14,8 @@ export const GA_MEASUREMENT_ID =
 export const SOHAM_LINKEDIN = "https://www.linkedin.com/in/soham-kakade-77b2819b/";
 export const SUKHADA_LINKEDIN = "https://www.linkedin.com/in/cma-sukhada-kakade-bhalerao-5b3789401/";
 export const COMPANY_LINKEDIN = "https://www.linkedin.com/company/ewan-business-solutions/";
+export const COMPANY_FACEBOOK = "https://www.facebook.com/uvan.international";
+export const COMPANY_INSTAGRAM = "https://www.instagram.com/uvan.international";
 export const COMPANY_X = "https://x.com/uvan__";
 export const COMPANY_X_HANDLE = "@uvan__";
 
@@ -26,9 +28,9 @@ export const COMPANY_ADDRESS =
   "Flat no 14, Fourth Floor, Asmant Apartment, near Quantum Works, Erandwane, Karve Road, Pune - 411004";
 
 export const ORGANIZATION_SAME_AS = [
-  "https://www.facebook.com/EwanBusinessSolutions?mibextid=ZbWKwL",
+  COMPANY_FACEBOOK,
   COMPANY_LINKEDIN,
-  "https://www.instagram.com/ewanbizsolution/",
+  COMPANY_INSTAGRAM,
   COMPANY_X,
 ] as const;
 
