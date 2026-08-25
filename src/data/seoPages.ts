@@ -65,6 +65,6 @@ export const SEO_STATIC_PAGES: SeoPageEntry[] = [
     path: "/privacy-policy",
     title: "Privacy Policy | UVAN",
     description:
-      "Privacy policy and disclaimer for UVAN - how we collect, use, and protect personal information on our website.",
+      "Read UVAN's privacy policy to understand how we collect, use, and protect your personal data across our website and services.",
   },
 ];

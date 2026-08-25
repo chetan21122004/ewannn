@@ -1,9 +1,11 @@
 import type { AeoFaqItem } from "@/data/aeoContent";
 import {
+  COMPANY_ALTERNATE_NAME,
+  COMPANY_DESCRIPTION,
   COMPANY_EMAIL,
-  COMPANY_LINKEDIN,
+  COMPANY_LEGAL_NAME,
   COMPANY_PHONE,
-  COMPANY_ADDRESS,
+  COMPANY_SCHEMA_STREET_ADDRESS,
   ORGANIZATION_SAME_AS,
   SITE_LOGO,
   SITE_URL,
@@ -18,10 +20,12 @@ export const organizationNode: JsonLdObject = {
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
   name: "UVAN",
-  alternateName: ["Ewan Business Solutions", "Ewan"],
+  legalName: COMPANY_LEGAL_NAME,
+  alternateName: COMPANY_ALTERNATE_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}${SITE_LOGO}`,
   foundingDate: "2020",
+  description: COMPANY_DESCRIPTION,
   email: COMPANY_EMAIL,
   telephone: COMPANY_PHONE,
   address: {
@@ -30,7 +34,11 @@ export const organizationNode: JsonLdObject = {
     addressRegion: "Maharashtra",
     postalCode: "411004",
     addressCountry: "IN",
-    streetAddress: COMPANY_ADDRESS,
+    streetAddress: COMPANY_SCHEMA_STREET_ADDRESS,
+  },
+  hasCredential: {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "ISO 9001:2015 Certification",
   },
   sameAs: [...ORGANIZATION_SAME_AS],
 };
@@ -95,6 +103,7 @@ export function serviceSchema(opts: {
   description: string;
   canonicalPath: string;
   serviceType?: string;
+  areaServed?: string[];
 }): JsonLdObject {
   const pageUrl = absoluteUrl(opts.canonicalPath.replace(/^\//, "") ? opts.canonicalPath : `/${opts.canonicalPath}`);
   return {
@@ -104,6 +113,7 @@ export function serviceSchema(opts: {
     url: pageUrl,
     provider: { "@id": `${SITE_URL}/#organization` },
     ...(opts.serviceType ? { serviceType: opts.serviceType } : {}),
+    ...(opts.areaServed ? { areaServed: opts.areaServed } : {}),
   };
 }
 
@@ -124,7 +134,18 @@ export function personSoham(): JsonLdObject {
     "@id": `${SITE_URL}/#person-soham-kakade`,
     name: "Soham Kakade",
     jobTitle: "Founder & CEO",
+    description:
+      "Soham Kakade is the founder and CEO of UVAN (formerly Ewan Business Solutions). He has over 60,000 hours of simultaneous interpretation experience across Mandarin, Cantonese, Japanese, and ASEAN languages, was a Chinese Government scholarship recipient at Beijing Language and Culture University, and serves as Vice President of CITLoB.",
     worksFor: { "@id": `${SITE_URL}/#organization` },
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "Beijing Language and Culture University",
+    },
+    memberOf: {
+      "@type": "Organization",
+      name: "Confederation of Indian Translators and Language Professionals",
+      alternateName: "CITLoB",
+    },
     sameAs: [SOHAM_LINKEDIN],
   };
 }
@@ -135,8 +156,14 @@ export function personSukhada(): JsonLdObject {
     "@id": `${SITE_URL}/#person-sukhada-kakade-bhalerao`,
     name: "CMA Sukhada Kakade Bhalerao",
     jobTitle: "Co-Founder & Director",
+    description:
+      "CMA Sukhada Kakade Bhalerao is co-founder and director of UVAN, with over 15 years of experience in finance, auditing, RBI/FEMA compliance, and entity setup. She also co-founded Bhashik Skill Development.",
     worksFor: { "@id": `${SITE_URL}/#organization` },
-    sameAs: [SUKHADA_LINKEDIN],
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Certified Management Accountant",
+    },
+    sameAs: [SUKHADA_LINKEDIN, "https://bhashikskill.co.in"],
   };
 }
 

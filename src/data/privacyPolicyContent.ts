@@ -3,8 +3,8 @@ import { COMPANY_EMAIL, SITE_URL } from "@/lib/site";
 export const privacyPolicyMeta = {
   title: "Privacy Policy | UVAN",
   description:
-    "Privacy policy and disclaimer for UVAN - how we collect, use, and protect personal information on our website.",
-  companyLegalName: "UVAN Business Solutions Private Limited",
+    "Read UVAN's privacy policy to understand how we collect, use, and protect your personal data across our website and services.",
+  companyLegalName: "Uvan International Liaisoning Private Limited",
   effectiveDate: "July 2026",
   jurisdiction: "Pune, India",
   summary:
@@ -27,7 +27,7 @@ export const privacyPolicySections = [
       {
         type: "list" as const,
         items: [
-          `All material and content on the website are copyrighted and proprietary information of UVAN Business Solutions Private Limited (“UVAN”). By subscribing to alerts or newsletters, if any, you agree to receive updates from UVAN on your registered e-mail ID or your mobile phone. If you wish to unsubscribe, please write to us at ${COMPANY_EMAIL}.`,
+          `All material and content on the website are copyrighted and proprietary information of Uvan International Liaisoning Private Limited (“UVAN”). By subscribing to alerts or newsletters, if any, you agree to receive updates from UVAN on your registered e-mail ID or your mobile phone. If you wish to unsubscribe, please write to us at ${COMPANY_EMAIL}.`,
           "To the fullest extent permitted by law, in no event will the website, its owners, partners, developers, affiliates, or employees be liable for any direct, indirect, special, incidental, or consequential (including loss of use, data, business, or profits) damages.",
           `If you think that you have received an unsolicited invitation from UVAN to view this website, please provide details about the invitation by sending an email to ${COMPANY_EMAIL}.`,
         ],
@@ -40,7 +40,7 @@ export const privacyPolicySections = [
     blocks: [
       {
         type: "paragraph" as const,
-        text: `We, UVAN Business Solutions Private Limited or any of its Directors, affiliates or subsidiaries, (“UVAN”, “We”) are the owners of the website: ${SITE_URL}/ (“Website”).`,
+        text: `We, Uvan International Liaisoning Private Limited or any of its Directors, affiliates or subsidiaries, (“UVAN”, “We”) are the owners of the website: ${SITE_URL}/ (“Website”).`,
       },
       {
         type: "paragraph" as const,

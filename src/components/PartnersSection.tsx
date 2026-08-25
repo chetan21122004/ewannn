@@ -30,13 +30,13 @@ const defaultPartnerItems: PartnerItem[] = [
     id: "bhashini",
     name: "Bhashini",
     desc: "Ministry of Electronics & IT (MeitY), Government of India · Language technology initiative.",
-    alt: "Bhashini logo",
+    alt: "Bhashini - Ministry of Electronics & IT language technology initiative logo",
   },
   {
     id: "tattava",
     name: "Tattava CX",
     desc: "Strategic communications and customer experience partner.",
-    alt: "Tattava CX logo",
+    alt: "Tattava CX strategic communications partner logo",
   },
 ];
 

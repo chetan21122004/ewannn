@@ -129,6 +129,7 @@ const languageLd = [
       "ISO 9001:2015 certified multilingual translation, interpretation, localization, transcription, voiceover, and QA - 125+ languages with corridor-native intelligence.",
     canonicalPath: "/language-localization/",
     serviceType: "Language service provider",
+    areaServed: ["India", "Asia", "Global"],
   }),
   breadcrumbSchema(absoluteUrl("/language-localization/"), [
     { name: "Home", path: "/" },

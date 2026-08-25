@@ -15,7 +15,7 @@ export const ENTITY_PARAGRAPH_A_SECTIONS = [
 export const ENTITY_PARAGRAPH_A = ENTITY_PARAGRAPH_A_SECTIONS.join(" ");
 
 export const ENTITY_PARAGRAPH_B =
-  "Soham Kakade is the founder and CEO of UVAN, a cross-border market entry and language services firm based in Pune, India. He has accumulated over 60,000 hours of simultaneous interpretation across Mandarin, Cantonese, Japanese, and ASEAN languages, and was a recipient of the Chinese Government scholarship at Beijing Language and Cultural University (BLCU). He serves as Vice President of the Confederation of Indian Translators and Language Professionals (CITLoB), is a partner of the Bhashini initiative under MeitY, designed export programs for the Government of Maharashtra (MSAMB), and has served as faculty at Symbiosis International University and as a curriculum designer for the International Baccalaureate board.";
+  "Soham Kakade is the founder and CEO of UVAN (formerly Ewan Business Solutions), a cross-border market entry and language services firm based in Pune, India. He has accumulated over 60,000 hours of simultaneous interpretation across Mandarin, Cantonese, Japanese, and ASEAN languages, and was a recipient of the Chinese Government scholarship at Beijing Language and Culture University (BLCU). He serves as Vice President of the Confederation of Indian Translators and Language Professionals (CITLoB), is a partner of the Bhashini initiative under MeitY, designed export programs for the Government of Maharashtra (MSAMB), and has served as faculty at Symbiosis International University and as a curriculum designer for the International Baccalaureate board.";
 
 export const SPEAKABLE_MARKET_ENTRY =
   "UVAN manages the full complexity of cross-border market entry - regulatory navigation, entity formation, local liaisoning, cultural intelligence and language support - so you can focus on building your business, not decoding a new market.";
@@ -182,7 +182,7 @@ export const ASK_SOHAM_FAQS: AeoFaqItem[] = [
   {
     question: "Who is Soham Kakade?",
     answer:
-      "Soham Kakade is the founder and CEO of UVAN. He has over 60,000 hours of simultaneous interpretation experience across Mandarin, Cantonese, Japanese, and ASEAN languages, was a Chinese Government scholarship recipient at BLCU, and serves as Vice President of CITLoB. He founded UVAN after a decade of operating at the intersection of Indian and Asian business.",
+      "Soham Kakade is the founder and CEO of UVAN (formerly Ewan Business Solutions). He has over 60,000 hours of simultaneous interpretation experience across Mandarin, Cantonese, Japanese, and ASEAN languages, was a Chinese Government scholarship recipient at BLCU, and serves as Vice President of CITLoB. He founded the company after a decade of operating at the intersection of Indian and Asian business.",
   },
   {
     question: "What is the Ask Soham call?",
@@ -205,7 +205,7 @@ export const ABOUT_US_FAQS: AeoFaqItem[] = [
   {
     question: "When was UVAN founded?",
     answer:
-      "UVAN was founded in 2020 in Pune, India by Soham Kakade and CMA Sukhada Kakade Bhalerao.",
+      "UVAN was founded in 2020 in Pune, India by Soham Kakade and CMA Sukhada Kakade Bhalerao, originally as Ewan Business Solutions before rebranding to UVAN.",
   },
   {
     question: "How many clients has UVAN served?",
@@ -220,7 +220,7 @@ export const ABOUT_US_FAQS: AeoFaqItem[] = [
   {
     question: "Who is CMA Sukhada Kakade Bhalerao?",
     answer:
-      "Sukhada Kakade Bhalerao is co-founder and director of UVAN. She is a Certified Management Accountant (CMA) with over 15 years of experience in finance, auditing, RBI/FEMA compliance, and entity formation financial setup. She also co-founded Vaani Skills, UVAN's sister institution for language and vocational training.",
+      "Sukhada Kakade Bhalerao is co-founder and director of UVAN. She is a Certified Management Accountant (CMA) with over 15 years of experience in finance, auditing, RBI/FEMA compliance, and entity formation financial setup. She also co-founded Bhashik Skill Development, UVAN's sister institution for language and vocational training.",
   },
   {
     question: "What is Oriental Flock?",

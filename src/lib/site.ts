@@ -5,7 +5,7 @@ export const SITE_URL =
 export const SITE_OG_IMAGE = `${SITE_URL.replace(/\/$/, "")}/uvanLogo.png`;
 
 export const SITE_LOGO = "/uvanLogo.png";
-export const SITE_LOGO_ALT = "UVAN - Asia Market Entry";
+export const SITE_LOGO_ALT = "UVAN logo";
 
 /** Google Analytics 4 measurement ID. Override with `VITE_GA_MEASUREMENT_ID`. */
 export const GA_MEASUREMENT_ID =
@@ -18,20 +18,28 @@ export const COMPANY_FACEBOOK = "https://www.facebook.com/uvan.international";
 export const COMPANY_INSTAGRAM = "https://www.instagram.com/uvan.international";
 export const COMPANY_X = "https://x.com/uvan__";
 export const COMPANY_X_HANDLE = "@uvan__";
+export const COMPANY_YOUTUBE = "https://www.youtube.com/@EWAN-SSK";
 
 export const PROJECTS_EMAIL = "projects@uvan.co.in";
 export const SOHAM_EMAIL = "soham@uvan.co.in";
 /** Alias for org/legal/schema display and primary company inbox */
 export const COMPANY_EMAIL = PROJECTS_EMAIL;
+export const COMPANY_LEGAL_NAME = "Uvan International Liaisoning Private Limited";
+export const COMPANY_ALTERNATE_NAME = "Ewan Business Solutions Private Limited";
+export const COMPANY_DESCRIPTION =
+  "UVAN helps foreign companies enter India and Indian companies expand into Asia - market entry, liaisoning, and language services in 125+ languages.";
 export const COMPANY_PHONE = "+91-8275744740";
 export const COMPANY_ADDRESS =
   "Flat no 14, Fourth Floor, Asmant Apartment, near Quantum Works, Erandwane, Karve Road, Pune - 411004";
+export const COMPANY_SCHEMA_STREET_ADDRESS =
+  "Flat No. 14, Asmant Apartments, Karve Rd, near Quantum works, behind SBI, Pandurang Colony, Erandwane";
 
 export const ORGANIZATION_SAME_AS = [
-  COMPANY_FACEBOOK,
   COMPANY_LINKEDIN,
-  COMPANY_INSTAGRAM,
   COMPANY_X,
+  COMPANY_YOUTUBE,
+  COMPANY_FACEBOOK,
+  COMPANY_INSTAGRAM,
 ] as const;
 
 /** E.164 without + - used for wa.me links */

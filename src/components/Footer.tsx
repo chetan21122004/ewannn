@@ -47,7 +47,7 @@ const navColumns: FooterColumn[] = [
       { label: "Ask Soham - 15 Min Free", href: "/ask-soham" },
       { label: "Download the 2026 Market Entry Audit", href: "/market-entry-audit" },
       { label: "Contact Us", href: "/contact" },
-      { label: "Vaani Skills", href: "https://bhashikskill.co.in", external: true },
+      { label: "Bhashik Skill Development", href: "https://bhashikskill.co.in", external: true },
     ],
   },
 ];
@@ -137,7 +137,7 @@ const Footer = () => {
     if (label === "Privacy Policy") return t("footer.privacyPolicy");
     if (label === "Ask Soham - 15 Min Free") return t("footer.askSohamCta");
     if (label === "Download the 2026 Market Entry Audit") return t("footer.marketEntryAudit");
-    if (label === "Vaani Skills") return t("footer.bhashikSkill");
+    if (label === "Bhashik Skill Development") return t("footer.bhashikSkill");
     return label;
   };
 

@@ -78,7 +78,7 @@ const liaisonServices = [
     ],
     icon: Globe2,
     crossRef: {
-      label: "Structured language training via Vaani Skills ↗",
+      label: "Structured language training via Bhashik Skill Development ↗",
       href: "https://bhashikskill.co.in",
     },
   },
@@ -117,6 +117,7 @@ const liaisonLd = [
       "Government, institutional, corporate, coordination, cultural intelligence, and exhibition liaison with native-language fluency across the India-Asia corridor.",
     canonicalPath: "/liaisoning-facilitation/",
     serviceType: "Liaisoning services",
+    areaServed: ["India", "Japan", "China", "Southeast Asia"],
   }),
 ];
 

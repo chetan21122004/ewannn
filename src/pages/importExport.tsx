@@ -141,6 +141,7 @@ const importExportLd = [
       "Multilingual import, procurement and export support for companies operating between India, Japan, Southeast Asia and beyond - vendor identification, negotiation, documentation, and logistics liaison.",
     canonicalPath: "/import-export/",
     serviceType: "Import and export services",
+    areaServed: ["India", "Japan", "China", "Southeast Asia", "Latin America", "Africa"],
   }),
 ];
 

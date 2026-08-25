@@ -6,12 +6,12 @@ import { blurReveal, fadeOnly } from "@/lib/animationVariants";
 const defaultConsulateLetters: ConsulateLetter[] = [
   {
     src: "/Ewan-Consulate-experience-letter-page-001-min.jpg",
-    alt: "Chinese Consulate appreciation letter page 1",
+    alt: "Letter of recognition from PRC Consulate, Chinese original, page 1",
     label: "Page 1 · Chinese Original",
   },
   {
     src: "/Ewan-Consulate-experience-letter-page-002-min.jpg",
-    alt: "Chinese Consulate appreciation letter page 2",
+    alt: "Letter of recognition from PRC Consulate, English translation, page 2",
     label: "Page 2 · English Translation",
   },
 ];

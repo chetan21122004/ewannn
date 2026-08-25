@@ -124,12 +124,12 @@ const recognitions = [
     proofImages: [
       {
         src: "/Ewan-Consulate-experience-letter-page-001-min.jpg",
-        alt: "Chinese Consulate appreciation letter page 1",
+        alt: "Letter of recognition from PRC Consulate, Chinese original, page 1",
         label: "Page 1 · Chinese Original",
       },
       {
         src: "/Ewan-Consulate-experience-letter-page-002-min.jpg",
-        alt: "Chinese Consulate appreciation letter page 2",
+        alt: "Letter of recognition from PRC Consulate, English translation, page 2",
         label: "Page 2 · English Translation",
       },
     ],
@@ -178,7 +178,7 @@ const partners = [
     description:
       "India's national language technology initiative. Our partnership with Bhashini aligns UVAN with the country's most significant investment in multilingual AI - strengthening our language technology capabilities and our institutional standing.",
     logo: "/allLogos/Bhashini-Logo.png",
-    logoAlt: "Bhashini logo",
+    logoAlt: "Bhashini - Ministry of Electronics & IT language technology initiative logo",
     logoClassName: "max-h-11 w-auto max-w-[240px] sm:max-h-12",
     accent: "purple" as const,
   },
@@ -188,17 +188,17 @@ const partners = [
     description:
       "Strategic communications and customer experience partner. Tattava CX brings expertise in brand communication, client experience design, and strategic messaging - complementing UVAN's cross-border language and market entry work.",
     logo: "/allLogos/tattava-cx.svg",
-    logoAlt: "Tattava CX logo",
+    logoAlt: "Tattava CX strategic communications partner logo",
     logoClassName: "max-h-14 max-w-[180px] sm:max-h-16",
     accent: "gold" as const,
   },
   {
     type: "Sister Institution",
-    name: "Vaani Skills",
+    name: "Bhashik Skill Development",
     description:
-      "Vaani Skills is UVAN's sister institution - a skill development organisation focused on language training, commerce education, and vocational upskilling. Vaani trains language professionals across 125+ languages including Japanese, Mandarin, Korean, German, French, Spanish, Arabic, and all major Indian regional languages. This institutional link ensures UVAN has access to a trained, job-ready talent pipeline - and gives our clients confidence in the quality of professionals behind every engagement.",
+      "Bhashik Skill Development is UVAN's sister institution - a skill development organisation focused on language training, commerce education, and vocational upskilling. Bhashik trains language professionals across 125+ languages including Japanese, Mandarin, Korean, German, French, Spanish, Arabic, and all major Indian regional languages. This institutional link ensures UVAN has access to a trained, job-ready talent pipeline - and gives our clients confidence in the quality of professionals behind every engagement.",
     logo: "/allLogos/bhashik-logo.png",
-    logoAlt: "Vaani Skills logo",
+    logoAlt: "Bhashik Skill Development logo",
     logoClassName: "max-h-[4.5rem] max-w-[140px] sm:max-h-20",
     link: "https://bhashikskill.co.in",
     accent: "purple" as const,
@@ -656,7 +656,7 @@ const AboutUs = () => {
                       clients move quickly without financial exposure.
                     </p>
                     <p className="rounded-2xl border border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-5 py-4">
-                      She is also Co-Founder and Director of Vaani Skills, UVAN&apos;s sister institution focused
+                      She is also Co-Founder and Director of Bhashik Skill Development, UVAN&apos;s sister institution focused
                       on language training, vocational skills, and career development - ensuring a steady pipeline of skilled,
                       job-ready language professionals for the industry.
                     </p>
@@ -670,7 +670,7 @@ const AboutUs = () => {
                         "Cost Accounting Practice (est. 2010)",
                         "Finance Educator & Faculty",
                         "Committee Contributor",
-                        "Co-Founder, Vaani Skills",
+                        "Co-Founder, Bhashik Skill Development",
                       ].map((tag) => (
                         <span
                           key={tag}
@@ -698,7 +698,7 @@ const AboutUs = () => {
                       rel="noreferrer"
                       className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-navy-950))] px-5 py-2.5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[hsl(var(--brand-navy-900))]"
                     >
-                      Vaani Skills
+                      Bhashik Skill Development
                       <ArrowRight className="h-4 w-4 shrink-0 text-[hsl(var(--brand-gold-500))]" />
                     </a>
                   </div>

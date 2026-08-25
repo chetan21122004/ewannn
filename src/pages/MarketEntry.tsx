@@ -151,6 +151,7 @@ const marketEntryLd = [
       "UVAN manages full-cycle India market entry for foreign companies - entity formation, regulatory navigation, executive liaison, and on-ground operations. 10 years. 10+ sectors.",
     canonicalPath: "/market-entry/",
     serviceType: "Market entry consulting",
+    areaServed: ["India", "Japan", "Southeast Asia", "East Asia"],
   }),
   breadcrumbSchema(absoluteUrl("/market-entry/"), [
     { name: "Home", path: "/" },

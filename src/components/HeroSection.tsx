@@ -229,7 +229,7 @@ const HeroSection = () => {
               <div className="relative overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] shadow-premium-lg lg:rounded-3xl">
                 <img
                   src="/hero-bg-new.png"
-                  alt="UVAN cross-border market expansion"
+                  alt="Cross-border market expansion between India and Asia"
                   className="h-52 w-full object-cover sm:h-64 lg:h-[500px]"
                   width={800}
                   height={500}

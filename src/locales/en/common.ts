@@ -62,8 +62,8 @@ const enCommon = {
     emailLabel: "Email us",
     ctaHeadline: "Ready to expand across borders with one trusted partner?",
     certificationsLabel: "Certifications & Ecosystem",
-    bhashikGroup: "Part of the UVAN Group · Vaani Skills",
-    bhashikSkill: "Vaani Skills",
+    bhashikGroup: "Part of the UVAN Group · Bhashik Skill Development",
+    bhashikSkill: "Bhashik Skill Development",
     blogInsights: "Blog & Insights",
     aboutUs: "About Us",
     joinUs: "Join Us",
@@ -199,9 +199,9 @@ const enCommon = {
         "Book a free 15-minute call with Soham Kakade - founder of UVAN. Market entry, language strategy, or career in languages. Honest, focused, no pitch.",
     },
     marketEntryAudit: {
-      title: "2026 Global Market Entry Audit | Free India Entry Checklist | UVAN",
+      title: "Free 2026 Market Entry Audit Download | UVAN",
       description:
-        "The 2026 Global Market Entry Audit - a free diagnostic framework built from 10 years of on-ground cross-border experience. Assess your expansion readiness before you commit.",
+        "Download UVAN's free 3-page India market entry audit - five operational gaps that derail expansion, with self-assessment checklists.",
       keywords:
         "India market entry checklist free, international expansion audit, cross-border business readiness, India entry risk assessment",
     },
@@ -281,7 +281,7 @@ const enCommon = {
       badge: "Case Study",
       titlePrefix: "How a Japanese Manufacturer Successfully",
       titleHighlight: "Entered India",
-      imageAlt: "Manufacturing facility in India",
+      imageAlt: "Manufacturing facility in India supported by UVAN's market entry services",
       cta: "Read the Full Case Study",
       steps: [
         {
@@ -394,12 +394,12 @@ const enCommon = {
       letters: [
         {
           src: "/Ewan-Consulate-experience-letter-page-001-min.jpg",
-          alt: "Chinese Consulate appreciation letter page 1",
+          alt: "Letter of recognition from PRC Consulate, Chinese original, page 1",
           label: "Page 1 · Chinese Original",
         },
         {
           src: "/Ewan-Consulate-experience-letter-page-002-min.jpg",
-          alt: "Chinese Consulate appreciation letter page 2",
+          alt: "Letter of recognition from PRC Consulate, English translation, page 2",
           label: "Page 2 · English Translation",
         },
       ],
@@ -431,7 +431,7 @@ const enCommon = {
           linkedinCta: "Connect with Sukhada on LinkedIn →",
           intro: [
             "Sukhada Kakade Bhalerao is a Pune-based Certified Management Accountant (CMA), finance educator, and entrepreneur with over 15 years of experience in finance, auditing, and professional training.",
-            "As Co-Founder and Director of UVAN and Vaani Skills, she brings the financial rigour and operational backbone that underpins everything UVAN delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
+            "As Co-Founder and Director of UVAN and Bhashik Skill Development, she brings the financial rigour and operational backbone that underpins everything UVAN delivers - from entity formation financial setup and RBI/FEMA compliance advisory to internal controls and structured business operations.",
             "She also runs her own cost accounting practice (est. 2010) and is passionate about bridging industry and academia.",
           ],
           badges: ["CMA Certified", "15+ Years Experience", "Finance & Compliance Expert", "RBI & FEMA Advisory", "Internal Controls Specialist", "Entity Setup & Structuring", "Entrepreneur Since 2010"],
@@ -451,13 +451,13 @@ const enCommon = {
           id: "bhashini",
           name: "Bhashini",
           desc: "Ministry of Electronics & IT (MeitY), Government of India · Language technology initiative.",
-          alt: "Bhashini logo",
+          alt: "Bhashini - Ministry of Electronics & IT language technology initiative logo",
         },
         {
           id: "tattava",
           name: "Tattava CX",
           desc: "Strategic communications partner.",
-          alt: "Tattava CX logo",
+          alt: "Tattava CX strategic communications partner logo",
         },
       ],
     },

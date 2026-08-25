@@ -445,8 +445,8 @@ const JoinUs = () => {
               </div>
 
               <p className="mt-8 rounded-2xl border border-[hsl(var(--border-light))] bg-white/70 p-5 text-sm leading-relaxed text-on-light-secondary">
-                Many of our language professionals come through Vaani Skills, our sister institution focused
-                on language and vocational training. If you have trained with Vaani, you are encouraged to apply
+                Many of our language professionals come through Bhashik Skill Development, our sister institution focused
+                on language and vocational training. If you have trained with Bhashik, you are encouraged to apply
                 directly.
               </p>
             </motion.div>
