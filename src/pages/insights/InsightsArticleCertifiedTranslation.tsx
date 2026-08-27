@@ -20,7 +20,7 @@ const relatedArticles = [
     title: "Localization vs. Translation: What's the Difference?",
     href: "/insights/localization-vs-translation-difference",
     category: "Language",
-    excerpt: "When translation is enough — and when you need full localization.",
+    excerpt: "When translation is enough - and when you need full localization.",
   },
   {
     title: "How to Choose a Translation Partner in India",
@@ -51,7 +51,7 @@ const InsightsArticleCertifiedTranslation = () => (
     }
   >
     <ArticleLead>
-      Not every translation needs to be certified — but for many legal, government, and business processes, an uncertified
+      Not every translation needs to be certified - but for many legal, government, and business processes, an uncertified
       translation simply won&apos;t be accepted. Here&apos;s how to know the difference.
     </ArticleLead>
 
@@ -69,7 +69,7 @@ const InsightsArticleCertifiedTranslation = () => (
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
             <strong className="text-[hsl(var(--brand-navy-950))]">Business incorporation documents</strong> submitted to
-            government authorities — see our{" "}
+            government authorities - see our{" "}
             <Link to="/insights/india-entity-structure-liaison-branch-subsidiary" className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
               entity structure guide
             </Link>
@@ -93,7 +93,7 @@ const InsightsArticleCertifiedTranslation = () => (
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
             <strong className="text-[hsl(var(--brand-navy-950))]">Regulatory filings</strong> for foreign companies entering
-            a new market — see our{" "}
+            a new market - see our{" "}
             <Link to="/insights/market-entry-guide-india" className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
               India market entry guide
             </Link>
@@ -125,7 +125,7 @@ const InsightsArticleCertifiedTranslation = () => (
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            Marketing and website content — often requiring{" "}
+            Marketing and website content - often requiring{" "}
             <Link to="/insights/localization-vs-translation-difference" className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
               localization
             </Link>{" "}
@@ -148,33 +148,33 @@ const InsightsArticleCertifiedTranslation = () => (
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            <strong className="text-[hsl(var(--brand-navy-950))]">Certified</strong> — confirms translation accuracy
+            <strong className="text-[hsl(var(--brand-navy-950))]">Certified</strong> - confirms translation accuracy
           </span>
         </li>
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            <strong className="text-[hsl(var(--brand-navy-950))]">Notarized</strong> — a notary verifies the translator&apos;s
+            <strong className="text-[hsl(var(--brand-navy-950))]">Notarized</strong> - a notary verifies the translator&apos;s
             identity and signature (not the translation&apos;s accuracy)
           </span>
         </li>
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            <strong className="text-[hsl(var(--brand-navy-950))]">Apostilled</strong> — international certification for use in
+            <strong className="text-[hsl(var(--brand-navy-950))]">Apostilled</strong> - international certification for use in
             another country under the Hague Convention
           </span>
         </li>
       </ul>
       <p className="mt-4">
-        Some processes require more than one — for example, immigration authorities may require both certification and
+        Some processes require more than one - for example, immigration authorities may require both certification and
         notarization.
       </p>
     </ArticleSection>
 
     <ArticleHighlight>
       Many companies assume any bilingual employee or free online tool can produce a &ldquo;certified&rdquo; translation. Most
-      government and legal bodies require translations from accredited professional translators or agencies — and rejecting
+      government and legal bodies require translations from accredited professional translators or agencies - and rejecting
       improperly certified documents can cost weeks of delay.
     </ArticleHighlight>
 

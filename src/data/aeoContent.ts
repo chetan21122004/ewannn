@@ -302,7 +302,7 @@ export const CHALLENGES_FOREIGN_COMPANIES_INDIA_FAQS: AeoFaqItem[] = [
   {
     question: "Can localization issues really affect market entry success?",
     answer:
-      "Yes — even a legally compliant business can struggle to gain traction if its marketing, product, and customer communication aren't culturally and linguistically adapted to local audiences.",
+      "Yes - even a legally compliant business can struggle to gain traction if its marketing, product, and customer communication aren't culturally and linguistically adapted to local audiences.",
   },
 ];
 
@@ -364,6 +364,6 @@ export const BEST_COUNTRIES_MARKET_ENTRY_2026_FAQS: AeoFaqItem[] = [
   {
     question: "Is market size the most important factor when choosing a country to expand into?",
     answer:
-      "No — total cost of successful entry, including registration, compliance, and localization investment, is a better indicator of long-term success than market size alone.",
+      "No - total cost of successful entry, including registration, compliance, and localization investment, is a better indicator of long-term success than market size alone.",
   },
 ];

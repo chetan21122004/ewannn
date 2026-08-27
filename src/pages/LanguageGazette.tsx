@@ -12,7 +12,7 @@ import { april2026Issue, gazette2026Articles } from "@/data/languageGazetteIssue
 import { tlgPdfIssuesByYear } from "@/data/tlgPdfCatalog";
 import { absoluteUrl, breadcrumbSchema } from "@/lib/schemaHelpers";
 
-const GAZETTE_2026_MONTHS = ["April 2026", "March 2026", "February 2026", "January 2026"] as const;
+const GAZETTE_2026_MONTHS = ["Aug 2026", "April 2026", "March 2026", "February 2026", "January 2026"] as const;
 
 const pdfArchive = tlgPdfIssuesByYear();
 
@@ -50,7 +50,7 @@ const LanguageGazette = () => {
             <span className="italic text-[hsl(var(--brand-purple-700))]">Gazette</span>
           </>
         }
-        heroSubtitle="UVAN's quarterly publication on language, culture, and cross-border business - 18 readable web articles from January–April 2026."
+        heroSubtitle="UVAN's quarterly publication on language, culture, and cross-border business - readable web articles from January through August 2026."
       />
 
       <section id="latest-issue" className="border-t border-[hsl(var(--brand-navy-950)/0.06)] bg-white px-6 py-10 md:py-12">

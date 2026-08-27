@@ -45,7 +45,7 @@ const relatedArticles = [
     title: "Top 10 Challenges Foreign Companies Face When Entering the Indian Market",
     href: "/insights/challenges-foreign-companies-india",
     category: "Market Entry",
-    excerpt: "The most common operational and cultural hurdles — and how to navigate each one.",
+    excerpt: "The most common operational and cultural hurdles - and how to navigate each one.",
   },
   {
     title: "Liaison Office vs Branch Office vs Subsidiary in India",
@@ -71,7 +71,7 @@ const InsightsArticleMarketEntryGuideIndia = () => (
       howToSchema({
         name: TITLE,
         description: DESCRIPTION,
-        steps: steps.map((step) => `${step.title} — ${step.body}`),
+        steps: steps.map((step) => `${step.title} - ${step.body}`),
       }),
       faqPageSchema(absoluteUrl(CANONICAL), MARKET_ENTRY_GUIDE_ARTICLE_FAQS),
     ]}
@@ -84,7 +84,7 @@ const InsightsArticleMarketEntryGuideIndia = () => (
   >
     <ArticleLead>
       India is one of the fastest-growing consumer and business markets in the world, but entering it successfully requires
-      more than ambition — it demands the right legal structure, local partnerships, and cultural understanding. This guide
+      more than ambition - it demands the right legal structure, local partnerships, and cultural understanding. This guide
       walks you through the practical steps of a successful India market entry.
     </ArticleLead>
 
@@ -102,28 +102,28 @@ const InsightsArticleMarketEntryGuideIndia = () => (
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            <strong className="text-[hsl(var(--brand-navy-950))]">Liaison Office</strong> — for market research and brand
+            <strong className="text-[hsl(var(--brand-navy-950))]">Liaison Office</strong> - for market research and brand
             representation only (no revenue-generating activity)
           </span>
         </li>
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            <strong className="text-[hsl(var(--brand-navy-950))]">Branch Office</strong> — for existing foreign companies
+            <strong className="text-[hsl(var(--brand-navy-950))]">Branch Office</strong> - for existing foreign companies
             wanting limited operational presence
           </span>
         </li>
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            <strong className="text-[hsl(var(--brand-navy-950))]">Wholly Owned Subsidiary</strong> — for full operational and
+            <strong className="text-[hsl(var(--brand-navy-950))]">Wholly Owned Subsidiary</strong> - for full operational and
             revenue control
           </span>
         </li>
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            <strong className="text-[hsl(var(--brand-navy-950))]">Joint Venture</strong> — for companies wanting a local
+            <strong className="text-[hsl(var(--brand-navy-950))]">Joint Venture</strong> - for companies wanting a local
             partner to navigate market nuances
           </span>
         </li>
@@ -142,7 +142,7 @@ const InsightsArticleMarketEntryGuideIndia = () => (
     </ArticleSection>
 
     <ArticleHighlight>
-      Market entry and language services intersect — a technically correct business setup can still fail if your
+      Market entry and language services intersect - a technically correct business setup can still fail if your
       customer-facing content doesn&apos;t resonate locally.{" "}
       <Link to="/language-localization/" className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
         Localization
@@ -159,7 +159,7 @@ const InsightsArticleMarketEntryGuideIndia = () => (
           market entry consulting
         </Link>{" "}
         with professional language and localization services, so businesses get both the legal/operational foundation and
-        the cultural fluency needed to succeed in India — under one roof.
+        the cultural fluency needed to succeed in India - under one roof.
       </p>
     </ArticleSection>
 

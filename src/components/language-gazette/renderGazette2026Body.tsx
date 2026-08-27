@@ -4,6 +4,7 @@ import {
   ArticleSection,
   ArticleTranslation,
 } from "@/components/language-gazette/GazetteArticleBlocks";
+import GazetteComicImageStack from "@/components/language-gazette/GazetteComicImageStack";
 
 const isNonLatin = (text: string) =>
   /[^\u0000-\u024F\u1E00-\u1EFF\s\d.,;:!?''\u2018\u2019""\u201C\u201D()\-—-]/.test(text);
@@ -57,6 +58,21 @@ const groupSections = (blocks: ContentBlock[]) => {
 };
 
 export const renderGazette2026Body = (article: Gazette2026Article) => {
+  if (article.contentMode === "images" && article.englishImages?.length) {
+    return (
+      <div className="overflow-hidden leading-none">
+        <GazetteComicImageStack images={article.englishImages} label="English" />
+        {article.translationImages?.length ? (
+          <GazetteComicImageStack
+            images={article.translationImages}
+            label="Translation"
+            className="border-t border-[hsl(var(--border-light))]"
+          />
+        ) : null}
+      </div>
+    );
+  }
+
   if (article.category === "Poetry") {
     const allLines = article.paragraphs.slice(1);
     // Strip the author line (typically second paragraph before poem starts), separator lines, and "TRANSLATION" markers
@@ -92,7 +108,9 @@ export const renderGazette2026Body = (article: Gazette2026Article) => {
   }
 
   const englishBlocks = toEnglishBlocks(article.paragraphs);
-  const translationBlocks = article.paragraphs.slice(1).filter((line) => isNonLatin(line) && !line.startsWith("- "));
+  const translationBlocks =
+    article.translationParagraphs ??
+    article.paragraphs.slice(1).filter((line) => isNonLatin(line) && !line.startsWith("- "));
   const sections = groupSections(englishBlocks);
   const [leadSection, ...restSections] = sections;
   const lead = leadSection?.paragraphs[0];

@@ -35,6 +35,7 @@ const LanguageGazetteArticleRoute = () => {
       image={article.image}
       issueLabel={article.month}
       relatedArticleSlugs={relatedArticleSlugs}
+      fullBleedBody={article.contentMode === "images"}
     >
       {renderGazette2026Body(article)}
     </LanguageGazetteArticleShell>

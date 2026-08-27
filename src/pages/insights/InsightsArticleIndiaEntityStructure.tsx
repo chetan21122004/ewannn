@@ -89,7 +89,7 @@ const InsightsArticleIndiaEntityStructure = () => (
       <p>
         A branch office lets an established foreign company carry out a defined set of commercial activities while remaining an
         extension of the parent. Permitted activities include export/import, professional services, research, and technical
-        support. It can earn income and is taxed at the foreign-company rate — reduced from 40% to 35% (plus surcharge and
+        support. It can earn income and is taxed at the foreign-company rate - reduced from 40% to 35% (plus surcharge and
         cess) from the 2024 financial year.
       </p>
       <p className="mt-4">
@@ -105,7 +105,7 @@ const InsightsArticleIndiaEntityStructure = () => (
     <ArticleSection title="Wholly owned subsidiary: full control as a separate company">
       <p>
         A wholly owned subsidiary is a separate Indian company, usually a private limited company, owned entirely by the
-        foreign parent. It can do everything a domestic company can do. It is taxed as a domestic company — a subsidiary
+        foreign parent. It can do everything a domestic company can do. It is taxed as a domestic company - a subsidiary
         opting into the concessional regime pays a base rate of roughly 22% (plus surcharge and cess). Liability is
         ring-fenced to the capital invested.
       </p>
@@ -147,7 +147,7 @@ const InsightsArticleIndiaEntityStructure = () => (
         Under the current FEMA framework, a liaison office generally requires the parent to show a profit-making track record
         over the preceding three years and net worth of at least USD 50,000, while a branch office requires a five-year track
         record and net worth of at least USD 100,000. In October 2025 the RBI published draft regulations proposing to remove
-        these thresholds — as of now those changes remain in draft. Confirm the current position when you file.
+        these thresholds - as of now those changes remain in draft. Confirm the current position when you file.
       </p>
     </ArticleSection>
 

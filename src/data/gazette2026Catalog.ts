@@ -13,6 +13,10 @@ export type Gazette2026Article = {
   image: string;
   paragraphs: string[];
   hasStaticPage: boolean;
+  contentMode?: "text" | "images";
+  englishImages?: string[];
+  translationImages?: string[];
+  translationParagraphs?: string[];
 };
 
 export const gazette2026Catalog: Gazette2026Article[] = [
@@ -25,7 +29,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "The arrival of January brings a global wave of renewal, and in India, this transition is embraced with great enthusiasm. Beyond just a date on the calendar, it is a time when people commit to transformative resolutions t",
     readTime: "3 min read",
     datePublished: "2026-01-15",
-    image: "/stitch/language-gazette/article-market-entry.jpg",
+    image: "/stitch/insights/article-interpretation.jpg",
     hasStaticPage: false,
     paragraphs: [
       "Fresh Starts: New Year Resolutions and Cultural Beginnings in India",
@@ -72,7 +76,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "The marking of a New Year 2026 is an age-old tradition around the world - food, fireworks and reflection with friends and family are common threads, but ultimately this varies between different calendars, religions and c",
     readTime: "3 min read",
     datePublished: "2026-01-15",
-    image: "/stitch/insights/article-interpretation.jpg",
+    image: "/stitch/language-gazette/article-cultural-iq.jpg",
     hasStaticPage: false,
     paragraphs: [
       "Instagram id - m_soundarya",
@@ -106,7 +110,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "Look, I get it. Every time January rolls around, we act like we’ve just been handed a magical get-out-of-jail-free card for all our bad habits from last year. It’s that “Fresh Start Effect” hitting us right in the dopami",
     readTime: "4 min read",
     datePublished: "2026-01-15",
-    image: "/stitch/insights/gazette-market-insight.jpg",
+    image: "/stitch/language-gazette/article-market-entry.jpg",
     hasStaticPage: false,
     paragraphs: [
       "January: Why We’re All Hooked on the “Fresh Start” Myth",
@@ -134,7 +138,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "I joined Ewan Business Solutions on 12th May 2025 as a Business Development Executive, and as I complete seven months here, I can confidently say that this journey has already become a defining chapter in my career. Thes",
     readTime: "3 min read",
     datePublished: "2026-01-15",
-    image: "/stitch/language-gazette/article-operations.jpg",
+    image: "/stitch/insights/gazette-market-insight.jpg",
     hasStaticPage: false,
     paragraphs: [
       "Seven Months of Growth, Learning, and New Possibilities at Ewan",
@@ -155,7 +159,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "A crow was sitting, in the branch of an olive tree. It was near a cascade, far away from the mountain foot of main Mumbai city and the districts. Time was the then when Pandavas and Kauravas and Lord Krishna were illumin",
     readTime: "3 min read",
     datePublished: "2026-01-15",
-    image: "/stitch/insights/article-strategy.jpg",
+    image: "/stitch/insights/article-asian-market.jpg",
     hasStaticPage: false,
     paragraphs: [
       "The Unique Short Story For The Hindu",
@@ -178,7 +182,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "In a country like India, where hundreds of languages coexist, the priority of communication remains universal. It doesn’t matter which language you speak; what matters is substance and intentionality . Too often, we spea",
     readTime: "3 min read",
     datePublished: "2026-02-15",
-    image: "/stitch/insights/article-interpretation.jpg",
+    image: "/stitch/language-gazette/article-cultural-iq.jpg",
     hasStaticPage: false,
     paragraphs: [
       "How Culture Shapes What We Say—and What We Don’t",
@@ -197,7 +201,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
       "The Power of Silence",
       "Silence is often the most powerful tool in a relationship. There are moments when a verbal reply isn't necessary. In those times, silence acts as a profound response, preventing unnecessary conflict.",
       "If we fail to think before we speak, our language can become abusive, causing pain to both the speaker and the listener. Before you speak, ask yourself: \"Will these words hurt?\" If the answer is yes, silence may be the better path.",
-      "- સં�સ્કૃ�તિ� આપણી� વા�ણી�ને� કૃ�વા� રી��� ઘડે� છે� આપણી� શું� બો�લી�એ છે�એ અને� શું� નેહીં�",
+      "સં�સ્કૃ�તિ� આપણી� વા�ણી�ને� કૃ�વા� રી��� ઘડે� છે� આપણી� શું� બો�લી�એ છે�એ અને� શું� નેહીં�",
       "ભા�રત જે�વા� દે�શમાં��, જ્યાં�� અને�ક ભા�ષા�ઓ બો�લા�ય છે�, ત્ય�� વા�તચી�તને� પ્રા�થમિમાંકત� બોદેલા�ત� નેથ�. તમાં� કઈ ભા�ષા� બો�લા� છે� ત� માંહત્વાનું � નેથ�; માંહત્વાનું � એ છે� ક� તમાં� શું� બો�લા� છે� અને� તમાં�ર\" વા�ત પા�છેળને� હીં�તુ� શું � છે�. ઘણી�વા�ર આપાણી� મિવાચી�ય�) વાગર બો�લા�એ છે\"એ, જે�ને� ક�રણી� 'હ�ઈ-ક�ન્ટે�ક્સ્ટે' (High-context) અને� 'લા�-ક�ન્ટે�ક્સ્ટે' (Low-context) સં�સ્ક1મિતઓ વાચ્ચી� થ�ય . ગ�રસંમાંજે ઉભા� છે�",
       "બો�લી�� પહીં�લી� તિવાચા�રીવા�ને� કૃળા�",
       "વા�તચી�ત એ જીવાનેને� આવાશ્યક ભા�ગ છે�, પાર6તુ ત�માં�� માંય�)દે� હ�વા� જેરૂર\" છે�. જ્યાં�ર� આપાણી� મિવાચી�ય�) વાગર બો�લા�એ છે\"એ, . ત્ય�ર� આપાણી� શબ્દો� ક્યા�ર�ક અથ)હ\"ને અથવા� નું કસં�નેક�રક બોને� જાય છે� જે� આપાણી� બો�લાત� પાહ�લા� મિવાચી�રવા�ને� આદેત પા�ડી=એ, ત� આપાણી� શબ્દો� સં�માં� વ્યક્તિક્તને� ઠે�સં પાહAચી�ડીવા�ને� બોદેલા� સંક�ર�ત્માંક પ્રાભા�વા પા�ડી� છે�.",
@@ -228,7 +232,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "Working with Ewan has been a rewarding and exciting experience that extends much beyond typical project management. One of the most meaningful aspects of my journey has been my participation in a project with one of Japa",
     readTime: "3 min read",
     datePublished: "2026-02-15",
-    image: "/stitch/insights/gazette-market-insight.jpg",
+    image: "/stitch/language-gazette/article-market-entry.jpg",
     hasStaticPage: false,
     paragraphs: [
       "Working with Ewan has been a rewarding and exciting experience that extends much beyond typical project management. One of the most meaningful aspects of my journey has been my participation in a project with one of Japan's leading glove manufacturers, where I participated in multiple stakeholder discussions, coordinated on-site factory visits, and gained extensive experience with real-world business operations and cross-cultural collaboration. The event helped me improve my abilities to manage difficult tasks and form solid professional relationships.",
@@ -247,7 +251,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "After, I proposed thee It was among crowd, I Touched thy hand, I was proud Thou were in feminine, days Did not accept. It is for me an infinite wait After five days, had had thou",
     readTime: "3 min read",
     datePublished: "2026-02-15",
-    image: "/stitch/insights/article-asian-market.jpg",
+    image: "/stitch/language-gazette/article-operations.jpg",
     hasStaticPage: false,
     paragraphs: [
       "Prabir Kumar Rath",
@@ -277,7 +281,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "Culture is the silent architect of our conversations. It is the one that draws up the blueprints of expression, determining which ideas are allowed to see the light of day and which are left in the dark. Each culture cre",
     readTime: "4 min read",
     datePublished: "2026-02-15",
-    image: "/stitch/language-gazette/article-cultural-iq.jpg",
+    image: "/stitch/insights/article-strategy.jpg",
     hasStaticPage: false,
     paragraphs: [
       "The Architecture of Silence",
@@ -315,7 +319,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "In today’s rapidly evolving business landscape, the most powerful competitive advantage an organization can possess isn’t technology, capital, or market position it’s culture. As COO of EWAN, I’ve come to deeply apprecia",
     readTime: "3 min read",
     datePublished: "2026-03-15",
-    image: "/stitch/language-gazette/article-cultural-iq.jpg",
+    image: "/stitch/insights/article-strategy.jpg",
     hasStaticPage: false,
     paragraphs: [
       "Leading with Purpose: Building a Culture That Drives Results",
@@ -334,7 +338,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "The word \"language\" sometimes called a global language or, rarely, an international language is a language that is geographically widespread and makes it possible for members of different language communities to communic",
     readTime: "6 min read",
     datePublished: "2026-03-15",
-    image: "/stitch/language-gazette/article-operations.jpg",
+    image: "/stitch/insights/gazette-market-insight.jpg",
     hasStaticPage: false,
     paragraphs: [
       "Many languages, One Heart - The Joy of speaking many languages",
@@ -384,7 +388,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "To me, living in more than one language is like possessing several different keys to various worlds. Each language holds its own unique significance, shaping how I think, work, and connect with those around me. It isn’t ",
     readTime: "3 min read",
     datePublished: "2026-03-15",
-    image: "/stitch/insights/article-asian-market.jpg",
+    image: "/stitch/language-gazette/article-operations.jpg",
     hasStaticPage: false,
     paragraphs: [
       "What does \"living in more than one language\" mean to you",
@@ -405,7 +409,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "_________________________ Once an omniscient, long long ago, went to Rome Spending only a few cents.",
     readTime: "3 min read",
     datePublished: "2026-03-15",
-    image: "/stitch/language-gazette/article-market-entry.jpg",
+    image: "/stitch/insights/article-interpretation.jpg",
     hasStaticPage: false,
     paragraphs: [
       "When.. In Rome",
@@ -439,7 +443,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "Living in multiple languages is like living in a house with multiple windows through which we can see a different view of the world outside. Our first words and language have been developing since we were children. At ho",
     readTime: "3 min read",
     datePublished: "2026-03-15",
-    image: "/stitch/insights/article-strategy.jpg",
+    image: "/stitch/insights/article-asian-market.jpg",
     hasStaticPage: false,
     paragraphs: [
       "Words of Home, Words of the World",
@@ -504,7 +508,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
       ". பெ�ண்களுக்க�னா வ)தி�கள் ஏரா�ளிம் ஆனா�ல் ஆண்களுக்கு . . அலைமதி� இது சமந�லை&ய)ன்லைமலைய க�ட்டுக�றிது",
       ". அவள் தின் வலிலைய மலைறிந்தி தீ போ��& சுமக்க�றி�ள் . . உலைடந்தி�ருந்தி�லும் ச�ரா�க்க�றி�ள் வ)ழுந்தி�லும் ந�ற்க�றி�ள் அவள் போகட்�து எளி�தி�னாபோதி: அன்பு, மரா�ய�லைதி, இடம், புரா�தில்.",
       "எழு, பெ�ண்போணி. எல்லை&கலைளித் தி�ண்டி எழு. �யத்லைதியும் . சந்போதிகத்லைதியும் தி�ண்டி எழு",
-      "- நீ வ�ழ்ந்து பெக�ண்டிருக்க�றி�ய் மட்டும் அல்& எதி�ர்க�&த்லைதி . உருவ�க்குக�றி�ய்",
+      "நீ வ�ழ்ந்து பெக�ண்டிருக்க�றி�ய் மட்டும் அல்& எதி�ர்க�&த்லைதி . உருவ�க்குக�றி�ய்",
       ". . லைதிரா�யம�க இரு உலைடக்க முடிய�திவளி�க இரு ந�றுத்தி . முடிய�திவளி�க இரு",
       ". . ஒரு பெ�ண்ணி�க இருப்�து கட்டுப்��டு அல்& அது சக்தி� அந்தி . சக்தி� உ&கத்லைதி ம�ற்றும்",
     ],
@@ -518,7 +522,7 @@ export const gazette2026Catalog: Gazette2026Article[] = [
     excerpt: "This was 2012, when I conducted the field survey for my research work on primary education in North Bengal. My field site was none other than the thick and peaceful Gorumara National Park, home to tall trees, distant hil",
     readTime: "3 min read",
     datePublished: "2026-04-15",
-    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80",
+    image: "/stitch/insights/article-strategy.jpg",
     hasStaticPage: false,
     paragraphs: [
       "From Strangers to Stories: A Journey Through Language",
@@ -581,6 +585,92 @@ export const gazette2026Catalog: Gazette2026Article[] = [
       "Armaan",
     ],
   },
+  {
+    slug: "family-planning-prabir-rath",
+    title: "Family Planning",
+    author: "Prabir Kumar Rath",
+    category: "Story",
+    month: "Aug 2026",
+    excerpt: "A visual story by Prabir Kumar Rath - English panels with Bengali translation on the same page.",
+    readTime: "3 min read",
+    datePublished: "2026-08-15",
+    image: "/TLG/TLG_2026/Aug 2026/Prabir Rath - English 3.jpeg",
+    hasStaticPage: false,
+    contentMode: "images",
+    englishImages: [
+      "/TLG/TLG_2026/Aug 2026/Prabir Rath - English 3.jpeg",
+      "/TLG/TLG_2026/Aug 2026/Prabir Rath - English 2.jpeg",
+      "/TLG/TLG_2026/Aug 2026/Prabir Rath - English 1.jpeg",
+    ],
+    translationImages: [
+      "/TLG/TLG_2026/Aug 2026/Prabir Rath - Bengali 1.jpeg",
+      "/TLG/TLG_2026/Aug 2026/Prabir Rath - Bengali 2.jpeg",
+      "/TLG/TLG_2026/Aug 2026/Prabir Rath - Bengali 3.jpeg",
+    ],
+    paragraphs: [
+      "Family Planning",
+      "Writer: Prabir Kumar Rath",
+    ],
+  },
+  {
+    slug: "the-words-no-other-language-can-hold-twisha-ray",
+    title: "The Words No Other Language Can Hold",
+    author: "Twisha Ray",
+    category: "Essay",
+    month: "Aug 2026",
+    excerpt: "Dépaysement: A Feeling Beyond Translation",
+    readTime: "3 min read",
+    datePublished: "2026-08-15",
+    image: "/stitch/insights/article-asian-market.jpg",
+    hasStaticPage: false,
+    translationParagraphs: [
+      "Les mots qu'aucune autre langue ne peut contenir",
+      "Dépaysement : un sentiment au-delà de la traduction",
+      "Il existe certains mots qui décrivent un objet, une émotion ou une action avec une telle précision qu'il n'existe aucun équivalent exact en anglais pour les exprimer. L'un de ces mots est « dépaysement », un mot français qui exprime le sentiment de se retrouver dans un environnement inconnu et de vivre des changements qui peuvent être stimulants, exaltants et parfois déconcertants. Le terme « dépaysement » ne peut pas être traduit par un seul mot en anglais. L'expression « change of scenery » (« changement de décor ») n'en exprime qu'une partie du sens.",
+      "C'est en voyageant dans un endroit totalement nouveau que j'ai découvert ce mot. Tout autour de moi semblait différent : les routes, les sons, la nourriture et le rythme de la vie. Au début, je me sentais perdu dans cet environnement inconnu, mais après quelque temps, ce sentiment d'étrangeté a commencé à m'enthousiasmer. Pour essayer d'exprimer en anglais ce que je ressentais, je l'aurais simplement décrit comme le fait d'« être dans un endroit différent ».",
+      "Mais quelque chose se perdait dans cette traduction. Ce qui disparaissait, c'était le sentiment de quitter ce qui nous est familier. Le mot « dépaysement » implique bien plus qu'un simple voyage ou qu'un changement de décor ; il évoque les émotions liées au fait de sortir de son univers habituel et de découvrir quelque chose qui se trouve au-delà de nos repères.",
+      "Dire « dépaysement » en anglais par « change of scenery » décrit assez bien la situation, mais ne parvient pas à en transmettre toute l'essence. Le mot porte en lui une expérience, une émotion et une manière particulière de percevoir le monde.",
+      "C'est peut-être pour cette raison que certains mots ne peuvent pas être traduits parfaitement. Ils représentent quelque chose qui dépasse leur simple définition. Le mot dépaysement nous rappelle que s'éloigner de ce qui nous est familier peut parfois nous permettre de voir le monde, et même de nous voir nous-mêmes, d'une manière différente.",
+    ],
+    paragraphs: [
+      "The Words No Other Language Can Hold",
+      "Dépaysement: A Feeling Beyond Translation",
+      "There are some words which convey a description of an object, emotion or action in such an exact way that there is no exact equivalent in English language to express that word. One such word is dépaysement which is a French word. It expresses the sense of being in unfamiliar surroundings and undergoing changes which may be stimulating, exhilarating and at times disconcerting. The term dépaysement cannot be defined with any one word in English language. \"Change of scenery\" explains the partial meaning of the word.",
+      "It was while traveling to a totally new place that I encountered this word. Everything around me seemed different – the roads, the sounds, the food and the pace of living. Initially, I felt lost in those new surroundings but after sometime, this sense of unfamiliarity excited me. Trying to put into English what I was feeling, I expressed it as \"being somewhere different.\"",
+      "What got lost was the feeling of departing from the known. The term \"dépaysement\" implies something more than just traveling; it represents the feelings associated with discovering something beyond your world. Saying \"dépaysement\" in English means \"change of scenery,\" which describes the scenario well but fails to convey its essence.",
+      "Maybe this is why certain words cannot be translated; they imply something other than just their definition. This term \"dépaysement\" tells us that being far from the known may help us see things differently.",
+    ],
+  },
+  {
+    slug: "the-word-i-couldnt-translate-disha-shah",
+    title: "The word I Couldn't Translate",
+    author: "Disha Shah",
+    category: "Essay",
+    month: "Aug 2026",
+    excerpt: "Language is more than a tool for communication; it is the container of our culture, soul, and shared literacy. No matter how much vocabulary we master in English, certain words in Hindi and Gujarati refuse to be translat",
+    readTime: "3 min read",
+    datePublished: "2026-08-15",
+    image: "/stitch/insights/article-interpretation.jpg",
+    hasStaticPage: false,
+    translationParagraphs: [
+      "\"હું ભાષાંતર કરી શક્યો નહીં\"",
+      "શબ્દ ભાષા ફક્ત સંદેશ વ્યવહાર માટે એક સાધન કરતાં વધુ છે; તે આપણી સંસ્કૃતિ, આત્મા અને સાંહિત્યિક સાહિત્યનું ભંડાર છે. આપણે અંગ્રેજીમાં ગમે તેટલી શબ્દભંડોળમાં નિપુણતા મેળવીએ, હિન્દી અને ગુજરાતીમાં કેટલાક શબ્દો તેમના જાદુ ગુમાવ્યા વિના અનુવાદ થવાન નકાર કરે છે. તમે શબ્દકોશ સમકક્ષ શધ્ધ શોધી શકો છો, પરંતુ તમે તેની લાગણીનો અનુવાદ કરી શકતા નથી.",
+      "મમતા શબ્દ લો. અંગ્રેજી શબ્દકોશો ઘણી વખત તેને \"માતૃત્વ સ્નેહ\" તરીકે રજૂ કરે છે, પરંતુ તે તેથી ઘણું મોટું છે. મમતા જૈવિક માતૃત્વ સાથે કડાક રીતે જોડાયેલી નથી; તે એક ગહન, નિઃસ્વાર્થ હાથ છે. તે શુદ્ધ બલિદાન, આરામ અને રક્ષણની વૃત્તિ છે જે કોઈપણ ઊંડા સંબંધમાં અસ્તિત્વમાં હોઈ શકે છે. તે આત્મામાં અનુભવતી લાગણી છે.",
+      "એ જ રીતે, બેટા વિચાર કરો. અંગ્રેજીમાં, આપણે તેને \"dear\" અથવા \"child\" સાથે બદલી શકીએ છીએ, પરંતુ તે લેબલ્સ દૂરના અને ક્લિનિકલ લાગે છે. જ્યારે કોઈ વડીલ તમને બેટા તરીકે સંબોધે છે, ત્યારે તે તરત જ અવરોધો ઓગળી નાખે છે. તે સલામતી, પોતાનુપણું અને હૃદયસ્પર્શી જોડાણની તાત્કાલિક ભાવના લાવે છે જે \"dear\" ક્યારેય નકલી કરી શકતું નથી.",
+      "પછી કરુણા અને સેવા છે. જ્યારે કરુણાનો અનુવાદ ઘણી વખત \"compassion\" તરીકે થાય છે, ત્યારે સામાન્ય કરુણામાં કરુણા જેવી જન્મજાત હાથ, સૌમ્યતા અને નમ્રતા ધરાવે છે તેનો અભાવ હોય છે. તે બીજાના દુઃખ પ્રતિ સક્રિય, નમ્રતા છે. સેવા અંગ્રેજી શબ્દ \"service\" થી ઘણી આગળ વધે છે. સેવા કરવાનો અર્થ સંપૂર્ણપણે સ્વાર્થ વિના કાર્ય કરવું, સમાજ અથવા રાષ્ટ્રને ઉત્થાન માટે તમારા પ્રયાસોને સમર્પિત કરવું. જ્યારે તમે સાચી સેવામાં જોડાઓ છો, ત્યારે તમે બદલામાં કંઈપણ અપેક્ષા રાખ્યા વિના આપો છો, અને બ્રહ્માંડ શાંતિથી તમને ટેકો આપે છે.",
+      "છેલ્લે, પ્રેમ \"love\" થી સંપૂર્ણપણે અલગ છે. પ્રેમ જટિલ હોઈ શકે છે, પરંતુ પ્રેમ શુદ્ધ, માધુર્ય અને ઉપચારક છે. તે સંબંધોને પોષે છે, કઠોરતાને નરમ કરે છે અને સ્વને પુનઃસ્થાપિત કરે છે.",
+      "આ શબ્દો ચોક્કસપણે જાદુઈ છે કારણ કે તે આપણી વિરાસત ધરાવે છે. અંગ્રેજી ખ્યાલ વ્યક્ત કરી શકે છે, પરંતુ ભારતીય ભાષાઓ લાગણી વ્યક્ત કરે છે. કેટલાક શબ્દોનો અનુવાદ કરવા માટે નથી - તેઓ ફક્ત અનુભવવા માટે છે.",
+    ],
+    paragraphs: [
+      "The word I Couldn't Translate",
+      "Language is more than a tool for communication; it is the container of our culture, soul, and shared literacy. No matter how much vocabulary we master in English, certain words in Hindi and Gujarati refuse to be translated without losing their magic. You can find dictionary equivalents, but you cannot translate the feeling.",
+      "Take the word Mamta. English dictionaries often render it as \"motherly affection,\" but it is far greater than that. Mamta isn't strictly tied to biological motherhood; it is a profound, selfless warmth. It is an instinct of pure sacrifice, comfort, and protection that can exist in any deeply caring relationship. It is an emotion felt in the soul.",
+      "Similarly, consider Beta. In English, we might substitute it with \"dear\" or \"child,\" but those labels feel distant and clinical. When an elder addresses you as beta, it instantly dissolves barriers. It brings an immediate sense of safety, belonging, and heartfelt connection that \"dear\" can simply never replicate.",
+      "Then there is Karuna and Seva. While karuna is often translated as \"compassion,\" standard compassion lacks the innate warmth, gentleness, and humility that karuna carries. It is an active, polite tenderness toward another's pain. Seva goes far beyond the English word \"service.\" To do seva is to act completely without self-interest, devoting your effort purely to uplift society or the nation. When you engage in true seva, you give without expecting anything in return, and the universe quietly supports you.",
+      "Finally, Prem is entirely distinct from \"love.\" Love can be complicated, but prem is pure, sweet, and healing. It nurtures relationships, softens harshness, and restores the self.",
+      "These words are magical precisely because they carry our heritage. English can convey the concept, but Indian languages convey the emotion. Some words aren't meant to be translated- they are simply meant to be felt.",
+    ],
+  },
 ];
 
 export const gazette2026BySlug = Object.fromEntries(
@@ -596,4 +686,5 @@ export const gazette2026FeaturedByMonth = [
   "February 2026",
   "March 2026",
   "April 2026",
+  "Aug 2026",
 ].map((m) => gazette2026Catalog.find((a) => a.month === m)).filter(Boolean) as Gazette2026Article[];

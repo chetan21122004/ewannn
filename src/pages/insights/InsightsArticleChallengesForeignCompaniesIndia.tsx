@@ -14,7 +14,7 @@ import { absoluteUrl, faqPageSchema, itemListFromTitles } from "@/lib/schemaHelp
 const CANONICAL = "/insights/challenges-foreign-companies-india/";
 const TITLE = "Top 10 Challenges Foreign Companies Face When Entering the Indian Market";
 const DESCRIPTION =
-  "Discover the top 10 challenges foreign businesses face when entering the Indian market — and practical strategies to overcome each one, from UVAN.";
+  "Discover the top 10 challenges foreign businesses face when entering the Indian market - and practical strategies to overcome each one, from UVAN.";
 
 const challenges = [
   {
@@ -33,7 +33,7 @@ const challenges = [
   },
   {
     title: "Cultural misalignment in marketing",
-    body: "Messaging that works in Western markets can misfire in India without cultural adaptation — not just translation.",
+    body: "Messaging that works in Western markets can misfire in India without cultural adaptation - not just translation.",
   },
   {
     title: "Talent acquisition and retention",
@@ -49,7 +49,7 @@ const challenges = [
   },
   {
     title: "Regional market diversity",
-    body: "A strategy that works in Mumbai may not work in Bengaluru or Delhi — India is best treated as several markets, not one.",
+    body: "A strategy that works in Mumbai may not work in Bengaluru or Delhi - India is best treated as several markets, not one.",
   },
   {
     title: "Intellectual property protection",
@@ -57,7 +57,7 @@ const challenges = [
   },
   {
     title: "Underestimating localization needs",
-    body: "Companies that treat localization as an afterthought — rather than a core part of market entry — often see weaker adoption and trust from local customers.",
+    body: "Companies that treat localization as an afterthought - rather than a core part of market entry - often see weaker adoption and trust from local customers.",
     link: { href: "/insights/localization-vs-translation-difference", label: "Localization vs translation" },
   },
 ];
@@ -105,7 +105,7 @@ const InsightsArticleChallengesForeignCompaniesIndia = () => (
   >
     <ArticleLead>
       Entering the Indian market offers huge opportunity, but foreign companies routinely underestimate the operational and
-      cultural hurdles involved. Here are the ten most common challenges — and how to navigate them.
+      cultural hurdles involved. Here are the ten most common challenges - and how to navigate them.
     </ArticleLead>
 
     {challenges.map((challenge, index) => (
@@ -123,7 +123,7 @@ const InsightsArticleChallengesForeignCompaniesIndia = () => (
 
     <ArticleHighlight>
       Most of these challenges come down to not having integrated legal, operational, and localization expertise from day one.
-      That&apos;s the gap UVAN is built to close — combining{" "}
+      That&apos;s the gap UVAN is built to close - combining{" "}
       <Link to="/market-entry/" className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
         market entry consulting
       </Link>{" "}

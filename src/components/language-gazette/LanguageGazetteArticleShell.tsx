@@ -10,6 +10,7 @@ import type { GazetteArticle } from "@/data/languageGazetteIssues";
 import { latestGazetteIssue, gazetteArticlePath } from "@/data/languageGazetteIssues";
 import { gazette2026BySlug } from "@/data/gazette2026Catalog";
 import { absoluteUrl, articleSchema, breadcrumbSchema, personSoham, personSchema } from "@/lib/schemaHelpers";
+import { cn } from "@/lib/utils";
 
 type LanguageGazetteArticleShellProps = {
   slug: string;
@@ -24,6 +25,8 @@ type LanguageGazetteArticleShellProps = {
   imageAlt?: string;
   issueLabel?: string;
   relatedArticleSlugs?: string[];
+  /** Image-only comics: flush panels edge-to-edge inside the article card */
+  fullBleedBody?: boolean;
   children: ReactNode;
 };
 
@@ -245,6 +248,7 @@ const LanguageGazetteArticleShell = ({
   imageAlt,
   issueLabel = issue.shortLabel,
   relatedArticleSlugs,
+  fullBleedBody = false,
   children,
 }: LanguageGazetteArticleShellProps) => {
   const pageUrl = absoluteUrl(canonicalPath);
@@ -468,9 +472,22 @@ const LanguageGazetteArticleShell = ({
                 </div>
               </div>
 
-              <div className="gazette-article-page relative overflow-hidden rounded-[1.25rem] border border-[hsl(var(--border-light))] bg-white px-5 py-8 shadow-[0_20px_60px_-28px_rgba(26,22,51,0.18)] ring-1 ring-black/[0.03] sm:px-8 sm:py-10 md:px-10 md:py-12 lg:px-12">
+              <div
+                className={cn(
+                  "gazette-article-page relative overflow-hidden rounded-[1.25rem] border border-[hsl(var(--border-light))] bg-white shadow-[0_20px_60px_-28px_rgba(26,22,51,0.18)] ring-1 ring-black/[0.03]",
+                  fullBleedBody
+                    ? "p-0"
+                    : "px-5 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 lg:px-12",
+                )}
+              >
                 <div className={articleBodyClassName}>{children}</div>
-                <ArticleServiceLinks />
+                {fullBleedBody ? (
+                  <div className="px-5 pb-8 pt-6 sm:px-8 md:px-10 [&_nav]:mt-0">
+                    <ArticleServiceLinks />
+                  </div>
+                ) : (
+                  <ArticleServiceLinks />
+                )}
               </div>
 
               <div className={`mt-6 p-5 lg:hidden ${readingPanelClassName}`}>

@@ -53,7 +53,7 @@ const InsightsArticleLocalizationVsTranslation = () => (
   >
     <ArticleLead>
       <strong>Quick answer:</strong> Translation converts text from one language to another while preserving meaning.
-      Localization goes further — adapting content, design, currency, imagery, tone, and cultural references so it feels native
+      Localization goes further - adapting content, design, currency, imagery, tone, and cultural references so it feels native
       to a specific market. Translation makes content readable; localization makes it resonate.
     </ArticleLead>
 
@@ -71,7 +71,7 @@ const InsightsArticleLocalizationVsTranslation = () => (
     <ArticleSection title="What is localization?">
       <p>
         Localization adapts an entire product, website, or piece of content to feel like it was created specifically for a
-        local market — not just translated into it. This includes:
+        local market - not just translated into it. This includes:
       </p>
       <ul className="mt-4 space-y-3">
         <li className="flex gap-3">
@@ -97,7 +97,7 @@ const InsightsArticleLocalizationVsTranslation = () => (
       </ul>
       <p className="mt-4">
         <strong className="text-[hsl(var(--brand-navy-950))]">Example:</strong> Adapting a marketing campaign&apos;s tone,
-        visuals, and offers for the Indian market — not just translating the copy into Hindi.
+        visuals, and offers for the Indian market - not just translating the copy into Hindi.
       </p>
     </ArticleSection>
 
@@ -115,7 +115,7 @@ const InsightsArticleLocalizationVsTranslation = () => (
 
     <ArticleHighlight>
       A perfectly translated website can still fail if the imagery, currency, or tone feels foreign to local users.
-      Localization is what builds trust and drives conversion in a new market — see our{" "}
+      Localization is what builds trust and drives conversion in a new market - see our{" "}
       <Link to="/insights/market-entry-guide-india" className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
         India market entry guide
       </Link>
@@ -128,7 +128,7 @@ const InsightsArticleLocalizationVsTranslation = () => (
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
             <strong className="text-[hsl(var(--brand-navy-950))]">Translation is usually sufficient for:</strong> legal
-            documents, contracts, internal communications, certified paperwork — see{" "}
+            documents, contracts, internal communications, certified paperwork - see{" "}
             <Link to="/insights/certified-translation-services-legal-requirements" className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
               certified translation requirements
             </Link>
@@ -160,7 +160,7 @@ const InsightsArticleLocalizationVsTranslation = () => (
     </ArticleSection>
 
     <ArticleClosing>
-      Choosing the wrong approach costs time and credibility. Match the service to the content — not the other way around.
+      Choosing the wrong approach costs time and credibility. Match the service to the content - not the other way around.
     </ArticleClosing>
   </InsightsArticleShell>
 );

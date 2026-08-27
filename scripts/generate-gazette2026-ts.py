@@ -37,12 +37,16 @@ SLUG_OVERRIDES: dict[str, str] = {
     "March 2026/Prabir Rath - Poem - English & Bengali": "when-in-rome-prabir-rath",
     "March 2026/Soundarya Mohan - Article - English & Hindi": "many-languages-one-heart-soundarya",
     "March 2026/Twisha Ray - Article - English & Spanish": "words-of-home-words-of-the-world",
+    "Aug 2026/Prabir Rath - Article - English & Bengali": "family-planning-prabir-rath",
+    "Aug 2026/Disha Shah - Article - English & Gujarati": "the-word-i-couldnt-translate-disha-shah",
+    "Aug 2026/Twisha Ray - Article - English & French": "the-words-no-other-language-can-hold-twisha-ray",
 }
 
 # ─── manual title overrides (md path suffix → title) ─────────────────────────
 TITLE_OVERRIDES: dict[str, str] = {
     "February 2026/Ewan Insights": "Japan, Kerala, and Cross-Border Learning at Ewan",
     "March 2026/Prabir Rath - Poem - English & Bengali": "When in Rome",
+    "Aug 2026/Prabir Rath - Article - English & Bengali": "Family Planning",
 }
 
 # ─── manual author overrides ──────────────────────────────────────────────────
@@ -51,6 +55,7 @@ AUTHOR_OVERRIDES: dict[str, str] = {
     "March 2026/Ewan Insights (1)": "Apoorva Vaidya-Kakade",
     "January 2026/EWAN Insights - Shreeyash Phaltankar": "Shreeyash Phaltankar",
     "April 2026/Meera Kathija- Article - English & Tamil": "Meera Kathija",
+    "Aug 2026/Prabir Rath - Article - English & Bengali": "Prabir Kumar Rath",
 }
 
 # ─── images cycling pool ──────────────────────────────────────────────────────
@@ -69,6 +74,7 @@ MONTH_DATES = {
     "February 2026": "2026-02-15",
     "March 2026": "2026-03-15",
     "April 2026": "2026-04-15",
+    "Aug 2026": "2026-08-15",
 }
 
 NON_LATIN_RE = re.compile(
@@ -110,6 +116,29 @@ def parse_md(path: str) -> dict:
     with open(path, encoding="utf-8", errors="replace") as f:
         raw = f.read()
 
+    content_mode = "text"
+    english_images: list[str] = []
+    translation_images: list[str] = []
+    month_folder = rel.split("/")[0] if "/" in rel else month
+    translation_started = False
+
+    for line in raw.splitlines():
+        stripped = line.strip()
+        if "<!-- content-mode: images -->" in stripped:
+            content_mode = "images"
+        english_match = re.search(r"<!-- english-images:\s*(.+?) -->", stripped)
+        if english_match:
+            for name in english_match.group(1).split("|"):
+                name = name.strip()
+                if name:
+                    english_images.append(f"/TLG/TLG_2026/{month_folder}/{name}")
+        bengali_match = re.search(r"<!-- bengali-images:\s*(.+?) -->", stripped)
+        if bengali_match:
+            for name in bengali_match.group(1).split("|"):
+                name = name.strip()
+                if name:
+                    translation_images.append(f"/TLG/TLG_2026/{month_folder}/{name}")
+
     lines = raw.splitlines()
 
     fname_base = os.path.splitext(os.path.basename(path))[0]
@@ -123,7 +152,7 @@ def parse_md(path: str) -> dict:
     # ── category (needed for title fallbacks) ──
     if "poem" in lower:
         category = "Poetry"
-    elif "story" in lower:
+    elif "story" in lower or content_mode == "images":
         category = "Story"
     elif "ewan insights" in lower:
         category = "Ewan Insights"
@@ -175,15 +204,24 @@ def parse_md(path: str) -> dict:
 
     # ── paragraphs: clean each non-empty paragraph ──
     paragraphs: list[str] = []
+    translation_paragraphs: list[str] = []
     current: list[str] = []
+    current_bucket = paragraphs
 
     def flush():
         text = clean_md(" ".join(current)).strip()
         if text and len(text) > 3:
-            paragraphs.append(text)
+            current_bucket.append(text)
         current.clear()
 
     for line in lines:
+        stripped = line.strip()
+        if "<!-- translation-start -->" in stripped:
+            if current:
+                flush()
+            translation_started = True
+            current_bucket = translation_paragraphs
+            continue
         if re.match(r"^\s*$", line):
             if current:
                 flush()
@@ -192,7 +230,9 @@ def parse_md(path: str) -> dict:
                 flush()
             heading_text = clean_md(re.sub(r"^\s*#{1,6}\s*", "", line)).strip()
             if heading_text and len(heading_text) > 2:
-                paragraphs.append(heading_text)
+                current_bucket.append(heading_text)
+        elif stripped.startswith("<!--"):
+            continue
         else:
             line_clean = re.sub(r"^\s*[-*+]\s+", "", line)
             line_clean = re.sub(r"^\s*\d+\.\s+", "", line_clean)
@@ -211,6 +251,8 @@ def parse_md(path: str) -> dict:
         and not re.match(r"^(name|instagram|contact|place)\s*[--]", p, re.IGNORECASE)
     ]
     excerpt = re.sub(r"\s+", " ", excerpt_paras[0])[:220] if excerpt_paras else title[:100]
+    if content_mode == "images":
+        excerpt = f"A visual story by {author} - English panels with Bengali translation on the same page."
 
     # ── read time ──
     word_count = len(" ".join(p for p in paragraphs if not is_non_latin(p)).split())
@@ -228,6 +270,10 @@ def parse_md(path: str) -> dict:
         "image": "",  # filled after
         "paragraphs": paragraphs,
         "hasStaticPage": slug in STATIC_SLUGS,
+        "contentMode": content_mode,
+        "englishImages": english_images,
+        "translationImages": translation_images,
+        "translationParagraphs": translation_paragraphs,
     }
 
 
@@ -235,7 +281,7 @@ def ts_string(value: str) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
-MONTH_ORDER = {"January 2026": 0, "February 2026": 1, "March 2026": 2, "April 2026": 3}
+MONTH_ORDER = {"January 2026": 0, "February 2026": 1, "March 2026": 2, "April 2026": 3, "Aug 2026": 4}
 
 
 def main() -> None:
@@ -253,6 +299,8 @@ def main() -> None:
             item["slug"] = f"{base}-{n + 1}"
             item["hasStaticPage"] = False
         item["image"] = IMAGES[i % len(IMAGES)]
+        if item.get("contentMode") == "images" and item.get("englishImages"):
+            item["image"] = item["englishImages"][0]
         rows.append(item)
 
     # Sort: month order, then alpha within month
@@ -274,6 +322,10 @@ def main() -> None:
         "  image: string;",
         "  paragraphs: string[];",
         "  hasStaticPage: boolean;",
+        "  contentMode?: \"text\" | \"images\";",
+        "  englishImages?: string[];",
+        "  translationImages?: string[];",
+        "  translationParagraphs?: string[];",
         "};",
         "",
         "export const gazette2026Catalog: Gazette2026Article[] = [",
@@ -284,6 +336,21 @@ def main() -> None:
         for key in ("slug", "title", "author", "category", "month", "excerpt", "readTime", "datePublished", "image"):
             out_lines.append(f"    {key}: {ts_string(row[key])},")
         out_lines.append(f"    hasStaticPage: {'true' if row['hasStaticPage'] else 'false'},")
+        if row.get("contentMode") == "images":
+            out_lines.append('    contentMode: "images",')
+            out_lines.append("    englishImages: [")
+            for img in row.get("englishImages", []):
+                out_lines.append(f"      {ts_string(img)},")
+            out_lines.append("    ],")
+            out_lines.append("    translationImages: [")
+            for img in row.get("translationImages", []):
+                out_lines.append(f"      {ts_string(img)},")
+            out_lines.append("    ],")
+        if row.get("translationParagraphs"):
+            out_lines.append("    translationParagraphs: [")
+            for para in row.get("translationParagraphs", []):
+                out_lines.append(f"      {ts_string(para)},")
+            out_lines.append("    ],")
         out_lines.append("    paragraphs: [")
         for para in row["paragraphs"]:
             out_lines.append(f"      {ts_string(para)},")
@@ -306,6 +373,7 @@ def main() -> None:
         "  \"February 2026\",",
         "  \"March 2026\",",
         "  \"April 2026\",",
+        "  \"Aug 2026\",",
         "].map((m) => gazette2026Catalog.find((a) => a.month === m)).filter(Boolean) as Gazette2026Article[];",
         "",
     ]

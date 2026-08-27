@@ -22,7 +22,7 @@ const vendorTestimonials = [
     name: "Jason Wang",
     initials: "JW",
     accent: "navy" as const,
-    text: "It has been a privilege to work with Ewan for so long and Ewan has provided me with many opportunities during our time together. The team has been very patient with me. It is a wise choice to work with Ewan — to work hard in the present and to look forward to more challenges in the future. I wish your company steady growth!",
+    text: "It has been a privilege to work with Ewan for so long and Ewan has provided me with many opportunities during our time together. The team has been very patient with me. It is a wise choice to work with Ewan - to work hard in the present and to look forward to more challenges in the future. I wish your company steady growth!",
   },
   {
     name: "Sheriff Erinfolami",
@@ -46,7 +46,7 @@ const vendorTestimonials = [
     name: "Raquel Aguiar",
     initials: "RA",
     accent: "gold" as const,
-    text: "It's been a few months since I started with Ewan Business Solutions, and as a newcomer, it's been a very enriching experience. Soham is very easy to work with — always polite and calm even under stressful deadlines. He made sure everyone was clear on the contracts and required rates. It has been a great experience, and I look forward to continuing.",
+    text: "It's been a few months since I started with Ewan Business Solutions, and as a newcomer, it's been a very enriching experience. Soham is very easy to work with - always polite and calm even under stressful deadlines. He made sure everyone was clear on the contracts and required rates. It has been a great experience, and I look forward to continuing.",
   },
   {
     name: "Hrushikesh Takalkar",
@@ -58,7 +58,7 @@ const vendorTestimonials = [
     name: "Sanika Aslekar",
     initials: "SA",
     accent: "navy" as const,
-    text: "I have been working with EWAN for over 2 years, and the experience has been impressive. We started with writing and social media assignments, and the coordination and response from the company's team members have been remarkable. The rapport has been built very well, and I wish to continue working with you — it is always a learning and earning experience.",
+    text: "I have been working with EWAN for over 2 years, and the experience has been impressive. We started with writing and social media assignments, and the coordination and response from the company's team members have been remarkable. The rapport has been built very well, and I wish to continue working with you - it is always a learning and earning experience.",
   },
   {
     name: "Oliver Zhang",
@@ -82,7 +82,7 @@ const vendorTestimonials = [
     name: "Tewodros Desalegn",
     initials: "TD",
     accent: "gold" as const,
-    text: "I worked with Soham Kakade for an Amharic audio transcription project. It was very nice working with them — they are very good at communication and clear about the instructions they give. They pay once the task is completed with no delay. I am delighted to work with Ewan Business Solutions and look forward to working with them again.",
+    text: "I worked with Soham Kakade for an Amharic audio transcription project. It was very nice working with them - they are very good at communication and clear about the instructions they give. They pay once the task is completed with no delay. I am delighted to work with Ewan Business Solutions and look forward to working with them again.",
   },
   {
     name: "Dhruv Uniyal",
@@ -277,7 +277,7 @@ const Testimonials = () => {
             </motion.p>
           </div>
 
-          {/* featured first two — large */}
+          {/* featured first two - large */}
           <div className="mb-4 grid grid-cols-2 gap-4 sm:grid-cols-2 md:gap-5">
             {clientLetterImages.slice(0, 2).map((src, i) => (
               <motion.button
@@ -308,7 +308,7 @@ const Testimonials = () => {
             ))}
           </div>
 
-          {/* remaining letters — tighter grid */}
+          {/* remaining letters - tighter grid */}
           <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-6">
             {clientLetterImages.slice(2).map((src, i) => {
               const rotations = ["-0.8deg","0.6deg","-0.4deg","0.9deg","-0.7deg","0.5deg","-0.3deg","0.8deg","-0.6deg","0.4deg","0.7deg","-0.5deg","0.3deg","-0.9deg","0.6deg","-0.4deg","0.8deg"];

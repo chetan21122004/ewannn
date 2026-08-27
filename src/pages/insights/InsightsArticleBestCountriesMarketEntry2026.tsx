@@ -15,7 +15,7 @@ import { absoluteUrl, faqPageSchema } from "@/lib/schemaHelpers";
 const CANONICAL = "/insights/best-countries-market-entry-2026/";
 const TITLE = "Best Countries for Market Entry in 2026: A Comparative Guide";
 const DESCRIPTION =
-  "Comparing the best countries for business expansion in 2026 — market size, ease of doing business, regulatory environment, and localization needs.";
+  "Comparing the best countries for business expansion in 2026 - market size, ease of doing business, regulatory environment, and localization needs.";
 
 const relatedArticles = [
   {
@@ -63,35 +63,35 @@ const InsightsArticleBestCountriesMarketEntry2026 = () => (
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            <strong className="text-[hsl(var(--brand-navy-950))]">Market size and growth trajectory</strong> — total
+            <strong className="text-[hsl(var(--brand-navy-950))]">Market size and growth trajectory</strong> - total
             addressable market and demand trends
           </span>
         </li>
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            <strong className="text-[hsl(var(--brand-navy-950))]">Ease of doing business</strong> — registration speed,
+            <strong className="text-[hsl(var(--brand-navy-950))]">Ease of doing business</strong> - registration speed,
             bureaucracy, and legal transparency
           </span>
         </li>
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            <strong className="text-[hsl(var(--brand-navy-950))]">Regulatory and tax environment</strong> — FDI rules,
+            <strong className="text-[hsl(var(--brand-navy-950))]">Regulatory and tax environment</strong> - FDI rules,
             repatriation of profits, compliance burden
           </span>
         </li>
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            <strong className="text-[hsl(var(--brand-navy-950))]">Language and cultural complexity</strong> — number of
+            <strong className="text-[hsl(var(--brand-navy-950))]">Language and cultural complexity</strong> - number of
             languages, degree of localization required
           </span>
         </li>
         <li className="flex gap-3">
           <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[hsl(var(--brand-gold-500))]" />
           <span>
-            <strong className="text-[hsl(var(--brand-navy-950))]">Talent availability</strong> — access to skilled local
+            <strong className="text-[hsl(var(--brand-navy-950))]">Talent availability</strong> - access to skilled local
             talent and labor costs
           </span>
         </li>
@@ -100,7 +100,7 @@ const InsightsArticleBestCountriesMarketEntry2026 = () => (
 
     <ArticleSection title="Comparative snapshot">
       <ArticleTable
-        caption="Illustrative comparison — validate against sector-specific data before deciding."
+        caption="Illustrative comparison - validate against sector-specific data before deciding."
         headers={["Market", "Market Size", "Ease of Entry", "Localization Complexity"]}
         rows={[
           ["India", "Very large", "Moderate", "High (multiple languages/regions)"],
@@ -114,7 +114,7 @@ const InsightsArticleBestCountriesMarketEntry2026 = () => (
 
     <ArticleSection title="Why India stands out for long-term growth">
       <p>
-        While markets like Singapore and the UAE offer faster, simpler entry, India offers unmatched long-term scale — a
+        While markets like Singapore and the UAE offer faster, simpler entry, India offers unmatched long-term scale - a
         large and growing consumer base, an expanding digital economy, and improving regulatory infrastructure. The trade-off
         is higher localization complexity, given India&apos;s linguistic and regional diversity.
       </p>
@@ -133,7 +133,7 @@ const InsightsArticleBestCountriesMarketEntry2026 = () => (
 
     <ArticleHighlight>
       Market size means little if your product or messaging doesn&apos;t resonate locally. Markets with high linguistic and
-      cultural diversity — like India or Southeast Asia — require a much deeper{" "}
+      cultural diversity - like India or Southeast Asia - require a much deeper{" "}
       <Link to="/insights/localization-vs-translation-difference" className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
         localization investment
       </Link>{" "}
@@ -143,8 +143,8 @@ const InsightsArticleBestCountriesMarketEntry2026 = () => (
     <ArticleSection title="How to decide">
       <p>
         Rather than choosing based on market size alone, weigh your{" "}
-        <strong className="text-[hsl(var(--brand-navy-950))]">total cost of successful entry</strong> — registration,
-        compliance, localization, and ongoing operations — against your growth timeline and risk tolerance. Start with{" "}
+        <strong className="text-[hsl(var(--brand-navy-950))]">total cost of successful entry</strong> - registration,
+        compliance, localization, and ongoing operations - against your growth timeline and risk tolerance. Start with{" "}
         <Link to="/market-research/" className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
           market research
         </Link>{" "}
@@ -160,7 +160,7 @@ const InsightsArticleBestCountriesMarketEntry2026 = () => (
         <Link to="/market-entry/" className="font-semibold text-[hsl(var(--brand-purple-700))] hover:underline">
           market entry consulting
         </Link>{" "}
-        with full visibility into both the operational/regulatory side and the localization investment required — so decisions
+        with full visibility into both the operational/regulatory side and the localization investment required - so decisions
         are based on total effort to succeed, not just headline market size.
       </p>
     </ArticleSection>

@@ -10,7 +10,7 @@ export type InsightsArticleCatalogEntry = {
   image: string;
 };
 
-/** Single source of truth for Insights listing cards — must match each article detail page. */
+/** Single source of truth for Insights listing cards - must match each article detail page. */
 export const INSIGHTS_ARTICLES_CATALOG: InsightsArticleCatalogEntry[] = [
   {
     slug: "market-entry-guide-india",
@@ -27,7 +27,7 @@ export const INSIGHTS_ARTICLES_CATALOG: InsightsArticleCatalogEntry[] = [
     category: "Market Entry",
     date: "Feb 01, 2026",
     title: "Top 10 Challenges Foreign Companies Face When Entering the Indian Market",
-    copy: "The most common operational and cultural hurdles — and practical strategies to overcome each one.",
+    copy: "The most common operational and cultural hurdles - and practical strategies to overcome each one.",
     image: "/stitch/insights/gazette-market-insight.jpg",
   },
   {

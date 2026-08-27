@@ -181,7 +181,7 @@ async function main() {
       for (const routePath of PRERENDER_ROUTES) {
         await prerenderRoute(browser, routePath, previewOrigin);
       }
-      console.log(`Done — prerendered ${PRERENDER_ROUTES.length} routes.`);
+      console.log(`Done - prerendered ${PRERENDER_ROUTES.length} routes.`);
     } finally {
       await browser.close();
     }
