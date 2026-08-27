@@ -77,6 +77,52 @@ export const ArticleServiceLinks = () => (
   </nav>
 );
 
+export const ArticleTable = ({
+  caption,
+  headers,
+  rows,
+}: {
+  caption?: string;
+  headers: string[];
+  rows: string[][];
+}) => (
+  <div className="mt-6 overflow-x-auto rounded-xl border border-[hsl(var(--border-light))] shadow-sm">
+    <table className="w-full min-w-[640px] text-left text-sm">
+      {caption ? (
+        <caption className="px-4 py-3 text-left text-xs font-medium text-on-light-muted">{caption}</caption>
+      ) : null}
+      <thead>
+        <tr className="border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))]">
+          {headers.map((header) => (
+            <th
+              key={header}
+              className="px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-[hsl(var(--brand-navy-950))]"
+            >
+              {header}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row, rowIndex) => (
+          <tr key={rowIndex} className="border-b border-[hsl(var(--border-light))] last:border-0 even:bg-[hsl(var(--surface-light-50)/0.5)]">
+            {row.map((cell, cellIndex) => (
+              <td
+                key={cellIndex}
+                className={`px-4 py-3 align-top leading-relaxed text-on-light-secondary ${
+                  cellIndex === 0 ? "font-semibold text-[hsl(var(--brand-navy-950))]" : ""
+                }`}
+              >
+                {cell}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
+
 export const ArticleTranslation = ({ title, author, lang, children }: { title: string; author: string; lang: string; children: ReactNode }) => (
   <section lang={lang} className="mt-16 overflow-hidden rounded-[1.75rem] border border-black/8 bg-white shadow-[0_8px_40px_-12px_rgba(15,23,42,0.12)]">
     <div className="border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-6 py-5 md:px-10">

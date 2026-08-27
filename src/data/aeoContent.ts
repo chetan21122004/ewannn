@@ -279,3 +279,91 @@ export const TRANSLATION_PARTNER_ARTICLE_FAQS: AeoFaqItem[] = [
   LANGUAGE_LOCALIZATION_FAQS[3],
   LANGUAGE_LOCALIZATION_FAQS[4],
 ];
+
+export const MARKET_ENTRY_GUIDE_ARTICLE_FAQS: AeoFaqItem[] = [
+  {
+    question: "What is the best market entry strategy for India?",
+    answer:
+      "The best strategy depends on your goals: a liaison office suits market research only, a branch office suits limited operations, a wholly owned subsidiary suits full control, and a joint venture suits companies wanting a local partner.",
+  },
+  {
+    question: "How long does India market entry typically take?",
+    answer:
+      "Timelines vary by entity type and sector, but most foreign companies can expect the registration and compliance process to take several weeks to a few months.",
+  },
+];
+
+export const CHALLENGES_FOREIGN_COMPANIES_INDIA_FAQS: AeoFaqItem[] = [
+  {
+    question: "What is the biggest challenge foreign companies face in India?",
+    answer:
+      "Regulatory complexity and choosing the wrong entity structure are the most common early-stage challenges, often compounded by underestimating localization needs later on.",
+  },
+  {
+    question: "Can localization issues really affect market entry success?",
+    answer:
+      "Yes — even a legally compliant business can struggle to gain traction if its marketing, product, and customer communication aren't culturally and linguistically adapted to local audiences.",
+  },
+];
+
+export const INDIA_ENTITY_STRUCTURE_FAQS: AeoFaqItem[] = [
+  {
+    question: "What is the difference between a liaison office and a branch office in India?",
+    answer:
+      "A liaison office cannot earn revenue and exists only to represent the parent and build relationships, so it pays no Indian income tax. A branch office can carry out a defined set of commercial activities and earn income in India, and it is taxed at the foreign-company rate.",
+  },
+  {
+    question: "Is a wholly owned subsidiary better than a branch office?",
+    answer:
+      "For most companies planning genuine long-term operations, yes. A subsidiary is a separate legal entity, so it limits the parent's liability and is taxed at the lower domestic-company rate, although it carries more compliance than a branch office.",
+  },
+  {
+    question: "Do I need an Indian partner to enter the Indian market?",
+    answer:
+      "Only in sectors where foreign ownership is capped and a local partner is legally required, or where a partner adds real commercial value. Many sectors allow full foreign ownership through a wholly owned subsidiary under the automatic FDI route.",
+  },
+];
+
+export const CERTIFIED_TRANSLATION_ARTICLE_FAQS: AeoFaqItem[] = [
+  {
+    question: "Do I need a certified translation for business registration?",
+    answer:
+      "Yes, most government authorities require certified translations of foreign-language incorporation documents, agreements, and identity records before they can be officially accepted.",
+  },
+  {
+    question: "What is the difference between certified and notarized translation?",
+    answer:
+      "A certified translation confirms the translation is accurate and complete, while a notarized translation involves a notary verifying the translator's identity and signature, not the accuracy of the translation itself.",
+  },
+];
+
+export const LOCALIZATION_VS_TRANSLATION_FAQS: AeoFaqItem[] = [
+  {
+    question: "What is the difference between localization and translation?",
+    answer:
+      "Translation converts text from one language to another while preserving meaning. Localization adapts content, design, tone, currency, and cultural references so it feels native to a specific market.",
+  },
+  {
+    question: "Do I need localization or just translation for my website?",
+    answer:
+      "Customer-facing content like websites and marketing typically needs localization for cultural relevance and conversion, while legal or internal documents usually only require accurate translation.",
+  },
+  {
+    question: "Is localization more expensive than translation?",
+    answer:
+      "Localization generally costs more than translation because it involves adapting design, tone, and cultural elements in addition to the text itself.",
+  },
+];
+
+export const BEST_COUNTRIES_MARKET_ENTRY_2026_FAQS: AeoFaqItem[] = [
+  {
+    question: "Which country is easiest to enter for business expansion?",
+    answer:
+      "Markets like Singapore and the UAE generally offer faster, simpler entry processes, while larger markets like India involve more regulatory and localization complexity but offer greater long-term scale.",
+  },
+  {
+    question: "Is market size the most important factor when choosing a country to expand into?",
+    answer:
+      "No — total cost of successful entry, including registration, compliance, and localization investment, is a better indicator of long-term success than market size alone.",
+  },
+];

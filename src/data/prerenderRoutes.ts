@@ -3,6 +3,12 @@ import { gazette2026Catalog } from "./gazette2026Catalog";
 import { SEO_STATIC_PAGES } from "./seoPages";
 
 const INSIGHT_ARTICLE_PATHS = [
+  "/insights/market-entry-guide-india",
+  "/insights/challenges-foreign-companies-india",
+  "/insights/india-entity-structure-liaison-branch-subsidiary",
+  "/insights/certified-translation-services-legal-requirements",
+  "/insights/localization-vs-translation-difference",
+  "/insights/best-countries-market-entry-2026",
   "/insights/how-to-enter-indian-market",
   "/insights/how-to-choose-translation-partner-india",
   "/insights/what-is-simultaneous-interpretation",

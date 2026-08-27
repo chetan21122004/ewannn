@@ -42,6 +42,12 @@ import InsightsArticleChooseTranslationPartner from "./pages/insights/InsightsAr
 import InsightsArticleSimultaneousInterpretation from "./pages/insights/InsightsArticleSimultaneousInterpretation.tsx";
 import InsightsArticleEwanToUvanRebrand from "./pages/insights/InsightsArticleEwanToUvanRebrand.tsx";
 import InsightsArticleCareerAsianLanguages from "./pages/insights/InsightsArticleCareerAsianLanguages.tsx";
+import InsightsArticleMarketEntryGuideIndia from "./pages/insights/InsightsArticleMarketEntryGuideIndia.tsx";
+import InsightsArticleChallengesForeignCompaniesIndia from "./pages/insights/InsightsArticleChallengesForeignCompaniesIndia.tsx";
+import InsightsArticleIndiaEntityStructure from "./pages/insights/InsightsArticleIndiaEntityStructure.tsx";
+import InsightsArticleCertifiedTranslation from "./pages/insights/InsightsArticleCertifiedTranslation.tsx";
+import InsightsArticleLocalizationVsTranslation from "./pages/insights/InsightsArticleLocalizationVsTranslation.tsx";
+import InsightsArticleBestCountriesMarketEntry2026 from "./pages/insights/InsightsArticleBestCountriesMarketEntry2026.tsx";
 import Testimonials from "./pages/Testimonials.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
@@ -113,6 +119,12 @@ const App = () => (
             <Route path="/language-gazette/be-brave-you-women" element={<LanguageGazetteBeBraveYouWomen />} />
             <Route path="/language-gazette/:slug" element={<LanguageGazetteArticleRoute />} />
             <Route path="/insights" element={<Insights />} />
+            <Route path="/insights/market-entry-guide-india" element={<InsightsArticleMarketEntryGuideIndia />} />
+            <Route path="/insights/challenges-foreign-companies-india" element={<InsightsArticleChallengesForeignCompaniesIndia />} />
+            <Route path="/insights/india-entity-structure-liaison-branch-subsidiary" element={<InsightsArticleIndiaEntityStructure />} />
+            <Route path="/insights/certified-translation-services-legal-requirements" element={<InsightsArticleCertifiedTranslation />} />
+            <Route path="/insights/localization-vs-translation-difference" element={<InsightsArticleLocalizationVsTranslation />} />
+            <Route path="/insights/best-countries-market-entry-2026" element={<InsightsArticleBestCountriesMarketEntry2026 />} />
             <Route path="/insights/how-to-enter-indian-market" element={<InsightsArticleHowToEnterIndia />} />
             <Route path="/insights/how-to-choose-translation-partner-india" element={<InsightsArticleChooseTranslationPartner />} />
             <Route path="/insights/what-is-simultaneous-interpretation" element={<InsightsArticleSimultaneousInterpretation />} />
