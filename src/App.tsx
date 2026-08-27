@@ -59,6 +59,9 @@ const MediaLegacyRedirect = () => {
   if (hash === "#video-insights") {
     return <Navigate to="/videos" replace />;
   }
+  if (hash === "#press" || hash === "#case-study") {
+    return <Navigate to="/insights#press" replace />;
+  }
   return <Navigate to="/insights" replace />;
 };
 

@@ -30,7 +30,7 @@ const CaseStudy = () => {
       title={t("seo.caseStudy.title")}
       description={t("seo.caseStudy.description")}
       canonicalPath="/case-study/"
-      keywords="UVAN case study, SHOWA Japan India market entry, Airattix Japan investors, Singapore market entry case study"
+      keywords="UVAN case study, translation services, interpretation, localization, market research, liaisoning, procurement, voiceover, Impetus, SHOWA Japan India market entry"
       jsonLd={jsonLd}
     >
       <CaseStudyPageContent />

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Download, FileText } from "lucide-react";
-import CaseStudyPdfThumbnail from "@/components/case-study/CaseStudyPdfThumbnail";
+import CaseStudyCoverMedia, { caseStudyHasPdf } from "@/components/case-study/CaseStudyCoverMedia";
 import { getCaseStudyFullHeadline, type CaseStudyEntry } from "@/data/caseStudyCatalog";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,7 @@ type CaseStudyCardProps = {
 const CaseStudyCard = ({ study, featured = false, onOpenPdf, className }: CaseStudyCardProps) => {
   const deliveredFact = study.quickFacts.find((row) => row.label === "Delivered");
   const fullHeadline = getCaseStudyFullHeadline(study);
+  const hasPdf = caseStudyHasPdf(study);
 
   return (
     <article
@@ -25,8 +26,8 @@ const CaseStudyCard = ({ study, featured = false, onOpenPdf, className }: CaseSt
     >
       <Link to={`/case-study/${study.id}`} className="block flex-1">
         <div className="relative overflow-hidden bg-[hsl(var(--surface-light-50))]">
-          <CaseStudyPdfThumbnail
-            pdfUrl={study.pdfUrl}
+          <CaseStudyCoverMedia
+            study={study}
             title={fullHeadline}
             fullWidth
             className="transition duration-500 group-hover:scale-[1.02] [&>div]:origin-center"
@@ -42,9 +43,11 @@ const CaseStudyCard = ({ study, featured = false, onOpenPdf, className }: CaseSt
                 {study.corridor}
               </span>
             </div>
-            <span className="shrink-0 rounded-full bg-white/90 px-2 py-0.5 text-[8px] font-bold uppercase tracking-[0.12em] text-[hsl(var(--brand-purple-700))] shadow-sm sm:text-[9px]">
-              PDF
-            </span>
+            {hasPdf ? (
+              <span className="shrink-0 rounded-full bg-white/90 px-2 py-0.5 text-[8px] font-bold uppercase tracking-[0.12em] text-[hsl(var(--brand-purple-700))] shadow-sm sm:text-[9px]">
+                PDF
+              </span>
+            ) : null}
           </div>
         </div>
 
@@ -88,24 +91,26 @@ const CaseStudyCard = ({ study, featured = false, onOpenPdf, className }: CaseSt
         </div>
       </Link>
 
-      <div className="flex flex-col gap-2 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50)/0.5)] px-4 py-3 sm:px-5 sm:py-4">
-        <button
-          type="button"
-          onClick={() => onOpenPdf(study)}
-          className="inline-flex min-h-9 w-full items-center justify-center gap-1.5 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-        >
-          <FileText className="h-3.5 w-3.5" aria-hidden />
-          View PDF
-        </button>
-        <a
-          href={study.pdfUrl}
-          download={study.pdfFileName}
-          className="inline-flex min-h-9 w-full items-center justify-center gap-1.5 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-4 py-2 text-xs font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
-        >
-          <Download className="h-3.5 w-3.5" aria-hidden />
-          Download
-        </a>
-      </div>
+      {hasPdf ? (
+        <div className="flex flex-col gap-2 border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50)/0.5)] px-4 py-3 sm:px-5 sm:py-4">
+          <button
+            type="button"
+            onClick={() => onOpenPdf(study)}
+            className="inline-flex min-h-9 w-full items-center justify-center gap-1.5 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+          >
+            <FileText className="h-3.5 w-3.5" aria-hidden />
+            View PDF
+          </button>
+          <a
+            href={study.pdfUrl}
+            download={study.pdfFileName}
+            className="inline-flex min-h-9 w-full items-center justify-center gap-1.5 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-4 py-2 text-xs font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
+          >
+            <Download className="h-3.5 w-3.5" aria-hidden />
+            Download
+          </a>
+        </div>
+      ) : null}
     </article>
   );
 };

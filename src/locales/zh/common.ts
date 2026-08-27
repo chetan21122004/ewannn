@@ -57,7 +57,7 @@ const zhCommon = {
     company: "公司",
     media: "媒体",
     quickLinks: "快速链接",
-    tagline: "Uvan International Liaisoning Private Limited",
+    tagline: "Uvan International Liasoning Private Limited",
     formerName: "（原 Ewan Business Solutions）",
     emailLabel: "邮件联系",
     ctaHeadline: "与一个值得信赖的伙伴一起跨境拓展？",

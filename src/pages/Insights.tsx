@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { ArrowRight, BookOpen, Globe2, Mail, MessageCircle, Sparkles, Youtube } from "lucide-react";
+import { ArrowRight, BookOpen, Globe2, Mail, MessageCircle, Newspaper, Sparkles, Youtube } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
 import { useContactInquiry } from "@/components/ContactInquiryProvider";
 import InsightsArticlesSlider from "@/components/insights/InsightsArticlesSlider";
+import PressArticlesGrid from "@/components/insights/PressArticlesGrid";
 import { INSIGHTS_ARTICLES_CATALOG, insightsArticlePath } from "@/data/insightsArticlesCatalog";
 import { absoluteUrl, breadcrumbSchema } from "@/lib/schemaHelpers";
 
@@ -214,6 +215,34 @@ const Insights = () => {
               Subscribe via Email
             </button>
           </motion.article>
+        </div>
+      </section>
+
+      {/* Press & published articles (legacy media hub) */}
+      <section id="press" className="relative scroll-mt-36 overflow-hidden border-t border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50))] px-6 py-10 md:py-14">
+        <div className="container relative z-10 mx-auto max-w-6xl">
+          <motion.div
+            initial={hidden}
+            whileInView={show}
+            viewport={{ once: true }}
+            transition={transition(0)}
+            className="mb-8 max-w-2xl"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[hsl(var(--brand-purple-700))]">
+              <Newspaper className="h-3.5 w-3.5" aria-hidden />
+              Press & Published Articles
+            </span>
+            <h2 className="mt-4 font-serif text-3xl font-extrabold text-[hsl(var(--brand-navy-950))] sm:text-4xl">
+              Coverage, case studies & corridor analysis
+            </h2>
+            <p className="mt-3 text-base text-on-light-secondary">
+              Published articles and press features on India–Asia trade, market entry, and UVAN client work — including Bytes of India coverage and our SHOWA Gloves Japan case study.
+            </p>
+          </motion.div>
+
+          <motion.div initial={hidden} whileInView={show} viewport={{ once: true }} transition={transition(0.08)}>
+            <PressArticlesGrid />
+          </motion.div>
         </div>
       </section>
 

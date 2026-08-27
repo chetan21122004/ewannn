@@ -57,7 +57,7 @@ const jaCommon = {
     company: "会社",
     media: "メディア",
     quickLinks: "クイックリンク",
-    tagline: "Uvan International Liaisoning Private Limited",
+    tagline: "Uvan International Liasoning Private Limited",
     formerName: "（旧 Ewan Business Solutions）",
     emailLabel: "メール",
     ctaHeadline: "国境を越える展開を、信頼できる一つのパートナーと。",

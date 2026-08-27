@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, Download, FileText, Quote } from "lucide-react";
+import CaseStudyCoverMedia, { caseStudyHasPdf } from "@/components/case-study/CaseStudyCoverMedia";
 import CaseStudyPdfDialog from "@/components/case-study/CaseStudyPdfDialog";
-import CaseStudyPdfThumbnail from "@/components/case-study/CaseStudyPdfThumbnail";
 import { getCaseStudyFullHeadline, type CaseStudyEntry } from "@/data/caseStudyCatalog";
 import { cn } from "@/lib/utils";
 
@@ -25,6 +25,7 @@ const CaseStudyDetailContent = ({ study }: CaseStudyDetailContentProps) => {
   const [pdfOpen, setPdfOpen] = useState(false);
   const fullHeadline = getCaseStudyFullHeadline(study);
   const deliveredFact = study.quickFacts.find((row) => row.label === "Delivered");
+  const hasPdf = caseStudyHasPdf(study);
 
   useEffect(() => {
     setPdfOpen(false);
@@ -51,13 +52,7 @@ const CaseStudyDetailContent = ({ study }: CaseStudyDetailContentProps) => {
           >
             <div className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white shadow-[0_8px_28px_-12px_rgba(26,22,51,0.12)] sm:rounded-3xl">
               <div className="relative overflow-hidden bg-[hsl(var(--surface-light-50))]">
-                <CaseStudyPdfThumbnail
-                  key={study.pdfUrl}
-                  pdfUrl={study.pdfUrl}
-                  title={fullHeadline}
-                  fullWidth
-                  paginated
-                />
+                <CaseStudyCoverMedia study={study} title={fullHeadline} fullWidth paginated={hasPdf} />
                 <div className="pointer-events-none absolute inset-x-0 top-0 flex items-start justify-between gap-2 bg-gradient-to-b from-[hsl(var(--brand-navy-950)/0.55)] to-transparent p-4 sm:p-5">
                   <div className="flex flex-wrap gap-2">
                     {study.featured ? (
@@ -74,36 +69,40 @@ const CaseStudyDetailContent = ({ study }: CaseStudyDetailContentProps) => {
                       </span>
                     ) : null}
                   </div>
-                  <span className="rounded-full bg-white/90 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] shadow-sm">
-                    16:9 PDF
-                  </span>
+                  {hasPdf ? (
+                    <span className="rounded-full bg-white/90 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[hsl(var(--brand-purple-700))] shadow-sm">
+                      16:9 PDF
+                    </span>
+                  ) : null}
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50)/0.6)] px-5 py-4 sm:px-6">
-                <div className="min-w-0">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-on-light-muted">Slide deck PDF</p>
-                  <p className="mt-0.5 truncate text-sm font-medium text-on-light">{study.pdfFileName}</p>
+              {hasPdf ? (
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[hsl(var(--border-light))] bg-[hsl(var(--surface-light-50)/0.6)] px-5 py-4 sm:px-6">
+                  <div className="min-w-0">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-on-light-muted">Slide deck PDF</p>
+                    <p className="mt-0.5 truncate text-sm font-medium text-on-light">{study.pdfFileName}</p>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setPdfOpen(true)}
+                      className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+                    >
+                      <FileText className="h-3.5 w-3.5" aria-hidden />
+                      View PDF
+                    </button>
+                    <a
+                      href={study.pdfUrl}
+                      download={study.pdfFileName}
+                      className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-4 py-2 text-xs font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
+                    >
+                      <Download className="h-3.5 w-3.5" aria-hidden />
+                      Download
+                    </a>
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setPdfOpen(true)}
-                    className="inline-flex min-h-9 items-center gap-1.5 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-                  >
-                    <FileText className="h-3.5 w-3.5" aria-hidden />
-                    View PDF
-                  </button>
-                  <a
-                    href={study.pdfUrl}
-                    download={study.pdfFileName}
-                    className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-4 py-2 text-xs font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
-                  >
-                    <Download className="h-3.5 w-3.5" aria-hidden />
-                    Download
-                  </a>
-                </div>
-              </div>
+              ) : null}
 
               <div className="p-5 sm:p-6 lg:p-8">
                 {study.subjectLine ? (
@@ -263,31 +262,33 @@ const CaseStudyDetailContent = ({ study }: CaseStudyDetailContentProps) => {
                   </p>
                 ) : null}
 
-                <div className="mt-5 space-y-2 border-t border-[hsl(var(--border-light))] pt-5">
-                  <button
-                    type="button"
-                    onClick={() => setPdfOpen(true)}
-                    className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
-                  >
-                    <FileText className="h-3.5 w-3.5" aria-hidden />
-                    View slide deck
-                  </button>
-                  <a
-                    href={study.pdfUrl}
-                    download={study.pdfFileName}
-                    className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-4 py-2 text-xs font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
-                  >
-                    <Download className="h-3.5 w-3.5" aria-hidden />
-                    Download PDF
-                  </a>
-                </div>
+                {hasPdf ? (
+                  <div className="mt-5 space-y-2 border-t border-[hsl(var(--border-light))] pt-5">
+                    <button
+                      type="button"
+                      onClick={() => setPdfOpen(true)}
+                      className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-full bg-[hsl(var(--brand-gold-500))] px-4 py-2 text-xs font-semibold text-[hsl(var(--brand-navy-950))] transition hover:brightness-105"
+                    >
+                      <FileText className="h-3.5 w-3.5" aria-hidden />
+                      View slide deck
+                    </button>
+                    <a
+                      href={study.pdfUrl}
+                      download={study.pdfFileName}
+                      className="inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-4 py-2 text-xs font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))]"
+                    >
+                      <Download className="h-3.5 w-3.5" aria-hidden />
+                      Download PDF
+                    </a>
+                  </div>
+                ) : null}
               </div>
             </aside>
           </div>
         </div>
       </section>
 
-      <CaseStudyPdfDialog key={study.id} study={study} open={pdfOpen} onOpenChange={setPdfOpen} />
+      {hasPdf ? <CaseStudyPdfDialog key={study.id} study={study} open={pdfOpen} onOpenChange={setPdfOpen} /> : null}
     </>
   );
 };
