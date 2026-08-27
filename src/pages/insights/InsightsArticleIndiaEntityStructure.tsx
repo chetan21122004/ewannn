@@ -41,8 +41,8 @@ const InsightsArticleIndiaEntityStructure = () => (
     breadcrumbLabel="India Entity Structure Guide"
     datePublished="2026-02-10"
     readTime="12 min read"
-    heroImage="/stitch/insights/insight-asset-05.jpg"
-    heroImageAlt="Legal documents for India entity structure comparison"
+    heroImage="/stitch/language-gazette/article-operations.jpg"
+    heroImageAlt="Modern corporate building representing India entity structure options"
     relatedArticles={relatedArticles}
     additionalJsonLd={[faqPageSchema(absoluteUrl(CANONICAL), INDIA_ENTITY_STRUCTURE_FAQS)]}
     afterArticle={

@@ -19,7 +19,7 @@ export const INSIGHTS_ARTICLES_CATALOG: InsightsArticleCatalogEntry[] = [
     date: "Jan 15, 2026",
     title: "How to Expand Your Business into India: A Complete Market Entry Guide",
     copy: "A step-by-step guide to entity setup, compliance, localization, and on-ground execution for foreign companies entering India.",
-    image: "/stitch/insights/article-asian-market.jpg",
+    image: "/stitch/import-export/corridors-map.jpg",
   },
   {
     slug: "challenges-foreign-companies-india",
@@ -28,7 +28,7 @@ export const INSIGHTS_ARTICLES_CATALOG: InsightsArticleCatalogEntry[] = [
     date: "Feb 01, 2026",
     title: "Top 10 Challenges Foreign Companies Face When Entering the Indian Market",
     copy: "The most common operational and cultural hurdles - and practical strategies to overcome each one.",
-    image: "/stitch/insights/gazette-market-insight.jpg",
+    image: "/stitch/market-research/intel-data.jpg",
   },
   {
     slug: "india-entity-structure-liaison-branch-subsidiary",
@@ -37,7 +37,7 @@ export const INSIGHTS_ARTICLES_CATALOG: InsightsArticleCatalogEntry[] = [
     date: "Feb 10, 2026",
     title: "Liaison Office vs Branch Office vs Subsidiary in India",
     copy: "Compare control, permitted activities, tax, and liability to choose the right India entity structure.",
-    image: "/stitch/insights/insight-asset-05.jpg",
+    image: "/stitch/language-gazette/article-operations.jpg",
   },
   {
     slug: "best-countries-market-entry-2026",
@@ -46,7 +46,7 @@ export const INSIGHTS_ARTICLES_CATALOG: InsightsArticleCatalogEntry[] = [
     date: "Mar 10, 2026",
     title: "Best Countries for Market Entry in 2026: A Comparative Guide",
     copy: "Compare India, UAE, Singapore, Southeast Asia, and the UK across market size, ease of entry, and localization needs.",
-    image: "/stitch/insights/insight-asset-17.jpg",
+    image: "/stitch/market-research/world-map.jpg",
   },
   {
     slug: "certified-translation-services-legal-requirements",
@@ -55,7 +55,7 @@ export const INSIGHTS_ARTICLES_CATALOG: InsightsArticleCatalogEntry[] = [
     date: "Feb 18, 2026",
     title: "Certified Translation Services: When Do You Legally Need Them?",
     copy: "Learn when certified translations are legally required for business, immigration, and legal documents.",
-    image: "/stitch/insights/article-strategy.jpg",
+    image: "/stitch/language-gazette/article-cultural-iq.jpg",
   },
   {
     slug: "localization-vs-translation-difference",
@@ -64,7 +64,7 @@ export const INSIGHTS_ARTICLES_CATALOG: InsightsArticleCatalogEntry[] = [
     date: "Mar 01, 2026",
     title: "Localization vs. Translation: What's the Difference?",
     copy: "Translation makes content readable; localization makes it resonate. Know when you need each.",
-    image: "/stitch/insights/article-interpretation.jpg",
+    image: "/stitch/import-export/hero-circle.jpg",
   },
   {
     slug: "ewan-to-uvan-rebrand",

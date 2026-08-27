@@ -86,8 +86,8 @@ const InsightsArticleChallengesForeignCompaniesIndia = () => (
     breadcrumbLabel="Challenges Entering India"
     datePublished="2026-02-01"
     readTime="9 min read"
-    heroImage="/stitch/insights/gazette-market-insight.jpg"
-    heroImageAlt="Foreign executives navigating India market entry challenges"
+    heroImage="/stitch/market-research/intel-data.jpg"
+    heroImageAlt="Market data analysis for foreign companies entering India"
     relatedArticles={relatedArticles}
     additionalJsonLd={[
       itemListFromTitles(

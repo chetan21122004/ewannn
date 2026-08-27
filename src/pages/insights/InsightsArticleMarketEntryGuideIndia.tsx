@@ -64,8 +64,8 @@ const InsightsArticleMarketEntryGuideIndia = () => (
     breadcrumbLabel="India Market Entry Guide"
     datePublished="2026-01-15"
     readTime="10 min read"
-    heroImage="/stitch/insights/article-asian-market.jpg"
-    heroImageAlt="Business leaders reviewing India market entry strategy"
+    heroImage="/stitch/import-export/corridors-map.jpg"
+    heroImageAlt="Global trade corridors map for India market entry planning"
     relatedArticles={relatedArticles}
     additionalJsonLd={[
       howToSchema({

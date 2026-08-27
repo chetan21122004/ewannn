@@ -40,8 +40,8 @@ const InsightsArticleLocalizationVsTranslation = () => (
     breadcrumbLabel="Localization vs Translation"
     datePublished="2026-03-01"
     readTime="8 min read"
-    heroImage="/stitch/insights/article-interpretation.jpg"
-    heroImageAlt="Localization and translation comparison for global business"
+    heroImage="/stitch/import-export/hero-circle.jpg"
+    heroImageAlt="Global logistics hub representing localization across international markets"
     relatedArticles={relatedArticles}
     additionalJsonLd={[faqPageSchema(absoluteUrl(CANONICAL), LOCALIZATION_VS_TRANSLATION_FAQS)]}
     afterArticle={

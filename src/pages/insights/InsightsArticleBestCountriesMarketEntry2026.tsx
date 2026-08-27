@@ -41,8 +41,8 @@ const InsightsArticleBestCountriesMarketEntry2026 = () => (
     breadcrumbLabel="Best Countries for Market Entry 2026"
     datePublished="2026-03-10"
     readTime="9 min read"
-    heroImage="/stitch/insights/insight-asset-17.jpg"
-    heroImageAlt="Global map comparing market entry opportunities in 2026"
+    heroImage="/stitch/market-research/world-map.jpg"
+    heroImageAlt="World map comparing global market entry destinations in 2026"
     relatedArticles={relatedArticles}
     additionalJsonLd={[faqPageSchema(absoluteUrl(CANONICAL), BEST_COUNTRIES_MARKET_ENTRY_2026_FAQS)]}
     afterArticle={

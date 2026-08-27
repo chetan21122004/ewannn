@@ -39,8 +39,8 @@ const InsightsArticleCertifiedTranslation = () => (
     breadcrumbLabel="Certified Translation Requirements"
     datePublished="2026-02-18"
     readTime="7 min read"
-    heroImage="/stitch/insights/article-strategy.jpg"
-    heroImageAlt="Certified legal document translation for business compliance"
+    heroImage="/stitch/language-gazette/article-cultural-iq.jpg"
+    heroImageAlt="Professional language services booth for certified translation"
     relatedArticles={relatedArticles}
     additionalJsonLd={[faqPageSchema(absoluteUrl(CANONICAL), CERTIFIED_TRANSLATION_ARTICLE_FAQS)]}
     afterArticle={
