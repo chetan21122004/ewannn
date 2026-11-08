@@ -30,15 +30,77 @@ function buildTextBody(subject, fields) {
   return [`Subject: ${subject}`, "", "New submission from the UVAN website.", "", ...lines].join("\n");
 }
 
+const MAX_ATTACHMENT_BYTES = 2.5 * 1024 * 1024;
+const MAX_ATTACHMENTS = 2;
+
 function getReplyToEmail(fields) {
-  const raw = fields.email ?? fields.Email ?? fields["your-email"];
+  const preferred = [
+    fields.email,
+    fields.Email,
+    fields["your-email"],
+    fields["team-email"],
+    fields["vendor-email"],
+  ];
+  for (const raw of preferred) {
+    const email = normalizeEmail(raw);
+    if (email) return email;
+  }
+
+  for (const [key, value] of Object.entries(fields)) {
+    if (!/email/i.test(key)) continue;
+    const email = normalizeEmail(value);
+    if (email) return email;
+  }
+
+  return null;
+}
+
+function normalizeEmail(raw) {
   if (!raw || !String(raw).trim()) return null;
   const email = String(raw).trim();
   return email.includes("@") ? email : null;
 }
 
+function sanitizeFileName(name) {
+  const base = String(name).split(/[/\\]/).pop() || "attachment";
+  const cleaned = base.replace(/[^\w.\- ()]/g, "_").slice(0, 120);
+  return cleaned || "attachment";
+}
+
+function decodedBase64Size(content) {
+  const cleaned = String(content).replace(/\s/g, "");
+  if (!cleaned || !/^[A-Za-z0-9+/]+={0,2}$/.test(cleaned) || cleaned.length % 4 !== 0) {
+    return null;
+  }
+  const padding = cleaned.endsWith("==") ? 2 : cleaned.endsWith("=") ? 1 : 0;
+  return Math.floor((cleaned.length * 3) / 4) - padding;
+}
+
+function normalizeAttachments(input) {
+  if (input == null) return { attachments: [] };
+  if (!Array.isArray(input)) return { error: "Invalid attachment" };
+  if (input.length > MAX_ATTACHMENTS) return { error: "Too many attachments" };
+
+  const attachments = [];
+  for (const item of input) {
+    if (!item || typeof item.name !== "string" || typeof item.content !== "string") {
+      return { error: "Invalid attachment" };
+    }
+    const size = decodedBase64Size(item.content);
+    if (size == null || size <= 0 || size > MAX_ATTACHMENT_BYTES) {
+      return { error: "Attachment is too large" };
+    }
+    attachments.push({
+      name: sanitizeFileName(item.name),
+      content: item.content.replace(/\s/g, ""),
+    });
+  }
+
+  return { attachments };
+}
+
 /**
- * @param {{ to: string, subject: string, fields: Record<string, string> }} input
+ * @param {{ to: string, subject: string, fields: Record<string, string>, attachments?: { name: string, content: string }[] }} input
  * @param {{ BREVO_API_KEY?: string, BREVO_SENDER_EMAIL?: string, BREVO_SENDER_NAME?: string }} env
  * @returns {Promise<{ status: number, body: Record<string, unknown> }>}
  */
@@ -64,6 +126,11 @@ export async function handleFormSubmit(input, env) {
     return { status: 200, body: { ok: true } };
   }
 
+  const normalized = normalizeAttachments(input.attachments);
+  if (normalized.error) {
+    return { status: 400, body: { error: normalized.error } };
+  }
+
   const senderEmail = env.BREVO_SENDER_EMAIL?.trim() || "noreply@uvan.co.in";
   const senderName = env.BREVO_SENDER_NAME?.trim() || "UVAN Website";
 
@@ -74,6 +141,10 @@ export async function handleFormSubmit(input, env) {
     htmlContent: buildHtmlBody(subject, fields),
     textContent: buildTextBody(subject, fields),
   };
+
+  if (normalized.attachments.length > 0) {
+    payload.attachment = normalized.attachments;
+  }
 
   const replyToEmail = getReplyToEmail(fields);
   if (replyToEmail) {

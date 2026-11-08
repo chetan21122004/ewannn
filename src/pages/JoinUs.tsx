@@ -118,19 +118,28 @@ const FormField = ({
   label,
   required,
   type = "text",
+  autoComplete,
   children,
 }: {
   id: string;
   label: string;
   required?: boolean;
   type?: string;
+  autoComplete?: string;
   children?: React.ReactNode;
 }) => (
   <label htmlFor={id} className="block text-sm font-medium text-[hsl(var(--brand-navy-950))]">
     {label}
     {required ? <span className="text-[hsl(var(--brand-purple-700))]"> *</span> : null}
     {children ?? (
-      <input id={id} name={id} required={required} type={type} className={inputClassName} />
+      <input
+        id={id}
+        name={id}
+        required={required}
+        type={type}
+        autoComplete={autoComplete}
+        className={inputClassName}
+      />
     )}
   </label>
 );
@@ -200,14 +209,19 @@ const JoinUs = () => {
   const [submittingVendor, setSubmittingVendor] = useState(false);
   const [teamError, setTeamError] = useState(false);
   const [vendorError, setVendorError] = useState(false);
+  const [teamFormError, setTeamFormError] = useState<string | null>(null);
+  const [vendorFormError, setVendorFormError] = useState<string | null>(null);
 
   const handleTeamSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmittingTeam(true);
     setTeamError(false);
+    setTeamFormError(null);
     const result = await submitForm(event.currentTarget, PROJECTS_EMAIL, "UVAN Join Our Team Application");
     if (result === "sent") {
       setSubmittedTeam(true);
+    } else if (result === "file-too-large") {
+      setTeamFormError("CV must be a PDF, DOC, or DOCX of 2.5 MB or smaller.");
     } else {
       setTeamError(true);
     }
@@ -218,9 +232,12 @@ const JoinUs = () => {
     event.preventDefault();
     setSubmittingVendor(true);
     setVendorError(false);
+    setVendorFormError(null);
     const result = await submitForm(event.currentTarget, PROJECTS_EMAIL, "UVAN Vendor Network Registration");
     if (result === "sent") {
       setSubmittedVendor(true);
+    } else if (result === "file-too-large") {
+      setVendorFormError("Upload a PDF, DOC, or DOCX of 2.5 MB or smaller.");
     } else {
       setVendorError(true);
     }
@@ -395,13 +412,30 @@ const JoinUs = () => {
                         Send Your Profile
                       </h3>
                     </div>
-                    <FormField id="team-name" label="Name" required />
+                    <FormField id="team-name" label="Name" required autoComplete="name" />
+                    <FormField id="team-email" label="Email" required type="email" autoComplete="email" />
+                    <FormField id="team-phone" label="Phone number" required type="tel" autoComplete="tel" />
                     <FormField id="team-languages" label="Applying For Role" required />
                     <FormField id="team-specialisation" label="Full Time / Intern / Consultant" required />
                     <FormField id="team-cv" label="CV upload" required>
-                      <input id="team-cv" name="team-cv" required type="file" className={inputClassName} />
+                      <input
+                        id="team-cv"
+                        name="team-cv"
+                        required
+                        type="file"
+                        accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                        className={inputClassName}
+                      />
+                      <span className="mt-1.5 block text-xs font-normal text-on-light-muted">
+                        PDF, DOC, or DOCX, up to 2.5 MB. The file is attached to the email we receive.
+                      </span>
                     </FormField>
                     <FormField id="team-referral" label="How did you hear about us?" />
+                    {teamFormError ? (
+                      <p className="text-sm text-red-700" role="alert">
+                        {teamFormError}
+                      </p>
+                    ) : null}
                     <button
                       type="submit"
                       disabled={submittingTeam}
@@ -478,7 +512,9 @@ const JoinUs = () => {
                         Register as a Vendor
                       </h3>
                     </div>
-                    <FormField id="vendor-name" label="Name" required />
+                    <FormField id="vendor-name" label="Name" required autoComplete="name" />
+                    <FormField id="vendor-email" label="Email" required type="email" autoComplete="email" />
+                    <FormField id="vendor-phone" label="Phone number" required type="tel" autoComplete="tel" />
                     <FormField id="vendor-location" label="Location" required />
                     <FormField id="vendor-languages" label="Languages" required />
                     <FormField id="vendor-specialisation" label="Specialisation" required />
@@ -490,9 +526,18 @@ const JoinUs = () => {
                         name="vendor-portfolio"
                         required
                         type="file"
+                        accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                         className={inputClassName}
                       />
+                      <span className="mt-1.5 block text-xs font-normal text-on-light-muted">
+                        PDF, DOC, or DOCX, up to 2.5 MB. The file is attached to the email we receive.
+                      </span>
                     </FormField>
+                    {vendorFormError ? (
+                      <p className="text-sm text-red-700" role="alert">
+                        {vendorFormError}
+                      </p>
+                    ) : null}
                     <button
                       type="submit"
                       disabled={submittingVendor}

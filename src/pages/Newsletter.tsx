@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  ArrowRight,
   ArrowUpRight,
   BookOpen,
   Globe2,
@@ -10,13 +9,10 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/PageLayout";
+import { LINKEDIN_NEWSLETTER_URL } from "@/lib/site";
 import { absoluteUrl, breadcrumbSchema, collectionPageSchema } from "@/lib/schemaHelpers";
-
-const NEWSLETTER_URL =
-  "https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7211685542705467393";
 
 const editionTopics = [
   {
@@ -119,30 +115,23 @@ const Newsletter = () => {
                 translation, interpretation, and cross-border corridors - written for business leaders and operators.
               </p>
 
-              <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center">
+              <div className="mt-6 sm:mt-8">
                 <a
-                  href={NEWSLETTER_URL}
+                  href={LINKEDIN_NEWSLETTER_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-gold-500))] px-6 py-3 text-sm font-bold text-[hsl(var(--brand-navy-950))] shadow-[0_16px_36px_hsl(var(--brand-gold-500)/0.22)] transition hover:-translate-y-0.5 hover:brightness-105 sm:w-auto"
                 >
                   <Linkedin className="h-4 w-4 shrink-0" aria-hidden />
-                  Subscribe on LinkedIn
+                  Browse &amp; Subscribe on LinkedIn
                   <ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden />
                 </a>
-                <Link
-                  to="/insights"
-                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto"
-                >
-                  Browse articles
-                  <ArrowRight className="h-4 w-4 shrink-0" aria-hidden />
-                </Link>
               </div>
 
               <div className="mt-6 flex flex-wrap items-center gap-4 sm:mt-8">
                 <span className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border-light))] bg-white/90 px-4 py-2 text-sm font-semibold text-[hsl(var(--brand-navy-950)] shadow-sm backdrop-blur-sm">
                   <Users className="h-4 w-4 text-[hsl(var(--brand-purple-700))]" aria-hidden />
-                  2,000+ subscribers
+                  1,000+ subscribers
                 </span>
                 <span className="text-xs font-medium uppercase tracking-[0.14em] text-on-light-muted">
                   Free on LinkedIn
@@ -202,12 +191,13 @@ const Newsletter = () => {
                     </ul>
 
                     <a
-                      href={NEWSLETTER_URL}
+                      href={LINKEDIN_NEWSLETTER_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[hsl(var(--brand-purple-700)/0.2)] bg-[hsl(var(--brand-purple-700)/0.04)] px-4 py-3 text-sm font-semibold text-[hsl(var(--brand-purple-700))] transition hover:border-[hsl(var(--brand-purple-700)/0.35)] hover:bg-[hsl(var(--brand-purple-700)/0.08)]"
                     >
-                      Read on LinkedIn
+                      <Linkedin className="h-4 w-4 shrink-0" aria-hidden />
+                      Browse & Subscribe on LinkedIn
                       <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
                     </a>
                   </div>
@@ -267,30 +257,23 @@ const Newsletter = () => {
             className="overflow-hidden rounded-2xl border border-[hsl(var(--border-light))] bg-white p-6 text-center shadow-[0_20px_60px_hsl(var(--brand-navy-950)/0.07)] sm:rounded-[1.75rem] sm:p-10"
           >
             <h2 className="font-serif text-2xl font-bold text-[hsl(var(--brand-navy-950))] sm:text-3xl">
-              Join 2,000+ operators and leaders on LinkedIn
+              Join 1,000+ operators and leaders on LinkedIn
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-on-light-secondary sm:text-base">
               Subscribe in one click - editions arrive in your LinkedIn feed alongside UVAN&apos;s market and language
               updates.
             </p>
-            <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-7 flex justify-center">
               <a
-                href={NEWSLETTER_URL}
+                href={LINKEDIN_NEWSLETTER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[hsl(var(--brand-navy-950))] px-8 py-3 text-sm font-bold text-white shadow-[0_12px_32px_hsl(var(--brand-navy-950)/0.2)] transition hover:brightness-110 sm:w-auto"
               >
                 <Linkedin className="h-4 w-4" aria-hidden />
-                Subscribe on LinkedIn
+                Browse &amp; Subscribe on LinkedIn
                 <ArrowUpRight className="h-4 w-4" aria-hidden />
               </a>
-              <Link
-                to="/language-gazette"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-[hsl(var(--border-light-strong))] bg-white px-6 py-3 text-sm font-semibold text-on-light transition hover:bg-[hsl(var(--surface-light-100))] sm:w-auto"
-              >
-                Read The Language Gazette
-                <ArrowRight className="h-4 w-4" aria-hidden />
-              </Link>
             </div>
           </motion.div>
         </div>

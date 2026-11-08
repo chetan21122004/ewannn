@@ -1,6 +1,14 @@
 /** Form submission via Brevo API route (/api/forms/submit). */
 
-export type SubmitFormResult = "sent" | "error";
+export type SubmitFormResult = "sent" | "error" | "file-too-large";
+
+/** Stay under the host request-body limit after base64 expansion. */
+export const MAX_ATTACHMENT_BYTES = 2.5 * 1024 * 1024;
+
+export type FormAttachment = {
+  name: string;
+  content: string;
+};
 
 export function buildFormMailtoUrl(
   to: string,
@@ -15,7 +23,45 @@ export function buildFormMailtoUrl(
   return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
-/** Collect FormData into a plain object, noting file selections by filename. */
+function fileToBase64(file: File): Promise<string> {
+  return file.arrayBuffer().then((buffer) => {
+    const bytes = new Uint8Array(buffer);
+    let binary = "";
+    const chunkSize = 0x8000;
+    for (let index = 0; index < bytes.length; index += chunkSize) {
+      binary += String.fromCharCode(...bytes.subarray(index, index + chunkSize));
+    }
+    return btoa(binary);
+  });
+}
+
+/** Collect text fields and encode selected files so they can be emailed as attachments. */
+export async function collectFormPayload(form: HTMLFormElement): Promise<{
+  fields: Record<string, string>;
+  attachments: FormAttachment[];
+  error?: "file-too-large";
+}> {
+  const data = new FormData(form);
+  const fields: Record<string, string> = {};
+  const attachments: FormAttachment[] = [];
+
+  for (const [key, value] of data.entries()) {
+    if (value instanceof File) {
+      if (!value.name || value.size === 0) continue;
+      if (value.size > MAX_ATTACHMENT_BYTES) {
+        return { fields, attachments, error: "file-too-large" };
+      }
+      attachments.push({ name: value.name, content: await fileToBase64(value) });
+      fields[key] = `${value.name} (attached)`;
+      continue;
+    }
+    fields[key] = String(value);
+  }
+
+  return { fields, attachments };
+}
+
+/** Collect FormData into a plain object. File fields are recorded by filename only. */
 export function collectFormFields(form: HTMLFormElement): Record<string, string> {
   const data = new FormData(form);
   const fields: Record<string, string> = {};
@@ -23,7 +69,7 @@ export function collectFormFields(form: HTMLFormElement): Record<string, string>
   for (const [key, value] of data.entries()) {
     if (value instanceof File) {
       if (value.name) {
-        fields[key] = `${value.name} (file selected - reply to applicant for attachment if needed)`;
+        fields[key] = value.name;
       }
       continue;
     }
@@ -42,6 +88,7 @@ async function postFormToApi(
   to: string,
   subject: string,
   fields: Record<string, string>,
+  attachments: FormAttachment[] = [],
 ): Promise<boolean> {
   if (fields._gotcha?.trim()) {
     return true;
@@ -50,7 +97,7 @@ async function postFormToApi(
   const response = await fetch("/api/forms/submit", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ to, subject, fields }),
+    body: JSON.stringify({ to, subject, fields, attachments }),
   });
 
   return response.ok;
@@ -86,10 +133,13 @@ export async function submitForm(
     return "sent";
   }
 
-  const fields = collectFormFields(form);
+  const payload = await collectFormPayload(form);
+  if (payload.error === "file-too-large") {
+    return "file-too-large";
+  }
 
   try {
-    if (await postFormToApi(to, subject, fields)) {
+    if (await postFormToApi(to, subject, payload.fields, payload.attachments)) {
       return "sent";
     }
   } catch {
